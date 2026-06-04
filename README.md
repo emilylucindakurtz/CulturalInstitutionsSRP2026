@@ -21,6 +21,11 @@ Everyday you start work, you should follow this general process
 
 If you have any questions about the above, this video may help (or again, please don't hesitate to ask!): https://www.youtube.com/watch?v=8x6V5IOuXog
 
+## Other collaboration notes
+
+1) Use relative paths: don't ever use absolute file paths like `read.csv("C:/Users/Emily/Documents/data.csv")` because others may want to run your code and, well, 60% of us are not named Emily. Instead, use relative paths like `read.csv("data/data.csv")`. The root of the file structure should be where the R project is stored (assuming you are working in the project, that's important!), so you do not need to specify anything in the path except which folders, subfolders, and files you want to access *within* the repo.
+2) When possible, don't work on the same file at the same time as others. This should probably be pretty easy in the beginning, since you'll be scraping/collecting/cleaning/documenting your own data, but later on, two of you may be working on the same thing together. If you can, work in two separate files, even if you're working on the same thing, and coordinate (e.g. "you make the interactive graphics, I'll design the dashboard layout"). If you can't do that, try to work at different times, code together in the same place, or chat with me about another game plan.
+
 
 # **Approximate Schedule**
 
