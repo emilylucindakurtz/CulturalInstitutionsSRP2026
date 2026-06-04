@@ -16,8 +16,10 @@ Everyday you start work, you should follow this general process
 3) Do your coding.
 4) When you are done for the day, commit your changes. In the bottom left corner of GitHub Desktop (in the small search bar looking thing), you can and should make a comment on what the changes were. If you need extra space, look below in the bigger text box that says "Description" to add extra details. Once you have filled that out, click the blue "Commit" button below. This will take a second, and then you will have a big blue "Push origin" button appear.
 5) Push your changes by clicking the blue "Push origin" button. It may also say "Publish Branch."
-6) Create a pull request by clicking "Branch" at the top of GitHub Desktop and clicking "Create Pull Request." This will open up GitHub on the browser and be what merges your branch with the main repository. Feel free to add a comment there that discusses what changes are involved with your branch.
-7) 
+6) Create a pull request by clicking "Branch" at the top of GitHub Desktop and clicking "Create Pull Request." This will open up GitHub on the browser and be what merges your branch with the main repository. Feel free to add a comment there that discusses what changes are involved with your branch. Click "Create Pull Request" on GitHub. Your changes will either be auto-merged to the main branch or, if there is a conflict, they should come to me to review. Your current branch will be auto-deleted (a good thing, you can remake a new branch tomorrow!)
+7) That's it! You started by making sure you had the most recent version of the repository and making your own personal branch, did a bunch of coding, and ended by pushing all of your changes to the main branch. Good work today. Start over at step 1 tomorrow (or enjoy your weekend!)
+
+If you have any questions about the above, this video may help (or again, please don't hesitate to ask!): https://www.youtube.com/watch?v=8x6V5IOuXog
 
 
 Schedule
