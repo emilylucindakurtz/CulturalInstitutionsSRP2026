@@ -5,10 +5,15 @@ a repo for the SRP project on cultural institutions
 Schedule
 
 -6/9 - 6/12: Intro to project, pick types of institutions interested in, find sources of data and make a plan to collect that data before EOW (including assigning folks to data sources to focus on)
+
 -6/15 - 6/19: Write code to scrape and/or document and execute plan to collect data. Clean individual datasets. Give to Emily. Emily joins datasets.
+
 -6/22 - 6/26: Extra week for back and forth here
+
 -6/29 - 7/3: Write up codebook. Build website
+
 -7/6 - 7/10: Blog posts of findings, Shiny app
+
 -7/13: Launch!
 
 
