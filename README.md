@@ -1,7 +1,7 @@
 # CulturalInstitutionsSRP2026
 a repo for the SRP project on cultural institutions
 
-**IMPORTANT COLLABORATION INFORMATION:**
+# **IMPORTANT COLLABORATION INFORMATION:**
 
 We will use GitHub to make sure everyone is able to access everyone else's work. If you need a general GitHub brush up lesson, let me know!
 
@@ -22,7 +22,7 @@ Everyday you start work, you should follow this general process
 If you have any questions about the above, this video may help (or again, please don't hesitate to ask!): https://www.youtube.com/watch?v=8x6V5IOuXog
 
 
-**Approximate Schedule**
+# **Approximate Schedule**
 
 - 6/9 - 6/12: Intro to project, pick types of institutions interested in, find sources of data and make a plan to collect that data before EOW (including assigning folks to data sources to focus on)
 - 6/15 - 6/19: Write code to scrape and/or document and execute plan to collect data. Clean individual datasets. Give to Emily. Emily joins datasets.
@@ -33,7 +33,7 @@ If you have any questions about the above, this video may help (or again, please
 
 
 
-**Goals (bolded are included in minimal goal, non-bolded are extras):**
+# **Goals (bolded are included in minimal goal, non-bolded are extras):**
 
 - **Talk as a group about what sorts of data we would like to collect (jobs-related but anything else?)**
 - **Identify data sources of institutions that can be scraped or otherwise collected (eye towards terms of service, ethics, make sure there is some sort of location (lat/lon, address, etc.) associated with it)**
