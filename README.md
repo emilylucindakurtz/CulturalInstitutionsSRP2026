@@ -15,12 +15,12 @@ Schedule
 
 Goals (bolded are included in minimal goal, non-bolded are extras):
 
-**- Talk as a group about what sorts of data we would like to collect (jobs-related but anything else?)
-- Identify data sources of institutions that can be scraped or otherwise collected (eye towards terms of service, ethics, make sure there is some sort of location (lat/lon, address, etc.) associated with it)
-- Scrape or collect data (be very careful with tracking where all data come from for documentation purposes)
-- Clean and join data (again, make sure all of this is in a reproducible script and documented clearly) - include column on source and/or type of institution (museum, monument, etc. AND another on job related, other cultural thing?)
-- Write up a small codebook detailing sources of data, columns contained, etc.
-- Make a website where folks can download the data from**
+- **Talk as a group about what sorts of data we would like to collect (jobs-related but anything else?)**
+- **Identify data sources of institutions that can be scraped or otherwise collected (eye towards terms of service, ethics, make sure there is some sort of location (lat/lon, address, etc.) associated with it)**
+- **Scrape or collect data (be very careful with tracking where all data come from for documentation purposes)**
+- **Clean and join data (again, make sure all of this is in a reproducible script and documented clearly) - include column on source and/or type of institution (museum, monument, etc. AND another on job related, other cultural thing?)**
+- **Write up a small codebook detailing sources of data, columns contained, etc.**
+- **Make a website where folks can download the data from**
 - Website may also contain Shiny app, blog posts, etc. of people exploring the data
 - Everyone can write a blog post of something interesting with a visual
 - Shiny app where people can map the data, select and filter, etc.
