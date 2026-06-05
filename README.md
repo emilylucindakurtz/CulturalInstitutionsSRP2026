@@ -3,7 +3,7 @@ a repo for the SRP project on cultural institutions
 
 # **IMPORTANT COLLABORATION INFORMATION:**
 
-We will use GitHub to make sure everyone is able to access everyone else's work. If you need a general GitHub brush up lesson, let me know!
+We will use GitHub to make sure everyone is able to access everyone else's work. If you need a general GitHub brush up lesson, let me know! I teach GitHub using GitHub Desktop, though if you have a workflow that uses teh command line or whatever else and it works for you, feel free to stick to that! If you want to learn more about GitHub Desktop, this YouTube video is helpful: https://www.youtube.com/watch?v=8Dd7KRpKeaE
 
 Before you do anything, clone this repo onto your computer. **Make sure you open the associated R project any time you are doing coding for this project in RStudio, and close out of the project any time you do coding for any other reason!**
 
