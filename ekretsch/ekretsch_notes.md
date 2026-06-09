@@ -26,6 +26,6 @@ Ideas for cultural institutions to investigate:
 - malls
 - amusement parks
 - museums
-->   corporate museums -- cool!
-->   science museums
-->   children's museums
+  - corporate museums -- cool!
+  - science museums
+  - children's museums
