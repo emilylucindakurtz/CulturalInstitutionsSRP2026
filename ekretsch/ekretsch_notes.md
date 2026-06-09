@@ -14,6 +14,9 @@ Notes from readings:
   - free data - https://wiki.openstreetmap.org/wiki/API
 - satllite images: _"This study investigates the effectiveness of state-of-the-art deep learning models trained on high-resolution single-band satellite images in estimating site-level industrial development over time in the People's Republic of China."_
   - industrial sites = factories, power plants, ports
+  - _"This approach enables users to identify regions where rapid industrialization (or de-industrialization) may be occurring for more detailed, qualitative analyses."_
+  - conclusion... insufficient methods? except for footprint?
+  - Please reach out via the LinkedIn profile link in the author section if you would like to experiment with the project code.
 
 Ideas for cultural institutions to investigate:
 - parks
