@@ -4,6 +4,9 @@
 
 Ideas for cultural institutions to investigate:
 - <mark>historic districts</mark>
+  - https://www.nps.gov/subjects/nationalregister/database-research.htm
+- <mark>public libraries</mark>
+- YMCAs
 - parks
 - journalism
 - religious institutions
