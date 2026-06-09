@@ -4,7 +4,7 @@
 
 Notes from readings:
 - Corporate museums = _"thematic, commercial buildings, owned by a particular firm, where the history of the company brand and products development is presented," "social but branded space"_
-->   Ex: Porsche, Mercedes, BMW Welt
+  - Ex: Porsche, Mercedes, BMW Welt
 ->   Expands tourist and cultural potential -- marketing image. Financial gains for corporation.
 ->   Architecture identifies with brand
 ->   Usually next to factories for the corporation
