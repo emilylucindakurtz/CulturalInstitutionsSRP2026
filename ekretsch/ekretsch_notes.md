@@ -12,6 +12,8 @@ Notes from readings:
 - National monument audit is good inspo
 - open street map -- super duper cool
 ->   free data - https://wiki.openstreetmap.org/wiki/API
+- satllite images: _"This study investigates the effectiveness of state-of-the-art deep learning models trained on high-resolution single-band satellite images in estimating site-level industrial development over time in the People's Republic of China."_
+    - industrial sites = factories, power plants, ports
 
 Ideas for cultural institutions to investigate:
 - parks
