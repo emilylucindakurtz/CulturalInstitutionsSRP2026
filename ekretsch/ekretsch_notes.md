@@ -2,6 +2,19 @@
 
 ## June 09
 
+Ideas for cultural institutions to investigate:
+- <mark>historic districts</mark>
+- parks
+- journalism
+- religious institutions
+- ~satellite data ?~
+- ~malls~
+- amusement parks
+- museums
+  - corporate museums -- cool!
+  - science museums
+  - children's museums
+
 Notes from readings:
 - Corporate museums = _"thematic, commercial buildings, owned by a particular firm, where the history of the company brand and products development is presented," "social but branded space"_
   - Ex: Porsche, Mercedes, BMW Welt
@@ -17,15 +30,3 @@ Notes from readings:
   - _"This approach enables users to identify regions where rapid industrialization (or de-industrialization) may be occurring for more detailed, qualitative analyses."_
   - conclusion... insufficient methods? except for footprint?
   - Please reach out via the LinkedIn profile link in the author section if you would like to experiment with the project code.
-
-Ideas for cultural institutions to investigate:
-- parks
-- journalism
-- religious institutions
-- satellite data ?
-- malls
-- amusement parks
-- museums
-  - corporate museums -- cool!
-  - science museums
-  - children's museums
