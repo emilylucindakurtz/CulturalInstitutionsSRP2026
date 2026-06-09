@@ -13,6 +13,8 @@ Collecting data on industrial businesses (factories/powerplants/corporations) so
 Additionally, I was curious about exploring more about the following types of institutions:
 - libraries
   - https://librarytechnology.org/libraries/uspublic/
+      - scraping by state for data extraction
 - perforance centers (e.g. concert/symphony halls, or sport ML/college sport venues/arenas/stadiums)
   - https://stadiumandarenavisits.com/map/
-  - 
+     -  availible KML of ~1300 US sport venues --> can convert to raw location info
+
