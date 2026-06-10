@@ -13,7 +13,7 @@
 1) Street Art Cities
   - _Allow use?_ Y
   - https://streetartcities.com/open-data
-  - This site has datasets by country, but it's only the 50 most recent ones so it does not include the US. Might need to contact them.
+  - This site has datasets by country, but it's only the 50 most recent ones so it does not include the US. **Might need to contact them.**
   - Crowdsourced by the public and quite extensive. This might mean that it would require some more cleaning, though, since the content of the variables are not always consistent.
   - Contains longitude and latitude, as well as lots of other variables such as description.
 2) OpenStreetMap
@@ -36,6 +36,15 @@
   - sam@streetartmankind.org
   - ^ Probably should email them because I can't find github or api
   - One important con of this: it's specifcally focused on art that it has sponsored/focused on social justice etc.
+5) Data.gov
+  - https://catalog.data.gov/?sort=relevance&q=&sort=relevance&spatial_filter=&keyword=public+art
+  - More limited -- by city and not all cities
+6) CodaWorx
+  - _Allow use?_ Unsure, probably not
+  - https://codaworx.com/
+  - More of a for-profit I think since its purpose is to connect artists with people who want art
+  - But it does seem to have a databse of artworks?
+  - https://knowledge.codaworx.com/codazine/the-power-of-data-proving-that-public-art-can-change-the-world
 
 ### Meeting notes
 - corporate museums -- would just broadly look at museums
