@@ -5,7 +5,8 @@
 Ideas for cultural institutions to investigate:
 - <mark>historic districts</mark>
   - https://www.nps.gov/subjects/nationalregister/database-research.htm
-  - api info below in parks
+      - api info below in parks
+      - But it can also be downloaded as a spreadsheet (?) https://www.nps.gov/subjects/nationalregister/data-downloads.htm
 - <mark>public libraries</mark>
   - https://www.careeronestop.org/LocalHelp/CommunityServices/find-libraries.aspx
   - API exists for careeronestop.org ^
