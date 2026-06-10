@@ -10,9 +10,9 @@
   - scrape news articles themselves from local newspapers?
 - make sure to look at terms of service before scraping!
 - csvs ok
+- goal for end of week: what we're each doing and where we're collecting from
 
 ## June 09
-
 Ideas for cultural institutions to investigate:
 - <mark>historic districts</mark>
   - https://www.nps.gov/subjects/nationalregister/database-research.htm
