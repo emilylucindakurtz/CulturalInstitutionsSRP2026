@@ -8,11 +8,11 @@ Ideas for cultural institutions to investigate:
 - <mark>public libraries</mark>
   - https://www.careeronestop.org/LocalHelp/CommunityServices/find-libraries.aspx
   - API exists for careeronestop.org ^
-- YMCAs
-- parks
+- <mark>parks</mark>
   - Historical parks
       - https://www.nps.gov/findapark/index.htm
       - ^ They offer free api: https://www.nps.gov/subjects/developer/api-documentation.htm
+- YMCAs
 - journalism
 - religious institutions
 - ~satellite data ?~
