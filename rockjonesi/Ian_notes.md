@@ -25,6 +25,18 @@ Additionally, I was curious about exploring more about the following types of in
 #### Industrial Insitiutions
 Powerplants:
   - https://gis-fema.hub.arcgis.com/datasets/b063316fac7345dba4bae96eaa813b2f/about
+    - very comprhensive dataset of powerplants in the US. Downloadable in many forms, including as csv.
+    - Open source
+Corporatations:
+  - https://padlet.com/gallery/a-map-of-fortune-500-headquarters-357ned1s9wig
+    - headquarter locations for US Fortune 500 companies
+    - downloadable as csv
+  - https://docs.overturemaps.org/guides/places/
+    - database that NYT article used to map out specific businesses
+    - not sure the scope of business mapping we want; every instance of select businesses? I feel like mapping the headquarters
+      might capture the relationships we are hoping for --> question for tmr
+    - would need to use queries to extract the data, which I think would be not too bad to figure out
+      
 
 #### Libraries
 - https://librarytechnology.org/libraries/uspublic/
