@@ -1,6 +1,33 @@
 # Emily Kretschmer's Notes
 
 ## June 10
+### Personal notes
+#### Historic districts
+
+#### Public libraries
+1) 
+
+#### News outlets
+
+#### Murals/street art
+1) https://streetartcities.com/open-data
+  - This site has datasets by country, but it's only the 50 most recent ones so it does not include the US. Might need to contact them.
+  - Crowdsourced by the public and quite extensive. This might mean that it would require some more cleaning, though, since the content of the variables are not always consistent.
+  - Contains longitude and latitude, as well as lots of other variables such as description.
+2) OpenStreetMap
+  - Crowdsourced
+  - Overpass API
+  - Tag: artwork_type=mural
+3) Public art archive
+  - <img width="1265" height="439" alt="image" src="https://github.com/user-attachments/assets/9459108b-97b9-4b42-8635-e91b9e4c11a4" />
+4) Street art for mankind
+  - Nonprofit that sponsors/maps murals to _"raise awareness on social justice and environmental issues, and to give the public the means to become actors of change"_
+  - Can't really find the data on the website, but they have an app >>>
+  - Behind the Wall app -- should contain geospatial data
+  - sam@streetartmankind.org
+  - ^ Probably should email them because I can't find github or api
+  - One important con of this: it's specifcally focused on art that it has sponsored/focused on social justice etc.
+
 ### Meeting notes
 - corporate museums -- would just broadly look at museums
   - openstreetmap
