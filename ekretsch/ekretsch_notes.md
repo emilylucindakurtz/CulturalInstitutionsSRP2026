@@ -1,5 +1,16 @@
 # Emily Kretschmer's Notes
 
+## June 10
+### Meeting notes
+- corporate museums -- would just broadly look at museums
+  - openstreetmap
+- high school mascots???
+- news outlets -- ben toff umn
+  - informal institution
+  - scrape news articles themselves from local newspapers?
+- make sure to look at terms of service before scraping!
+- csvs ok
+
 ## June 09
 
 Ideas for cultural institutions to investigate:
@@ -10,7 +21,7 @@ Ideas for cultural institutions to investigate:
 - <mark>public libraries</mark>
   - https://www.careeronestop.org/LocalHelp/CommunityServices/find-libraries.aspx
   - API exists for careeronestop.org ^
-  - https://www.imls.gov/research-evaluation/data -- not exactly sure how this would work
+  - https://www.imls.gov/research-evaluation/data -- not exactly sure how this would work -- github?
 - <mark>parks</mark>
   - https://www.tpl.org/park-data-downloads
   - OpenStreetMap
