@@ -51,7 +51,7 @@ https://stadiumandarenavisits.com/map/
 - https://en.concerts-metal.com/places_us.html
   - contains data on ~800 music venues in the US. Mainly only those which host Metal/Hardrock/Punk bands.
     Also, venue size ranges from large concert halls to small breweries/ bars that could have more isolated, local, impacts.
-    - Looks like it might be challanging to efficiently scrape all helpful information, appears to have api.
+    - Looks like it might be challanging to efficiently scrape all helpful information, no api. Address data is all isolated behind links on each venue.
 - https://www.operabase.com/organisations/venue/united-states/en?page=1
   - large comprehensive database containing information on concert venues in the US, no genre focus like above
   - has API, also looks like scraping would not be challenging since it's just a multi-page list
