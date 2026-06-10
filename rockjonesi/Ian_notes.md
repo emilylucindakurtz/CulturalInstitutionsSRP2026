@@ -35,6 +35,17 @@ Powerplants:
     - Checked in with Emily about contacting them, so we'll see what happens.
 
 #### Sport Venues
+https://stadiumandarenavisits.com/map/
+  - https://mapular.com/tools/google-my-maps-converter 
+     - easy KML -> CSV converter for lat/long information
+     - just contains locatoion and venue name (What else should we look for? Descriptions for sport type/team history?)
+     - contains some canadian venues --> would just have to filter to between a certain long/lat to cut those out, but keep Alaskan venues
+  - https://stadiumandarenavisits.com/the-list/
+    - List of the venues and their size (capacity) from the same project
+      - This is a pdf so data extraction would have to be more text-analysis focused.
+  - very comprehensive hobby project; manager asks: "if you use the List or any pictures on the website, please just ask permission. Thank you!"
+    - by "the List" he means the information on the PDF. Should I contact?
+        
 
 #### concert/symphony halls
 - https://en.concerts-metal.com/places_us.html
@@ -46,6 +57,10 @@ Powerplants:
   - has API, also looks like scraping would not be challenging since it's just a multi-page list
   - For location information: only contains city address, nothing more specific. Additionally, no lat/long information. Would likely have to pull
     that info from supplemental location dataset.
+- https://commons.wikimedia.org/wiki/Category:Concert_halls_in_the_United_States
+  - another potential data source. It is much smaller though and might contain redundant info thats already in operabase
+ 
+  - 
       
       
 
