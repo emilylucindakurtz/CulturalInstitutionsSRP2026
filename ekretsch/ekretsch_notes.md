@@ -12,6 +12,8 @@ Ideas for cultural institutions to investigate:
   - API exists for careeronestop.org ^
   - https://www.imls.gov/research-evaluation/data -- not exactly sure how this would work
 - <mark>parks</mark>
+  - https://www.tpl.org/park-data-downloads
+  - OpenStreetMap
   - Historical parks
       - https://www.nps.gov/findapark/index.htm
       - ^ They offer free api: https://www.nps.gov/subjects/developer/api-documentation.htm
@@ -19,7 +21,7 @@ Ideas for cultural institutions to investigate:
   - There are lots of local mural registries...
       - https://data.jerseycitynj.gov/explore/dataset/jersey-city-mural-map-list/table/?disjunctive.ward&disjunctive.name&disjunctive.artist
       - https://data.cityofchicago.org/Historic-Preservation/Mural-Registry/we8h-apcf/about_data
-      - 
+  - OpenStreetMap
   - https://streetartcities.com/open-data --> open data as a csv for academic use
   - Street art for man kind: https://streetartmankind.org/
       - there is an app that would probably be the best thing to scrape
