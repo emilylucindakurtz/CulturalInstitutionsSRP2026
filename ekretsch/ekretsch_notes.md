@@ -12,6 +12,7 @@ Ideas for cultural institutions to investigate:
 - parks
   - Historical parks
       - https://www.nps.gov/findapark/index.htm
+      - ^ They offer free api: https://www.nps.gov/subjects/developer/api-documentation.htm
 - journalism
 - religious institutions
 - ~satellite data ?~
