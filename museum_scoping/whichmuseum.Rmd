@@ -1,0 +1,123 @@
+---
+title: "whichmuesum"
+output: html_document
+---
+```{r setup, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(rvest)
+library(xml2)
+```
+# Source Overview
+Base Page 
+```{r} 
+base_url <- "https://whichmuseum.com/place/united-states-2682"
+base_url
+``` 
+According to the WhichMuesum United States page, there are 12046 museum in United States. 
+# Visual Categories
+From the website sidebar, the main museum catergories are
+```{r}
+whichmuseum_categories <- tibble(
+  category = c(
+    "History & Anthropology",
+    "Science & Technology",
+    "Nature & Natural History",
+    "Art & Design",
+    "Specialized & Alternative"
+  ),
+  count = c(7517,1954,1821,1517,812)
+)
+whichmuseum_categories
+``` 
+```{r}
+whichmuseum_categories %>%
+  ggplot(aes(x = reorder(category,count), y = count)) +
+  geom_col()+
+  coord_flip()+
+  labs(
+    title = "WhichMuseum Categories",
+    x = "Categories",
+    y = "Number of Museum"
+  )
+``` 
+#Robot.txt check 
+Robot.txt page
+```{r}
+robot_url <- "https://whichmuseum.com/robots.txt"
+robot_url
+``` 
+Summary: 
+This robots.txt file does not disallow general crawling for `User-agent: *`. It blocks pages related to users, logins, comments, image licensing, and contact information, but allows the crawling of standard pages.
+Important disallowed path include
+```{r}
+disallowed_path<-tibble(
+  path=c(
+     "/claim-request",
+    "/user.json",
+    "/login?",
+    "/signup?",
+    "/write-review",
+    "/img-license/",
+    "/user/",
+    "/review/translate/",
+    "/museum-text-license/",
+    "/logout",
+    "/museum-widget/",
+    "/contact?"
+  )
+)
+disallowed_path
+```
+# Example museum page 
+Example museum page:
+```{r}
+example_url <- "https://whichmuseum.com/museum/fort-stevens-state-park-warrenton-13187"
+example_url
+```
+```{r}
+example_page <- read_html(example_url)
+example_text <- example_page %>%
+  html_text2()
+cat(example_text)
+```
+#Links on Example page
+```{r}
+example_links <- example_page %>%
+  html_elements("a")
+
+example_links <- tibble(
+  text = html_text2(example_links),
+  href = html_attr(example_links, "href")
+)
+
+example_links %>%
+  filter(!is.na(href)) %>%
+  print(n = 50)
+```
+#Field visible in WhichMuseum page
+museum pages appear to contain
+```{r}
+visible_fields <- tibble(
+  field = c(
+    "Museum name",
+    "Rating",
+    "Number of ratings",
+    "National ranking",
+    "State ranking",
+    "Short description",
+    "Category",
+    "Address",
+    "City",
+    "State",
+    "Country",
+    "Phone number",
+    "Website link",
+    "Map link"
+  ),
+  useful_for_database = c(
+    TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE,
+    TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE
+  )
+)
+visible_fields
+```
