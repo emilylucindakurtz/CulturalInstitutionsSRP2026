@@ -6,8 +6,12 @@ Ideas for cultural institutions to investigate:
 - <mark>historic districts</mark>
   - https://www.nps.gov/subjects/nationalregister/database-research.htm
 - <mark>public libraries</mark>
+  - https://www.careeronestop.org/LocalHelp/CommunityServices/find-libraries.aspx
+  - API exists for careeronestop.org ^
 - YMCAs
 - parks
+  - Historical parks
+      - https://www.nps.gov/findapark/index.htm
 - journalism
 - religious institutions
 - ~satellite data ?~
