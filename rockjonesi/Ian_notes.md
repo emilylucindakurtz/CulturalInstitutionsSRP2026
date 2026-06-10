@@ -35,7 +35,7 @@ Corporatations:
     - database that NYT article used to map out specific businesses
     - not sure the scope of business mapping we want; every instance of select businesses? I feel like mapping the headquarters
       might capture the relationships we are hoping for --> question for tmr
-    - would need to use queries to extract the data, which I think would be not too bad to figure out
+    - would need to use queries to extract the data, I think would be not too bad to figure out
       
 
 #### Libraries
@@ -44,8 +44,8 @@ Corporatations:
   - Terms of Service could cause useage conflicts --> "Extracting data through automated scripts is prohibited.
     Those interested in access to the underlying data sets can contact Marshall Breeding to discuss available options.
     Library Technology Guides encourages use of the site for personal and academic research."
-    - Checked in with Emily about contacting them, so we'll see what happens.
-
+    - Checked in with Emily about contacting them, so we'll see what happens. --> contacted Marshall Breeding, waiting for response.
+      
 #### Sport Venues
 https://stadiumandarenavisits.com/map/
   - https://mapular.com/tools/google-my-maps-converter 
