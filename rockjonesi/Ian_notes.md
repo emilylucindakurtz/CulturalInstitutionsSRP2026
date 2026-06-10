@@ -72,9 +72,12 @@ https://stadiumandarenavisits.com/map/
 - https://commons.wikimedia.org/wiki/Category:Concert_halls_in_the_United_States
   - another potential data source. It is much smaller though and might contain redundant info thats already in operabase
  
-  - 
-      
-      
+
+
+  ### My desired areas of focus:
+   #### sports venues
+   #### libraries
+   #### powerplants/corportate businesses
 
 
 
