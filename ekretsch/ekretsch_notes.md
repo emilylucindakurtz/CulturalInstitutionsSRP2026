@@ -4,7 +4,7 @@
 ### Todo
 - [x] email northwestern
 - [x] email streetartcities
-- [ ] get pls 2022
+- [x] get pls 2022
 
 https://www.geonames.org/
 
