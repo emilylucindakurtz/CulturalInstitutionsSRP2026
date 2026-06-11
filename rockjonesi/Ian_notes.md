@@ -46,6 +46,21 @@ Additionally, I was curious about exploring more about the following types of in
     Those interested in access to the underlying data sets can contact Marshall Breeding to discuss available options.
     Library Technology Guides encourages use of the site for personal and academic research."
     - Checked in with Emily about contacting them, so we'll see what happens. --> contacted Marshall Breeding, waiting for response.
+      - Sounds willing to have us work with their data --> 
+       - Ian,
+        "Thanks very much for your interest in the data on Library Technology Guides.
+        I’m interested in helping with your project.
+        There is a mechanism for projects such as yours to be able to download selected data from the website.  Can you tell me more about the project and how the data will be incorporated?
+        Kind regards,
+        
+        marshall"
+        
+
+ 
+
+Marshall Breeding
+
+Editor, Library Technology Guides
       
 #### Sport Venues
 https://stadiumandarenavisits.com/map/
