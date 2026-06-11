@@ -23,11 +23,12 @@ Additionally, I was curious about exploring more about the following types of in
 ### Data search
 
 #### Industrial Insitiutions
-Powerplants:
+**Powerplants**:
   - https://gis-fema.hub.arcgis.com/datasets/b063316fac7345dba4bae96eaa813b2f/about
     - very comprhensive dataset of powerplants in the US. Downloadable in many forms, including as csv.
     - Open source
-Corporatations:
+  
+**Corporatations**:
   - https://padlet.com/gallery/a-map-of-fortune-500-headquarters-357ned1s9wig
     - headquarter locations for US Fortune 500 companies
     - downloadable as csv
