@@ -110,6 +110,13 @@ This might be getting way into the weeds of industrial institutions, but here is
 
 ### Data progress
 - Have started to download/upload the accessible csvs into their respective data folders
+ - **things that need to be scraped**
+   - https://librarytechnology.org/libraries/uspublic/
+     - although not sure we need this anymore with Emily's PLS data
+     - https://en.wikipedia.org/wiki/List_of_automotive_assembly_plants_in_the_United_States
+  - **things that need text analysis**
+    - https://stadiumandarenavisits.com/wp-content/uploads/2026/04/stadiums.pdf
+      - only if we are interested in stadium size
 
 
 
