@@ -1,12 +1,17 @@
 # Emily Kretschmer's Notes
 
+## June 12
+### Todo
+- [ ] filter/do regex for the historic places
+- [ ] osm
+
 ## June 11
 ### Todo
 - [x] email northwestern
 - [x] email streetartcities
 - [x] get pls 2022
 - [ ] understand how to get osm data???
-- [ ] get national register of historic places data
+- [x] get national register of historic places data
 
 https://www.geonames.org/
 
