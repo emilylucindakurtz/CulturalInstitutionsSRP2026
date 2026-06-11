@@ -6,6 +6,7 @@
 - for news outlets -- what would/wouldn't we include? newspapers? radio? tv? local news? national newspapers?
 - not really sure how to decide what to choose...
 - ordered below by likely ease (1 and 2 pretty straightforward, 3 and 4 less so)
+- reaching out?
 
 #### Historic districts
 1) National Register of Historic Places . Digital Archive on NPGallery
