@@ -15,11 +15,17 @@
 - https://localnewsinitiative.northwestern.edu/projects/state-of-local-news/2025/
   - they have a pdf of the 2025 report which includes their methodology -- descriptions of each of the types of outlets
   - _"Our research is concerned with identifying local newspapers that provide public-service journalism."_
-  - Joe Germuska -- email him later this week if still no response on data
+  - **Joe Germuska** -- email him later this week if still no response on data
+    - https://github.com/joegermuska/
+    - joegermuska@northwestern.edu
+    - joe@germuska.com
   - https://northwestern.az1.qualtrics.com/jfe/form/SV_erjjVa4drHs9hnE -- submitted through here
+  - Not sure if they'll let us use the data since they're saying it's private data and shouldn't be shared with others i think...
 #### Murals
-- support@streetartcities.com
-### Meeting
+- support@streetartcities.com -- emailed
+- 
+
+### Meeting notes
 - it's ok if it's not a comprehensive dataset!!!
 - just try to get as much of the data
 
