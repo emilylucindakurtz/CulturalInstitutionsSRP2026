@@ -3,9 +3,22 @@
 ## June 11
 ### Todo
 - [ ] email northwestern
-- [ ] email streetartcities
+- [x] email streetartcities
 - [ ] get pls 2022
 
+### Categories
+#### Historic districts
+- 
+#### Libraries
+- 
+#### News outlets
+- https://localnewsinitiative.northwestern.edu/projects/state-of-local-news/2025/
+  - they have a pdf of the 2025 report which includes their methodology -- descriptions of each of the types of outlets
+  - _"Our research is concerned with identifying local newspapers that provide public-service journalism."_
+  - Joe Germuska
+  - 
+#### Murals
+- support@streetartcities.com
 ### Meeting
 - it's ok if it's not a comprehensive dataset!!!
 - just try to get as much of the data
