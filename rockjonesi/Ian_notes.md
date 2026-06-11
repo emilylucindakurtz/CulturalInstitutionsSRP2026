@@ -103,6 +103,7 @@ Map data of auto supply chain plants in the US:
   - https://www.bluegreenalliance.org/resources/bluegreen-alliance-unveils-latest-auto-industry-map-for-domestic-manufacturing-advocates/
   - Terms of use allow data downloads from website, but need to grant permission before using for published/public work
     - Would provide csv download if we are given permission
+    - will get in contact with them today to ask
 
 This might be getting way into the weeds of industrial institutions, but here is a dataset containing location information on mines in the US:
   - https://mmr.osmre.gov/
@@ -110,6 +111,13 @@ This might be getting way into the weeds of industrial institutions, but here is
 
 ### Data progress
 - Have started to download/upload the accessible csvs into their respective data folders
+  - data -> sports -> sportsvenues.csv
+  - data -> industrial institutions -> fortune500.csv
+    - currently having complications downloading powerplants.csv, keep getting "failed" messages after pending for 5 mins
+    - will go in this folder otherwise
+    - autosupplyplants.csv will also go in here if granted data permissions
+  - data -> libraries -> looks like Emily already put PLS, might be all we need.
+
  - **things that need to be scraped**
    - https://librarytechnology.org/libraries/uspublic/
      - although not sure we need this anymore with Emily's PLS data
