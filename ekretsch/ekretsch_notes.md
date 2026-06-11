@@ -5,14 +5,18 @@
 - [x] email northwestern
 - [x] email streetartcities
 - [x] get pls 2022
+- [ ] understand how to get osm data???
+- [ ] get national register of historic places data
 
 https://www.geonames.org/
-
 
 ### Categories
 #### OpenStreetMap info
 - overpass api -- readonly (this is what i would want)
   - https://wiki.openstreetmap.org/wiki/Overpass_API
+  - _An excellent place to explore overpass queries specifically and OSM data in general is the online interactive query builder at overpass-turbo, which includes a helpful corrector function for incorrectly formatted queries._
+  - https://cran.r-project.org/web/packages/osmdata/vignettes/osmdata.html#1_Introduction
+  - 
 - https://learnosm.org/en/osm-data/getting-data/
 - OR: as an osm.pbf file (?) https://download.geofabrik.de/north-america.html
 - 
