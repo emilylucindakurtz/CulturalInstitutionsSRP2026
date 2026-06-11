@@ -47,14 +47,15 @@ Additionally, I was curious about exploring more about the following types of in
     Library Technology Guides encourages use of the site for personal and academic research."
     - Checked in with Emily about contacting them, so we'll see what happens. --> contacted Marshall Breeding, waiting for response.
       - Sounds willing to have us work with their data --> 
-       - Ian,
-        "Thanks very much for your interest in the data on Library Technology Guides.
+       - "Ian,
+        Thanks very much for your interest in the data on Library Technology Guides.
         I’m interested in helping with your project.
         There is a mechanism for projects such as yours to be able to download selected data from the website.  Can you tell me more about the project and how the data will be incorporated?
         Kind regards,
         
         marshall"
-        
+
+        Was reponse 6/11. Emily's PLS data seems like it could be better, so now unsure if we even need this.
 
  
 
@@ -97,8 +98,19 @@ https://stadiumandarenavisits.com/map/
 
 
 
+## June 11
 
+#### Continuing the search of industrial/coperate institutions:
 
+Auto industry/car assembly plants in the US:
+  - https://en.wikipedia.org/wiki/List_of_automotive_assembly_plants_in_the_United_States
+
+Map data of auto supply chain plants in the US:
+  - https://www.bluegreenalliance.org/resources/bluegreen-alliance-unveils-latest-auto-industry-map-for-domestic-manufacturing-advocates/
+  - Terms of use allow data downloads from website, but need to grant permission before using for published/public work
+
+This might be getting way into the weeds of industrial institutions, but here is a dataset containing location information on mines in the US:
+  - https://mmr.osmre.gov/
 
 
 
