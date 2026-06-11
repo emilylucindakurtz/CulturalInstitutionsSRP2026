@@ -21,7 +21,7 @@ https://www.geonames.org/
 - 
 #### Libraries
 - FY 2022 PLS data: https://catalog.data.gov/dataset/public-library-survey-pls-2022?from_hint=eyJxIjoiUHVibGljIExpYnJhcnkgU3VydmV5IChQTFMpIn0%3D
-  - In this folder as a csv!
+  - In data>libraries folder as csvs! (i think)
   - Documentation and User Guide in the link above (this includes what the variables are)
   - _"The Public Libraries Survey (PLS) is a voluntary census of public libraries conducted annually by the Institute of Museum and Library Services (IMLS)."_
   - Includes longitude and latitude!
