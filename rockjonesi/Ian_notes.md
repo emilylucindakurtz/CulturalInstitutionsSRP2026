@@ -56,12 +56,6 @@ Additionally, I was curious about exploring more about the following types of in
         marshall"
 
         Was reponse 6/11. Emily's PLS data seems like it could be better, so now unsure if we even need this.
-
- 
-
-Marshall Breeding
-
-Editor, Library Technology Guides
       
 #### Sport Venues
 https://stadiumandarenavisits.com/map/
@@ -69,7 +63,7 @@ https://stadiumandarenavisits.com/map/
      - easy KML -> CSV converter for lat/long information
      - just contains locatoion and venue name (What else should we look for? Descriptions for sport type/team history?)
      - contains some canadian venues --> would just have to filter to between a certain long/lat to cut those out, but keep Alaskan venues
-  - https://stadiumandarenavisits.com/the-list/
+  - https://stadiumandarenavisits.com/wp-content/uploads/2026/04/stadiums.pdf
     - List of the venues and their size (capacity) from the same project
       - This is a pdf so data extraction would have to be more text-analysis focused.
   - very comprehensive hobby project; manager asks: "if you use the List or any pictures on the website, please just ask permission. Thank you!"
