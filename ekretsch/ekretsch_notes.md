@@ -2,7 +2,7 @@
 
 ## June 11
 ### Todo
-- [ ] email northwestern
+- [x] email northwestern
 - [x] email streetartcities
 - [ ] get pls 2022
 
@@ -15,8 +15,8 @@
 - https://localnewsinitiative.northwestern.edu/projects/state-of-local-news/2025/
   - they have a pdf of the 2025 report which includes their methodology -- descriptions of each of the types of outlets
   - _"Our research is concerned with identifying local newspapers that provide public-service journalism."_
-  - Joe Germuska
-  - 
+  - Joe Germuska -- email him later this week if still no response on data
+  - https://northwestern.az1.qualtrics.com/jfe/form/SV_erjjVa4drHs9hnE -- submitted through here
 #### Murals
 - support@streetartcities.com
 ### Meeting
