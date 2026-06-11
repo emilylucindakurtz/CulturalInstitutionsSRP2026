@@ -19,6 +19,7 @@ https://www.geonames.org/
 
 #### Historic districts
 - 
+
 #### Libraries
 - FY 2022 PLS data: https://catalog.data.gov/dataset/public-library-survey-pls-2022?from_hint=eyJxIjoiUHVibGljIExpYnJhcnkgU3VydmV5IChQTFMpIn0%3D
   - In data>libraries folder as csvs! (i think)
@@ -26,6 +27,8 @@ https://www.geonames.org/
   - _"The Public Libraries Survey (PLS) is a voluntary census of public libraries conducted annually by the Institute of Museum and Library Services (IMLS)."_
   - Includes longitude and latitude!
   - There are actually 2 csvs: 1) the System Data File (Administrative Entity) -- one record is one library system, 2) the Outlet Data File -- one record is one specific service point. Both have long and lat but I think we would probably want to go with 2.
+- Can request data fron the career site via https://www.careeronestop.org/Developers/WebAPI/registration.aspx
+  - not so sure about the terms of service aligning with this project, though -- _"No Modification of Data. COS data will not be modified or altered in any manner;"_
   
 #### News outlets
 - https://localnewsinitiative.northwestern.edu/projects/state-of-local-news/2025/
@@ -37,8 +40,12 @@ https://www.geonames.org/
     - joe@germuska.com
   - https://northwestern.az1.qualtrics.com/jfe/form/SV_erjjVa4drHs9hnE -- submitted through here
   - Not sure if they'll let us use the data since they're saying it's private data and shouldn't be shared with others i think...
+- github csv: https://github.com/sTechLab/local-news-dataset -- no long and lat data
+- 
+
 #### Murals
 - support@streetartcities.com -- emailed
+- sam@streetartmankind.org -- emailed
 - 
 
 ### Meeting notes
