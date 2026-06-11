@@ -108,9 +108,11 @@ Auto industry/car assembly plants in the US:
 Map data of auto supply chain plants in the US:
   - https://www.bluegreenalliance.org/resources/bluegreen-alliance-unveils-latest-auto-industry-map-for-domestic-manufacturing-advocates/
   - Terms of use allow data downloads from website, but need to grant permission before using for published/public work
+    - Would provide csv download if we are given permission
 
 This might be getting way into the weeds of industrial institutions, but here is a dataset containing location information on mines in the US:
   - https://mmr.osmre.gov/
+  - Also would be a csv download
 
 
 
