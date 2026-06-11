@@ -46,3 +46,46 @@ Narrow scope to three things you are interested in, and start thinking more logi
 
 ### Tomorrow: quick zoom check in
 
+## 6/11
+
+### Ian
+
+- sports venues - could be csv
+- libraries - TBD
+- corporate buildings (power plants, Fortune 500) - both csvs
+
+### Emily
+
+- libraries - careeronestop library finder - IMLS - tbd - public library survey
+- historic districts - national register of historic places - text analysis or tags/variables to id historic district
+- news outlets - northwestern project called local news initiative - collected data on 6,000 local newspapers/broadcast outlets/sites (includes a couple of other smaller sources)
+- murals - streetartcities - openstreetmap-esque but for street art - might have to contact (also openstreetmap)
+
+### Zoe
+
+- museums (whichmuseum website) - transportation, children's, history
+- satellite
+
+### Rimona
+
+- theater - league of residence plus a source from wikipedia - national register of historical places
+- colleges - usnews, hbcus
+- automotive assembly plants - wikipedia, oil refineries
+
+### Teams
+
+- Emily and Rimona - national register of historic places
+- Emily and Ian - libraries
+- Ian and Rimona and Zoe - corporate buildings and Fortune 500
+
+- Zoe - museums
+- Emily - still looking into murals and news outlets - concern with murals (and possibly newspapers) - is it comprehensive?
+- Ian - sports venues
+- Rimona - colleges
+
+### Goals for tomorrow check in:
+
+- Meet with groups, have a good sense of how you are divvying
+- Further refine what you will do as individual - where data? How collect? Narrow focus further on what you will explore if still have multiple goals (or be ambitious if you'd like)
+- We will talk about what specifically to focus on and you will go into the weekend with more concrete goals after tomorrow's check in
+- I will say whether we will meet in person or over Zoom tomorrow and announce in Discord
