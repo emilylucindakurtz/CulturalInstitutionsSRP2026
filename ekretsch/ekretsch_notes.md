@@ -1,13 +1,52 @@
 # Emily Kretschmer's Notes
 
 ## June 10
-### Personal notes
+### Sources
+#### Questions
+- for news outlets -- what would/wouldn't we include? newspapers? radio? tv? local news? national newspapers?
+- not really sure how to decide what to choose...
+- ordered below by likely ease (1 and 2 pretty straightforward, 3 and 4 less so)
+
 #### Historic districts
+1) National Register of Historic Places . Digital Archive on NPGallery
+  - _allow use?_ Yes
+  - https://www.nps.gov/subjects/nationalregister/data-downloads.htm
+    - With some text analysis I think this may have all we need
+  - https://www.nps.gov/subjects/nationalregister/database-research.htm
+  - https://www.nps.gov/subjects/nationalregister/index.htm
+  - Can be downloaded as a spreadsheet but they offer free api: https://www.nps.gov/subjects/developer/api-documentation.htm
+
+Could also look into Historical parks using this data
 
 #### Public libraries
-1) 
+1) CareerOneStop library finder
+   - _allow use?_ Y i think so -- api
+   - https://www.careeronestop.org/LocalHelp/CommunityServices/find-libraries.aspx
+   - it says that _"This information is compiled and maintained by the Institute of Museum and Library Services and CareerOneStop."_ ?
+   - web api!
+2) IMLS
+   - https://www.imls.gov/research-evaluation/data -- not exactly sure how this would work -- github?
+   - Public Library Survey (PLS) Published by Institute of Museum and Library Services 
+       - **Public Library Survey (PLS) 2022**: https://catalog.data.gov/dataset/public-library-survey-pls-2022?from_hint=eyJxIjoiUHVibGljIExpYnJhcnkgU3VydmV5IChQTFMpIn0%3D
+       - CSV!!! ^ 2022 was the most recent one i could find
 
 #### News outlets
+1)Northwestern
+   - _Allow use?_ unsure - should probably contact: stateoflocalnews@northwestern.edu.
+       - no API/csv -- probably would have to scrape https://localnewsinitiative.northwestern.edu/projects/state-of-local-news/explore/#/localnewslandscape
+   - _"data on close to 6,000 local newspapers, 1,100 public broadcasting outlets, 1,000 ethnic media outlets and more than 12,000 standalone and network digital sites"_
+   - probably the most reputable and current!
+2) UNC
+  - _Allow use?_ With permission by asking
+  - https://usnewsdeserts.cislm.org/
+3) Github repo - _Local News Social Media Dataset_
+  - https://github.com/sTechLab/local-news-dataset
+  - From a 2022 study on news outlets during covid-19: https://ojs.aaai.org/index.php/ICWSM/article/view/19315
+  - _"This github contains the largest dataset of local news outlets in the U.S. and their social media handles. This dataset includes a total of 10,257 news outlets. We map 7,859 of them to a location and county, 9,231 to a Facebook account and 5,645 to a Twitter account."_
+4) For radio and tv service: gov
+  - https://www.fcc.gov/media/media-bureau-public-databases
+5) wikipedia
+  - https://en.wikipedia.org/wiki/List_of_newspapers_in_the_United_States
 
 #### Murals/street art
 1) Street Art Cities
@@ -50,7 +89,7 @@
 - corporate museums -- would just broadly look at museums
   - openstreetmap
 - high school mascots???
-- news outlets -- ben toff umn
+- news outlets -- **ben toff umn**
   - informal institution
   - scrape news articles themselves from local newspapers?
 - make sure to look at terms of service before scraping!
