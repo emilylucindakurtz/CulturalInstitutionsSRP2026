@@ -22,11 +22,11 @@ https://www.geonames.org/
 - 
 
 #### Historic districts
-- 
+- added to folder!!! as spreadsheet from https://www.nps.gov/subjects/nationalregister/data-downloads.htm
 
 #### Libraries
 - FY 2022 PLS data: https://catalog.data.gov/dataset/public-library-survey-pls-2022?from_hint=eyJxIjoiUHVibGljIExpYnJhcnkgU3VydmV5IChQTFMpIn0%3D
-  - In data>libraries folder as csvs! (i think)
+  - In data > libraries folder as csvs! (i think? -- was having some weird troubles with the branch thing)
   - Documentation and User Guide in the link above (this includes what the variables are)
   - _"The Public Libraries Survey (PLS) is a voluntary census of public libraries conducted annually by the Institute of Museum and Library Services (IMLS)."_
   - Includes longitude and latitude!
