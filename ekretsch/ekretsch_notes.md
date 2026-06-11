@@ -6,11 +6,27 @@
 - [x] email streetartcities
 - [ ] get pls 2022
 
+https://www.geonames.org/
+
+
 ### Categories
+#### OpenStreetMap info
+- overpass api -- readonly (this is what i would want)
+  - https://wiki.openstreetmap.org/wiki/Overpass_API
+- https://learnosm.org/en/osm-data/getting-data/
+- OR: as an osm.pbf file (?) https://download.geofabrik.de/north-america.html
+- 
+
 #### Historic districts
 - 
 #### Libraries
-- 
+- FY 2022 PLS data: https://catalog.data.gov/dataset/public-library-survey-pls-2022?from_hint=eyJxIjoiUHVibGljIExpYnJhcnkgU3VydmV5IChQTFMpIn0%3D
+  - In this folder as a csv!
+  - Documentation and User Guide in the link above (this includes what the variables are)
+  - _"The Public Libraries Survey (PLS) is a voluntary census of public libraries conducted annually by the Institute of Museum and Library Services (IMLS)."_
+  - Includes longitude and latitude!
+  - There are actually 2 csvs: 1) the System Data File (Administrative Entity) -- one record is one library system, 2) the Outlet Data File -- one record is one specific service point. Both have long and lat but I think we would probably want to go with 2.
+  
 #### News outlets
 - https://localnewsinitiative.northwestern.edu/projects/state-of-local-news/2025/
   - they have a pdf of the 2025 report which includes their methodology -- descriptions of each of the types of outlets
