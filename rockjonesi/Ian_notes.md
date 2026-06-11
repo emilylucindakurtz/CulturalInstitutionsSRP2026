@@ -108,6 +108,9 @@ This might be getting way into the weeds of industrial institutions, but here is
   - https://mmr.osmre.gov/
   - Also would be a csv download
 
+### Data progress
+- Have started to download/upload the accessible csvs into their respective data folders
+
 
 
 
