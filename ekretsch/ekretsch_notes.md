@@ -1,5 +1,15 @@
 # Emily Kretschmer's Notes
 
+## June 11
+### Todo
+- [ ] email northwestern
+- [ ] email streetartcities
+- [ ] get pls 2022
+
+### Meeting
+- it's ok if it's not a comprehensive dataset!!!
+- just try to get as much of the data
+
 ## June 10
 ### Sources
 #### Questions
