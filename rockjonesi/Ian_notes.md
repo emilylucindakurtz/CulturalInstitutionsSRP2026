@@ -127,13 +127,31 @@ This might be getting way into the weeds of industrial institutions, but here is
 
 ## June 12
 
-Meeting notes:
-How many people live in the area, usda rural continuity codes -> metropolitan/rural scales
-Find consensus data to supplement library data
+- [ ] Find consensus data to supplement library data
   - population density
   - metropolitan/rural scales
     - usda rural continuity codes
-    - if there are museums/other resources around? (not sure how we'd go about this)
+ - if there are museums/other public knowledge resources around? (not sure how we'd go about this)
+ - ipums usa is a potential resource
+
+- [ ] continue to text analyze the stadium data
+- [ ] meet with all of groups
+- [ ] respond to marshall breeding
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     
 
