@@ -1,6 +1,7 @@
 # Emily Kretschmer's Notes
 
 ## June 12
+Categories: Libraries, Historic Districts, News Outlets, Murals
 ### Todo
 - [ ] filter/do regex for the historic places
 - [ ] osm
