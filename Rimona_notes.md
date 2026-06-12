@@ -84,7 +84,7 @@ Wikipedia: https://en.wikipedia.org/wiki/Category:Theatres_on_the_National_Regis
 
 ### Colleges
 Coordinates of all colleges: https://catalog.data.gov/dataset/postsecondary-school-locations-2023-24
-- Publicaly available data -- Terms of Use: https://data.gov/user-guide/
+- Publicly available data -- Terms of Use: https://data.gov/user-guide/
 
 LACs
 - US News: https://www.usnews.com/best-colleges/rankings/national-liberal-arts-colleges?_sort=rank&_sortDirection=asc
