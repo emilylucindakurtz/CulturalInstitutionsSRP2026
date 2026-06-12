@@ -127,7 +127,7 @@ This might be getting way into the weeds of industrial institutions, but here is
 
 ## June 12
 
-- [ ] Find consensus data to supplement library data
+- [ x] Find consensus data to supplement library data
   - population density
   - metropolitan/rural scales
     - usda rural continuity codes
@@ -178,8 +178,8 @@ user guide documentation/code book for each years data:
 
    All of them have consistency across the countypop, LOCALE, and lat/long varibles that we care about
 
-- [ ] meet with all of groups
-- [ ] email marshall breeding
+- [ x] meet with all of groups
+- [x ] email marshall breeding
 
 
 
