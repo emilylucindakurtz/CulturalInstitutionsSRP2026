@@ -7,7 +7,7 @@
 - [ ] meet with groups
 - [ ] come up with goals/questions fo rinstitutions
   - [ ] for libraries can try to connect it to census or https://usa.ipums.org/usa/
-- [ ] fix the pull request thing
+- [x] fix the pull request thing
 - [ ] check unc journalism terms of service
 
 ### Meeting notes
