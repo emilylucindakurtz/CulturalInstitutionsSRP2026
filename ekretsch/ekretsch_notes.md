@@ -6,11 +6,13 @@
 - [ ] osm
 - [ ] meet with groups
 - [ ] come up with goals/questions fo rinstitutions
+  - [ ] for libraries can try to connect it to census or https://usa.ipums.org/usa/
 
 ### Meeting notes
 - delete pull stuff
-- ipsum usa
+- ipsum usa - https://usa.ipums.org/usa/
 - can ask her for a more powerful computer
+- urban/rural census info
 
 ## June 11
 ### Todo
