@@ -115,3 +115,20 @@ Active Fuel Refineries: https://www.irs.gov/businesses/small-businesses-self-emp
 - On IRS site: "A refinery is a facility used to produce taxable fuel from crude oil, unfinished oils, natural gas liquids, or other hydrocarbons and from which taxable fuel may be removed by pipeline, by vessel, or at a rack"
 - Data is accessible as CSV file; 229 rows, 6 columns
 - Does not seem to have any restricitions and is available to public
+
+## 6/12
+To do:
+- [ ] Email Andrew G. Reiter for permission to use LACs dataset
+- [ ] Start cleaning data
+
+### Automotive Assembly Plants
+All assembly plants: https://en.wikipedia.org/wiki/List_of_automotive_assembly_plants_in_the_United_States
+- Able to be scraped
+- Wikipedia has public API and allows for scraping
+
+EV Manufacturing Facilities and Investment Overview: https://evjobs.bgafoundation.org/
+- Data accessible as CSV file; 891 rows, 18 columns
+- Terms of use: https://www.bluegreenalliance.org/terms/
+  - Seems that data available to be downloaded does not have restricted use
+
+Could be interesting to compare EV Locations with the rest of automotive facilities, or just look at locations of EV manufacturers
