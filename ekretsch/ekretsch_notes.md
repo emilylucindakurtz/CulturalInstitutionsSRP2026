@@ -10,6 +10,7 @@ Categories: Libraries, Historic Districts, News Outlets, Murals
   - [ ] for libraries can try to connect it to census or https://usa.ipums.org/usa/
 - [x] fix the pull request thing
 - [x] check unc journalism terms of service - Yes, I think it does!
+- [x] email germuska about northwestern data
 
 ### Personal notes
 - state libraries agencies survey versus public libraries survye
