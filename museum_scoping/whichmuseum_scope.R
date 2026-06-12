@@ -6,7 +6,7 @@ base_url <-("https://whichmuseum.com/place/united-states-2682")
 
 total_museums <- 12046
 museums_per_page <- 36
-total_pages <- ceilling(total_museums/museums_per_page)
+total_pages <- ceiling(total_museums/museums_per_page)
 
 page_url<-tibble(
   page = 1:total_pages,
@@ -35,7 +35,7 @@ get_museum_links<-function(page_url){
     )
 }
 
-whichmuseum_us_links <- page_urls %>% 
+whichmuseum_us_links <- page_url %>% 
   mutate(
     data = map(url, function(x){
       message("scraping:", x)
