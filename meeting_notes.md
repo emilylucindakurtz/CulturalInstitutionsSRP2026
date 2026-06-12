@@ -105,3 +105,5 @@ Narrow scope to three things you are interested in, and start thinking more logi
 ## Concrete goals for time between now and next check in
 
 - Try to make time to meet with teams and divide labor in a way that makes sense
+- Think about the specific datasets you want to finish collecting and make a concrete plan for doing so
+- Think about *why* you were interested in those datasets, this will inform other data we may want to collect on/related to them, and be prepared to share more about that on Monday so Emily can come up with some ideas for next steps for you all
