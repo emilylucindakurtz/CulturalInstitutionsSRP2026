@@ -1,0 +1,117 @@
+# Rimona Zhang's Notes
+## 6/9/2026
+
+Searching for cultural institutions, i.e. locations that reflect something about a community's histoy, culture, or values,
+
+Potential Areas of Focus:
+- Monuments
+- Museums
+- Statues
+- Businesses
+- Satellite
+
+
+Interests:
+- Monuments
+  - The Historical Marker Database: https://www.hmdb.org/
+  - National Register of Historic Places: https://www.nps.gov/subjects/nationalregister/database-research.htm
+
+- Theatres 
+  - performing arts centers, opera houses, historical theatres
+  - Historic Theatre Inventory: https://www.lhat.org/program-services/theatre-inventory
+  - League of Resident Theatres: https://lort.org/theatres
+
+- Colleges 
+  - could narrow, e.g. LACs and HBCUs
+    - https://www.usnews.com/best-colleges/rankings/national-liberal-arts-colleges?_sort=rank&_sortDirection=asc
+    - https://www.thehundred-seven.org/hbculist.html
+
+Helpful Data Sources:
+- Open Street Map:
+  - https://www.openstreetmap.org/#map=5/39.16/-95.27
+- Geonames (geographical database):
+  - https://www.geonames.org/
+
+## 6/10
+
+Topics of Focus:
+- Historical theatres (e.g. performing arts centers, opera houses, etc.)
+- Colleges (LACs, HBCUs)
+- Automotive assembly plants
+
+### Theatres
+League of Resident Theatres:
+- https://www.lhat.org/program-services/theatre-inventory
+  - Allows for web scraping, but could not find their terms of service
+  - Able to download a PDF list of all Member Theatres
+    - Only accounts for theatres in the US that are members of this org
+   
+- https://en.wikipedia.org/wiki/Category:Theatres_on_the_National_Register_of_Historic_Places_by_state  
+  - Has subcategories (links) of theatres by state
+    - Could be difficult to read data from every link 
+
+### Colleges
+LACs
+- https://www.usnews.com/best-colleges/rankings/national-liberal-arts-colleges?_sort=rank&_sortDirection=asc
+  - Permits scraping
+  - Unsure about terms of service
+
+HBCUs
+- https://www.thehundred-seven.org/hbculist.html
+  - Terms of Use allows for the use any information on The Hundred-Seven’s services, provided certain conditions
+  - https://www.thehundred-seven.org/terms.pdf
+
+### Automotive Assembly Plants
+- https://en.wikipedia.org/wiki/List_of_automotive_assembly_plants_in_the_United_States
+  - Wikipedia has public API and allows for scraping
+- Had challenges with finding data from more official websites
+  - Maybe try looking at oil refineries instead if there is more available dataz
+ 
+## 6/11
+### Theatres
+League of Resident Theatres: https://www.lhat.org/program-services/theatre-inventory
+- Allows for web scraping, but could not find their terms of service
+- Able to download a PDF list of all Member Theatres
+    - Only accounts for theatres in the US that are members of this org
+
+National Register of Historic Places (NRHP):
+- Spreadsheet available of all NRHP listed properties
+  - 100,867 rows, 24 columns -- super large dataset
+
+Wikipedia: https://en.wikipedia.org/wiki/Category:Theatres_on_the_National_Register_of_Historic_Places_by_state  
+  - Has subcategories (links) of theatres by state
+    - Could be difficult to read data from every link 
+
+### Colleges
+Coordinates of all colleges: https://catalog.data.gov/dataset/postsecondary-school-locations-2023-24
+- Publicly available data -- Terms of Use: https://data.gov/user-guide/
+
+LACs
+- US News: https://www.usnews.com/best-colleges/rankings/national-liberal-arts-colleges?_sort=rank&_sortDirection=asc
+  - HTML is not really clear
+  - Seems challenging to scrape information from website
+- CSV of LAC Rankings from US News: https://www.andyreiter.com/datasets/
+  - Same information needed from US News site, but in cleaner format
+  - Can join with the coordinate dataset
+
+HBCUs
+Accredited HBCU List: https://sites.ed.gov/whhbcu/one-hundred-and-five-historically-black-colleges-and-universities/
+- From website: the Higher Education Act of 1965, as amended, defines an HBCU as: “…any historically black college or university that was established prior to 1964, whose principal mission was, and is, the education of black Americans, and that is accredited by a nationally recognized accrediting agency or association determined by the Secretary [of Education] to be a reliable authority as to the quality of training offered or is, according to such an agency or association, making reasonable progress toward accreditation.”
+- Data from Institute of Education Sciences
+- Terms of Use: https://nces.ed.gov/about/public-access-research
+
+### Automotive Assembly Plants
+All assembly plants: https://en.wikipedia.org/wiki/List_of_automotive_assembly_plants_in_the_United_States
+- Able to be scraped
+- Wikipedia has public API and allows for scraping
+
+EV Manufacturing Facilities and Investment Overview: https://evjobs.bgafoundation.org/
+- Data accessible as CSV file; 891 rows, 18 columns
+- Terms of use: https://www.bluegreenalliance.org/terms/
+  - Seems that data available to be downloaded does not have restricted use
+ 
+### Oil Refineries
+Active Fuel Refineries: https://www.irs.gov/businesses/small-businesses-self-employed/refinery-control-number-rcn-refinery-location-directory
+- On IRS site: "A refinery is a facility used to produce taxable fuel from crude oil, unfinished oils, natural gas liquids, or other hydrocarbons and from which taxable fuel may be removed by pipeline, by vessel, or at a rack"
+- Data is accessible as CSV file; 229 rows, 6 columns
+- Does not seem to have any restricitions and is available to public
