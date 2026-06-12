@@ -132,9 +132,18 @@ This might be getting way into the weeds of industrial institutions, but here is
   - metropolitan/rural scales
     - usda rural continuity codes
  - if there are museums/other public knowledge resources around? (not sure how we'd go about this)
- - ipums usa is a potential resource https://usa.ipums.org/usa/ 
+ - ipums usa is a potential resource https://usa.ipums.org/usa/
 
-- [ ] start text analyze the stadium data for capacities
+    - Emily and I checked in:
+      - we realized the pls data already provides county-level population data, as well as information reflecting ubran/metro scale information.
+         - would maybe have to text scrape some of the scale information since it's collect on a Likert scale.
+      - good! bc less work --> however we want to do more --> we have decided to pivot and do a multi-year study, ranging from 2013-2023.
+        - Emily will upload each years csv pls data into data --> libraries folder
+        - I will check each years documentation to ensure consitencies in what the data is representing
+
+          - 2022
+          - https://www.imls.gov/sites/default/files/2024-06/2022_pls_data_file_documentation.pdf
+
 - [ ] meet with all of groups
 - [ ] email marshall breeding
 
