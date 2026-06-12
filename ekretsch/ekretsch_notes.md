@@ -10,6 +10,10 @@
 - [x] fix the pull request thing
 - [ ] check unc journalism terms of service
 
+### Personal notes
+- state libraries agencies survey versus public libraries survye
+  - https://www.imls.gov/research-evaluation/surveys/public-libraries-survey-pls
+
 ### Meeting notes
 - delete pull stuff
 - ipsum usa - https://usa.ipums.org/usa/
