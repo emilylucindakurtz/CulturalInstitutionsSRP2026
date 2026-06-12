@@ -89,3 +89,19 @@ Narrow scope to three things you are interested in, and start thinking more logi
 - Further refine what you will do as individual - where data? How collect? Narrow focus further on what you will explore if still have multiple goals (or be ambitious if you'd like)
 - We will talk about what specifically to focus on and you will go into the weekend with more concrete goals after tomorrow's check in
 - I will say whether we will meet in person or over Zoom tomorrow and announce in Discord
+
+# 6/12/2026
+
+## Check in
+
+- Emily has data from national register of historic places, Rimona also looking
+- Emily and Ian talked about libraries
+- Emily Rimona Zoe - corporate buildings - proposal - divvy by type of building (power plant vs. factories) - Rimona has some data to look through, Zoe has satellite data
+- Zoe - museums - issue with data, scraped data for location wasn't all caught - spot check some that are missing
+- Emily - submitted form to Northwestern for newspapers, for murals emailed streetartcities and a smaller org with some data (streetartmankind), played around with openstreetmap
+- Ian - sports venues - uploaded csv, also looking into text analysis to get capacity
+- Rimona - colleges - found dataset with lat and lon for all from a prof
+
+## Concrete goals for time between now and next check in
+
+- Try to make time to meet with teams and divide labor in a way that makes sense
