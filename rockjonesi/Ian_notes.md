@@ -132,11 +132,11 @@ This might be getting way into the weeds of industrial institutions, but here is
   - metropolitan/rural scales
     - usda rural continuity codes
  - if there are museums/other public knowledge resources around? (not sure how we'd go about this)
- - ipums usa is a potential resource
+ - ipums usa is a potential resource https://usa.ipums.org/usa/ 
 
-- [ ] continue to text analyze the stadium data
+- [ ] start text analyze the stadium data for capacities
 - [ ] meet with all of groups
-- [ ] respond to marshall breeding
+- [ ] email marshall breeding
 
 
 
