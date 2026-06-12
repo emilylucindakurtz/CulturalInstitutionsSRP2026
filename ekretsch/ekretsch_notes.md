@@ -7,12 +7,18 @@
 - [ ] meet with groups
 - [ ] come up with goals/questions fo rinstitutions
   - [ ] for libraries can try to connect it to census or https://usa.ipums.org/usa/
+- [ ] fix the pull request thing
 
 ### Meeting notes
 - delete pull stuff
 - ipsum usa - https://usa.ipums.org/usa/
 - can ask her for a more powerful computer
 - urban/rural census info
+
+### Completed
+- [x] emailed germuska for news outlets data
+- [x] submitted form to https://usnewsdeserts.cislm.org/request-access
+- 
 
 ## June 11
 ### Todo
