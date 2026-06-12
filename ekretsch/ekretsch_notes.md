@@ -23,6 +23,7 @@
 journalism
 - for UNC: need to _acknowledge the UNC Hussman School of Journalism and Media in any works using this dataset._
 - I think it does fulfill the requriements https://creativecommons.org/licenses/by-nc-sa/3.0/
+- years: 2004, 2014, 2016, 2018, 2020 https://usnewsdeserts.cislm.org/
 
 ### Meeting notes
 - delete pull stuff
