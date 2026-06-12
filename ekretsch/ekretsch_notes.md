@@ -17,6 +17,7 @@
 - .ds_store mac issue killing me brah
 - **historic landmarks does NOT have long and lat!!!**
   - need to add this somehow...
+- 
 
 ### Meeting notes
 - delete pull stuff
@@ -29,7 +30,8 @@
 - [x] submitted form to https://usnewsdeserts.cislm.org/request-access
   - GOT THE DATA!
   - need to double check their terms of service
-- 
+- [x] uploaded all of the library csvs from 2012-2023
+- [x] came up with potential question w/ ian for libraries: how has the landscape changed over the past years? 
 
 ## June 11
 ### Todo
