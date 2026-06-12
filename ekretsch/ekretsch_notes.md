@@ -4,6 +4,13 @@
 ### Todo
 - [ ] filter/do regex for the historic places
 - [ ] osm
+- [ ] meet with groups
+- [ ] come up with goals/questions fo rinstitutions
+
+### Meeting notes
+- delete pull stuff
+- ipsum usa
+- can ask her for a more powerful computer
 
 ## June 11
 ### Todo
