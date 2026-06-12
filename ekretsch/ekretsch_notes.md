@@ -13,6 +13,10 @@
 ### Personal notes
 - state libraries agencies survey versus public libraries survye
   - https://www.imls.gov/research-evaluation/surveys/public-libraries-survey-pls
+  - 2019 and earlier there is a third file, a state csv... i did not upload this but maybe look into it?
+- .ds_store mac issue killing me brah
+- **historic landmarks does NOT have long and lat!!!**
+  - need to add this somehow...
 
 ### Meeting notes
 - delete pull stuff
