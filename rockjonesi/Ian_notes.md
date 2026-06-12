@@ -125,8 +125,15 @@ This might be getting way into the weeds of industrial institutions, but here is
       - only if we are interested in stadium size
 
 
+## June 12
 
-
+Meeting notes:
+How many people live in the area, usda rural continuity codes -> metropolitan/rural scales
+Find consensus data to supplement library data
+  - population density
+  - metropolitan/rural scales
+    - usda rural continuity codes
+    - if there are museums/other resources around? (not sure how we'd go about this)
 
     
 
