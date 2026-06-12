@@ -8,7 +8,7 @@
 - [ ] come up with goals/questions fo rinstitutions
   - [ ] for libraries can try to connect it to census or https://usa.ipums.org/usa/
 - [x] fix the pull request thing
-- [ ] check unc journalism terms of service
+- [x] check unc journalism terms of service - Yes, I think it does!
 
 ### Personal notes
 - state libraries agencies survey versus public libraries survye
@@ -17,7 +17,12 @@
 - .ds_store mac issue killing me brah
 - **historic landmarks does NOT have long and lat!!!**
   - need to add this somehow...
-- 
+  - contacted rimona about this
+- https://www.census.gov/programs-surveys/geography/guidance/geo-areas/urban-rural.html
+
+journalism
+- for UNC: need to _acknowledge the UNC Hussman School of Journalism and Media in any works using this dataset._
+- I think it does fulfill the requriements https://creativecommons.org/licenses/by-nc-sa/3.0/
 
 ### Meeting notes
 - delete pull stuff
