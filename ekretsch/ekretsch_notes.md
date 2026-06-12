@@ -8,6 +8,7 @@
 - [ ] come up with goals/questions fo rinstitutions
   - [ ] for libraries can try to connect it to census or https://usa.ipums.org/usa/
 - [ ] fix the pull request thing
+- [ ] check unc journalism terms of service
 
 ### Meeting notes
 - delete pull stuff
@@ -18,6 +19,8 @@
 ### Completed
 - [x] emailed germuska for news outlets data
 - [x] submitted form to https://usnewsdeserts.cislm.org/request-access
+  - GOT THE DATA!
+  - need to double check their terms of service
 - 
 
 ## June 11
