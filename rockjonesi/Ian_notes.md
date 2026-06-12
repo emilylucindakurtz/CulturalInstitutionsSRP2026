@@ -179,6 +179,9 @@ user guide documentation/code book for each years data:
    All of them have consistency across the countypop, LOCALE, and lat/long varibles that we care about
 
 - [x] meet with all of groups
+  - for industrial group --> going to end up not using auto supply data, will focus on wiki car manufacturing plants, and EV plants.
+    - Rimona will be focusing on these two while I do powerplants, and fortune 500 companies.
+    
 - [x] email marshall breeding
 
 
