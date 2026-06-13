@@ -37,13 +37,6 @@ _journalism_
 - years: 2004, 2014, 2016, 2018, 2020 https://usnewsdeserts.cislm.org/
 
 _osm_
-- lots of stuff is NA...even for many the artwork_type (which should be mural??? but is 56% NA???)
-  - <img width="1292" height="736" alt="image" src="https://github.com/user-attachments/assets/9a5434e6-7487-4c0e-8a03-e5f25252b331" />
-  - <img width="854" height="490" alt="image" src="https://github.com/user-attachments/assets/5d0bee2a-0029-450c-8cd8-0b26b5beda3e" />
-  - but it IS making the map (though I'm not sure how to check that it's correct)
-- tried overpass api
-- 
-
 osmdata vs osmextract via claude
 - osmdata
   - Queries the live Overpass API on demand
@@ -57,6 +50,16 @@ osmdata vs osmextract via claude
   - Downloads a large .pbf file locally first, then reads from it
   - Much faster and more reliable for big queries
   - Data is slightly out of date (extracts update daily/weekly)
+- osmdata:
+  - lots of stuff is NA...even for many the artwork_type (which should be mural??? but is 56% NA???)
+    - <img width="1292" height="736" alt="image" src="https://github.com/user-attachments/assets/9a5434e6-7487-4c0e-8a03-e5f25252b331" />
+    - <img width="854" height="490" alt="image" src="https://github.com/user-attachments/assets/5d0bee2a-0029-450c-8cd8-0b26b5beda3e" />
+    - but it IS making the map (though I'm not sure how to check that it's correct)
+- osmextract:
+  - much faster than osmdata but didn't plot as many points???
+  - but also far far fewer NAs...  
+
+
 
 
 
