@@ -21,7 +21,7 @@ ggplot(murals) +
   geom_sf(size = 0.5, alpha = 0.6, color = "steelblue") +
   coord_sf(xlim = c(-125, -66), ylim = c(24, 50)) +  # ensure it just maps continental US since I was having issues earlier
   theme_minimal() +
-  labs(title = "Murals in the US (OpenStreetMap) X")
+  labs(title = "Murals in the US (OpenStreetMap) osmdata result")
 
 # Method 2: osmextract
 # osmextract method -- I prefer this one
@@ -40,37 +40,4 @@ us <- oe_get(
 ggplot(us) +
   geom_sf(size = 0.5, alpha = 0.6, color = "steelblue") +
   theme_minimal() +
-  labs(title = "Murals in the US (OpenStreetMap) X")
-
-
-
-murals_points <- oe_get(
-  "United States of America",
-  layer = "points",
-  query = "SELECT * FROM points WHERE other_tags LIKE '%mural%'"
-)
-
-murals_lines <- oe_get(
-  "United States of America",
-  layer = "lines",
-  query = "SELECT * FROM points WHERE other_tags LIKE '%mural%'"
-)
-
-murals_polygons <- oe_get(
-  "United States of America",
-  layer = "multipolygons",
-  query = "SELECT * FROM points WHERE other_tags LIKE '%mural%'"
-)
-
-# Convert lines and polygons to centroids so geometry types match
-murals_lines <- st_centroid(murals_lines)
-murals_polygons <- st_centroid(murals_polygons)
-
-murals2 <- bind_rows(murals_points, murals_lines, murals_polygons)
-
-
-
-ggplot(murals2) +
-  geom_sf(size = 0.5, alpha = 0.6, color = "red") +
-  theme_minimal() +
-  labs(title = "Murals in the US (OpenStreetMap) X")
+  labs(title = "Murals in the US (OpenStreetMap) osmextract result")
