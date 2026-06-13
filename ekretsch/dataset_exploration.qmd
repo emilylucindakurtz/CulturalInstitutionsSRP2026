@@ -1,0 +1,13 @@
+---
+title: "dataset_exploration"
+format: html
+editor: visual
+---
+
+
+```{r}
+library(tidyverse)
+
+historic_landmarks <- read_csv("../data/historic_landmarks.csv") # .. means one folder up
+```
+
