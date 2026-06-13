@@ -2,18 +2,25 @@
 
 ## June 12
 Categories: Libraries, Historic Districts, News Outlets, Murals
+
 ### Todo
 - [ ] filter/do regex for the historic places
 - [ ] osm
 - [ ] meet with groups
 - [ ] come up with goals/questions fo rinstitutions
-  - [ ] for libraries can try to connect it to census or https://usa.ipums.org/usa/
+
+### Completed
+- [x] emailed germuska for news outlets data
+- [x] submitted form to https://usnewsdeserts.cislm.org/request-access
+  - GOT THE DATA!
+  - [x] check unc journalism terms of service - Yes, I think it does!
+- [x] uploaded all of the library csvs from 2012-2023
+- [x] came up with potential question w/ ian for libraries: how has the landscape changed over the past years?
 - [x] fix the pull request thing
-- [x] check unc journalism terms of service - Yes, I think it does!
 - [x] email germuska about northwestern data
 
 ### Personal notes
-- state libraries agencies survey versus public libraries survye
+- state libraries agencies survey versus public libraries survey?
   - https://www.imls.gov/research-evaluation/surveys/public-libraries-survey-pls
   - 2019 and earlier there is a third file, a state csv... i did not upload this but maybe look into it?
 - .ds_store mac issue killing me brah
@@ -21,25 +28,29 @@ Categories: Libraries, Historic Districts, News Outlets, Murals
   - need to add this somehow...
   - contacted rimona about this
 - https://www.census.gov/programs-surveys/geography/guidance/geo-areas/urban-rural.html
+- for libraries can try to connect it to census or https://usa.ipums.org/usa/
 
-journalism
+_journalism_
 - for UNC: need to _acknowledge the UNC Hussman School of Journalism and Media in any works using this dataset._
 - I think it does fulfill the requriements https://creativecommons.org/licenses/by-nc-sa/3.0/
 - years: 2004, 2014, 2016, 2018, 2020 https://usnewsdeserts.cislm.org/
+
+_osm_
+- lots of stuff is NA...even for many the artwork_type (which should be mural??? but is 56% NA???)
+  - <img width="1292" height="736" alt="image" src="https://github.com/user-attachments/assets/9a5434e6-7487-4c0e-8a03-e5f25252b331" />
+  - <img width="854" height="490" alt="image" src="https://github.com/user-attachments/assets/5d0bee2a-0029-450c-8cd8-0b26b5beda3e" />
+  - but it IS making the map (though I'm not sure how to check that it's correct)
+    - ![Uploading image.png…]()
+- tried overpass api
+
+
+
 
 ### Meeting notes
 - delete pull stuff
 - ipsum usa - https://usa.ipums.org/usa/
 - can ask her for a more powerful computer
 - urban/rural census info
-
-### Completed
-- [x] emailed germuska for news outlets data
-- [x] submitted form to https://usnewsdeserts.cislm.org/request-access
-  - GOT THE DATA!
-  - need to double check their terms of service
-- [x] uploaded all of the library csvs from 2012-2023
-- [x] came up with potential question w/ ian for libraries: how has the landscape changed over the past years? 
 
 ## June 11
 ### Todo
