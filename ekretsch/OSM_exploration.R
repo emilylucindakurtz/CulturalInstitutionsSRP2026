@@ -41,3 +41,29 @@ ggplot(us) +
   geom_sf(size = 0.5, alpha = 0.6, color = "steelblue") +
   theme_minimal() +
   labs(title = "Murals in the US (OpenStreetMap) osmextract result")
+
+# this below resulted in 600
+
+murals_points <- oe_get(
+  "United States of America",
+  layer = "points",
+  query = "SELECT * FROM points WHERE other_tags LIKE '%artwork_type\"=>\"mural%'"
+)
+
+murals_lines <- oe_get(
+  "United States of America",
+  layer = "lines",
+  query = "SELECT * FROM lines WHERE other_tags LIKE '%artwork_type\"=>\"mural%'"
+)
+
+murals_polygons <- oe_get(
+  "United States of America",
+  layer = "multipolygons",
+  query = "SELECT * FROM multipolygons WHERE other_tags LIKE '%artwork_type\"=>\"mural%'"
+)
+
+# Convert lines and polygons to centroids so geometry types match
+murals_lines <- st_centroid(murals_lines)
+murals_polygons <- st_centroid(murals_polygons)
+
+murals <- bind_rows(murals_points, murals_lines, murals_polygons)
