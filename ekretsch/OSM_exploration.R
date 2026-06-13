@@ -33,11 +33,44 @@ library(dplyr)
 # Downloads the full US PBF (~10GB) — big but one-time
 us <- oe_get(
   "United States of America", # downloads the .pbf file from Geofabrik. only has to be downloaded the first time this is run.
-  layer = "points", # read only the points layer of the .pbf file, rather than other ones like the lines and polygons
+  layer = "multipolygons", # read only the points layer of the .pbf file, rather than other ones like the lines and polygons
   query = "SELECT * FROM points WHERE other_tags LIKE '%mural%'" # SQL query -- only loads the rows where other_tags has "mural" somewhere -- this is much much much faster than loading it all into R and then filtering (which could crash R)
 )
 
 ggplot(us) +
   geom_sf(size = 0.5, alpha = 0.6, color = "steelblue") +
+  theme_minimal() +
+  labs(title = "Murals in the US (OpenStreetMap) X")
+
+
+
+murals_points <- oe_get(
+  "United States of America",
+  layer = "points",
+  query = "SELECT * FROM points WHERE other_tags LIKE '%mural%'"
+)
+
+murals_lines <- oe_get(
+  "United States of America",
+  layer = "lines",
+  query = "SELECT * FROM points WHERE other_tags LIKE '%mural%'"
+)
+
+murals_polygons <- oe_get(
+  "United States of America",
+  layer = "multipolygons",
+  query = "SELECT * FROM points WHERE other_tags LIKE '%mural%'"
+)
+
+# Convert lines and polygons to centroids so geometry types match
+murals_lines <- st_centroid(murals_lines)
+murals_polygons <- st_centroid(murals_polygons)
+
+murals2 <- bind_rows(murals_points, murals_lines, murals_polygons)
+
+
+
+ggplot(murals2) +
+  geom_sf(size = 0.5, alpha = 0.6, color = "red") +
   theme_minimal() +
   labs(title = "Murals in the US (OpenStreetMap) X")
