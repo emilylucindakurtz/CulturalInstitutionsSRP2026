@@ -57,7 +57,10 @@ osmdata vs osmextract via claude
     - but it IS making the map (though I'm not sure how to check that it's correct)
 - osmextract:
   - much faster than osmdata but didn't plot as many points???
-  - but also far far fewer NAs...  
+  - but also far far fewer NAs...
+  - I tried pulling not just the points layer but also the lines and polygons layer, as well as doing a different sql query, and none of that really worked -- the most I could get was 600 with the extra lines and polygons layers
+  - <img width="523" height="324" alt="image" src="https://github.com/user-attachments/assets/4751ab77-9009-47a7-8d49-b87b96a9526d" />
+
 
 
 
