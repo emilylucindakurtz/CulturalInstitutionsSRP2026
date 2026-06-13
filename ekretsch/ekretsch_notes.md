@@ -18,6 +18,7 @@ Categories: Libraries, Historic Districts, News Outlets, Murals
 - [x] came up with potential question w/ ian for libraries: how has the landscape changed over the past years?
 - [x] fix the pull request thing
 - [x] email germuska about northwestern data
+- [x] made osmdata and osmextract maps -- differences... **want to talk about this at next meeting**
 
 ### Personal notes
 - state libraries agencies survey versus public libraries survey?
@@ -40,8 +41,22 @@ _osm_
   - <img width="1292" height="736" alt="image" src="https://github.com/user-attachments/assets/9a5434e6-7487-4c0e-8a03-e5f25252b331" />
   - <img width="854" height="490" alt="image" src="https://github.com/user-attachments/assets/5d0bee2a-0029-450c-8cd8-0b26b5beda3e" />
   - but it IS making the map (though I'm not sure how to check that it's correct)
-    - ![Uploading image.png…]()
 - tried overpass api
+- 
+
+osmdata vs osmextract via claude
+- osmdata
+  - Queries the live Overpass API on demand
+  - Good for specific features in a specific area (e.g. all murals in Minnesota)
+  - Returns results immediately, no local files
+  - Struggles with large areas — times out easily
+  - Data is always up to date
+- osmextract
+  - Downloads pre-built extracts from Geofabrik or other providers
+  - Good for bulk data over large areas (whole countries, states)
+  - Downloads a large .pbf file locally first, then reads from it
+  - Much faster and more reliable for big queries
+  - Data is slightly out of date (extracts update daily/weekly)
 
 
 
