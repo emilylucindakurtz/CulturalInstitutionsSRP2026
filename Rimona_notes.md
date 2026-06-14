@@ -132,3 +132,9 @@ EV Manufacturing Facilities and Investment Overview: https://evjobs.bgafoundatio
   - Seems that data available to be downloaded does not have restricted use
 
 Could be interesting to compare EV Locations with the rest of automotive facilities, or just look at locations of EV manufacturers
+
+Meeting with Ian and Zoe
+Topics of Discussion 
+- Ideas on how to pair satellite data with work of other groups
+- Methods for joining long and lat coordinates with addresses in datasets
+- Splitting up work: I will focus on automotive manufacturers (wikipedia, EV, and oil refineries datasets)

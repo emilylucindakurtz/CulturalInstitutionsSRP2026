@@ -1,0 +1,29 @@
+---
+title: "dataset_exploration"
+format: html
+editor: visual
+---
+
+```{r}
+# Load packages
+library(tidyverse)
+
+```
+
+```{r}
+# Loading historic landmarks data for historic districts!
+historic_landmarks <- read_csv("../data/historic_landmarks.csv") # .. means one folder up
+```
+```{r}
+# Filtering the historic landmarks dataset to make sure that only historic districts are present
+historic_districts <- historic_landmarks %>% 
+  mutate(name_lower = tolower(`Property Name`)) %>% 
+  filter(str_detect(name_lower, "historic district"))
+```
+```{r}
+# CLeaning the historic_districts dataset so only the columns we want are prsent
+# and adding location
+```
+
+
+
