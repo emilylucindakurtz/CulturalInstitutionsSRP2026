@@ -4,7 +4,6 @@
 Categories: Libraries, Historic Districts, News Outlets, Murals
 
 ### Todo
-- [ ] filter/do regex for the historic places
 - [ ] meet with groups
 - [ ] come up with goals/questions fo rinstitutions
 
@@ -19,6 +18,8 @@ Categories: Libraries, Historic Districts, News Outlets, Murals
 - [x] email germuska about northwestern data
 - [x] made osmdata and osmextract maps -- differences... **want to talk about this at next meeting**
 - [x] explored osm
+- [x] filter/do regex for the historic places
+
 
 ### Personal notes
 - state libraries agencies survey versus public libraries survey?
