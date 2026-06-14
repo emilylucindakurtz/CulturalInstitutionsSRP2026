@@ -5,7 +5,6 @@ Categories: Libraries, Historic Districts, News Outlets, Murals
 
 ### Todo
 - [ ] filter/do regex for the historic places
-- [ ] osm
 - [ ] meet with groups
 - [ ] come up with goals/questions fo rinstitutions
 
@@ -19,6 +18,7 @@ Categories: Libraries, Historic Districts, News Outlets, Murals
 - [x] fix the pull request thing
 - [x] email germuska about northwestern data
 - [x] made osmdata and osmextract maps -- differences... **want to talk about this at next meeting**
+- [x] explored osm
 
 ### Personal notes
 - state libraries agencies survey versus public libraries survey?
@@ -59,11 +59,7 @@ osmdata vs osmextract via claude
   - much faster than osmdata but didn't plot as many points???
   - but also far far fewer NAs...
   - I tried pulling not just the points layer but also the lines and polygons layer, as well as doing a different sql query, and none of that really worked -- the most I could get was 600 with the extra lines and polygons layers
-  - <img width="523" height="324" alt="image" src="https://github.com/user-attachments/assets/4751ab77-9009-47a7-8d49-b87b96a9526d" />
-
-
-
-
+  - <img width="523" height="324" alt="image" src="https://github.com/user-attachments/assets/e6e7ceb1-bf0b-4d9a-8aef-0ad74a433ebe" />
 
 
 
