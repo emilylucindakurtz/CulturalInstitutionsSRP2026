@@ -114,7 +114,7 @@ EV Manufacturing Facilities and Investment Overview: https://evjobs.bgafoundatio
 Active Fuel Refineries: https://www.irs.gov/businesses/small-businesses-self-employed/refinery-control-number-rcn-refinery-location-directory
 - On IRS site: "A refinery is a facility used to produce taxable fuel from crude oil, unfinished oils, natural gas liquids, or other hydrocarbons and from which taxable fuel may be removed by pipeline, by vessel, or at a rack"
 - Data is accessible as CSV file; 229 rows, 6 columns
-- Does not seem to have any restricitions and is available to public
+- Does not seem to have any restrictions and is available to public
 
 ## 6/12
 To do:
