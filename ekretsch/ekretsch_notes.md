@@ -1,10 +1,15 @@
 # Emily Kretschmer's Notes
 
+## June 13
+### Todo
+- [ ] merge to add long and lat data for historic districts
+- [ ] chat about OSM data...
+- [ ] map journalism data
+
 ## June 12
 Categories: Libraries, Historic Districts, News Outlets, Murals
 
 ### Todo
-- [ ] meet with groups
 - [ ] come up with goals/questions fo rinstitutions
 
 ### Completed
@@ -19,6 +24,7 @@ Categories: Libraries, Historic Districts, News Outlets, Murals
 - [x] made osmdata and osmextract maps -- differences... **want to talk about this at next meeting**
 - [x] explored osm
 - [x] filter/do regex for the historic places
+- [x] met with groups - sort of (chatted)
 
 
 ### Personal notes
