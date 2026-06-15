@@ -13,6 +13,11 @@
 - [ ] import mural data
 - [ ] check readme
 - [ ] message rimona about geocoder thing?
+- [ ] run `problems(murals)`
+
+Completed
+- [x] email emily about styleguide/naming conventions
+- [x] imported murals data from streetartcities and did NA for unknown and untitled
 
 ### Notes
 
