@@ -1,7 +1,7 @@
 # Emily Kretschmer's Notes
 
 ## June 16
-- [ ] check back in w/ Emily about osmdata package
+- [ ] check back in w/ Emily about osmdata package -- wait won't need this for murals but yes for newspapers potentially?
 
 ## June 15
 ### Todo
