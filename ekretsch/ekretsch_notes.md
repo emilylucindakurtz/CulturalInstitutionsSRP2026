@@ -1,12 +1,13 @@
 # Emily Kretschmer's Notes
 
-## June 13
+## June 15
 ### Todo
 - [ ] merge to add long and lat data for historic districts
 - [ ] chat about OSM data...
 - [ ] map journalism data
 
 ### Notes
+- CHECK README!!
 - Questions:
   - is there a stylebook (for the code) -- like are we supposed to have dataframes labelled a certain way, columns/variables, etc.?
   - How to convert from a street and number (address) to long and lat?
