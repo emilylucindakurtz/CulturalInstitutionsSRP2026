@@ -12,6 +12,23 @@
 - [ ] import mural data
 
 ### Notes
+#### Methods available in tidygeocoder::geocode() (via claude):
+> osm (Nominatim) — Free, no API key. Rate-limited (~1 req/sec). Decent global coverage, less accurate for messy/partial addresses. Good for small batches.
+census — Free, no API key, US addresses only. Fast, supports batch geocoding natively (very efficient for large US datasets). Good accuracy for US.
+arcgis — Free tier without key (with usage limits), better with an API key. Good global coverage and decent accuracy, handles messy addresses reasonably well.
+google — Requires API key (billing enabled). Best accuracy and address parsing, especially for ambiguous/international addresses. Costs money beyond free monthly credit.
+here — Requires API key (free tier available). Good accuracy, decent global coverage.
+tomtom, mapbox, bing, opencage, geocodio — All require API keys; vary in pricing and regional strengths (geocodio is US/Canada only but very accurate for those).
+Quick recommendations:
+US addresses, large dataset → census
+No API key, quick test → osm
+Best accuracy, willing to pay → google
+International, free tier → arcgis or here
+
+## Links
+- https://streetart.community/
+- https://andrewpwheeler.com/2016/03/17/some-gis-data-scraping-adventures-banksy-graffiti-and-gang-locations-in-nyc/
+- 
 
 ## Meeting
 - think of why you're interested!
