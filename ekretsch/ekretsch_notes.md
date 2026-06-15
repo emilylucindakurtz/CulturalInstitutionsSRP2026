@@ -11,14 +11,18 @@
   - is there a stylebook (for the code) -- like are we supposed to have dataframes labelled a certain way, columns/variables, etc.?
   - How to convert from a street and number (address) to long and lat?
     - for historic landmarks data!
+    - Personal research answers:
+      - `tidygeocoder` package!!!
+      - nominatim OSM api -- might be kinda slow, though, since it is only 1 per sec
+      - other option: ggmap (google map) api
  
-- historic districts vs historic sites in the historic landmarks dataset -- right now I am just using text analysis to dig into the name of the property and see if "historic district" is in it, but there's actually a `category of property` variable --
+- historic districts vs historic sites in the historic landmarks dataset -- right now I am just using text analysis to dig into the name of the property and see if `historic district` is in it, but there's actually a `category of property` variable --
   - district for most, but site for some...
   - also it is all caps sometimes and not some other times
     - so we would have to at the very least lowercase it and then factorize it
   - all `<chr>`
 - updates on requested data: still nothing from northwestern :( or the murals place :( -- that is why I've been exploring osm and UNC
-- ideas for exploring historic districts dataset:
+- ideas for exploring **historic districts** dataset:
   - `area of significance` variable -- maybe do some text analysis to see what is most common with these~
     - i wonder if this could widen the df -- like it's a list of factors... idk
       - ex: `COMMERCE; EXPLORATION/SETTLEMENT; ARCHITECTURE; RELIGION`
