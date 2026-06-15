@@ -8,20 +8,25 @@ editor: visual
 # Load packages
 library(tidyverse)
 library(tidygeocoder)
+library(janitor)
 ```
+
 ## Murals !
 
 ```{r}
 murals <- read_csv("../data/Murals/streetartcities_US_2026-06.csv",
                    na = c("", "NA", "Unknown", "Untitled"))
+murals_clean <- murals %>% 
+  remove_empty("cols") # From janitor package
 ```
 
-
 ## Historic Districts
+
 ```{r}
 # Loading historic landmarks data for historic districts!
 historic_landmarks <- read_csv("../data/historic_landmarks.csv") # .. means one folder up
 ```
+
 ```{r}
 # Filtering the historic landmarks dataset to make sure that only historic districts are present
 historic_districts <- historic_landmarks %>% 
@@ -29,9 +34,7 @@ historic_districts <- historic_landmarks %>%
   filter(str_detect(name_lower, "historic district"))
 ```
 
-Note: `category of property` variable -- district for most, but site for some...
-but it is all caps sometimes and not some other times
-ex: `Fort Union Trading Post National Historic Site Historic District (Boundary Increase)` -- marked as `site` and it's not really a historic district in the way I was thinking...
+Note: `category of property` variable -- district for most, but site for some... but it is all caps sometimes and not some other times ex: `Fort Union Trading Post National Historic Site Historic District (Boundary Increase)` -- marked as `site` and it's not really a historic district in the way I was thinking...
 
 ```{r}
 # CLeaning the historic_districts dataset so only the columns we want are present
@@ -39,11 +42,8 @@ ex: `Fort Union Trading Post National Historic Site Historic District (Boundary 
 ```
 
 ## News outlets
+
 ```{r}
 # Loading news outlet data
 outlets <- read_csv("../data/News Outlets/us-news-deserts-news-source-export-06-12-12-140252_SOURCE_UNC.csv")
 ```
-
-
-
-
