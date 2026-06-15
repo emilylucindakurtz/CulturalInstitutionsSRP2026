@@ -1,11 +1,12 @@
 # Emily Kretschmer's Notes
 
 ## June 16
-- [ ] check back in w/ Emily about osmdata package
+- [ ] check back in w/ Emily about osmdata package -- wait won't need this for murals but yes for newspapers potentially?
 
 ## June 15
 ### Todo
 - [ ] merge to add long and lat data for historic districts
+  - [ ] message rimona abt this
 - [x] chat about OSM data...
   - [ ] check too see if it's also mapping NA's
 - [ ] map journalism data
