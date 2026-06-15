@@ -185,6 +185,10 @@ user guide documentation/code book for each years data:
 - [x] email marshall breeding
 
 
+## June 15
+
+**Local View** data/wesbite. Related to industrial institutions, contains city council meeting data--can be used to examine how certain industries are being challenged. 
+
 
 
 
