@@ -12,15 +12,16 @@
 - [ ] map journalism data
 - [ ] import mural data
 - [ ] check readme
+- [ ] message rimona about geocoder thing?
 
 ### Notes
 
 #### Personal
-**Murals**
+_Murals_
 - lots of them don't have a title or even a description
   - some have title empty, or as `Unknown` or `Untitled` -- going to change this when in R
 
-**Historic districts**
+_Historic districts_
 - historic districts vs historic sites in the historic landmarks dataset -- right now I am just using text analysis to dig into the name of the property and see if `historic district` is in it, but there's actually a `category of property` variable --
   - district for most, but site for some...
   - also it is all caps sometimes and not some other times
