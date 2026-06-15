@@ -10,6 +10,7 @@
   - [ ] check too see if it's also mapping NA's
 - [ ] map journalism data
 - [ ] import mural data
+- [ ] check readme
 
 ### Notes
 #### Methods available in tidygeocoder::geocode() (via claude):
