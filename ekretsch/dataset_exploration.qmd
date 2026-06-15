@@ -7,6 +7,7 @@ editor: visual
 ```{r}
 # Load packages
 library(tidyverse)
+library(tidygeocoder)
 ```
 
 Historic Districts
