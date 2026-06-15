@@ -14,8 +14,23 @@ library(janitor)
 ## Murals !
 
 ```{r}
+# DELETE THIS!!! Not using here but maybe in other place
+# Since there are too many columns to rename them manually, I will first read the lines as text, then replace the commas, and *then* parse the data frame
+# Using gsub (global substitution) to replace all instances of commas
+
+# Reading lines
+murals_lines <- readLines("../data/Murals/streetartcities_US_2026-06.csv")
+
+# Replacing commas with underscores just in header (which is the first line)
+murals_lines[1] <- gsub(",", "_", murals_lines[1])
+```
+
+```{r}
+# Reading the now-comma-free headers + the rest and cleaning
 murals <- read_csv("../data/Murals/streetartcities_US_2026-06.csv",
-                   na = c("", "NA", "Unknown", "Untitled"))
+                   na = c("", "NA", "Unknown", "Untitled")) %>% 
+  clean_names()
+  
 murals_clean <- murals %>% 
   remove_empty("cols") # From janitor package
 ```
