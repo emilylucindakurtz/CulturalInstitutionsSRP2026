@@ -9,6 +9,8 @@
 ### Notes
 - Questions:
   - is there a stylebook (for the code) -- like are we supposed to have dataframes labelled a certain way, columns/variables, etc.?
+- How to convert from a street and number (address) to long and lat?
+  - for historic landmarks data!
  
 - historic districts vs historic sites in the historic landmarks dataset -- right now I am just using text analysis to dig into the name of the property and see if "historic district" is in it, but there's actually a `category of property` variable --
   - district for most, but site for some...
