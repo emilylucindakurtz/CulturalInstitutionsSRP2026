@@ -14,6 +14,24 @@
 - [ ] check readme
 
 ### Notes
+
+#### Personal
+**Murals**
+- lots of them don't have a title or even a description
+  - some have title empty, or as `Unknown` or `Untitled` -- going to change this when in R
+
+**Historic districts**
+- historic districts vs historic sites in the historic landmarks dataset -- right now I am just using text analysis to dig into the name of the property and see if `historic district` is in it, but there's actually a `category of property` variable --
+  - district for most, but site for some...
+  - also it is all caps sometimes and not some other times
+    - so we would have to at the very least lowercase it and then factorize it
+  - all `<chr>`
+- updates on requested data: still nothing from northwestern :( or the murals place :( -- that is why I've been exploring osm and UNC
+- ideas for exploring **historic districts** dataset:
+  - `area of significance` variable -- maybe do some text analysis to see what is most common with these~
+    - i wonder if this could widen the df -- like it's a list of factors... idk
+      - ex: `COMMERCE; EXPLORATION/SETTLEMENT; ARCHITECTURE; RELIGION`
+
 #### Methods available in tidygeocoder::geocode() (via claude):
 > osm (Nominatim) — Free, no API key. Rate-limited (~1 req/sec). Decent global coverage, less accurate for messy/partial addresses. Good for small batches.
 > 
@@ -32,7 +50,6 @@
 ## Links
 - https://streetart.community/
 - https://andrewpwheeler.com/2016/03/17/some-gis-data-scraping-adventures-banksy-graffiti-and-gang-locations-in-nyc/
-- 
 
 ## Meeting
 - think of why you're interested!
@@ -49,17 +66,6 @@
       - `tidygeocoder` package!!! (https://jessecambon.github.io/tidygeocoder/)
       - nominatim OSM api -- might be kinda slow, though, since it is only 1 per sec
       - other option: ggmap (google map) api
- 
-- historic districts vs historic sites in the historic landmarks dataset -- right now I am just using text analysis to dig into the name of the property and see if `historic district` is in it, but there's actually a `category of property` variable --
-  - district for most, but site for some...
-  - also it is all caps sometimes and not some other times
-    - so we would have to at the very least lowercase it and then factorize it
-  - all `<chr>`
-- updates on requested data: still nothing from northwestern :( or the murals place :( -- that is why I've been exploring osm and UNC
-- ideas for exploring **historic districts** dataset:
-  - `area of significance` variable -- maybe do some text analysis to see what is most common with these~
-    - i wonder if this could widen the df -- like it's a list of factors... idk
-      - ex: `COMMERCE; EXPLORATION/SETTLEMENT; ARCHITECTURE; RELIGION`
 
 ## June 12
 Categories: Libraries, Historic Districts, News Outlets, Murals
