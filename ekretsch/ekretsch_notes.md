@@ -1,13 +1,25 @@
 # Emily Kretschmer's Notes
 
+## June 16
+- [ ] check back in w/ Emily about osmdata package
+
 ## June 15
 ### Todo
 - [ ] merge to add long and lat data for historic districts
-- [ ] chat about OSM data...
+- [x] chat about OSM data...
+  - [ ] check too see if it's also mapping NA's
 - [ ] map journalism data
+- [ ] import mural data
 
 ### Notes
+
+## Meeting
+- think of why you're interested!
 - CHECK README!!
+- check bridges to see if it's mapping stuff and NAs osmdata
+- FRED
+- LocalView
+
 - Questions:
   - is there a stylebook (for the code) -- like are we supposed to have dataframes labelled a certain way, columns/variables, etc.?
   - How to convert from a street and number (address) to long and lat?
