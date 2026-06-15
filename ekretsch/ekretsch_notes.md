@@ -12,6 +12,7 @@
   - also it is all caps sometimes and not some other times
     - so we would have to at the very least lowercase it and then factorize it
   - all `<chr>`
+- updates on requested data: still nothing from northwestern :( or the murals place :( -- that is why I've been exploring osm and UNC
 
 ## June 12
 Categories: Libraries, Historic Districts, News Outlets, Murals
