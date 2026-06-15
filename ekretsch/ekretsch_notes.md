@@ -14,9 +14,14 @@
 - [ ] check readme
 - [ ] message rimona about geocoder thing?
 - [ ] run `problems(murals)`
+- [ ] murals:
+  - [ ] remove cols where it is 100% NA
+  - [ ] fix description text so the tags aren't there anymore
+  - [ ] 
 
 Completed
 - [x] email emily about styleguide/naming conventions
+murals ---
 - [x] imported murals data from streetartcities and did NA for unknown and untitled
 
 ### Notes
@@ -25,6 +30,13 @@ Completed
 _Murals_
 - lots of them don't have a title or even a description
   - some have title empty, or as `Unknown` or `Untitled` -- going to change this when in R
+  - `dttm` type is date time
+  - Got these **problems**: <img width="846" height="281" alt="image" src="https://github.com/user-attachments/assets/188467d7-65b0-42d2-b7b2-0c30cd334f0a" />
+    - i think a lot of this is because only some rows have values in each of these columns, and
+    - a lot of the values are surrounded by [""]
+    - For this: `["Nature","Water","Fish","Birds"]` R turned it to `[\"Nature\",\"Water\",\"Fish\",\"Birds\"]` ???
+    - some column names have commas -- using gsub (global substitution) to fix this
+
 
 _Historic districts_
 - historic districts vs historic sites in the historic landmarks dataset -- right now I am just using text analysis to dig into the name of the property and see if `historic district` is in it, but there's actually a `category of property` variable --
