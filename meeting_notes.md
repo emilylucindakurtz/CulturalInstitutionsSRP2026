@@ -107,3 +107,29 @@ Narrow scope to three things you are interested in, and start thinking more logi
 - Try to make time to meet with teams and divide labor in a way that makes sense
 - Think about the specific datasets you want to finish collecting and make a concrete plan for doing so
 - Think about *why* you were interested in those datasets, this will inform other data we may want to collect on/related to them, and be prepared to share more about that on Monday so Emily can come up with some ideas for next steps for you all
+
+# June 15
+
+- let's focus on EDA instead
+- Emily's library data already includes demographic data - maybe explore it longitudinally
+- tidygeocoder R package will convert from address to lat and lon
+- Rimona - auto plants, Ian - power plants, Fortune 500
+-   How to involve satellite - Emily will back to Zoe about this Tuesday
+- EDA - do whatever to explore!
+- Emily - no word from Northwestern yet or streetartcities
+-   looking into openstreetmap instead - Emily, read Emily's read osmexploration R script to see what's going on
+
+The why:
+
+- Ian - interest in industry comes from question of how big are the employers in the communities they are in. How much is it supporting the local economy? Do corporate headquarters have negative* impacts as well? Talked about Local View, St. Louis FRED
+-   Corporate headquarters having negative impacts - Seattle with lots of tech workers driving up housing - Google News Articles, Proquest for news articles/Op Eds talking about these negative impacts
+- Emily - murals - motivated by home (DC) - social issues and advocacy - particularly interested in the descriptions - also are they more common in particular areas (liberal vs. conservative? places that support free speech? polarized areas?)
+-   news outlets - news deserts, not getting the right or enough information - geographic patterns to that? Ben Toff
+- Zoe - museums give a nice glimpse of a city immediately with visitors - what kinds of museums do cities and states have? Satellite is just exciting and new!
+
+Plan for the week:
+- Tuesday and Wednesday: hop into office hours if needed (10-11 on Zoom)
+- Thursday - informal check in at Carleton SRP training thing
+- Friday is a holiday - no meeting
+
+
