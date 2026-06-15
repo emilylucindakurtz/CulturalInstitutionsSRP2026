@@ -6,6 +6,7 @@
 ## June 15
 ### Todo
 - [ ] merge to add long and lat data for historic districts
+  - [ ] message rimona abt this
 - [x] chat about OSM data...
   - [ ] check too see if it's also mapping NA's
 - [ ] map journalism data
