@@ -12,7 +12,7 @@
   - How to convert from a street and number (address) to long and lat?
     - for historic landmarks data!
     - Personal research answers:
-      - `tidygeocoder` package!!!
+      - `tidygeocoder` package!!! (https://jessecambon.github.io/tidygeocoder/)
       - nominatim OSM api -- might be kinda slow, though, since it is only 1 per sec
       - other option: ggmap (google map) api
  
