@@ -118,7 +118,7 @@ Active Fuel Refineries: https://www.irs.gov/businesses/small-businesses-self-emp
 
 ## 6/12
 To do:
-- [ ] Email Andrew G. Reiter for permission to use LACs dataset
+- [X] Email Andrew G. Reiter for permission to use LACs dataset
 - [ ] Start cleaning data
 
 ### Automotive Assembly Plants
