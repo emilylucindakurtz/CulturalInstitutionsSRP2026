@@ -36,6 +36,10 @@ _Murals_
     - a lot of the values are surrounded by [""]
     - For this: `["Nature","Water","Fish","Birds"]` R turned it to `[\"Nature\",\"Water\",\"Fish\",\"Birds\"]` ???
     - some column names have commas -- using gsub (global substitution) to fix this
+    - description wrapped in tags <>
+    - why are there still 100% NA cols 😭
+      - <img width="241" height="281" alt="image" src="https://github.com/user-attachments/assets/d9d1594c-b5a5-4ad9-9f23-ce6d15e3bb33" />
+
 
 
 _Historic districts_
