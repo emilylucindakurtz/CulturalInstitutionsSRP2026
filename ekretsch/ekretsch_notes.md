@@ -5,7 +5,7 @@
 - [ ] merge to add long and lat data for historic districts
   - [ ] message rimona abt this
 - [ ] map journalism data
-- [ ] import mural data
+- [x] import mural data
 - [ ] check readme
 - [ ] message rimona about geocoder thing?
 - [ ] murals:
@@ -32,8 +32,6 @@ q's
   - 'photo taken XYZ' and links
 - why is it showing "NA" as common word??? it's not a word :(
  
-
-
 ### notes
 - murals_clean[[i]] vs murals_clean[,i]
 - `murals_clean %>% select(where(function(x) all(is.na(x)))) %>% glimpse()`
@@ -42,6 +40,8 @@ q's
 - maybe add state col?
 - powow
 - maybe you can like select a word and then see where it is most common?
+  - maybe also on teh flipside u could select a place
+- "woman" seems to be pretty common lol
 
 ## June 15
 ### Todo
