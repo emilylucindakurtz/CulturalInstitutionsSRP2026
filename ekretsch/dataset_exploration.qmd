@@ -58,6 +58,7 @@ remove_words <- tibble(
 )
 
 murals_description_words <- murals_clean %>% 
+  mutate(description_lower = str_remove_all(description_lower, "\\d+")) %>% # removing nums (like years, etc)
   unnest_tokens(output = word, input = description_lower) %>% 
   anti_join(get_stopwords(source = "stopwords-iso"), by="word") %>% #could change the source...
   anti_join(remove_words, by = "word") %>% 
