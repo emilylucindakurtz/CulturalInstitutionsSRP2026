@@ -46,15 +46,24 @@ remove the photo created + date situation? unsure...
 -&nbsp; (more html tags too?)
 -project
 -mural
+-NA
+-art
+- the place...
+- numbers
 
 ```{r}
 # Text analysis of description
+remove_words <- tibble(
+  word = c(NA, "nbsp", "project", "mural", "NA", "art", "https", "artist", "artists", "san", "www.instagram.com", "created", "located", "curated")
+)
+
 murals_description_words <- murals_clean %>% 
   unnest_tokens(output = word, input = description_lower) %>% 
   anti_join(get_stopwords(source = "stopwords-iso"), by="word") %>% #could change the source...
-  group_by(city_id) %>% 
+  anti_join(remove_words, by = "word") %>% 
+  #group_by(city_id) %>% 
   count(word) %>% 
-  slice_max(n, n = 5)
+  slice_max(n, n = 50)
 ```
 
 
