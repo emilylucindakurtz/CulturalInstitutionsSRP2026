@@ -3,12 +3,15 @@
 ## June 16
 - [ ] check back in w/ Emily about osmdata package -- wait won't need this for murals but yes for newspapers potentially?
 
+### questions
+-  should I lengthen? - separate_longer_delim(x, delim = ",")
+
 ## June 15
 ### Todo
 - [ ] merge to add long and lat data for historic districts
   - [ ] message rimona abt this
 - [x] chat about OSM data...
-  - [ ] check too see if it's also mapping NA's
+  - [ ] check to see if it's also mapping NA's
 - [ ] map journalism data
 - [ ] import mural data
 - [ ] check readme
@@ -37,7 +40,7 @@ _Murals_
     - For this: `["Nature","Water","Fish","Birds"]` R turned it to `[\"Nature\",\"Water\",\"Fish\",\"Birds\"]` ???
     - some column names have commas -- using gsub (global substitution) to fix this
     - description wrapped in tags <>
-    - why are there still 100% NA cols 😭
+    - why are there still 100% NA cols 😭 -- 47 cols in murals_clean and 52 in murals whatttt but still some fully na
       - <img width="241" height="281" alt="image" src="https://github.com/user-attachments/assets/d9d1594c-b5a5-4ad9-9f23-ce6d15e3bb33" />
 
 
