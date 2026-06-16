@@ -9,6 +9,7 @@ editor: visual
 library(tidyverse)
 library(tidygeocoder)
 library(janitor)
+library(tidytext)
 ```
 
 ## Street art !
@@ -44,9 +45,16 @@ remove the photo created + date situation? unsure...
 -'photo taken' or 'curated by'
 -&nbsp; (more html tags too?)
 -project
+-mural
 
 ```{r}
 # Text analysis of description
+murals_description_words <- murals_clean %>% 
+  unnest_tokens(output = word, input = description_lower) %>% 
+  anti_join(get_stopwords(source = "stopwords-iso"), by="word") %>% #could change the source...
+  group_by(city_id) %>% 
+  count(word) %>% 
+  slice_max(n, n = 5)
 ```
 
 
