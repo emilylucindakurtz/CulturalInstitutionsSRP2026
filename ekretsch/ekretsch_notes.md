@@ -12,18 +12,33 @@
   - [x] run `problems(murals)`
   - [x] remove cols where it is 100% NA **having issues? (below in qs)**
   - [x] fix description text so the tags aren't there anymore
-  - [ ] 
+  - [x] remove cols that are high in NAs
+  - [ ] text analysis
+    - photo created? 
 
 
 ### questions
+a's from chatting w/ emily:
+- yes, lengthen str_split or smth -- use ai chat and make binary for each col
+- but the NA thing is prob rounding TBH so just remove those cols as well
+- it's ok to take out info not usefull as long as you keep the raw dataset
+
+q's
 -  should I lengthen? - separate_wider_delim(x, delim = ",")
   -  ex: Figurative,Realism,Surrealism for artwork style
 -  the NA thing ????? update: ok these are not actually 100% NA cols R is tripping me out this viz is wrng??? there are things in those cols
   - so not an issue i guess but here's the pic anyways
   -  <img width="949" height="854" alt="image" src="https://github.com/user-attachments/assets/8805fba5-936d-41a8-900b-043174a6c922" />
+- don't want to lose info... but unsure
+  - 'photo taken XYZ' and links
+ 
+
 
 ### notes
 - murals_clean[[i]] vs murals_clean[,i]
+- `murals_clean %>% select(where(function(x) all(is.na(x)))) %>% glimpse()`
+- i think switching to streetart generally, rather than murals (since it's not in the dataset)
+- htmltools tags?
 
 ## June 15
 ### Todo
