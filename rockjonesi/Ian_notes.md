@@ -211,8 +211,14 @@ plotting a simple map of the powerplant locations after filtering:
 
 <img width="605" height="425" alt="image" src="https://github.com/user-attachments/assets/7abcf04d-2f37-486c-b2fe-610187593f79" />
 
+There appear to be larger concetrations of powerplants along the east/west coasts, as well as a large cluster in the MN area.
 
- 
+Moving onto fortune500 data, I similarly restrained the location of interest and plotted a simple map:
+
+<img width="605" height="236" alt="image" src="https://github.com/user-attachments/assets/f1d9a218-20df-4c1d-9c1c-9d70b255a085" />
+
+
+
 
 
 
