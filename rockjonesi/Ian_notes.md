@@ -1,4 +1,4 @@
-# Ian Rock-Jones Research Journal
+<img width="845" height="605" alt="image" src="https://github.com/user-attachments/assets/2ab8e3c2-6184-4311-b9d9-b4e33e66a062" /># Ian Rock-Jones Research Journal
 ## June 9
 ### Finding Institutions
 
@@ -197,7 +197,22 @@ Today, I largely worked on processing and cleaning up the Sports Venues data. Th
 These challenges slowed my progress more than I hoped, and I did not get all that I wanted done today. Tomorrow, I am hoping to start visualizing some of this venue data as well as the industrial data. In the future, I will also start to clean and visulize the across-time library datasets.
 
 
+## June 16
 
+Thinking and contextualizing my data processing steps and choices:
+
+I gave a little info based on my work on the 15th, but here I will go into more depth.
+
+Foremost, industrial institutions:
+
+initial steps --> restrict long/lat coordinated to only include the bounnds of the 50 states. 
+ - powerplant data conatined plants in puerto rico, so those were the ones that were removed mainly.
+plotting a simple map of the powerplant locations after filtering:
+
+<img width="845" height="605" alt="image" src="https://github.com/user-attachments/assets/7abcf04d-2f37-486c-b2fe-610187593f79" />
+
+
+ 
 
 
 
