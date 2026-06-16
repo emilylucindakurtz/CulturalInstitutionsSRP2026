@@ -33,10 +33,27 @@ murals <- read_csv("../data/Murals/streetartcities_US_2026-06.csv",
   clean_names() #%>% # From janior package :)
 ```
 
+I'm temporarily moving on from this specific part since I can't figure it out but CBL!!!
+
 ```{r}
 # Cleaning/wrangling further
 murals_clean <- murals %>% 
-  remove_empty("cols") # From janitor package
+  select(where(function(x) !all(is.na(x)))) # could also do the ~ shorthand
+ # remove_empty("cols") # From janitor package
+```
+
+```{r}
+# Going to use stringr/regex to fix the weird formatting
+# for loop from description to last col?
+# <> stuff
+# ["x","y","z"] -- not sure if I should lengthen???
+#murals_clean <- murals_clean %>% 
+#  str_remove_all()
+
+for(i in 1:ncol(murals_clean)){
+  gsub("<.*?>", "", murals_clean[, i])
+}
+  
 ```
 
 ## Historic Districts
