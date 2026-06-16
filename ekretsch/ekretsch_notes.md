@@ -4,7 +4,7 @@
 - [ ] check back in w/ Emily about osmdata package -- wait won't need this for murals but yes for newspapers potentially?
 
 ### questions
--  should I lengthen? - separate_longer_delim(x, delim = ",")
+-  should I lengthen? - separate_wider_delim(x, delim = ",")
 
 ## June 15
 ### Todo
