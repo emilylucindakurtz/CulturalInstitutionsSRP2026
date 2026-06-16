@@ -2,29 +2,32 @@
 
 ## June 16
 - [ ] check back in w/ Emily about osmdata package -- wait won't need this for murals but yes for newspapers potentially?
+- [ ] merge to add long and lat data for historic districts
+  - [ ] message rimona abt this
+- [ ] map journalism data
+- [ ] import mural data
+- [ ] check readme
+- [ ] message rimona about geocoder thing?
+- [ ] murals:
+  - [x] run `problems(murals)`
+  - [x] remove cols where it is 100% NA **having issues? (below in qs)**
+  - [x] fix description text so the tags aren't there anymore
+  - [ ] 
+
 
 ### questions
 -  should I lengthen? - separate_wider_delim(x, delim = ",")
--  the NA thing
-  
+-  the NA thing ????? update: ok these are not actually 100% NA cols R is tripping me out this viz is wrng??? there are things in those cols
+  - so not an issue i guess but here's the pic anyways
+  -  <img width="949" height="854" alt="image" src="https://github.com/user-attachments/assets/8805fba5-936d-41a8-900b-043174a6c922" />
+
 ### notes
 - murals_clean[[i]] vs murals_clean[,i]
 
 ## June 15
 ### Todo
-- [ ] merge to add long and lat data for historic districts
-  - [ ] message rimona abt this
 - [x] chat about OSM data...
   - [ ] check to see if it's also mapping NA's
-- [ ] map journalism data
-- [ ] import mural data
-- [ ] check readme
-- [ ] message rimona about geocoder thing?
-- [ ] run `problems(murals)`
-- [ ] murals:
-  - [ ] remove cols where it is 100% NA
-  - [x] fix description text so the tags aren't there anymore
-  - [ ] 
 
 Completed
 - [x] email emily about styleguide/naming conventions
