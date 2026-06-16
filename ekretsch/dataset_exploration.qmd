@@ -52,7 +52,7 @@ murals_clean <- murals %>%
 
 for(i in 1:ncol(murals_clean)){
   if(is.character(murals_clean[[i]])){
-    murals_clean[[i]] <- str_remove_all(murals_clean[[i]], "<.*?>")
+    murals_clean[[i]] <- str_remove_all(murals_clean[[i]], c("<.*?>", "\\[", "\\]", "\""))
   }
 }
   
