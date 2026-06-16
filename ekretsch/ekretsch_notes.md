@@ -6,6 +6,9 @@
 ### questions
 -  should I lengthen? - separate_wider_delim(x, delim = ",")
 -  the NA thing
+  
+### notes
+- murals_clean[[i]] vs murals_clean[,i]
 
 ## June 15
 ### Todo
@@ -20,7 +23,7 @@
 - [ ] run `problems(murals)`
 - [ ] murals:
   - [ ] remove cols where it is 100% NA
-  - [ ] fix description text so the tags aren't there anymore
+  - [x] fix description text so the tags aren't there anymore
   - [ ] 
 
 Completed
