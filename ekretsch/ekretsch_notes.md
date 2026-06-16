@@ -16,6 +16,11 @@
 
 
 ### questions
+a from chatting w/ emily:
+- yes, lengthen str_split or smth -- use ai chat and make binary for each col
+- but the NA thing is prob rounding TBH so just remove those cols as well
+- it's ok to take out info not usefull as long as you keep the raw dataset
+q
 -  should I lengthen? - separate_wider_delim(x, delim = ",")
   -  ex: Figurative,Realism,Surrealism for artwork style
 -  the NA thing ????? update: ok these are not actually 100% NA cols R is tripping me out this viz is wrng??? there are things in those cols
@@ -23,6 +28,8 @@
   -  <img width="949" height="854" alt="image" src="https://github.com/user-attachments/assets/8805fba5-936d-41a8-900b-043174a6c922" />
 - don't want to lose info... but unsure
   - 'photo taken XYZ' and links
+ 
+
 
 ### notes
 - murals_clean[[i]] vs murals_clean[,i]
