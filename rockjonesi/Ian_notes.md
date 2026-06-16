@@ -215,7 +215,7 @@ There appear to be larger concetrations of powerplants along the east/west coast
 
 Moving onto fortune500 data, I similarly restrained the location of interest and plotted a simple map:
 
-<img width="605" height="236" alt="image" src="https://github.com/user-attachments/assets/f1d9a218-20df-4c1d-9c1c-9d70b255a085" />
+<img width="400" height="236" alt="image" src="https://github.com/user-attachments/assets/f1d9a218-20df-4c1d-9c1c-9d70b255a085" />
 
 
 
