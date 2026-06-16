@@ -54,7 +54,7 @@ remove the photo created + date situation? unsure...
 ```{r}
 # Text analysis of description
 remove_words <- tibble(
-  word = c(NA, "nbsp", "project", "mural", "NA", "art", "https", "artist", "artists", "san", "www.instagram.com", "created", "located", "curated")
+  word = c(NA, "nbsp", "project", "mural", "murals", "painted", "paint", "painting", "street", "NA", "art", "https", "artist", "artists", "san", "www.instagram.com", "instagram", "created", "located", "curated")
 )
 
 murals_description_words <- murals_clean %>% 
@@ -62,9 +62,9 @@ murals_description_words <- murals_clean %>%
   unnest_tokens(output = word, input = description_lower) %>% 
   anti_join(get_stopwords(source = "stopwords-iso"), by="word") %>% #could change the source...
   anti_join(remove_words, by = "word") %>% 
-  #group_by(city_id) %>% 
+  group_by(city_id) %>% 
   count(word) %>% 
-  slice_max(n, n = 50)
+  slice_max(n, n = 3)
 ```
 
 
@@ -78,15 +78,23 @@ historic_landmarks <- read_csv("../data/historic_landmarks.csv") # .. means one 
 ```{r}
 # Filtering the historic landmarks dataset to make sure that only historic districts are present
 historic_districts <- historic_landmarks %>% 
-  mutate(name_lower = tolower(`Property Name`)) %>% 
-  filter(str_detect(name_lower, "historic district"))
+  clean_names() %>% 
+  mutate(property_name_lower = tolower(property_name)) %>% 
+  filter(str_detect(name_lower, "historic district")) #%>% 
+  #mutate(address = paste(property_name, ))
 ```
 
 Note: `category of property` variable -- district for most, but site for some... but it is all caps sometimes and not some other times ex: `Fort Union Trading Post National Historic Site Historic District (Boundary Increase)` -- marked as `site` and it's not really a historic district in the way I was thinking...
 
 ```{r}
 # CLeaning the historic_districts dataset so only the columns we want are present
+
+
 # and adding location
+lat_longs <- historic_districts %>%
+  geocode(property_name, method = 'arcgis', lat = latitude , long = longitude)
+
+#method = census resulted in NAs
 ```
 
 ## News outlets
