@@ -179,10 +179,22 @@ user guide documentation/code book for each years data:
    All of them have consistency across the countypop, LOCALE, and lat/long varibles that we care about
 
 - [x] meet with all of groups
+  - for industrial group --> going to end up not using auto supply data, will focus on wiki car manufacturing plants, and EV plants.
+    - Rimona will be focusing on these two while I do powerplants, and fortune 500 companies.
+    
 - [x] email marshall breeding
 
 
+## June 15
 
+meeting notes:
+**Local View** data/wesbite. Related to industrial institutions, contains city council meeting data--can be used to examine how certain industries are being challenged. 
+
+add mines to industries data. perhaps data mining centers too if you can find that information
+
+Today, I largely worked on processing and cleaning up the Sports Venues data. This entailed conducting text-analysis on "stadiums.pdf"-which contained the list of stadiums and their capacity sizes (and is contained in the data --> Sports Venues)-and then joining this with the Sportsvenue.csv data to include location information. However, this became a lot more involved than I was expecting, there were a ton of naming-inconsistencies (largely created from typos, small punctuation issues, or some variation of abbrivation issue) that had to be fixed for the datasets to merge as properly as it could. Additionally, each dataset conatined many duplicate venue names, which could be uniquely identified within each dataset based on capacity, or long/lat depedning on which dataset one was looking at. There were no shared unique identifiers, meaning that these duplicates during the initial joining led to errors in the data. To fix this, I spent a large amount of time cross referencing locations and capacities to accuratley connect stadium capacities to the correct stadium name duplicate with the locations. This part was done mostly maunally, as I could not come up with another automated method that took less time. 
+
+These challenges slowed my progress more than I hoped, and I did not get all that I wanted done today. Tomorrow, I am hoping to start visualizing some of this venue data as well as the industrial data. In the future, I will also start to clean and visulize the across-time library datasets.
 
 
 

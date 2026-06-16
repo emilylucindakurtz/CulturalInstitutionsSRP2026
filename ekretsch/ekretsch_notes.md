@@ -1,19 +1,128 @@
 # Emily Kretschmer's Notes
 
+## June 16
+- [ ] check back in w/ Emily about osmdata package -- wait won't need this for murals but yes for newspapers potentially?
+- [ ] merge to add long and lat data for historic districts
+  - [ ] message rimona abt this
+- [ ] map journalism data
+- [ ] import mural data
+- [ ] check readme
+- [ ] message rimona about geocoder thing?
+- [ ] murals:
+  - [x] run `problems(murals)`
+  - [x] remove cols where it is 100% NA **having issues? (below in qs)**
+  - [x] fix description text so the tags aren't there anymore
+  - [ ] 
+
+
+### questions
+-  should I lengthen? - separate_wider_delim(x, delim = ",")
+  -  ex: Figurative,Realism,Surrealism for artwork style
+-  the NA thing ????? update: ok these are not actually 100% NA cols R is tripping me out this viz is wrng??? there are things in those cols
+  - so not an issue i guess but here's the pic anyways
+  -  <img width="949" height="854" alt="image" src="https://github.com/user-attachments/assets/8805fba5-936d-41a8-900b-043174a6c922" />
+
+### notes
+- murals_clean[[i]] vs murals_clean[,i]
+
+## June 15
+### Todo
+- [x] chat about OSM data...
+  - [ ] check to see if it's also mapping NA's
+
+Completed
+- [x] email emily about styleguide/naming conventions
+murals ---
+- [x] imported murals data from streetartcities and did NA for unknown and untitled
+
+### Notes
+
+#### Personal
+_Murals_
+- lots of them don't have a title or even a description
+  - some have title empty, or as `Unknown` or `Untitled` -- going to change this when in R
+  - `dttm` type is date time
+  - Got these **problems**: <img width="846" height="281" alt="image" src="https://github.com/user-attachments/assets/188467d7-65b0-42d2-b7b2-0c30cd334f0a" />
+    - i think a lot of this is because only some rows have values in each of these columns, and
+    - a lot of the values are surrounded by [""]
+    - For this: `["Nature","Water","Fish","Birds"]` R turned it to `[\"Nature\",\"Water\",\"Fish\",\"Birds\"]` ???
+    - some column names have commas -- using gsub (global substitution) to fix this
+    - description wrapped in tags <>
+    - why are there still 100% NA cols 😭 -- 47 cols in murals_clean and 52 in murals whatttt but still some fully na
+      - <img width="241" height="281" alt="image" src="https://github.com/user-attachments/assets/d9d1594c-b5a5-4ad9-9f23-ce6d15e3bb33" />
+
+
+
+_Historic districts_
+- historic districts vs historic sites in the historic landmarks dataset -- right now I am just using text analysis to dig into the name of the property and see if `historic district` is in it, but there's actually a `category of property` variable --
+  - district for most, but site for some...
+  - also it is all caps sometimes and not some other times
+    - so we would have to at the very least lowercase it and then factorize it
+  - all `<chr>`
+- updates on requested data: still nothing from northwestern :( or the murals place :( -- that is why I've been exploring osm and UNC
+- ideas for exploring **historic districts** dataset:
+  - `area of significance` variable -- maybe do some text analysis to see what is most common with these~
+    - i wonder if this could widen the df -- like it's a list of factors... idk
+      - ex: `COMMERCE; EXPLORATION/SETTLEMENT; ARCHITECTURE; RELIGION`
+
+#### Methods available in tidygeocoder::geocode() (via claude):
+> osm (Nominatim) — Free, no API key. Rate-limited (~1 req/sec). Decent global coverage, less accurate for messy/partial addresses. Good for small batches.
+> 
+> census — Free, no API key, US addresses only. Fast, supports batch geocoding natively (very efficient for large US datasets). Good accuracy for US.
+> 
+> arcgis — Free tier without key (with usage limits), better with an API key. Good global coverage and decent accuracy, handles messy addresses reasonably well.
+> 
+> google — Requires API key (billing enabled). Best accuracy and address parsing, especially for ambiguous/international addresses. Costs money beyond free monthly credit.
+> 
+> here — Requires API key (free tier available). Good accuracy, decent global coverage.
+> 
+> tomtom, mapbox, bing, opencage, geocodio — All require API keys; vary in pricing and regional strengths (geocodio is US/Canada only but very accurate for those).
+> 
+> Quick recommendations: 1) US addresses, large dataset → census 2) No API key, quick test → osm 3) Best accuracy, willing to pay → google 4) International, free tier → arcgis or here
+
+## Links
+- https://streetart.community/
+- https://andrewpwheeler.com/2016/03/17/some-gis-data-scraping-adventures-banksy-graffiti-and-gang-locations-in-nyc/
+
+## Meeting
+- think of why you're interested!
+- CHECK README!!
+- check bridges to see if it's mapping stuff and NAs osmdata
+- FRED
+- LocalView
+
+- Questions:
+  - is there a stylebook (for the code) -- like are we supposed to have dataframes labelled a certain way, columns/variables, etc.?
+  - How to convert from a street and number (address) to long and lat?
+    - for historic landmarks data!
+    - Personal research answers:
+      - `tidygeocoder` package!!! (https://jessecambon.github.io/tidygeocoder/)
+      - nominatim OSM api -- might be kinda slow, though, since it is only 1 per sec
+      - other option: ggmap (google map) api
+
 ## June 12
 Categories: Libraries, Historic Districts, News Outlets, Murals
+
 ### Todo
-- [ ] filter/do regex for the historic places
-- [ ] osm
-- [ ] meet with groups
 - [ ] come up with goals/questions fo rinstitutions
-  - [ ] for libraries can try to connect it to census or https://usa.ipums.org/usa/
+
+### Completed
+- [x] emailed germuska for news outlets data
+- [x] submitted form to https://usnewsdeserts.cislm.org/request-access
+  - GOT THE DATA!
+  - [x] check unc journalism terms of service - Yes, I think it does!
+- [x] uploaded all of the library csvs from 2012-2023
+- [x] came up with potential question w/ ian for libraries: how has the landscape changed over the past years?
 - [x] fix the pull request thing
-- [x] check unc journalism terms of service - Yes, I think it does!
 - [x] email germuska about northwestern data
+- [x] made osmdata and osmextract maps -- differences... **want to talk about this at next meeting**
+- [x] explored osm
+- [x] filter/do regex for the historic places
+- [x] met with groups - sort of (chatted)
+
 
 ### Personal notes
-- state libraries agencies survey versus public libraries survye
+- state libraries agencies survey versus public libraries survey?
   - https://www.imls.gov/research-evaluation/surveys/public-libraries-survey-pls
   - 2019 and earlier there is a third file, a state csv... i did not upload this but maybe look into it?
 - .ds_store mac issue killing me brah
@@ -21,25 +130,45 @@ Categories: Libraries, Historic Districts, News Outlets, Murals
   - need to add this somehow...
   - contacted rimona about this
 - https://www.census.gov/programs-surveys/geography/guidance/geo-areas/urban-rural.html
+- for libraries can try to connect it to census or https://usa.ipums.org/usa/
 
-journalism
+_journalism_
 - for UNC: need to _acknowledge the UNC Hussman School of Journalism and Media in any works using this dataset._
 - I think it does fulfill the requriements https://creativecommons.org/licenses/by-nc-sa/3.0/
 - years: 2004, 2014, 2016, 2018, 2020 https://usnewsdeserts.cislm.org/
+
+_osm_
+osmdata vs osmextract via claude
+- osmdata
+  - Queries the live Overpass API on demand
+  - Good for specific features in a specific area (e.g. all murals in Minnesota)
+  - Returns results immediately, no local files
+  - Struggles with large areas — times out easily
+  - Data is always up to date
+- osmextract
+  - Downloads pre-built extracts from Geofabrik or other providers
+  - Good for bulk data over large areas (whole countries, states)
+  - Downloads a large .pbf file locally first, then reads from it
+  - Much faster and more reliable for big queries
+  - Data is slightly out of date (extracts update daily/weekly)
+- osmdata:
+  - lots of stuff is NA...even for many the artwork_type (which should be mural??? but is 56% NA???)
+    - <img width="1292" height="736" alt="image" src="https://github.com/user-attachments/assets/9a5434e6-7487-4c0e-8a03-e5f25252b331" />
+    - <img width="854" height="490" alt="image" src="https://github.com/user-attachments/assets/5d0bee2a-0029-450c-8cd8-0b26b5beda3e" />
+    - but it IS making the map (though I'm not sure how to check that it's correct)
+- osmextract:
+  - much faster than osmdata but didn't plot as many points???
+  - but also far far fewer NAs...
+  - I tried pulling not just the points layer but also the lines and polygons layer, as well as doing a different sql query, and none of that really worked -- the most I could get was 600 with the extra lines and polygons layers
+  - <img width="523" height="324" alt="image" src="https://github.com/user-attachments/assets/e6e7ceb1-bf0b-4d9a-8aef-0ad74a433ebe" />
+
+
 
 ### Meeting notes
 - delete pull stuff
 - ipsum usa - https://usa.ipums.org/usa/
 - can ask her for a more powerful computer
 - urban/rural census info
-
-### Completed
-- [x] emailed germuska for news outlets data
-- [x] submitted form to https://usnewsdeserts.cislm.org/request-access
-  - GOT THE DATA!
-  - need to double check their terms of service
-- [x] uploaded all of the library csvs from 2012-2023
-- [x] came up with potential question w/ ian for libraries: how has the landscape changed over the past years? 
 
 ## June 11
 ### Todo

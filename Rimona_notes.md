@@ -118,7 +118,7 @@ Active Fuel Refineries: https://www.irs.gov/businesses/small-businesses-self-emp
 
 ## 6/12
 To do:
-- [ ] Email Andrew G. Reiter for permission to use LACs dataset
+- [X] Email Andrew G. Reiter for permission to use LACs dataset
 - [ ] Start cleaning data
 
 ### Automotive Assembly Plants
@@ -132,3 +132,28 @@ EV Manufacturing Facilities and Investment Overview: https://evjobs.bgafoundatio
   - Seems that data available to be downloaded does not have restricted use
 
 Could be interesting to compare EV Locations with the rest of automotive facilities, or just look at locations of EV manufacturers
+
+### Meeting with Ian and Zoe
+Topics of Discussion 
+- Ideas on how to pair satellite data with work of other groups
+- Methods for joining long and lat coordinates with addresses in datasets
+- Splitting up work: I will focus on automotive manufacturers (wikipedia, EV, and oil refineries datasets)
+
+## 6/15
+- Update: Professor Reiter responded, his datasets are publicly available and asks to just cite when using them (citation details should be at the top in the excels).
+
+### Plan: 
+Finish collecting datasets:
+
+### Theatres
+- begin scraping websites (League of Resident Theatres, wikipedia)
+- start filtering NRHP csv for theatres, opera houses, performing arts centers
+- find a source to join/use to access long and lat info for each location
+
+### Colleges
+- scrape HBCU data from website
+- join LACs csv with dataset of long and lat for all schools
+- also find data from census(?) to possibly look into demographics 
+
+### Why interested?
+- colleges contribute largely to the communities near them, supporting and offering cultural resources while also perserving the history of the community (NF as example compared to other rural MN towns nearby).

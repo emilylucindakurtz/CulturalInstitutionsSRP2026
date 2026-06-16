@@ -1,0 +1,87 @@
+---
+title: "dataset_exploration"
+format: html
+editor: visual
+---
+
+```{r}
+# Load packages
+library(tidyverse)
+library(tidygeocoder)
+library(janitor)
+```
+
+## Murals !
+
+```{r}
+# DELETE THIS!!! Not using here but maybe in other place
+# Since there are too many columns to rename them manually, I will first read the lines as text, then replace the commas, and *then* parse the data frame
+# Using gsub (global substitution) to replace all instances of commas
+
+# Reading lines
+#murals_lines <- readLines("../data/Murals/streetartcities_US_2026-06.csv")
+
+# Replacing commas with underscores just in header (which is the first line)
+#murals_lines[1] <- gsub(",", "_", murals_lines[1])
+```
+
+```{r}
+# Reading the now-comma-free headers + the rest and cleaning
+murals <- read_csv("../data/Murals/streetartcities_US_2026-06.csv",
+                   na = c("", "NA", "Unknown", "Untitled")) %>% 
+  mutate(across(32:ncol(murals), as.character)) %>% #otherwise it tries to parse them as lgl
+  clean_names() #%>% # From janior package :)
+```
+
+I'm temporarily moving on from this specific part since I can't figure it out but CBL!!!
+
+```{r}
+# Cleaning/wrangling further
+murals_clean <- murals %>% 
+  select(where(function(x) !all(is.na(x)))) # could also do the ~ shorthand
+ # remove_empty("cols") # From janitor package
+```
+
+```{r}
+# Going to use stringr/regex to fix the weird formatting
+# for loop from description to last col?
+# <> stuff
+# ["x","y","z"] -- not sure if I should lengthen???
+#murals_clean <- murals_clean %>% 
+#  str_remove_all()
+
+for(i in 1:ncol(murals_clean)){
+  if(is.character(murals_clean[[i]])){
+    murals_clean[[i]] <- str_remove_all(murals_clean[[i]], "<.*?>|\\[|\\]|\"")
+  }
+}
+  
+```
+
+## Historic Districts
+
+```{r}
+# Loading historic landmarks data for historic districts!
+historic_landmarks <- read_csv("../data/historic_landmarks.csv") # .. means one folder up
+```
+
+```{r}
+# Filtering the historic landmarks dataset to make sure that only historic districts are present
+historic_districts <- historic_landmarks %>% 
+  mutate(name_lower = tolower(`Property Name`)) %>% 
+  filter(str_detect(name_lower, "historic district"))
+```
+
+Note: `category of property` variable -- district for most, but site for some... but it is all caps sometimes and not some other times ex: `Fort Union Trading Post National Historic Site Historic District (Boundary Increase)` -- marked as `site` and it's not really a historic district in the way I was thinking...
+
+```{r}
+# CLeaning the historic_districts dataset so only the columns we want are present
+# and adding location
+```
+
+## News outlets
+
+```{r}
+# Loading news outlet data
+outlets <- read_csv("../data/News Outlets/us-news-deserts-news-source-export-06-12-12-140252_SOURCE_UNC.csv")
+```
