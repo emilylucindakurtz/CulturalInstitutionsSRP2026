@@ -221,6 +221,7 @@ I went further and made a simaple map containing information on both powerplants
 
 <img width="400" height="236" alt="image" src="https://github.com/user-attachments/assets/31fc3c96-1963-487a-bf62-514ac72a80ff" />
 
+<img width="928" height="786" alt="image" src="https://github.com/user-attachments/assets/350cfe60-9892-4f1d-be52-682f02d49e2d" />
 
 
 
