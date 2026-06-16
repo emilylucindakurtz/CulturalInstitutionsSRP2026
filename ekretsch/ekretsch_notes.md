@@ -14,7 +14,6 @@
   - [x] fix description text so the tags aren't there anymore
   - [x] remove cols that are high in NAs
   - [ ] text analysis
-    - photo created? 
 
 
 ### questions
