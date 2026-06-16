@@ -5,6 +5,7 @@
 
 ### questions
 -  should I lengthen? - separate_wider_delim(x, delim = ",")
+-  the NA thing
 
 ## June 15
 ### Todo
