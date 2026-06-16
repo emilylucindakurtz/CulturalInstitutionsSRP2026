@@ -217,8 +217,9 @@ Moving onto fortune500 data, I similarly restrained the location of interest and
 
 <img width="400" height="236" alt="image" src="https://github.com/user-attachments/assets/f1d9a218-20df-4c1d-9c1c-9d70b255a085" />
 
+I went further and made a simaple map containing information on both powerplants and fortune 500 companies:
 
-
+<img width="400" height="236" alt="image" src="https://github.com/user-attachments/assets/31fc3c96-1963-487a-bf62-514ac72a80ff" />
 
 
 
