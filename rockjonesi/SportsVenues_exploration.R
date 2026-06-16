@@ -9,7 +9,7 @@ raw_text <- pdf_text("data/Sports Venues/stadiums.pdf")
 
 #each line of text in the pdf corresponds to a single venue
 #cleaning each line into individual rows in a df
-pdf_venue <- tibble(
+pdf_venue <- data.frame(
   raw_content = raw_text
 ) %>%
   separate_rows(raw_content, sep = "\r?\n") %>%
@@ -206,8 +206,7 @@ fixed_venue <- full_venue %>%
     Name == "Memorial Stadium" & round(Latitude, 2) == 35.21 ~ "12,000",
     Name == "Memorial Stadium" & round(Latitude, 2) == 29.21 ~ "10,000",
     TRUE ~ capacity 
-  )) %>%
-  filter(!(Name == "Convocation Center" & is.na(Latitude)))
+  ))
 
 
 na_fixed <- fixed_venue %>% 
