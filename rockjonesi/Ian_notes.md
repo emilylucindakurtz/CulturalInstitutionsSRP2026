@@ -1,4 +1,4 @@
-<img width="845" height="605" alt="image" src="https://github.com/user-attachments/assets/2ab8e3c2-6184-4311-b9d9-b4e33e66a062" /># Ian Rock-Jones Research Journal
+# Ian Rock-Jones Research Journal
 ## June 9
 ### Finding Institutions
 
@@ -209,7 +209,7 @@ initial steps --> restrict long/lat coordinated to only include the bounnds of t
  - powerplant data conatined plants in puerto rico, so those were the ones that were removed mainly.
 plotting a simple map of the powerplant locations after filtering:
 
-<img width="845" height="605" alt="image" src="https://github.com/user-attachments/assets/7abcf04d-2f37-486c-b2fe-610187593f79" />
+<img width="605" height="425" alt="image" src="https://github.com/user-attachments/assets/7abcf04d-2f37-486c-b2fe-610187593f79" />
 
 
  
