@@ -236,13 +236,13 @@ I continued to try and problem solve my issues with data merging for a large par
 Here is where I am at: I have two datasets I am trying to merge information from:
 
 head(venues)
-                      Name Latitude  Longitude
-1         1st Summit Arena 40.32291  -78.92283
-2     3M Arena at Mariucci 44.97805  -93.22810
-3        Abbotsford Centre 49.03072 -122.28711
-4           Acrisure Arena 33.77845 -116.33906
-5 Addition Financial Arena 28.60739  -81.19742
-6   Adirondack Bank Center 43.10490  -75.23341
+                      Name Latitude  Longitude \\
+1         1st Summit Arena 40.32291  -78.92283 \\
+2     3M Arena at Mariucci 44.97805  -93.22810 \\
+3        Abbotsford Centre 49.03072 -122.28711 \\
+4           Acrisure Arena 33.77845 -116.33906 \\
+5 Addition Financial Arena 28.60739  -81.19742 \\
+6   Adirondack Bank Center 43.10490  -75.23341 \\
 
 
 head(name_capacity)
