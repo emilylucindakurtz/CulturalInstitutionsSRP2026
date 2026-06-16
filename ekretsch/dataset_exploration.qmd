@@ -11,19 +11,7 @@ library(tidygeocoder)
 library(janitor)
 ```
 
-## Murals !
-
-```{r}
-# DELETE THIS!!! Not using here but maybe in other place
-# Since there are too many columns to rename them manually, I will first read the lines as text, then replace the commas, and *then* parse the data frame
-# Using gsub (global substitution) to replace all instances of commas
-
-# Reading lines
-#murals_lines <- readLines("../data/Murals/streetartcities_US_2026-06.csv")
-
-# Replacing commas with underscores just in header (which is the first line)
-#murals_lines[1] <- gsub(",", "_", murals_lines[1])
-```
+## Street art !
 
 ```{r}
 # Reading the now-comma-free headers + the rest and cleaning
@@ -33,30 +21,34 @@ murals <- read_csv("../data/Murals/streetartcities_US_2026-06.csv",
   clean_names() #%>% # From janior package :)
 ```
 
-I'm temporarily moving on from this specific part since I can't figure it out but CBL!!!
 
 ```{r}
 # Cleaning/wrangling further
 murals_clean <- murals %>% 
-  select(where(function(x) !all(is.na(x)))) # could also do the ~ shorthand
- # remove_empty("cols") # From janitor package
+  #select(where(function(x) !all(is.na(x)))) # could also do the ~ shorthand
+  remove_empty("cols") %>% # From janitor package
+  select(-country) %>% # It's US for all here
+  select(1:attribute_last_seen) %>% # removing the rest of the cols since most are almost 100% NA and not really helpful for me
+  mutate(description_lower = tolower(description)) # for text analysis? or do later
 ```
 
 ```{r}
-# Going to use stringr/regex to fix the weird formatting
-# for loop from description to last col?
-# <> stuff
-# ["x","y","z"] -- not sure if I should lengthen???
-#murals_clean <- murals_clean %>% 
-#  str_remove_all()
-
+# Using stringr+regex to fix the weird formatting
 for(i in 1:ncol(murals_clean)){
   if(is.character(murals_clean[[i]])){
     murals_clean[[i]] <- str_remove_all(murals_clean[[i]], "<.*?>|\\[|\\]|\"")
   }
 }
-  
 ```
+remove the photo created + date situation? unsure...
+-'photo taken' or 'curated by'
+-&nbsp; (more html tags too?)
+-project
+
+```{r}
+# Text analysis of description
+```
+
 
 ## Historic Districts
 
