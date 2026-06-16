@@ -31,6 +31,7 @@ q's
   -  <img width="949" height="854" alt="image" src="https://github.com/user-attachments/assets/8805fba5-936d-41a8-900b-043174a6c922" />
 - don't want to lose info... but unsure
   - 'photo taken XYZ' and links
+- why is it showing "NA" as common word??? it's not a word :(
  
 
 
@@ -39,6 +40,9 @@ q's
 - `murals_clean %>% select(where(function(x) all(is.na(x)))) %>% glimpse()`
 - i think switching to streetart generally, rather than murals (since it's not in the dataset)
 - htmltools tags?
+- maybe add state col?
+- powow
+- maybe you can like select a word and then see where it is most common?
 
 ## June 15
 ### Todo
