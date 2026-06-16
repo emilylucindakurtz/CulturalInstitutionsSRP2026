@@ -17,6 +17,7 @@
 
 ### questions
 -  should I lengthen? - separate_wider_delim(x, delim = ",")
+  -  ex: Figurative,Realism,Surrealism for artwork style
 -  the NA thing ????? update: ok these are not actually 100% NA cols R is tripping me out this viz is wrng??? there are things in those cols
   - so not an issue i guess but here's the pic anyways
   -  <img width="949" height="854" alt="image" src="https://github.com/user-attachments/assets/8805fba5-936d-41a8-900b-043174a6c922" />
