@@ -156,7 +156,7 @@ Finish collecting datasets:
 - also find data from census(?) to possibly look into demographics 
 
 ### Why interested?
-- colleges contribute largely to the communities near them, supporting and offering cultural resources while also perserving the history of the community (NF as example compared to other rural MN towns nearby).
+- colleges contribute largely to the communities near them, supporting and offering cultural resources while also preserving the history of the community (NF as example compared to other rural MN towns nearby).
 
 ## 6/16
 - continue with scraping, cleaning, joining datasets!
