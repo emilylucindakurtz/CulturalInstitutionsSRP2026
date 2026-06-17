@@ -13,9 +13,8 @@ library(tidytext)
 library(leaflet)
 ```
 
-
-
 ```{r}
+# Import cleaned (sort of) dataset
 historic_districts <- read_csv("../data/Historic Districts/historic_districts_clean.csv")
 
 # Mapping w/ leaflet!
@@ -24,4 +23,46 @@ prelim_map <- leaflet(data = historic_districts) %>%
    addCircleMarkers(~longitude, ~latitude, popup = ~property_name)
 prelim_map
 ```
+```{r}
+# Chloropleth map for # of acres of districts
+# acreage_of_property na.rm = TRUE --> ignore missing values
+
+# Create a color palette for the map
+my_palette <- colorNumeric(
+  palette = "viridis", domain = historic_districts$acreage_of_property,
+  na.color = "transparent"
+)
+
+# Basic choropleth with leaflet
+choro_state_acreage <- leaflet(data = historic_districts) %>% 
+  addTiles() %>% 
+  addPolygons(lng = historic_districts$longitude, 
+              lat = historic_districts$latitude, 
+              fillColor = ~ my_palette(acreage_of_property))
+
+choro_state_acreage
+```
+
+```{r}
+# Create a color palette for the map:
+mypalette <- colorNumeric(
+  palette = "viridis", domain = world_sf$POP2005,
+  na.color = "transparent"
+)
+mypalette(c(45, 43))
+
+# Basic choropleth with leaflet?
+m <- leaflet(world_sf) %>%
+  addTiles() %>%
+  setView(lat = 10, lng = 0, zoom = 2) %>%
+  addPolygons(fillColor = ~ mypalette(POP2005), stroke = FALSE)
+
+m
+
+# save the widget in a html file if needed.
+# library(htmlwidgets)
+# saveWidget(m, file=paste0( getwd(), "/HtmlWidget/choroplethLeaflet1.html"))
+
+```
+
 
