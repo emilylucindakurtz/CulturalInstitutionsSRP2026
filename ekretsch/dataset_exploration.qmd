@@ -97,6 +97,17 @@ historic_districts <- historic_districts %>%
 
 #method = census resulted in NAs
 ```
+then i did `write.csv(historic_districts, "historic_districts_clean.csv")` so we wouldn't have to re-run the above over and over again (since the geocoding with arcgis is kinda slow). so you can just run the below
+
+## Historic districts w/o the above!
+
+```{r}
+historic_districts <- read_csv("../data/historic_districts_clean.csv")
+
+# Mapping w/ sf!
+
+```
+
 
 ## News outlets
 
