@@ -309,7 +309,9 @@ For the fotune 500 companies, there is already some city/state information, but 
 
 `powerplants` is be changed to contain only information on powerplant name, company name, state, city, type of energy (solar, hydroelectric, etc.), lat, long.
 
-
+For next time:
+- [ ] get to library exploration.
+- [ ] upload new csvs to data file
 
 
 
