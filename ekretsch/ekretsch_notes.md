@@ -18,6 +18,7 @@
         3) something about school -- test scores? # of universities?
         4) diversity
         5) maybe do a chloropleth by # of sqr feet of districts by state or something
+        6) text analysis of most common names?!
 - murals
   - [ ] continue text analysis
 - news outlets!
