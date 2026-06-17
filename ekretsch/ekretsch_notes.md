@@ -6,10 +6,13 @@
 - libraries
   - [ ] respond to ian
 - historic districts
-  - [ ] map
+  - [x] map
+  - [ ] find something to investigate...
 - murals
   - [ ] continue text analysis
- 
+- news outlets!
+  - [ ] import data to R
+
 ### done
 - [x] got Northwestern News outlet data (State of Local News Report) from Srishti Bose !!
  
