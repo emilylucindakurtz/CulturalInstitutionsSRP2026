@@ -10,6 +10,9 @@
 - murals
   - [ ] continue text analysis
  
+### done
+- [x] got Northwestern News outlet data (State of Local News Report) from Srishti Bose !!
+ 
 ### notes
 - https://r-graph-gallery.com/182-add-circles-rectangles-on-leaflet-map.html
 
