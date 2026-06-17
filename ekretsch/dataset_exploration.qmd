@@ -10,6 +10,7 @@ library(tidyverse)
 library(tidygeocoder)
 library(janitor)
 library(tidytext)
+library(leaflet)
 ```
 
 ## Street art !
@@ -21,7 +22,6 @@ murals <- read_csv("../data/Murals/streetartcities_US_2026-06.csv",
   mutate(across(32:ncol(murals), as.character)) %>% #otherwise it tries to parse them as lgl
   clean_names() #%>% # From janior package :)
 ```
-
 
 ```{r}
 # Cleaning/wrangling further
@@ -41,15 +41,8 @@ for(i in 1:ncol(murals_clean)){
   }
 }
 ```
-remove the photo created + date situation? unsure...
--'photo taken' or 'curated by'
--&nbsp; (more html tags too?)
--project
--mural
--NA
--art
-- the place...
-- numbers
+
+remove the photo created + date situation? unsure... -'photo taken' or 'curated by' -  (more html tags too?) -project -mural -NA -art - the place... - numbers
 
 ```{r}
 # Text analysis of description
@@ -67,15 +60,16 @@ murals_description_words <- murals_clean %>%
   slice_max(n, n = 3)
 ```
 
-
 ## Historic Districts
 
 ```{r}
+#| eval: false
 # Loading historic landmarks data for historic districts!
-historic_landmarks <- read_csv("../data/historic_landmarks.csv") # .. means one folder up
+historic_landmarks <- read_csv("../data/Historic Districts/historic_landmarks.csv") # .. means one folder up
 ```
 
 ```{r}
+#| eval: false
 # Filtering the historic landmarks dataset to make sure that only historic districts are present
 historic_districts <- historic_landmarks %>% 
   clean_names() %>% 
@@ -88,6 +82,7 @@ historic_districts <- historic_landmarks %>%
 Note: `category of property` variable -- district for most, but site for some... but it is all caps sometimes and not some other times ex: `Fort Union Trading Post National Historic Site Historic District (Boundary Increase)` -- marked as `site` and it's not really a historic district in the way I was thinking...
 
 ```{r}
+#| eval: false
 # CLeaning the historic_districts dataset so only the columns we want are present
 
 
@@ -97,17 +92,20 @@ historic_districts <- historic_districts %>%
 
 #method = census resulted in NAs
 ```
+
 then i did `write.csv(historic_districts, "historic_districts_clean.csv")` so we wouldn't have to re-run the above over and over again (since the geocoding with arcgis is kinda slow). so you can just run the below
 
 ## Historic districts w/o the above!
 
 ```{r}
-historic_districts <- read_csv("../data/historic_districts_clean.csv")
+historic_districts <- read_csv("../data/Historic Districts/historic_districts_clean.csv")
 
-# Mapping w/ sf!
-
+# Mapping w/ leaflet!
+m = leaflet(data = historic_districts) %>%
+   addTiles() %>%
+   addCircleMarkers(~longitude, ~latitude, popup = ~property_name)
+m
 ```
-
 
 ## News outlets
 
