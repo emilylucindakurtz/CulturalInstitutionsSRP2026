@@ -1,5 +1,6 @@
 
 
+library(tidygeocoder)
 library(tidyverse)
 library(leaflet)
 
@@ -18,13 +19,11 @@ fortune500 <- fortune500 %>%
          Longitude >= -178.4 & Longitude <= -66.9)
 
 # power plants
-powerplants
 ggplot() +
   geom_point(
     data = powerplants, 
     aes(x = Plant.Longitude, y = Plant.Latitude), 
     color = "blue", 
-    size = 0.5, 
     alpha = 0.3
   ) +
   labs(x = "Longitude",
@@ -82,6 +81,36 @@ popup = ~Company,
 clusterOptions = markerClusterOptions(),
 color = "red")
   
+
+
+## fortune 500 data
+addLocation <- fortune500 %>%
+  reverse_geocode(
+    lat = Latitude, 
+    long = Longitude, 
+    method = "osm", 
+    full_results = TRUE
+  )
+
+fortune500 <- addLocation %>% select(Company, city, state, county, Latitude, Longitude)
+
+
+
+
+
+## powerplants
+powerplants <- powerplants %>% select(Electric.Power.Plant.Name, 
+                                      Operating.Utility.Name, 
+                                      Plant.City.Location, 
+                                      Plant.State.Location, 
+                                      Primary.Energy.Source,
+                                      Plant.Longitude,
+                                      Plant.Latitude)
+
+
+
+
+
 
 
 
