@@ -307,6 +307,8 @@ Moving on, I am continuing to try and finalize the powerplant and corporate data
 For the fotune 500 companies, there is already some city/state information, but it's formatting is very inconsistent across different corporations. So I am going to convert lat/long info into more consistent city/state info using tidygeocoder. `fortune500` now contains only the data of Company, city, state, count, lat, and long. Other supplemental data could look like trying to add sector type for each company (tech, commerce, banking, etc.). Based on my motivations for exploraing corporations in the first place, it would be cool if I could find some sort of information regarding employment numbers.
 
 
+`powerplants` is be changed to contain only information on powerplant name, company name, state, city, type of energy (solar, hydroelectric, etc.), lat, long.
+
 
 
 
