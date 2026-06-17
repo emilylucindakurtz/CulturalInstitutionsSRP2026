@@ -1,5 +1,7 @@
 # Emily Kretschmer's Notes
 
+- [ ] further clean datasets so that they are presentable
+
 ## June 17
 ## todo
 - [ ] check readme
