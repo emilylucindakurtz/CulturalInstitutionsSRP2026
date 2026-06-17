@@ -285,6 +285,28 @@ Check list for tomorrow
 - [ ] start library data explorations
 
 
+## June 17
+
+Was able to fix sport venue data issues. Reasons for difficulty ended up being do to rounding and class discrepencies. 
+I now have one dataset `fixed_venue` that contains locations for 1,333 different sport venues, and capacity data for around 1,200 of those venues. 
+
+The exploratory plot I made marked sports venue locations in the united states, with markers corresponding to venue capacity. However, since there were so many overlapping points, it was still difficult to see where larger venues were. To deal with this, any venue with capacity over 20,000 was marked as blue. 
+
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/0d4a476c-a7a4-45b1-9774-2190863ae222" />
+
+Larger capacity venues tend to be around areas with higher population density, which makes sense. My thoughts have now moved to what sort of impactful information could we pull from what communities surround these venues. What supplementary data would be relevant and interesting? 
+Potential things to explore adding:
+ - maybe county political affiliation
+ - regional average income
+ - some other sort of demographic relationship?
+
+
+
+
+
+
+
+
 
 
     
