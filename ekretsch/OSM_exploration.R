@@ -17,6 +17,8 @@ murals <- opq(bbox = c(-125, 24, -66, 50), timeout = 120) %>%
   osmdata_sf() %>% 
   (function(x) bind_rows(x$osm_points, x$osm_polygons))()
 
+write.csv(murals, "murals.csv")
+
 ggplot(murals) +
   geom_sf(size = 0.5, alpha = 0.6, color = "steelblue") +
   coord_sf(xlim = c(-125, -66), ylim = c(24, 50)) +  # ensure it just maps continental US since I was having issues earlier

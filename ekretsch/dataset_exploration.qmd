@@ -9,21 +9,11 @@ editor: visual
 library(tidyverse)
 library(tidygeocoder)
 library(janitor)
+library(tidytext)
+library(leaflet)
 ```
 
-## Murals !
-
-```{r}
-# DELETE THIS!!! Not using here but maybe in other place
-# Since there are too many columns to rename them manually, I will first read the lines as text, then replace the commas, and *then* parse the data frame
-# Using gsub (global substitution) to replace all instances of commas
-
-# Reading lines
-#murals_lines <- readLines("../data/Murals/streetartcities_US_2026-06.csv")
-
-# Replacing commas with underscores just in header (which is the first line)
-#murals_lines[1] <- gsub(",", "_", murals_lines[1])
-```
+## Street art !
 
 ```{r}
 # Reading the now-comma-free headers + the rest and cleaning
@@ -33,50 +23,88 @@ murals <- read_csv("../data/Murals/streetartcities_US_2026-06.csv",
   clean_names() #%>% # From janior package :)
 ```
 
-I'm temporarily moving on from this specific part since I can't figure it out but CBL!!!
-
 ```{r}
 # Cleaning/wrangling further
 murals_clean <- murals %>% 
-  select(where(function(x) !all(is.na(x)))) # could also do the ~ shorthand
- # remove_empty("cols") # From janitor package
+  #select(where(function(x) !all(is.na(x)))) # could also do the ~ shorthand
+  remove_empty("cols") %>% # From janitor package
+  select(-country) %>% # It's US for all here
+  select(1:attribute_last_seen) %>% # removing the rest of the cols since most are almost 100% NA and not really helpful for me
+  mutate(description_lower = tolower(description)) # for text analysis? or do later
 ```
 
 ```{r}
-# Going to use stringr/regex to fix the weird formatting
-# for loop from description to last col?
-# <> stuff
-# ["x","y","z"] -- not sure if I should lengthen???
-#murals_clean <- murals_clean %>% 
-#  str_remove_all()
-
+# Using stringr+regex to fix the weird formatting
 for(i in 1:ncol(murals_clean)){
   if(is.character(murals_clean[[i]])){
     murals_clean[[i]] <- str_remove_all(murals_clean[[i]], "<.*?>|\\[|\\]|\"")
   }
 }
-  
+```
+
+remove the photo created + date situation? unsure... -'photo taken' or 'curated by' -  (more html tags too?) -project -mural -NA -art - the place... - numbers
+
+```{r}
+# Text analysis of description
+remove_words <- tibble(
+  word = c(NA, "nbsp", "project", "mural", "murals", "painted", "paint", "painting", "street", "NA", "art", "https", "artist", "artists", "san", "www.instagram.com", "instagram", "created", "located", "curated")
+)
+
+murals_description_words <- murals_clean %>% 
+  mutate(description_lower = str_remove_all(description_lower, "\\d+")) %>% # removing nums (like years, etc)
+  unnest_tokens(output = word, input = description_lower) %>% 
+  anti_join(get_stopwords(source = "stopwords-iso"), by="word") %>% #could change the source...
+  anti_join(remove_words, by = "word") %>% 
+  group_by(city_id) %>% 
+  count(word) %>% 
+  slice_max(n, n = 3)
 ```
 
 ## Historic Districts
 
 ```{r}
+#| eval: false
 # Loading historic landmarks data for historic districts!
-historic_landmarks <- read_csv("../data/historic_landmarks.csv") # .. means one folder up
+historic_landmarks <- read_csv("../data/Historic Districts/historic_landmarks.csv") # .. means one folder up
 ```
 
 ```{r}
+#| eval: false
 # Filtering the historic landmarks dataset to make sure that only historic districts are present
 historic_districts <- historic_landmarks %>% 
-  mutate(name_lower = tolower(`Property Name`)) %>% 
-  filter(str_detect(name_lower, "historic district"))
+  clean_names() %>% 
+  mutate(district_name_lower = tolower(property_name)) %>% 
+  filter(str_detect(district_name_lower, "historic district")) %>% 
+  mutate(district_name_lower = str_remove(district_name_lower, " historic district")) %>% 
+  mutate(address = paste(property_name, county, state, sep=" "))
 ```
 
 Note: `category of property` variable -- district for most, but site for some... but it is all caps sometimes and not some other times ex: `Fort Union Trading Post National Historic Site Historic District (Boundary Increase)` -- marked as `site` and it's not really a historic district in the way I was thinking...
 
 ```{r}
+#| eval: false
 # CLeaning the historic_districts dataset so only the columns we want are present
+
+
 # and adding location
+historic_districts <- historic_districts %>%
+  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+
+#method = census resulted in NAs
+```
+
+then i did `write.csv(historic_districts, "historic_districts_clean.csv")` so we wouldn't have to re-run the above over and over again (since the geocoding with arcgis is kinda slow). so you can just run the below
+
+## Historic districts w/o the above!
+
+```{r}
+historic_districts <- read_csv("../data/Historic Districts/historic_districts_clean.csv")
+
+# Mapping w/ leaflet!
+m = leaflet(data = historic_districts) %>%
+   addTiles() %>%
+   addCircleMarkers(~longitude, ~latitude, popup = ~property_name)
+m
 ```
 
 ## News outlets

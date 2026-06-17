@@ -1,29 +1,81 @@
 # Emily Kretschmer's Notes
 
+- [ ] further clean datasets so that they are presentable
+
+## June 17
+## todo
+- [ ] check readme
+- libraries
+  - [ ] respond to ian
+  - [ ] make a qmd
+- historic districts
+  - [x] map
+  - [x] message rimona about geocoder thing
+  - [ ] maybe lengthen area_of_significance
+    - [ ] this would be an interesting thing to investigate
+  - [x] convert all cols to titlecase - `str_to_title()`
+  - [ ] find something to investigate...
+    - ideas:
+      - 1) urban density of county?
+        2) median age (bc historical...)
+        3) something about school -- test scores? # of universities?
+        4) diversity
+        5) maybe do a chloropleth by # of sqr feet of districts by state or something
+        6) text analysis of most common names?!
+- murals
+  - [ ] continue text analysis
+- news outlets!
+  - [x] got Northwestern News outlet data (State of Local News Report) from Srishti Bose !!
+  - [ ] import data to R
+    - [ ] figure out how to import .xlsx
+
+### notes
+- https://r-graph-gallery.com/182-add-circles-rectangles-on-leaflet-map.html
+- `#| eval: false` to reduce the slowness since csv is now saved
+- not really sure what to do with text analysis for murals... feeling kind of stuck. wordcloud? eh
+- `mutate(across(where(is.character), function))`
+
+
 ## June 16
-- [ ] check back in w/ Emily about osmdata package -- wait won't need this for murals but yes for newspapers potentially?
-- [ ] merge to add long and lat data for historic districts
+- [x] check back in w/ Emily about osmdata package -- wait won't need this for murals but yes for newspapers potentially?
+- [x] merge to add long and lat data for historic districts
   - [ ] message rimona abt this
 - [ ] map journalism data
-- [ ] import mural data
-- [ ] check readme
-- [ ] message rimona about geocoder thing?
-- [ ] murals:
+- [x] import mural data
+- murals:
   - [x] run `problems(murals)`
   - [x] remove cols where it is 100% NA **having issues? (below in qs)**
   - [x] fix description text so the tags aren't there anymore
-  - [ ] 
+  - [x] remove cols that are high in NAs
+  - [x] text analysis
 
 
 ### questions
+a's from chatting w/ emily:
+- yes, lengthen str_split or smth -- use ai chat and make binary for each col
+- but the NA thing is prob rounding TBH so just remove those cols as well
+- it's ok to take out info not usefull as long as you keep the raw dataset
+
+q's
 -  should I lengthen? - separate_wider_delim(x, delim = ",")
   -  ex: Figurative,Realism,Surrealism for artwork style
 -  the NA thing ????? update: ok these are not actually 100% NA cols R is tripping me out this viz is wrng??? there are things in those cols
   - so not an issue i guess but here's the pic anyways
   -  <img width="949" height="854" alt="image" src="https://github.com/user-attachments/assets/8805fba5-936d-41a8-900b-043174a6c922" />
-
+- don't want to lose info... but unsure
+  - 'photo taken XYZ' and links
+- why is it showing "NA" as common word??? it's not a word :(
+ 
 ### notes
 - murals_clean[[i]] vs murals_clean[,i]
+- `murals_clean %>% select(where(function(x) all(is.na(x)))) %>% glimpse()`
+- i think switching to streetart generally, rather than murals (since it's not in the dataset)
+- htmltools tags?
+- maybe add state col?
+- powow
+- maybe you can like select a word and then see where it is most common?
+  - maybe also on teh flipside u could select a place
+- "woman" seems to be pretty common lol
 
 ## June 15
 ### Todo

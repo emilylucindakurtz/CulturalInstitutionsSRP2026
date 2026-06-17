@@ -197,8 +197,114 @@ Today, I largely worked on processing and cleaning up the Sports Venues data. Th
 These challenges slowed my progress more than I hoped, and I did not get all that I wanted done today. Tomorrow, I am hoping to start visualizing some of this venue data as well as the industrial data. In the future, I will also start to clean and visulize the across-time library datasets.
 
 
+## June 16
+
+Thinking and contextualizing my data processing steps and choices:
+
+I gave a little info based on my work on the 15th, but here I will go into more depth.
+
+#### Foremost, industrial institutions:
+
+initial steps --> restrict long/lat coordinated to only include the bounnds of the 50 states. 
+ - powerplant data conatined plants in puerto rico, so those were the ones that were removed mainly.
+plotting a simple map of the powerplant locations after filtering:
+
+<img width="605" height="425" alt="image" src="https://github.com/user-attachments/assets/7abcf04d-2f37-486c-b2fe-610187593f79" />
+
+There appear to be larger concetrations of powerplants along the east/west coasts, as well as a large cluster in the MN area.
+
+Moving onto fortune500 data, I similarly restrained the location of interest and plotted a simple map:
+
+<img width="400" height="236" alt="image" src="https://github.com/user-attachments/assets/f1d9a218-20df-4c1d-9c1c-9d70b255a085" />
+
+I went further and made a simaple map containing information on both powerplants and fortune 500 companies:
+
+<img width="400" height="236" alt="image" src="https://github.com/user-attachments/assets/31fc3c96-1963-487a-bf62-514ac72a80ff" />
 
 
+I then used leaflet to create an interactive plot with both powerplants and fortune 500 companies in the USA. Marked locations are clustered to 
+allow the map to render more smoothly. Red circles represent fortune 500 companies, while blue dots represent powerplants. A viewer can click on blue dots to see what the powerplant's primary energy source is, or click on a red dot to see what company it is representing.
+
+<img width="1122" height="783" alt="image" src="https://github.com/user-attachments/assets/e29b0b3a-92d7-4dc9-93c8-393c09f6a55e" />
+
+Above is just a screenshot of the western washington area.
+
+
+#### sports venues
+
+I continued to try and problem solve my issues with data merging for a large part of the day, but am still unsuccessful.
+Here is where I am at: I have two datasets I am trying to merge information from:
+
+head(venues)
+                      Name Latitude  Longitude 
+1         1st Summit Arena 40.32291  -78.92283 
+2     3M Arena at Mariucci 44.97805  -93.22810 
+3        Abbotsford Centre 49.03072 -122.28711 
+4           Acrisure Arena 33.77845 -116.33906 
+5 Addition Financial Arena 28.60739  -81.19742 
+6   Adirondack Bank Center 43.10490  -75.23341 
+
+
+head(name_capacity)
+  Name                 capacity
+  <chr>                <chr>   
+1 Abbotsford Centre    7,073   
+2 Ripken Stadium       5,800   
+3 Wachs Arena          8,000   
+4 Wildcat Stadium      12,000  
+5 Crutcher Scott Field 4,000   
+6 Moody Coliseum       3,600
+
+
+name_capacity was extracted via text analysis from the pdf "stadiums.pdf" located in the
+Sports Venues data folder. 
+
+I have been trying to collapse naming inconsistencies, as well as manually assigning locations to the select duplicate stadiums.
+However I am still ending up with my data like
+
+<img width="358" height="141" alt="image" src="https://github.com/user-attachments/assets/0c709ba1-3bac-4a6e-a3ba-bb3b75a24ac4" />
+
+
+even after attempting case_when manual fixes:
+
+fixed_venue <- full_venue %>%
+  mutate(capacity = case_when(
+    Name == "Convocation Center" & round(Latitude, 2) == 33.57 ~ "3,600",
+    Name == "Convocation Center" & round(Latitude, 2) == 39.32 ~ "13,080",
+    Name == "Convocation Center" & round(Latitude, 2) == 29.58 ~ "4,080",
+    Name == "Convocation Center" & round(Latitude, 2) == 37.02 ~ "7,200",
+    ....
+
+This still doesn't change the data at all. I tried various different fixed but am still unsuccessful. Am planning on checking in with Emily tomorrow.
+
+Also checked in with other Emily about library data visions and ideas about processing and EDA.
+
+Check list for tomorrow
+- [ ] continue fixing the sports venue data
+- [ ] create visual map with indicators of capacity for each venue
+- [ ] start library data explorations
+
+
+## June 17
+
+Was able to fix sport venue data issues. Reasons for difficulty ended up being do to rounding and class discrepencies. 
+I now have one dataset `fixed_venue` that contains locations for 1,333 different sport venues, and capacity data for around 1,200 of those venues. 
+
+The exploratory plot I made marked sports venue locations in the united states, with markers corresponding to venue capacity. However, since there were so many overlapping points, it was still difficult to see where larger venues were. To deal with this, any venue with capacity over 20,000 was marked as blue. 
+
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/0d4a476c-a7a4-45b1-9774-2190863ae222" />
+
+Larger capacity venues tend to be around areas with higher population density, which makes sense. My thoughts have now moved to what sort of impactful information could we pull from what communities surround these venues. What supplementary data would be relevant and interesting? 
+Potential things to explore adding:
+ - maybe county political affiliation
+ - regional average income
+ - some other sort of demographic relationship?
+
+
+Moving on, I am continuing to try and finalize the powerplant and corporate datasets, by only including relevant columns. Also having some of the same thoughts about what might be helpful supplemental data so that people can actually learn about data trends.
+(maybe what stats have the highest counts of certain types of powerplants.)
+
+For the fotune 500 companies, there is already some city/state information, but it's formatting is very inconsistent across different corporations. So I am going to convert lat/long info into more consistent city/state info using tidygeocoder. 
 
 
 
