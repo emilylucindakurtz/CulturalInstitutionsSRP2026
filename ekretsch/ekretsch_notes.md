@@ -5,19 +5,23 @@
 - [ ] check readme
 - libraries
   - [ ] respond to ian
+  - [ ] make a qmd
 - historic districts
   - [x] map
-  - [ ] message rimona about geocoder thing
+  - [x] message rimona about geocoder thing
   - [ ] find something to investigate...
+    - [ ] idea: urban density of county?
 - murals
   - [ ] continue text analysis
 - news outlets!
   - [x] got Northwestern News outlet data (State of Local News Report) from Srishti Bose !!
   - [ ] import data to R
+    - [ ] figure out how to import .xlsx
 
 ### notes
 - https://r-graph-gallery.com/182-add-circles-rectangles-on-leaflet-map.html
 - not really sure what to do with text analysis for murals... feeling kind of stuck. wordcloud? eh
+
 
 ## June 16
 - [x] check back in w/ Emily about osmdata package -- wait won't need this for murals but yes for newspapers potentially?
