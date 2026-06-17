@@ -285,6 +285,37 @@ Check list for tomorrow
 - [ ] start library data explorations
 
 
+## June 17
+
+Was able to fix sport venue data issues. Reasons for difficulty ended up being do to rounding and class discrepencies. 
+I now have one dataset `fixed_venue` that contains locations for 1,333 different sport venues, and capacity data for around 1,200 of those venues. 
+
+The exploratory plot I made marked sports venue locations in the united states, with markers corresponding to venue capacity. However, since there were so many overlapping points, it was still difficult to see where larger venues were. To deal with this, any venue with capacity over 20,000 was marked as blue. 
+
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/0d4a476c-a7a4-45b1-9774-2190863ae222" />
+
+Larger capacity venues tend to be around areas with higher population density, which makes sense. My thoughts have now moved to what sort of impactful information could we pull from what communities surround these venues. What supplementary data would be relevant and interesting? 
+Potential things to explore adding:
+ - maybe county political affiliation
+ - regional average income
+ - some other sort of demographic relationship?
+
+
+Moving on, I am continuing to try and finalize the powerplant and corporate datasets, by only including relevant columns. Also having some of the same thoughts about what might be helpful supplemental data so that people can actually learn about data trends.
+(maybe what stats have the highest counts of certain types of powerplants.)
+
+For the fotune 500 companies, there is already some city/state information, but it's formatting is very inconsistent across different corporations. So I am going to convert lat/long info into more consistent city/state info using tidygeocoder. `fortune500` now contains only the data of Company, city, state, count, lat, and long. Other supplemental data could look like trying to add sector type for each company (tech, commerce, banking, etc.). Based on my motivations for exploraing corporations in the first place, it would be cool if I could find some sort of information regarding employment numbers.
+
+
+`powerplants` is being changed to contain only information on powerplant name, company name, state, city, type of energy (solar, hydroelectric, etc.), lat, long.
+
+For next time:
+- [ ] get to library exploration.
+- [ ] upload new csvs to data file
+
+
+
+
 
 
     

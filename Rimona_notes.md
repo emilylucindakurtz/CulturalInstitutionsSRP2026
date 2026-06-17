@@ -1,7 +1,7 @@
 # Rimona Zhang's Notes
 ## 6/9/2026
 
-Searching for cultural institutions, i.e. locations that reflect something about a community's histoy, culture, or values,
+Searching for cultural institutions, i.e. locations that reflect something about a community's history, culture, or values,
 
 Potential Areas of Focus:
 - Monuments
@@ -156,4 +156,15 @@ Finish collecting datasets:
 - also find data from census(?) to possibly look into demographics 
 
 ### Why interested?
-- colleges contribute largely to the communities near them, supporting and offering cultural resources while also perserving the history of the community (NF as example compared to other rural MN towns nearby).
+- colleges contribute largely to the communities near them, supporting and offering cultural resources while also preserving the history of the community (NF as example compared to other rural MN towns nearby).
+
+## 6/16
+- continue with scraping, cleaning, joining datasets!
+
+Plans for EDA:
+- Data summary tables
+- Basic charts
+
+## 6/17
+- account for long/lat coordinates for locations across datasets
+- citation for Reiter dataset: Andrew G. Reiter, “U.S. News & World Report Historical Liberal Arts College and University Rankings,” available at: http://andyreiter.com/datasets/
