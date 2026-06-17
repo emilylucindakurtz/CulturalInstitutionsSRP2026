@@ -7,25 +7,24 @@
   - [ ] respond to ian
 - historic districts
   - [x] map
+  - [ ] message rimona about geocoder thing
   - [ ] find something to investigate...
 - murals
   - [ ] continue text analysis
 - news outlets!
+  - [x] got Northwestern News outlet data (State of Local News Report) from Srishti Bose !!
   - [ ] import data to R
 
-### done
-- [x] got Northwestern News outlet data (State of Local News Report) from Srishti Bose !!
- 
 ### notes
 - https://r-graph-gallery.com/182-add-circles-rectangles-on-leaflet-map.html
+- not really sure what to do with text analysis for murals... feeling kind of stuck. wordcloud? eh
 
 ## June 16
-- [ ] check back in w/ Emily about osmdata package -- wait won't need this for murals but yes for newspapers potentially?
-- [ ] merge to add long and lat data for historic districts
+- [x] check back in w/ Emily about osmdata package -- wait won't need this for murals but yes for newspapers potentially?
+- [x] merge to add long and lat data for historic districts
   - [ ] message rimona abt this
 - [ ] map journalism data
 - [x] import mural data
-- [ ] message rimona about geocoder thing?
 - murals:
   - [x] run `problems(murals)`
   - [x] remove cols where it is 100% NA **having issues? (below in qs)**
