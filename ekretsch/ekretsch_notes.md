@@ -12,7 +12,12 @@
   - [x] map
   - [x] message rimona about geocoder thing
   - [ ] find something to investigate...
-    - [ ] idea: urban density of county?
+    - ideas:
+      - 1) urban density of county?
+        2) median age (bc historical...)
+        3) something about school -- test scores? # of universities?
+        4) diversity
+        5) maybe do a chloropleth by # of sqr feet of districts by state or something
 - murals
   - [ ] continue text analysis
 - news outlets!
