@@ -1,19 +1,27 @@
 # Emily Kretschmer's Notes
 
+## June 17
+- [ ] check readme
+- libraries
+  - [ ] respond to ian
+- historic districts
+  - [ ] map
+- murals
+  - [ ] continue text analysis
+
 ## June 16
 - [ ] check back in w/ Emily about osmdata package -- wait won't need this for murals but yes for newspapers potentially?
 - [ ] merge to add long and lat data for historic districts
   - [ ] message rimona abt this
 - [ ] map journalism data
 - [x] import mural data
-- [ ] check readme
 - [ ] message rimona about geocoder thing?
-- [ ] murals:
+- murals:
   - [x] run `problems(murals)`
   - [x] remove cols where it is 100% NA **having issues? (below in qs)**
   - [x] fix description text so the tags aren't there anymore
   - [x] remove cols that are high in NAs
-  - [ ] text analysis
+  - [x] text analysis
 
 
 ### questions
