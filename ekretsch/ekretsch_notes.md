@@ -11,6 +11,9 @@
 - historic districts
   - [x] map
   - [x] message rimona about geocoder thing
+  - [ ] maybe lengthen area_of_significance
+    - [ ] this would be an interesting thing to investigate
+  - [x] convert all cols to titlecase - `str_to_title()`
   - [ ] find something to investigate...
     - ideas:
       - 1) urban density of county?
@@ -30,6 +33,7 @@
 - https://r-graph-gallery.com/182-add-circles-rectangles-on-leaflet-map.html
 - `#| eval: false` to reduce the slowness since csv is now saved
 - not really sure what to do with text analysis for murals... feeling kind of stuck. wordcloud? eh
+- `mutate(across(where(is.character), function))`
 
 
 ## June 16
