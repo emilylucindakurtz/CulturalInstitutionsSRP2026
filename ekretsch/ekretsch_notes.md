@@ -1,6 +1,7 @@
 # Emily Kretschmer's Notes
 
 ## June 17
+## todo
 - [ ] check readme
 - libraries
   - [ ] respond to ian
@@ -8,6 +9,9 @@
   - [ ] map
 - murals
   - [ ] continue text analysis
+ 
+### notes
+- https://r-graph-gallery.com/182-add-circles-rectangles-on-leaflet-map.html
 
 ## June 16
 - [ ] check back in w/ Emily about osmdata package -- wait won't need this for murals but yes for newspapers potentially?
