@@ -1,0 +1,10 @@
+---
+title: "HBCUs_web_scraping"
+format: html
+---
+
+```{r}
+library(robotstxt)
+paths_allowed("https://sites.ed.gov/whhbcu/one-hundred-and-five-historically-black-colleges-and-universities/")
+```
+
