@@ -1,8 +1,12 @@
 library(tidyverse)
 library(rvest)
 library(tidyr)
+library(tidygeocoder)
 
-links <- read_csv("data/whichmuseum_us_links.csv")
+listings <- read_csv("data/whichmuseum_us_listings_raw.csv")
+
+unique_links <- listings %>%
+  distinct(museum_url, .keep_all = TRUE)
 
 scrape_museum_details <- function(url) {
   page <- read_html(url)
@@ -24,7 +28,7 @@ scrape_museum_details <- function(url) {
   city_zip <- NA_character_
   state <- NA_character_
   
-  if (!is.na(country_index) && country_index >= 5) {
+  if (length(country_index) > 0 && !is.na(country_index) && country_index > 4) {
     address <- lines[country_index - 4]
     city_zip <- lines[country_index - 3]
     state <- lines[country_index - 1]
@@ -56,28 +60,66 @@ scrape_museum_details <- function(url) {
     street_address = city,
     state = state,
     country = "United States",
-    full_address = str_squish(paste(city, state, zip, "United States", sep = ", ")),
+    full_address = str_squish(paste(city, state, "United States", sep = ", ")),
     website_link = website_link
   )
 }
+safe_scrape_museum_details <- safely(scrape_museum_details)
 
-museum_details_test <- links %>%
+details_nested <- unique_links %>%
   mutate(
-    data = map(museum_url, function(x) {
+    result = map(museum_url, function(x) {
       message("scraping: ", x)
-      Sys.sleep(1)
-      scrape_museum_details(x)
-    })
-  ) %>%
+      Sys.sleep(0.5)
+      safe_scrape_museum_details(x)
+    }),
+    data = map(result, "result"),
+    error = map(result, "error")
+  )
+
+failed_museums <- details_nested %>%
+  filter(!map_lgl(error, is.null)) %>%
+  select(museum_url, error)
+
+museum_details_unique <- details_nested %>%
+  filter(map_lgl(error, is.null)) %>%
   select(data) %>%
   unnest(data)
+
+museum_details_unique_geo <- museum_details_unique %>%
+  filter(!is.na(full_address), full_address != "") %>%
+  geocode(
+    address = full_address,
+    method = "osm",
+    lat = latitude,
+    long = longitude
+  )
+
+museum_details_12000_geo <- listings %>%
+  left_join(
+    museum_details_unique_geo,
+    by = "museum_url"
+  )
 
 dir.create("data", showWarnings = FALSE)
 
 write_csv(
-  museum_details_test,
-  "data/whichmuseum_details_test.csv"
+  museum_details_unique_geo,
+  "data/whichmuseum_details_unique_geo.csv"
 )
 
-View(museum_details_test)
+write_csv(
+  museum_details_12000_geo,
+  "data/whichmuseum_details_12000_geo.csv"
+)
 
+write_csv(
+  failed_museums,
+  "data/whichmuseum_failed_museums.csv"
+)
+
+message("unique details with coordinates saved: ", nrow(museum_details_unique_geo))
+message("12000 listings with coordinates saved: ", nrow(museum_details_12000_geo))
+message("failed museums: ", nrow(failed_museums))
+
+View(museum_details_12000_geo)
