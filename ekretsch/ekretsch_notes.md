@@ -1,23 +1,36 @@
 # Emily Kretschmer's Notes
 
+- [ ] further clean datasets so that they are presentable
+
 ## June 17
 ## todo
 - [ ] check readme
 - libraries
   - [ ] respond to ian
+  - [ ] make a qmd
 - historic districts
   - [x] map
-  - [ ] message rimona about geocoder thing
+  - [x] message rimona about geocoder thing
   - [ ] find something to investigate...
+    - ideas:
+      - 1) urban density of county?
+        2) median age (bc historical...)
+        3) something about school -- test scores? # of universities?
+        4) diversity
+        5) maybe do a chloropleth by # of sqr feet of districts by state or something
+        6) text analysis of most common names?!
 - murals
   - [ ] continue text analysis
 - news outlets!
   - [x] got Northwestern News outlet data (State of Local News Report) from Srishti Bose !!
   - [ ] import data to R
+    - [ ] figure out how to import .xlsx
 
 ### notes
 - https://r-graph-gallery.com/182-add-circles-rectangles-on-leaflet-map.html
+- `#| eval: false` to reduce the slowness since csv is now saved
 - not really sure what to do with text analysis for murals... feeling kind of stuck. wordcloud? eh
+
 
 ## June 16
 - [x] check back in w/ Emily about osmdata package -- wait won't need this for murals but yes for newspapers potentially?
