@@ -22,6 +22,7 @@
 
 ### notes
 - https://r-graph-gallery.com/182-add-circles-rectangles-on-leaflet-map.html
+- `#| eval: false` to reduce the slowness since csv is now saved
 - not really sure what to do with text analysis for murals... feeling kind of stuck. wordcloud? eh
 
 
