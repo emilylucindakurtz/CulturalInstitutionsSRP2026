@@ -79,9 +79,10 @@ historic_landmarks <- read_csv("../data/historic_landmarks.csv") # .. means one 
 # Filtering the historic landmarks dataset to make sure that only historic districts are present
 historic_districts <- historic_landmarks %>% 
   clean_names() %>% 
-  mutate(property_name_lower = tolower(property_name)) %>% 
-  filter(str_detect(name_lower, "historic district")) #%>% 
-  #mutate(address = paste(property_name, ))
+  mutate(district_name_lower = tolower(property_name)) %>% 
+  filter(str_detect(district_name_lower, "historic district")) %>% 
+  mutate(district_name_lower = str_remove(district_name_lower, " historic district")) %>% 
+  mutate(address = paste(property_name, county, state, sep=" "))
 ```
 
 Note: `category of property` variable -- district for most, but site for some... but it is all caps sometimes and not some other times ex: `Fort Union Trading Post National Historic Site Historic District (Boundary Increase)` -- marked as `site` and it's not really a historic district in the way I was thinking...
@@ -91,8 +92,8 @@ Note: `category of property` variable -- district for most, but site for some...
 
 
 # and adding location
-lat_longs <- historic_districts %>%
-  geocode(property_name, method = 'arcgis', lat = latitude , long = longitude)
+historic_districts <- historic_districts %>%
+  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
 
 #method = census resulted in NAs
 ```
