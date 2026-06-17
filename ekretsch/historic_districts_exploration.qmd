@@ -1,0 +1,27 @@
+---
+title: "historic_districts_exploration"
+format: html
+editor: visual
+---
+
+```{r}
+# Load packages
+library(tidyverse)
+library(tidygeocoder)
+library(janitor)
+library(tidytext)
+library(leaflet)
+```
+
+
+
+```{r}
+historic_districts <- read_csv("../data/Historic Districts/historic_districts_clean.csv")
+
+# Mapping w/ leaflet!
+prelim_map <- leaflet(data = historic_districts) %>%
+   addTiles() %>%
+   addCircleMarkers(~longitude, ~latitude, popup = ~property_name)
+prelim_map
+```
+
