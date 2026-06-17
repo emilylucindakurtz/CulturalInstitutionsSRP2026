@@ -157,3 +157,13 @@ Finish collecting datasets:
 
 ### Why interested?
 - colleges contribute largely to the communities near them, supporting and offering cultural resources while also preserving the history of the community (NF as example compared to other rural MN towns nearby).
+
+## 6/16
+- continue with scraping, cleaning, joining datasets!
+
+Plans for EDA:
+- Data summary tables
+- Basic charts
+
+## 6/17
+- account for long/lat coordinates for locations across datasets
