@@ -314,6 +314,12 @@ For next time:
 - [ ] upload new csvs to data file
 
 
+## June 18
+
+ Emily and I talked a bit about library research proceedings and what might actually be interesting. We discussed how we have the opportunity to really zoom in on the changes over time since we are examining data from a 10 year period. To do this, we could instead map libraries that are new, but also which libraries have closed.
+
+
+
 
 
 
