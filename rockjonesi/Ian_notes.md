@@ -349,10 +349,7 @@ Actually re-uploaded the cleaned up datasets I have been working on into their r
 
 
 
-
-
-
-
+I have started trying to work on the library data throughout the years. I am already running into issues, because although each years dataset contains the same cols there are class difference across different years. Binding rows will be impossible for these reasons until I fix all of the class differences. The class differences are true for multiple different variables, but it is also inconsistent across years.
 
     
 
