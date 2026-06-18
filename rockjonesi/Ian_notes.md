@@ -330,7 +330,7 @@ Actually re-uploaded the cleaned up datasets I have been working on into their r
 
 - `data` --> `Industrial Institutions` --> `PowerPlants_Clean.csv`
   - **Variables**
-    -`Electric.Power.Plant.Name` - name of electrical powerplant
+    - `Electric.Power.Plant.Name` - name of electrical powerplant
     - `Operating.Utility.Name` - powerplant management company
     - `Plant.City.Location` - city of the powerplant
     - `Plant.State.Location` - state of the powerplant
