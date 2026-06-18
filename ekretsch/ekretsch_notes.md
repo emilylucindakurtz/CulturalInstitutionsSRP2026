@@ -11,6 +11,9 @@
 - historic districts
   - [x] map
   - [x] message rimona about geocoder thing
+  - [x] uploaded the correct data -- thank you rimona for letting me know of the issues!
+    -  `csv_RAW_national-register-listed_20260522.csv`
+    -  **having issues getting long and lat now b/c there is so much more data :(**
   - [ ] maybe lengthen area_of_significance
     - [ ] this would be an interesting thing to investigate
   - [x] convert all cols to titlecase - `str_to_title()`
@@ -34,6 +37,7 @@
 - `#| eval: false` to reduce the slowness since csv is now saved
 - not really sure what to do with text analysis for murals... feeling kind of stuck. wordcloud? eh
 - `mutate(across(where(is.character), function))`
+- fixed districts data
 
 
 ## June 16
