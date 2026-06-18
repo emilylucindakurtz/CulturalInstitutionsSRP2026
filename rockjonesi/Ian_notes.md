@@ -358,6 +358,9 @@ I turned `LOCALE` into an integer across all years in order to bind all library 
 
 
 
+To do:
+
+- [ ] continue library exploration
 
 
 
