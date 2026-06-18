@@ -304,9 +304,19 @@ Potential things to explore adding:
 Moving on, I am continuing to try and finalize the powerplant and corporate datasets, by only including relevant columns. Also having some of the same thoughts about what might be helpful supplemental data so that people can actually learn about data trends.
 (maybe what stats have the highest counts of certain types of powerplants.)
 
-For the fotune 500 companies, there is already some city/state information, but it's formatting is very inconsistent across different corporations. So I am going to convert lat/long info into more consistent city/state info using tidygeocoder. 
+For the fotune 500 companies, there is already some city/state information, but it's formatting is very inconsistent across different corporations. So I am going to convert lat/long info into more consistent city/state info using tidygeocoder. `fortune500` now contains only the data of Company, city, state, count, lat, and long. Other supplemental data could look like trying to add sector type for each company (tech, commerce, banking, etc.). Based on my motivations for exploraing corporations in the first place, it would be cool if I could find some sort of information regarding employment numbers.
 
 
+`powerplants` is being changed to contain only information on powerplant name, company name, state, city, type of energy (solar, hydroelectric, etc.), lat, long.
+
+For next time:
+- [ ] get to library exploration.
+- [ ] upload new csvs to data file
+
+
+## June 18
+
+ Emily and I talked a bit about library research proceedings and what might actually be interesting. We discussed how we have the opportunity to really zoom in on the changes over time since we are examining data from a 10 year period. To do this, we could instead map libraries that are new, but also which libraries have closed.
 
 
 
