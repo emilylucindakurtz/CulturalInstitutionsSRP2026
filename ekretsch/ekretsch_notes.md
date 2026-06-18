@@ -2,6 +2,8 @@
 
 ## June 18
 - [ ] further clean datasets so that they are presentable
+- historic districts
+  - [ ] get the long and lat data updated 
 - [x] chat with Ian about libraries
   - Ideas: Change over time (which ones closed? -- shut down or new ones), internet speed
 
