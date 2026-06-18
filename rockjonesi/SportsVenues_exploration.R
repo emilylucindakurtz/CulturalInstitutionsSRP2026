@@ -331,4 +331,4 @@ ggplot() +
   theme_minimal()
 
 
-
+write.csv(fixed_venue, "Sportsvenues_Clean.csv", row.names = FALSE)
