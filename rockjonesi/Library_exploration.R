@@ -2,6 +2,7 @@
 
 library(tidyverse)
 library(purrr)
+library(maps)
 
 
 PL13 <- read.csv("data/Libraries/Puout13a.csv")
@@ -35,10 +36,31 @@ LibrariesList <- purrr::map(LibrariesList, function(x){
 
 all_years <- bind_rows(LibrariesList, .id = "year") %>% 
   mutate(year = as.integer(year))
+ 
+
+timetracker <- all_years %>% group_by(FSCSKEY) %>% summarize(open = min(year),
+                                                             close = max(year),
+                                                             totalyears = close - open)
+closedoropened <- timetracker %>% filter(totalyears < 10)
+
+library_changed <- all_years %>% inner_join(closedoropened, by = "FSCSKEY") %>% 
+  select(-year) %>% distinct(FSCSKEY, .keep_all = TRUE) %>% filter(!FSCSKEY == "AK0018")
+#FSCKEY AK0018 has lat/long of 0.000, 0.0000, will at least temporarily remove it from the data
 
 
 
+ggplot(library_changed, aes(x = LONGITUD, y = LATITUDE, color = ifelse(close < 2023, "Closed", "Opened"))) +
+  geom_point() +
+  scale_color_manual(
+    name = "Status",
+    values = c("Closed" = "red", "Opened" = "blue"),
+    labels = c("Closed", "Opened")) +
+  theme_minimal()
 
+
+
+library_changed %>% count(close < 2023)
+#236 public libraries closed in the past 10 years. Only 160 new public libraries have arisen, as of 2023.
 
 
 
