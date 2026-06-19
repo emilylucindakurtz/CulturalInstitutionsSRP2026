@@ -11,6 +11,7 @@ library(tidygeocoder)
 library(janitor)
 library(tidytext)
 library(leaflet)
+library(lubridate)
 ```
 
 ## Street art !
@@ -62,27 +63,32 @@ murals_description_words <- murals_clean %>%
 
 ## Historic Districts
 
+#\| eval: false
+
 ```{r}
-#| eval: false
+
 # Loading historic landmarks data for historic districts!
 historic_landmarks <- read_csv("../data/Historic Districts/historic_landmarks.csv") # .. means one folder up
 ```
 
 ```{r}
-#| eval: false
+
 # Filtering the historic landmarks dataset to make sure that only historic districts are present
 historic_districts <- historic_landmarks %>% 
   clean_names() %>% 
-  mutate(district_name_lower = tolower(property_name)) %>% 
-  filter(str_detect(district_name_lower, "historic district")) %>% 
-  mutate(district_name_lower = str_remove(district_name_lower, " historic district")) %>% 
+  mutate(listed_date = mdy(listed_date),
+         nhl_designated_date = mdy(nhl_designated_date),
+         across(where(is.character) & -c(prefix, street_number, external_link, other_names), str_to_title),
+         district_name = property_name) %>%
+  filter(str_detect(district_name, "Historic District")) %>% 
+  mutate(district_name_lower = str_remove(district_name, " Historic District")) %>% 
   mutate(address = paste(property_name, county, state, sep=" "))
 ```
 
 Note: `category of property` variable -- district for most, but site for some... but it is all caps sometimes and not some other times ex: `Fort Union Trading Post National Historic Site Historic District (Boundary Increase)` -- marked as `site` and it's not really a historic district in the way I was thinking...
 
 ```{r}
-#| eval: false
+
 # CLeaning the historic_districts dataset so only the columns we want are present
 
 

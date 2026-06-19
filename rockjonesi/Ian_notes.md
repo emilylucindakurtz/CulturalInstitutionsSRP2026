@@ -314,7 +314,53 @@ For next time:
 - [ ] upload new csvs to data file
 
 
+## June 18
 
+ Emily and I talked a bit about library research proceedings and what might actually be interesting. We discussed how we have the opportunity to really zoom in on the changes over time since we are examining data from a 10 year period. To do this, we could instead map libraries that are new, but also which libraries have closed. Maybe could try and see what years have the highest opening and closing numbers (my assumption would be covid). Emily also had ideas about supplemental regional education data, and I thought maybe exploring internet speed could also be interesting.
+
+Actually re-uploaded the cleaned up datasets I have been working on into their respective folders. Here is some codebook like information about the cleaned datasets I have uploaded so far:
+
+ 
+- `data` --> `Sports Venues` --> `Sportsvenues_Clean.csv`
+  - **Varibles**
+    - `Name` - name of venue
+    - `Latitude` - venue lat 
+    - `Longitude` - venue long
+    - `capacity` - venue seating capacity (3,500 minimum for Arenas and Ballparks, min 8,000 for football and soccer, 6,000 min for tennis)
+
+- `data` --> `Industrial Institutions` --> `PowerPlants_Clean.csv`
+  - **Variables**
+    - `Electric.Power.Plant.Name` - name of electrical powerplant
+    - `Operating.Utility.Name` - powerplant management company
+    - `Plant.City.Location` - city of the powerplant
+    - `Plant.State.Location` - state of the powerplant
+    - `Primary.Energy.Source` - energy source that primarily powers these electric powerplants
+    - `Plant.Latitude` - powerplant lat
+    - `Plant.Longitude` - powerplant long
+
+- `data` --> `Industrial Institutions` --> `Fortune500HQ_Clean.csv`
+  - **Variables**
+    - `Company` - fortune 500 company name
+    - `city` - city in which the company headquarters is located
+    - `state` - state where the company headquarters are located
+    - `county` - county the headquarters are in
+    - `Latitude` - company headquarters lat
+    - `Longitude` - company headquarters long
+
+
+
+I have started trying to work on the library data throughout the years. I am already running into issues, because although each years dataset contains the same cols there are class difference across different years. Binding rows will be impossible for these reasons until I fix all of the class differences. The class differences are true for multiple different variables, but it is also inconsistent across years.
+
+I turned `LOCALE` into an integer across all years in order to bind all library years into `all_years`. Beforehand, I also added a year column IDing the year from which the data is from.
+
+
+
+
+
+
+To do:
+
+- [ ] continue library exploration
 
 
 

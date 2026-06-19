@@ -23,6 +23,21 @@ prelim_map <- leaflet(data = historic_districts) %>%
    addCircleMarkers(~longitude, ~latitude, popup = ~property_name)
 prelim_map
 ```
+
+
+640 acres in 1 mile
+
+```{r}
+# Actually what I want is to group by state and then ...
+
+# MAYBE SHOULD JOIN DATA FOR THE TOTAL ACREAGE OF THE WHOLE STATE TO STANDARDIZE
+
+acreage_by_state <- historic_districts %>% 
+  group_by(state) %>% 
+  summarise(total_acreage = sum(acreage_of_property, na.rm=TRUE))
+
+```
+
 ```{r}
 # Chloropleth map for # of acres of districts
 # acreage_of_property na.rm = TRUE --> ignore missing values
