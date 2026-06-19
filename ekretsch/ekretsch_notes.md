@@ -1,11 +1,42 @@
 # Emily Kretschmer's Notes
 
+## June 19
+Goals:
+- [ ] get historic_districts dataset FULLY cleaned
+  - [ ] get long and lat (!)
+    - [ ] check that it is actually correct (right number of rows, etc.)
+  - [ ] widen area_of_significance
+- [ ] import news outlet data into R
+  - [ ] investigate whether or not long/lat is needed
+- [ ] further analyze text analysis of murals
+  - [ ] come up with potential questions/extensions
+Methods for getting long and lat: 
+- `arcgis`: times out. takes forever. handles messy addresses well, though. (no API key)
+  - <img width="794" height="417" alt="image" src="https://github.com/user-attachments/assets/5ac3fc9a-5696-4c8a-bb06-128fe680118f" />
+- `osm`: takes even longer (100 seconds for 100) and not accurate (doesn't handle the messy addresses well.) (no API key)
+- `census`: does not handle messy addresses well (at least for this) -- all NAs. but fast --1.3 secs(no API key)
+- `here`: requires API key
+  - Sign up for account: https://developer.here.com/
+  - IT MAKES ME PUT MY CREDIT CARD IN kill me now
+ 
+2nd round: 3226
+3rd round: 6076
+4th round: 8326
+just re-ran this code until I got all the rows (took a whole day):
+<img width="794" height="417" alt="image" src="https://github.com/user-attachments/assets/6d9ef695-cc78-4855-9726-8103135b18dd" />
+
+
+  
+
 ## June 18
 - [ ] further clean datasets so that they are presentable
 - historic districts
   - [ ] get the long and lat data updated 
 - [x] chat with Ian about libraries
   - Ideas: Change over time (which ones closed? -- shut down or new ones), internet speed
+     
+- #3029 rows
+#12419 total.. it can only do 100 at a time..
 
 ## June 17
 ## todo
