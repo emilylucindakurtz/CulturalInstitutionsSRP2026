@@ -369,7 +369,9 @@ There are about 15 libraries where the lat/long data is not provided. Should I r
 
 
 
+In addition to finding all public library business changes, I have also compiled a complete dataset of all 10 years of library data. It contains information on library id, address, state, city, zip, lat, long, county, county pop, metro/urban measurement, and library square footage.
 
+Movign forward, should try and find county level education data.
 
 
 
