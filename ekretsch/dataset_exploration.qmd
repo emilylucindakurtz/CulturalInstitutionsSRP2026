@@ -96,8 +96,8 @@ the below takes an ETERNITY to run – so trying to avoid that
 library(arcgisgeocode)
 # and adding location
 # Have to split because batch limit is 10,000 and there are 12,337
-historic_districts_1 <- historic_districts[1:100,] %>% 
-  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+historic_districts_TEST <- historic_districts[1:100,] %>% 
+  geocode(address, method = 'osm', lat = latitude , long = longitude)
 
 ```
 
