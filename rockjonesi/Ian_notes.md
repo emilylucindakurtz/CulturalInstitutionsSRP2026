@@ -359,7 +359,7 @@ To do:
 - [ ] continue library exploration
 
 
-## June 20
+## "June 20"
 
 I continued working with the library datasets. Exploring changes across the 10 years, I identified libraries that closed in recent years, as well as libraries that newly opened and were still open as of 2023.
 <img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/63f7a849-9bd7-4abb-9e4a-f052056f4db9" />
