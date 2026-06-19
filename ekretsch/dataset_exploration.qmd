@@ -68,7 +68,7 @@ murals_description_words <- murals_clean %>%
 ```{r}
 
 # Loading historic landmarks data for historic districts!
-historic_landmarks <- read_csv("../data/Historic Districts/historic_landmarks.csv") # .. means one folder up
+historic_landmarks <- read_csv("../data/Historic Districts/csv_RAW_national-register-listed_20260522.csv") # .. means one folder up
 ```
 
 ```{r}
@@ -81,21 +81,119 @@ historic_districts <- historic_landmarks %>%
          across(where(is.character) & -c(prefix, street_number, external_link, other_names), str_to_title),
          district_name = property_name) %>%
   filter(str_detect(district_name, "Historic District")) %>% 
-  mutate(district_name_lower = str_remove(district_name, " Historic District")) %>% 
-  mutate(address = paste(property_name, county, state, sep=" "))
+  mutate(district_name = str_remove(district_name, " Historic District")) %>% 
+  mutate(address = paste(property_name, county, state, sep=", "))
 ```
 
 Note: `category of property` variable -- district for most, but site for some... but it is all caps sometimes and not some other times ex: `Fort Union Trading Post National Historic Site Historic District (Boundary Increase)` -- marked as `site` and it's not really a historic district in the way I was thinking...
+
+the below takes an ETERNITY to run – so trying to avoid that
 
 ```{r}
 
 # CLeaning the historic_districts dataset so only the columns we want are present
 
-
+library(arcgisgeocode)
 # and adding location
-historic_districts <- historic_districts %>%
+# Have to split because batch limit is 10,000 and there are 12,337
+historic_districts_1 <- historic_districts[1:100,] %>% 
   geocode(address, method = 'arcgis', lat = latitude , long = longitude)
 
+#historic_districts_2 <- historic_districts[101:200,] %>% 
+ # geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+
+```
+```{r}
+write.csv(historic_districts_1, "historic_districts_clean1.csv")
+write.csv(historic_districts_2, "historic_districts_clean2.csv")
+```
+```{r}
+historic_districts_3 <- historic_districts[201:300,] %>% 
+  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+historic_districts_4 <- historic_districts[301:400,] %>% 
+  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+historic_districts_5 <- historic_districts[401:500,] %>% 
+  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+historic_districts_6 <- historic_districts[501:600,] %>% 
+  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+```
+```{r}
+historic_districts_7 <- historic_districts[601:700,] %>% 
+  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+historic_districts_8 <- historic_districts[701:800,] %>% 
+  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+historic_districts_9 <- historic_districts[801:900,] %>% 
+  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+historic_districts_10 <- historic_districts[901:1000,] %>% 
+  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+```
+```{r}
+historic_districts_11 <- historic_districts[1001:1100,] %>% 
+  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+historic_districts_12 <- historic_districts[1101:1200,] %>% 
+  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+```
+```{r}
+historic_districts_13 <- historic_districts[1201:nrow(historic_districts),] %>% 
+  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+historic_districts_13 <- historic_districts[1201:nrow(historic_districts),] %>% 
+  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+#12419 total.. it can only do 100 at a time...
+```
+```{r}
+historic_districts_CLEAN <- historic_districts_1
+
+for(i in 1:(nrow(historic_districts) %/% 100)){
+  start_v <- i * 100 + 1
+  end_v <- start_v + 100
+  temp_tibble <- historic_districts[start_v:end_v,] %>% 
+    geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+  
+  historic_districts_CLEAN <- rbind(historic_districts_CLEAN, temp_tibble)
+  
+}
+#3029 rows
+```
+```{r}
+# starting w/ 3029
+for(i in 3030:((nrow(historic_districts)-3029) %/% 100)){
+  start_v <- i
+  end_v <- start_v + 100
+  temp_tibble <- historic_districts[start_v:end_v,] %>% 
+    geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+  
+  historic_districts_CLEAN <- rbind(historic_districts_CLEAN, temp_tibble)
+  i <- end_v + 1
+}
+```
+
+FIGURE OUT THE REMAINDER THING LATER
+```{r}
+write.csv(historic_districts_3, "historic_districts_clean3.csv")
+write.csv(historic_districts_4, "historic_districts_clean4.csv")
+write.csv(historic_districts_5, "historic_districts_clean5.csv")
+write.csv(historic_districts_6, "historic_districts_clean6.csv")
+write.csv(historic_districts_7, "historic_districts_clean7.csv")
+write.csv(historic_districts_8, "historic_districts_clean8.csv")
+write.csv(historic_districts_9, "historic_districts_clean9.csv")
+write.csv(historic_districts_10, "historic_districts_clean10.csv")
+write.csv(historic_districts_11, "historic_districts_clean11.csv")
+write.csv(historic_districts_12, "historic_districts_clean12.csv")
+#write.csv(historic_districts_13, "historic_districts_clean2.csv")
+```
+```{r}
+write.csv(historic_districts_1, "historic_districts_clean1.csv")
+write.csv(historic_districts_2, "historic_districts_clean2.csv")
+```
+
+
+
+
+
+```{r}
+
+historic_districts_complete <- historic_districts_1 %>% 
+  rbind(historic_districts_2)
 #method = census resulted in NAs
 ```
 
