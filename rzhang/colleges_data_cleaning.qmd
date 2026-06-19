@@ -1,0 +1,49 @@
+---
+title: "colleges_data_cleaning"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(rvest)
+library(dplyr)
+```
+
+
+```{r}
+#checking permisson to scrape
+library(robotstxt)
+paths_allowed("https://sites.ed.gov/whhbcu/one-hundred-and-five-historically-black-colleges-and-universities/")
+```
+
+```{r}
+hbcu_page <- read_html("https://sites.ed.gov/whhbcu/one-hundred-and-five-historically-black-colleges-and-universities/")
+hbcu_page
+```
+
+```{r}
+hbcu_table <- hbcu_page %>%
+html_element("table") %>%
+html_table(header = TRUE)
+
+hbcu_table
+```
+
+```{r}
+us_news_lacs <- read_csv("../data/Colleges/US-News-Rankings-LACs-Through-2026.csv")
+us_news_lacs
+```
+
+```{r}
+postsecondary_school_locations <- read_csv("../data/Colleges/Postsecondary_School_Locations_2023-24.csv")
+postsecondary_school_locations
+```
+
+```{r}
+complete_lacs <- us_news_lacs %>%
+  left_join(
+    postsecondary_school_locations,
+    by = c("")
+  )
+```
+

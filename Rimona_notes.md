@@ -168,3 +168,9 @@ Plans for EDA:
 ## 6/17
 - account for long/lat coordinates for locations across datasets
 - citation for Reiter dataset: Andrew G. Reiter, “U.S. News & World Report Historical Liberal Arts College and University Rankings,” available at: http://andyreiter.com/datasets/
+
+## 6/18
+- [X] scraped schools from HBCU website
+- [] join long and lat coordinates for both college datasets
+- [] finish filtering through NRHP csv
+
