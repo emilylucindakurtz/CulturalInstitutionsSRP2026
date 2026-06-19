@@ -361,8 +361,10 @@ To do:
 
 ## "June 20"
 
-I continued working with the library datasets. Exploring changes across the 10 years, I identified libraries that closed in recent years, as well as libraries that newly opened and were still open as of 2023.
+I continued working with the library datasets. Exploring changes across the 10 years, I identified libraries that closed in recent years, as well as libraries that newly opened and were still open as of 2023. There are around 73 fewer public libraries as of 2023 than in 2013.
 <img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/63f7a849-9bd7-4abb-9e4a-f052056f4db9" />
+
+
 
 There are about 15 libraries where the lat/long data is not provided. Should I remove?
 <img width="756" height="458" alt="image" src="https://github.com/user-attachments/assets/781b1aaf-fc5f-4bb9-9a7f-f62ce64fa8b0" />
