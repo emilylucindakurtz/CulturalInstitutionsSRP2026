@@ -99,47 +99,10 @@ library(arcgisgeocode)
 historic_districts_1 <- historic_districts[1:100,] %>% 
   geocode(address, method = 'arcgis', lat = latitude , long = longitude)
 
-#historic_districts_2 <- historic_districts[101:200,] %>% 
- # geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+```
 
-```
-```{r}
-write.csv(historic_districts_1, "historic_districts_clean1.csv")
-write.csv(historic_districts_2, "historic_districts_clean2.csv")
-```
-```{r}
-historic_districts_3 <- historic_districts[201:300,] %>% 
-  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
-historic_districts_4 <- historic_districts[301:400,] %>% 
-  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
-historic_districts_5 <- historic_districts[401:500,] %>% 
-  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
-historic_districts_6 <- historic_districts[501:600,] %>% 
-  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
-```
-```{r}
-historic_districts_7 <- historic_districts[601:700,] %>% 
-  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
-historic_districts_8 <- historic_districts[701:800,] %>% 
-  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
-historic_districts_9 <- historic_districts[801:900,] %>% 
-  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
-historic_districts_10 <- historic_districts[901:1000,] %>% 
-  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
-```
-```{r}
-historic_districts_11 <- historic_districts[1001:1100,] %>% 
-  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
-historic_districts_12 <- historic_districts[1101:1200,] %>% 
-  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
-```
-```{r}
-historic_districts_13 <- historic_districts[1201:nrow(historic_districts),] %>% 
-  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
-historic_districts_13 <- historic_districts[1201:nrow(historic_districts),] %>% 
-  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
-#12419 total.. it can only do 100 at a time...
-```
+
+
 ```{r}
 historic_districts_CLEAN <- historic_districts_1
 
@@ -151,9 +114,21 @@ for(i in 1:(nrow(historic_districts) %/% 100)){
   
   historic_districts_CLEAN <- rbind(historic_districts_CLEAN, temp_tibble)
   
+  Sys.sleep(2)  # pause 2 seconds between batches
+  cat("Batch", i, "done\n")  # progress tracking
+  #Save progress to disk so you can resume if it crashes partway through:
+  write_csv(historic_districts_CLEAN, "geocoded_progress.csv")
 }
-#3029 rows
 ```
+```{r}
+start_final <- 100*(nrow(historic_districts) %/% 100) + 1
+end_final <- nrow(historic_districts)
+temp_tibble <- historic_districts[start_final:end_final,] %>% 
+    geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+  
+historic_districts_CLEAN <- rbind(historic_districts_CLEAN, temp_tibble)
+```
+
 ```{r}
 # starting w/ 3029
 for(i in 3030:((nrow(historic_districts)-3029) %/% 100)){
