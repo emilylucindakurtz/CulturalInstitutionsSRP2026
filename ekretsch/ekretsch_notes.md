@@ -1,5 +1,26 @@
 # Emily Kretschmer's Notes
 
+## June 20
+### Historic Districts
+- Deleted (because it was almost exactly the same as another thing):
+  ```
+  for(r in 101:nrow(historic_districts)){
+  temp_row <- historic_districts[r,] %>% 
+    geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+  
+  historic_districts_CLEAN_2 <- rbind(historic_districts_CLEAN_2, temp_row)
+  
+  if(r %% 75 == 0){
+    Sys.sleep(2)  # pause 2 seconds between batches
+    cat("Batch", r, "done\n")  # progress tracking
+    #Save progress to disk so you can resume if it crashes partway through:
+    write_csv(historic_districts_CLEAN_2, "geocoded_progress_2.csv")
+  }
+  
+}
+```
+- 
+
 ## June 19
 Goals:
 - [ ] get historic_districts dataset FULLY cleaned
