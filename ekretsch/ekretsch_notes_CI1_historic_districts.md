@@ -1,5 +1,9 @@
 # Emily's Notes for Historic Districts Dataset + Analysis
 
+# Personal notes/things to do:
+- Note: `category of property` variable -- district for most, but site for some... but it is all caps sometimes and not some other times ex: `Fort Union Trading Post National Historic Site Historic District (Boundary Increase)` -- marked as `site` and it's not really a historic district in the way I was thinking...
+- `#\| eval: false`
+
 # Dataset source:
 National Register of Historic Places
 
@@ -40,3 +44,4 @@ Scroll down to `Spreadsheet of NRHP Listed properties (listings up to 5/22/2026)
       }
       ```
   - Queries took between .1 and 1 seconds each (for 1 address)
+
