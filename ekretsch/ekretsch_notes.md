@@ -2,6 +2,7 @@
 
 ## June 20
 - [ ] double check that historic districts is actually correct (right number of rows, etc.)
+- [ ] double check washington addresses... def wrong for some (ex seattle chinatown?)
 
 ### Historic Districts
 - Deleted (because it was almost exactly the same as another thing):
