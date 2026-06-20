@@ -91,85 +91,56 @@ the below takes an ETERNITY to run – so trying to avoid that
 
 ```{r}
 
-# CLeaning the historic_districts dataset so only the columns we want are present
-
+# Cleaning the historic_districts dataset so only the columns we want are present (add later)
+# Adding location
 library(arcgisgeocode)
-# and adding location
+
 # Have to split because batch limit is 10,000 and there are 12,337
-historic_districts_TEST <- historic_districts[1:100,] %>% 
-  geocode(address, method = 'osm', lat = latitude , long = longitude)
+historic_districts_CLEAN_2 <- historic_districts[1:100,] %>% 
+  geocode(address, method = 'census', lat = latitude , long = longitude)
 
-```
-
-
-
-```{r}
-historic_districts_CLEAN <- historic_districts_1
-
-for(i in 1:(nrow(historic_districts) %/% 100)){
-  start_v <- i * 100 + 1
-  end_v <- start_v + 100
-  temp_tibble <- historic_districts[start_v:end_v,] %>% 
+for(r in 101:nrow(historic_districts)){
+  temp_row <- historic_districts[r,] %>% 
     geocode(address, method = 'arcgis', lat = latitude , long = longitude)
   
-  historic_districts_CLEAN <- rbind(historic_districts_CLEAN, temp_tibble)
+  historic_districts_CLEAN_2 <- rbind(historic_districts_CLEAN_2, temp_row)
   
-  Sys.sleep(2)  # pause 2 seconds between batches
-  cat("Batch", i, "done\n")  # progress tracking
-  #Save progress to disk so you can resume if it crashes partway through:
-  write_csv(historic_districts_CLEAN, "geocoded_progress.csv")
-}
-```
-```{r}
-start_final <- 100*(nrow(historic_districts) %/% 100) + 1
-end_final <- nrow(historic_districts)
-temp_tibble <- historic_districts[start_final:end_final,] %>% 
-    geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+  if(r %% 75 == 0){
+    Sys.sleep(2)  # pause 2 seconds between batches
+    cat("Batch", r, "done\n")  # progress tracking
+    #Save progress to disk so you can resume if it crashes partway through:
+    write_csv(historic_districts_CLEAN_2, "geocoded_progress_2.csv")
+  }
   
-historic_districts_CLEAN <- rbind(historic_districts_CLEAN, temp_tibble)
-```
-
-```{r}
-# starting w/ 3029
-for(i in 3030:((nrow(historic_districts)-3029) %/% 100)){
-  start_v <- i
-  end_v <- start_v + 100
-  temp_tibble <- historic_districts[start_v:end_v,] %>% 
-    geocode(address, method = 'arcgis', lat = latitude , long = longitude)
-  
-  historic_districts_CLEAN <- rbind(historic_districts_CLEAN, temp_tibble)
-  i <- end_v + 1
 }
 ```
 
-FIGURE OUT THE REMAINDER THING LATER
+
+
 ```{r}
-write.csv(historic_districts_3, "historic_districts_clean3.csv")
-write.csv(historic_districts_4, "historic_districts_clean4.csv")
-write.csv(historic_districts_5, "historic_districts_clean5.csv")
-write.csv(historic_districts_6, "historic_districts_clean6.csv")
-write.csv(historic_districts_7, "historic_districts_clean7.csv")
-write.csv(historic_districts_8, "historic_districts_clean8.csv")
-write.csv(historic_districts_9, "historic_districts_clean9.csv")
-write.csv(historic_districts_10, "historic_districts_clean10.csv")
-write.csv(historic_districts_11, "historic_districts_clean11.csv")
-write.csv(historic_districts_12, "historic_districts_clean12.csv")
-#write.csv(historic_districts_13, "historic_districts_clean2.csv")
+start <- nrow(historic_districts_CLEAN_2)+1
+
+for(r in start:nrow(historic_districts)){
+  temp_row <- historic_districts[r,] %>% 
+    geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+  
+  historic_districts_CLEAN_2 <- rbind(historic_districts_CLEAN_2, temp_row)
+  
+  if(r %% 75 == 0){
+    Sys.sleep(2)  # pause 2 seconds between batches
+    cat("Batch", r, "done\n")  # progress tracking
+    #Save progress to disk so you can resume if it crashes partway through:
+    write_csv(historic_districts_CLEAN_2, "geocoded_progress_2.csv")
+  }
+  
+}
 ```
 ```{r}
-write.csv(historic_districts_1, "historic_districts_clean1.csv")
-write.csv(historic_districts_2, "historic_districts_clean2.csv")
+write_csv(historic_districts_CLEAN_2[1:12419,], "long_lat_YAY.csv")
 ```
-
-
-
-
-
 ```{r}
+write_csv(historic_districts, "OG_historic_districts_nolatlong.csv")
 
-historic_districts_complete <- historic_districts_1 %>% 
-  rbind(historic_districts_2)
-#method = census resulted in NAs
 ```
 
 then i did `write.csv(historic_districts, "historic_districts_clean.csv")` so we wouldn't have to re-run the above over and over again (since the geocoding with arcgis is kinda slow). so you can just run the below
