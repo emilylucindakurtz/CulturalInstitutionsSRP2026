@@ -22,6 +22,9 @@ Methods for getting long and lat:
 2nd round: 3226
 3rd round: 6076
 4th round: 8326
+5th round: 12376 (but it didn't throw an error???) (stopped at Cheyenne Veterans Administration Hospital Historic District)
+why is it stopping???
+oh it was because it didn't write the final one -- I just did `write_csv(historic_districts_CLEAN_2[1:12419,], "long_lat_YAY.csv")` to check (since I think I accidentally added 2 rows when I was testing things out)
 just re-ran this code until I got all the rows (took a whole day):
 <img width="794" height="417" alt="image" src="https://github.com/user-attachments/assets/6d9ef695-cc78-4855-9726-8103135b18dd" />
 
