@@ -85,8 +85,6 @@ historic_districts <- historic_landmarks %>%
   mutate(address = paste(property_name, county, state, sep=", "))
 ```
 
-Note: `category of property` variable -- district for most, but site for some... but it is all caps sometimes and not some other times ex: `Fort Union Trading Post National Historic Site Historic District (Boundary Increase)` -- marked as `site` and it's not really a historic district in the way I was thinking...
-
 the below takes an ETERNITY to run – so trying to avoid that
 
 ```{r}
@@ -99,20 +97,6 @@ library(arcgisgeocode)
 historic_districts_CLEAN_2 <- historic_districts[1:100,] %>% 
   geocode(address, method = 'census', lat = latitude , long = longitude)
 
-for(r in 101:nrow(historic_districts)){
-  temp_row <- historic_districts[r,] %>% 
-    geocode(address, method = 'arcgis', lat = latitude , long = longitude)
-  
-  historic_districts_CLEAN_2 <- rbind(historic_districts_CLEAN_2, temp_row)
-  
-  if(r %% 75 == 0){
-    Sys.sleep(2)  # pause 2 seconds between batches
-    cat("Batch", r, "done\n")  # progress tracking
-    #Save progress to disk so you can resume if it crashes partway through:
-    write_csv(historic_districts_CLEAN_2, "geocoded_progress_2.csv")
-  }
-  
-}
 ```
 
 
