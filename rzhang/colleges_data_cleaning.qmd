@@ -9,9 +9,8 @@ library(rvest)
 library(dplyr)
 ```
 
-
+checking permission to scrape
 ```{r}
-#checking permisson to scrape
 library(robotstxt)
 paths_allowed("https://sites.ed.gov/whhbcu/one-hundred-and-five-historically-black-colleges-and-universities/")
 ```
@@ -21,29 +20,76 @@ hbcu_page <- read_html("https://sites.ed.gov/whhbcu/one-hundred-and-five-histori
 hbcu_page
 ```
 
+parsing HTML table into data frame
 ```{r}
 hbcu_table <- hbcu_page %>%
 html_element("table") %>%
 html_table(header = TRUE)
 
-hbcu_table
+glimpse(hbcu_table)
 ```
 
+reading in and cleaning LACs csv
 ```{r}
 us_news_lacs <- read_csv("../data/Colleges/US-News-Rankings-LACs-Through-2026.csv")
-us_news_lacs
+
+lacs <- us_news_lacs %>%
+  select(`College Name`, State, `IPEDS ID`)
+
+lacs
 ```
 
+
+reading in postsecondary schools locations
 ```{r}
 postsecondary_school_locations <- read_csv("../data/Colleges/Postsecondary_School_Locations_2023-24.csv")
-postsecondary_school_locations
+glimpse(postsecondary_school_locations)
 ```
 
+
+joining LACs and location datasets
 ```{r}
-complete_lacs <- us_news_lacs %>%
+lacs_locations <- lacs %>%
   left_join(
-    postsecondary_school_locations,
-    by = c("")
+    postsecondary_school_locations %>%
+      select(UNITID, LAT, LON, CITY, ZIP),
+      by = c("IPEDS ID" = "UNITID")
   )
+lacs_locations
 ```
 
+
+duplication conflict when trying to join the hbcu and location datasets
+```{r}
+hbcu_table[55,]
+postsecondary_school_locations[375,]
+
+hbcu_table %>%
+  count(Name) %>%
+  filter(n > 1)
+
+postsecondary_school_locations %>%
+  count(NAME) %>%
+  filter(n > 1)
+```
+
+resolved conflict by making college names distinct
+```{r}
+distinct_locations <- postsecondary_school_locations %>%
+  distinct(NAME, .keep_all = TRUE)
+
+hbcus_locations <- hbcu_table %>%
+  left_join(
+    distinct_locations %>%
+      select(NAME, LAT, LON),
+    by = c("Name" = "NAME")
+  )
+hbcus_locations
+```
+
+
+writing csvs for completed, cleaned datasets 
+```{r}
+write_csv(lacs_locations, "LACs_coordinates.csv")
+write_csv(hbcus_locations, "HBCUs_coordinates.csv")
+```

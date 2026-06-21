@@ -1,0 +1,381 @@
+College Name,State,IPEDS ID,LAT,LON,CITY,ZIP
+Williams College,MA,168342,42.712725,-73.203132,Williamstown,01267
+Amherst College,MA,164465,42.372459,-72.518493,Amherst,01002-5000
+United States Naval Academy,MD,164155,38.980507,-76.481692,Annapolis,21402-1300
+Swarthmore College,PA,216287,39.905159,-75.354278,Swarthmore,19081
+Bowdoin College,ME,161004,43.907134,-69.963942,Brunswick,04011
+United States Air Force Academy,CO,128328,39.010957,-104.891358,USAF Academy,80840-5002
+Pomona College,CA,121345,34.099027,-117.714556,Claremont,91711-4434
+Wellesley College,MA,168218,42.291554,-71.306605,Wellesley,02481-8203
+Claremont McKenna College,CA,112260,34.102154,-117.711188,Claremont,91711-6400
+United States Military Academy,NY,197036,41.388988,-73.956772,West  Point,10996
+Carleton College,MN,173258,44.462318,-93.154666,Northfield,55057
+Harvey Mudd College,CA,115409,34.106515,-117.709837,Claremont,91711
+Vassar College,NY,197133,41.686895,-73.895088,Poughkeepsie,12604
+Barnard College,NY,189097,40.810098000000004,-73.963346,New York,10027-6598
+Wesleyan University,CT,130697,41.554665,-72.657146,Middletown,06459
+Davidson College,NC,198385,35.499767,-80.843979,Davidson,28035
+Hamilton College,NY,191515,43.050245,-75.408195,Clinton,13323
+Smith College,MA,167835,42.318111,-72.638097,Northampton,01063
+Grinnell College,IA,153384,41.747952,-92.722094,Grinnell,50112-1690
+Middlebury College,VT,230959,44.009117,-73.176068,Middlebury,05753
+Washington and Lee University,VA,234207,37.788939,-79.443018,Lexington,24450-2116
+Colgate University,NY,190099,42.819475,-75.536346,Hamilton,13346-1398
+University of Richmond,VA,233374,37.577393,-77.538806,University of Richmond,23173
+Haverford College,PA,212911,40.007452,-75.305207,Haverford,19041-1392
+Colby College,ME,161086,44.564211,-69.66337,Waterville,04901-8840
+Bates College,ME,160977,44.105299,-70.203333,Lewiston,04240
+College of the Holy Cross,MA,166124,42.23752,-71.808214,Worcester,01610-2395
+Macalester College,MN,173902,44.938565,-93.168053,Saint Paul,55105-1899
+Mount Holyoke College,MA,166939,42.25489,-72.573916,South Hadley,01075-1489
+Colorado College,CO,126678,38.84886,-104.822697,Colorado Springs,80903
+Bryn Mawr College,PA,211273,40.02736,-75.313223,Bryn Mawr,19010
+Bucknell University,PA,211291,40.954317,-76.882616,Lewisburg,17837
+Lafayette College,PA,213385,40.69956,-75.209786,Easton,18042-1768
+Denison University,OH,202523,40.071505,-82.523272,Granville,43023
+Franklin and Marshall College,PA,212577,40.048045,-76.319037,Lancaster,17604-3003
+Occidental College,CA,120254,34.127124,-118.210908,Los Angeles,90041-3392
+Skidmore College,NY,195526,43.097035,-73.785335,Saratoga Springs,12866
+Pitzer College,CA,121257,34.104107,-117.706675,Claremont,91711-6101
+Trinity College,CT,130590,41.747451,-72.690882,Hartford,06106-3100
+Spelman College,GA,141060,33.745279,-84.411527,Atlanta,30314-4399
+Trinity University,TX,229267,29.462682,-98.48186,San Antonio,78212-7200
+Scripps College,CA,123165,34.104147,-117.711294,Claremont,91711-3905
+Soka University of America,CA,399911,33.554546,-117.735344,Aliso Viejo,92656-8081
+Union College,NY,196866,42.818097,-73.928788,Schenectady,12308-2311
+Berea College,KY,156295,37.57202,-84.292893,Berea,40404-2182
+Kenyon College,OH,203535,40.374408,-82.397977,Gambier,43022
+Dickinson College,PA,212009,40.202796,-77.197854,Carlisle,17013-2896
+Furman University,SC,218070,34.924676,-82.440458,Greenville,29613-6162
+Sewanee: The University of the South,TN,221519,35.204719,-85.920179,Sewanee,37383-1000
+Hillsdale College,MI,170286,41.933682,-84.633195,Hillsdale,49242
+St. Olaf College,MN,174844,44.461529,-93.182039,Northfield,55057-1098
+Wheaton College,IL,149781,41.870176,-88.099643,Wheaton,60187-5593
+Connecticut College,CT,128902,41.379833,-72.107321,New London,06320-4196
+Wabash College,IN,152673,40.037588,-86.906,Crawfordsville,47933-0352
+Centre College,KY,156408,37.645709,-84.779392,Danville,40422-1394
+Rhodes College,TN,221351,35.154405,-89.990803,Memphis,38112-1690
+Thomas Aquinas College,CA,124292,34.429009,-119.087141,Santa Paula,93060
+DePauw University,IN,150400,39.640904,-86.860363,Greencastle,46135-1772
+Whitman College,WA,237057,46.069815,-118.331546,Walla Walla,99362
+Oberlin College and Conservatory,OH,204501,41.291992,-82.216795,Oberlin,44074
+Gettysburg College,PA,212674,39.836597,-77.236792,Gettysburg,17325
+St. Lawrence University,NY,195216,44.589879,-75.161343,Canton,13617
+Reed College,OR,209922,45.480959,-122.630348,Portland,97202-8199
+Principia College,IL,148016,38.948835,-90.350285,Elsah,62028-9799
+Virginia Military Institute,VA,234085,37.7896,-79.437067,Lexington,24450-0304
+Lawrence University,WI,239017,44.261323,-88.397822,Appleton,54911
+Agnes Scott College,GA,138600,33.769268,-84.295459,Decatur,30030-3770
+Wofford College,SC,218973,34.959411,-81.933568,Spartanburg,29303-3663
+Kalamazoo College,MI,170532,42.290789,-85.601857,Kalamazoo,49006-3295
+Gustavus Adolphus College,MN,173647,44.323626,-93.972196,Saint Peter,56082-1498
+Bard College,NY,189088,42.020386,-73.909927,Annandale-On-Hudson,12504-5000
+Muhlenberg College,PA,214175,40.596416,-75.508501999999993,Allentown,18104
+College of St. Benedict,MN,174747,45.561792,-94.319888,Saint Joseph,56374
+Hobart and William Smith Colleges,NY,191630,42.858131,-76.985516,Geneva,14456
+Lake Forest College,IL,146481,42.249574,-87.827454,Lake Forest,60045-2338
+Wheaton College,MA,168281,41.966637,-71.183979,Norton,02766-2322
+Earlham College,IN,150455,39.823431,-84.915037,Richmond,47374-4095
+College of Wooster,OH,206589,40.81046,-81.934674,Wooster,44691
+Willamette University,OR,210401,44.935457,-123.030537,Salem,97301
+Allegheny College,PA,210669,41.64869,-80.147168,Meadville,16335-3902
+Knox College,IL,146427,40.943064,-90.373165,Galesburg,61401
+St. John's University,MN,174792,45.580075,-94.393621,Collegeville,56321
+Stonehill College,MA,167996,42.05905,-71.080632,Easton,02357-6110
+Saint Mary's College,IN,152390,41.707274,-86.256947,Notre Dame,46556
+St. John's College,MD,163976,38.981598,-76.491359,Annapolis,21401
+Ursinus College,PA,216524,40.193023,-75.456505,Collegeville,19426-1000
+Southwestern University,TX,228343,30.634341,-97.665738,Georgetown,78626
+Austin College,TX,222983,33.646345,-96.596331,Sherman,75090-4400
+Drew University,NJ,184348,40.761829,-74.424584,Madison,07940
+Washington and Jefferson College,PA,216667,40.170622,-80.24049,Washington,15301
+Hope College,MI,170301,42.787247,-86.100971,Holland,49423-9000
+Juniata College,PA,213251,40.500523,-78.017292,Huntingdon,16652-2196
+Beloit College,WI,238333,42.504022,-89.029285,Beloit,53511-5595
+Washington College,MD,164216,39.217329,-76.06878,Chestertown,21620-1438
+Whittier College,CA,125763,33.978773,-118.032299,Whittier,90601
+Saint Anselm College,NH,183239,42.986889,-71.503622,Manchester,03102-1310
+University of Puget Sound,WA,236328,47.26308,-122.478982,Tacoma,98416
+Morehouse College,GA,140553,33.745982,-84.414917,Atlanta,30314
+St. Mary's College of Maryland,MD,163912,38.188047,-76.430994,St. Mary's City,20686
+Augustana College,IL,143084,41.502365,-90.55057,Rock Island,61201-2296
+Lycoming College,PA,213668,41.24666,-77,Williamsport,17701-5192
+Lewis & Clark College,OR,209056,45.450882,-122.669137,Portland,97219-7899
+Randolph-Macon College,VA,233295,37.76043,-77.478416,Ashland,23005-5505
+Susquehanna University,PA,216278,40.797502,-76.875329,Selinsgrove,17870-1025
+St. John's College,NM,245652,35.666974,-105.912478,Santa Fe,87505-4599
+Hendrix College,AR,107080,35.101565,-92.443256,Conway,72032-3080
+Hampden-Sydney College,VA,232256,37.240615,-78.464216,Hampden-Sydney,23943-0128
+Patrick Henry College,VA,451927,39.138687,-77.690939,Purcellville,20132
+Sarah Lawrence College,NY,195304,40.9355,-73.843727,Bronxville,10708
+Transylvania University,KY,157818,38.052983,-84.493202,Lexington,40508-1797
+St. Norbert College,WI,239716,44.44483,-88.067812,De Pere,54115-2099
+Linfield College,OR,209065,45.201173,-123.199642,McMinnville,97128-6894
+Luther College,IA,153834,43.312304,-91.802809,Decorah,52101-1045
+Illinois College,IL,145691,39.7313,-90.246171,Jacksonville,62650-2299
+Hanover College,IN,150756,38.715642,-85.460051000000007,Hanover,47243
+Westmont College,CA,125727,34.450151,-119.662517,Santa Barbara,93108-1089
+Massachusetts College of Liberal Arts,MA,167288,42.691361,-73.102817,North Adams,01247-4100
+Saint Michael's College,VT,231059,44.494558,-73.167069,Colchester,05439
+University of Minnesota Morris,MN,174251,45.589775,-95.899729,Morris,56267
+Meredith College,NC,198950,35.799351,-78.689995,Raleigh,27607-5298
+Westminster College,PA,216807,41.119272,-80.331017,New Wilmington,16172
+Bennington College,VT,230816,42.919547,-73.237799,Bennington,05201-6003
+Saint Vincent College,PA,215798,40.29265,-79.403762,Latrobe,15650-2690
+Ohio Wesleyan University,OH,204909,40.295963,-83.069757,Delaware,43015-2370
+Cornell College,IA,153162,41.924554,-91.423741,Mount Vernon,52314-1098
+Covenant College,GA,139393,34.965161,-85.375066,Lookout Mountain,30750-4164
+Roanoke College,VA,233426,37.294861,-80.055467,Salem,24153-3794
+Goucher College,MD,162654,39.410175,-76.594843,Baltimore,21204-2794
+Coe College,IA,153144,41.988263,-91.658192,Cedar Rapids,52402-5092
+College of the Atlantic,ME,160959,44.395258,-68.221517,Bar Harbor,04609
+Albion College,MI,168546,42.245049,-84.745639,Albion,49224
+Central College,IA,153108,41.401539,-92.922199,Pella,50219
+University of Mary Washington,VA,232681,38.302492,-77.476055,Fredericksburg,22401-5300
+State University of New York at Purchase College,NY,196219,41.047223,-73.701955,Purchase,10577-1400
+New College of Florida,FL,262129,27.384925,-82.55858,Sarasota,34243-2109
+Eckerd College,FL,133492,27.715798,-82.687043,Saint Petersburg,33711-4700
+Concordia College at Moorhead,MN,173300,46.862482,-96.76749,Moorhead,56562
+University of North Carolina at Asheville,NC,199111,35.617068,-82.565392,Asheville,28804-8510
+Hollins University,VA,232308,37.354201,-79.943277,Roanoke,24020
+Emmanuel College,MA,165671,42.340602,-71.103634,Boston,02115
+University of New Hampshire at Manchester,NH,183071,42.987209,-71.468755,Manchester,03101-1113
+Claflin University,SC,217873,33.498444,-80.854319,Orangeburg,29115-4498
+Salem College,NC,199607,36.086271000000004,-80.241297,Winston-Salem,27101
+Centenary College of Louisiana,LA,158477,32.483335,-93.730834,Shreveport,71104
+Ripon College,WI,239628,43.844135,-88.842333,Ripon,54971-0248
+Millsaps College,MS,175980,32.322746,-90.179957,Jackson,39210-0001
+Franklin College,IN,150604,39.478298,-86.047182,Franklin,46131-2623
+Aquinas College,MI,168786,42.96019,-85.628785,Grand Rapids,49506-1801
+Houghton College,NY,191676,42.426137,-78.155426,Houghton,14744
+New Saint Andrews College,ID,440396,46.731422,-117.001804,Moscow,83843-1525
+Hartwick College,NY,191533,42.457599,-75.071994,Oneonta,13820-4020
+Ouachita Baptist University,AR,107512,34.126093,-93.052471,Arkadelphia,71998-0001
+University of Puerto Rico in Cayey,PR,243151,18.11882,-66.162066,Cayey,00737-2230
+Monmouth College,IL,147341,40.914824,-90.63731,Monmouth,61462-1998
+Bethany Lutheran College,MN,173142,44.166649,-93.990805,Mankato,56001
+Hampshire College,MA,166018,42.325852,-72.531469,Amherst,01002-5001
+Dillard University,LA,158802,29.996587,-90.06464,New Orleans,70122
+Oglethorpe University,GA,140696,33.875441,-84.333687,Atlanta,30319-2797
+Fisk University,TN,220181,36.167087,-86.804805,Nashville,37208-4501
+Wartburg College,IA,154527,42.7277,-92.483387,Waverly,50677-0903
+Gordon College,MA,165936,42.590567,-70.82151,Wenham,01984
+Randolph College,VA,233301,37.437315,-79.171887,Lynchburg,24503-1555
+Presbyterian College,SC,218539,34.465834,-81.87448,Clinton,29325
+Wittenberg University,OH,206525,39.934029,-83.815445,Springfield,45504
+Westminster College,MO,179946,38.849354,-91.955273,Fulton,65251-1299
+Sweet Briar College,VA,233718,37.556725,-79.081014,Sweet Briar,24595-9998
+Bridgewater College,VA,231581,38.378484,-78.969007,Bridgewater,22812-1599
+Lyon College,AR,106342,35.777619,-91.625354,Batesville,72501
+University of Virginia's College at Wise,VA,233897,36.970602,-82.559656,Wise,24293-4400
+Albright College,PA,210571,40.361351,-75.909742,Reading,19612-5234
+Maryville College,TN,220710,35.751505,-83.964223,Maryville,37804-5907
+Guilford College,NC,198613,36.094233,-79.887737,Greensboro,27410-4108
+Johnson C. Smith University,NC,198756,35.243033,-80.857251,Charlotte,28216-5398
+Simpson University,CA,123457,40.61334,-122.332981,Redding,96003-8606
+Ava Maria University,FL,442295,26.242138,-81.731358,Naples,34119
+Medgar Evers College-CUNY,NY,190646,40.666256,-73.957076,Brooklyn,11225
+Providence Christian College,CA,455770,34.149327,-118.141062,Pasadena,91101
+Virginia Wesleyan University,VA,234173,36.868417,-76.18606,Virginia Beach,23455
+Marymount Manhattan College,NY,192864,40.768787,-73.959767,New York,10021-4597
+Georgetown College,KY,156745,38.207615,-84.553767,Georgetown,40324-1696
+Bryn Athyn College of the New Church,PA,210492,40.134393,-75.060808,Bryn Athyn,19009-0717
+Tougaloo College,MS,176406,32.403014,-90.16076,Tougaloo,39174
+Antioch College,OH,245892,39.80321,-83.908684,Yellow Springs,45387
+Oakwood University,AL,101912,34.756344,-86.652705,Huntsville,35896
+Bethune-Cookman University,FL,132602,29.207195,-81.032946,Daytona Beach,32114-3099
+"Holy Cross College at Notre Dame, Indiana",IN,150774,41.698996,-86.253822,Notre Dame,46556-0308
+Southern Virginia University,VA,233611,37.740368,-79.35037,Buena Vista,24416
+Bennett College,NC,197993,36.067531,-79.77998,Greensboro,27401-3239
+Allen University,SC,217624,34.010348,-81.020045,Columbia,29204
+Bethany College,WV,237181,40.205819,-80.560056,Bethany,26032
+Cheyney University of Pennsylvania,PA,211608,39.932274,-75.529262,Cheyney,19319-0200
+East-West University,IL,144883,41.871309,-87.624793,Chicago,60605
+Hebrew Theological College,IL,145497,42.010103,-87.760874,Skokie,60077
+Lane College,TN,220598,35.627378,-88.806535,Jackson,38301-4598
+Rust College,MS,176318,34.776862,-89.446999,Holly Springs,38635
+University of Pittsburgh at Greensburg,PA,215275,40.276447,-79.532676,Greensburg,15601-5860
+University of Science and Arts of Oklahoma,OK,207722,35.031392,-97.95641,Chickasha,73018-5322
+Virginia Union University,VA,234164,37.562405,-77.450903,Richmond,23220
+Warren Wilson College,NC,199865,35.610328,-82.442619,Swannanoa,28778-2099
+Young Harris College,GA,141361,34.933523,-83.84587,Young Harris,30582
+Pennsylvania State University at Brandywine,PA,214731,39.927123,-75.449704,Media,19063-5522
+The King's College,NY,454184,40.706677,-74.012342,New York,10004
+Simpson College,IA,154350,41.365503,-93.563471,Indianola,50125
+Paine College,GA,140720,33.469545,-81.993225,Augusta,30901-3182
+Pillar College,NJ,440794,40.738539,-74.169153,Newark,07102
+Birmingham-Southern College,AL,100937,33.513774,-86.850552,Birmingham,35254
+Wells College,NY,197230,42.742943,-76.696028,Aurora,13026-0500
+Martin University,IN,151810,39.798144,-86.103953,Indianapolis,46218-0567
+Adrian College,MI,168528,41.898591,-84.061481,Adrian,49221-2575
+Albert Magnus College,CT,128498,41.332519,-72.923848,New Haven,06511-1189
+Albertson College,ID,142294,43.652284,-116.677992,Caldwell,83605-4432
+Alfred University,NY,188641,42.254476,-77.788106,Alfred,14802-1205
+Alice Lloyd College,KY,156189,37.335087,-82.875068,Pippa Passes,41844
+Alma College,MI,168591,43.38004,-84.672053,Alma,48801-1599
+American Jewish University,CA,116846,34.128153,-118.471706,Los Angeles,90077-1519
+Amridge University,AL,100690,32.362609,-86.17401,Montgomery,36117-3553
+Arkansas Baptist College,AR,106306,34.734751,-92.290555,Little Rock,72202-6068
+Asbury University,KY,156213,37.862029,-84.662606,Wilmore,40390-1198
+Atlantic Union College,MA,164571,NA,NA,NA,NA
+Baker University,KS,154688,38.778712,-95.187346,Baldwin City,66006-0065
+Barat College,IL,143163,NA,NA,NA,NA
+Barber Scotia College,NC,197948,NA,NA,NA,NA
+Bard College at Simon's Rock,MA,167792,42.208803,-73.379201,Great Barrington,01230-9702
+Bay Path University,MA,164632,42.055088,-72.583382,Longmeadow,01106
+Benedictine College,KS,154712,39.573079,-95.113858,Atchison,66002-1499
+Berry College,GA,139144,34.290414,-85.189202,Mount Berry,30149
+Bethel College,KS,154749,38.075169,-97.343256,North Newton,67117-1716
+Bethel University,TN,219718,36.137848,-88.516762,McKenzie,38201
+Blackburn College,IL,143288,39.287896,-89.870241,Carlinville,62626
+Bloomfield College,NJ,183822,40.795105,-74.194309,Bloomfield,07003
+Borromeo College of Ohio,OH,203368,41.490259,-81.531224,University Heights,44118-4538
+Brevard College,NC,198066,35.236763,-82.729494,Brevard,28712
+Brewton-Parker College,GA,139205,32.185718,-82.586136,Mount Vernon,30445
+Brigham Young University-Hawaii,HI,230047,21.642074,-157.926586,Laie,96762-1294
+Burlington College,VT,230825,NA,NA,NA,NA
+"California State University, Monterey Bay",CA,409698,36.652397,-121.796178,Seaside,93955-8001
+Calvin College,MI,169080,42.929916,-85.587548,Grand Rapids,49546
+Carroll College,MT,180106,46.600771,-112.040285,Helena,59625-0002
+Carroll University,WI,238458,43.004527,-88.228114,Waukesha,53186
+Carson-Newman College,TN,219806,36.122934,-83.491709,Jefferson City,37760
+Carthage College,WI,238476,42.622969,-87.820924,Kenosha,53140-1994
+Castleton State College,VT,230834,43.608397,-73.180842,Castleton,05735
+Cedar Crest College,PA,211468,40.586318,-75.519221,Allentown,18104-6196
+Chatham College,PA,211556,40.448432,-79.926083,Pittsburgh,15232
+Chestnut Hill College,PA,211583,40.08678,-75.228742,Philadelphia,19118-2693
+Chowan University,NC,198303,36.436258,-77.099141,Murfreesboro,27855
+Christendom College,VA,231703,NA,NA,NA,NA
+Christian Heritage College,CA,112084,32.843454,-116.978089,Santee,92071
+Christopher Newport University,VA,231712,37.062495,-76.494364,Newport News,23606-3072
+Clarke University,IA,153126,42.509475,-90.690487,Dubuque,52001-3198
+Clearwater Christian College,FL,133085,NA,NA,NA,NA
+Coastal Carolina University,SC,218724,33.794995,-79.011767,Conway,29526
+College of Idaho,ID,142294,43.652284,-116.677992,Caldwell,83605-4432
+College of Mount St. Vincent,NY,193399,40.913657,-73.908886999999993,Bronx,10471-1093
+The College of Saints John Fisher and Thomas More,TX,420352,NA,NA,NA,NA
+Colorado State University Pueblo,CO,128106,38.30859,-104.579033,Pueblo,81001-4901
+Concordia College,NY,190248,NA,NA,NA,NA
+Davis and Elkins College,WV,237258,NA,NA,NA,NA
+Doane University,NE,181020,40.622952,-96.950932,Crete,68333
+Eastern Mennonite University,VA,232043,38.471134,-78.880326,Harrisonburg,22802-2462
+Eastern Nazarene College,MA,165644,42.271228,-71.011079,Quincy,02170-2999
+Elizabethtown College,PA,212197,40.149236,-76.593224,Elizabethtown,17022-2298
+Elmira College,NY,190983,42.0961,-76.813459,Elmira,14901
+Emory and Henry College,VA,232025,36.772857,-81.829142,Emory,24327-0947
+Erskine College,SC,217998,34.332087,-82.39095,Due West,29639
+Evangel University,MO,177339,37.220956,-93.262614,Springfield,65802-2125
+Evergreen State College,WA,235167,47.07382,-122.977492,Olympia,98505-0001
+Ferrum College,VA,232089,36.926431,-80.020614,Ferrum,24088-9000
+Fort Lewis College,CO,127185,37.275939,-107.867422,Durango,81301-3999
+Franklin Pierce University,NH,182795,42.78014,-72.058011,Rindge,03461-0060
+Goddard College,VT,230889,44.279087,-72.438388,Plainfield,05667-9432
+Goshen College,IN,150668,41.563582,-85.827795,Goshen,46526-4794
+Green Mountain College,VT,230898,NA,NA,NA,NA
+Greensboro College,NC,198598,36.071082,-79.800232,Greensboro,27401-1875
+Grove City College,PA,212805,41.1558,-80.081481,Grove City,16127-2104
+Hamline University,MN,173665,44.966246,-93.164479,Saint Paul,55104-1284
+Harrisburg University of Science and Technology,PA,446640,40.26193,-76.880261,Harrisburg,17101-2208
+Hastings College,NE,181127,40.59025,-98.374403,Hastings,68901
+Heidelberg University,OH,203085,41.114833,-83.168387,Tiffin,44883-2462
+Hiram College,OH,203128,41.3107,-81.143981,Hiram,44234-0067
+Huntingdon College,AL,101435,32.351034,-86.284366,Montgomery,36106-2148
+Huston-Tillotson University,TX,225575,30.264667,-97.721691,Austin,78702-2795
+Illinois Wesleyan University,IL,145646,40.489901,-88.992014,Bloomington,61702-2900
+Jarvis Christian College,TX,225885,32.587942,-95.181513,Hawkins,75765-1470
+Judson College,AL,101541,NA,NA,NA,NA
+Kentucky State University,KY,157058,38.201427,-84.855402,Frankfort,40601-2355
+Kentucky Wesleyan College,KY,157076,37.744489,-87.119658,Owensboro,42301
+King College,TN,220516,36.585309,-82.159421,Bristol,37620-2699
+LaGrange College,GA,140234,33.038564,-85.043113,Lagrange,30240-2999
+Lambuth University,TN,220589,NA,NA,NA,NA
+Lebanon Valley College,PA,213507,40.330604,-76.514431,Annville,17003-1400
+Lees-McRae College,NC,198808,36.162477,-81.873371,Banner Elk,28604
+Life University,GA,140252,33.932781,-84.514729,Marietta,30060
+Lindsey Wilson College,KY,157216,37.101502,-85.299997,Columbia,42728-1223
+Southampton College of Long Island University,NY,192466,NA,NA,NA,NA
+Louisiana State University of Alexandria,LA,159382,31.178616,-92.414409,Alexandria,71302-9121
+MacMurray College,IL,146825,NA,NA,NA,NA
+Manhattanville College,NY,192749,41.032187,-73.715645,Purchase,10577
+Mansfield University of Pennsylvania,PA,213783,NA,NA,NA,NA
+Marlboro College,VT,230940,NA,NA,NA,NA
+Marymount California University,CA,118541,NA,NA,NA,NA
+McDaniel College,MD,164270,39.584231,-77.001992,Westminster,21157
+McPherson College,KS,155511,38.371422,-97.642996,McPherson,67460-1402
+Merrimack College,MA,166850,42.668344,-71.124216,North Andover,01845
+Colorado Mesa University,CO,127556,39.080643,-108.553275,Grand Junction,81501-3122
+Metropolitan State College of Denver,CO,127565,39.744202,-105.00504,Denver,80217-3362
+Millikin University,IL,147244,39.842612,-88.976298,Decatur,62522-2084
+Mills College,CA,118888,37.781425,-122.182294,Oakland,94613
+Moravian University,PA,214157,40.630947,-75.383638,Bethlehem,18018-6650
+Muskingum College,OH,204264,39.996585,-81.737127,New Concord,43762-1837
+National Hispanic University,CA,119544,NA,NA,NA,NA
+Nebraska Wesleyan University,NE,181446,40.839098,-96.64831,Lincoln,68504-2794
+Neumann College,PA,214272,39.874876,-75.440022,Aston,19014-1298
+North Greenville University,SC,218441,35.069758,-82.37026,Tigerville,29688-1892
+Northland College,WI,239512,46.579087,-90.87476,Ashland,54806-3999
+Olivet College,MI,171599,42.442891,-84.923891,Olivet,49076
+Pacific Union College,CA,120865,38.570585,-122.440308,Angwin,94508-9707
+Peace College,NC,199272,35.789139,-78.637697,Raleigh,27604-1194
+Philander Smith College,AR,107600,34.737131,-92.283015,Little Rock,72202-3799
+Pine Manor College,MA,167455,NA,NA,NA,NA
+Providence College,RI,217402,41.842742,-71.437446,Providence,02918-0001
+Regis College,MA,167598,42.351291,-71.310561,Weston,02493-1571
+Richard Stockton College of New Jersey,NJ,186876,39.492036,-74.531087,Galloway,08205-9441
+Rockford College,IL,148405,42.270639,-89.019536,Rockford,61108-2311
+Rosemont College,PA,215691,40.033417,-75.32925,Rosemont,19010-1699
+Russell Sage College,NY,195128,42.72822,-73.693711,Troy,12180
+San Diego Christian College,CA,112084,32.843454,-116.978089,Santee,92071
+Savannah State University,GA,140960,32.024781,-81.063377,Savannah,31404-5310
+Schreiner University,TX,228042,30.031458,-99.130586,Kerrville,78028-5697
+Seton Hill University,PA,215947,40.309407,-79.557433,Greensburg,15601
+Shawnee State University,OH,205443,38.730867,-82.993769,Portsmouth,45662
+Shepherd University,WV,237792,39.433071,-77.804101,Shepherdstown,25443
+Shimer College,IL,148849,NA,NA,NA,NA
+Shorter University,GA,140988,34.257543,-85.196529,Rome,30165
+Siena College,NY,195474,42.717602,-73.7526,Loudonville,12211-1462
+Sierra Nevada College,NV,182458,NA,NA,NA,NA
+Spring Hill College,AL,102234,30.694751,-88.138199,Mobile,36608-1780
+St. Andrews Presbyterian College,NC,199698,34.74563,-79.478567,Laurinburg,28352
+St. Augustine's College,NC,199582,35.785468,-78.621301,Raleigh,27610-2298
+St. Francis College,NY,195173,40.690233,-73.986559,Brooklyn,11201
+St. Vincent College,PA,215798,40.29265,-79.403762,Latrobe,15650-2690
+State University of New York at Old Westbury,NY,196237,40.799021,-73.571907,Old Westbury,11568-0210
+Stephens College,MO,179548,38.95204,-92.319204,Columbia,65215
+Sterling College,VT,231095,44.65225,-72.382372,Craftsbury Common,05827-0072
+Sterling College,KS,155937,38.219937,-98.208644,Sterling,67579
+Stillman College,AL,102270,33.200006,-87.585278,Tuscaloosa,35401
+Talladega College,AL,102298,33.433472,-86.112704,Talladega,35160
+Texas A&M University at Galveston,TX,228714,NA,NA,NA,NA
+Texas Lutheran University,TX,228981,29.573261,-97.982669,Seguin,78155-5999
+Thiel College,PA,216357,41.41354,-80.384383,Greenville,16125-2181
+Thomas More College of Liberal Arts,NH,183275,42.80683,-71.48437,Merrimack,03054
+Thomas More University,KY,157809,39.022963,-84.568923,Crestview Hills,41017-3495
+University of Arizona Global Campus,IA,154022,32.8273,-117.141961,San Diego,92123
+University of Dallas,TX,224323,32.846221,-96.919512,Irving,75062-4736
+University of Hawaii at Hilo,HI,141565,19.701189,-155.080847,Hilo,96720-4091
+University of Hawaii at West Oahu,HI,141981,21.35531,-158.056403,Kapolei,96707-4507
+University of Judaism,CA,116846,34.128153,-118.471706,Los Angeles,90077-1519
+University of Main at Presque Isle,ME,161341,46.672285,-68.016343,Presque Isle,04769-2888
+University of Maine at Machias,ME,161244,NA,NA,NA,NA
+University of Mount Union,OH,204185,40.905256,-81.111029,Alliance,44601-3929
+University of Pikeville,KY,157535,37.479232,-82.521063,Pikeville,41501
+University of Pittsburgh at Bradford,PA,215266,41.943415,-78.673701,Bradford,16701
+University of Puerto Rico in Ponce,PR,243212,17.993314,-66.606215,Ponce,00716-9996
+University of South Carolina Beaufort,SC,218654,32.303308,-80.973595,Bluffton,29909
+University of the West,CA,449870,34.045985,-118.082964,Rosemead,91770
+University of Wisconsin-Green Bay,WI,240277,44.532298,-87.919973,Green Bay,54311-7001
+University of Wisconsin-Parkside,WI,240374,42.647718,-87.855231,Kenosha,53144
+University of Wisconsin-Superior,WI,240426,46.717629,-92.091007,Superior,54880-4500
+Virginia Intermont College,VA,233912,NA,NA,NA,NA
+Warner Pacific College,OR,210304,45.506265,-122.592498,Portland,97215
+Wesleyan College,GA,141325,32.876037,-83.715417,Macon,31210-4462
+West Virginia State University,WV,237899,38.380541,-81.765034,Institute,25112-1000
+West Virginia Wesleyan College,WV,237969,38.990661,-80.218969,Buckhannon,26201-2994
+Western Colorado University,CO,128391,38.549936,-106.919132,Gunnison,81231
+William Jewell College,MO,179955,39.247844,-94.413126,Liberty,64068-1896
+William Peace University,NC,199272,35.789139,-78.637697,Raleigh,27604-1194
+Williams Baptist University,AR,107877,36.125676,-90.940277,Walnut Ridge,72476
+Wingate University,NC,199962,34.986064,-80.44305,Wingate,28174-0159
+Wisconsin Lutheran College,WI,240338,43.036943,-88.022718,Milwaukee,53226-4699
+Xavier University of Louisiana,LA,160904,29.964162,-90.107307,New Orleans,70125-1098
