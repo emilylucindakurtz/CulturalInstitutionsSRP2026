@@ -9,8 +9,8 @@ library(rvest)
 library(dplyr)
 ```
 
-checking permission to scrape
 ```{r}
+#checking permission to scrape
 library(robotstxt)
 paths_allowed("https://sites.ed.gov/whhbcu/one-hundred-and-five-historically-black-colleges-and-universities/")
 ```
@@ -20,8 +20,8 @@ hbcu_page <- read_html("https://sites.ed.gov/whhbcu/one-hundred-and-five-histori
 hbcu_page
 ```
 
-parsing HTML table into data frame
 ```{r}
+#parsing HTML table into data frame
 hbcu_table <- hbcu_page %>%
 html_element("table") %>%
 html_table(header = TRUE)
@@ -29,8 +29,8 @@ html_table(header = TRUE)
 glimpse(hbcu_table)
 ```
 
-reading in and cleaning LACs csv
 ```{r}
+#reading in and cleaning LACs csv
 us_news_lacs <- read_csv("../data/Colleges/US-News-Rankings-LACs-Through-2026.csv")
 
 lacs <- us_news_lacs %>%
@@ -40,15 +40,15 @@ lacs
 ```
 
 
-reading in postsecondary schools locations
 ```{r}
+#reading in postsecondary schools locations
 postsecondary_school_locations <- read_csv("../data/Colleges/Postsecondary_School_Locations_2023-24.csv")
 glimpse(postsecondary_school_locations)
 ```
 
 
-joining LACs and location datasets
 ```{r}
+#joining LACs and location datasets
 lacs_locations <- lacs %>%
   left_join(
     postsecondary_school_locations %>%
@@ -59,8 +59,8 @@ lacs_locations
 ```
 
 
-duplication conflict when trying to join the hbcu and location datasets
 ```{r}
+#duplication conflict when trying to join the hbcu and location datasets
 hbcu_table[55,]
 postsecondary_school_locations[375,]
 
@@ -73,8 +73,8 @@ postsecondary_school_locations %>%
   filter(n > 1)
 ```
 
-resolved conflict by making college names distinct
 ```{r}
+#resolved conflict by making college names distinct
 distinct_locations <- postsecondary_school_locations %>%
   distinct(NAME, .keep_all = TRUE)
 
@@ -88,8 +88,8 @@ hbcus_locations
 ```
 
 
-writing csvs for completed, cleaned datasets 
 ```{r}
+#writing csvs for completed, cleaned datasets 
 write_csv(lacs_locations, "LACs_coordinates.csv")
 write_csv(hbcus_locations, "HBCUs_coordinates.csv")
 ```

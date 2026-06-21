@@ -171,16 +171,21 @@ Plans for EDA:
 
 ## 6/18
 - [X] scraped schools from HBCU website
-- [] join long and lat coordinates for both college datasets
-- [] finish filtering through NRHP csv
+- [ ] join long and lat coordinates for both college datasets
+- [ ] finish filtering through NRHP csv
 
 ## 6/20
 - [X] scraped schools from HBCU website
 - [X] join long and lat coordinates for both college datasets
 - [X] finish filtering through NRHP csv for various theaters
 
-## 6/21
-- [] add long and lat coordinates to NRHP dataset
-- [] explore visualizations using datasets
-- [] conduct basic EDA across the data
+- [ ] add long and lat coordinates to NRHP dataset
+- [ ] gather data from Opera America website
+- [ ] explore visualizations using datasets
+- [ ] conduct basic EDA across the data
 
+## 6/21
+- [X] add long and lat coordinates to NRHP dataset
+- [X] gather data from Opera America website
+- [ ] explore visualizations using datasets
+- [ ] conduct basic EDA across the data
