@@ -1,0 +1,36 @@
+---
+title: "theater_data_cleaning"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(rvest)
+library(dplyr)
+library(stringr)
+library(tidygeocoder)
+```
+
+```{r}
+raw_nrhp <- read_csv("../data/Historic Districts/Raw/csv_RAW_national-register-listed_20260522.csv")
+```
+
+```{r}
+all_theater_types <- raw_nrhp %>%
+  filter(str_detect(`Property Name`, "(?i)theat(er|re)|opera|playhouse|auditorium")) %>%
+  mutate(Address = paste(`Property Name`, County, State, sep = " "))
+
+all_theater_types
+```
+
+```{r}
+#trying to add long and lat coordinates
+all_theater_types <- all_theater_types %>%
+  geocode(Address, method = 'arcgis', lat = latitude, long = longitude)
+```
+
+
+```{r}
+write_csv(all_theater_types, "all_theater_types.csv")
+```
+
