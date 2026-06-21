@@ -9,8 +9,11 @@ library(rvest)
 library(dplyr)
 library(stringr)
 library(tidygeocoder)
+library(purrr)
 ```
 
+
+## NRHP Data
 ```{r}
 raw_nrhp <- read_csv("../data/Historic Districts/Raw/csv_RAW_national-register-listed_20260522.csv")
 ```
@@ -18,19 +21,117 @@ raw_nrhp <- read_csv("../data/Historic Districts/Raw/csv_RAW_national-register-l
 ```{r}
 all_theater_types <- raw_nrhp %>%
   filter(str_detect(`Property Name`, "(?i)theat(er|re)|opera|playhouse|auditorium")) %>%
-  mutate(Address = paste(`Property Name`, County, State, sep = " "))
+  mutate(Address = paste(`Street & Number`, City, State, sep = ", ")) 
 
-all_theater_types
+glimpse(all_theater_types)
 ```
 
 ```{r}
-#trying to add long and lat coordinates
+#trying to add long and lat coordinates; initial code below of geocoding the entire dataframe did not run
+
+#all_theater_types <- all_theater_types %>%
+  #geocode(Address, method = 'arcgis', lat = latitude, long = longitude)
+```
+
+```{r}
+#adding row_id to allow rejoining and checking progress
 all_theater_types <- all_theater_types %>%
-  geocode(Address, method = 'arcgis', lat = latitude, long = longitude)
+  mutate(row_id = row_number())
+```
+
+```{r}
+#splitting addresses into groups of 100 for easier geocoding
+groups <- split(all_theater_types, ceiling(seq_len(nrow(all_theater_types)) / 100))
+
+geocoded_groups <- map(
+  groups,
+  ~ geocode(.x, address = Address, method = "arcgis", lat = latitude, long = longitude)
+  )
+```
+
+```{r}
+#bind the groups back together
+all_theaters_geocoded <- bind_rows(geocoded_groups) %>%
+  select(`Ref#`, `Property Name`, State, County, City, `Street & Number`, `Area of Significance`, `Category of Property`, `Other Names`, `Property ID`, Address)
+
+all_theaters_geocoded
 ```
 
 
 ```{r}
-write_csv(all_theater_types, "all_theater_types.csv")
+write_csv(all_theaters_geocoded, "NRHP_all_theater_types_geocoded.csv")
+```
+
+## Opera America Data
+
+Checking permission to scrape
+```{r}
+library(robotstxt)
+paths_allowed("https://www.operaamerica.org/membership-directory/#eyJ2aWV3cyI6eyJMSVNUIjowLCJNQVAiOjF9LCJ2aWV3IjowLCJvcmdEaXJlY3RvcnkiOnRydWUsImhpZGVTaWRlYmFyIjp0cnVlLCJzaG93U3RhdGVGaWx0ZXIiOmZhbHNlLCJzaG93QnVkZ2V0RmlsdGVyIjpmYWxzZSwiaW5kaXZpZHVhbFNvcnQiOiJuYW1lIiwiaW5kaXZpZHVhbFNvcnREaXJlY3Rpb24iOiJkIiwiZmlsdGVyQ0EiOmZhbHNlLCJmaWx0ZXJGb2NpIjpbeyJuYW1lIjoiQWN0b3IvRGFuY2VyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IkFnZW50IiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiQXJ0aXN0IFRyYWluZXIiLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJBdWRpZW5jZSBNZW1iZXIiLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJDaG9yZW9ncmFwaGVyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiQ29hY2giLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJDb21wb3NlciIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IkNvbmR1Y3RvciIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IkRlc2lnbmVyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiRHJhbWF0dXJnIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiR2VuZXJhbCBEaXJlY3RvciIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IkxpYnJldHRpc3QiLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJNdXNpY2lhbiIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6Ik5hdGlvbmFsIE9wZXJhIENlbnRlciBVc2VyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiUGlhbmlzdCIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlByZXNzL01lZGlhIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiUHVibGljaXN0IiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiUHVibGlzaGVyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiU2luZ2VyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiU3RhZ2UgRGlyZWN0b3IiLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJTdHVkZW50IiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiU3VwcG9ydGVyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiVGVhY2hpbmcgQXJ0aXN0IiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiVGVjaG5pY2FsL1Byb2R1Y3Rpb24gUHJvZmVzc2lvbmFsIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiVHJ1c3RlZSIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlZvaWNlIFRlYWNoZXIiLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJWb2ljZSBUeXBlIC0gQWx0byIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlZvaWNlIFR5cGUgLSBCYXJpdG9uZSIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlZvaWNlIFR5cGUgLSBCYXNzIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiVm9pY2UgVHlwZSAtIENvbnRyYWx0byIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlZvaWNlIFR5cGUgLSBDb3VudGVyIFRlbm9yIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiVm9pY2UgVHlwZSAtIE1lenpvIFNvcHJhbm8iLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJWb2ljZSBUeXBlIC0gU29wcmFubyIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlZvaWNlIFR5cGUgLSBUZW5vciIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlZvbHVudGVlciIsImFjdGl2ZSI6ZmFsc2V9XSwiZmlsdGVyIjp7Im5hbWUiOiIiLCJ0eXBlcyI6W10sImZvY2kiOltdLCJzdGF0ZXMiOltdLCJidWRnZXRzIjpbXSwicGFnZSI6MSwicGFnZVNpemUiOjEyfX0%3D")
+```
+
+```{r}
+#reading in html page
+opera_america_member_page <- read_html("https://www.operaamerica.org/membership-directory/#eyJ2aWV3cyI6eyJMSVNUIjowLCJNQVAiOjF9LCJ2aWV3IjowLCJvcmdEaXJlY3RvcnkiOnRydWUsImhpZGVTaWRlYmFyIjp0cnVlLCJzaG93U3RhdGVGaWx0ZXIiOmZhbHNlLCJzaG93QnVkZ2V0RmlsdGVyIjpmYWxzZSwiaW5kaXZpZHVhbFNvcnQiOiJuYW1lIiwiaW5kaXZpZHVhbFNvcnREaXJlY3Rpb24iOiJkIiwiZmlsdGVyQ0EiOmZhbHNlLCJmaWx0ZXJGb2NpIjpbeyJuYW1lIjoiQWN0b3IvRGFuY2VyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IkFnZW50IiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiQXJ0aXN0IFRyYWluZXIiLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJBdWRpZW5jZSBNZW1iZXIiLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJDaG9yZW9ncmFwaGVyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiQ29hY2giLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJDb21wb3NlciIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IkNvbmR1Y3RvciIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IkRlc2lnbmVyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiRHJhbWF0dXJnIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiR2VuZXJhbCBEaXJlY3RvciIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IkxpYnJldHRpc3QiLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJNdXNpY2lhbiIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6Ik5hdGlvbmFsIE9wZXJhIENlbnRlciBVc2VyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiUGlhbmlzdCIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlByZXNzL01lZGlhIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiUHVibGljaXN0IiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiUHVibGlzaGVyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiU2luZ2VyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiU3RhZ2UgRGlyZWN0b3IiLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJTdHVkZW50IiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiU3VwcG9ydGVyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiVGVhY2hpbmcgQXJ0aXN0IiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiVGVjaG5pY2FsL1Byb2R1Y3Rpb24gUHJvZmVzc2lvbmFsIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiVHJ1c3RlZSIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlZvaWNlIFRlYWNoZXIiLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJWb2ljZSBUeXBlIC0gQWx0byIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlZvaWNlIFR5cGUgLSBCYXJpdG9uZSIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlZvaWNlIFR5cGUgLSBCYXNzIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiVm9pY2UgVHlwZSAtIENvbnRyYWx0byIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlZvaWNlIFR5cGUgLSBDb3VudGVyIFRlbm9yIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiVm9pY2UgVHlwZSAtIE1lenpvIFNvcHJhbm8iLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJWb2ljZSBUeXBlIC0gU29wcmFubyIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlZvaWNlIFR5cGUgLSBUZW5vciIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlZvbHVudGVlciIsImFjdGl2ZSI6ZmFsc2V9XSwiZmlsdGVyIjp7Im5hbWUiOiIiLCJ0eXBlcyI6W10sImZvY2kiOltdLCJzdGF0ZXMiOltdLCJidWRnZXRzIjpbXSwicGFnZSI6MSwicGFnZVNpemUiOjEyfX0%3D")
+```
+
+```{r}
+#extracting the data inside the <script> tags
+scripts <- opera_america_member_page %>%
+  html_elements("script") %>%
+  html_text2()
+
+#checking which script tag contains the theater data
+grep("var model", scripts)
+```
+
+```{r}
+#turn the script with the theater data into a character string
+script_text <- scripts[grep("var model", scripts)]
+
+#cleaning the theater data
+script_clean <- gsub('\\"', '"', script_text)
+
+#extracting each organization/theater object
+orgs <- str_extract_all(script_clean, '\\{"id":[^}]+\\}') [[1]]
+```
+
+```{r}
+#defining helper functions for extracting text and numeric values
+
+get_text <- function(x, field) {
+  sub(paste0('.*"', field, '":("?)([^",}]*)\\1.*'), "\\2", x)
+}
+
+get_num <- function(x, field) {
+  sub(paste0('.*"', field, '":(-?[0-9.]+).*'), "\\1", x)
+}
+```
+
+
+```{r}
+#building a table from extracted data
+
+operas <- data.frame(
+  id = get_num(orgs, "id"),
+  name = get_text(orgs, "name"),
+  city = get_text(orgs, "city"),
+  state = get_text(orgs, "state"),
+  type = get_text(orgs, "type"),
+  latitude = get_num(orgs, "latitude"),
+  longitude = get_num(orgs, "longitude"),
+  # a slug is the unique identifying part of a web address
+  slug = get_text(orgs, "slug"),
+  stringsAsFactors = FALSE
+)
+
+operas$id <- as.integer(operas$id)
+operas$latitude <- as.numeric(operas$latitude)
+operas$longitude <- as.numeric(operas$longitude)
+```
+
+```{r}
+#writing csv of all member operas in Opera America
+write_csv(operas, "opera_america_members.csv")
 ```
 
