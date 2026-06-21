@@ -1,0 +1,488 @@
+id,name,city,state,type,latitude,longitude,slug
+3102,Canadian Opera Company,Toronto,ON,Professional Company Member,43.6507147,-79.3652174,canadian-opera-company
+3085,Chants Libres,Montréal,QC,Professional Company Member,45.522349,-73.560428,chants-libres
+3251,Edmonton Opera,Edmonton,AB,Professional Company Member,53.585985,-113.584025,edmonton-opera
+3149,Manitoba Opera,Winnipeg,MB,Professional Company Member,49.8994097,-97.1370586,manitoba-opera
+3181,Opéra de Montréal,Montréal,QC,Professional Company Member,45.5083464,-73.5682512,opera-de-montreal
+3283,Opéra de Québec,Québec,QC,Professional Company Member,46.8137431,-71.2084061,opera-de-quebec
+3133,Tapestry Opera,Toronto,ON,Professional Company Member,43.6502056,-79.3592192,tapestry-opera
+3136,Vancouver Opera,Vancouver,BC,Professional Company Member,49.2676925,-123.0756997,vancouver-opera
+17221,Opera Baltimore,Baltimore,MD,Professional Company Member,39.2970026,-76.6165226,opera-baltimore
+17457,Lyric Opera of the North,Duluth,MN,Professional Company Member,46.787977,-92.107765,lyric-opera-of-the-north
+17434,Milwaukee Opera Theatre,Wauwatosa,WI,Professional Company Member,43.053271,-87.998951,milwaukee-opera-theatre
+16213,Opera on Tap,Brooklyn,NY,Professional Company Member,40.64528,-73.97508,opera-on-tap
+17585,Opera Tampa,Tampa,FL,Professional Company Member,27.9516138,-82.4639399,opera-tampa
+17465,Overtone Industries,Los Angeles,CA,Professional Company Member,34.0644171,-118.3710897,overtone-industries
+17360,Pacific Opera Project,Los Angeles,CA,Professional Company Member,34.1175895,-118.188329,pacific-opera-project
+17438,Opera Cultura,Oakland,CA,Professional Company Member,37.739584,-122.158989,opera-cultura
+16561,St. Petersburg Opera Company,St. Petersburg,FL,Professional Company Member,27.7703677,-82.6356732,st-petersburg-opera-company
+3137,Washington Concert Opera,Washington,DC,Professional Company Member,38.9224746,-77.0348904,washington-concert-opera
+3195,Amarillo Opera,Amarillo,TX,Professional Company Member,35.1876426,-101.844523,amarillo-opera
+14343,American Lyric Theater,New York,NY,Professional Company Member,40.7583763,-73.9934141,american-lyric-theater
+3267,American Opera Projects,Brooklyn,NY,Professional Company Member,40.685136,-73.9735133,american-opera-projects
+3242,Annapolis Opera,Annapolis,MD,Professional Company Member,38.9738068,-76.5056846,annapolis-opera
+3179,Arizona Opera,Phoenix,AZ,Professional Company Member,33.4673673,-112.0741316,arizona-opera
+3100,Charlottesville Opera,Charlottesville,VA,Professional Company Member,38.032291,-78.479506,charlottesville-opera
+3072,Atlanta Opera,Atlanta,GA,Professional Company Member,33.7977439,-84.4075634,atlanta-opera
+3268,Austin Opera,Austin,TX,Professional Company Member,30.37976,-97.730224,austin-opera
+17304,Beth Morrison Projects,Brooklyn,NY,Professional Company Member,40.6464559,-73.9607382,beth-morrison-projects
+6982,Cedar Rapids Opera,Cedar Rapids,IA,Professional Company Member,41.9755909,-91.6658426,cedar-rapids-opera
+3059,Central City Opera,Wheat Ridge,CO,Professional Company Member,39.7093169,-104.9399516,central-city-opera
+3065,Chautauqua Opera,New York,NY,Professional Company Member,40.7583788,-73.9934804,chautauqua-opera
+3250,Chicago Opera Theater,Chicago,IL,Professional Company Member,41.8860676,-87.6256982,chicago-opera-theater
+3175,Cincinnati Opera,Cincinnati,OH,Professional Company Member,39.1098891,-84.518997100000007,cincinnati-opera
+3082,Dallas Opera,Dallas,TX,Professional Company Member,32.7908527,-96.7980483,dallas-opera
+3106,Dayton Performing Arts Alliance ,Dayton,OH,Professional Company Member,39.7619111,-84.1918682,dayton-performing-arts-alliance
+3105,Des Moines Metro Opera,Indianola,IA,Professional Company Member,41.3626004,-93.561969,des-moines-metro-opera
+3037,Eugene Opera,Eugene,OR,Professional Company Member,44.0425817,-123.0931221,eugene-opera
+16197,Ardea Arts - Opera Out Of Bounds,New York,NY,Professional Company Member,40.7222425,-74.0013104,ardea-arts---opera-out-of-bounds
+3234,Fargo-Moorhead Opera,Fargo,ND,Professional Company Member,46.877229,-96.789821,fargo-moorhead-opera
+3148,Festival Opera,Walnut Creek,CA,Professional Company Member,37.9011498,-122.0613121,festival-opera
+3089,Florentine Opera Company,Milwaukee,WI,Professional Company Member,43.044243943437635,-87.91404488833895,florentine-opera-company
+3103,Florida Grand Opera,Miami,FL,Professional Company Member,25.791972,-80.194188,florida-grand-opera
+3174,Fort Worth Opera,Fort Worth,TX,Professional Company Member,32.75635,-97.32733,fort-worth-opera
+3031,Glimmerglass Festival,Cooperstown,NY,Professional Company Member,42.7006303,-74.924321,glimmerglass-festival
+3068,Hawai'i Opera Theatre,Honolulu,HI,Professional Company Member,21.3044798,-157.8501354,hawaii-opera-theatre
+17264,HERE,New York,NY,Professional Company Member,40.7251584,-74.004931,here
+3226,Houston Grand Opera,Houston,TX,Professional Company Member,29.7636876,-95.3656217,houston-grand-opera
+16655,Opera Montana,Bozeman,MT,Professional Company Member,45.6789984,-111.0354198,opera-montana
+3184,Knoxville Opera,Knoxville,TN,Professional Company Member,35.9743354,-83.915378,knoxville-opera
+2987,Livermore Valley Opera,Livermore,CA,Professional Company Member,37.6818745,-121.7680088,livermore-valley-opera
+3285,Long Beach Opera,Long Beach,CA,Professional Company Member,33.7736714,-118.1941225,long-beach-opera
+3040,Los Angeles Opera,Los Angeles,CA,Professional Company Member,34.0566067,-118.2489325,los-angeles-opera
+3025,Lyric Opera of Chicago,Chicago,IL,Professional Company Member,41.8823318,-87.6373977,lyric-opera-of-chicago
+3119,Lyric Opera of Kansas City,Kansas City,MO,Professional Company Member,39.0921188,-94.5747032,lyric-opera-of-kansas-city
+3230,Madison Opera,Madison,WI,Professional Company Member,43.0723425,-89.389739,madison-opera
+3066,Metropolitan Opera,New York,NY,Professional Company Member,40.7769059,-73.9800645,metropolitan-opera
+3120,Detroit Opera,Detroit,MI,Professional Company Member,42.3364696,-83.0488075,detroit-opera
+3176,Minnesota Opera,Minneapolis,MN,Professional Company Member,44.9893512,-93.2740846,minnesota-opera
+3091,Opera Mississippi,Jackson,MS,Professional Company Member,32.3,-90.18,opera-mississippi
+3145,Mobile Opera,Mobile,AL,Professional Company Member,30.6909321,-88.0441179,mobile-opera
+3203,New Performance Traditions ,San Francisco,CA,Professional Company Member,37.7829058,-122.4109776,new-performance-traditions
+3099,Nashville Opera,Nashville,TN,Professional Company Member,0,0,nashville-opera
+3164,Nautilus Music-Theater,St. Paul,MN,Professional Company Member,44.9492634,-93.0835857,nautilus-music-theater
+17538,New Orleans Opera Association,New Orleans,LA,Professional Company Member,29.9470487,-90.0705249,new-orleans-opera-association
+6983,North Carolina Opera,Raleigh,NC,Professional Company Member,35.7968559,-78.6506259,north-carolina-opera
+3253,Opera Birmingham,Birmingham,AL,Professional Company Member,33.5176783,-86.7785792,opera-birmingham
+3208,Opera Carolina,Charlotte,NC,Professional Company Member,35.213583,-80.8269229,opera-carolina
+14227,The Cleveland Opera,Cleveland,OH,Professional Company Member,41.452846,-81.6447146,the-cleveland-opera
+3147,Opera Colorado,Englewood,CO,Professional Company Member,39.704081,-104.9411793,opera-colorado
+3238,Opera Columbus,Columbus,OH,Professional Company Member,39.959863,-82.998928,opera-columbus
+17443,Opera Ebony,New York,NY,Professional Company Member,40.7801634,-73.9822972,opera-ebony
+3350,Opera For The Young,Madison,WI,Professional Company Member,43.0573248,-89.490888,opera-for-the-young
+3122,Opera Fort Collins,Fort Collins,CO,Professional Company Member,40.583599,-105.0814804,opera-fort-collins
+3053,Opera Idaho,Boise,ID,Professional Company Member,43.6130643,-116.208167,opera-idaho
+3338,Opera in the Heights,Houston,TX,Professional Company Member,29.76,-95.36,opera-in-the-heights
+3165,Opera Memphis,Memphis,TN,Professional Company Member,35.1460249,-90.0517638,opera-memphis
+3125,Opera Omaha,Omaha,NE,Professional Company Member,41.2579082,-95.9404931,opera-omaha
+6915,Opera on the James,Lynchburg,VA,Professional Company Member,37.4099999,-79.14,opera-on-the-james
+17303,Opera Parallèle,San Francisco,CA,Professional Company Member,37.7743762,-122.4216345,opera-parallele
+3038,Opera Philadelphia,Philadelphia,PA,Professional Company Member,39.9479549,-75.1658968,opera-philadelphia
+3166,Opera Roanoke,ROANOKE,VA,Professional Company Member,37.2708342,-79.9396003,opera-roanoke
+3140,Opera San José,San José,CA,Professional Company Member,37.3869373,-121.909048,opera-san-jose
+3266,Opera Saratoga,Saratoga Springs,NY,Professional Company Member,43.0553107,-73.8009124,opera-saratoga
+3170,Opera Southwest,Albuquerque,NM,Professional Company Member,35.09,-106.64,opera-southwest
+3057,Pittsburgh Festival Opera,Pittsburgh,PA,Professional Company Member,40.5142,-80.0298,pittsburgh-festival-opera
+3210,Opera Theatre of Saint Louis,Saint Louis,MO,Professional Company Member,38.5875497,-90.3433083,opera-theatre-of-saint-louis
+3275,OperaDelaware,Wilmington,DE,Professional Company Member,39.7354595,-75.5487035,operadelaware
+3129,Palm Beach Opera,West Palm Beach,FL,Professional Company Member,26.7096646,-80.0521405,palm-beach-opera
+3227,Pensacola Opera,Pensacola,FL,Professional Company Member,30.4122683,-87.21275,pensacola-opera
+3167,Piedmont Opera,Winston-Salem,NC,Professional Company Member,36.096223,-80.2507849,piedmont-opera
+3160,Pittsburgh Opera,Pittsburgh,PA,Professional Company Member,40.4532517,-79.9797605,pittsburgh-opera
+3042,Portland Opera,Portland,OR,Professional Company Member,45.5061491,-122.6639903,portland-opera
+2988,Opera Maine,Portland,ME,Professional Company Member,43.655317,-70.2541768,opera-maine
+3249,Sacramento Philharmonic & Opera,Sacramento,CA,Professional Company Member,38.5777167,-121.4872128,sacramento-philharmonic-opera
+6974,Salt Marsh Opera,Stonington,CT,Professional Company Member,41.339534,-71.906132,salt-marsh-opera
+3035,San Diego Opera Association,San Diego,CA,Professional Company Member,32.7188552,-117.1601698,san-diego-opera-association
+3077,San Francisco Opera,San Francisco,CA,Professional Company Member,37.7785899,-122.4209167,san-francisco-opera
+3074,Santa Fe Opera,Santa Fe,NM,Professional Company Member,35.81,-105.99,santa-fe-opera
+3290,Seattle Opera,Seattle,WA,Professional Company Member,47.6197264,-122.336336,seattle-opera
+17445,The Industry L.A.,Los Angeles,CA,Professional Company Member,34.0871478,-118.283664,the-industry-la
+15885,the little OPERA theatre of NY,New York,NY,Professional Company Member,40.7413663,-73.9984487,the-little-opera-theatre-of-ny
+3075,Toledo Opera,Toledo,OH,Professional Company Member,41.6495101,-83.5366493,toledo-opera
+3001,Tri-Cities Opera,Binghamton,NY,Professional Company Member,42.1098355,-75.9366665,tri-cities-opera
+3146,Tulsa Opera,Tulsa,OK,Professional Company Member,36.1394188,-95.988727,tulsa-opera
+3162,Utah Symphony | Utah Opera,Salt Lake City,UT,Professional Company Member,40.7767219,-111.90148,utah-symphony-utah-opera
+17444,National Sawdust,Brooklyn,NY,Professional Company Member,40.7189,-73.96134,national-sawdust
+3092,Washington National Opera,Washington,DC,Professional Company Member,38.8950982,-77.0363849,washington-national-opera
+3281,Soundstreams Canada,Toronto,ON,Professional Company Member,43.6464217,-79.4028255,soundstreams-canada
+3070,Wolf Trap Opera Company,Vienna,VA,Professional Company Member,38.9324721,-77.2655206,wolf-trap-opera-company
+17381,OPERA San Antonio,San Antonio,TX,Professional Company Member,29.431275,-98.4812736,opera-san-antonio
+17581,Marble City Opera,Knoxville,TN,Professional Company Member,35.881701,-84.186091,marble-city-opera
+17584,Opera Lafayette,Washington ,DC,Professional Company Member,38.8902781,-77.0007773,opera-lafayette
+17593,Resonance Works,Pittsburgh,PA,Professional Company Member,40.4327086,-79.9248669,resonance-works
+3225,Pacific Opera Victoria,Victoria,BC,Professional Company Member,48.428754,-123.357964,pacific-opera-victoria
+17546,Opera Company of Middlebury,Middlebury,VT,Professional Company Member,44.015337100000004,-73.16734,opera-company-of-middlebury
+17603,Anchorage Opera,Anchorage,AK,Professional Company Member,61.222733,-149.854358,anchorage-opera
+6880,Sarasota Opera,Sarasota,FL,Professional Company Member,27.3368618,-82.5438377,sarasota-opera
+17623,Against The Grain Theatre,Toronto,ON,Professional Company Member,43.6431033,-79.4038314,against-the-grain-theatre
+17624,Saskatoon Opera,Saskatoon,SK,Professional Company Member,52.1609387,-106.6446622,saskatoon-opera
+17630,Ars Minerva,San Francisco,CA,Professional Company Member,37.7474007,-122.4288114,ars-minerva
+17632,New Philharmonic Opera,Glen Ellyn,IL,Professional Company Member,41.8436125,-88.0687396,new-philharmonic-opera
+17639,White Snake Projects,Brookline,MA,Professional Company Member,42.3198051,-71.1406542,white-snake-projects
+17645,First Coast Opera,St. Augustine,FL,Professional Company Member,29.8917023,-81.3163274,first-coast-opera
+17657,Buffalo Opera Unlimited,Buffalo,NY,Professional Company Member,42.911972,-78.879621,buffalo-opera-unlimited
+3220,Virginia Opera,Norfolk,VA,Professional Company Member,36.86272,-76.27873,virginia-opera
+17832,Spoleto Festival USA,Charleston,SC,Professional Company Member,32.78569,-79.93261,spoleto-festival-usa
+17227,Opera on the Avalon,St. John's,NL,Professional Company Member,47.55911,-52.76678,opera-on-the-avalon
+3282,Opera Modesto,Modesto,CA,Professional Company Member,37.64376,-121.00186,opera-modesto
+17917,Opera Steamboat,Steamboat Springs,CO,Professional Company Member,40.48961,-106.82527,opera-steamboat
+17943,Heartbeat Opera,New York,NY,Professional Company Member,40.74082,-73.9931,heartbeat-opera
+17280,Opera Orlando,Orlando,FL ,Professional Company Member,28.54073,-81.37119,opera-orlando
+17967,Haymarket Opera Company,Chicago,IL,Professional Company Member,41.91652,-87.65549,haymarket-opera-company
+17979,IN Series,Washington,DC,Professional Company Member,38.9152,-77.03164,in-series
+17998,Greensboro Opera,Greensboro,NC,Professional Company Member,36.07381,-79.78844,greensboro-opera
+6964,Opera Las Vegas,Las Vegas,NV,Professional Company Member,35.99566,-115.20741,opera-las-vegas
+18012,Experiments in Opera,Brooklyn,NY,Professional Company Member,40.66114,-73.99562,experiments-in-opera
+18015,Painted Sky Opera,Edmond,OK,Professional Company Member,35.66136,-97.51812,painted-sky-opera
+18027,El Paso Opera,El Paso,TX,Professional Company Member,31.76156,-106.49102,el-paso-opera
+3254,Calgary Opera Association,Calgary,AB,Professional Company Member,51.0402,-114.07963,calgary-opera-association
+18060,Union Avenue Opera,Saint Louis,MO,Professional Company Member,38.65401,-90.274,union-avenue-opera
+18091,Opera Kelowna,Kelowna,BC,Professional Company Member,49.890457,-119.4692229,opera-kelowna
+3218,Kentucky Opera,Louisville,KY,Professional Company Member,38.24649,-85.75743,kentucky-opera
+18167,Pocket Opera,San Francisco,CA,Professional Company Member,37.78183,-122.39494,pocket-opera
+18066,New Camerata Opera,Bronx,NY,Professional Company Member,40.8824058,-73.8949094,new-camerata-opera
+18032,Anima Mundi Productions,Phoenix,OR,Professional Company Member,42.262556,-122.81464,anima-mundi-productions
+18213,Maryland Opera,Baltimore,MD,Professional Company Member,39.311977,-76.615261,maryland-opera
+18247,Ozarks Lyric Opera,Springfield,MO,Professional Company Member,37.2081729,-93.2922715,ozarks-lyric-opera
+17661,Finger Lakes Opera,Rochester,NY,Professional Company Member,43.112163,-77.561771,finger-lakes-opera
+18302,Opéra Louisiane,Baton Rouge,LA,Professional Company Member,30.461252000000002,-91.044723,opera-louisiane
+18337,Charleston Opera Theater,Charleston,SC,Professional Company Member,32.84885,-79.85773,charleston-opera-theater
+18350,Chicago Fringe Opera,Chicago,IL,Professional Company Member,41.925487,-87.653764,chicago-fringe-opera
+18352,MassOpera,Arlington,MA,Professional Company Member,42.42379,-71.156717,massopera
+18469,Alliance for New Music-Theatre,Washington,DC,Professional Company Member,38.9131208,-77.0503074,alliance-for-new-music-theatre
+18483,Synchromy,Los Angeles,CA,Professional Company Member,34.0909024,-118.2621446,synchromy
+18521,Opera Vermont,Brandon,VT,Professional Company Member,43.7982806,-73.087913,opera-vermont
+18273,Teatro Grattacielo,UNION CITY ,NJ,Professional Company Member,40.7749135,-74.0232875,teatro-grattacielo
+18548,Ars Lyrica Houston,Houston,TX,Professional Company Member,29.748798,-95.4590652999999,ars-lyrica-houston
+18568,Mission Opera,Castaic,CA,Professional Company Member,34.50062,-118.622,mission-opera
+18578,Opera in the Pines,Cape Elizabeth,ME,Professional Company Member,43.567315,-70.2065405,opera-in-the-pines
+3039,Boston Lyric Opera,Boston,MA,Professional Company Member,42.34549,-71.05127,boston-lyric-opera
+18631,Fisher Center for the Performing Arts at Bard College\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t,Annandale on Hudson,NY,Professional Company Member,42.0313124,-73.9025561999999,fisher-center-for-the-performing-arts-at-bard
+18653,Astrolabe Musik Theatre,Vancouver,BC,Professional Company Member,49.2846918,-123.1360278,astrolabe-musik-theatre
+18654,Opera 5,Toronto,ON,Professional Company Member,43.6742803,-79.3772822,opera-5
+18655,Volcano Non-Profit Productions,City,,Professional Company Member,0,0,volcano-non-profit-productions
+18792,New Music Theatre Project,Long Island City,NY,Professional Company Member,40.7455316,-73.9484995,new-music-theatre-project
+18794,Lyric Opera of Orange County ,Rancho Santa Margarita ,CA,Professional Company Member,33.63736,-117.6082774,lyric-opera-of-orange-county
+18819,Wilmington Concert Opera,Wilmington,DE,Professional Company Member,39.7431142999999,-75.5536015,wilmington-concert-opera
+18830,The Opera Buffs Inc.,Los Angeles ,CA,Professional Company Member,34.0603311,-118.4323188,the-opera-buffs-inc
+18854,Aria412,Pittsburgh ,PA,Professional Company Member,40.4780395,-79.9544645,aria412
+18860,Little Opera Company,Winnipeg,MB,Professional Company Member,49.869196,-97.1694280999999,little-opera-company
+18938,,New York,New York,Professional Company Member,40.7127281,-74.0060152,opera-praktikos-inc
+18947,Hogfish,Cape Elizabeth,ME,Professional Company Member,43.61518,-70.211412,hogfish
+18952,City Opera Vancouver ,Vancouver ,BC ,Professional Company Member,49.2608724,-123.113952,city-opera-vancouver
+18985,Sound the Alarm: Music/Theatre,Vancouver,BC,Professional Company Member,49.2608724,-123.113952,sound-the-alarm-musictheatre
+19008,Toronto City Opera,North York,ON,Professional Company Member,43.7543217,-79.4491057,toronto-city-opera
+19071,Project [BLANK],San Diego,CA,Professional Company Member,32.74532,-117.0947,project-blank
+19129,FAWN Chamber Creative,Toronto,ON,Professional Company Member,43.6534817,-79.3839347,fawn-chamber-creative
+19134,Contemporaneous Inc.,New York,NY,Professional Company Member,40.7127281,-74.0060152,contemporaneous-inc
+19161,Renegade Opera,Portland,OR,Professional Company Member,45.5202471,-122.674194,renegade-opera
+19162,Amelia Island Opera,Fernandina Beach,FL,Professional Company Member,30.666557,-81.455956,amelia-island-opera
+19198,Park City Opera,Park City,UT,Professional Company Member,40.6460921,-111.4979963,park-city-opera
+19211,OperaOn75, PRINCETON,TX,Associate Member,0,0,operaon75
+19209,,Holyoke,Massachusetts,Associate Member,0,0,the-massachusetts-international-festival-of-t
+19199,Kunqu Society Inc.,Flushing,New York,Associate Member,40.7654301,-73.8174291,kunqu-society-inc
+19202,Opera Verace Foundation,San Francisco,California,Associate Member,37.7879363,-122.4075201,opera-verace-foundation
+19206,,New York,NY,Associate Member,40.7127281,-74.0060152,gotham-early-music-scene-inc
+19193,Studio Lirico NYC ,Bronx,NY,Associate Member,40.8466508,-73.8785937,studio-lirico-nyc
+19197,Miss Caricom International Foundation,Queens,NY,Associate Member,40.7135078,-73.8283132,miss-caricom-international-foundation
+19217,Frank Huntington Beebe Fund for Musicians,Boston,MA,Associate Member,0,0,frank-huntington-beebe-fund-for-musicians
+19180,Azrieli Foundation,Toronto,ON ,Associate Member,43.6534817,-79.3839347,azrieli-foundation
+19187,Double Entendre,New York,NY,Associate Member,40.7127281,-74.0060152,double-entendre
+19190,Premiere Opera Foundation,New York,NY,Associate Member,40.7127281,-74.0060152,premiere-opera-foundation
+19175,The Sembrich,Bolton Landing,NY,Associate Member,43.5669653,-73.6548019,the-sembrich
+19176,Manhattan Choral Ensemble,New York,NY,Associate Member,40.7127281,-74.0060152,manhattan-choral-ensemble
+19177,Madison Avenue Baptist Church,New York,NY,Associate Member,40.7127281,-74.0060152,madison-avenue-baptist-church
+19171,Kunst Harmonie Foundation for Arts & Cultural Education,Fort Lee,NJ,Associate Member,40.8509333,-73.9701382,kunst-harmonie-foundation-for-arts-cultural-e
+19172,Westchester Oratorio Society,New York,NY,Associate Member,40.7127281,-74.0060152,westchester-oratorio-society
+19157,,Chesapeake,VA,Associate Member,36.7168315,-76.2494453,opera-for-us-llc
+16912,Opera Volunteers International,Olathe,KS,Associate Member,38.8838856,-94.81887,opera-volunteers-international
+19159,,Vero Beach,FL,Associate Member,27.6387163,-80.3975399,vero-beach-opera-inc
+19165,The Royal Foundation of Music and Arts ,San Gabriel ,California ,Associate Member,34.0990995,-118.1085554,the-royal-foundation-of-music-and-arts
+19163,OperaQ,,,Associate Member,0,0,operaq
+19146,Oratorio Society of New York,New York,NY,Associate Member,40.7127281,-74.0060152,oratorio-society-of-new-york
+19156,Vashon Opera,Burton,WA,Associate Member,45.6424488,-122.5478184,vashon-opera
+19152,A Very Good Theater Company,Jersey City,NJ,Associate Member,40.7215682,-74.047455,a-very-good-theater-company
+19153,Universal Opera Company,Bethesda,MD`,Associate Member,38.9812726,-77.1233587,universal-opera-company
+19148,The Music and More Foundation,New York,NY,Associate Member,40.7127281,-74.0060152,the-music-and-more-foundation
+19149,Eastwestartistrynyc ,Manhattan ,New york ,Associate Member,40.7579554,-73.9855319,eastwestartistrynyc
+19150,Opera Laguna,Laguna Beach,CA,Associate Member,33.5426975,-117.785366,opera-laguna
+19151,Opera Laguna,Laguna Beach,CA,Associate Member,33.5426975,-117.785366,opera-laguna
+19144,Riverside Lyric Opera,Riverside,CA,Associate Member,33.9824949,-117.374238,riverside-lyric-opera
+19138,OperaBend,Bend,OR,Associate Member,44.0581728,-121.3153096,operabend
+19131,Studio Showcase,Darien,CT,Associate Member,41.0787079,-73.4692873,studio-showcase
+19132,Hudson Opera House (dba Hudson Hall),Hudson,NY,Associate Member,42.2528649,-73.790959,hudson-opera-house-dba-hudson-hall
+19124,,Brooklyn,NY,Associate Member,40.6526006,-73.9497211,viva-brooklyn-festival-inc
+19128,Opera Aeterna,Northbrook,IL,Associate Member,42.128704,-87.8265089,opera-aeterna
+19118,Caramoor Center for Music and the Arts,Katonah,NY,Associate Member,41.2558715,-73.6847453,caramoor-center-for-music-and-the-arts
+19110,,Miami ,FL,Associate Member,25.7741566,-80.1935973,hued-songs-inc
+19112,ArgondizzaGuitar,New York,NY,Associate Member,40.7127281,-74.0060152,argondizzaguitar
+19107,,New York ,NY,Associate Member,40.7127281,-74.0060152,blac-inc
+19103,Japan Performing Arts Inc.,Woodside,NY,Associate Member,40.7453798,-73.9054145,japan-performing-arts-inc
+19099,Works & Process ,New York,NY,Associate Member,0,0,works-process
+18511,Music of Remembrance,Seattle,WA,Associate Member,47.6038321,-122.330062,music-of-remembrance
+19072,Verbier Festival Academy,Vevey,VD,Associate Member,46.4602978,6.8418655,verbier-festival-academy
+19025,Palm Springs Opera Guild,Palm Springs,CA,Associate Member,33.8246269,-116.540303,palm-springs-opera-guild
+19047,Pinease Association Inc.,Flushing,NY,Associate Member,40.7654301,-73.8174291,pinease-association-inc
+19052,Schmidt Vocal Arts,Covington,KY,Associate Member,39.08601,-84.51032,schmidt-vocal-arts
+19058,American Symphony Orchestra,New York,NY,Associate Member,40.7127281,-74.0060152,american-symphony-orchestra
+19063,Brooklyn Music Teachers Guild,East Northport,New York,Associate Member,40.880938,-73.319453,brooklyn-music-teachers-guild
+19033,New York Flute Club,New York,NY,Associate Member,40.7127281,-74.0060152,new-york-flute-club
+18619,Chicago Summer Opera,Wilmette,IL,Associate Member,0,0,chicago-summer-opera
+18998,Don Erik Franzen Inc,Beverly Hills,CA,Associate Member,34.0696501,-118.3963062,don-erik-franzen-inc
+18977,Up Until Now Collective LLC,New York,NY,Associate Member,40.7127281,-74.0060152,up-until-now-collective-llc
+18558,Opera Festival of Chicago,Glenview,IL,Associate Member,42.0700662,-87.8114044,opera-festival-of-chicago
+18953,Musical Life Foundation,Larchmont,NY,Associate Member,40.9278769,-73.7517983,musical-life-foundation
+18784,Opera Canada Magazine,Toronto,ON,Associate Member,43.6534817,-79.3839347,opera-canada-magazine
+17776,Berkshire Opera Festival,Pittsfield,MA,Associate Member,42.4460545,-73.2529924999999,berkshire-opera-festival
+18898,Internationale Meistersinger Akademie, Krailling,Bavaria,Associate Member,48.0992621,11.4050891,internationale-meistersinger-akademie
+17336,Art Song Preservation Society of New York Inc.,New York,NY,Associate Member,0,0,art-song-preservation-society-of-new-york-inc
+18856,Opportunity Music Project,New York,NY,Associate Member,0,0,opportunity-music-project
+18681,Japan Performing Arts,New York,NY,Associate Member,40.76086,-73.98622,japan-performing-arts
+18853,Respiro Opera NYC,New York,NY,Associate Member,40.7870363,-73.9758794999999,respiro-opera-nyc
+18840,Music-Fest,Kendall Park,NJ,Associate Member,40.4274291,-74.5569927,music-fest
+18846,,New York,NY,Associate Member,40.7127281,-74.0060152,the-opera-collective-inc
+18850,The Yiddish Philharmonic Chorus,New York,NY,Associate Member,40.746415,-73.998656,the-yiddish-philharmonic-chorus
+18799,Druid City Opera,Tuscaloosa,AL,Associate Member,33.2075994,-87.5381173999999,druid-city-opera
+18800,The David I Martin Music Guild of NANM Inc.,New York ,NY ,Associate Member,40.8140369,-73.9374517,the-david-i-martin-music-guild-of-nanm-inc
+17561,New Music USA,New York,NY,Associate Member,40.7075453,-74.0059390999999,new-music-usa
+18781,Manitoba Underground Opera,Winnipeg,MB,Associate Member,49.7898794,-97.1465218,manitoba-underground-opera
+18547,Regina Opera Company,Brooklyn,NY,Associate Member,40.6381227,-73.9711809,regina-opera-company
+18657,The Bells of Baddeck,Toronto,ON,Associate Member,43.6654847,-79.3871425,the-bells-of-baddeck
+18660,Flipside Opera and Art Song Collective,Winnipeg,MB,Associate Member,49.8750547,-97.1255817999999,flipside-opera-and-art-song-collective
+18662,Dolora Zajick Institute for Young Dramatic Voices,Reno,NV,Associate Member,39.504135,-119.8083842,dolora-zajick-institute-for-young-dramatic-vo
+4723,MasterVoices,New York,NY,Associate Member,40.7643578,-73.9768174,mastervoices
+17713,Lyrica Classic Entertainment,Arlington,VA,Associate Member,38.8467012,-77.0926781,lyrica-classic-entertainment
+18616,PROTESTRA,Brooklyn,NY,Associate Member,40.6962274,-73.9938126,protestra
+18622,Parthenia Viol Consort,Woodside,NY,Associate Member,40.7392338,-73.8966439,parthenia-viol-consort
+18591,OperaCréole,New Orleans,LA,Associate Member,29.9287877,-90.07283,operacreole
+18601,Ópera Latinoamérica,,,Associate Member,0,0,opera-latinoamerica
+18602,Opera Europa, Brussels,,Associate Member,0,0,opera-europa
+18604,Chamber Music America,New York,NY,Associate Member,40.7474050999999,-73.9865686999999,chamber-music-america
+17634,Gulfshore Opera,Estero,FL,Associate Member,26.432154,-81.790183,gulfshore-opera
+18555,Bel Canto Boot Camp,New York,NY,Associate Member,40.85684,-73.93663,bel-canto-boot-camp
+18502,International Brazilian Opera Company,New York,NY,Associate Member,40.8005185,-73.9552923,international-brazilian-opera-company
+18522,LOLA,Austin,TX,Associate Member,30.3632377,-97.7095217999999,lola
+18532,Olga Forrai Foundation,New York,NY,Associate Member,0,0,olga-forrai-foundation
+17735,Sing for Hope,New York,NY,Associate Member,0,0,sing-for-hope
+18512,Opera at Florham,Convent Station,NJ,Associate Member,40.7966042,-74.4815759,opera-at-florham
+18494,The United States Army Field Band,Fort Meade,MD,Associate Member,39.0926497,-76.7342824,the-united-states-army-field-band
+18485,St. Croix Valley Opera,Stillwater,MN,Associate Member,45.05598,-92.811,st-croix-valley-opera
+18482,Queens Opera Theatre,Forest Hills,NY,Associate Member,40.7177598,-73.8431521999999,queens-opera-theatre
+18310,SAS Performing Arts Company and Studios,Newark,NJ,Associate Member,0,0,sas-performing-arts-company-and-studios
+18476,Blix,TEST,TEST,Associate Member,0,0,blix
+18345,The English Concert in America,New Canaan,CT,Associate Member,41.162209,-73.501267,the-english-concert-in-america
+18458,Catapult Opera Inc.,New York,NY,Associate Member,0,0,catapult-opera-inc
+18339,Random Access Music ,Brooklyn ,NY,Associate Member,40.6526006,-73.9497211,random-access-music
+18153,Composers Now,Nyack,NY,Associate Member,41.099455,-73.934311,composers-now
+17313,National Opera Association,Ann Arbor,MI,Associate Member,42.290235,-83.720983,national-opera-association
+18314,Stage Manager's Association,New York,NY,Associate Member,40.780751,-73.977182,stage-managers-association
+18256,Voice Afire Opera-Cabaret,New York,NY,Associate Member,0,0,voice-afire-opera-cabaret
+18257,New York Women Composers,Jackson Heights,NY,Associate Member,40.751959,-73.887681,new-york-women-composers
+18263,North/South Consonance Inc,New York,NY,Associate Member,40.798664,-73.967778,northsouth-consonance-inc
+18198,Ravinia Festival,Highland Park,IL,Associate Member,42.15971,-87.77278,ravinia-festival
+18224,ABRSM,Flushing,NY,Associate Member,40.753275,-73.793736,abrsm
+18176,Cuban Cultural Center of New York,New York,NY,Associate Member,40.7558611,-73.987061,cuban-cultural-center-of-new-york
+17248,Berks Opera Company,Reading,PA,Associate Member,40.388442,-75.963055,berks-opera-company
+18189,The Cape Town Opera Company,South Africa,,Associate Member,37.329217,-86.364699,the-cape-town-opera-company
+17358,operamission,Jamaica,NY,Associate Member,40.71755,-73.81423,operamission
+14336,Seagle Festival,Schroon Lake,NY,Associate Member,43.8369572,-73.7614161,seagle-festival
+18159,Dramatists Guild of America,New York,NY,Associate Member,40.7570141,-73.9868963999999,dramatists-guild-of-america
+18044,ACMA,Roselle Park,NJ,Associate Member,40.663074,-74.268105,acma
+18113,Liz Mohn Stiftung,Guetersloh,,Associate Member,0,0,liz-mohn-stiftung
+18114,New Century Opera,Tarpon Springs,FL,Associate Member,28.1470175,-82.7519275,new-century-opera
+18072,Manhattan Choral Ensemble,New York,NY,Associate Member,40.7127281,-74.0060152,manhattan-choral-ensemble
+18078,United Pugliese Federation of NY,Brooklyn,NY,Associate Member,40.6294,-74.002826,united-pugliese-federation-of-ny
+18013,Alaria Chamber Ensemble,New York,NY,Associate Member,40.759991,-73.994833,alaria-chamber-ensemble
+17987,New York Composers Circle,Brooklyn,NY,Associate Member,40.650002,-73.949997,new-york-composers-circle
+17953,Adelphi Orchestra,River Edge,NJ,Associate Member,40.926248,-74.038533,adelphi-orchestra
+17954,Loadbang,New York,NY,Associate Member,40.852671,-73.935393,loadbang
+17888,American Academy of Teachers of Singing,Bronx,NY,Associate Member,41.086264,-73.924677,american-academy-of-teachers-of-singing
+17893,Midori & Friends,New York,NY,Associate Member,40.748264,-73.9928419,midori-friends
+17868,New York Opera Alliance,New York,NY,Associate Member,40.747773,-73.993365,new-york-opera-alliance
+17870,Geneva Light Opera,Geneva,NY,Associate Member,42.863992,-76.983764,geneva-light-opera
+17761,Argento New Music Project,New York,NY,Associate Member,40.7859464,-73.9741873999999,argento-new-music-project
+17652,Young Artists of America,North Bethesda,MD,Associate Member,39.0315117,-77.1050039,young-artists-of-america
+17655,The Composers Collective,Brooklyn,NY,Associate Member,40.68548,-73.98186,the-composers-collective
+17658,The Gerda Lissner Foundation,New York,NY,Associate Member,40.7677581,-73.9690727,the-gerda-lissner-foundation
+17667,One Ounce Opera,Austin,TX,Associate Member,30.2603535,-97.7145152,one-ounce-opera
+17719,New York City Master Chorale,New York,NY,Associate Member,40.7369025,-73.9974628,new-york-city-master-chorale
+17720,Filmshop,New York,NY,Associate Member,40.725844,-74.003208,filmshop
+17602,Opera in Williamsburg,Williamsburg,VA,Associate Member,37.27,-76.7099999,opera-in-williamsburg
+17616,Exponential Ensemble,New York,NY,Associate Member,40.7316188,-74.0081112,exponential-ensemble
+17554,National Children's Chorus,Los Angeles,CA,Associate Member,34.0536909,-118.242766,national-childrens-chorus
+17553,Opera Index,New York,NY,Associate Member,40.77586,-73.98603,opera-index
+17500,The Chamber Music Center of New York,New York,NY,Associate Member,40.7995365,-73.9718457,the-chamber-music-center-of-new-york
+17483,Virginia Arts Festival,Norfolk,VA,Associate Member,36.8513497,-76.2864459,virginia-arts-festival
+17596,Boston Early Music Festival,Cambridge,MA,Associate Member,42.3699335,-71.0797014,boston-early-music-festival
+17600,Joy In Singing,Yonkers,NY,Associate Member,40.911348,-73.89422,joy-in-singing
+17446,Vital Opera,New York,NY,Associate Member,40.7127281,-74.0060152,vital-opera
+16223,Richard Wagner Society of New York,New York,NY,Associate Member,40.7769059,-73.9800645,richard-wagner-society-of-new-york
+16288,USITT,Liverpool,NY,Associate Member,43.0279271,-76.1036695,usitt
+17576,National Chorale,New York,NY,Associate Member,40.7618157,-73.9833893,national-chorale
+16914,San Francisco Opera Guild,San Francisco,CA,Associate Member,37.7785899,-122.4209167,san-francisco-opera-guild
+17448,Savannah Voice Festival,Savannah,GA,Associate Member,32.08,-81.1,savannah-voice-festival
+17455,New York Singing Teachers Association,Vauxhall,NJ,Associate Member,40.438011,-74.541857,new-york-singing-teachers-association
+17377,Erling Wold's Fabrications,San Francisco,CA,Associate Member,37.7589467,-122.398875,erling-wolds-fabrications
+17020,Fritz and Lavinia Jensen Foundation Annual Voice Competition,Charlotte,NC,Associate Member,35.2278328,-80.8406009,fritz-and-lavinia-jensen-foundation-annual-vo
+17432,Inside Broadway,New York,NY,Associate Member,40.7599157,-73.9911492,inside-broadway
+17224,Kurt Weill Foundation for Music,New York,NY,Associate Member,40.7395803,-73.9901811,kurt-weill-foundation-for-music
+16566,League of American Orchestras,New York,NY,Associate Member,40.7695791,-73.9831927,league-of-american-orchestras
+17356,Light Opera of New York,New York,NY,Associate Member,40.7700703,-73.9580246,light-opera-of-new-york
+16907,Association of Performing Arts Presenters,Washington,DC,Associate Member,38.9063697,-77.0409173,association-of-performing-arts-presenters
+16524,Boosey & Hawkes,New York,NY,Business Member,40.7662424,-73.9824061,boosey-hawkes
+17317,Catherine French Group,Washington,DC,Business Member,38.9103803,-77.0521567999999,catherine-french-group
+16538,DCM Telemarketing and Telefundraising for the Arts,New York,NY,Business Member,0,0,dcm-telemarketing-and-telefundraising-for-the
+16541,ECS Publishing (E.C. Schirmer & Galaxy Music Corporation),St. Louis,MO,Business Member,42.347211,-71.0938559,ecs-publishing-ec-schirmer-galaxy-music-corpo
+16545,Fisher Dachs Associates Inc. (FDA),New York,NY,Business Member,40.7393587,-73.9928961,fisher-dachs-associates-inc-fda
+16549,Opera Titles by Sonya Friedman,Brooklyn,NY,Business Member,40.733973,-73.9973569,opera-titles-by-sonya-friedman
+16551,G. Schirmer/Associated Music Publishers/Wise Music Classical,New York,NY,Business Member,40.7476446,-73.9834426,g-schirmerassociated-music-publisherswise-mus
+16622,Peermusic Classical,New York,NY,Business Member,40.766288,-73.9825185,peermusic-classical
+16516,, Boulder,CO,Business Member,40.0265718,-105.2922017,robert-f-mahoney-associates-acousticians-for
+16272,Schuler Shook - Chicago,Chicago,IL,Business Member,41.8962269,-87.637486,schuler-shook---chicago
+17388,Soundmirror,Jamaica Plain,MA,Business Member,40.7536854,-73.9991637,soundmirror
+16627,Stivanello Costume Company,Maspeth,NY,Business Member,40.7264406,-73.897126600000007,stivanello-costume-company
+16614,Tessitura Network,Dallas,TX,Business Member,32.9005121,-96.7868794,tessitura-network
+18025,Keys to Success,Brooklyn,NY,Business Member,40.68956,-73.994274,keys-to-success
+17875,DEA Music and Art Studio,Staten Island,NY,Business Member,40.6139,-74.1575,dea-music-and-art-studio
+17958,City Strings & Piano,Long Island City,NY,Business Member,0,0,city-strings-piano
+17988,Insignia Artists Management,New York,NY,Business Member,40.813738,-73.960836,insignia-artists-management
+18151,Silver Music,New York,NY,Business Member,40.7788161,-73.9828536999999,silver-music
+17752,Dean Artists Management,Toronto,ON,Business Member,43.6654943,-79.410321,dean-artists-management
+18229,Vatic,Dallas,TX,Business Member,32.8588771,-96.7339774,vatic
+18266,,,AL,Business Member,0,0,mind-sound-publication-group-inc
+18281,Charcoalblue,New York,NY,Business Member,0,0,charcoalblue
+17255,UIA Talent Agency,New York,NY,Business Member,40.764016,-73.981361,uia-talent-agency
+18286,International Artist Managers' Association,London,,Business Member,51.5122,-0.1175,international-artist-managers-association
+18258,Management Consultants for the Arts,Stamford,CT,Business Member,41.073853,-73.54845,management-consultants-for-the-arts
+18321,Young Concert Artists Inc.,New York,NY,Business Member,40.766435,-73.981622,young-concert-artists-inc
+17845,Black Tea Music,New York,NY,Business Member,40.868005,-73.926625,black-tea-music
+1175,Guy Barzilay Artists,New York,NY,Business Member,40.748079,-74.0015879,guy-barzilay-artists
+17854,Domoney Artists Management,Toronto,ON,Business Member,43.683153,-79.2835875999999,domoney-artists-management
+17866,Robert Gilder & Co. International Artist Management,New York,NY,Business Member,40.7392893,-73.9893975999999,robert-gilder-co-international-artist-managem
+17796,Groundswell Theatricals Inc,New York,NY,Business Member,40.7617954,-73.9833548,groundswell-theatricals-inc
+17811,,Quebec City,QC,Business Member,46.7726183,-71.3157868999999,boulevart-inc
+17755,Étude Arts,New York,NY,Business Member,40.7769059,-73.9800645,etude-arts
+17757,Latitude 45 Arts ,Montreal,QC,Business Member,45.521112,-73.592872,latitude-45-arts
+17647,Jeffrey James Arts Consulting,Farmingdale,NY,Business Member,40.7299427,-73.4435514,jeffrey-james-arts-consulting
+17607,Threshold Acoustics,Chicago,IL,Business Member,41.8775238,-87.6295464,threshold-acoustics
+17242,Vocal Artists Management,Walnut Creek,CA,Business Member,37.8655663,-122.066699,vocal-artists-management
+17601,Randsman Artists' Management,New York,NY,Business Member,40.7590982,-73.9928647,randsman-artists-management
+18583,Biaggi Arts Consulting,Albany,NY,Business Member,0,0,biaggi-arts-consulting
+19029,Tribeca Music,New York,NY,Business Member,40.7127281,-74.0060152,tribeca-music
+18958,tonebase,Pasadena,California,Business Member,34.1476507,-118.144155,tonebase
+18966,Austin Vocal Psychotherapy ,Astoria ,NY ,Business Member,0,0,austin-vocal-psychotherapy
+19101,IPA Source LLC,Portsmouth,Ohio,Business Member,38.7345374,-82.9962742,ipa-source-llc
+19037,Piano Lessons NYC,New York,NY,Business Member,40.7127281,-74.0060152,piano-lessons-nyc
+19070,West Amadeus Music Studio,New York,NY,Business Member,40.7127281,-74.0060152,west-amadeus-music-studio
+19068,World Entertainment Company Hungary Kft.,Budapest,Hungary,Business Member,47.4813896,19.1457723,world-entertainment-company-hungary-kft
+19169,Dolce Cultural Tours,New York,NY,Business Member,40.7127281,-74.0060152,dolce-cultural-tours
+18538,Marquee TV,London,England,Business Member,51.5074456,-0.1277653,marquee-tv
+19178,Altman Artists,Philadelphia,PA,Business Member,39.9527237,-75.1635262,altman-artists
+19191,Arabella Arts LLC,New York,NY,Business Member,40.7127281,-74.0060152,arabella-arts-llc
+19192,CLA,Minneapolis,MN,Business Member,44.9772995,-93.2654692,cla
+19166,Casta Diva Stitch to Stage,Spring Hill,FL,Business Member,28.4635266,-82.5363557,casta-diva-stitch-to-stage
+19173,New Classical Artist Management,Churchville,NY,Business Member,43.104228,-77.884454,new-classical-artist-management
+19137,Xinsheng Chinese Choir,Long Island City,NY,Business Member,40.7455316,-73.9484995,xinsheng-chinese-choir
+19122,SkyBridge Artists,Toronto,ON,Business Member,43.6534817,-79.3839347,skybridge-artists
+19115,Èvois Management ,New York,New York,Business Member,40.7127281,-74.0060152,evois-management
+18879,Subito Music Corporation,Verona,New Jersey,Business Member,40.8370412,-74.2530089,subito-music-corporation
+18891,Creative Evolutions,Oak Park,IL,Business Member,41.9081736,-87.7784662999999,creative-evolutions
+18895,Stephens Nicolson Artists Management,New York,NY,Business Member,0,0,stephens-nicolson-artists-management
+18926,,ANDOVER,MA,Business Member,42.6410126,-71.1469635999999,mayflower-art-center-inc
+18845,Global Musicians and Arts Association,Edison,nj,Business Member,40.4978597,-74.4098345,global-musicians-and-arts-association
+18582,AMT Public Relations,New York,NY,Business Member,40.7715364,-73.9513202999999,amt-public-relations
+19208,,TAMPA,FLORIDA,Business Member,0,0,hat-tours-llc
+19214,Schott Music Group,New York,New York,Business Member,0,0,schott-music-group
+19168,University of Illinois Library,Urbana,IL,Career Services Member,40.1117174,-88.207301,university-of-illinois-library
+18987,Anno Museum Domkirkeodden Biblioteket,Hamar,NO,Career Services Member,61.0014937,11.1647964,anno-museum-domkirkeodden-biblioteket
+17925,Baylor University | University Libraries,Waco,TX,Career Services Member,31.544485,-97.122383,baylor-university-university-libraries
+17926,,Boulder,CO,Career Services Member,40.0075809999999,-105.2659417,university-of-colorado-boulder-university-lib
+17964,University of the South | duPont Library,Sewanee,TN,Career Services Member,35.204478,-85.9177754999999,university-of-the-south-dupont-library
+17992,University of Cincinnati Libraries,Cincinnati,OH,Career Services Member,39.166759,-84.53822,university-of-cincinnati-libraries
+17142,Indiana University Library,Bloomington,IN,Career Services Member,39.1710401,-86.5168956,indiana-university-library
+16515,Los Angeles Public Library,Los Angeles,CA,Career Services Member,34.0506708,-118.2551963,los-angeles-public-library
+2027,New England Conservatory Blumenthal Family Library,Boston,MA,Career Services Member,42.3408342,-71.0861831,new-england-conservatory-blumenthal-family-li
+17409,The New School | Libraries & Archives,New York,NY,Career Services Member,40.7464969,-74.0094471,the-new-school-libraries-archives
+17400,Oakland University Kresge Library,Rochester,MI,Career Services Member,42.6509755,-83.1756188,oakland-university-kresge-library
+17402,Payson Library - Pepperdine University,Malibu,CA,Career Services Member,34.0390053,-118.7057065,payson-library---pepperdine-university
+17403,Peter Jay Sharp Library - Manhattan School of Music,New York,NY,Career Services Member,40.8123903,-73.9614817,peter-jay-sharp-library---manhattan-school-of
+17405,San Francisco Conservatory of Music Library,San Francisco,CA,Career Services Member,37.7755593,-122.4203844,san-francisco-conservatory-of-music-library
+17406,Southern Methodist University - Hamon Arts Library,Dallas,TX,Career Services Member,32.8410948,-96.7861547,southern-methodist-university---hamon-arts-li
+2151,University of Kansas Library - Watson Library,Lawrence,KS,Career Services Member,38.9499492,-95.2658318,university-of-kansas-library---watson-library
+17424,University of Miami - Marta & Austin Weeks Music Library,Coral Gables,FL,Career Services Member,25.75,-80.26,university-of-miami---marta-austin-weeks-musi
+17425,University of Montana Mansfield Library,Missoula,MT,Career Services Member,46.8605765,-113.982128,university-of-montana-mansfield-library
+17426,University of North Carolina School of the Arts | Semans Library,Winston-Salem,NC,Career Services Member,36.0765305,-80.2373708,university-of-north-carolina-school-of-the-ar
+17427,Washington University Olin Library,St. Louis,MO,Career Services Member,38.6480589,-90.3039588,washington-university-olin-library
+17389,Baldwin Wallace University,Berea,OH,Career Services Member,41.3683839,-81.8447498,baldwin-wallace-university
+2163,California State University Northridge,Northridge,CA,Career Services Member,34.2373873,-118.5281649,california-state-university-northridge
+16533,Carnegie Library of Pittsburgh,Pittsburgh,PA,Career Services Member,40.4431957,-79.949915,carnegie-library-of-pittsburgh
+16193,Conservatory of Music of Puerto Rico-Library Division,San Juan,PR,Career Services Member,18.4530752,-66.0783046,conservatory-of-music-of-puerto-rico-library
+17390,Eastman School of Music - Sibley Music Library,Rochester,NY,Career Services Member,43.1578093,-77.6010301,eastman-school-of-music---sibley-music-librar
+17408,Florida International University Library,Miami,FL,Career Services Member,25.7569899,-80.3796273,florida-international-university-library
+17395,Friedheim Library Peabody Institute,Baltimore,MD,Career Services Member,39.2971828,-76.6152034,friedheim-library-peabody-institute
+17449,Green Library - Stanford University,Stanford,CA,Career Services Member,37.4135757,-122.1689284,green-library---stanford-university
+16556,Harvard University - Eda Kuhn Loeb Music Library,Cambridge,MA,Career Services Member,42.3800977,-71.1166286,harvard-university---eda-kuhn-loeb-music-libr
+17247,Hennepin County Library,Minnetonka,MN,Career Services Member,44.9646276,-93.4400855,hennepin-county-library
+14406,Music Academy of the West,Santa Barbara,CA,Educational Producing Associate,34.420342,-119.649511,music-academy-of-the-west
+5521,Opera in the Ozarks,Eureka Springs,AR,Educational Producing Associate,36.4011825,-93.7379711,opera-in-the-ozarks
+17396,Jackson State University,Jackson,MS,Educational Producing Associate,32.2974836,-90.205671,jackson-state-university
+17579,Hunter College Department of Music,New York,NY,Educational Producing Associate,40.7645239,-73.9624327,hunter-college-department-of-music
+17065,Rider University Westminster Choir College ,Princeton,NJ,Educational Producing Associate,40.3567352,-74.6536573,rider-university-westminster-choir-college
+5554,Academy of Vocal Arts,Philadelphia,PA,Educational Producing Associate,39.9478133,-75.1737665,academy-of-vocal-arts
+2067,Curtis Institute of Music,Philadelphia,PA,Educational Producing Associate,39.9487641,-75.1704439,curtis-institute-of-music
+2172,Eastman School of Music,Rochester,NY,Educational Producing Associate,43.1578093,-77.6010301,eastman-school-of-music
+2119,Florida State University,Tallahassee,FL,Educational Producing Associate,30.4429254,-84.2914835,florida-state-university
+2157,Frost School of Music,Coral Gables,FL,Educational Producing Associate,25.7187893,-80.2803368,frost-school-of-music
+17373,In The Pocket NYC,New York,NY,Educational Producing Associate,40.75912,-73.99251,in-the-pocket-nyc
+2023,Juilliard School,New York,NY,Educational Producing Associate,40.7711403,-73.984564,juilliard-school
+2062,Manhattan School of Music,New York,NY,Educational Producing Associate,40.7127281,-74.0060152,manhattan-school-of-music
+2061,Oklahoma State University,Stillwater,OK,Educational Producing Associate,36.119648,-97.067193,oklahoma-state-university
+2083,Rice University,Houston,TX,Educational Producing Associate,29.7,-95.54,rice-university
+2132,The New School - Mannes School of Music,New York,NY,Educational Producing Associate,40.7728753,-73.9812519,the-new-school---mannes-school-of-music
+15631,University of Alabama | School of Music,Tuscaloosa,AL,Educational Producing Associate,33.207199,-87.5482025,university-of-alabama-school-of-music
+15927,University of Cincinnati College Conservatory of Music,Cincinnati,OH,Educational Producing Associate,39.1331454,-84.509213,university-of-cincinnati-college-conservatory
+2177,University of Colorado Boulder,Boulder,CO,Educational Producing Associate,40.0103247,-105.2889726,university-of-colorado-boulder
+2034,University of Houston,Houston,TX,Educational Producing Associate,29.7186463,-95.3397986,university-of-houston
+2042,University of Maryland,College Park,MD,Educational Producing Associate,38.9909042,-76.9505272,university-of-maryland
+2094,,Ann Arbor,MI,Educational Producing Associate,0,0,university-of-michigan-school-of-music-theatr
+2179,University of Minnesota,Minneapolis,MN,Educational Producing Associate,44.9741561,-93.2342,university-of-minnesota
+2097,University of North Carolina at Greensboro,Greensboro,NC,Educational Producing Associate,36.0729697,-79.8079721,university-of-north-carolina-at-greensboro
+2088,University of South Carolina,Columbia,SC,Educational Producing Associate,33.9954234,-81.0329671,university-of-south-carolina
+2131,University of the Pacific,Stockton,CA,Educational Producing Associate,37.9800547,-121.3124185,university-of-the-pacific
+2049,University of Utah,Salt Lake City,UT,Educational Producing Associate,40.7652201,-111.8419536,university-of-utah
+17609,Aspen Music Festival and School,Aspen,CO,Educational Producing Associate,39.1796083,-106.8384851,aspen-music-festival-and-school
+17625,Lyric Theatre at Illinois,Urbana,IL,Educational Producing Associate,40.106478,-88.2230311,lyric-theatre-at-illinois
+17626,Indiana University Opera and Ballet Theater,Bloomington,IN,Educational Producing Associate,39.1670396,-86.5342881,indiana-university-opera-and-ballet-theater
+17733,University of Toronto Opera,Toronto,ON,Educational Producing Associate,43.666489,-79.393497,university-of-toronto-opera
+17646,NYU TSOA Graduate Musical Theatre Writing Program,New York,NY,Educational Producing Associate,40.7292511,-73.9939103,nyu-tsoa-graduate-musical-theatre-writing-pro
+17643,Bard College Conservatory of Music,Annandale-on-Hudson,NY,Educational Producing Associate,42.0203839,-73.910016100000007,bard-college-conservatory-of-music
+17786,Carnegie Mellon University School of Music,Pittsburgh,PA,Educational Producing Associate,40.444213,-79.943399,carnegie-mellon-university-school-of-music
+17769,Peabody Opera at Johns Hopkins University,Baltimore,MD,Educational Producing Associate,39.2971828,-76.6152034,peabody-opera-at-johns-hopkins-university
+17843,Merola Opera Program,San Francisco,CA,Educational Producing Associate,0,0,merola-opera-program
+17949,Montclair State University,Montclair,NJ,Educational Producing Associate,40.857718,-74.202475,montclair-state-university
+18145,,Vancouver,BC,Educational Producing Associate,49.262585,-123.247906,university-of-british-columbia-school-of-musi
+18461,Wilfrid Laurier University,Waterloo,ON,Educational Producing Associate,43.473805,-80.52744,wilfrid-laurier-university
+18463,University of Western Ontario,London,ON,Educational Producing Associate,43.008709,-81.263483,university-of-western-ontario
+18464,University of Manitoba | Desautels Faculty of Music,Winnipeg,MB,Educational Producing Associate,49.8078422,-97.1321933,university-of-manitoba-desautels-faculty-of-m
+18539,Nazareth University ,Rochester,NY,Educational Producing Associate,43.101447,-77.5169235,nazareth-university
+18282,Arizona State University School of Music - Music Theatre and Opera,Tempe,AZ,Educational Producing Associate,33.4182251,-111.938733,arizona-state-university-school-of-music---mu
+18677,Opera Nuova,Edmonton,AB,Educational Producing Associate,53.4995736,-113.6522056,opera-nuova
+18808,Norfolk State University ,Norfolk ,VA,Educational Producing Associate,36.8477502,-76.2673329,norfolk-state-university
+18873,Boston Conservatory at Berklee,Boston,MA,Educational Producing Associate,42.3461457,-71.0899514,boston-conservatory-at-berklee
+17763,Northern Arizona University | School of Music,Flagstaff,AZ,Educational Producing Associate,35.1987522,-111.651822,northern-arizona-university-school-of-music
+19145,Master in International Arts Management,Montréal,QC,Educational Producing Associate,45.5031824,-73.5698065,master-in-international-arts-management
+19164,Classical Voice Conservatory - Orange County School of the Arts,Santa Ana,CA,Educational Producing Associate,33.7494951,-117.873221,classical-voice-conservatory---orange-county
+19179,,Capital Heights ,MD,Educational Producing Associate,38.888524,-76.913188,partners-achieving-solutions-cdc--105-voices
+19186,Binghamton University,Binghamton,New York,Educational Producing Associate,42.098698,-75.9125187,binghamton-university
+19215,The New School - Mannes School of Music,New York,NY,Educational Producing Associate,0,0,the-new-school---mannes-school-of-music
+19216,UC Irvine Music Department,Irvine,CA,Educational Producing Associate,0,0,uc-irvine-music-department
+18448,State Opera South Australia,Collinswood,Sout Australia,Global Company Member,-34.8872868,138.6122364,state-opera-south-australia
+19213,Opera Australia,Surry Hills,New South Wales,Global Company Member,0,0,opera-australia
+18984,NUOVA Vocal Arts,Edmonton,AB,Opera.ca Member,53.5462055,-113.491241,nuova-vocal-arts
+3180,Banff Centre,Banff,AB,Opera.ca Member,51.1756966,-115.5718752,banff-centre
+19139,Goteborg Opera,Gotenborg,-,,57.7072326,11.9670171,goteborg-opera
+19121,Opera West Society,Vancouver ,BC,Opera.ca Associate Membership,49.2608724,-123.113952,opera-west-society
+17914,Amphion Foundation,New York,NY,Foundation-Nonmember,40.7499055,-73.9943711,amphion-foundation
+17995,National Endowment for the Arts,Washington,DC,Foundation-Nonmember,38.8848395,-77.0219815,national-endowment-for-the-arts
+19155,Dr. M. Lee Pearce Foundation,Miami Beach,FL,Foundation-Nonmember,25.7929198,-80.1353006,dr-m-lee-pearce-foundation
