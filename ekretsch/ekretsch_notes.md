@@ -4,10 +4,10 @@
 #### Historic Districts
 - [ ] double check that historic districts is actually correct (right number of rows, etc.)
 - [ ] double check washington addresses... def wrong for some (ex seattle chinatown?)
-- [ ] fml **it's county, state, but it should really be city, state -- basically need to redo all the geocoding frick**
-  - [ ] align with team???
-  - [ ] try Papa's computer?
-  - [ ] row 11740 (39 in Rstudio I think), Seattle Chinatown, has the wrong coordinates. It's geocoded as being in DC when it's not.
+  -  fml **it's county, state, but it should really be city, state -- basically need to redo all the geocoding frick**
+    -  align with team???
+    -  try my dad's computer?
+    -  row 11740 (39 in Rstudio I think), Seattle Chinatown, has the wrong coordinates. It's geocoded as being in DC when it's not.
 - [x] check `Warning in validateCoords(lng, lat, funcName): Data contains 100 rows with either missing or invalid lat/lon values and will be ignored`
   - I must have somehow accidentally changed the first 100 rows so something went wrong. Need to fix it now yikes.
   - `write_csv(historic_districts_updated, "historic_districts_clean2.csv")`
