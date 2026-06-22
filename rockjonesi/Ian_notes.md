@@ -376,6 +376,26 @@ In addition to finding all public library business changes, I have also compiled
 Movign forward, should try and find county level education data.
 
 
+## June 22
+
+- housing price angle for industrial institutions
+- more on powerplant EDA-add coloration based on energy source
+- could maybe try and find actual industry info for these FT500 HQ and color like that
+- what states have the most of certain types of energy?
+
+
+unemployment rates?
+
+- Back to data search
+  - **Housing Prices**
+    - from the national association of realators: county-level data of median housing prices in Q4 of 2025
+      - https://www.nar.realtor/research-and-statistics/housing-statistics/county-median-home-prices-and-monthly-mortgage-payment
+        - Terms of use state that it is publicly availible as long as we are not using it for profit and cite it correctly.
+        - It is a pdf, so it looks like text analysis might be need, or to use a converter. 
+
+
+
+
 
 
     

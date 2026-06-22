@@ -1,10 +1,24 @@
 # Emily Kretschmer's Notes
 
-## June 20
-- [ ] double check that historic districts is actually correct (right number of rows, etc.)
-- [ ] double check washington addresses... def wrong for some (ex seattle chinatown?)
+## June 22
+- think about questions
+- libraries
+- tf idf thing
 
-### Historic Districts
+#### Historic Districts
+- [ ] fix washington etc addresses
+- [x] make a choropleth!
+- [x] double check that historic districts is actually correct (right number of rows, etc.)
+- [x] double check washington addresses... def wrong for some (ex seattle chinatown?)
+  -  fml **it's county, state, but it should really be city, state -- basically need to redo all the geocoding frick**
+    -  align with team???
+    -  try my dad's computer?
+    -  row 11740 (39 in Rstudio I think), Seattle Chinatown, has the wrong coordinates. It's geocoded as being in DC when it's not.
+- [x] check `Warning in validateCoords(lng, lat, funcName): Data contains 100 rows with either missing or invalid lat/lon values and will be ignored`
+  - I must have somehow accidentally changed the first 100 rows so something went wrong. Need to fix it now yikes.
+  - `write_csv(historic_districts_updated, "historic_districts_clean2.csv")`
+<img width="794" height="498" alt="image" src="https://github.com/user-attachments/assets/de4ed13a-671b-4533-b0ed-ece1b6fe7304" />
+
 - Deleted (because it was almost exactly the same as another thing):
 ```
   for(r in 101:nrow(historic_districts)){
@@ -22,7 +36,11 @@
   
 }
 ```
-- 
+#### Street art
+- [ ] 
+#### News outlets
+- [ ] import data into R
+#### Libraries
 
 ## June 19
 Goals:

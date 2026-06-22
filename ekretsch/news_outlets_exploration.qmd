@@ -1,0 +1,13 @@
+---
+title: "news_outlets_exploration"
+format: html
+editor: visual
+---
+
+
+## News outlets
+
+```{r}
+# Loading news outlet data
+outlets <- read_csv("../data/News Outlets/us-news-deserts-news-source-export-06-12-12-140252_SOURCE_UNC.csv")
+```

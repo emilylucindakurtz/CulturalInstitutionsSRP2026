@@ -1,0 +1,60 @@
+---
+title: "murals_exploration"
+format: html
+editor: visual
+---
+```{r}
+# Load packages
+library(tidyverse)
+library(tidygeocoder)
+library(janitor)
+library(tidytext)
+library(leaflet)
+library(lubridate)
+library(arcgisgeocode)
+```
+
+## Street art !
+
+```{r}
+# Reading the now-comma-free headers + the rest and cleaning
+murals <- read_csv("../data/Murals/streetartcities_US_2026-06.csv",
+                   na = c("", "NA", "Unknown", "Untitled")) %>% 
+  mutate(across(32:ncol(murals), as.character)) %>% #otherwise it tries to parse them as lgl
+  clean_names() #%>% # From janior package :)
+```
+
+```{r}
+# Cleaning/wrangling further
+murals_clean <- murals %>% 
+  #select(where(function(x) !all(is.na(x)))) # could also do the ~ shorthand
+  remove_empty("cols") %>% # From janitor package
+  select(-country) %>% # It's US for all here
+  select(1:attribute_last_seen) %>% # removing the rest of the cols since most are almost 100% NA and not really helpful for me
+  mutate(description_lower = tolower(description)) # for text analysis? or do later
+```
+
+```{r}
+# Using stringr+regex to fix the weird formatting
+for(i in 1:ncol(murals_clean)){
+  if(is.character(murals_clean[[i]])){
+    murals_clean[[i]] <- str_remove_all(murals_clean[[i]], "<.*?>|\\[|\\]|\"")
+  }
+}
+```
+
+```{r}
+# Text analysis of description
+remove_words <- tibble(
+  word = c(NA, "nbsp", "project", "mural", "murals", "painted", "paint", "painting", "street", "NA", "art", "https", "artist", "artists", "san", "www.instagram.com", "instagram", "created", "located", "curated")
+)
+
+murals_description_words <- murals_clean %>% 
+  mutate(description_lower = str_remove_all(description_lower, "\\d+")) %>% # removing nums (like years, etc)
+  unnest_tokens(output = word, input = description_lower) %>% 
+  anti_join(get_stopwords(source = "stopwords-iso"), by="word") %>% #could change the source...
+  anti_join(remove_words, by = "word") %>% 
+  group_by(city_id) %>% 
+  count(word) %>% 
+  slice_max(n, n = 3)
+```

@@ -1,0 +1,198 @@
+---
+title: "historic_districts_exploration"
+format: html
+editor: visual
+---
+
+```{r}
+# Load packages
+library(tidyverse)
+library(tidygeocoder)
+library(janitor)
+library(tidytext)
+library(leaflet)
+library(tigris)
+```
+
+```{r}
+# Cleaning the historic_districts dataset so only the columns we want are present (add later)
+```
+--
+
+```{r}
+# Import cleaned (sort of) dataset
+historic_districts <- read_csv("../data/Historic Districts/historic_districts_clean2.csv")
+
+# Mapping w/ leaflet!
+prelim_map <- leaflet(data = historic_districts) %>%
+   addTiles() %>%
+   addCircleMarkers(~longitude, ~latitude, popup = ~property_name, radius = 3)
+prelim_map
+```
+
+```{r}
+
+# Mapping w/ leaflet!
+prelim_map2 <- leaflet(data = historic_districts) %>%
+   addTiles() %>%
+   addMarkers(clusterOptions = markerClusterOptions(), popup = ~property_name)
+  #addCircleMarkers(~longitude, ~latitude, popup = ~property_name, radius = 3)
+prelim_map2
+```
+```{r}
+# Now I want to do the chloropleth by area by state (?) -- group by state
+```
+
+
+640 acres in 1 mile
+
+```{r}
+# Actually what I want is to group by state and then ...
+
+# MAYBE SHOULD JOIN DATA FOR THE TOTAL ACREAGE OF THE WHOLE STATE TO STANDARDIZE 
+# ^ for this should find the area of each state and then divide the acreage by that...
+
+by_state <- historic_districts %>% 
+  group_by(state) %>% 
+  summarise(total_acreage = sum(acreage_of_property, na.rm=TRUE),
+            total_num_districts = n())
+
+```
+
+
+Chloropleth map for # of acres of districts
+
+```{r}
+# 
+# acreage_of_property na.rm = TRUE --> ignore missing values
+
+```
+
+
+```{r}
+# Get state geometries
+states_sf <- tigris::states(cb = TRUE, resolution = "20m")
+# cb = TRUE simplfies the file
+# resolution = 20m is the lowest
+# this gives 2024 data
+```
+```{r}
+# Join data to shapefile
+map_data <- states_sf %>% 
+  left_join(by_state, by = c("NAME" = "state"))
+```
+```{r}
+# choosing the var
+
+#explore_var <- map_data$total_num_districts
+```
+
+```{r}
+# Create a color palette for the map
+# might want to change this to binning or quantile or something
+
+my_palette <- colorNumeric(
+  palette = "viridis", 
+  domain = map_data$total_num_districts,
+  na.color = "transparent"
+)
+```
+```{r}
+leaflet(map_data) %>% 
+  addProviderTiles("CartoDB.Positron") %>% 
+  addPolygons(
+    fillColor = ~my_palette(total_num_districts),
+    fillOpacity = .75,
+    color = "white", # border color
+    weight = 1,
+    smoothFactor = 0.5, # slightly crisper borders -- default is 1 (higher values > more simplification > jaggier borders but shorter rendering)
+    # add the highlight/hover and tooltip things
+  ) %>% 
+  addLegend(
+    pal = my_palette,
+    value = map_data$total_num_districts, # same as values   = ~total_num_districts
+    position = "bottomright",
+    title = "# of historic districts"
+  )
+```
+
+
+```{r}
+# Create a color palette for the map
+# might want to change this to binning or quantile or something
+
+my_palette <- colorNumeric(
+  palette = "viridis", 
+  domain = map_data$total_acreage,
+  na.color = "transparent"
+)
+```
+```{r}
+leaflet(map_data) %>% 
+  addProviderTiles("CartoDB.Positron") %>% 
+  addPolygons(
+    fillColor = ~my_palette(total_acreage),
+    fillOpacity = .75,
+    color = "white", # border color
+    weight = 1,
+    smoothFactor = 0.5, # slightly crisper borders -- default is 1 (higher values > more simplification > jaggier borders but shorter rendering)
+    # add the highlight/hover and tooltip things
+  ) %>% 
+  addLegend(
+    pal = my_palette,
+    value = map_data$total_acreage, # same as values   = ~total_num_districts
+    position = "bottomright",
+    title = "acreage of historic districts"
+  )
+```
+
+
+
+
+
+
+
+---------------------
+
+```{r}
+# Loading historic landmarks data for historic districts!
+historic_landmarks <- read_csv("../data/Historic Districts/Raw/csv_RAW_national-register-listed_20260522.csv") # .. means one folder up
+```
+
+```{r}
+library(tidyverse)
+library(tidygeocoder)
+library(janitor)
+library(tidytext)
+library(leaflet)
+library(lubridate)
+library(arcgisgeocode)
+```
+
+```{r}
+# Filtering the historic landmarks dataset to make sure that only historic districts are present
+historic_districts <- historic_landmarks %>% 
+  clean_names() %>% 
+  mutate(listed_date = mdy(listed_date),
+         nhl_designated_date = mdy(nhl_designated_date),
+         across(where(is.character) & -c(prefix, street_number, external_link, other_names), str_to_title),
+         district_name = property_name) %>%
+  filter(str_detect(district_name, "Historic District")) %>% 
+  mutate(district_name = str_remove(district_name, " Historic District")) %>% 
+  mutate(address = paste(property_name, street_number, city, state, sep=", "))
+```
+```{r}
+# Adding location
+
+# Have to split because batch limit is 10,000 and there are 12,337
+historic_districts_clean_L <- historic_districts[1:200,] %>% 
+  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+
+```
+
+
+
+
+
+
+
