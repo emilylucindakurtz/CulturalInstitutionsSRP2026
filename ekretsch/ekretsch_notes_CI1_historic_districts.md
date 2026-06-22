@@ -16,7 +16,7 @@ Scroll down to `Spreadsheet of NRHP Listed properties (listings up to 5/22/2026)
 1. The original spreadsheet is in the folder `folder name` as `file name`
 2. I converted the raw spreadsheet to a CSV by opening the .xlsx file, then going to `File` > `Export To` > `CSV...`
   - This is saved as `file name`
-3. Import the .csv into R (I completed all steps 2-??? of the cleaning/wrangling in `dataset_exploration.qmd`
+3. Import the .csv into R (I completed all steps 2-??? of the cleaning/wrangling in `historic_districts_exploration.qmd`
 4. Create `historic_districts` -- just the rows from the landmarks dataset that are historic districts.
   - I did some cleaning here to ensure the variables were the correct types and removed unnecessary columns. **maybe come back to this later**
   - Also added some columns **cbl**
