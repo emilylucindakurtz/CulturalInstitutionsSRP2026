@@ -31,6 +31,15 @@ prelim_map
 ```
 
 ```{r}
+
+# Mapping w/ leaflet!
+prelim_map2 <- leaflet(data = historic_districts) %>%
+   addTiles() %>%
+   addMarkers(clusterOptions = markerClusterOptions(), popup = ~property_name)
+  #addCircleMarkers(~longitude, ~latitude, popup = ~property_name, radius = 3)
+prelim_map2
+```
+```{r}
 # Now I want to do the chloropleth by area by state (?) -- group by state
 ```
 
@@ -72,6 +81,11 @@ states_sf <- tigris::states(cb = TRUE, resolution = "20m")
 map_data <- states_sf %>% 
   left_join(by_state, by = c("NAME" = "state"))
 ```
+```{r}
+# choosing the var
+
+#explore_var <- map_data$total_num_districts
+```
 
 ```{r}
 # Create a color palette for the map
@@ -104,45 +118,33 @@ leaflet(map_data) %>%
 
 
 ```{r}
-# Basic choropleth with leaflet
-choro_state_acreage <- leaflet(data = historic_districts) %>% 
-  addTiles() %>% 
-  addPolygons(lng = historic_districts$longitude, 
-              lat = historic_districts$latitude, 
-              fillColor = ~ my_palette(acreage_of_property))
+# Create a color palette for the map
+# might want to change this to binning or quantile or something
 
-choro_state_acreage
-```
-
-```{r}
-# Create a color palette for the map:
-mypalette <- colorNumeric(
-  palette = "viridis", domain = world_sf$POP2005,
+my_palette <- colorNumeric(
+  palette = "viridis", 
+  domain = map_data$total_acreage,
   na.color = "transparent"
 )
-mypalette(c(45, 43))
-
-# Basic choropleth with leaflet?
-m <- leaflet(world_sf) %>%
-  addTiles() %>%
-  setView(lat = 10, lng = 0, zoom = 2) %>%
-  addPolygons(fillColor = ~ mypalette(POP2005), stroke = FALSE)
-
-m
-
-# save the widget in a html file if needed.
-# library(htmlwidgets)
-# saveWidget(m, file=paste0( getwd(), "/HtmlWidget/choroplethLeaflet1.html"))
-
 ```
-
-
-
-
-
-
-
-
+```{r}
+leaflet(map_data) %>% 
+  addProviderTiles("CartoDB.Positron") %>% 
+  addPolygons(
+    fillColor = ~my_palette(total_acreage),
+    fillOpacity = .75,
+    color = "white", # border color
+    weight = 1,
+    smoothFactor = 0.5, # slightly crisper borders -- default is 1 (higher values > more simplification > jaggier borders but shorter rendering)
+    # add the highlight/hover and tooltip things
+  ) %>% 
+  addLegend(
+    pal = my_palette,
+    value = map_data$total_acreage, # same as values   = ~total_num_districts
+    position = "bottomright",
+    title = "acreage of historic districts"
+  )
+```
 
 
 
