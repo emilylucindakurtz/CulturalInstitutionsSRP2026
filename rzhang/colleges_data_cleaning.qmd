@@ -23,8 +23,8 @@ hbcu_page
 ```{r}
 #parsing HTML table into data frame
 hbcu_table <- hbcu_page %>%
-html_element("table") %>%
-html_table(header = TRUE)
+  html_element("table") %>%
+  html_table(header = TRUE)
 
 glimpse(hbcu_table)
 ```

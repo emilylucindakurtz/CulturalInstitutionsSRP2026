@@ -1,0 +1,71 @@
+---
+title: "auto_factories_data_cleaning"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(rvest)
+library(dplyr)
+library(tidygeocoder)
+
+```
+
+```{r}
+EV_manufacturing_plants <- read_csv("../data/Industrial Institutions/EV_ManufacturingFacilities _Investments.csv")
+```
+
+```{r}
+# add address column
+Clean_EV_ManufacturingFacilities <- EV_manufacturing_plants %>%
+  mutate(Address = paste(`Facility Name`, City, State, sep = ", "))
+```
+
+```{r}
+# Using tidygeocoder package to add coordinates
+Clean_EV_ManufacturingFacilities <- Clean_EV_ManufacturingFacilities %>%
+  geocode(Address, method = 'arcgis', lat = latitude, long = longitude)
+```
+
+
+Wikipedia - List of automotive assembly plants in the United States
+```{r}
+# check permission to scrape
+library(robotstxt)
+paths_allowed("https://en.wikipedia.org/wiki/List_of_automotive_assembly_plants_in_the_United_States")
+```
+
+```{r}
+# read in wiki page
+auto_wiki_page <- read_html("https://en.wikipedia.org/wiki/List_of_automotive_assembly_plants_in_the_United_Statesau")
+```
+
+```{r}
+# algorithm to convert wiki tables into dataframes and find/add manufacturers
+wiki_tables <- auto_wiki_page %>%
+  html_elements("table.wikitable")
+
+wiki_auto_plants <- map_dfr(wiki_tables, function(table_node) {
+  
+  manufacturer <- table_node %>%
+    html_element(xpath = "preceding::h2[1]") %>%
+    html_text2()
+  
+  table_node %>%
+    html_table(fill = TRUE) %>%
+    mutate(Manufacturer = manufacturer, .before = 1)
+})
+```
+
+```{r}
+# Using tidygeocoder package to add coordinates
+wiki_auto_plants <- wiki_auto_plants %>%
+  geocode(Address, method = 'arcgis', lat = latitude, long = longitude)
+```
+
+```{r}
+# create csv files of cleaned data
+write_csv(Clean_EV_ManufacturingFacilities, "Clean_EV_ManufacturingFacilities.csv")
+write_csv(wiki_auto_plants, "Wikipedia_auto_plants.csv")
+```
+
