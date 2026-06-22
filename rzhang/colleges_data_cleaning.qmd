@@ -31,12 +31,7 @@ glimpse(hbcu_table)
 
 ```{r}
 #reading in and cleaning LACs csv
-us_news_lacs <- read_csv("../data/Colleges/US-News-Rankings-LACs-Through-2026.csv")
-
-lacs <- us_news_lacs %>%
-  select(`College Name`, State, `IPEDS ID`)
-
-lacs
+lacs <- read_csv("../data/Colleges/US-News-Rankings-LACs-Through-2026.csv")
 ```
 
 
@@ -79,11 +74,9 @@ distinct_locations <- postsecondary_school_locations %>%
   distinct(NAME, .keep_all = TRUE)
 
 hbcus_locations <- hbcu_table %>%
-  left_join(
-    distinct_locations %>%
-      select(NAME, LAT, LON),
-    by = c("Name" = "NAME")
-  )
+  left_join(distinct_locations %>%
+      select(NAME, LAT, LON), by = c("Name" = "NAME")
+      )
 hbcus_locations
 ```
 

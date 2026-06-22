@@ -1,9 +1,31 @@
 # Emily's Notes for Historic Districts Dataset + Analysis
 
-# Personal notes/things to do:
-- Note: `category of property` variable -- district for most, but site for some... but it is all caps sometimes and not some other times ex: `Fort Union Trading Post National Historic Site Historic District (Boundary Increase)` -- marked as `site` and it's not really a historic district in the way I was thinking...
+# Personal notes/things to do/ideas for further analysis:
 - `#\| eval: false`
+- [ ] shiny app where you can select the state and then a histogram/bar chart pops up for the cateories
+- [ ] do the proportional/standardization thing
+  - [ ] get data by state for area
+- [ ] Data cleaning:
+  - [ ] `category of property` variable -- district for most, but site for some... but it is all caps sometimes and not some other times ex: `Fort Union Trading Post National Historic Site Historic District (Boundary Increase)` -- marked as `site` and it's not really a historic district in the way I was thinking...
+  - [ ] Deal with the geocoding properly
+     
+Notes:
 
+- 52 in land_area, 57 in by_state. The below are in the by_state (the NHRP dataset) but not the land_area
+  - Federated States of Micronesia are in the dataset but are technically a sovereign nation though in a Compact of Free Association (COFA) with the United States.
+  - American Samoa -- US territory
+  - Guam -- US territory
+  - N. Mariana Islands -- US territory
+  - Virgin Islands -- US territory
+ 
+5 US territories: Puerto Rico, American Samoa, Guam, the Commonwealth of the Northern Mariana Islands (CNMI), and the U.S. Virgin Islands.
+------------
+I got the land area dataset from: https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html
+^ I selected the state file (towards the bottom)
+------------
+https://www.census.gov/geographies/reference-files/2010/geo/state-area.html
+^ from 2010 but better since it has the territories too
+scraping (I checked `paths_allowed("https://www.census.gov/")` -- It came back `True` so we can scrape :))
 # Dataset source:
 National Register of Historic Places
 
@@ -54,7 +76,3 @@ Scroll down to `Spreadsheet of NRHP Listed properties (listings up to 5/22/2026)
 
 ### Total acreage of historic districts by state
 <img width="794" height="498" alt="image" src="https://github.com/user-attachments/assets/612d066a-dda1-40f8-8d02-67f1054f03fb" />
-
-# Ideas for further analysis
-- [ ] shiny app where you can select the state and then a histogram/bar chart pops up for the cateories
-- [ ] do the proportional thing
