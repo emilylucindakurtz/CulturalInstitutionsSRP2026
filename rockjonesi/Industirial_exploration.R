@@ -3,6 +3,8 @@
 library(tidygeocoder)
 library(tidyverse)
 library(leaflet)
+library(pdftools)
+library(tidytext)
 
 PowerPlants_Raw <- read.csv("data/Industrial Institutions/PowerPlants_Raw.csv")
 fortune500 <- read.csv("data/Industrial Institutions/Fortune500HQ_Raw.csv") 
@@ -12,7 +14,7 @@ PowerPlants_Raw <- PowerPlants_Raw %>%
   filter(Plant.Latitude >= 18.9 & Plant.Latitude <= 71.4,
          Plant.Longitude >= -178.4 & Plant.Longitude <= -66.9)
 
-#companies were originally labeled like 34. name. I am cleaning it up to only be company name in a new col
+#companies were originally labeled like "34. name". I am cleaning it up to only be company name in a new col
 fortune500 <- fortune500 %>% 
   mutate(Company = str_replace_all(Subject, "^\\s*[0-9.]+\\s*|,.*$", "")) %>% 
   filter(Latitude >= 18.9 & Latitude <= 71.4,
@@ -91,26 +93,40 @@ addLocation <- fortune500 %>%
     full_results = TRUE
   )
 
-fortune500_Clean <- addLocation %>% select(Company, city, state, county, Latitude, Longitude)
+fortune500_Clean <- addLocation  %>% mutate(City = city, State = state, County = county, County = str_remove(County, "\\s+County")) %>% 
+  select(Company, City, State, County, Latitude, Longitude) 
 
 
 
 
 
 ## PowerPlants_Raw
-PowerPlants_Clean <- PowerPlants_Raw %>% select(Electric.Power.Plant.Name, 
+PowerPlants_Clean <- PowerPlants_Raw %>% mutate(City = Plant.City.Location, State = Plant.State.Location, Longitude = Plant.Longitude, Latitude = Plant.Latitude) %>%  select(Electric.Power.Plant.Name, 
                                       Operating.Utility.Name, 
-                                      Plant.City.Location, 
-                                      Plant.State.Location, 
+                                      City,
+                                      State,
                                       Primary.Energy.Source,
-                                      Plant.Longitude,
-                                      Plant.Latitude)
+                                      Longitude,
+                                      Latitude)
 
 
 write.csv(PowerPlants_Clean, "PowerPlants_Clean.csv", row.names = FALSE)
 write.csv(fortune500_Clean, "Fortune500HQ_Clean.csv", row.names = FALSE)
 
+raw_text <- pdf_text("data/Industrial Institutions/2025Q4HousingPrices.pdf")
+
+pdf_prices <- data.frame(
+  raw_content = raw_text
+) %>%
+  separate_rows(raw_content, sep = "\r?\n") %>%
+  mutate(raw_content = str_trim(raw_content)) %>% slice(-c(1:3)) %>% 
+  mutate(County = str_extract(raw_content, "^\\w+"),
+         State = str_extract(raw_content, "(?<=,\\s)[[:alpha:]]+"),
+         Median.Home.Price = parse_number(str_extract(raw_content, "\\$\\s*[0-9,]+"))) %>% select(-raw_content) %>% drop_na()
+
+Fortune500_Housing <- fortune500_Clean %>% left_join(pdf_prices, by = "County")
 
 
+left_join
 
 

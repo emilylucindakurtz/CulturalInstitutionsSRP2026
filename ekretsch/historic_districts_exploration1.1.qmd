@@ -32,7 +32,27 @@ historic_districts <- historic_landmarks %>%
          district_name = property_name) %>%
   filter(str_detect(district_name, "Historic District")) %>% 
   mutate(district_name = str_remove(district_name, " Historic District")) %>% 
-  mutate(address = paste(property_name, county, state, sep=", "))
+  mutate(address = paste(property_name, street_number, city, state, sep=", "))
+```
+
+```{r}
+#\| eval: false
+#splitting addresses into groups of 100 for easier geocoding
+groups <- split(historic_districts, ceiling(seq_len(nrow(historic_districts)) / 100))
+
+geocoded_groups <- map(groups,~ geocode(.x, address = address, method = "arcgis", lat = latitude, long = longitude))
+```
+
+```{r}
+
+new_tibble <- geocoded_groups[[1]]
+for(i in 2:length(geocoded_groups)){
+  new_tibble <- bind_rows(new_tibble, geocoded_groups[[i]])
+}
+```
+
+```{r}
+write_csv(new_tibble, "historic_districts_clean3_specific_addresses.csv")
 ```
 
 ```{r}

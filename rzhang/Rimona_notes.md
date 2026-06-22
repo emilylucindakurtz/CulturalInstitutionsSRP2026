@@ -186,6 +186,11 @@ Plans for EDA:
 
 ## 6/21
 - [X] add long and lat coordinates to NRHP dataset
+  - used tidygeocoder package to find lat and long coordinates
 - [X] gather data from Opera America website
 - [ ] explore visualizations using datasets
 - [ ] conduct basic EDA across the data
+
+## 6/22
+Create questions to guide what the data should show, e.g. 
+
