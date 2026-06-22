@@ -192,5 +192,12 @@ Plans for EDA:
 - [ ] conduct basic EDA across the data
 
 ## 6/22
-Create questions to guide what the data should show, e.g. 
+Went a bit off track from the goals I wrote yesterday and instead cleaned the automotive datasets, which included scraping the Wikipedia website and geocoding coordinates for both datasets.
+
+Thus,
+- [ ] explore visualizations using datasets
+- [ ] conduct basic EDA across the data
+are still goals to complete by Wednesday.
+
+Also, creating questions to guide what the data should show. For example, do regions that have more historic locations (e.g., theaters), differ from regions that have industrial institutions (e.g., automotive manufacturing facilities)? 
 
