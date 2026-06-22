@@ -45,12 +45,14 @@ Scroll down to `Spreadsheet of NRHP Listed properties (listings up to 5/22/2026)
   - I did some cleaning here to ensure the variables were the correct types and removed unnecessary columns. **maybe come back to this later**
   - Also added some columns **cbl**
     - `address` column
-5. Get longitude and latitude -- this was the bulk of this and took a very long time and a lot of trial and error.
+5. Get longitude and latitude (geocoding) -- this was the bulk of this and took a very long time and a lot of trial and error.
   - I used the `arcgis` method from the `arcgisgeocode` package as the method for the `geocode()` function from `tidygeocoder` package to convert.
     - I used this method rather than other ones such as `census` or `osm` because the addresses were messy/incomplete and `arcgis` was the only method (that I had access) that could deal with these addresses. `census` and `osm` resulted in lots of NAs.
    
 
 ** NOTE TO SELF NEED TO CHANGE THE BELOW TO UPDATED THING!!! **
+it's def not perfect... (the geocoding)
+
   - I had to batch this because it kept timing out on me. Even with batching, I had to manually re-run it. The code below is what I had to re-run throughout 1 day:
     - ```
       start <- nrow(historic_districts_CLEAN_2)+1
