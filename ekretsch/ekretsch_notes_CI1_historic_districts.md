@@ -45,3 +45,11 @@ Scroll down to `Spreadsheet of NRHP Listed properties (listings up to 5/22/2026)
       ```
   - Queries took between .1 and 1 seconds each (for 1 address)
 
+** NEED TO COME BACK AND FIX THE GEOCODING SO IT'S BASED ON CITY, STATE INSTEAD OF COUNTY, STATE (WA) **
+
+# EDA
+### Total number of historic districts by state
+<img width="794" height="498" alt="image" src="https://github.com/user-attachments/assets/dafd82d3-5dcd-43da-adfe-ccbf24b5579f" />
+
+
+### Total acreage of historic districts by state
