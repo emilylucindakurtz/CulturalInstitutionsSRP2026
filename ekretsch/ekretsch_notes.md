@@ -1,6 +1,9 @@
 # Emily Kretschmer's Notes
 
 ## June 22
+think about questions
+libraries
+
 #### Historic Districts
 - [ ] fix washington etc addresses
 - [x] make a choropleth!
