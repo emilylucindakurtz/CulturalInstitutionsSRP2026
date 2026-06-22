@@ -34,26 +34,15 @@ glimpse(all_theater_types)
 ```
 
 ```{r}
-#adding row_id to allow rejoining and checking progress
-all_theater_types <- all_theater_types %>%
-  mutate(row_id = row_number())
-```
-
-```{r}
 #splitting addresses into groups of 100 for easier geocoding
 groups <- split(all_theater_types, ceiling(seq_len(nrow(all_theater_types)) / 100))
 
-geocoded_groups <- map(
-  groups,
-  ~ geocode(.x, address = Address, method = "arcgis", lat = latitude, long = longitude)
-  )
+geocoded_groups <- map(groups,~ geocode(.x, address = Address, method = "arcgis", lat = latitude, long = longitude))
 ```
 
 ```{r}
 #bind the groups back together
-all_theaters_geocoded <- bind_rows(geocoded_groups) %>%
-  select(`Ref#`, `Property Name`, State, County, City, `Street & Number`, `Area of Significance`, `Category of Property`, `Other Names`, `Property ID`, Address)
-
+all_theaters_geocoded <- bind_rows(geocoded_groups) 
 all_theaters_geocoded
 ```
 
