@@ -12,16 +12,18 @@ library(janitor)
 library(tidytext)
 library(leaflet)
 library(tigris)
+library(readr)
 ```
 
 ```{r}
 # Cleaning the historic_districts dataset so only the columns we want are present (add later)
 ```
+
 --
 
 ```{r}
 # Import cleaned (sort of) dataset
-historic_districts <- read_csv("../data/Historic Districts/historic_districts_clean2.csv")
+historic_districts <- read_csv("../data/Historic Districts/historic_districts_clean3_specific_addresses.csv")
 
 # Mapping w/ leaflet!
 prelim_map <- leaflet(data = historic_districts) %>%
@@ -39,9 +41,15 @@ prelim_map2 <- leaflet(data = historic_districts) %>%
   #addCircleMarkers(~longitude, ~latitude, popup = ~property_name, radius = 3)
 prelim_map2
 ```
+
 ```{r}
 # Now I want to do the chloropleth by area by state (?) -- group by state
 ```
+
+```{r}
+land_area <- read_delim("../data/Historic Districts/2025_Gaz_state_national.txt", delim = "|")
+```
+
 
 
 640 acres in 1 mile
@@ -59,15 +67,13 @@ by_state <- historic_districts %>%
 
 ```
 
-
-Chloropleth map for # of acres of districts
+Chloropleth map for \# of acres of districts
 
 ```{r}
 # 
 # acreage_of_property na.rm = TRUE --> ignore missing values
 
 ```
-
 
 ```{r}
 # Get state geometries
@@ -76,16 +82,32 @@ states_sf <- tigris::states(cb = TRUE, resolution = "20m")
 # resolution = 20m is the lowest
 # this gives 2024 data
 ```
+
 ```{r}
 # Join data to shapefile
 map_data <- states_sf %>% 
   left_join(by_state, by = c("NAME" = "state"))
 ```
+
 ```{r}
 # choosing the var
 
 #explore_var <- map_data$total_num_districts
 ```
+
+
+```{r}
+library(robotstxt)
+paths_allowed("https://www.census.gov/") # came back true so we can scrape yay
+```
+```{r}
+library(rvest)
+page <- read_html("https://www.census.gov/geographies/reference-files/2010/geo/state-area.html")
+table <- page %>% html_elements("table")
+areas_raw <- html_table(table[[1]])
+
+```
+
 
 ```{r}
 # Create a color palette for the map
@@ -97,6 +119,7 @@ my_palette <- colorNumeric(
   na.color = "transparent"
 )
 ```
+
 ```{r}
 leaflet(map_data) %>% 
   addProviderTiles("CartoDB.Positron") %>% 
@@ -116,7 +139,6 @@ leaflet(map_data) %>%
   )
 ```
 
-
 ```{r}
 # Create a color palette for the map
 # might want to change this to binning or quantile or something
@@ -127,6 +149,7 @@ my_palette <- colorNumeric(
   na.color = "transparent"
 )
 ```
+
 ```{r}
 leaflet(map_data) %>% 
   addProviderTiles("CartoDB.Positron") %>% 
@@ -146,53 +169,10 @@ leaflet(map_data) %>%
   )
 ```
 
-
-
-
-
-
-
----------------------
+------------------------------------------------------------------------
 
 ```{r}
 # Loading historic landmarks data for historic districts!
 historic_landmarks <- read_csv("../data/Historic Districts/Raw/csv_RAW_national-register-listed_20260522.csv") # .. means one folder up
 ```
-
-```{r}
-library(tidyverse)
-library(tidygeocoder)
-library(janitor)
-library(tidytext)
-library(leaflet)
-library(lubridate)
-library(arcgisgeocode)
-```
-
-```{r}
-# Filtering the historic landmarks dataset to make sure that only historic districts are present
-historic_districts <- historic_landmarks %>% 
-  clean_names() %>% 
-  mutate(listed_date = mdy(listed_date),
-         nhl_designated_date = mdy(nhl_designated_date),
-         across(where(is.character) & -c(prefix, street_number, external_link, other_names), str_to_title),
-         district_name = property_name) %>%
-  filter(str_detect(district_name, "Historic District")) %>% 
-  mutate(district_name = str_remove(district_name, " Historic District")) %>% 
-  mutate(address = paste(property_name, street_number, city, state, sep=", "))
-```
-```{r}
-# Adding location
-
-# Have to split because batch limit is 10,000 and there are 12,337
-historic_districts_clean_L <- historic_districts[1:200,] %>% 
-  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
-
-```
-
-
-
-
-
-
 
