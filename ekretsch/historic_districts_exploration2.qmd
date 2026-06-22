@@ -75,6 +75,8 @@ map_data <- states_sf %>%
 
 ```{r}
 # Create a color palette for the map
+# might want to change this to binning or quantile or something
+
 my_palette <- colorNumeric(
   palette = "viridis", 
   domain = map_data$total_num_districts,
@@ -88,7 +90,15 @@ leaflet(map_data) %>%
     fillColor = ~my_palette(total_num_districts),
     fillOpacity = .75,
     color = "white", # border color
-    weight = 1
+    weight = 1,
+    smoothFactor = 0.5, # slightly crisper borders -- default is 1 (higher values > more simplification > jaggier borders but shorter rendering)
+    # add the highlight/hover and tooltip things
+  ) %>% 
+  addLegend(
+    pal = my_palette,
+    value = map_data$total_num_districts, # same as values   = ~total_num_districts
+    position = "bottomright",
+    title = "# of historic districts"
   )
 ```
 
