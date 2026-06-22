@@ -16,6 +16,11 @@ Notes:
   - Guam -- US territory
   - N. Mariana Islands -- US territory
   - Virgin Islands -- US territory
+ 
+5 US territories: Puerto Rico, American Samoa, Guam, the Commonwealth of the Northern Mariana Islands (CNMI), and the U.S. Virgin Islands.
+
+I got the land area dataset from: https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html
+^ I selected the state file (towards the bottom)
 
 # Dataset source:
 National Register of Historic Places
