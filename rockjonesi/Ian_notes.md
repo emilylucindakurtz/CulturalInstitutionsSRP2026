@@ -378,10 +378,13 @@ Movign forward, should try and find county level education data.
 
 ## June 22
 
-housing price angle for industrial institutions
-more on powerplant EDA-add coloration based on energy source
-could maybe try and find actual industry info for these FT500 HQ and color like that
-what states have the most of certain types of energy?
+- housing price angle for industrial institutions
+- more on powerplant EDA-add coloration based on energy source
+- could maybe try and find actual industry info for these FT500 HQ and color like that
+- what states have the most of certain types of energy?
+
+
+unemployment rates?
 
 
 
