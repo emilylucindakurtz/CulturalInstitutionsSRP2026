@@ -43,9 +43,10 @@ prelim_map
 # MAYBE SHOULD JOIN DATA FOR THE TOTAL ACREAGE OF THE WHOLE STATE TO STANDARDIZE 
 # ^ for this should find the area of each state and then divide the acreage by that...
 
-acreage_by_state <- historic_districts %>% 
+by_state <- historic_districts %>% 
   group_by(state) %>% 
-  summarise(total_acreage = sum(acreage_of_property, na.rm=TRUE))
+  summarise(total_acreage = sum(acreage_of_property, na.rm=TRUE),
+            total_num_districts = n())
 
 ```
 
@@ -69,17 +70,28 @@ states_sf <- tigris::states(cb = TRUE, resolution = "20m")
 ```{r}
 # Join data to shapefile
 map_data <- states_sf %>% 
-  left_join(acreage_by_state, by = c("NAME" = "state"))
+  left_join(by_state, by = c("NAME" = "state"))
 ```
 
 ```{r}
 # Create a color palette for the map
 my_palette <- colorNumeric(
   palette = "viridis", 
-  domain = map_data$total_acreage,
+  domain = map_data$total_num_districts,
   na.color = "transparent"
 )
 ```
+```{r}
+leaflet(map_data) %>% 
+  addProviderTiles("CartoDB.Positron") %>% 
+  addPolygons(
+    fillColor = ~my_palette(total_num_districts),
+    fillOpacity = .75,
+    color = "white", # border color
+    weight = 1
+  )
+```
+
 
 ```{r}
 # Basic choropleth with leaflet
