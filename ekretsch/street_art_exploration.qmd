@@ -47,7 +47,11 @@ for(i in 1:ncol(murals_clean)){
 # Text analysis of description
 remove_words <- tibble(
   word = c(NA, "nbsp", "project", "mural", "murals", "painted", "paint", "painting", "street", "NA", "art", "https", "artist", "artists", "san", "www.instagram.com", "instagram", "created", "located", "curated")
-)
+) #make robo do it
+#region, state
+#conservative vs liberal wrods/polarizing words
+# west coast
+# size of city
 
 murals_description_words <- murals_clean %>% 
   mutate(description_lower = str_remove_all(description_lower, "\\d+")) %>% # removing nums (like years, etc)
