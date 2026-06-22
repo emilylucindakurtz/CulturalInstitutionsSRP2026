@@ -1,0 +1,81 @@
+---
+title: "historic_districts_cleaning1"
+format: html
+editor: visual
+---
+```{r}
+# Load packages
+library(tidyverse)
+library(tidygeocoder)
+library(janitor)
+library(tidytext)
+library(leaflet)
+library(lubridate)
+library(arcgisgeocode)
+```
+
+## Historic Districts
+
+```{r}
+# Loading historic landmarks data for historic districts!
+historic_landmarks <- read_csv("../data/Historic Districts/Raw/csv_RAW_national-register-listed_20260522.csv") # .. means one folder up
+```
+
+```{r}
+# Filtering the historic landmarks dataset to make sure that only historic districts are present
+historic_districts <- historic_landmarks %>% 
+  clean_names() %>% 
+  mutate(listed_date = mdy(listed_date),
+         nhl_designated_date = mdy(nhl_designated_date),
+         across(where(is.character) & -c(prefix, street_number, external_link, other_names), str_to_title),
+         district_name = property_name) %>%
+  filter(str_detect(district_name, "Historic District")) %>% 
+  mutate(district_name = str_remove(district_name, " Historic District")) %>% 
+  mutate(address = paste(property_name, county, state, sep=", "))
+```
+
+```{r}
+# Adding location
+
+# Have to split because batch limit is 10,000 and there are 12,337
+historic_districts_clean <- historic_districts[1:100,] %>% 
+  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+
+```
+
+```{r}
+start <- nrow(historic_districts_clean)+1
+
+for(r in start:nrow(historic_districts)){
+  temp_row <- historic_districts[r,] %>% 
+    geocode(address, method = 'arcgis', lat = latitude , long = longitude)
+  
+  historic_districts_clean <- rbind(historic_districts_clean, temp_row)
+  
+  if(r %% 75 == 0){
+    Sys.sleep(2)  # pause 2 seconds between batches
+    cat("Batch", r, "done\n")  # progress tracking
+    #Save progress to disk so you can resume if it crashes partway through:
+    write_csv(historic_districts_clean, "geocoded_progress_2.csv")
+  }
+}
+```
+
+```{r}
+write_csv(historic_districts_clean[1:12419,], "long_lat_YAY.csv")
+```
+
+```{r}
+write_csv(historic_districts, "OG_historic_districts_nolatlong.csv")
+```
+
+
+## Historic districts w/o the above!
+
+```{r}
+historic_districts_updated <- read_csv("../data/Historic Districts/long_lat_YAY_CORRECT.csv")
+```
+```{r}
+historic_districts_updated[1:100,] <- historic_districts[1:100,] %>% 
+  geocode(address, method = 'arcgis', lat = latitude, long = longitude)
+```
