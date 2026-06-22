@@ -376,6 +376,10 @@ In addition to finding all public library business changes, I have also compiled
 Movign forward, should try and find county level education data.
 
 
+## June 22
+
+housing price angle for industrial institutions
+
 
 
     
