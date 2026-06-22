@@ -392,7 +392,9 @@ unemployment rates?
       - https://www.nar.realtor/research-and-statistics/housing-statistics/county-median-home-prices-and-monthly-mortgage-payment
         - Terms of use state that it is publicly availible as long as we are not using it for profit and cite it correctly.
         - It is a pdf, so it looks like text analysis might be need, or to use a converter. 
-
+- will be joining this to both corporate HQs and powerplant data, to allow for county-level exploration for both industries
+- In the meeting today, Emily mentioned starting on shiny apps. I think state level examination for powerplants, libraries and sports venues could all be super interesting.
+- 
 
 
 
