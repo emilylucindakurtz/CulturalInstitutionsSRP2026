@@ -132,4 +132,18 @@ Plan for the week:
 - Thursday - informal check in at Carleton SRP training thing
 - Friday is a holiday - no meeting
 
+# June 22
+
+- Rimona - data cleaning, had to scrape data, chatted with Emily about National Register of Historical Places is big - what parts to use
+- Ian - finalizing datasets/cleaning - what are next steps? - collect data on housing costs! sounds awesome!
+- Emily - libraries dataset looks great! next steps - urban density? test scores?
+-   Revisit Career OneStop - see if it has data on libraries that offer "certifications" or trainings on skilled technical workforce type jobs - spatially map that if so, bring in unemployment data to merge with that spatial component - spatial relationship between libraries (specifically that offer these certs) and unemployment?
+-   Street art - lots of text analysis on the descriptions - first steps - make robot help with custom stop words, see what it looks like. consider larger unit of analysis. third consideration - break down by some categerocial variable (be it politics, region, etc.) and do text analysis that identifies the polarized words - Emily to send literature/tutorial
+-   Historic districts - cleaning - can move onto to EDA anyways - control for size of state in acreage map, see patterns - for maps in general, consider shiny app that shows bar graph of type of district, allowing user to filter by state
+- Zoe - NO2 and nighttime light satellite data, EDA for museums - look into controlling for urban density
+-   what state has the most museums? make shiny app to explore based on user input
+
+Next Meeting: penciled in for Wednesday, may be moved to Thursday depending on 9am check in Wednesday over Discord
+
+Emily will be working on general website to fit everyone's stories/work under one nicely laid out umbrella
 
