@@ -53,3 +53,8 @@ Scroll down to `Spreadsheet of NRHP Listed properties (listings up to 5/22/2026)
 
 
 ### Total acreage of historic districts by state
+<img width="794" height="498" alt="image" src="https://github.com/user-attachments/assets/612d066a-dda1-40f8-8d02-67f1054f03fb" />
+
+# Ideas for further analysis
+- [ ] shiny app where you can select the state and then a histogram/bar chart pops up for the cateories
+- [ ] do the proportional thing
