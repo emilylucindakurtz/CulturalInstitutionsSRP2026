@@ -10,6 +10,7 @@
   - [ ] Deal with the geocoding properly
      
 Notes:
+
 - 52 in land_area, 57 in by_state. The below are in the by_state (the NHRP dataset) but not the land_area
   - Federated States of Micronesia are in the dataset but are technically a sovereign nation though in a Compact of Free Association (COFA) with the United States.
   - American Samoa -- US territory
@@ -18,10 +19,13 @@ Notes:
   - Virgin Islands -- US territory
  
 5 US territories: Puerto Rico, American Samoa, Guam, the Commonwealth of the Northern Mariana Islands (CNMI), and the U.S. Virgin Islands.
-
+------------
 I got the land area dataset from: https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html
 ^ I selected the state file (towards the bottom)
-
+------------
+https://www.census.gov/geographies/reference-files/2010/geo/state-area.html
+^ from 2010 but better since it has the territories too
+scraping (I checked `paths_allowed("https://www.census.gov/")` -- It came back `True` so we can scrape :))
 # Dataset source:
 National Register of Historic Places
 
