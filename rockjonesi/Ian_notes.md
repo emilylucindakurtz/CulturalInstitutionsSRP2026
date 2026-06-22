@@ -391,10 +391,21 @@ unemployment rates?
     - from the national association of realators: county-level data of median housing prices in Q4 of 2025
       - https://www.nar.realtor/research-and-statistics/housing-statistics/county-median-home-prices-and-monthly-mortgage-payment
         - Terms of use state that it is publicly availible as long as we are not using it for profit and cite it correctly.
-        - It is a pdf, so it looks like text analysis might be need, or to use a converter. 
+        - It is a pdf, so it looks like text analysis might be need, or to use a converter.
+          - ended up with `pdf_prices` containing `State`, `County`, `Median.Housing.Price`
 - will be joining this to both corporate HQs and powerplant data, to allow for county-level exploration for both industries
 - In the meeting today, Emily mentioned starting on shiny apps. I think state level examination for powerplants, libraries and sports venues could all be super interesting.
 - Have been stuggling with fixing "many-to-many" join error
+
+**Things to do**
+- [ ] Finish up combining the text pulled data with the fortune HQ data
+- [ ] Continue state-level EDA on powerplants, sports venues and libraries
+- [ ] Explore adding unemployment data into the industrial datasets
+- [ ] 
+
+
+
+
 
 
 
