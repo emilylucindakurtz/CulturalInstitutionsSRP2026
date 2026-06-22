@@ -1,8 +1,9 @@
 # Emily Kretschmer's Notes
 
 ## June 22
-think about questions
-libraries
+- think about questions
+- libraries
+- tf idf thing
 
 #### Historic Districts
 - [ ] fix washington etc addresses
