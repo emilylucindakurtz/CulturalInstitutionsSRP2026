@@ -5,6 +5,9 @@ library(tidyverse)
 library(leaflet)
 library(pdftools)
 library(tidytext)
+library(scales)
+library(tigris) 
+library(sf)
 
 PowerPlants_Raw <- read.csv("data/Industrial Institutions/PowerPlants_Raw.csv")
 fortune500 <- read.csv("data/Industrial Institutions/Fortune500HQ_Raw.csv") 
@@ -94,11 +97,8 @@ addLocation <- fortune500 %>%
   )
 
 fortune500_Clean <- addLocation  %>% mutate(City = city, State = state, County = county, County = str_remove(County, "\\s+County")) %>% 
-  select(Company, City, State, County, Latitude, Longitude) 
-
-
-
-
+  select(Company, City, State, County, Latitude, Longitude) %>% mutate(County = case_when(County == "Saint Louis" ~ "St. Louis",
+                                                                                          TRUE ~ County))
 
 ## PowerPlants_Raw
 PowerPlants_Clean <- PowerPlants_Raw %>% mutate(City = Plant.City.Location, State = Plant.State.Location, Longitude = Plant.Longitude, Latitude = Plant.Latitude) %>%  select(Electric.Power.Plant.Name, 
@@ -107,7 +107,7 @@ PowerPlants_Clean <- PowerPlants_Raw %>% mutate(City = Plant.City.Location, Stat
                                       State,
                                       Primary.Energy.Source,
                                       Longitude,
-                                      Latitude)
+                                      Latitude) 
 
 
 write.csv(PowerPlants_Clean, "PowerPlants_Clean.csv", row.names = FALSE)
@@ -120,13 +120,99 @@ pdf_prices <- data.frame(
 ) %>%
   separate_rows(raw_content, sep = "\r?\n") %>%
   mutate(raw_content = str_trim(raw_content)) %>% slice(-c(1:3)) %>% 
-  mutate(County = str_extract(raw_content, "^\\w+"),
-         State = str_extract(raw_content, "(?<=,\\s)[[:alpha:]]+"),
-         Median.Home.Price = parse_number(str_extract(raw_content, "\\$\\s*[0-9,]+"))) %>% select(-raw_content) %>% drop_na()
+  mutate(
+    State = str_trim(str_extract(raw_content, "(?<=,\\s)[^$]+")),
+    County = str_extract(raw_content, "^.*(?=\\s+County,)"),
+    Median.Home.Price = parse_number(str_extract(raw_content, "\\$\\s*[0-9,]+"))
+  ) %>% 
+  mutate(
+    County = str_remove(County, paste0("^", State, "\\s+"))) %>% select(-raw_content) %>% drop_na()
 
-Fortune500_Housing <- fortune500_Clean %>% left_join(pdf_prices, by = "County")
+Fortune500_Housing <- fortune500_Clean %>% 
+  left_join(pdf_prices, by = c("County", "State"))
 
 
-left_join
 
+
+
+#getting the county shapefiles
+county_sf <- counties(cb = TRUE, class = "sf") %>% 
+  mutate(County = tolower(NAME),
+         State = tolower(STATE_NAME))
+
+#standardizing variables for join
+housing_map <- Fortune500_Housing %>% 
+  drop_na() %>% 
+  mutate(County = tolower(County),
+         State = tolower(State))
+
+#aggregating to deal with many-to-many join errors
+unique_county_prices <- housing_map %>%
+  group_by(State, County) %>%
+  summarize(
+    Median.Home.Price = mean(Median.Home.Price, na.rm = TRUE), 
+    .groups = "drop"
+  )
+
+##join housing prices to county shapefile information
+county_prices <- county_sf %>%
+  inner_join(unique_county_prices %>% select(County, State, Median.Home.Price), 
+             by = c("State","County")) 
+
+pal <- colorNumeric(
+  palette = "YlOrRd", 
+  domain = county_prices$Median.Home.Price
+)
+
+leaflet() %>%
+  addTiles() %>%
+  addPolygons(
+    data = county_prices,
+    fillColor = ~pal(Median.Home.Price),
+    fillOpacity = 0.6,
+    color = "black",
+    weight = 1,
+    smoothFactor = 0.5,
+  ) %>%
+  addMarkers(
+    data = housing_map,
+    lng = ~Longitude, 
+    lat = ~Latitude,
+    popup = ~paste0(
+      Company, "<br/>",
+      City, ", ", str_to_title(State), "<br/>",
+      dollar(Median.Home.Price)
+    ),
+    label = ~Company
+  ) %>%
+  addLegend(
+    data = county_prices,
+    position = "bottomright",
+    pal = pal,
+    values = ~Median.Home.Price,
+    title = "2025 Median Home Price",
+    labFormat = labelFormat(prefix = "$"),
+    opacity = 0.8
+  )
+
+
+
+powerplant_types <- PowerPlants_Clean %>% group_by(State) %>% count(Primary.Energy.Source)
+  
+
+ggplot(PowerPlants_Clean, aes(x = State, fill = Primary.Energy.Source)) +
+  geom_bar(color = "black") +
+  facet_wrap(~ Primary.Energy.Source, scales = "free_y") +
+  scale_fill_brewer(palette =  "Set3") +
+  theme(axis.text.x = element_text(angle = 90)) +
+  labs(y = "Count")
+
+
+ggplot(Clean_Data, aes(x = State, fill = Primary.Energy.Source)) +
+  geom_bar(position = "fill", color = "black") +
+  scale_fill_brewer(palette =  "Set3") +
+  theme(axis.text.x = element_text(angle = 90)) +
+  labs(y = "Proportion")
+
+write.csv(Fortune500_Housing, "Fortune500HQ_Housing", row.names = FALSE)
 
