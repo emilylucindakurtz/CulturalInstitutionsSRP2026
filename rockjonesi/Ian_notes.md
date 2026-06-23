@@ -403,7 +403,11 @@ unemployment rates?
 - [ ] Explore adding unemployment data into the industrial datasets
 - [ ] 
 
+## June 23
 
+- Discovered my regex for text analysis was causing major issues since it was not accounting for two-word states or counties. 
+- NAR data is also missing information on three states, including CT. This lead to housing price N/As in the fortune 500 HQ data.
+ - there are some other missing values as well due to missing county data in the fortune500 data.
 
 
 
