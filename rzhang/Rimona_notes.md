@@ -201,3 +201,12 @@ are still goals to complete by Wednesday.
 
 Also, creating questions to guide what the data should show. For example, do regions that have more historic locations (e.g., theaters), differ from regions that have industrial institutions (e.g., automotive manufacturing facilities)? 
 
+## 6/23 
+For League of Historic American Theatres, can scrape the website using a for-loop or some other way of iterating through the state abbreviations in the link, getting data of theatres from each state page.
+- [ ] scrape League of Historic American Theatres website
+
+Then, focus on mapping current data:
+- [ ] explore visualizations using datasets
+- [ ] conduct basic EDA across the data
+
+Future plans: look at IPUMS or Census data, noting how more social factors such as population, income, or racial demographics may be associated with certain cultural institutions.
