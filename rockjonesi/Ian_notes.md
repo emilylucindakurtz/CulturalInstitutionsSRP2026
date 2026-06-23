@@ -409,7 +409,10 @@ unemployment rates?
 - NAR data is also missing information on three states, including CT. This lead to housing price N/As in the fortune 500 HQ data.
  - there are some other missing values as well due to missing county data in the fortune500 data.
 
-
+I made another leaflet map that was similar to the other industries interactive map.
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/8da5ae27-f6fb-4d98-be7c-991eae1be590" />
+In order to do this, I had to pull in county shapefile data to merge with the Fortune500_Housing data. There is not full county information due to 
+misaligning county data, however there is 2025 housing price information all the relevant counties (those that contain fortune 500 headquarters). They are shaded by the counties median price. A viewer can click on a marker to find out the counties median price, the company name, as well as the city/state it is in.
 
 
 
