@@ -1,0 +1,413 @@
+state,city,theatre,built,seats,Address,address,latitude,longitude
+AL,Bessemer,Lincoln Theatre,1948,400,"Lincoln Theatre, Bessemer, AL","Lincoln Theatre, Bessemer, AL",33.405628,-86.961749
+AL,Birmingham,Alabama Theatre,1927,2210,"Alabama Theatre, Birmingham, AL","Alabama Theatre, Birmingham, AL",33.5150932,-86.8091227
+AL,Birmingham,Lyric Theatre,1914,750,"Lyric Theatre, Birmingham, AL","Lyric Theatre, Birmingham, AL",33.5151443,-86.809671
+AL,Elba,Elba Theatre,1936,270,"Elba Theatre, Elba, AL","Elba Theatre, Elba, AL",31.41453,-86.066991
+AL,Montgomery,Capri Theatre,1941,385,"Capri Theatre, Montgomery, AL","Capri Theatre, Montgomery, AL",32.349955804185,-86.319237641591
+AL,Talladega,Historic Talladega Ritz Theatre,1935,550,"Historic Talladega Ritz Theatre, Talladega, AL","Historic Talladega Ritz Theatre, Talladega, AL",33.434936,-86.106204
+AL,Tuscaloosa,Bama Theatre,1937,1080,"Bama Theatre, Tuscaloosa, AL","Bama Theatre, Tuscaloosa, AL",33.2086,-87.56815
+AZ,Holbrook,Roxy Theater,1954,280,"Roxy Theater, Holbrook, AZ","Roxy Theater, Holbrook, AZ",34.9014861,-110.1600012
+AZ,Kingman,Beale Street Theater,1948,NA,"Beale Street Theater, Kingman, AZ","Beale Street Theater, Kingman, AZ",35.1893,-114.0543
+AZ,Phoenix,Celebrity Theatre,1963,2600,"Celebrity Theatre, Phoenix, AZ","Celebrity Theatre, Phoenix, AZ",33.4546579,-112.0147638
+AZ,Phoenix,Orpheum Theatre,1929,1364,"Orpheum Theatre, Phoenix, AZ","Orpheum Theatre, Phoenix, AZ",33.4488,-112.0771
+AZ,Tempe,ASU Gammage,1962,3000,"ASU Gammage, Tempe, AZ","ASU Gammage, Tempe, AZ",33.4165501,-111.9377147
+AZ,Tucson,The Rialto Theatre,1919,1240,"The Rialto Theatre, Tucson, AZ","The Rialto Theatre, Tucson, AZ",32.221718,-110.9665
+AZ,Yuma,Historic Yuma Theatre,NA,640,"Historic Yuma Theatre, Yuma, AZ","Historic Yuma Theatre, Yuma, AZ",32.72349,-114.6189
+AR,Rogers,Victory Theater,1927,260,"Victory Theater, Rogers, AR","Victory Theater, Rogers, AR",15.8317708,78.0491934
+CA,Auburn,Auburn State Theatre,1930,350,"Auburn State Theatre, Auburn, CA","Auburn State Theatre, Auburn, CA",38.898163,-121.071605
+CA,Bakersfield,Nile Theater,1906,NA,"Nile Theater, Bakersfield, CA","Nile Theater, Bakersfield, CA",35.3773883,-119.021451
+CA,Bakersfield,The Historic Bakersfield Fox Theater,1930,1570,"The Historic Bakersfield Fox Theater, Bakersfield, CA","The Historic Bakersfield Fox Theater, Bakersfield, CA",35.3773883,-119.021451
+CA,Beverly Hills,Saban Theatre,1930,1910,"Saban Theatre, Beverly Hills, CA","Saban Theatre, Beverly Hills, CA",34.0644,-118.3748
+CA,Eureka,Eureka Theater,1939,800,"Eureka Theater, Eureka, CA","Eureka Theater, Eureka, CA",40.786143,-124.161309
+CA,Fresno,Warnors Center for the Performing Arts,1926,2100,"Warnors Center for the Performing Arts, Fresno, CA","Warnors Center for the Performing Arts, Fresno, CA",37.460946,-122.174985
+CA,Hollywood,El Capitan Theatre,1926,1100,"El Capitan Theatre, Hollywood, CA","El Capitan Theatre, Hollywood, CA",34.1014086,-118.3399361
+CA,Hollywood,Hollywood Pantages Theatre,1930,2703,"Hollywood Pantages Theatre, Hollywood, CA","Hollywood Pantages Theatre, Hollywood, CA",34.102238,-118.325788
+CA,Lafayette,Park Theater,1941,344,"Park Theater, Lafayette, CA","Park Theater, Lafayette, CA",37.890797,-122.127474
+CA,Larkspur,Lark Theater,1940,220,"Lark Theater, Larkspur, CA","Lark Theater, Larkspur, CA",37.9370061,-122.5352123
+CA,Lompoc,Lompoc Theater,1927,NA,"Lompoc Theater, Lompoc, CA","Lompoc Theater, Lompoc, CA",34.6397,-120.4575
+CA,Los Angeles,The Orpheum Theatre,1926,2006,"The Orpheum Theatre, Los Angeles, CA","The Orpheum Theatre, Los Angeles, CA",34.04269,-118.255464
+CA,Modesto,State Theatre,1934,571,"State Theatre, Modesto, CA","State Theatre, Modesto, CA",37.6430931,-120.9974664
+CA,Oakland,Paramount Theatre,1931,2992,"Paramount Theatre, Oakland, CA","Paramount Theatre, Oakland, CA",37.80972,-122.26861
+CA,Palm Springs,Plaza Theatre,1936,809,"Plaza Theatre, Palm Springs, CA","Plaza Theatre, Palm Springs, CA",33.787531998841,-116.53191550473301
+CA,Redding,Cascade Theatre,1935,1006,"Cascade Theatre, Redding, CA","Cascade Theatre, Redding, CA",40.581898,-122.389608
+CA,Sacramento,Crest Theatre,1912,975,"Crest Theatre, Sacramento, CA","Crest Theatre, Sacramento, CA",38.5792,-121.4933
+CA,San Diego,Balboa Theatre,1924,1339,"Balboa Theatre, San Diego, CA","Balboa Theatre, San Diego, CA",32.71433,-117.16136
+CA,San Diego,Civic Theatre,1965,2967,"Civic Theatre, San Diego, CA","Civic Theatre, San Diego, CA",32.71752,-117.162396
+CA,San Gabriel,San Gabriel Mission Playhouse,1927,1387,"San Gabriel Mission Playhouse, San Gabriel, CA","San Gabriel Mission Playhouse, San Gabriel, CA",34.098369,-118.108394
+CA,Santa Barbara,Granada Theatre,1924,1550,"Granada Theatre, Santa Barbara, CA","Granada Theatre, Santa Barbara, CA",34.4240378,-119.7046128
+CA,Santa Barbara,Lobero Theatre,1924,604,"Lobero Theatre, Santa Barbara, CA","Lobero Theatre, Santa Barbara, CA",34.421673,-119.7000212
+CA,Sonoma,Sebastiani Theatre,1933,323,"Sebastiani Theatre, Sonoma, CA","Sebastiani Theatre, Sonoma, CA",38.292247,-122.456392
+CA,Taft,Fox Theatre,1917,728,"Fox Theatre, Taft, CA","Fox Theatre, Taft, CA",35.141442,-119.459617
+CA,Visalia,Visalia Fox Theatre,1931,1280,"Visalia Fox Theatre, Visalia, CA","Visalia Fox Theatre, Visalia, CA",36.33041,-119.29489
+CO,Aspen,Wheeler Opera House,1889,504,"Wheeler Opera House, Aspen, CO","Wheeler Opera House, Aspen, CO",39.18938,-106.82003
+CO,Boulder,Macky Auditorium Concert Hall,1923,2052,"Macky Auditorium Concert Hall, Boulder, CO","Macky Auditorium Concert Hall, Boulder, CO",40.010011,-105.272765
+CO,Delta,Egyptian Theatre,1928,425,"Egyptian Theatre, Delta, CO","Egyptian Theatre, Delta, CO",38.7407486,-108.0704325
+CO,Denver,Elitch Gardens Theatre,1890,1400,"Elitch Gardens Theatre, Denver, CO","Elitch Gardens Theatre, Denver, CO",39.74933,-105.01282
+CO,Florence,Rialto Theater,1923,640,"Rialto Theater, Florence, CO","Rialto Theater, Florence, CO",38.390062,-105.120094
+CO,Leadville,Tabor Opera House,1879,700,"Tabor Opera House, Leadville, CO","Tabor Opera House, Leadville, CO",39.246748,-106.290742
+CO,Ouray,The Wright Opera House,1888,200,"The Wright Opera House, Ouray, CO","The Wright Opera House, Ouray, CO",38.021434,-107.671701
+CO,Pueblo,Keating School,1927,550,"Keating School, Pueblo, CO","Keating School, Pueblo, CO",38.253072,-104.62586
+CO,Telluride,Historic Sheridan Opera House,1913,700,"Historic Sheridan Opera House, Telluride, CO","Historic Sheridan Opera House, Telluride, CO",37.937962,-107.812492
+CT,Ivoryton,Ivoryton Playhouse,1911,274,"Ivoryton Playhouse, Ivoryton, CT","Ivoryton Playhouse, Ivoryton, CT",41.3487299,-72.4422225
+CT,New Haven,Shubert Performing Arts Center,NA,NA,"Shubert Performing Arts Center, New Haven, CT","Shubert Performing Arts Center, New Haven, CT",41.30649,-72.92816
+CT,New London,Garde Arts Center,1926,1488,"Garde Arts Center, New London, CT","Garde Arts Center, New London, CT",41.355494,-72.099015
+CT,Putnam,Bradley Playhouse,1901,413,"Bradley Playhouse, Putnam, CT","Bradley Playhouse, Putnam, CT",41.9156498,-71.908834100000007
+DE,Wilmington,The Grand Opera House,1871,1148,"The Grand Opera House, Wilmington, DE","The Grand Opera House, Wilmington, DE",39.74374,-75.54848
+DE,Wilmington,The Playhouse on Rodney Square,1912,1252,"The Playhouse on Rodney Square, Wilmington, DE","The Playhouse on Rodney Square, Wilmington, DE",39.745801,-75.548065
+FL,Cocoa,The Historic Cocoa Village Playhouse,1924,525,"The Historic Cocoa Village Playhouse, Cocoa, FL","The Historic Cocoa Village Playhouse, Cocoa, FL",28.355316,-80.726112
+FL,High Springs,Priest Theater,1910,240,"Priest Theater, High Springs, FL","Priest Theater, High Springs, FL",29.8269901,-82.5968993
+FL,Inverness,Valerie Theatre,1926,150,"Valerie Theatre, Inverness, FL","Valerie Theatre, Inverness, FL",28.836388,-82.329826
+FL,Jacksonville,Florida Theatre,1927,1900,"Florida Theatre, Jacksonville, FL","Florida Theatre, Jacksonville, FL",30.32628,-81.65565
+FL,Jacksonville,Theatre Jacksonville,1928,250,"Theatre Jacksonville, Jacksonville, FL","Theatre Jacksonville, Jacksonville, FL",30.363164,-81.60493
+FL,Lakeland,Polk Theatre,1927,1400,"Polk Theatre, Lakeland, FL","Polk Theatre, Lakeland, FL",28.043155,-81.957497
+FL,Monticello,Monticello Opera House,1890,300,"Monticello Opera House, Monticello, FL","Monticello Opera House, Monticello, FL",30.544995,-83.870811
+FL,Port St. Joe,The Port Theatre,1938,NA,"The Port Theatre, Port St. Joe, FL","The Port Theatre, Port St. Joe, FL",29.732148013884,-85.39212751919
+FL,St. Pete Beach,The Beach Theatre,1939,NA,"The Beach Theatre, St. Pete Beach, FL","The Beach Theatre, St. Pete Beach, FL",27.7753657,-82.6321724
+FL,Tampa,Tampa Theatre,1926,1446,"Tampa Theatre, Tampa, FL","Tampa Theatre, Tampa, FL",27.95035,-82.45893
+FL,Zephyrhills,Home Theater on 5th,1948,500,"Home Theater on 5th, Zephyrhills, FL","Home Theater on 5th, Zephyrhills, FL",28.236534,-82.179884
+GA,Albany,Theatre Albany,1927,2000,"Theatre Albany, Albany, GA","Theatre Albany, Albany, GA",31.578603,-84.158253
+GA,Americus,Rylander Theatre,1919,630,"Rylander Theatre, Americus, GA","Rylander Theatre, Americus, GA",32.0718385,-84.2351711
+GA,Athens,Morton Theatre,1910,500,"Morton Theatre, Athens, GA","Morton Theatre, Athens, GA",33.958569,-83.378643
+GA,Atlanta,Fox Theatre,1929,4518,"Fox Theatre, Atlanta, GA","Fox Theatre, Atlanta, GA",33.772661,-84.3849468
+GA,Augusta,Imperial Theatre,1917,855,"Imperial Theatre, Augusta, GA","Imperial Theatre, Augusta, GA",33.475403,-81.964478
+GA,Calhoun,GEM Theatre,1927,461,"GEM Theatre, Calhoun, GA","GEM Theatre, Calhoun, GA",34.502547,-84.951288
+GA,Columbus,Springer Opera House,1871,688,"Springer Opera House, Columbus, GA","Springer Opera House, Columbus, GA",32.46512,-84.99137
+GA,Dahlonega,The Historic Holly Theatre,1946,322,"The Historic Holly Theatre, Dahlonega, GA","The Historic Holly Theatre, Dahlonega, GA",34.533691,-83.983274
+GA,Dallas,Dallas Theater,1927,569,"Dallas Theater, Dallas, GA","Dallas Theater, Dallas, GA",33.92348,-84.84046
+GA,Hogansville,Royal Theater,1937,NA,"Royal Theater, Hogansville, GA","Royal Theater, Hogansville, GA",33.173115,-84.91249
+GA,Macon,The Douglass Theatre,1920,319,"The Douglass Theatre, Macon, GA","The Douglass Theatre, Macon, GA",32.83544,-83.6258
+GA,Marietta,The Earl & Rachel Smith Strand Theatre,1935,530,"The Earl & Rachel Smith Strand Theatre, Marietta, GA","The Earl & Rachel Smith Strand Theatre, Marietta, GA",33.953568,-84.549175
+GA,Rome,DeSoto Theatre,1929,500,"DeSoto Theatre, Rome, GA","DeSoto Theatre, Rome, GA",34.2559,-85.1693
+GA,Toccoa,The Historic Ritz Theatre,1939,452,"The Historic Ritz Theatre, Toccoa, GA","The Historic Ritz Theatre, Toccoa, GA",34.579376,-83.332962
+GA,Tybee Island,Tybee Post Theater,1933,300,"Tybee Post Theater, Tybee Island, GA","Tybee Post Theater, Tybee Island, GA",31.99383,-80.84844
+HI,Honolulu,Hawaii Theatre Center,1922,NA,"Hawaii Theatre Center, Honolulu, HI","Hawaii Theatre Center, Honolulu, HI",21.3108539,-157.8611461
+ID,Lewiston,Liberty Theater,1921,NA,"Liberty Theater, Lewiston, ID","Liberty Theater, Lewiston, ID",46.4190523,-117.0191318
+IL,Barrington,Catlow Theatre,1927,700,"Catlow Theatre, Barrington, IL","Catlow Theatre, Barrington, IL",42.154482,-88.1367991
+IL,Chicago,Auditorium Theatre,1889,3901,"Auditorium Theatre, Chicago, IL","Auditorium Theatre, Chicago, IL",41.8760483,-87.6252727
+IL,Chicago,Cadillac Palace Theatre,1926,2335,"Cadillac Palace Theatre, Chicago, IL","Cadillac Palace Theatre, Chicago, IL",41.8838683,-87.6333714
+IL,Chicago,CIBC Theatre,1906,1950,"CIBC Theatre, Chicago, IL","CIBC Theatre, Chicago, IL",41.880812,-87.6285956
+IL,Chicago,James M. Nederlander Theatre,1926,2245,"James M. Nederlander Theatre, Chicago, IL","James M. Nederlander Theatre, Chicago, IL",41.8846043,-87.6286643
+IL,Chicago,Studebaker Theatre,1898,617,"Studebaker Theatre, Chicago, IL","Studebaker Theatre, Chicago, IL",41.883229,-87.632398
+IL,Chicago,Uptown Theatre,1924,4381,"Uptown Theatre, Chicago, IL","Uptown Theatre, Chicago, IL",41.9695745,-87.6598908
+IL,Crystal Lake,Raue Center for the Arts,1929,750,"Raue Center for the Arts, Crystal Lake, IL","Raue Center for the Arts, Crystal Lake, IL",42.2419376,-88.318884
+IL,Danville,The Historic Fischer Theatre,1884,800,"The Historic Fischer Theatre, Danville, IL","The Historic Fischer Theatre, Danville, IL",40.1281094,-87.6304693
+IL,DeKalb,Egyptian Theatre,1928,1400,"Egyptian Theatre, DeKalb, IL","Egyptian Theatre, DeKalb, IL",41.931178,-88.752855
+IL,Dixon,The Dixon | Historic Theatre,1922,960,"The Dixon | Historic Theatre, Dixon, IL","The Dixon | Historic Theatre, Dixon, IL",41.8431317,-89.4821248
+IL,Effingham,Heart Theatre,1940,275,"Heart Theatre, Effingham, IL","Heart Theatre, Effingham, IL",39.120003,-88.542082
+IL,Galesburg,The Orpheum Theatre,1916,920,"The Orpheum Theatre, Galesburg, IL","The Orpheum Theatre, Galesburg, IL",40.9468005,-90.3659788
+IL,Quincy,Washington Theater,1924,1000,"Washington Theater, Quincy, IL","Washington Theater, Quincy, IL",47.2334731,-119.8533538
+IL,Rockford,Coronado Performing Arts Center,1927,2309,"Coronado Performing Arts Center, Rockford, IL","Coronado Performing Arts Center, Rockford, IL",42.273761,-89.093012
+IL,Woodstock,Woodstock Opera House,1890,420,"Woodstock Opera House, Woodstock, IL","Woodstock Opera House, Woodstock, IL",42.314131,-88.447636
+IN,Anderson,Paramount Theatre Centre & Ballroom,1929,1458,"Paramount Theatre Centre & Ballroom, Anderson, IN","Paramount Theatre Centre & Ballroom, Anderson, IN",40.1044082,-85.6787768
+IN,Bloomington,Buskirk-Chumley Theater,1922,629,"Buskirk-Chumley Theater, Bloomington, IN","Buskirk-Chumley Theater, Bloomington, IN",39.166278,-86.532822
+IN,Delphi,Delphi Opera House,1865,233,"Delphi Opera House, Delphi, IN","Delphi Opera House, Delphi, IN",40.586141,-86.673992
+IN,Elkhart,The Lerner Theatre,1924,1700,"The Lerner Theatre, Elkhart, IN","The Lerner Theatre, Elkhart, IN",41.687381,-85.973536
+IN,Evansville,Victory Theatre,1921,1950,"Victory Theatre, Evansville, IN","Victory Theatre, Evansville, IN",37.9727739,-87.5689528
+IN,Fort Wayne,Arts United Center,1973,660,"Arts United Center, Fort Wayne, IN","Arts United Center, Fort Wayne, IN",41.081415,-85.13645
+IN,Fort Wayne,Embassy Theatre,1928,2471,"Embassy Theatre, Fort Wayne, IN","Embassy Theatre, Fort Wayne, IN",41.0757373,-85.1398001
+IN,Fort Wayne,Robert Goldstine Performing Arts Center,1925,2011,"Robert Goldstine Performing Arts Center, Fort Wayne, IN","Robert Goldstine Performing Arts Center, Fort Wayne, IN",41.0781798,-85.1454427
+IN,Franklin,Artcraft Theatre,1922,572,"Artcraft Theatre, Franklin, IN","Artcraft Theatre, Franklin, IN",39.4811861,-86.0548133
+IN,Goshen,Goshen Theater,1905,750,"Goshen Theater, Goshen, IN","Goshen Theater, Goshen, IN",41.584491,-85.8340083
+IN,Indianapolis,Basile Theatre,1897,400,"Basile Theatre, Indianapolis, IN","Basile Theatre, Indianapolis, IN",39.659548511104,-86.087925520766
+IN,Lafayette,Long Center for the Performing Arts,1921,1150,"Long Center for the Performing Arts, Lafayette, IN","Long Center for the Performing Arts, Lafayette, IN",40.418577,-86.890291
+IN,Nashville,Brown County Playhouse,1949,426,"Brown County Playhouse, Nashville, IN","Brown County Playhouse, Nashville, IN",39.2064777,-86.2472584
+IN,Plymouth,The REES,1940,400,"The REES, Plymouth, IN","The REES, Plymouth, IN",41.34013,-86.30869
+IN,Rochester,The Times Theater,1924,NA,"The Times Theater, Rochester, IN","The Times Theater, Rochester, IN",41.060752208678,-86.231860311714
+IN,Shelbyville,Strand Theatre,1916,369,"Strand Theatre, Shelbyville, IN","Strand Theatre, Shelbyville, IN",39.5225235,-85.77739
+IN,South Bend,Morris Performing Arts Center,1921,2564,"Morris Performing Arts Center, South Bend, IN","Morris Performing Arts Center, South Bend, IN",41.678134,-86.250975
+IN,Spencer,Historic Tivoli Theatre,NA,NA,"Historic Tivoli Theatre, Spencer, IN","Historic Tivoli Theatre, Spencer, IN",39.28646,-86.76121
+IA,Ames,Stephens Auditorium,1969,2602,"Stephens Auditorium, Ames, IA","Stephens Auditorium, Ames, IA",42.020196,-93.637937
+IA,Cedar Falls,Oster Regent Theatre,1910,462,"Oster Regent Theatre, Cedar Falls, IA","Oster Regent Theatre, Cedar Falls, IA",42.537809,-92.4534
+IA,Cedar Rapids,Paramount Theatre,1928,1901,"Paramount Theatre, Cedar Rapids, IA","Paramount Theatre, Cedar Rapids, IA",41.9797,-91.668293
+IA,Corning,Corning Opera House,1902,300,"Corning Opera House, Corning, IA","Corning Opera House, Corning, IA",40.99012,-94.73409
+IA,Davenport,Adler Theatre,1926,2321,"Adler Theatre, Davenport, IA","Adler Theatre, Davenport, IA",41.522532,-90.573344
+IA,Elkader,Elkader Opera House,1903,450,"Elkader Opera House, Elkader, IA","Elkader Opera House, Elkader, IA",42.85543,-91.405708
+KS,Arkansas City,Burford Theatre,1924,800,"Burford Theatre, Arkansas City, KS","Burford Theatre, Arkansas City, KS",37.06164,-97.03875
+KS,Belleville,Blair Theater,1928,369,"Blair Theater, Belleville, KS","Blair Theater, Belleville, KS",39.8239948,-97.6321055
+KS,Coffeyville,Midland Theatre,1928,700,"Midland Theatre, Coffeyville, KS","Midland Theatre, Coffeyville, KS",37.041170489487,-95.657620945847
+KS,Hutchinson,Hutchinson's Historic Fox Theatre,1931,1221,"Hutchinson's Historic Fox Theatre, Hutchinson, KS","Hutchinson's Historic Fox Theatre, Hutchinson, KS",38.0705336,-97.9131009
+KS,Concordia,Brown Grand Theatre,1907,534,"Brown Grand Theatre, Concordia, KS","Brown Grand Theatre, Concordia, KS",39.5712388,-97.6634022
+KS,Emporia,Emporia Granada Theatre,1929,823,"Emporia Granada Theatre, Emporia, KS","Emporia Granada Theatre, Emporia, KS",38.40772,-96.180417
+KS,Junction City,C.L. Hoover Opera House,1881,453,"C.L. Hoover Opera House, Junction City, KS","C.L. Hoover Opera House, Junction City, KS",39.029,-96.83109
+KS,Manhattan,Wareham Hall,1910,NA,"Wareham Hall, Manhattan, KS","Wareham Hall, Manhattan, KS",39.204999144964,-96.554928708724
+KS,McPherson,McPherson Opera House,1888,550,"McPherson Opera House, McPherson, KS","McPherson Opera House, McPherson, KS",38.36752,-97.6666904
+KS,Strong City,1900 Theater,1900,NA,"1900 Theater, Strong City, KS","1900 Theater, Strong City, KS",38.3962017,-96.5355782
+KS,Pittsburg,Colonial Fox Theatre,1918,804,"Colonial Fox Theatre, Pittsburg, KS","Colonial Fox Theatre, Pittsburg, KS",37.411481,-94.705328
+KS,Topeka,Georgia Neese Gray Performance Hall,1940,2417,"Georgia Neese Gray Performance Hall, Topeka, KS","Georgia Neese Gray Performance Hall, Topeka, KS",39.050976,-95.670433
+KS,Topeka,Historic Jayhawk Theatre,1926,1500,"Historic Jayhawk Theatre, Topeka, KS","Historic Jayhawk Theatre, Topeka, KS",39.050976,-95.670433
+KS,Wamego,Columbian Theatre,1895,230,"Columbian Theatre, Wamego, KS","Columbian Theatre, Wamego, KS",39.20297,-96.30547
+KS,Wichita,Orpheum Theatre,1922,1305,"Orpheum Theatre, Wichita, KS","Orpheum Theatre, Wichita, KS",37.6880062,-97.3354465
+KS,Winfield,Marquee Performing Arts Center,1950,400,"Marquee Performing Arts Center, Winfield, KS","Marquee Performing Arts Center, Winfield, KS",37.241532,-96.997783
+KY,Bowling Green,The Capitol,1898,800,"The Capitol, Bowling Green, KY","The Capitol, Bowling Green, KY",36.993738,-86.44082
+KY,Cynthiana,Rohs Opera House,1871,NA,"Rohs Opera House, Cynthiana, KY","Rohs Opera House, Cynthiana, KY",38.3886869,-84.2963574
+KY,Frankfort,Grand Theatre,1941,416,"Grand Theatre, Frankfort, KY","Grand Theatre, Frankfort, KY",38.198912,-84.878052
+KY,Lexington,Lexington Opera House,1886,1027,"Lexington Opera House, Lexington, KY","Lexington Opera House, Lexington, KY",38.0500067,-84.4992057
+KY,Lexington,The Lyric Theatre & Cultural Arts Center,1948,530,"The Lyric Theatre & Cultural Arts Center, Lexington, KY","The Lyric Theatre & Cultural Arts Center, Lexington, KY",38.046088,-84.489309
+KY,Paducah,Maiden Alley Cinema,NA,NA,"Maiden Alley Cinema, Paducah, KY","Maiden Alley Cinema, Paducah, KY",37.0875342,-88.5944859
+LA,New Orleans,The Historic Carver Theater,1949,900,"The Historic Carver Theater, New Orleans, LA","The Historic Carver Theater, New Orleans, LA",29.96711,-90.076656
+LA,Ruston,Dixie Center for the Arts,1928,650,"Dixie Center for the Arts, Ruston, LA","Dixie Center for the Arts, Ruston, LA",32.530156,-92.637669
+LA,Shreveport,The Strand Theatre,1925,1614,"The Strand Theatre, Shreveport, LA","The Strand Theatre, Shreveport, LA",32.5101,-93.7498
+ME,Augusta,Colonial Theater,1913,1277,"Colonial Theater, Augusta, ME","Colonial Theater, Augusta, ME",44.3177878,-69.7729654
+ME,Ellsworth,The Grand,1938,400,"The Grand, Ellsworth, ME","The Grand, Ellsworth, ME",44.541763,-68.422852
+MD,Chestertown,The Garfield Center for the Arts,1928,150,"The Garfield Center for the Arts, Chestertown, MD","The Garfield Center for the Arts, Chestertown, MD",39.20849,-76.065381
+MD,Easton,Avalon Theatre,1921,400,"Avalon Theatre, Easton, MD","Avalon Theatre, Easton, MD",38.773916,-76.068527
+MD,Hagerstown,Maryland Theatre,1915,1281,"Maryland Theatre, Hagerstown, MD","Maryland Theatre, Hagerstown, MD",39.641514,-77.721177
+MA,Beverly,The Cabot,1920,800,"The Cabot, Beverly, MA","The Cabot, Beverly, MA",42.551465,-70.878902
+MA,Foxboro,Orpheum Theatre,1926,396,"Orpheum Theatre, Foxboro, MA","Orpheum Theatre, Foxboro, MA",42.356231,-71.060903
+MA,Great Barrington,Mahaiwe Performing Arts Center,1909,690,"Mahaiwe Performing Arts Center, Great Barrington, MA","Mahaiwe Performing Arts Center, Great Barrington, MA",42.194282,-73.363436
+MA,New Bedford,"Your Theatre, Inc.",1829,NA,"Your Theatre, Inc., New Bedford, MA","Your Theatre, Inc., New Bedford, MA",41.63543,-70.92846
+MA,New Bedford,Zeiterion Theatre,1922,1226,"Zeiterion Theatre, New Bedford, MA","Zeiterion Theatre, New Bedford, MA",41.63405,-70.92766
+MI,Adrian,Croswell Opera House,1866,652,"Croswell Opera House, Adrian, MI","Croswell Opera House, Adrian, MI",41.8989299,-84.0352881
+MI,Ann Arbor,Michigan Theater,1927,1710,"Michigan Theater, Ann Arbor, MI","Michigan Theater, Ann Arbor, MI",42.279497,-83.741739
+MI,Ann Arbor,State Theatre,1942,1900,"State Theatre, Ann Arbor, MI","State Theatre, Ann Arbor, MI",42.2771,-83.7411
+MI,Cheboygan,Cheboygan Opera House,1888,582,"Cheboygan Opera House, Cheboygan, MI","Cheboygan Opera House, Cheboygan, MI",45.646571,-84.47663
+MI,Coldwater,Tibbits Opera House,1882,499,"Tibbits Opera House, Coldwater, MI","Tibbits Opera House, Coldwater, MI",41.94059,-85.004059
+MI,Detroit,Alger Theatre,1935,825,"Alger Theatre, Detroit, MI","Alger Theatre, Detroit, MI",42.476368000487,-83.107007016943
+MI,Grand Rapids,Wealthy Theatre,1911,400,"Wealthy Theatre, Grand Rapids, MI","Wealthy Theatre, Grand Rapids, MI",42.955389,-85.640675
+MI,Iron Mountain,Braumart Theatre,1924,500,"Braumart Theatre, Iron Mountain, MI","Braumart Theatre, Iron Mountain, MI",45.817705,-88.066434
+MI,Kalamazoo,Kalamazoo State Theatre,1927,1590,"Kalamazoo State Theatre, Kalamazoo, MI","Kalamazoo State Theatre, Kalamazoo, MI",42.288566,-85.583361
+MI,Manistee,Ramsdell Theatre,1901,450,"Ramsdell Theatre, Manistee, MI","Ramsdell Theatre, Manistee, MI",44.24583,-86.32389
+MI,Muskegon,Frauenthal Center,1929,1725,"Frauenthal Center, Muskegon, MI","Frauenthal Center, Muskegon, MI",43.235084,-86.253212
+MI,Plymouth,Penn Theatre,1941,402,"Penn Theatre, Plymouth, MI","Penn Theatre, Plymouth, MI",42.3704563,-83.4685414
+MI,Saginaw,Temple Theatre,1927,1750,"Temple Theatre, Saginaw, MI","Temple Theatre, Saginaw, MI",43.4347332,-83.9391068
+MI,Sault Ste. Marie,Soo Theatre,1929,750,"Soo Theatre, Sault Ste. Marie, MI","Soo Theatre, Sault Ste. Marie, MI",46.4967,-84.3486
+MI,Sturgis,Sturges-Young Center for the Arts,1955,370,"Sturges-Young Center for the Arts, Sturgis, MI","Sturges-Young Center for the Arts, Sturgis, MI",41.799278,-85.418699
+MI,Three Rivers,Riviera Theatre,1925,370,"Riviera Theatre, Three Rivers, MI","Riviera Theatre, Three Rivers, MI",41.9450403,-85.6344182
+MN,Ely,Ely's Historic State Theater,1935,300,"Ely's Historic State Theater, Ely, MN","Ely's Historic State Theater, Ely, MN",47.903053,-91.862881
+MN,St. Cloud,Paramount Theatre,1921,700,"Paramount Theatre, St. Cloud, MN","Paramount Theatre, St. Cloud, MN",45.559158,-94.163715
+MN,Virginia,Lyric Center for the Arts,1912,275,"Lyric Center for the Arts, Virginia, MN","Lyric Center for the Arts, Virginia, MN",47.52285,-92.53945
+MN,Zumbrota,State Theatre,1921,275,"State Theatre, Zumbrota, MN","State Theatre, Zumbrota, MN",44.2931943,-92.6690746
+MS,Hattiesburg,Saenger Theater,1929,997,"Saenger Theater, Hattiesburg, MS","Saenger Theater, Hattiesburg, MS",31.3259932,-89.2904849
+MS,Meridian,MSU Riley Center,1889,980,"MSU Riley Center, Meridian, MS","MSU Riley Center, Meridian, MS",32.36404,-88.700384
+MS,Meridian,The Temple Theatre,1927,1600,"The Temple Theatre, Meridian, MS","The Temple Theatre, Meridian, MS",32.3652081,-88.7022378
+MS,Philadelphia,Ellis Theater,1926,508,"Ellis Theater, Philadelphia, MS","Ellis Theater, Philadelphia, MS",32.770266,-89.110883
+MO,Cape Girardeau,Cape Broadway Theatre,1921,700,"Cape Broadway Theatre, Cape Girardeau, MO","Cape Broadway Theatre, Cape Girardeau, MO",37.236640982906,-89.794431477689
+MO,Kansas City,Folly Theater,1900,1078,"Folly Theater, Kansas City, MO","Folly Theater, Kansas City, MO",39.100324,-94.587282
+MO,Springfield,Gillioz Theatre,1926,1130,"Gillioz Theatre, Springfield, MO","Gillioz Theatre, Springfield, MO",37.2093622,-93.2904854
+NE,Grand Island,Grand Theatre,1937,487,"Grand Theatre, Grand Island, NE","Grand Theatre, Grand Island, NE",40.9249458,-98.3430091
+NE,Kearney,The World Theatre,1927,300,"The World Theatre, Kearney, NE","The World Theatre, Kearney, NE",40.6991141,-99.0820752
+NE,Omaha,The Orpheum Theater,1927,2600,"The Orpheum Theater, Omaha, NE","The Orpheum Theater, Omaha, NE",41.2562231,-95.9363071
+NE,Scottsbluff,Midwest Theater,1946,729,"Midwest Theater, Scottsbluff, NE","Midwest Theater, Scottsbluff, NE",41.8636303,-103.6623056
+NV,Pioche,Gem Theater,1936,117,"Gem Theater, Pioche, NV","Gem Theater, Pioche, NV",37.930035,-114.451055
+NV,Reno,Pioneer Center,1968,1500,"Pioneer Center, Reno, NV","Pioneer Center, Reno, NV",39.486907906474,-119.826044171225
+NH,Jaffrey,The Park Theatre,1930,1200,"The Park Theatre, Jaffrey, NH","The Park Theatre, Jaffrey, NH",42.814764,-72.024013
+NH,Keene,The Colonial Theatre,1924,886,"The Colonial Theatre, Keene, NH","The Colonial Theatre, Keene, NH",42.9316614,-72.2786683
+NH,Manchester,Palace Theatre,1914,834,"Palace Theatre, Manchester, NH","Palace Theatre, Manchester, NH",53.4749948,-2.2409776
+NH,Portsmouth,The Music Hall,1878,895,"The Music Hall, Portsmouth, NH","The Music Hall, Portsmouth, NH",43.075784,-70.7596168
+NJ,Boonton,Darress Theatre,1919,NA,"Darress Theatre, Boonton, NJ","Darress Theatre, Boonton, NJ",40.9055294,-74.4121589
+NJ,Montclair,The Clairidge,1921,599,"The Clairidge, Montclair, NJ","The Clairidge, Montclair, NJ",40.814975,-74.218602
+NJ,Morristown,Mayo Performing Arts Center,1937,1200,"Mayo Performing Arts Center, Morristown, NJ","Mayo Performing Arts Center, Morristown, NJ",40.794337,-74.477968
+NJ,New Brunswick,State Theatre,1921,1800,"State Theatre, New Brunswick, NJ","State Theatre, New Brunswick, NJ",40.493355,-74.44473
+NJ,Newark,Newark Symphony Hall,1925,2743,"Newark Symphony Hall, Newark, NJ","Newark Symphony Hall, Newark, NJ",40.72767,-74.1762
+NJ,Rahway,Rahway Theatre,1928,1356,"Rahway Theatre, Rahway, NJ","Rahway Theatre, Rahway, NJ",40.61094,-74.27626
+NJ,Red Bank,Count Basie Theatre,1926,1550,"Count Basie Theatre, Red Bank, NJ","Count Basie Theatre, Red Bank, NJ",40.33976,-74.06783
+NJ,Spring Lake,Spring Lake Community House and Theatre,1923,350,"Spring Lake Community House and Theatre, Spring Lake, NJ","Spring Lake Community House and Theatre, Spring Lake, NJ",39.71937298296,-75.0906440034
+NJ,Westfield,Rialto Theater,1922,200,"Rialto Theater, Westfield, NJ","Rialto Theater, Westfield, NJ",40.649161,-74.343251
+NM,Carlsbad,Cavern Theater,1951,520,"Cavern Theater, Carlsbad, NM","Cavern Theater, Carlsbad, NM",32.412716,-104.227819
+NM,Gallup,El Morro Theatre,1928,430,"El Morro Theatre, Gallup, NM","El Morro Theatre, Gallup, NM",35.526876,-108.742627
+NY,Avon,The Park Theater,1938,200,"The Park Theater, Avon, NY","The Park Theater, Avon, NY",42.91113,-77.74687
+NY,Bedford,Bedford Playhouse,1947,255,"Bedford Playhouse, Bedford, NY","Bedford Playhouse, Bedford, NY",41.2044127,-73.6441405
+NY,Binghamton,Forum Theatre,1919,1525,"Forum Theatre, Binghamton, NY","Forum Theatre, Binghamton, NY",42.1014848,-75.9123855
+NY,Brooklyn,Brooklyn Academy of Music,1906,2000,"Brooklyn Academy of Music, Brooklyn, NY","Brooklyn Academy of Music, Brooklyn, NY",40.68667,-73.97778
+NY,Clayton,Clayton Opera House,1904,400,"Clayton Opera House, Clayton, NY","Clayton Opera House, Clayton, NY",44.240844,-76.0885
+NY,Elmira,Clemens Center,1925,1608,"Clemens Center, Elmira, NY","Clemens Center, Elmira, NY",42.08942,-76.805259
+NY,Geneva,Smith Opera House,1894,1438,"Smith Opera House, Geneva, NY","Smith Opera House, Geneva, NY",42.86707,-76.984068
+NY,Gowanda,Gowanda's Historic Hollywood Theater,1926,990,"Gowanda's Historic Hollywood Theater, Gowanda, NY","Gowanda's Historic Hollywood Theater, Gowanda, NY",42.463332,-78.936514
+NY,Indian Lake,Indian Lake Theater,1937,220,"Indian Lake Theater, Indian Lake, NY","Indian Lake Theater, Indian Lake, NY",43.782191,-74.267121
+NY,Johnson City,Goodwill Theatre,1920,1100,"Goodwill Theatre, Johnson City, NY","Goodwill Theatre, Johnson City, NY",42.113325,-75.955597
+NY,Lockport,Historic Palace Theatre,1925,1100,"Historic Palace Theatre, Lockport, NY","Historic Palace Theatre, Lockport, NY",43.170544,-78.688195
+NY,Lowville,Town Hall Theater,1899,687,"Town Hall Theater, Lowville, NY","Town Hall Theater, Lowville, NY",43.7866414,-75.4909167
+NY,New York,Belasco Theatre,1907,1016,"Belasco Theatre, New York, NY","Belasco Theatre, New York, NY",40.756655,-73.9837919
+NY,New York,Al Hirschfeld Theatre,1923,1422,"Al Hirschfeld Theatre, New York, NY","Al Hirschfeld Theatre, New York, NY",40.7592537,-73.9892
+NY,New York,Ambassador Theatre,1921,1088,"Ambassador Theatre, New York, NY","Ambassador Theatre, New York, NY",40.761247,-73.9849896
+NY,New York,August Wilson Theatre,1924,1275,"August Wilson Theatre, New York, NY","August Wilson Theatre, New York, NY",40.7633731,-73.9841934
+NY,New York,Barrymore Theatre,1928,1058,"Barrymore Theatre, New York, NY","Barrymore Theatre, New York, NY",40.760107,-73.9861446
+NY,New York continued,Bernard B. Jacobs Theatre,1927,1078,"Bernard B. Jacobs Theatre, New York continued, NY","Bernard B. Jacobs Theatre, New York continued, NY",40.758769,-73.987706
+NY,New York continued,Booth Theatre,1913,766,"Booth Theatre, New York continued, NY","Booth Theatre, New York continued, NY",40.7583652,-73.9870937
+NY,New York continued,Broadhurst Theatre,1917,1156,"Broadhurst Theatre, New York continued, NY","Broadhurst Theatre, New York continued, NY",40.758269,-73.987617
+NY,New York continued,Broadway Theatre,1924,1761,"Broadway Theatre, New York continued, NY","Broadway Theatre, New York continued, NY",40.7634029,-73.9833729
+NY,New York continued,Brooks Atkinson Theatre,1926,1082,"Brooks Atkinson Theatre, New York continued, NY","Brooks Atkinson Theatre, New York continued, NY",40.759981,-73.986952
+NY,New York continued,Eugene O'Neill Theatre,1925,1102,"Eugene O'Neill Theatre, New York continued, NY","Eugene O'Neill Theatre, New York continued, NY",40.7610435,-73.9856382
+NY,New York continued,Gerald Schoenfeld Theatre,1917,1079,"Gerald Schoenfeld Theatre, New York continued, NY","Gerald Schoenfeld Theatre, New York continued, NY",40.7587,-73.98736
+NY,New York continued,Golden Theatre,1927,804,"Golden Theatre, New York continued, NY","Golden Theatre, New York continued, NY",40.75886,-73.98792
+NY,New York continued,Imperial Theatre,1923,1443,"Imperial Theatre, New York continued, NY","Imperial Theatre, New York continued, NY",40.75916,-73.98713
+NY,New York continued,James Earl Jones Theatre,1912,1082,"James Earl Jones Theatre, New York continued, NY","James Earl Jones Theatre, New York continued, NY",40.7130466,-74.0072301
+NY,New York continued,Longacre Theatre,1913,1091,"Longacre Theatre, New York continued, NY","Longacre Theatre, New York continued, NY",40.7603381,-73.9859535
+NY,New York continued,Lunt-Fontanne Theatre,1910,1509,"Lunt-Fontanne Theatre, New York continued, NY","Lunt-Fontanne Theatre, New York continued, NY",40.75662,-73.98111
+NY,New York continued,Lyceum Theatre,1903,922,"Lyceum Theatre, New York continued, NY","Lyceum Theatre, New York continued, NY",40.7578829,-73.984494
+NY,New York continued,Majestic Theatre,1927,1645,"Majestic Theatre, New York continued, NY","Majestic Theatre, New York continued, NY",40.7584154,-73.9880182
+NY,New York continued,Metro Theater,1932,NA,"Metro Theater, New York continued, NY","Metro Theater, New York continued, NY",40.79667,-73.97
+NY,New York continued,Music Box Theatre,1920,1025,"Music Box Theatre, New York continued, NY","Music Box Theatre, New York continued, NY",40.75883,-73.98748
+NY,New York continued,Nederlander Theatre,1921,1232,"Nederlander Theatre, New York continued, NY","Nederlander Theatre, New York continued, NY",40.75559,-73.98823
+NY,New York continued,Neil Simon Theatre,1927,1467,"Neil Simon Theatre, New York continued, NY","Neil Simon Theatre, New York continued, NY",40.7630106,-73.9845245
+NY,New York continued,New Amsterdam Theatre,1903,1812,"New Amsterdam Theatre, New York continued, NY","New Amsterdam Theatre, New York continued, NY",40.75611,-73.98778
+NY,New York continued,Palace Theatre,1913,1708,"Palace Theatre, New York continued, NY","Palace Theatre, New York continued, NY",40.773683,-73.948538
+NY,New York continued,Richard Rogers Theatre,1924,1382,"Richard Rogers Theatre, New York continued, NY","Richard Rogers Theatre, New York continued, NY",40.71427,-74.00597
+NY,New York continued,Shubert Theatre,1913,1460,"Shubert Theatre, New York continued, NY","Shubert Theatre, New York continued, NY",40.7581388,-73.9872563
+NY,New York continued,St. James Theatre,1927,1710,"St. James Theatre, New York continued, NY","St. James Theatre, New York continued, NY",40.7579902,-73.9881542
+NY,New York continued,Theatre 80,1964,161,"Theatre 80, New York continued, NY","Theatre 80, New York continued, NY",40.705358548206,-74.01237591091
+NY,New York continued,United Palace,1930,3327,"United Palace, New York continued, NY","United Palace, New York continued, NY",40.846359,-73.93821
+NY,New York continued,Walter Kerr Theatre,1921,947,"Walter Kerr Theatre, New York continued, NY","Walter Kerr Theatre, New York continued, NY",40.7607328,-73.9855521
+NY,New York continued,Winter Garden Theatre,1911,1526,"Winter Garden Theatre, New York continued, NY","Winter Garden Theatre, New York continued, NY",40.761627,-73.983459
+NY,Oneonta,Oneonta Theatre,1897,875,"Oneonta Theatre, Oneonta, NY","Oneonta Theatre, Oneonta, NY",42.45306,-75.06389
+NY,Rome,Capitol Theatre,1928,1788,"Capitol Theatre, Rome, NY","Capitol Theatre, Rome, NY",43.21223,-75.46012
+NY,Schenectady,Proctors,1926,2680,"Proctors, Schenectady, NY","Proctors, Schenectady, NY",42.811893,-73.942007
+NY,Staten Island,Music Hall at Snug Harbor,1892,686,"Music Hall at Snug Harbor, Staten Island, NY","Music Hall at Snug Harbor, Staten Island, NY",40.644501,-74.10276
+NY,Staten Island,St. Georges Theatre,1928,2800,"St. Georges Theatre, Staten Island, NY","St. Georges Theatre, Staten Island, NY",40.64223,-74.077564
+NY,Tarrytown,Tarrytown Music Hall,1885,843,"Tarrytown Music Hall, Tarrytown, NY","Tarrytown Music Hall, Tarrytown, NY",41.076499,-73.858824
+NY,Troy,Troy Savings Bank Music Hall,1875,1180,"Troy Savings Bank Music Hall, Troy, NY","Troy Savings Bank Music Hall, Troy, NY",42.730381,-73.6913883
+NY,Utica,The Stanley,1928,3000,"The Stanley, Utica, NY","The Stanley, Utica, NY",42.824935,-77.095959
+NY,Youngstown,Niagara Post Theater,1931,398,"Niagara Post Theater, Youngstown, NY","Niagara Post Theater, Youngstown, NY",43.250518,-79.049913
+NC,Asheboro,Sunset Theatre,1929,400,"Sunset Theatre, Asheboro, NC","Sunset Theatre, Asheboro, NC",35.70599493519,-79.821111737051
+NC,Boone,Appalachian Theatre,1938,629,"Appalachian Theatre, Boone, NC","Appalachian Theatre, Boone, NC",36.217546,-81.68293
+NC,Charlotte,Carolina Theatre,1927,1450,"Carolina Theatre, Charlotte, NC","Carolina Theatre, Charlotte, NC",35.221265552952,-80.915973734445
+NC,Dunn,Stewart Theater,1948,450,"Stewart Theater, Dunn, NC","Stewart Theater, Dunn, NC",35.785145,-78.677076
+NC,Durham,Carolina Theatre,1926,1016,"Carolina Theatre, Durham, NC","Carolina Theatre, Durham, NC",35.9977632,-78.9029365
+NC,Greensboro,Carolina Theatre,1927,1050,"Carolina Theatre, Greensboro, NC","Carolina Theatre, Greensboro, NC",36.0697676,-79.7922395
+NC,Lexington,Edward C. Smith Civic Center,NA,1123,"Edward C. Smith Civic Center, Lexington, NC","Edward C. Smith Civic Center, Lexington, NC",35.822152,-80.254725
+NC,Lumberton,Carolina Civic Center,1928,437,"Carolina Civic Center, Lumberton, NC","Carolina Civic Center, Lumberton, NC",34.61916,-79.00793
+NC,Shelby,Don Gibson Theatre,1939,400,"Don Gibson Theatre, Shelby, NC","Don Gibson Theatre, Shelby, NC",35.2885329,-81.5395007
+NC,Washington,Turnage Theater,1913,471,"Turnage Theater, Washington, NC","Turnage Theater, Washington, NC",35.542869,-77.055772
+NC,Wilmington,Thalian Hall,1855,683,"Thalian Hall, Wilmington, NC","Thalian Hall, Wilmington, NC",34.23621,-77.94552
+NC,Winston-Salem,Stevens Center,1929,1380,"Stevens Center, Winston-Salem, NC","Stevens Center, Winston-Salem, NC",36.098419,-80.248209
+OH,Athens,The Athena Cinema,1915,520,"The Athena Cinema, Athens, OH","The Athena Cinema, Athens, OH",39.328376,-82.101089
+OH,Canton,Canton Palace Theatre,1924,1,"Canton Palace Theatre, Canton, OH","Canton Palace Theatre, Canton, OH",40.802232,-81.3738298
+OH,Chagrin Falls,Chagrin Valley Little Theatre,1948,244,"Chagrin Valley Little Theatre, Chagrin Falls, OH","Chagrin Valley Little Theatre, Chagrin Falls, OH",41.4314337,-81.3936819
+OH,Cincinnati,Cincinnati Music Hall,1878,2500,"Cincinnati Music Hall, Cincinnati, OH","Cincinnati Music Hall, Cincinnati, OH",39.1094898,-84.5186167
+OH,Cincinnati,Imperial Theatre-Mohawk,1913,NA,"Imperial Theatre-Mohawk, Cincinnati, OH","Imperial Theatre-Mohawk, Cincinnati, OH",39.120361,-84.524106
+OH,Cleveland,Allen Theatre,1921,2500,"Allen Theatre, Cleveland, OH","Allen Theatre, Cleveland, OH",41.501699,-81.681568
+OH,Cleveland,Connor Palace,1922,2714,"Connor Palace, Cleveland, OH","Connor Palace, Cleveland, OH",41.5051414,-81.6914575
+OH,Cleveland,Hanna Theatre,1921,1535,"Hanna Theatre, Cleveland, OH","Hanna Theatre, Cleveland, OH",41.5000774,-81.6807536
+OH,Cleveland,Karamu House,1959,300,"Karamu House, Cleveland, OH","Karamu House, Cleveland, OH",41.475150638714,-81.654885342976
+OH,Cleveland,Mimi Ohio Theatre,1921,1035,"Mimi Ohio Theatre, Cleveland, OH","Mimi Ohio Theatre, Cleveland, OH",41.501587,-81.681172
+OH,Cleveland,KeyBank State Theatre,1921,3200,"KeyBank State Theatre, Cleveland, OH","KeyBank State Theatre, Cleveland, OH",41.502827,-81.621965
+OH,Columbus,Drexel Theatre,1937,NA,"Drexel Theatre, Columbus, OH","Drexel Theatre, Columbus, OH",39.957372,-82.938719
+OH,Columbus,Lincoln Theatre,1928,582,"Lincoln Theatre, Columbus, OH","Lincoln Theatre, Columbus, OH",39.967069,-82.980786
+OH,Columbus,Ohio Theatre,1928,2791,"Ohio Theatre, Columbus, OH","Ohio Theatre, Columbus, OH",39.96006,-82.99935
+OH,Columbus,Palace Theatre,1926,2839,"Palace Theatre, Columbus, OH","Palace Theatre, Columbus, OH",39.9623511,-83.0017266
+OH,Columbus,Southern Theatre,1896,925,"Southern Theatre, Columbus, OH","Southern Theatre, Columbus, OH",39.956057,-82.998656
+OH,Fairborn,The Fairborn Theater,1947,NA,"The Fairborn Theater, Fairborn, OH","The Fairborn Theater, Fairborn, OH",39.8229508,-84.0179419
+OH,Gallipolis,Ariel Theatre,1895,464,"Ariel Theatre, Gallipolis, OH","Ariel Theatre, Gallipolis, OH",38.808654,-82.204714
+OH,Hayesville,Hayesville Opera House,1886,200,"Hayesville Opera House, Hayesville, OH","Hayesville Opera House, Hayesville, OH",40.7730406,-82.2619363
+OH,Logan,Logan Theater,1926,450,"Logan Theater, Logan, OH","Logan Theater, Logan, OH",39.540153,-82.407232
+OH,Mansfield,Renaissance Theatre,1928,1402,"Renaissance Theatre, Mansfield, OH","Renaissance Theatre, Mansfield, OH",40.758947,-82.521781
+OH,Marietta,Peoples Bank Theatre,1918,1000,"Peoples Bank Theatre, Marietta, OH","Peoples Bank Theatre, Marietta, OH",39.415786,-81.453585
+OH,Marion,Marion Palace Theatre,1928,1420,"Marion Palace Theatre, Marion, OH","Marion Palace Theatre, Marion, OH",40.5886,-83.1336
+OH,Massilion,Lions Lincoln Theatre,1914,681,"Lions Lincoln Theatre, Massilion, OH","Lions Lincoln Theatre, Massilion, OH",40.79715,-81.521089
+OH,Nelsonville,Stuart's Opera House,1879,450,"Stuart's Opera House, Nelsonville, OH","Stuart's Opera House, Nelsonville, OH",39.46068,-82.23182
+OH,Norwalk,Norwalk Arts Center,1941,924,"Norwalk Arts Center, Norwalk, OH","Norwalk Arts Center, Norwalk, OH",41.2425987,-82.6146794
+OH,Sandusky,Sandusky State Theatre,1928,1526,"Sandusky State Theatre, Sandusky, OH","Sandusky State Theatre, Sandusky, OH",41.4568968,-82.7126382
+OH,St. Marys,St. Marys Theater and Grand Opera House,1895,396,"St. Marys Theater and Grand Opera House, St. Marys, OH","St. Marys Theater and Grand Opera House, St. Marys, OH",40.542236,-84.390324
+OH,Wilmington,The Murphy Theatre,1918,769,"The Murphy Theatre, Wilmington, OH","The Murphy Theatre, Wilmington, OH",39.445075,-83.829504
+OH,Woodsfield,Monroe Theatre,1939,650,"Monroe Theatre, Woodsfield, OH","Monroe Theatre, Woodsfield, OH",39.762751,-81.115515
+OK,Miami,Coleman Theatre,1929,1100,"Coleman Theatre, Miami, OK","Coleman Theatre, Miami, OK",36.876447,-94.877798
+OK,Oklahoma City,Jewel Theatre,1920,NA,"Jewel Theatre, Oklahoma City, OK","Jewel Theatre, Oklahoma City, OK",35.471223,-97.497026
+OR,Astoria,Liberty Theater,1925,670,"Liberty Theater, Astoria, OR","Liberty Theater, Astoria, OR",46.188653,-123.8299149
+OR,Bend,Tower Theatre,1940,476,"Tower Theatre, Bend, OR","Tower Theatre, Bend, OR",44.05875,-121.31485
+OR,Corvallis,Whiteside Theatre,1922,798,"Whiteside Theatre, Corvallis, OR","Whiteside Theatre, Corvallis, OR",44.563751,-123.262162
+OR,Enterprise,OK Theatre,1918,350,"OK Theatre, Enterprise, OR","OK Theatre, Enterprise, OR",45.42523,-117.27942
+OR,Klamath Falls,Ross Ragland Theater,1940,750,"Ross Ragland Theater, Klamath Falls, OR","Ross Ragland Theater, Klamath Falls, OR",42.2259795,-121.7829226
+OR,LaGrande,Liberty Theatre,1910,NA,"Liberty Theatre, LaGrande, OR","Liberty Theatre, LaGrande, OR",45.329058,-118.09572
+OR,McMinnville,The MACK Theater,1941,450,"The MACK Theater, McMinnville, OR","The MACK Theater, McMinnville, OR",45.210028,-123.192128
+OR,Medford,Holly Theatre,1930,1200,"Holly Theatre, Medford, OR","Holly Theatre, Medford, OR",42.32571,-122.876781
+OR,Portland,Hollywood Theatre,1926,606,"Hollywood Theatre, Portland, OR","Hollywood Theatre, Portland, OR",45.535574,-122.6207777
+PA,Allentown,Civic Theatre of Allentown,1927,1000,"Civic Theatre of Allentown, Allentown, PA","Civic Theatre of Allentown, Allentown, PA",40.6032332,-75.4997982
+PA,Boyertown,State Theatre,1920,219,"State Theatre, Boyertown, PA","State Theatre, Boyertown, PA",40.3351563,-75.6363564
+PA,Bryn Mawr,Bryn Mawr Theatre,1926,660,"Bryn Mawr Theatre, Bryn Mawr, PA","Bryn Mawr Theatre, Bryn Mawr, PA",40.022711,-75.320873
+PA,Erie,Warner Theatre,1931,2220,"Warner Theatre, Erie, PA","Warner Theatre, Erie, PA",42.1274,-80.0828
+PA,Gettysburg,Gettysburg College's Majestic Theater,1925,850,"Gettysburg College's Majestic Theater, Gettysburg, PA","Gettysburg College's Majestic Theater, Gettysburg, PA",39.833853967546,-77.235821310722
+PA,Hanover,Eichelberger Performing Arts Center,1900,781,"Eichelberger Performing Arts Center, Hanover, PA","Eichelberger Performing Arts Center, Hanover, PA",39.8063,-76.9867
+PA,Hanover,Eichelberger Performing Arts Center,1900,781,"Eichelberger Performing Arts Center, Hanover, PA","Eichelberger Performing Arts Center, Hanover, PA",39.8063,-76.9867
+PA,Lewisburg,The Campus Theatre,1940,500,"The Campus Theatre, Lewisburg, PA","The Campus Theatre, Lewisburg, PA",40.963377,-76.886319
+PA,McKees Rocks,Roxian Theatre,1929,1470,"Roxian Theatre, McKees Rocks, PA","Roxian Theatre, McKees Rocks, PA",40.4647274,-80.0589342
+PA,Newtown,Newtown Theatre,1831,324,"Newtown Theatre, Newtown, PA","Newtown Theatre, Newtown, PA",40.2312433,-74.936810500000007
+PA,Northampton,Roxy Theatre,1920,557,"Roxy Theatre, Northampton, PA","Roxy Theatre, Northampton, PA",40.689645,-75.498997
+PA,Oil City,Lyric Theater,1926,225,"Lyric Theater, Oil City, PA","Lyric Theater, Oil City, PA",41.434558,-79.708811
+PA,Philadelphia,Forrest Theatre,1928,1851,"Forrest Theatre, Philadelphia, PA","Forrest Theatre, Philadelphia, PA",39.9485003,-75.1596023
+PA,Philadelphia,Walnut Street Theatre,1808,1088,"Walnut Street Theatre, Philadelphia, PA","Walnut Street Theatre, Philadelphia, PA",39.9485195,-75.1554581
+PA,Phoenixville,Colonial Theatre,1903,645,"Colonial Theatre, Phoenixville, PA","Colonial Theatre, Phoenixville, PA",40.134108,-75.5175068
+PA,Towanda,Keystone Theatre,1887,506,"Keystone Theatre, Towanda, PA","Keystone Theatre, Towanda, PA",41.76425,-76.442791
+PA,Warren,Struthers Library Theatre,1882,902,"Struthers Library Theatre, Warren, PA","Struthers Library Theatre, Warren, PA",41.84662,-79.14806
+PA,Wilmerding,Westinghouse Theater,1937,950,"Westinghouse Theater, Wilmerding, PA","Westinghouse Theater, Wilmerding, PA",40.390047314886,-79.810416419634
+PA,York,Capitol Theatre,1906,450,"Capitol Theatre, York, PA","Capitol Theatre, York, PA",39.934842,-77.662066
+PA,York,Strand Theatre,1925,1262,"Strand Theatre, York, PA","Strand Theatre, York, PA",42.12472,-80.08306
+RI,Newport,Newport Performing Arts Center,1867,NA,"Newport Performing Arts Center, Newport, RI","Newport Performing Arts Center, Newport, RI",44.6362,-124.062
+RI,Providence,Providence Performing Arts Center,1928,3200,"Providence Performing Arts Center, Providence, RI","Providence Performing Arts Center, Providence, RI",41.8211,-71.41197
+SC,Charleston,Sottile Theatre,1927,785,"Sottile Theatre, Charleston, SC","Sottile Theatre, Charleston, SC",32.784103,-79.935878
+SC,Newberry,Newberry Opera House,1881,426,"Newberry Opera House, Newberry, SC","Newberry Opera House, Newberry, SC",34.274536,-81.620909
+SC,Rock Hill,Lowry Family Theatre at the McCelvey Center,1922,500,"Lowry Family Theatre at the McCelvey Center, Rock Hill, SC","Lowry Family Theatre at the McCelvey Center, Rock Hill, SC",34.99004,-81.24
+SC,Sumter,Sumter Opera House,1893,NA,"Sumter Opera House, Sumter, SC","Sumter Opera House, Sumter, SC",33.92105,-80.341303
+SC,Ware Shoals,Katherine Hall,1913,NA,"Katherine Hall, Ware Shoals, SC","Katherine Hall, Ware Shoals, SC",34.397158678806,-82.24495434303
+SD,Lead,Historic Homestake Opera House,1914,895,"Historic Homestake Opera House, Lead, SD","Historic Homestake Opera House, Lead, SD",44.3517,-103.7667
+SD,Sioux Falls,State Theatre,1925,1000,"State Theatre, Sioux Falls, SD","State Theatre, Sioux Falls, SD",43.5441166,-96.7266027
+TN,Bristol,Paramount Center for the Arts,1931,756,"Paramount Center for the Arts, Bristol, TN","Paramount Center for the Arts, Bristol, TN",36.59486,-82.18264
+TN,Chattanooga,Sailor and Soldiers Memorial Auditorium,1924,3866,"Sailor and Soldiers Memorial Auditorium, Chattanooga, TN","Sailor and Soldiers Memorial Auditorium, Chattanooga, TN",35.04804,-85.30569
+TN,Chattanooga,Tivoli Theatre,1921,1700,"Tivoli Theatre, Chattanooga, TN","Tivoli Theatre, Chattanooga, TN",35.04791,-85.310856
+TN,Chattanooga,Walker Theatre,1924,851,"Walker Theatre, Chattanooga, TN","Walker Theatre, Chattanooga, TN",35.047722,-85.305733
+TN,Franklin,Franklin Theatre,1937,297,"Franklin Theatre, Franklin, TN","Franklin Theatre, Franklin, TN",35.924141,-86.870891
+TN,Greenville,Capitol Theatre,1934,376,"Capitol Theatre, Greenville, TN","Capitol Theatre, Greenville, TN",36.163074,-82.831354
+TN,Knoxville,Bijou Theatre,1909,750,"Bijou Theatre, Knoxville, TN","Bijou Theatre, Knoxville, TN",35.962378,-83.916954
+TN,Knoxville,Tennessee Theatre,1927,1645,"Tennessee Theatre, Knoxville, TN","Tennessee Theatre, Knoxville, TN",35.9642664,-83.9174321
+TN,Lebanon,Capitol Theatre,1950,1000,"Capitol Theatre, Lebanon, TN","Capitol Theatre, Lebanon, TN",36.20776,-86.2921
+TN,Memphis,Orpheum Theatre,1927,2300,"Orpheum Theatre, Memphis, TN","Orpheum Theatre, Memphis, TN",35.107599,-90.06002
+TN,Nashville,Belcourt Theatre,1925,712,"Belcourt Theatre, Nashville, TN","Belcourt Theatre, Nashville, TN",36.1369183,-86.8014279
+TN,Pulaski,Antoinette Hall,1868,350,"Antoinette Hall, Pulaski, TN","Antoinette Hall, Pulaski, TN",35.199239,-87.030727
+TN,Tullahoma,South Jackson Performing Arts Center,1922,435,"South Jackson Performing Arts Center, Tullahoma, TN","South Jackson Performing Arts Center, Tullahoma, TN",35.356691,-86.208317
+TX,Abilene,Paramount Theatre,1930,1198,"Paramount Theatre, Abilene, TX","Paramount Theatre, Abilene, TX",32.452011,-99.73419
+TX,Austin,Austin Scottish Rite Theater,1871,300,"Austin Scottish Rite Theater, Austin, TX","Austin Scottish Rite Theater, Austin, TX",30.279968,-97.740645
+TX,Austin,Paramount Theatre,1915,1300,"Paramount Theatre, Austin, TX","Paramount Theatre, Austin, TX",30.2693791,-97.7418633
+TX,Beaumont,Julie Rogers Theatre,1982,1651,"Julie Rogers Theatre, Beaumont, TX","Julie Rogers Theatre, Beaumont, TX",30.0818158,-94.0959068
+TX,Belton,The Beltonian Theatre,1922,148,"The Beltonian Theatre, Belton, TX","The Beltonian Theatre, Belton, TX",31.055634,-97.462161
+TX,Brenham,Simon Theatre,1925,321,"Simon Theatre, Brenham, TX","Simon Theatre, Brenham, TX",30.177866438744,-96.387069784304
+TX,Clarendon,Mulkey Theatre,1946,680,"Mulkey Theatre, Clarendon, TX","Mulkey Theatre, Clarendon, TX",34.938749,-100.8881282
+TX,Conroe,Crighton Theatre,1934,541,"Crighton Theatre, Conroe, TX","Crighton Theatre, Conroe, TX",30.310919,-95.456766
+TX,Corpus Christi,The Ritz,1923,1200,"The Ritz, Corpus Christi, TX","The Ritz, Corpus Christi, TX",27.726156891484,-97.359720492816
+TX,Dallas,The Texas Theatre,1931,945,"The Texas Theatre, Dallas, TX","The Texas Theatre, Dallas, TX",32.74352,-96.82586
+TX,Edna,Edna Theater,1949,500,"Edna Theater, Edna, TX","Edna Theater, Edna, TX",28.977465,-96.64783
+TX,Galveston,Grand 1894 Opera House,1894,1040,"Grand 1894 Opera House, Galveston, TX","Grand 1894 Opera House, Galveston, TX",29.305557,-94.790726
+TX,Georgetown,Palace Theatre,1925,300,"Palace Theatre, Georgetown, TX","Palace Theatre, Georgetown, TX",30.6361618,-97.6783433
+TX,Levelland,Wallace Theater,1928,600,"Wallace Theater, Levelland, TX","Wallace Theater, Levelland, TX",30.082711537873,-95.22241224778
+TX,Lubbock,Cactus Theater,1937,379,"Cactus Theater, Lubbock, TX","Cactus Theater, Lubbock, TX",33.5784,-101.844697
+TX,New Braunfels,Brauntex Performing Arts Theatre,1939,605,"Brauntex Performing Arts Theatre, New Braunfels, TX","Brauntex Performing Arts Theatre, New Braunfels, TX",29.7014,-98.1266
+TX,Odessa,The Ector Theatre,1951,827,"The Ector Theatre, Odessa, TX","The Ector Theatre, Odessa, TX",31.907163527124,-102.374914973023
+TX,Tyler,Liberty Hall,1930,315,"Liberty Hall, Tyler, TX","Liberty Hall, Tyler, TX",32.350634,-95.30031
+TX,Wharton,The Plaza Theatre,1904,197,"The Plaza Theatre, Wharton, TX","The Plaza Theatre, Wharton, TX",29.310949,-96.101841
+VT,Barre,Barre Opera House,1899,645,"Barre Opera House, Barre, VT","Barre Opera House, Barre, VT",44.1967576,-72.5018389
+VT,Burlington,Flynn Center for the Performing Arts,1930,1411,"Flynn Center for the Performing Arts, Burlington, VT","Flynn Center for the Performing Arts, Burlington, VT",44.475767,-73.213175
+VT,Vergennes,Vergennes Opera House,1897,258,"Vergennes Opera House, Vergennes, VT","Vergennes Opera House, Vergennes, VT",44.1686365,-73.2509567
+VT,Woodstock,Town Hall Theatre,1900,386,"Town Hall Theatre, Woodstock, VT","Town Hall Theatre, Woodstock, VT",43.623196,-72.521639
+VA,Ashland,Ashland Theater,1948,330,"Ashland Theater, Ashland, VA","Ashland Theater, Ashland, VA",37.75864,-77.47936
+VA,Blacksburg,Lyric Theatre,1930,477,"Lyric Theatre, Blacksburg, VA","Lyric Theatre, Blacksburg, VA",37.2303,-80.4157
+VA,Charlottesville,Paramount Theater,1931,1300,"Paramount Theater, Charlottesville, VA","Paramount Theater, Charlottesville, VA",38.030543,-78.480282
+VA,Clifton Forge,Historic Masonic Theatre,1905,532,"Historic Masonic Theatre, Clifton Forge, VA","Historic Masonic Theatre, Clifton Forge, VA",37.816387,-79.825322
+VA,Danville,Historic North Theatre,1947,500,"Historic North Theatre, Danville, VA","Historic North Theatre, Danville, VA",36.5957123,-79.3852402
+VA,Hampton,The American Theatre,1907,388,"The American Theatre, Hampton, VA","The American Theatre, Hampton, VA",37.017149,-76.320299
+VA,Lynchburg,Academy Center of the Arts,1905,900,"Academy Center of the Arts, Lynchburg, VA","Academy Center of the Arts, Lynchburg, VA",37.417695,-79.144352
+VA,Marion,The Lincoln Theatre,1928,508,"The Lincoln Theatre, Marion, VA","The Lincoln Theatre, Marion, VA",36.8335168,-81.5189917
+VA,Portsmouth,Commodore Theatre,1945,508,"Commodore Theatre, Portsmouth, VA","Commodore Theatre, Portsmouth, VA",36.8351472,-76.3017938
+VA,Roanoke,Jefferson Center,1922,925,"Jefferson Center, Roanoke, VA","Jefferson Center, Roanoke, VA",37.270472,-79.951908
+VA,Waynesboro,Wayne Theatre,1926,350,"Wayne Theatre, Waynesboro, VA","Wayne Theatre, Waynesboro, VA",38.068911,-78.890144
+WA,Bellingham,Mount Baker Theatre,1927,1517,"Mount Baker Theatre, Bellingham, WA","Mount Baker Theatre, Bellingham, WA",48.7523256,-122.4777089
+WA,Hoquiam,7th Street Theatre,1928,997,"7th Street Theatre, Hoquiam, WA","7th Street Theatre, Hoquiam, WA",46.977565,-123.8856484
+WA,Mount Vernon,Lincoln Theatre,1926,500,"Lincoln Theatre, Mount Vernon, WA","Lincoln Theatre, Mount Vernon, WA",48.4177821,-122.3383301
+WA,North Bend,North Bend Theatre,1941,250,"North Bend Theatre, North Bend, WA","North Bend Theatre, North Bend, WA",47.4960521,-121.786803
+WA,Walla Walla,Gesa Power House Theatre,1895,286,"Gesa Power House Theatre, Walla Walla, WA","Gesa Power House Theatre, Walla Walla, WA",46.0657766,-118.345986
+WV,Bluefield,The Granada Theater,1928,495,"The Granada Theater, Bluefield, WV","The Granada Theater, Bluefield, WV",37.2696834,-81.2233177
+WV,Clarksburg,Robinson Grand Theater,1912,1300,"Robinson Grand Theater, Clarksburg, WV","Robinson Grand Theater, Clarksburg, WV",39.275589200796,-80.333951665244
+WV,Shepherdstown,The Opera House,1909,150,"The Opera House, Shepherdstown, WV","The Opera House, Shepherdstown, WV",39.430374,-77.804289
+WV,Thomas,Cottrill's Opera House,1902,NA,"Cottrill's Opera House, Thomas, WV","Cottrill's Opera House, Thomas, WV",39.147875,-79.498765
+WI,Baraboo,Al. Ringling Theatre,1915,1024,"Al. Ringling Theatre, Baraboo, WI","Al. Ringling Theatre, Baraboo, WI",43.47117,-89.74367
+WI,Green Bay,Meyer Theatre,1929,1000,"Meyer Theatre, Green Bay, WI","Meyer Theatre, Green Bay, WI",44.5139361,-88.0157126
+WI,La Crosse,Rivoli Theater,1921,351,"Rivoli Theater, La Crosse, WI","Rivoli Theater, La Crosse, WI",43.8133431,-91.2510413
+WI,Madison,Wisconsin Union Theater,1938,1300,"Wisconsin Union Theater, Madison, WI","Wisconsin Union Theater, Madison, WI",43.0767634,-89.4004538
+WI,Menomonie,The Mabel Tainter,1901,261,"The Mabel Tainter, Menomonie, WI","The Mabel Tainter, Menomonie, WI",44.876767,-91.928183
+WI,Oshkosh,The Grand Oshkosh,1883,550,"The Grand Oshkosh, Oshkosh, WI","The Grand Oshkosh, Oshkosh, WI",44.017422,-88.538718
+WI,Racine,Racine Civic Center,1924,NA,"Racine Civic Center, Racine, WI","Racine Civic Center, Racine, WI",42.7283271,-87.7808774
+WI,Superior,Princess Theatre,1913,400,"Princess Theatre, Superior, WI","Princess Theatre, Superior, WI",46.72064,-92.097919
+WI,Wausau,The Grand Theatre,1927,1208,"The Grand Theatre, Wausau, WI","The Grand Theatre, Wausau, WI",44.95986,-89.62652
+WI,West Bend,The Bend,1929,350,"The Bend, West Bend, WI","The Bend, West Bend, WI",44.058698,-121.358133
+WY,Cheyenne,Atlas Theatre,1908,250,"Atlas Theatre, Cheyenne, WY","Atlas Theatre, Cheyenne, WY",41.1322809,-104.8156622
+WY,Cheyenne,Mary Godfrey Playhouse,NA,245,"Mary Godfrey Playhouse, Cheyenne, WY","Mary Godfrey Playhouse, Cheyenne, WY",41.146035500000004,-104.7794875
+WY,Laramie,The Gryphon Theatre,1926,850,"The Gryphon Theatre, Laramie, WY","The Gryphon Theatre, Laramie, WY",41.3092525,-105.5878495
+WY,Rock Springs,Broadway Theater,1948,370,"Broadway Theater, Rock Springs, WY","Broadway Theater, Rock Springs, WY",41.5845173,-109.2163157
+WY,Sheridan,WYO Theater,1923,483,"WYO Theater, Sheridan, WY","WYO Theater, Sheridan, WY",44.797916,-106.956295
