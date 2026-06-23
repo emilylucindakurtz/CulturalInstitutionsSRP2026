@@ -1,7 +1,7 @@
 library(tidyverse)
 library(leaflet)
 
-museum_data <- read_csv("data/whichmuseum_details_12000_geo.csv")
+museum_data <- read_csv("data/Museum/whichmuseum_details_12000_geo.csv")
 
 museum_map_data <- museum_data %>%
   filter(!is.na(latitude), !is.na(longitude), !is.na(category))
