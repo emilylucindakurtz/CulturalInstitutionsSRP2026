@@ -52,51 +52,5 @@ for(i in 2:length(geocoded_groups)){
 ```
 
 ```{r}
-write_csv(new_tibble, "historic_districts_clean3_specific_addresses.csv")
-```
-
-```{r}
-# Adding location
-
-# Have to split because batch limit is 10,000 and there are 12,337
-historic_districts_clean <- historic_districts[1:100,] %>% 
-  geocode(address, method = 'arcgis', lat = latitude , long = longitude)
-
-```
-
-```{r}
-start <- nrow(historic_districts_clean)+1
-
-for(r in start:nrow(historic_districts)){
-  temp_row <- historic_districts[r,] %>% 
-    geocode(address, method = 'arcgis', lat = latitude , long = longitude)
-  
-  historic_districts_clean <- rbind(historic_districts_clean, temp_row)
-  
-  if(r %% 75 == 0){
-    Sys.sleep(2)  # pause 2 seconds between batches
-    cat("Batch", r, "done\n")  # progress tracking
-    #Save progress to disk so you can resume if it crashes partway through:
-    write_csv(historic_districts_clean, "geocoded_progress_2.csv")
-  }
-}
-```
-
-```{r}
-write_csv(historic_districts_clean[1:12419,], "long_lat_YAY.csv")
-```
-
-```{r}
-write_csv(historic_districts, "OG_historic_districts_nolatlong.csv")
-```
-
-## Historic districts w/o the above!
-
-```{r}
-historic_districts_updated <- read_csv("../data/Historic Districts/long_lat_YAY_CORRECT.csv")
-```
-
-```{r}
-historic_districts_updated[1:100,] <- historic_districts[1:100,] %>% 
-  geocode(address, method = 'arcgis', lat = latitude, long = longitude)
+#write_csv(new_tibble, "historic_districts_clean3_specific_addresses.csv")
 ```

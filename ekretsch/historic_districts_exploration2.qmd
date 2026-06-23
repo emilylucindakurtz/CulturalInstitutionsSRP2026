@@ -28,6 +28,7 @@ historic_districts <- read_csv("../data/Historic Districts/historic_districts_cl
 # Mapping w/ leaflet!
 prelim_map <- leaflet(data = historic_districts) %>%
    addTiles() %>%
+   #addProviderTiles("Stadia.StamenWatercolor") %>% 
    addCircleMarkers(~longitude, ~latitude, popup = ~property_name, radius = 3)
 prelim_map
 ```
@@ -96,18 +97,6 @@ map_data <- states_sf %>%
 ```
 
 
-```{r}
-library(robotstxt)
-paths_allowed("https://www.census.gov/") # came back true so we can scrape yay
-```
-```{r}
-library(rvest)
-page <- read_html("https://www.census.gov/geographies/reference-files/2010/geo/state-area.html")
-table <- page %>% html_elements("table")
-areas_raw <- html_table(table[[1]])
-
-```
-
 
 ```{r}
 # Create a color palette for the map
@@ -169,10 +158,15 @@ leaflet(map_data) %>%
   )
 ```
 
-------------------------------------------------------------------------
-
 ```{r}
-# Loading historic landmarks data for historic districts!
-historic_landmarks <- read_csv("../data/Historic Districts/Raw/csv_RAW_national-register-listed_20260522.csv") # .. means one folder up
+library(robotstxt)
+paths_allowed("https://www.census.gov/") # came back true so we can scrape yay
+```
+```{r}
+library(rvest)
+page <- read_html("https://www.census.gov/geographies/reference-files/2010/geo/state-area.html")
+table <- page %>% html_elements("table")
+areas_raw <- html_table(table[[1]])
+
 ```
 
