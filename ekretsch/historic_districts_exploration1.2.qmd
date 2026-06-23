@@ -81,30 +81,26 @@ for(i in 1:nrow(historic_districts_parentheses)){
 }
 ```
 
-
 ```{r}
-widened_historic_districts_nodupes <- widened_historic_districts
-
-for(i in 1:nrow(historic_districts_parentheses)){
-  
-  #current_state <- historic_districts_parentheses$state[i]
-  #current_county <- historic_districts_parentheses$county[i]
-  #current_city <- historic_districts_parentheses$city[i]
-  
-  temp_name_group <- widened_historic_districts %>% 
-      filter(str_detect(property_name, historic_districts_parentheses[[i, "cleaned_name"]])
-               #state == current_state,
-               #county == current_county,
-               #city ==  current_city
-             ) %>% # ensuring that it's acc the same place
-      select(-slice_max(listed_date)) # getting the most recent one
-  
-  widened_historic_districts_nodupes <- anti_join(widened_historic_districts_nodupes, 
-                                                  temp_name_group, 
-                                                  by = "property_name") 
-}
-
+# Fixing the names so that there's no boundary increase/decrease stuff
+# Need to also fix the district_name (or remove lol)
+widened_historic_districts_nodupes <- widened_historic_districts_nodupes %>% 
+  filter(str_detect(property_name, "\\(Boundary") | str_detect(property_name, "\\(Additional")) %>% 
+  mutate(property_name = str_remove(property_name, "\\(Boundar.*")) %>% 
+  mutate(property_name = str_remove(property_name, "\\(Addi.*")) %>% 
+  mutate(property_name = str_trim(property_name, side = "right"))
 ```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
