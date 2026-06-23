@@ -46,6 +46,13 @@ widened_historic_districts <- widened_historic_districts %>%
   select(-aos)
 ```
 
+
+## Fixing the duplicates
+listed_date max
+
+
+
+
 ## Fixing the NA locations
 ```{r}
 # Getting the simpler addresses + renaming these cols
