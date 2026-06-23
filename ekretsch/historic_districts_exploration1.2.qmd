@@ -57,12 +57,13 @@ li, lii
  
 ```{r}
 historic_districts_parentheses <- widened_historic_districts %>% 
-  filter(str_detect(property_name, "\\(.*?\\)")) # looked up this regex -- it just means matching any parentheses
+  filter(str_detect(property_name, "\\(Boundary") | str_detect(property_name, "\\(Additional")) %>% 
+  mutate(cleaned_name = str_remove(property_name, " \\(.*"))
 ```
 ```{r}
+
 for(i in 1:nrow(historic_districts_parentheses)){
   temp_name <- str_remove(historic_districts_parentheses[[i, 'property_name']], " \\(.*")
-  print(temp_name)
   # \\( matches the literal opening parenthesis.
   # .* matches any character that comes after it.
 }
