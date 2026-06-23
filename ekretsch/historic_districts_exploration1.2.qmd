@@ -13,11 +13,18 @@ library(tidyverse)
 # Importing pre-cleaned data
 historic_districts <- read_csv("../data/Historic Districts/historic_districts_clean3_specific_addresses.csv")
 ```
+```{r}
+# Removing unnecessary columns
+# And making the address more human-readable
+historic_districts <- historic_districts %>% 
+  select(-nhl_designated_date, -prefix, -park_name) %>% # 99% NA, 85% NA, 98% NA
+  mutate(address = paste(property_name, city, state, sep = ", "))
+```
 
 ## Widening
 
 ```{r}
-
+# split at ; 
 ```
 
 
