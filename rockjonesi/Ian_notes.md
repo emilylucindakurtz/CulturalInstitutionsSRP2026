@@ -418,7 +418,7 @@ Furthering basic powerplant EDA; exploring the distribution of powerplant energy
 
 <img width="650" height="397" alt="image" src="https://github.com/user-attachments/assets/580a8047-fa7b-4e2d-83ce-e98ee92d69f5" />
 
-<img width="650" height="700" alt="image" src="https://github.com/user-attachments/assets/57b9ccd0-84a3-4425-8bc4-9c9d754e0460" />
+<img width="1000" height="400" alt="image" src="https://github.com/user-attachments/assets/57b9ccd0-84a3-4425-8bc4-9c9d754e0460" />
 
 These two plots are both pretty dense, and contain a lot of infortmation. But this comes at the cost of how digestible the plots are. I attempted to turn the proportion plot into a plotly plot but ran into countless errors. I might revisit that option on at a later date.
 
