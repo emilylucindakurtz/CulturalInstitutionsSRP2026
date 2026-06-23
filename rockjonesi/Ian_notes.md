@@ -410,7 +410,7 @@ unemployment rates?
  - there are some other missing values as well due to missing county data in the fortune500 data.
 
 I made another leaflet map that was similar to the other industries interactive map.
-<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/8da5ae27-f6fb-4d98-be7c-991eae1be590" /> <br\>
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/8da5ae27-f6fb-4d98-be7c-991eae1be590" /> <br />
 In order to do this, I had to pull in county shapefile data to merge with the Fortune500_Housing data. There is not full county information due to 
 misaligning county data, however there is 2025 housing price information all the relevant counties (those that contain fortune 500 headquarters). They are shaded by the counties median price. A viewer can click on a marker to find out the counties median price, the company name, as well as the city/state it is in.
 
@@ -418,7 +418,7 @@ Furthering basic powerplant EDA; exploring the distribution of powerplant energy
 
 <img width="650" height="397" alt="image" src="https://github.com/user-attachments/assets/580a8047-fa7b-4e2d-83ce-e98ee92d69f5" />
 
-<img width="650" height="400" alt="image" src="https://github.com/user-attachments/assets/57b9ccd0-84a3-4425-8bc4-9c9d754e0460" />
+<img width="650" height="700" alt="image" src="https://github.com/user-attachments/assets/57b9ccd0-84a3-4425-8bc4-9c9d754e0460" />
 
 These two plots are both pretty dense, and contain a lot of infortmation. But this comes at the cost of how digestible the plots are. I attempted to turn the proportion plot into a plotly plot but ran into countless errors. I might revisit that option on at a later date.
 
