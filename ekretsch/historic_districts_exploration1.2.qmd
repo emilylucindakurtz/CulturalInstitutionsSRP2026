@@ -49,8 +49,24 @@ widened_historic_districts <- widened_historic_districts %>%
 
 ## Fixing the duplicates
 listed_date max
-
-
+Lore Historic District = Lore, Seth And Irwinton Historic District (Boundary Increase)
+Additional Documentation
+li, lii
+ parentheses
+ match state, county, city
+ 
+```{r}
+historic_districts_parentheses <- widened_historic_districts %>% 
+  filter(str_detect(property_name, "\\(.*?\\)")) # looked up this regex -- it just means matching any parentheses
+```
+```{r}
+for(i in 1:nrow(historic_districts_parentheses)){
+  temp_name <- str_remove(historic_districts_parentheses[[i, 'property_name']], " \\(.*")
+  print(temp_name)
+  # \\( matches the literal opening parenthesis.
+  # .* matches any character that comes after it.
+}
+```
 
 
 ## Fixing the NA locations
