@@ -4,7 +4,7 @@
 - `#\| eval: false`
 - [ ] shiny app where you can select the state and then a histogram/bar chart pops up for the cateories
 - [ ] do the proportional/standardization thing
-  - [ ] get data by state for area
+  - [x] get data by state for area
 - [ ] Data cleaning:
   - [ ] `category of property` variable -- district for most, but site for some... but it is all caps sometimes and not some other times ex: `Fort Union Trading Post National Historic Site Historic District (Boundary Increase)` -- marked as `site` and it's not really a historic district in the way I was thinking...
   - [x] Deal with the geocoding properly
@@ -32,6 +32,8 @@ Notes:
   - Puerto Rico, American Samoa, Guam, the Commonwealth of the Northern Mariana Islands (CNMI), and the U.S. Virgin Islands. 
 - I scraped this
   - I checked that this was allowed by running `paths_allowed("https://www.census.gov/")` which came back `True`
+  - Scraping code is in `historic_districts_exploration_1.1.qmd` **MAYBE RENAME LATER**
+- Scraped/cleaned file is named `us_areas_cleaned.csv` and is in the following folder sequence: `data` > `Historic Districts`
 
 considered but DID not do  https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html
 
