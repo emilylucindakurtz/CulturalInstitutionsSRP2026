@@ -84,11 +84,9 @@ for(i in 1:nrow(historic_districts_parentheses)){
 ```{r}
 # Fixing the names so that there's no boundary increase/decrease stuff
 # Need to also fix the district_name (or remove lol)
-widened_historic_districts_nodupes <- widened_historic_districts_nodupes %>% 
-  filter(str_detect(property_name, "\\(Boundary") | str_detect(property_name, "\\(Additional")) %>% 
-  mutate(property_name = str_remove(property_name, "\\(Boundar.*")) %>% 
-  mutate(property_name = str_remove(property_name, "\\(Addi.*")) %>% 
-  mutate(property_name = str_trim(property_name, side = "right"))
+widened_historic_districts_nodupes_clean <- widened_historic_districts_nodupes %>% 
+  mutate(property_name = str_remove(property_name, "\\((Bound | Addit).*") %>% 
+           str_trim(side = "right"))
 ```
 
 
