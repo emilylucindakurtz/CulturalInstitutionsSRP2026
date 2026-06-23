@@ -17,19 +17,42 @@ historic_districts <- read_csv("../data/Historic Districts/historic_districts_cl
 # Removing unnecessary columns
 # And making the address more human-readable
 historic_districts <- historic_districts %>% 
-  select(-nhl_designated_date, -prefix, -park_name) %>% # 99% NA, 85% NA, 98% NA
+  select(-nhl_designated_date, # 99% NA
+         -prefix, # 85% NA
+         -park_name, # 98% NA
+         -level_of_significance_international # they were all false
+         ) %>% 
   mutate(address = paste(property_name, city, state, sep = ", "))
 ```
 
 ## Widening
 
 ```{r}
-# split at ; 
+# Split into binary (0 for false 1 for true) for the areas of significance
+historic_districts <- historic_districts %>% 
+  mutate(aos = area_of_significance) 
+
+library(fastDummies)
+widened_historic_districts <- dummy_cols(
+    historic_districts,
+    select_columns = "aos",
+    split = "; "
+  )
 ```
 
+```{r}
+widened_historic_districts <- widened_historic_districts %>% 
+  clean_names() %>% 
+  select(-aos)
+```
 
 ## Fixing the NA locations
 ```{r}
 # Getting the simpler addresses + renaming these cols
 ```
+
+```{r}
+
+```
+
 
