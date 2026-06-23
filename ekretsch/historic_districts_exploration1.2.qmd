@@ -65,12 +65,39 @@ historic_districts_parentheses <- widened_historic_districts %>%
 widened_historic_districts_nodupes <- widened_historic_districts
 
 for(i in 1:nrow(historic_districts_parentheses)){
+  
+  all_group <- widened_historic_districts %>% 
+      filter(str_detect(property_name, historic_districts_parentheses[[i, "cleaned_name"]]))
+  
+  most_recent <- all_group %>% 
+    slice_max(listed_date, n=1)
+  
+  to_drop <- anti_join(all_group, most_recent, by = "property_name")
+  
+  widened_historic_districts_nodupes <- anti_join(
+    widened_historic_districts_nodupes, 
+    to_drop, 
+    by = "property_name") 
+}
+```
+
+
+```{r}
+widened_historic_districts_nodupes <- widened_historic_districts
+
+for(i in 1:nrow(historic_districts_parentheses)){
+  
+  #current_state <- historic_districts_parentheses$state[i]
+  #current_county <- historic_districts_parentheses$county[i]
+  #current_city <- historic_districts_parentheses$city[i]
+  
   temp_name_group <- widened_historic_districts %>% 
-    filter(str_detect(property_name, historic_districts_parentheses[[i, "cleaned_name"]]),
-             state == historic_districts_parentheses[[i, "state"]],
-             county == historic_districts_parentheses[[i, "county"]],
-             city == historic_districts_parentheses[[i, "city"]]) %>% # ensuring that it's acc the same place
-    select(-slice_max(listed_date)) # getting the most recent one
+      filter(str_detect(property_name, historic_districts_parentheses[[i, "cleaned_name"]])
+               #state == current_state,
+               #county == current_county,
+               #city ==  current_city
+             ) %>% # ensuring that it's acc the same place
+      select(-slice_max(listed_date)) # getting the most recent one
   
   widened_historic_districts_nodupes <- anti_join(widened_historic_districts_nodupes, 
                                                   temp_name_group, 
@@ -78,6 +105,7 @@ for(i in 1:nrow(historic_districts_parentheses)){
 }
 
 ```
+
 
 
 
