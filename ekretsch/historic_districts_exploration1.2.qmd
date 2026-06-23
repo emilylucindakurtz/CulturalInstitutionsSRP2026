@@ -58,15 +58,29 @@ li, lii
 ```{r}
 historic_districts_parentheses <- widened_historic_districts %>% 
   filter(str_detect(property_name, "\\(Boundary") | str_detect(property_name, "\\(Additional")) %>% 
-  mutate(cleaned_name = str_remove(property_name, " \\(.*"))
+  mutate(cleaned_name = str_remove(property_name, " \\(.*")) %>% 
+  distinct(cleaned_name)
 ```
 ```{r}
+widened_historic_districts_nodupes <- widened_historic_districts
 
 for(i in 1:nrow(historic_districts_parentheses)){
-  temp_name <- str_remove(historic_districts_parentheses[[i, 'property_name']], " \\(.*")
-  # \\( matches the literal opening parenthesis.
-  # .* matches any character that comes after it.
+  temp_name_group <- widened_historic_districts_nodupes %>% 
+    filter(str_detect(property_name, historic_districts_parentheses[[i, cleaned_name]]) &&
+             state == historic_districts_parentheses[[i, state]] &&
+             county == historic_districts_parentheses[[i, county]] &&
+             city == historic_districts_parentheses[[i, city]]) %>% # ensuring that it's acc the same place
+    select(-slice_max(listed_date)) # getting the most recent one
+  
+  widened_historic_districts_nodupes <- widened_historic_districts_nodupes %>% 
+    select(-temp_name_group) # need to fix this maybe for look thru this thing???
+
 }
+  
+  
+  
+  df_clean <- df %>% distinct(column_name, .keep_all = TRUE)
+
 ```
 
 
