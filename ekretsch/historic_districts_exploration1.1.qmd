@@ -68,7 +68,7 @@ for(i in 2:length(geocoded_groups)){
 ## Fixing the NA locations
 
 
-## Scraping
+## Scraping Census Area Data
 
 ```{r}
 library(robotstxt)
@@ -98,27 +98,25 @@ areas_cleaned <- areas_cleaned %>%
   clean_names() %>% 
   slice(-(1:2)) # removing the 'header' rows
 
-colnames(areas_cleaned)[1] <- "state"
+colnames(areas_cleaned)[1] <- "state_or_territory"
 ```
 ```{r}
 # Fixing rows -- Removing the random blank rows and also the "island areas:" etc
-
 areas_cleaned <- areas_cleaned %>% 
-  mutate(state = str_remove_all(state, "[0-9]")) %>% 
+  mutate(state_or_territory = str_remove_all(state_or_territory, "[0-9]")) %>% 
   filter(!if_all(everything(), ~.x=="")) %>% 
   slice(-55) %>% #removing the row that said "Islands:"
   slice(-2) #removing the US row since it isn't clear/there is already a total
 ```
 ```{r}
 # Making the cols the right types
-
 areas_cleaned <- areas_cleaned %>% 
   mutate(across(c(2:ncol(areas_cleaned)), parse_number)) %>%  # to remove commas
   mutate(across(c(2:ncol(areas_cleaned)), as.numeric))
 ```
 
-
 ```{r}
+# Getting it in acres (since the other dataset is in acres)
 # 1 square mile is 640 acres
 areas_cleaned <- areas_cleaned %>% 
   mutate(
@@ -127,6 +125,11 @@ areas_cleaned <- areas_cleaned %>%
     water_area_acres = water_area_sq_mi * 640
   )
 ```
+
+```{r}
+write_csv(areas_cleaned, "us_areas_cleaned.csv")
+```
+
 
 
 
