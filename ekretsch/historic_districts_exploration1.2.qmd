@@ -49,8 +49,70 @@ widened_historic_districts <- widened_historic_districts %>%
 
 ## Fixing the duplicates
 listed_date max
+Lore Historic District = Lore, Seth And Irwinton Historic District (Boundary Increase)
+Additional Documentation
+li, lii
+ parentheses
+ match state, county, city
+ 
+```{r}
+historic_districts_parentheses <- widened_historic_districts %>% 
+  filter(str_detect(property_name, "\\(Boundary") | str_detect(property_name, "\\(Additional")) %>% 
+  mutate(cleaned_name = str_remove(property_name, " \\(.*")) %>% 
+  distinct(cleaned_name)
+```
+```{r}
+widened_historic_districts_nodupes <- widened_historic_districts
+
+for(i in 1:nrow(historic_districts_parentheses)){
+  
+  all_group <- widened_historic_districts %>% 
+      filter(str_detect(property_name, historic_districts_parentheses[[i, "cleaned_name"]]))
+  
+  most_recent <- all_group %>% 
+    slice_max(listed_date, n=1)
+  
+  to_drop <- anti_join(all_group, most_recent, by = "property_name")
+  
+  widened_historic_districts_nodupes <- anti_join(
+    widened_historic_districts_nodupes, 
+    to_drop, 
+    by = "property_name") 
+}
+```
+
+```{r}
+# Fixing the names so that there's no boundary increase/decrease stuff
+# Need to also fix the district_name (or remove lol)
+widened_historic_districts_nodupes_clean <- widened_historic_districts_nodupes %>% 
+  mutate(property_name = str_remove(property_name, "\\((Bound | Addit).*") %>% 
+           str_trim(side = "right"))
+```
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+temptemp <- widened_historic_districts %>% 
+  select(ref_number, property_id)
+
+
+  
+  df_clean <- df %>% distinct(column_name, .keep_all = TRUE)
+  anyDuplicated(temptemp$property_id) # is not 0...
+  anyDuplicated(temptemp$ref_number) # is also not 0 but more than the above...
+```
 
 
 ## Fixing the NA locations
