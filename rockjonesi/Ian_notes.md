@@ -398,8 +398,8 @@ unemployment rates?
 - Have been stuggling with fixing "many-to-many" join error
 
 **Things to do**
-- [ ] Finish up combining the text pulled data with the fortune HQ data
-- [ ] Continue state-level EDA on powerplants, sports venues and libraries
+- [x] Finish up combining the text pulled data with the fortune HQ data
+- [x] Continue state-level EDA on powerplants, sports venues and libraries
 - [ ] Explore adding unemployment data into the industrial datasets
 - [ ] 
 
@@ -423,7 +423,9 @@ Furthering basic powerplant EDA; exploring the distribution of powerplant energy
 These two plots are both pretty dense, and contain a lot of infortmation. But this comes at the cost of how digestible the plots are. I attempted to turn the proportion plot into a plotly plot but ran into countless errors. I might revisit that option on at a later date.
 
 
-
+To do:
+- [ ] More focus on library EDA, epescially pertaining to metro/urban relationships
+- [ ] Explore adding unemployment data into the industrial datasets
 
 
     
