@@ -65,22 +65,31 @@ historic_districts_parentheses <- widened_historic_districts %>%
 widened_historic_districts_nodupes <- widened_historic_districts
 
 for(i in 1:nrow(historic_districts_parentheses)){
-  temp_name_group <- widened_historic_districts_nodupes %>% 
-    filter(str_detect(property_name, historic_districts_parentheses[[i, cleaned_name]]) &&
-             state == historic_districts_parentheses[[i, state]] &&
-             county == historic_districts_parentheses[[i, county]] &&
-             city == historic_districts_parentheses[[i, city]]) %>% # ensuring that it's acc the same place
+  temp_name_group <- widened_historic_districts %>% 
+    filter(str_detect(property_name, historic_districts_parentheses[[i, "cleaned_name"]]),
+             state == historic_districts_parentheses[[i, "state"]],
+             county == historic_districts_parentheses[[i, "county"]],
+             city == historic_districts_parentheses[[i, "city"]]) %>% # ensuring that it's acc the same place
     select(-slice_max(listed_date)) # getting the most recent one
   
-  widened_historic_districts_nodupes <- widened_historic_districts_nodupes %>% 
-    select(-temp_name_group) # need to fix this maybe for look thru this thing???
-
+  widened_historic_districts_nodupes <- anti_join(widened_historic_districts_nodupes, 
+                                                  temp_name_group, 
+                                                  by = "property_name") 
 }
-  
-  
+
+```
+
+
+
+```{r}
+temptemp <- widened_historic_districts %>% 
+  select(ref_number, property_id)
+
+
   
   df_clean <- df %>% distinct(column_name, .keep_all = TRUE)
-
+  anyDuplicated(temptemp$property_id) # is not 0...
+  anyDuplicated(temptemp$ref_number) # is also not 0 but more than the above...
 ```
 
 
