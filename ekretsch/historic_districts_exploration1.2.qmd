@@ -1,0 +1,28 @@
+---
+title: "historic districts cleaning version 2 part 2"
+format: html
+editor: visual
+---
+
+```{r}
+# Packages
+library(tidyverse)
+```
+
+```{r}
+# Importing pre-cleaned data
+historic_districts <- read_csv("../data/Historic Districts/historic_districts_clean3_specific_addresses.csv")
+```
+
+## Widening
+
+```{r}
+
+```
+
+
+## Fixing the NA locations
+```{r}
+# Getting the simpler addresses + renaming these cols
+```
+

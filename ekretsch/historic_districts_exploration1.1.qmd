@@ -58,16 +58,6 @@ for(i in 2:length(geocoded_groups)){
 #write_csv(new_tibble, "historic_districts_clean3_specific_addresses.csv")
 ```
 
-## Widening
-
-```{r}
-
-```
-
-
-## Fixing the NA locations
-
-
 ## Scraping Census Area Data
 
 ```{r}
@@ -129,10 +119,3 @@ areas_cleaned <- areas_cleaned %>%
 ```{r}
 write_csv(areas_cleaned, "us_areas_cleaned.csv")
 ```
-
-
-
-
-- get the right col types
-- fix the orientation
-
