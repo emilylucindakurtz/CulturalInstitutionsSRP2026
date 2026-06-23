@@ -52,8 +52,15 @@ considered but DID not do  https://www.census.gov/geographies/reference-files/ti
   - I used the `arcgis` method from the `arcgisgeocode` package as the method for the `geocode()` function from `tidygeocoder` package to convert.
     - I used this method rather than other ones such as `census` or `osm` because the addresses were messy/incomplete and `arcgis` was the only method (that I had access) that could deal with these addresses. `census` and `osm` resulted in lots of NAs.
   - The Address was from the `address` column
-  - I had to batch this because it kept timing out on me. I used Rimona's splitting+mapping technique 
+  - I had to batch this because it kept timing out on me. I used Rimona's splitting+mapping technique
 
+_The following steps were completed in_ `historic_districts_exploration1.2.qmd`
+6. Removing unnecessary columns -- `nhl_designated_date` (99% NA), `prefix` (85% NA) `park_name` (98% NA), `level_of_significance_international` (they were all false) **CBL**
+7. Widening areas_of_significance into into binary (0 for false 1 for true) columns
+- used `fastDummies` package
+8. 
+ 
+ 
  FIX -- IT'S BASED ON CITY, STATE (i think) INSTEAD OF COUNTY, STATE (WA) **
 
 # EDA
