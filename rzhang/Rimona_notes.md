@@ -203,7 +203,7 @@ Also, creating questions to guide what the data should show. For example, do reg
 
 ## 6/23 
 For League of Historic American Theatres, can scrape the website using a for-loop or some other way of iterating through the state abbreviations in the link, getting data of theatres from each state page.
-- [ ] scrape League of Historic American Theatres website
+- [X] scrape League of Historic American Theatres website
 
 Then, focus on mapping current data:
 - [ ] explore visualizations using datasets
