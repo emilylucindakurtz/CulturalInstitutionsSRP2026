@@ -18,11 +18,13 @@ library(arcgisgeocode)
 ## Historic Districts
 
 ```{r}
+#\| eval: false
 # Loading historic landmarks data for historic districts!
 historic_landmarks <- read_csv("../data/Historic Districts/Raw/csv_RAW_national-register-listed_20260522.csv") # .. means one folder up
 ```
 
 ```{r}
+#\| eval: false
 # Filtering the historic landmarks dataset to make sure that only historic districts are present
 historic_districts <- historic_landmarks %>% 
   clean_names() %>% 
@@ -44,7 +46,7 @@ geocoded_groups <- map(groups,~ geocode(.x, address = address, method = "arcgis"
 ```
 
 ```{r}
-
+#\| eval: false
 new_tibble <- geocoded_groups[[1]]
 for(i in 2:length(geocoded_groups)){
   new_tibble <- bind_rows(new_tibble, geocoded_groups[[i]])
@@ -52,5 +54,68 @@ for(i in 2:length(geocoded_groups)){
 ```
 
 ```{r}
+#\| eval: false
 #write_csv(new_tibble, "historic_districts_clean3_specific_addresses.csv")
 ```
+
+## Widening
+
+```{r}
+
+```
+
+
+## Fixing the NA locations
+
+
+## Scraping
+
+```{r}
+library(robotstxt)
+library(rvest)
+library(janitor)
+```
+
+
+```{r}
+paths_allowed("https://www.census.gov/") # came back true so we can scrape yay
+```
+```{r}
+page <- read_html("https://www.census.gov/geographies/reference-files/2010/geo/state-area.html")
+table <- page %>% html_elements("table")
+areas_raw <- html_table(table[[1]])
+```
+
+```{r}
+# Don't really care about the different types of water area, so I will delete those columns
+areas_cleaned <- areas_raw[,1:7]
+```
+```{r}
+# Fixing column names
+new_names <- paste(colnames(areas_cleaned), areas_cleaned[2,], sep = "_")
+colnames(areas_cleaned) <- str_remove_all(new_names, "[0-9]") # using regex to remove the #s
+areas_cleaned <- areas_cleaned %>% 
+  clean_names() %>% 
+  slice(-(1:2)) # removing the 'header' rows
+
+colnames(areas_cleaned)[1] <- "state"
+```
+```{r}
+# Fixing rows -- Removing the random blank rows and also the "island areas:" etc
+
+areas_cleaned <- areas_cleaned %>% 
+  mutate(state = str_remove_all(state, "[0-9]")) %>% 
+  filter(!if_all(everything(), ~.x=="")) %>% 
+  slice(-55) %>% #removing the row that said "Islands:"
+  slice(2) #removing the US row since it isn't clear/there is already a total
+```
+
+```{r}
+# 1 square mile is 640 acres
+```
+
+
+
+- get the right col types
+- fix the orientation
+

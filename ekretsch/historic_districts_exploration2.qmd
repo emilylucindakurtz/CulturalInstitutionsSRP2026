@@ -157,16 +157,3 @@ leaflet(map_data) %>%
     title = "acreage of historic districts"
   )
 ```
-
-```{r}
-library(robotstxt)
-paths_allowed("https://www.census.gov/") # came back true so we can scrape yay
-```
-```{r}
-library(rvest)
-page <- read_html("https://www.census.gov/geographies/reference-files/2010/geo/state-area.html")
-table <- page %>% html_elements("table")
-areas_raw <- html_table(table[[1]])
-
-```
-
