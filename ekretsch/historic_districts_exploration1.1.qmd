@@ -107,11 +107,25 @@ areas_cleaned <- areas_cleaned %>%
   mutate(state = str_remove_all(state, "[0-9]")) %>% 
   filter(!if_all(everything(), ~.x=="")) %>% 
   slice(-55) %>% #removing the row that said "Islands:"
-  slice(2) #removing the US row since it isn't clear/there is already a total
+  slice(-2) #removing the US row since it isn't clear/there is already a total
 ```
+```{r}
+# Making the cols the right types
+
+areas_cleaned <- areas_cleaned %>% 
+  mutate(across(c(2:ncol(areas_cleaned)), parse_number)) %>%  # to remove commas
+  mutate(across(c(2:ncol(areas_cleaned)), as.numeric))
+```
+
 
 ```{r}
 # 1 square mile is 640 acres
+areas_cleaned <- areas_cleaned %>% 
+  mutate(
+    total_area_acres = total_area_sq_mi * 640,
+    land_area_acres = land_area_sq_mi * 640,
+    water_area_acres = water_area_sq_mi * 640
+  )
 ```
 
 
