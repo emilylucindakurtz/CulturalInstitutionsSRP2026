@@ -142,7 +142,6 @@ county_sf <- counties(cb = TRUE, class = "sf") %>%
 
 #standardizing variables for join
 housing_map <- Fortune500_Housing %>% 
-  drop_na() %>% 
   mutate(County = tolower(County),
          State = tolower(State))
 
