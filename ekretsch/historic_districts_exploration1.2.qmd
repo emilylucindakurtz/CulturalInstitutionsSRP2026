@@ -85,43 +85,42 @@ for(i in 1:nrow(historic_districts_parentheses)){
 # Fixing the names so that there's no boundary increase/decrease stuff
 # Need to also fix the district_name (or remove lol)
 widened_historic_districts_nodupes_clean <- widened_historic_districts_nodupes %>% 
-  mutate(property_name = str_remove(property_name, "\\((Bound | Addit).*") %>% 
+  mutate(property_name = str_remove(property_name, "\\((Bound|Addit).*") %>% 
            str_trim(side = "right"))
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ```{r}
-temptemp <- widened_historic_districts %>% 
-  select(ref_number, property_id)
-
-
-  
-  df_clean <- df %>% distinct(column_name, .keep_all = TRUE)
-  anyDuplicated(temptemp$property_id) # is not 0...
-  anyDuplicated(temptemp$ref_number) # is also not 0 but more than the above...
+# Cleaning up some other stuff
+widened_historic_districts_nodupes_clean <- widened_historic_districts_nodupes_clean %>% 
+  mutate(
+    address = paste(property_name, city, state, sep = ", "),
+    district_name = str_remove(property_name, " Historic District")
+  )
 ```
 
 
 ## Fixing the NA locations
 ```{r}
 # Getting the simpler addresses + renaming these cols
+
+library(tidygeocoder)
+library(arcgisgeocode)
+
+geocoded <- widened_historic_districts_nodupes_clean %>% 
+  filter(!is.na(latitude))
+
+needs_geocoding <- widened_historic_districts_nodupes_clean %>% 
+  filter(is.na(latitude)) %>% 
+  select(-latitude, -longitude) %>% 
+  geocode(address = address, method = 'arcgis', lat = latitude, long = longitude)
+
+final_historic_districts <- bind_rows(geocoded, needs_geocoding)
+
+
 ```
 
 ```{r}
-
+write_csv(final_historic_districts, "historic_districts_clean4.csv")
 ```
 
 
