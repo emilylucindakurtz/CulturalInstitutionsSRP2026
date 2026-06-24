@@ -55,25 +55,10 @@ prelim_map2 <- leaflet(data = historic_districts) %>%
 prelim_map2
 ```
 
-```{r}
-# Now I want to do the chloropleth by area by state (?) -- group by state
-```
+## Choropleths!!!
 
 ```{r}
-land_area <- read_csv("../data/Historic Districts/us_areas_cleaned.csv")
-```
-
-
-
-
-
-640 acres in 1 mile
-
-```{r}
-# Actually what I want is to group by state and then ...
-
-# MAYBE SHOULD JOIN DATA FOR THE TOTAL ACREAGE OF THE WHOLE STATE TO STANDARDIZE 
-# ^ for this should find the area of each state and then divide the acreage by that...
+# Group by state for data from historic_districts
 
 by_state <- historic_districts %>% 
   group_by(state) %>% 
@@ -82,7 +67,106 @@ by_state <- historic_districts %>%
 
 ```
 
+```{r}
+areas <- read_csv("../data/Historic Districts/us_areas_cleaned.csv")
+```
+cb = TRUE simplfies the file, resolution = 20m is the lowest, this gives 2024 data
+```{r}
+# Get state geometries
+states_sf <- tigris::states(cb = TRUE, resolution = "20m")
+```
+
+```{r}
+# Join data to shapefile
+map_data <- states_sf %>% 
+  left_join(by_state, by = c("NAME" = "state")) %>% 
+  left_join(areas, by = c("NAME" = "state_or_territory")) %>% 
+  mutate(total_acreage_hd = total_acreage) %>% 
+  select(-total_acreage)
+```
+```{r}
+# Standardizing
+# historic district acreage by total state land acreage
+map_data <- map_data %>% 
+  mutate(standardized_hd_acreage = total_acreage_hd/land_area_acres) 
+```
+
+
+## Standardized historic district area by state
+
+```{r}
+# Create a color palette for the map
+# might want to change this to binning or quantile or something
+
+my_palette <- colorNumeric(
+  palette = "viridis", 
+  domain = map_data$standardized_hd_acreage,
+  na.color = "transparent"
+)
+```
+
+```{r}
+leaflet(map_data) %>% 
+  addProviderTiles("CartoDB.Positron") %>% 
+  addPolygons(
+    fillColor = ~my_palette(standardized_hd_acreage),
+    fillOpacity = .75,
+    color = "white", # border color
+    weight = 1,
+    smoothFactor = 0.5, # slightly crisper borders -- default is 1 (higher values > more simplification > jaggier borders but shorter rendering)
+    # add the highlight/hover and tooltip things
+  ) %>% 
+  addLegend(
+    pal = my_palette,
+    value = map_data$standardized_hd_acreage, # same as values   = ~total_num_districts
+    position = "bottomright",
+    title = "Hist. Dist. area/state land area"
+  )
+```
+
+
+
+
+
+
+## Land area by state
 Chloropleth map for \# of acres of districts
+# MAYBE SHOULD JOIN DATA FOR THE TOTAL ACREAGE OF THE WHOLE STATE TO STANDARDIZE 
+# ^ for this should find the area of each state and then divide the acreage by that...
+
+
+```{r}
+# Create a color palette for the map
+# might want to change this to binning or quantile or something
+
+my_palette <- colorNumeric(
+  palette = "viridis", 
+  domain = map_data$land_area_acres,
+  na.color = "transparent"
+)
+```
+
+```{r}
+leaflet(map_data) %>% 
+  addProviderTiles("CartoDB.Positron") %>% 
+  addPolygons(
+    fillColor = ~my_palette(land_area_acres),
+    fillOpacity = .75,
+    color = "white", # border color
+    weight = 1,
+    smoothFactor = 0.5, # slightly crisper borders -- default is 1 (higher values > more simplification > jaggier borders but shorter rendering)
+    # add the highlight/hover and tooltip things
+  ) %>% 
+  addLegend(
+    pal = my_palette,
+    value = map_data$land_area_acres, # same as values   = ~total_num_districts
+    position = "bottomright",
+    title = "land area by state"
+  )
+```
+
+
+
 
 ```{r}
 # 
@@ -90,19 +174,7 @@ Chloropleth map for \# of acres of districts
 
 ```
 
-```{r}
-# Get state geometries
-states_sf <- tigris::states(cb = TRUE, resolution = "20m")
-# cb = TRUE simplfies the file
-# resolution = 20m is the lowest
-# this gives 2024 data
-```
 
-```{r}
-# Join data to shapefile
-map_data <- states_sf %>% 
-  left_join(by_state, by = c("NAME" = "state"))
-```
 
 ```{r}
 # choosing the var
@@ -148,7 +220,7 @@ leaflet(map_data) %>%
 
 my_palette <- colorNumeric(
   palette = "viridis", 
-  domain = map_data$total_acreage,
+  domain = map_data$total_acreage_hd,
   na.color = "transparent"
 )
 ```
@@ -157,7 +229,7 @@ my_palette <- colorNumeric(
 leaflet(map_data) %>% 
   addProviderTiles("CartoDB.Positron") %>% 
   addPolygons(
-    fillColor = ~my_palette(total_acreage),
+    fillColor = ~my_palette(total_acreage_hd),
     fillOpacity = .75,
     color = "white", # border color
     weight = 1,
@@ -166,7 +238,7 @@ leaflet(map_data) %>%
   ) %>% 
   addLegend(
     pal = my_palette,
-    value = map_data$total_acreage, # same as values   = ~total_num_districts
+    value = map_data$total_acreage_hd, # same as values   = ~total_num_districts
     position = "bottomright",
     title = "acreage of historic districts"
   )
