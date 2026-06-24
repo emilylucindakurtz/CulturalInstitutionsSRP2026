@@ -4,6 +4,7 @@ library(bslib)
 
 library(leaflet)
 library(tigris)
+library(sf)
 
 library(tidyverse)
 
@@ -100,14 +101,27 @@ server <- function(input, output) {
   })
   
   # MAP CLICKING STUFF -----
-  # Reactive function!!!
   
   # Getting the user input from clicking
-  selected_state <- reactiveVal(NULL)
+  selected_state <- reactiveVal(NULL) # Reactive function!!!
   
   # Get the state clicked
   observeEvent(input$map_shape_click, {
     selected_state(input$map_shape_click$id) # value of NAME for clicked state
+    
+    # Get the bounding box for that state so we can zoom
+    bbox_data <- map_data[NAME == selected_state(),]
+    bbox <- st_bbox(bbox_data)
+    # ^ st_bbox() is a function in the R sf (Simple Features) package used to calculate or return the bounding box of a spatial object. It returns a named numeric vector containing the minimum and maximum coordinates (\(xmin, ymin, xmax, ymax\)) that define the rectangular extent of a spatial dataset
+    
+    leafletProxy("map") %>% 
+      invokeMethod(
+        "flyToBounds",
+        list(
+          list(bbox[["ymin"]], bbox[["xmin"]]),
+          list(bbox[["ymax"]], bbox[["xmax"]])
+        )
+      )
   })
   
   # Output histogram
@@ -125,8 +139,6 @@ server <- function(input, output) {
         y = "Category",
         x = "Counts"
       )
-    
-    
   })
   
 
