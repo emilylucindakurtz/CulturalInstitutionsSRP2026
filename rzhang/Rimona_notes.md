@@ -207,6 +207,7 @@ For League of Historic American Theatres, can scrape the website using a for-loo
 
 Then, focus on mapping current data:
 - [ ] explore visualizations using datasets
+  - Began mapping theater datasets using the 'sf' package: https://r-spatial.github.io/sf/
 - [ ] conduct basic EDA across the data
 
 Future plans: look at IPUMS or Census data, noting how more social factors such as population, income, or racial demographics may be associated with certain cultural institutions.
