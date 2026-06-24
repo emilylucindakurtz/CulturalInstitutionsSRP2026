@@ -13,6 +13,7 @@
   still gonna be some issues due to inconsistency in naming:
 <img width="348" height="43" alt="image" src="https://github.com/user-attachments/assets/043c51fc-b8ab-4c2f-a57b-073bf6645aa8" />
 <img width="348" height="43" alt="image" src="https://github.com/user-attachments/assets/4b34184b-6362-4aad-905b-6a4769ae6a2f" />
+
 - [x] deal with the inconsistencies/bad addresses
   - [ ] Seth Lore and Irwinton Historic District
   - [ ] Hot Springs Bathhouse And Commerical Historic District In Truth Or Consequences
@@ -21,7 +22,7 @@
   - [ ] Mineral Wells Central Historic District
   - [ ] a couple in europe and other places...
 
-
+- [ ] get the territories maps for choropleth
      
 Notes:
 
