@@ -8,11 +8,12 @@
 - [ ] Data cleaning:
   - [ ] `category of property` variable -- district for most, but site for some... but it is all caps sometimes and not some other times ex: `Fort Union Trading Post National Historic Site Historic District (Boundary Increase)` -- marked as `site` and it's not really a historic district in the way I was thinking...
   - [x] Deal with the geocoding properly
-    - [ ] fix the NAx
-  - [ ] need to deal with the boundary increase boundary decrease situation that results in duplicates
+    - [x] fix the NAx
+  - [x] need to deal with the boundary increase boundary decrease situation that results in duplicates
   still gonna be some issues due to inconsistency in naming:
 <img width="348" height="43" alt="image" src="https://github.com/user-attachments/assets/043c51fc-b8ab-4c2f-a57b-073bf6645aa8" />
 <img width="348" height="43" alt="image" src="https://github.com/user-attachments/assets/4b34184b-6362-4aad-905b-6a4769ae6a2f" />
+- [x] deal with the inconsistencies
 
 
      

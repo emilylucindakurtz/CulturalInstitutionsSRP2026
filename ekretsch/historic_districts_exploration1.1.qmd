@@ -66,10 +66,10 @@ library(rvest)
 library(janitor)
 ```
 
-
 ```{r}
 paths_allowed("https://www.census.gov/") # came back true so we can scrape yay
 ```
+
 ```{r}
 page <- read_html("https://www.census.gov/geographies/reference-files/2010/geo/state-area.html")
 table <- page %>% html_elements("table")
@@ -80,6 +80,7 @@ areas_raw <- html_table(table[[1]])
 # Don't really care about the different types of water area, so I will delete those columns
 areas_cleaned <- areas_raw[,1:7]
 ```
+
 ```{r}
 # Fixing column names
 new_names <- paste(colnames(areas_cleaned), areas_cleaned[2,], sep = "_")
@@ -90,6 +91,7 @@ areas_cleaned <- areas_cleaned %>%
 
 colnames(areas_cleaned)[1] <- "state_or_territory"
 ```
+
 ```{r}
 # Fixing rows -- Removing the random blank rows and also the "island areas:" etc
 areas_cleaned <- areas_cleaned %>% 
@@ -98,6 +100,7 @@ areas_cleaned <- areas_cleaned %>%
   slice(-55) %>% #removing the row that said "Islands:"
   slice(-2) #removing the US row since it isn't clear/there is already a total
 ```
+
 ```{r}
 # Making the cols the right types
 areas_cleaned <- areas_cleaned %>% 
