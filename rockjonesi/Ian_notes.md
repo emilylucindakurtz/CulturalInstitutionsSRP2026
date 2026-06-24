@@ -428,5 +428,18 @@ To do:
 - [ ] Explore adding unemployment data into the industrial datasets
 
 
-    
+## June 24
+
+Had finished up with housing data merge, and so I have been thinking about effective ways to present the different sorts of information. I was inspired by the suggestions from Emily to some of the other groups about devloping shiny apps; I think this is the most effective way of portraying state/county level information, so I have started trying to produce some more basic shiny apps. Initially, I have just been testing out making bar charts from yesterday user driven. Meaning they can select a state and see the powerplant energy source distribution. 
+
+Got a basic app running well, but then tried to convert plots to plotly and can not get past "subscript out of bounds" error.
+
+
+
+
+
+
+
+
+
 
