@@ -1,21 +1,30 @@
 # Emily Kretschmer's Notes
-## June 23
+## June 24
 #### Historic districts
-- [X] get the land area via census scraping (make sure to document!)
-- [ ] start shiny app
-- [x] widen the categorical variable
-- [x] remove dupes
-- [ ] fix documentation of cleaning
-- [ ] check for consistency in territory names (N. Mariana Islands)
 
 #### Street art
-- [ ] 
+- [x] start shiny app
+  - [x] do reverse text stuff
+  - [x] make a zoom thing on the state selected
+  - [x] eliminate the ones from the bar graph that have counts = 0
+- [ ] check for consistency in territory names (N. Mariana Islands)
+- [x] start the mapping of standardization
+
 
 #### News outlets
 - [ ] import data into R
 
 #### Libraries
 - [ ] investigate careeronestop
+
+
+## June 23
+#### Historic districts
+- [X] get the land area via census scraping (make sure to document!)
+- [x] widen the categorical variable
+- [x] remove dupes
+- [x] work on fixing documentation of cleaning
+
 
 Notes:
 - `addProviderTiles("Stadia.StamenWatercolor")` love this

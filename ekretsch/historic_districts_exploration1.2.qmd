@@ -13,6 +13,7 @@ library(tidyverse)
 # Importing pre-cleaned data
 historic_districts <- read_csv("../data/Historic Districts/historic_districts_clean3_specific_addresses.csv")
 ```
+
 ```{r}
 # Removing unnecessary columns
 # And making the address more human-readable
@@ -46,21 +47,17 @@ widened_historic_districts <- widened_historic_districts %>%
   select(-aos)
 ```
 
-
 ## Fixing the duplicates
-listed_date max
-Lore Historic District = Lore, Seth And Irwinton Historic District (Boundary Increase)
-Additional Documentation
-li, lii
- parentheses
- match state, county, city
- 
+
+listed_date max Lore Historic District = Lore, Seth And Irwinton Historic District (Boundary Increase) Additional Documentation li, lii parentheses match state, county, city
+
 ```{r}
 historic_districts_parentheses <- widened_historic_districts %>% 
   filter(str_detect(property_name, "\\(Boundary") | str_detect(property_name, "\\(Additional")) %>% 
   mutate(cleaned_name = str_remove(property_name, " \\(.*")) %>% 
   distinct(cleaned_name)
 ```
+
 ```{r}
 widened_historic_districts_nodupes <- widened_historic_districts
 
@@ -98,8 +95,8 @@ widened_historic_districts_nodupes_clean <- widened_historic_districts_nodupes_c
   )
 ```
 
-
 ## Fixing the NA locations
+
 ```{r}
 # Getting the simpler addresses + renaming these cols
 
@@ -120,7 +117,5 @@ final_historic_districts <- bind_rows(geocoded, needs_geocoding)
 ```
 
 ```{r}
-write_csv(final_historic_districts, "historic_districts_clean4.csv")
+write_csv(final_historic_districts, "historic_districts_clean4.csv`")
 ```
-
-

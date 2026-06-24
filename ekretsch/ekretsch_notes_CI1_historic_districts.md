@@ -1,21 +1,36 @@
 # Emily's Notes for Historic Districts Dataset + Analysis
+Interesting note: architecture highest category (for most states i think) except for alaska where it is industry
 
 # Personal notes/things to do/ideas for further analysis:
 - `#\| eval: false`
-- [ ] shiny app where you can select the state and then a histogram/bar chart pops up for the cateories
-- [ ] do the proportional/standardization thing
+- [ ] shiny app where you can select the state and then a bar chart pops up for the cateories
+  - [x] reverse text stuff
+    - [ ] come back to this later maybe
+  - [x] state zoomy
+  - [ ] maybe add a separate page for something else...
+    - [ ] for other institutions?
+    - [ ] for actually seeing the historic districts
+  - [ ] add option for user to select the category
+- [x] do the proportional/standardization thing
   - [x] get data by state for area
 - [ ] Data cleaning:
   - [ ] `category of property` variable -- district for most, but site for some... but it is all caps sometimes and not some other times ex: `Fort Union Trading Post National Historic Site Historic District (Boundary Increase)` -- marked as `site` and it's not really a historic district in the way I was thinking...
   - [x] Deal with the geocoding properly
-    - [x] fix the NAx
+    - [x] fix the NAs
   - [x] need to deal with the boundary increase boundary decrease situation that results in duplicates
   still gonna be some issues due to inconsistency in naming:
 <img width="348" height="43" alt="image" src="https://github.com/user-attachments/assets/043c51fc-b8ab-4c2f-a57b-073bf6645aa8" />
 <img width="348" height="43" alt="image" src="https://github.com/user-attachments/assets/4b34184b-6362-4aad-905b-6a4769ae6a2f" />
-- [x] deal with the inconsistencies
 
+- [x] deal with the inconsistencies/bad addresses
+  - [ ] Seth Lore and Irwinton Historic District
+  - [ ] Hot Springs Bathhouse And Commerical Historic District In Truth Or Consequences
+  - [ ] Mount Savage Historic District
+  - [ ] Atlantic Beach Historic District
+  - [ ] Mineral Wells Central Historic District
+  - [ ] a couple in europe and other places...
 
+- [ ] get the territories maps for choropleth
      
 Notes:
 
@@ -61,11 +76,15 @@ considered but DID not do  https://www.census.gov/geographies/reference-files/ti
   - I had to batch this because it kept timing out on me. I used Rimona's splitting+mapping technique
 
 _The following steps were completed in_ `historic_districts_exploration1.2.qmd`
+
 6. Removing unnecessary columns -- `nhl_designated_date` (99% NA), `prefix` (85% NA) `park_name` (98% NA), `level_of_significance_international` (they were all false) **CBL**
 7. Widening areas_of_significance into into binary (0 for false 1 for true) columns
 - used `fastDummies` package
-8. 
- 
+8. Removing duplicates
+  **CBL**
+9. Fixing NA locations
+ **CBL**
+Final clean csv (as of now, 06/24): `historic_districts_clean4`
  
  FIX -- IT'S BASED ON CITY, STATE (i think) INSTEAD OF COUNTY, STATE (WA) **
 
@@ -76,3 +95,10 @@ _The following steps were completed in_ `historic_districts_exploration1.2.qmd`
 
 ### Total acreage of historic districts by state
 <img width="794" height="498" alt="image" src="https://github.com/user-attachments/assets/612d066a-dda1-40f8-8d02-67f1054f03fb" />
+
+### Standardized acreage by state
+<img width="818" height="492" alt="image" src="https://github.com/user-attachments/assets/47a0906c-9ae1-45dd-9f27-bac99e84fe0a" />
+
+### Shiny
+<img width="1469" height="644" alt="image" src="https://github.com/user-attachments/assets/880f73e8-4820-4a7c-962b-74ed5d4eed25" />
+
