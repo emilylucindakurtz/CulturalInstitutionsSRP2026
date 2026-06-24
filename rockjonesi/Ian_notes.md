@@ -444,8 +444,12 @@ I think this is a promising start for how we can present information most effect
 
 I think I need to bring more attention to the libraries data, as I haven't spent as much time visualizing that data.
 
+I want to add layer control to the power plant map but am having issues with the layers actually getting added/removed. Might need help with this.
 
 
+For next time:
+- [ ] More focus on library EDA, epescially pertaining to metro/urban relationships
+- [ ] check in with Rimona about the other industrial data
 
 
 
