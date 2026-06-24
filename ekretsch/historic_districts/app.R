@@ -14,7 +14,8 @@ areas <- read_csv("../../data/Historic Districts/us_areas_cleaned.csv")
 by_state <- historic_districts %>% 
   group_by(state) %>% 
   summarise(total_acreage = sum(acreage_of_property, na.rm=TRUE),
-            total_num_districts = n()) # NEED TO ADD THE COUNTS FOR EACH CATEGORY
+            total_num_districts = n(),
+            across(25:last_col(), \(x) sum(x, na.rm = TRUE))) # NEED TO ADD THE COUNTS FOR EACH CATEGORY
 
 # Get state geometries
 states_sf <- tigris::states(cb = TRUE, resolution = "20m")
@@ -45,7 +46,7 @@ ui <- page_fluid(
     position = "right",
     
     sidebarPanel(
-      textOutput("categories_dist")
+      plotOutput("categories_dist")
     ),
     
     mainPanel(
@@ -88,6 +89,7 @@ server <- function(input, output) {
   })
   
   # MAP CLICKING STUFF -----
+  # Reactive function!!!
   
   # Getting the user input from clicking
   selected_state <- reactiveVal(NULL)
@@ -97,9 +99,16 @@ server <- function(input, output) {
     selected_state(input$map_shape_click$id) # value of NAME for clicked state
   })
   
-  # Output
-  output$categories_dist <- renderText({
-    selected_state()
+  # Output histogram
+  output$categories_dist <- renderPlot({
+    #selected_state()
+    
+    temp_tibble <- tibble(
+      cat = names(by_state[,25:ncol(by_state)]),
+      count = by_state[selected_state(), 25:ncol(by_state)]
+    )
+    ggplot(data = temp_tibble, aes(x = cat, y = count)) +
+      geom_col()
   })
   
 

@@ -66,6 +66,14 @@ by_state <- historic_districts %>%
             total_num_districts = n())
 
 ```
+```{r}
+by_state <- historic_districts %>% 
+  group_by(state) %>% 
+  summarise(total_acreage = sum(acreage_of_property, na.rm=TRUE),
+            total_num_districts = n(),
+            across(25:last_col(), \(x) sum(x, na.rm = TRUE)))
+```
+
 
 ```{r}
 areas <- read_csv("../data/Historic Districts/us_areas_cleaned.csv")
