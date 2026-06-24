@@ -38,16 +38,28 @@ my_palette <- colorNumeric(
 )
 
 # Define UI -----
-ui <- fluidPage(
-  title = "Historic Districts",
-  leafletOutput("map")
+ui <- page_fluid(
+  titlePanel("Historic Districts"),
+  sidebarLayout(
+    position = "right",
+    sidebarPanel(
+      plotOutput("categories_dist")
+    ),
+    mainPanel(
+      title = "Historic Districts",
+      leafletOutput("map")
+    )
+  )
+  
 )
 
 # Define server logic -----
 server <- function(input, output) {
+    
   output$map <- renderLeaflet({
     leaflet(map_data) %>% 
       addProviderTiles("CartoDB.Positron") %>% 
+      setView(lng = -85, lat = 39.50, zoom = 4) %>% 
       addPolygons(
         fillColor = ~my_palette(standardized_hd_acreage),
         fillOpacity = .75,
