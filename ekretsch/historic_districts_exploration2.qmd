@@ -34,7 +34,7 @@ prelim_map
 ```
 
 ```{r}
-# Import cleaned (sort of) dataset
+# Import (mostly) cleaned dataset
 historic_districts <- read_csv("../data/Historic Districts/historic_districts_clean4.csv")
 
 # Mapping w/ leaflet!
