@@ -66,6 +66,7 @@ by_state <- historic_districts %>%
             total_num_districts = n())
 
 ```
+
 ```{r}
 by_state <- historic_districts %>% 
   group_by(state) %>% 
@@ -74,11 +75,31 @@ by_state <- historic_districts %>%
             across(25:last_col(), \(x) sum(x, na.rm = TRUE)))
 ```
 
+```{}
+```
+
+```{r}
+temp_df <- as.data.frame(t(by_state[, 25:ncol(by_state)])) %>% 
+  rename(counts = V1) %>% 
+  tibble::rownames_to_column(var = "category")
+```
+
+```{r}
+temp_df <- by_state %>% 
+  select(state, 4:ncol(by_state)) %>% 
+  column_to_rownames(var = "state") %>%   
+  # ^ Promotes state from a regular column to R row name
+  t() %>% # Transposes (rows become columns, columns become rows) (returns a matrix)
+  as.data.frame() %>% 
+  rownames_to_column(var = "category")
+```
 
 ```{r}
 areas <- read_csv("../data/Historic Districts/us_areas_cleaned.csv")
 ```
+
 cb = TRUE simplfies the file, resolution = 20m is the lowest, this gives 2024 data
+
 ```{r}
 # Get state geometries
 states_sf <- tigris::states(cb = TRUE, resolution = "20m")
@@ -92,13 +113,13 @@ map_data <- states_sf %>%
   mutate(total_acreage_hd = total_acreage) %>% 
   select(-total_acreage)
 ```
+
 ```{r}
 # Standardizing
 # historic district acreage by total state land acreage
 map_data <- map_data %>% 
   mutate(standardized_hd_acreage = total_acreage_hd/land_area_acres) 
 ```
-
 
 ## Standardized historic district area by state
 
@@ -132,16 +153,9 @@ leaflet(map_data) %>%
   )
 ```
 
-
-
-
-
-
 ## Land area by state
-Chloropleth map for \# of acres of districts
-# MAYBE SHOULD JOIN DATA FOR THE TOTAL ACREAGE OF THE WHOLE STATE TO STANDARDIZE 
-# ^ for this should find the area of each state and then divide the acreage by that...
 
+Chloropleth map for \# of acres of districts \# MAYBE SHOULD JOIN DATA FOR THE TOTAL ACREAGE OF THE WHOLE STATE TO STANDARDIZE \# \^ for this should find the area of each state and then divide the acreage by that...
 
 ```{r}
 # Create a color palette for the map
@@ -173,24 +187,17 @@ leaflet(map_data) %>%
   )
 ```
 
-
-
-
 ```{r}
 # 
 # acreage_of_property na.rm = TRUE --> ignore missing values
 
 ```
 
-
-
 ```{r}
 # choosing the var
 
 #explore_var <- map_data$total_num_districts
 ```
-
-
 
 ```{r}
 # Create a color palette for the map

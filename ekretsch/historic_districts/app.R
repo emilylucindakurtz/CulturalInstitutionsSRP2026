@@ -17,6 +17,14 @@ by_state <- historic_districts %>%
             total_num_districts = n(),
             across(25:last_col(), \(x) sum(x, na.rm = TRUE))) # NEED TO ADD THE COUNTS FOR EACH CATEGORY
 
+categories_counts <- by_state %>% 
+  select(state, 4:ncol(by_state)) %>% 
+  column_to_rownames(var = "state") %>%   
+  # ^ Promotes state from a regular column to R row name
+  t() %>% # Transposes (rows become columns, columns become rows) (returns a matrix)
+  as.data.frame() %>% 
+  rownames_to_column(var = "category")
+
 # Get state geometries
 states_sf <- tigris::states(cb = TRUE, resolution = "20m")
 
@@ -102,13 +110,19 @@ server <- function(input, output) {
   # Output histogram
   output$categories_dist <- renderPlot({
     #selected_state()
+    temp_df <- categories_counts %>% 
+      rename(counts = selected_state()) %>% 
+      select(category, counts)
+      
+    ggplot(data = temp_df, aes(x = category, y = counts)) +
+      geom_col() +
+      labs(
+        title =selected_state(),
+        x = "Category",
+        y = "Counts"
+      )
     
-    temp_tibble <- tibble(
-      cat = names(by_state[,25:ncol(by_state)]),
-      count = by_state[selected_state(), 25:ncol(by_state)]
-    )
-    ggplot(data = temp_tibble, aes(x = cat, y = count)) +
-      geom_col()
+    
   })
   
 
@@ -116,48 +130,3 @@ server <- function(input, output) {
 
 # Run the app -----
 shinyApp(ui = ui, server = server)
-
-
-
-
-
-# Old faithful
-
-# Define UI for application that draws a histogram
-# ui <- fluidPage(
-#   
-#   # Application title
-#   titlePanel("Old Faithful Geyser Data"),
-#   
-#   # Sidebar with a slider input for number of bins 
-#   sidebarLayout(
-#     sidebarPanel(
-#       sliderInput("bins",
-#                   "Number of bins:",
-#                   min = 1,
-#                   max = 50,
-#                   value = 30)
-#     ),
-#     
-#     # Show a plot of the generated distribution
-#     mainPanel(
-#       plotOutput("distPlot")
-#     )
-#   )
-# )
-# 
-# # Define server logic required to draw a histogram
-# server <- function(input, output) {
-#   
-#   output$distPlot <- renderPlot({
-#     # generate bins based on input$bins from ui.R
-#     x    <- faithful[, 2]
-#     bins <- seq(min(x), max(x), length.out = input$bins + 1)
-#     
-#     # draw the histogram with the specified number of bins
-#     hist(x, breaks = bins, col = 'darkgray', border = 'white',
-#          xlab = 'Waiting time to next eruption (in mins)',
-#          main = 'Histogram of waiting times')
-#   })
-# }
-# 
