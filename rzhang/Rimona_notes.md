@@ -211,3 +211,7 @@ Then, focus on mapping current data:
 - [ ] conduct basic EDA across the data
 
 Future plans: look at IPUMS or Census data, noting how more social factors such as population, income, or racial demographics may be associated with certain cultural institutions.
+
+## 6/24
+Continue with previous tasks. 
+
