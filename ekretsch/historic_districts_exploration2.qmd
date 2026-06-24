@@ -34,6 +34,18 @@ prelim_map
 ```
 
 ```{r}
+# Import cleaned (sort of) dataset
+historic_districts <- read_csv("../data/Historic Districts/historic_districts_clean4.csv")
+
+# Mapping w/ leaflet!
+prelim_map <- leaflet(data = historic_districts) %>%
+   addTiles() %>%
+   #addProviderTiles("Stadia.StamenWatercolor") %>% 
+   addCircleMarkers(~longitude, ~latitude, popup = ~property_name, radius = 3)
+prelim_map
+```
+
+```{r}
 
 # Mapping w/ leaflet!
 prelim_map2 <- leaflet(data = historic_districts) %>%
@@ -48,8 +60,10 @@ prelim_map2
 ```
 
 ```{r}
-land_area <- read_delim("../data/Historic Districts/2025_Gaz_state_national.txt", delim = "|")
+land_area <- read_csv("../data/Historic Districts/us_areas_cleaned.csv")
 ```
+
+
 
 
 
