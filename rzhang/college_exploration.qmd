@@ -1,0 +1,86 @@
+---
+title: "college_exploration"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(maps)
+library(ggplot2)
+library(sf)
+library(leaflet)
+
+LACs <- read_csv("../data/Colleges/LACs_coordinates.csv")
+HBCUs <- read_csv("../data/Colleges/HBCUs_coordinates.csv")
+```
+
+
+```{r}
+# Combine datasets
+colleges <- bind_rows(
+  LACs %>% mutate(type = "LAC"),
+  HBCUs %>% mutate(type = "HBCU")
+)
+
+# Count by state and type
+top_states <- colleges %>%
+  count(State, type, name = "num_colleges") %>%
+  group_by(type) %>%
+  slice_max(num_colleges, n = 10) %>%
+  ungroup()
+
+# Bar chart
+ggplot(top_states,
+       aes(x = reorder(State, num_colleges),
+           y = num_colleges,
+           fill = type)) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  facet_wrap(~ type, scales = "free_y") +
+  labs(
+    title = "Top States by Number of Colleges",
+    x = "State",
+    y = "Number of Colleges"
+  ) +
+  theme_minimal()
+```
+
+
+```{r}
+leaflet() %>%
+  addTiles() %>%
+
+  addCircleMarkers(
+    data = LACs,
+    lng = ~LON,
+    lat = ~LAT,
+    color = "blue",
+    radius = 4,
+    fillOpacity = 0.8,
+    stroke = FALSE,
+    group = "Liberal Arts Colleges",
+    label = ~`College Name`
+  ) %>%
+
+  addCircleMarkers(
+    data = HBCUs,
+    lng = ~LON,
+    lat = ~LAT,
+    color = "red",
+    radius = 4,
+    fillOpacity = 0.8,
+    stroke = FALSE,
+    group = "HBCUs",
+    label = ~Name
+  ) %>%
+
+  addLayersControl(
+    overlayGroups = c(
+      "Liberal Arts Colleges",
+      "HBCUs"
+    ),
+    options = layersControlOptions(collapsed = FALSE)
+  )
+```
+
+
