@@ -3,7 +3,7 @@
 # Personal notes/things to do/ideas for further analysis:
 - `#\| eval: false`
 - [ ] shiny app where you can select the state and then a bar chart pops up for the cateories
-  - [ ] 
+  - [ ] reverse text stuff
 - [x] do the proportional/standardization thing
   - [x] get data by state for area
 - [ ] Data cleaning:
