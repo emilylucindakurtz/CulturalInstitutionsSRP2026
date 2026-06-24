@@ -1,0 +1,145 @@
+---
+title: "theater_exploration"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(maps)
+library(ggplot2)
+library(sf)
+library(leaflet)
+```
+
+
+```{r}
+nrhp <- read_csv("../data/Theaters/NRHP_all_theater_types_geocoded.csv")
+lhat <- read_csv("../data/Theaters/LHAT_theaters.csv")
+opera <- read_csv("../data/Theaters/opera_america_members.csv")
+```
+
+## NRHP State-level Choropleth
+```{r}
+# count the number of theaters by state
+state_counts <- nrhp %>%
+  count(State, name = "total_theatres") %>%
+  mutate(region = str_to_lower(State))
+
+# get state map shapes
+states_map <- map_data("state")
+
+# join counts to the map
+states_theatres <- states_map %>%
+  left_join(state_counts, by = "region") %>%
+  mutate(total_theatres = replace_na(total_theatres, 0))
+```
+
+```{r}
+# Choropleth map of NRHP theaters across the US by state
+ggplot(states_theatres, aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill = total_theatres), color = "white", linewidth = 0.2) +
+  coord_fixed(1.3) +
+  scale_fill_viridis_c(option = "plasma") +
+  theme_void() +
+  labs(
+    title = "Number of NRHP Theatres by State",
+    fill = "Theatres"
+  )
+```
+
+
+## All Theaters Leaflet
+```{r}
+# clean and add 'source' column to each dataset
+nrhp_map <- nrhp %>%
+  mutate(
+    name = `Property Name`,
+    city = City,
+    state = State,
+    latitude = latitude,
+    longitude = longitude,
+    source = "NRHP",
+    .keep = "none"
+  )
+
+lhat_map <- lhat %>%
+  mutate(
+    name = theatre,
+    city = city,
+    state = state,
+    latitude = latitude,
+    longitude = longitude,
+    source = "LHAT",
+    .keep = "none"
+  )
+
+opera_map <- opera %>%
+  mutate(
+    name = name,
+    city = city,
+    state = state,
+    latitude = latitude,
+    longitude = longitude,
+    source = "Opera America",
+    .keep = "none"
+  )
+
+# join all cleaned datasets
+all_theatres <- bind_rows(nrhp_map, lhat_map, opera_map)
+```
+
+```{r}
+# remove any rows without coordinates
+all_theatres_clean <- all_theatres %>%
+  filter(!is.na(latitude), !is.na(longitude))
+```
+
+```{r}
+# convert to spatial data 
+all_theatres_sf <- all_theatres_clean %>%
+  st_as_sf(coords = c("longitude", "latitude"), crs = 4326
+  )
+```
+
+```{r}
+# creating leaflet spatial map of theaters/opera houses from each dataset
+leaflet(all_theatres_sf) %>%
+  addTiles() %>%
+  
+  addCircleMarkers(
+    data = filter(all_theatres_sf, source == "NRHP"),
+    radius = 3,
+    color = "green",
+    stroke = FALSE,
+    fillOpacity = 0.8,
+    group = "NRHP",
+    popup = ~paste0(name, "<br>", city, ", ", state)
+  ) %>%
+  
+  addCircleMarkers(
+    data = filter(all_theatres_sf, source == "LHAT"),
+    radius = 3,
+    color = "blue",
+    stroke = FALSE,
+    fillOpacity = 0.8,
+    group = "LHAT",
+    popup = ~paste0(name, "<br>", city, ", ", state)
+  ) %>%
+  
+  addCircleMarkers(
+    data = filter(all_theatres_sf, source == "Opera America"),
+    radius = 3,
+    color = "red",
+    stroke = FALSE,
+    fillOpacity = 0.8,
+    group = "Opera America",
+    popup = ~paste0(name, "<br>", city, ", ", state)
+  ) %>%
+  
+  addLayersControl(
+    overlayGroups = c("NRHP", "LHAT", "Opera America"),
+    options = layersControlOptions(collapsed = FALSE)
+  )
+```
+
+
