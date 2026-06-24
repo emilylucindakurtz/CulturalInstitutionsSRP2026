@@ -12,8 +12,8 @@ library(tidygeocoder)
 library(purrr)
 ```
 
-
 ## NRHP Data
+
 ```{r}
 raw_nrhp <- read_csv("../data/Historic Districts/Raw/csv_RAW_national-register-listed_20260522.csv")
 ```
@@ -43,9 +43,7 @@ geocoded_groups <- map(groups,~ geocode(.x, address = Address, method = "arcgis"
 ```{r}
 #bind the groups back together
 all_theaters_geocoded <- bind_rows(geocoded_groups) 
-all_theaters_geocoded
 ```
-
 
 ```{r}
 write_csv(all_theaters_geocoded, "NRHP_all_theater_types_geocoded.csv")
@@ -54,6 +52,7 @@ write_csv(all_theaters_geocoded, "NRHP_all_theater_types_geocoded.csv")
 ## Opera America Data
 
 Checking permission to scrape
+
 ```{r}
 library(robotstxt)
 paths_allowed("https://www.operaamerica.org/membership-directory/#eyJ2aWV3cyI6eyJMSVNUIjowLCJNQVAiOjF9LCJ2aWV3IjowLCJvcmdEaXJlY3RvcnkiOnRydWUsImhpZGVTaWRlYmFyIjp0cnVlLCJzaG93U3RhdGVGaWx0ZXIiOmZhbHNlLCJzaG93QnVkZ2V0RmlsdGVyIjpmYWxzZSwiaW5kaXZpZHVhbFNvcnQiOiJuYW1lIiwiaW5kaXZpZHVhbFNvcnREaXJlY3Rpb24iOiJkIiwiZmlsdGVyQ0EiOmZhbHNlLCJmaWx0ZXJGb2NpIjpbeyJuYW1lIjoiQWN0b3IvRGFuY2VyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IkFnZW50IiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiQXJ0aXN0IFRyYWluZXIiLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJBdWRpZW5jZSBNZW1iZXIiLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJDaG9yZW9ncmFwaGVyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiQ29hY2giLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJDb21wb3NlciIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IkNvbmR1Y3RvciIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IkRlc2lnbmVyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiRHJhbWF0dXJnIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiR2VuZXJhbCBEaXJlY3RvciIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IkxpYnJldHRpc3QiLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJNdXNpY2lhbiIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6Ik5hdGlvbmFsIE9wZXJhIENlbnRlciBVc2VyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiUGlhbmlzdCIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlByZXNzL01lZGlhIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiUHVibGljaXN0IiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiUHVibGlzaGVyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiU2luZ2VyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiU3RhZ2UgRGlyZWN0b3IiLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJTdHVkZW50IiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiU3VwcG9ydGVyIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiVGVhY2hpbmcgQXJ0aXN0IiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiVGVjaG5pY2FsL1Byb2R1Y3Rpb24gUHJvZmVzc2lvbmFsIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiVHJ1c3RlZSIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlZvaWNlIFRlYWNoZXIiLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJWb2ljZSBUeXBlIC0gQWx0byIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlZvaWNlIFR5cGUgLSBCYXJpdG9uZSIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlZvaWNlIFR5cGUgLSBCYXNzIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiVm9pY2UgVHlwZSAtIENvbnRyYWx0byIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlZvaWNlIFR5cGUgLSBDb3VudGVyIFRlbm9yIiwiYWN0aXZlIjpmYWxzZX0seyJuYW1lIjoiVm9pY2UgVHlwZSAtIE1lenpvIFNvcHJhbm8iLCJhY3RpdmUiOmZhbHNlfSx7Im5hbWUiOiJWb2ljZSBUeXBlIC0gU29wcmFubyIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlZvaWNlIFR5cGUgLSBUZW5vciIsImFjdGl2ZSI6ZmFsc2V9LHsibmFtZSI6IlZvbHVudGVlciIsImFjdGl2ZSI6ZmFsc2V9XSwiZmlsdGVyIjp7Im5hbWUiOiIiLCJ0eXBlcyI6W10sImZvY2kiOltdLCJzdGF0ZXMiOltdLCJidWRnZXRzIjpbXSwicGFnZSI6MSwicGFnZVNpemUiOjEyfX0%3D")
@@ -97,7 +96,6 @@ get_num <- function(x, field) {
 }
 ```
 
-
 ```{r}
 #building a table from extracted data
 
@@ -123,4 +121,119 @@ operas$longitude <- as.numeric(operas$longitude)
 #writing csv of all member operas in Opera America
 write_csv(operas, "opera_america_members.csv")
 ```
+
+## League of Historic American Theatres (LHAT)
+```{r}
+# use for-loops to iterate through scraping each state link
+state_abbs <- tolower(state.abb)
+
+all_theatres <- data.frame()
+
+for(state_abbr in state_abbs){
+
+  url <- paste0("https://www.lhat.org/lhat/program-services/theatre-inventory/", state_abbr, "-mbr")
+
+  page <- read_html(url)
+
+  tables <- html_elements(page, ".HtmlContent table")
+
+  # for-loop to iterate through each city table on the state page
+  for(tbl in tables){
+    city <- html_text2(html_element(tbl, "tr:first-child td"))
+
+    rows <- html_elements(tbl, "tr")[-1]
+
+    # for-loop to iterate through each theatre row in the city
+    for(row in rows){
+
+      theatre <- html_text2(html_element(row, "dt a")) #finds a <dt> tag and <a> tag inside
+      
+      # skips rows where theatre names are missing
+      if(length(theatre) == 0 || is.na(theatre) || theatre == ""){
+        next
+        }
+      
+      dds <- html_elements(row, "dd")
+      
+      # gives a missing node when there are not additional details
+      if(length(dds) < 2){
+        next
+        }
+      
+      details <- html_text2(dds[2])
+      
+      # find the year built
+      built <- details %>%
+        str_extract("Built:\\s*\\d{4}") %>%
+        str_remove("Built:\\s*")
+      
+      # find the nunmber of seats
+      seats <- details %>%
+        str_extract("Seats:\\s*[0-9,]+") %>%
+        str_remove("Seats:\\s*") %>%
+        str_remove_all(",")
+      
+      #  Create a one-row data frame with theatre info
+      new_row <- data.frame(
+        state = toupper(state_abbr),
+        city = city,
+        theatre = theatre,
+        built = as.integer(built),
+        seats = as.integer(seats),
+        stringsAsFactors = FALSE
+      )
+      all_theatres <- rbind(all_theatres, new_row)
+    }
+  }
+}
+```
+
+```{r}
+all_theatres <- all_theatres %>%
+  mutate(address = paste(theatre, city, state, sep = ", "))
+```
+
+```{r}
+# geocoding coordinates
+all_theatres <- all_theatres %>% 
+  geocode(address, method = 'arcgis', lat = latitude, long = longitude)
+```
+
+```{r}
+#writing csv of all member theaters in LHAT
+write_csv(all_theatres, "LHAT_theaters.csv")
+```
+
+## Joining NRHP and LHAT Datasets
+```{r}
+#renaming to distinguish datasets
+NRHP_all_theaters_geocoded <- all_theaters_geocoded
+LHAT_theaters <- all_theatres
+```
+
+```{r}
+# change state names to match
+NRHP_all_theaters_geocoded <- NRHP_all_theaters_geocoded %>%
+  mutate(state = state.abb[match(State, toupper(state.name))])
+
+# create column of whether a theater is a member of LHAT
+lhat_lookup <- LHAT_theaters %>%
+  select(theatre, state) %>%
+  distinct() %>%
+  mutate(LHAT_member = TRUE)
+```
+
+```{r}
+# joining datasets by theater and state
+NRHP_LHAT_joined <- NRHP_all_theaters_geocoded %>%
+  left_join(lhat_lookup, by = c(
+    "Property Name" = "theatre", 
+    "state" = "state")) %>%
+  mutate(LHAT_member = ifelse(is.na(LHAT_member), FALSE, LHAT_member))
+```
+
+```{r}
+write_csv(NRHP_LHAT_joined, "NRHP_LHAT_joined.csv")
+```
+
 
