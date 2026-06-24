@@ -5,7 +5,7 @@
 #### Street art
 - [x] start shiny app
   - [x] do reverse text stuff
-  - [ ] make a zoom thing on the state selected
+  - [x] make a zoom thing on the state selected
   - [x] eliminate the ones from the bar graph that have counts = 0
 - [ ] check for consistency in territory names (N. Mariana Islands)
 - [x] start the mapping of standardization
