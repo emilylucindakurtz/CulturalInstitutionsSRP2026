@@ -10,6 +10,7 @@ Interesting note: architecture highest category (for most states i think) except
   - [ ] maybe add a separate page for something else...
     - [ ] for other institutions?
     - [ ] for actually seeing the historic districts
+  - [ ] add option for user to select the category
 - [x] do the proportional/standardization thing
   - [x] get data by state for area
 - [ ] Data cleaning:
