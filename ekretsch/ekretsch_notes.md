@@ -3,9 +3,10 @@
 #### Historic districts
 
 #### Street art
-- [ ] start shiny app
+- [x] start shiny app
+  - [ ] do reverse text stuff
 - [ ] check for consistency in territory names (N. Mariana Islands)
-- [ ] start the mapping of standardization
+- [x] start the mapping of standardization
 
 
 #### News outlets
