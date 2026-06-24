@@ -207,11 +207,11 @@ ggplot(PowerPlants_Clean, aes(x = State, fill = Primary.Energy.Source)) +
   labs(y = "Count")
 
 
-ggplot(Clean_Data, aes(x = State, fill = Primary.Energy.Source)) +
+ggplot(PowerPlants_Clean, aes(x = State, fill = Primary.Energy.Source)) +
   geom_bar(position = "fill", color = "black") +
   scale_fill_brewer(palette =  "Set3") +
   theme(axis.text.x = element_text(angle = 90)) +
   labs(y = "Proportion")
 
-write.csv(Fortune500_Housing, "Fortune500HQ_Housing", row.names = FALSE)
+write.csv(Fortune500_Housing, "Fortune500HQ_Housing.csv", row.names = FALSE)
 
