@@ -17,38 +17,33 @@ nrhp <- read_csv("../data/Theaters/NRHP_all_theater_types_geocoded.csv")
 lhat <- read_csv("../data/Theaters/LHAT_theaters.csv")
 opera <- read_csv("../data/Theaters/opera_america_members.csv")
 ```
-
-## NRHP State-level Choropleth
+## EDA Graphs
 ```{r}
-# count the number of theaters by state
-state_counts <- nrhp %>%
-  count(State, name = "total_theatres") %>%
-  mutate(region = str_to_lower(State))
-
-# get state map shapes
-states_map <- map_data("state")
-
-# join counts to the map
-states_theatres <- states_map %>%
-  left_join(state_counts, by = "region") %>%
-  mutate(total_theatres = replace_na(total_theatres, 0))
-```
-
-```{r}
-# Choropleth map of NRHP theaters across the US by state
-ggplot(states_theatres, aes(x = long, y = lat, group = group)) +
-  geom_polygon(aes(fill = total_theatres), color = "white", linewidth = 0.2) +
-  coord_fixed(1.3) +
-  scale_fill_viridis_c(option = "plasma") +
-  theme_void() +
+# Theater count by state
+ggplot(nrhp %>%
+         count(State, sort = TRUE) %>%
+         slice_max(n, n = 15), aes(reorder(State, n), n, fill = State)) +
+  geom_col() +
+  coord_flip() +
   labs(
-    title = "Number of NRHP Theatres by State",
-    fill = "Theatres"
+    title = "Top 15 States with the Most Historic Theaters (NRHP)",
+    y = "State",
+    x = "Number of Historic Theaters"
+  )
+
+# Opera count by state
+ggplot(opera %>%
+         count(state, sort = TRUE) %>%
+         slice_max(n, n = 15),aes(reorder(state, n), n, fill = state)) +
+  geom_col() +
+  coord_flip() +
+  labs(
+    title = "Top 15 States with the Most Operas (Opera America)",
+    y = "State",
+    x = "Number of Operas"
   )
 ```
 
-
-## All Theaters Leaflet
 ```{r}
 # clean and add 'source' column to each dataset
 nrhp_map <- nrhp %>%
@@ -87,6 +82,55 @@ opera_map <- opera %>%
 # join all cleaned datasets
 all_theatres <- bind_rows(nrhp_map, lhat_map, opera_map)
 ```
+
+
+```{r}
+# Record count of each dataset
+source_counts <- all_theatres %>%
+  count(source, sort = TRUE)
+
+ggplot(source_counts, aes(x = source, y = n, fill = source)) +
+  geom_col() +
+  coord_flip() +
+  labs(
+    title = "Number of Theatre Records by Dataset",
+    x = "Dataset",
+    y = "Number of records"
+  ) +
+  theme_minimal()
+```
+
+## NRHP State-level Choropleth
+```{r}
+# count the number of theaters by state
+state_counts <- nrhp %>%
+  count(State, name = "total_theatres") %>%
+  mutate(region = str_to_lower(State))
+
+# get state map shapes
+states_map <- map_data("state")
+
+# join counts to the map
+states_theatres <- states_map %>%
+  left_join(state_counts, by = "region") %>%
+  mutate(total_theatres = replace_na(total_theatres, 0))
+```
+
+```{r}
+# Choropleth map of NRHP theaters across the US by state
+ggplot(states_theatres, aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill = total_theatres), color = "white", linewidth = 0.2) +
+  coord_fixed(1.3) +
+  scale_fill_viridis_c(option = "plasma") +
+  theme_void() +
+  labs(
+    title = "Number of NRHP Theatres by State",
+    fill = "Theatres"
+  )
+```
+
+
+## All Theaters Leaflet
 
 ```{r}
 # remove any rows without coordinates
