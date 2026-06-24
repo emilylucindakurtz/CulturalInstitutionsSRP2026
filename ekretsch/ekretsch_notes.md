@@ -1,12 +1,32 @@
 # Emily Kretschmer's Notes
+## June 23
+#### Historic districts
+- [X] get the land area via census scraping (make sure to document!)
+- [ ] start shiny app
+- [x] widen the categorical variable
+- [x] remove dupes
+- [ ] fix documentation of cleaning
+- [ ] check for consistency in territory names (N. Mariana Islands)
+
+#### Street art
+- [ ] 
+
+#### News outlets
+- [ ] import data into R
+
+#### Libraries
+- [ ] investigate careeronestop
+
+Notes:
+- `addProviderTiles("Stadia.StamenWatercolor")` love this
 
 ## June 22
 - think about questions
 - libraries
 - tf idf thing
 
-#### Historic Districts
-- [ ] fix washington etc addresses
+#### Historic districts
+- [x] fix washington etc addresses
 - [x] make a choropleth!
 - [x] double check that historic districts is actually correct (right number of rows, etc.)
 - [x] double check washington addresses... def wrong for some (ex seattle chinatown?)
@@ -36,11 +56,6 @@
   
 }
 ```
-#### Street art
-- [ ] 
-#### News outlets
-- [ ] import data into R
-#### Libraries
 
 ## June 19
 Goals:
