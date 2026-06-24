@@ -1,9 +1,11 @@
 # Emily's Notes for Historic Districts Dataset + Analysis
+Interesting note: architecture highest category (for most states i think) except for alaska where it is industry
 
 # Personal notes/things to do/ideas for further analysis:
 - `#\| eval: false`
 - [ ] shiny app where you can select the state and then a bar chart pops up for the cateories
-  - [ ] reverse text stuff
+  - [x] reverse text stuff
+    - [ ] come back to this later maybe
 - [x] do the proportional/standardization thing
   - [x] get data by state for area
 - [ ] Data cleaning:
