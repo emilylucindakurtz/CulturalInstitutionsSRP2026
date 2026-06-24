@@ -2,8 +2,9 @@
 
 # Personal notes/things to do/ideas for further analysis:
 - `#\| eval: false`
-- [ ] shiny app where you can select the state and then a histogram/bar chart pops up for the cateories
-- [ ] do the proportional/standardization thing
+- [ ] shiny app where you can select the state and then a bar chart pops up for the cateories
+  - [ ] 
+- [x] do the proportional/standardization thing
   - [x] get data by state for area
 - [ ] Data cleaning:
   - [ ] `category of property` variable -- district for most, but site for some... but it is all caps sometimes and not some other times ex: `Fort Union Trading Post National Historic Site Historic District (Boundary Increase)` -- marked as `site` and it's not really a historic district in the way I was thinking...
@@ -87,3 +88,10 @@ Final clean csv (as of now, 06/24): `historic_districts_clean4`
 
 ### Total acreage of historic districts by state
 <img width="794" height="498" alt="image" src="https://github.com/user-attachments/assets/612d066a-dda1-40f8-8d02-67f1054f03fb" />
+
+### Standardized acreage by state
+<img width="818" height="492" alt="image" src="https://github.com/user-attachments/assets/47a0906c-9ae1-45dd-9f27-bac99e84fe0a" />
+
+### Shiny
+<img width="1469" height="644" alt="image" src="https://github.com/user-attachments/assets/880f73e8-4820-4a7c-962b-74ed5d4eed25" />
+
