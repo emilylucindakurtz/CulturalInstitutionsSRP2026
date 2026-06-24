@@ -7,6 +7,8 @@ library(tigris)
 
 library(tidyverse)
 
+library(janitor)
+
 # Getting data n such -----
 historic_districts <- read_csv("../../data/Historic Districts/historic_districts_clean4.csv")
 areas <- read_csv("../../data/Historic Districts/us_areas_cleaned.csv")
@@ -23,7 +25,8 @@ categories_counts <- by_state %>%
   # ^ Promotes state from a regular column to R row name
   t() %>% # Transposes (rows become columns, columns become rows) (returns a matrix)
   as.data.frame() %>% 
-  rownames_to_column(var = "category")
+  rownames_to_column(var = "category") %>% 
+  mutate(category = gsub("_", " ", str_remove(category, "aos_")))
 
 # Get state geometries
 states_sf <- tigris::states(cb = TRUE, resolution = "20m")
@@ -112,7 +115,8 @@ server <- function(input, output) {
     #selected_state()
     temp_df <- categories_counts %>% 
       rename(counts = selected_state()) %>% 
-      select(category, counts)
+      select(category, counts) %>% 
+      filter(counts >0)
       
     ggplot(data = temp_df, aes(y = reorder(category, counts), x = counts)) +
       geom_col() +
