@@ -14,7 +14,7 @@ areas <- read_csv("../../data/Historic Districts/us_areas_cleaned.csv")
 by_state <- historic_districts %>% 
   group_by(state) %>% 
   summarise(total_acreage = sum(acreage_of_property, na.rm=TRUE),
-            total_num_districts = n())
+            total_num_districts = n()) # NEED TO ADD THE COUNTS FOR EACH CATEGORY
 
 # Get state geometries
 states_sf <- tigris::states(cb = TRUE, resolution = "20m")
@@ -40,11 +40,14 @@ my_palette <- colorNumeric(
 # Define UI -----
 ui <- page_fluid(
   titlePanel("Historic Districts"),
+  
   sidebarLayout(
     position = "right",
+    
     sidebarPanel(
-      plotOutput("categories_dist")
+      textOutput("categories_dist")
     ),
+    
     mainPanel(
       title = "Historic Districts",
       leafletOutput("map")
@@ -55,12 +58,19 @@ ui <- page_fluid(
 
 # Define server logic -----
 server <- function(input, output) {
+  
+  output$categories_dist <- renderPlot({
+    ggplot()
+  })
     
   output$map <- renderLeaflet({
     leaflet(map_data) %>% 
       addProviderTiles("CartoDB.Positron") %>% 
+      
       setView(lng = -85, lat = 39.50, zoom = 4) %>% 
+      
       addPolygons(
+        layerId = ~NAME, # so it takes the NAME column from map_data
         fillColor = ~my_palette(standardized_hd_acreage),
         fillOpacity = .75,
         color = "white", # border color
@@ -68,6 +78,7 @@ server <- function(input, output) {
         smoothFactor = 0.5, # slightly crisper borders -- default is 1 (higher values > more simplification > jaggier borders but shorter rendering)
         # add the highlight/hover and tooltip things
       ) %>% 
+      
       addLegend(
         pal = my_palette,
         value = map_data$standardized_hd_acreage, # same as values   = ~total_num_districts
@@ -75,6 +86,23 @@ server <- function(input, output) {
         title = "Hist. Dist. area/state land area"
       )
   })
+  
+  # MAP CLICKING STUFF -----
+  
+  # Getting the user input from clicking
+  selected_state <- reactiveVal(NULL)
+  
+  # Get the state clicked
+  observeEvent(input$map_shape_click, {
+    selected_state(input$map_shape_click$id) # value of NAME for clicked state
+  })
+  
+  # Output
+  output$categories_dist <- renderText({
+    selected_state()
+  })
+  
+
 }
 
 # Run the app -----
