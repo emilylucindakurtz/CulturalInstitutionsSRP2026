@@ -75,7 +75,7 @@ by_state <- historic_districts %>%
             across(25:last_col(), \(x) sum(x, na.rm = TRUE)))
 ```
 
-```{}
+```         
 ```
 
 ```{r}

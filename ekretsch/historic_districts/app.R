@@ -107,20 +107,18 @@ server <- function(input, output) {
   
   # Get the state clicked
   observeEvent(input$map_shape_click, {
+    
     selected_state(input$map_shape_click$id) # value of NAME for clicked state
     
     # Get the bounding box for that state so we can zoom
-    bbox_data <- map_data[NAME == selected_state(),]
+    bbox_data <- map_data[map_data$NAME == selected_state(), "geometry"]
     bbox <- st_bbox(bbox_data)
     # ^ st_bbox() is a function in the R sf (Simple Features) package used to calculate or return the bounding box of a spatial object. It returns a named numeric vector containing the minimum and maximum coordinates (\(xmin, ymin, xmax, ymax\)) that define the rectangular extent of a spatial dataset
     
     leafletProxy("map") %>% 
-      invokeMethod(
-        "flyToBounds",
-        list(
-          list(bbox[["ymin"]], bbox[["xmin"]]),
-          list(bbox[["ymax"]], bbox[["xmax"]])
-        )
+      fitBounds(
+        lng1 = bbox[["xmin"]], lat1 = bbox[["ymin"]],
+        lng2 = bbox[["xmax"]], lat2 = bbox[["ymax"]]
       )
   })
   
