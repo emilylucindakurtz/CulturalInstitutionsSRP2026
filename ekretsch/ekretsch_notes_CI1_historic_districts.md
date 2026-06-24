@@ -62,11 +62,15 @@ considered but DID not do  https://www.census.gov/geographies/reference-files/ti
   - I had to batch this because it kept timing out on me. I used Rimona's splitting+mapping technique
 
 _The following steps were completed in_ `historic_districts_exploration1.2.qmd`
+
 6. Removing unnecessary columns -- `nhl_designated_date` (99% NA), `prefix` (85% NA) `park_name` (98% NA), `level_of_significance_international` (they were all false) **CBL**
 7. Widening areas_of_significance into into binary (0 for false 1 for true) columns
 - used `fastDummies` package
-8. 
- 
+8. Removing duplicates
+  **CBL**
+9. Fixing NA locations
+ **CBL**
+Final clean csv (as of now, 06/24): `historic_districts_clean4`
  
  FIX -- IT'S BASED ON CITY, STATE (i think) INSTEAD OF COUNTY, STATE (WA) **
 
