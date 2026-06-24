@@ -114,12 +114,12 @@ server <- function(input, output) {
       rename(counts = selected_state()) %>% 
       select(category, counts)
       
-    ggplot(data = temp_df, aes(x = category, y = counts)) +
+    ggplot(data = temp_df, aes(y = reorder(category, counts), x = counts)) +
       geom_col() +
       labs(
         title =selected_state(),
-        x = "Category",
-        y = "Counts"
+        y = "Category",
+        x = "Counts"
       )
     
     
