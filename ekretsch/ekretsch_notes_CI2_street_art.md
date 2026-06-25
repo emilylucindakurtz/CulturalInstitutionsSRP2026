@@ -2,6 +2,10 @@
 
 # Personal notes/things to do:
 
+Notes from 06/25 -- working on doing text analysis and grouping by regions, and I have noticed one thing in particular:
+
+There are a lot of local street art institutions -- kotis street art (greensboro, nc), el muralcho (houston, tx). These are often mentioned in the descriptions. Although I am struggling with getting info from the text analysis about the sentiments, I definitely have noticed that there are groups/individuals that care very deeply about collecting/documenting/sharing information about local murals. It seems to be a very local thing that some people are very passionate about.
+
 remove the photo created + date situation? unsure... -'photo taken' or 'curated by' -  (more html tags too?) -project -mural -NA -art - the place... - numbers
 
 - [ ] do the text analysis recommended by Emily Kurtz
