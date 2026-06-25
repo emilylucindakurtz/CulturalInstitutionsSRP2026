@@ -13,6 +13,11 @@ library(tidytext)
 library(leaflet)
 library(lubridate)
 library(arcgisgeocode)
+
+library(tigris)
+library(sf)
+library(ggplot2)
+library(dplyr)
 ```
 
 ## Street art !
@@ -105,15 +110,6 @@ murals_description_words <- murals_clean %>%
 ## Group by region
 
 ```{r}
-# I was thinking use the long/lat because the city names aren't great for this
-```
-
-```{r}
-library(tigris)
-library(sf)
-library(ggplot2)
-library(dplyr)
-
 # Cache shapefiles so you don't have to re-download them
 options(tigris_use_cache = TRUE)
 
@@ -128,38 +124,6 @@ ggplot() +
   geom_sf(data = region_polygons, aes(fill = NAME), color = "white")
 ```
 
-
-```{r}
-# Find the regions for each
-#murals_clean <- murals_clean %>% 
- # mutate(region = NA)
-
-
-#for(i in 1:ncol(murals_clean)){
-#  for(n in 1:4){
-#    if(st_intersects(region_polygons[n, "geometry"], murals_clean[i, "geometry"])){
-#      murals_clean[i, region] <- region_polygons[n, "NAME"]
-#    }
-#  }
-#}
-
-```
-
-```{r}
-# Find the regions for each
-#murals_clean <- st_as_sf(murals_clean, coords = c("longitude", "latitude"), crs = 4326)
-
-#murals_clean_regions <- murals_clean[0,] %>% 
-#  mutate(region = NA)
-
-#for(i in 1:4){
-#  print(region_polygons[i, "NAME"])
-#  temp_points <- st_filter(murals_clean, region_polygons[i,]) %>% 
-#    mutate(region = region_polygons[i, "NAME"])
-#  murals_clean_regions <- rbind(murals_clean_regions, temp_points)
-#}
-
-```
 ```{r}
 # https://sunsp.net/rspatial_book/spatialops.html 2.5
 # Automatically filters murals inside polygons AND pulls over the "NAME" column
@@ -172,70 +136,3 @@ murals_clean_regions <- st_join(murals_clean, region_polygons, join = st_within)
 # st_intersects could theoretically also work but it would include on teh borders
 # st_contains would work if the two dfs were switched (bc a point can't contain a polygon)
 ```
-```{r}
-#murals_clean_regions <- 
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```{r}
-library(sf)
-
-# Create an example data frame
-df <- data.frame(
-  name = c("Point A", "Point B"),
-  lon  = c(-77.0369, -74.0060),
-  lat  = c(38.8977, 40.7128)
-)
-
-# Convert the data frame to a spatial object
-# Note: "coords" must list the longitude column first, then latitude
-sf_points <- st_as_sf(df, coords = c("lon", "lat"), crs = 4326)
-
-print(sf_points)
-```
-
-
-```{r}
-# Install and load the package
-library(tidygeocoder)
-#library(arcgisgeocode)
-
-
-
-# Reverse geocode and fetch full results
-results <- murals_clean[1,] %>%
-  tidygeocoder::reverse_geocode(
-    lat = latitude, 
-    long = longitude, 
-    method = "osm"
-  )
-
-
-# View the extracted administrative regions
-# OSM provides columns like 'state', 'county', 'region', or 'country'
-print(results[, c("name", "state", "county", "country")])
-```
-
-
-
-
-
-
