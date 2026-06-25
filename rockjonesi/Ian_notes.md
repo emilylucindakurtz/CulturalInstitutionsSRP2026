@@ -451,7 +451,10 @@ For next time:
 - [ ] More focus on library EDA, epescially pertaining to metro/urban relationships
 - [ ] check in with Rimona about the other industrial data
 
+## June 25
 
+Was suggested that I expand the focus of my housing map: include housing information for all US counties to make the housing prices in the corporate HQ county location easily comparable. 
+- done, but this housing dataset is missing information on three states: LA, AK, and CT. However, CT might be solveable since the missing data arises from them shifting their county structure and naming.
 
 
 
