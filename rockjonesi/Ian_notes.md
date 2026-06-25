@@ -459,5 +459,28 @@ Was suggested that I expand the focus of my housing map: include housing informa
 - I also was hoping to find a (at least) semi-complete dataset with information about founding dates of the fortune 500 companies, but it seems like I would have to peice together multiple historical data reports, some of which are behind the Forunte websites subscriber wall. I think this will take more energy than it is worth in the end, and I will shift to trying to load multiple years of housing data instead.
 
 
+- updated the housing map to reflect all county 2025 Q4 median housing prices.
+- found additional county-level housing data from the FHFA.
+  - https://www.fhfa.gov/data/hpi/datasets?tab=annual-data
+  - large comprehensive dataset providing county HPI and % changes since 1975
+  - Will look for ways to incorporate it, maybe creating another shiny app with a slider availible to show price change overtime.
+    - How will time related to the corporate headquarters though if they are stagnant?
+    - Also, HPI is a more complex metric to understand so maybe also keep the median comparison for 2025, and then just shade by HPI % change?
+      - still trying to think how to most effectively work with this large dataset.
+
+- also using Emily's code that she sent as a framework, I updated my shiny app so that it has the click-to-zoom feature. Pretty cool, thanks Emily.
+- I think visually, the user interface could use improvements, but I think it presents most of the information that can be drawn from that dataset as it stands
+  - the only thing left to explore is electric summar production in MW. Maybe I could size the dots, or shade by net MW production for each state as a way of exploring this
+- Prof. Emily also sent data center dataset, and I am trying to think about how to incorporate that? Maybe have sperate EDA graphs, but then could relate them through net MW production vs MW needed to run the data centers -- Emily's suggestion.
+  - Will spend more time thinking about this
+ 
+  - Also still haven't gotten back to library stuff; I would like to soon.
+    - The rabbit hole of industrial institutions has been very robust and interesting though
+      - Emily did say that really in depth in one area could be fine if time doesn't allow for more, but I think I'll be able to make it work hopefully
+
+  - Have taken a large break from sports venues, what more could I do with this?
+ 
+  - Also haven't checked in with my groups recently, so maybe should look to do that.
+
 
 
