@@ -456,7 +456,7 @@ For next time:
 Was suggested that I expand the focus of my housing map: include housing information for all US counties to make the housing prices in the corporate HQ county location easily comparable. 
 - done, but this housing dataset is missing information on three states: LA, AK, and CT. However, CT might be solveable since the missing data arises from them shifting their county structure and naming.
 
-
+- I also was hoping to find a (at least) semi-complete dataset with information about founding dates of the fortune 500 companies, but it seems like I would have to peice together multiple historical data reports, some of which are behind the Forunte websites subscriber wall. I think this will take more energy than it is worth in the end, and I will shift to trying to load multiple years of housing data instead.
 
 
 
