@@ -2,6 +2,8 @@
 ## June 25
 #### Historic districts
 - [ ] check for consistency in territory names (N. Mariana Islands)
+- [ ] add filter for state + type of industry (drop down)
+- [ ] display dataset with those filters ^
 
 #### Street art
 - [x] read emily's notes
