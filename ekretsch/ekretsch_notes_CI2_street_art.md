@@ -19,6 +19,7 @@ remove the photo created + date situation? unsure... -'photo taken' or 'curated 
 - [ ] consider larger unit of analysis.
 - [ ] third consideration - break down by some categerocial variable (be it politics, region, etc.) and do text analysis that identifies the polarized words - Emily to send literature/tutorial
 
+- [ ] could potentially make it even more narrow: https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf
 
 readings:
 - [ ] https://cran.r-project.org/web/packages/conversim/vignettes/Analyzing_Similarities_between_Two_Long_Speeches.html
