@@ -1,8 +1,20 @@
 # Emily Kretschmer's Notes
-## June 24
+## June 25
 #### Historic districts
+- [ ]
 
 #### Street art
+- [ ] read emily's notes
+
+#### News outlets
+- [ ] import data into R
+
+#### Libraries
+- [ ] get api
+
+
+## June 24
+#### Historic districts
 - [x] start shiny app
   - [x] do reverse text stuff
   - [x] make a zoom thing on the state selected
@@ -10,13 +22,9 @@
 - [ ] check for consistency in territory names (N. Mariana Islands)
 - [x] start the mapping of standardization
 
-
-#### News outlets
-- [ ] import data into R
-
 #### Libraries
-- [ ] investigate careeronestop
-
+- [x] investigate careeronestop
+- [x] email request api key
 
 ## June 23
 #### Historic districts
