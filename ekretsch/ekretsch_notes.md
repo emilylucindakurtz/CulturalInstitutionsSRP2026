@@ -1,4 +1,13 @@
 # Emily Kretschmer's Notes
+
+## June 26/7/8
+#### Historic districts
+- [ ] 
+
+### Street art
+- [ ] add more stop words
+- [ ] 
+
 ## June 25
 #### Historic districts
 - [ ] check for consistency in territory names (N. Mariana Islands)
@@ -7,11 +16,12 @@
 
 #### Street art
 - [x] read emily's notes
-- [ ] make robot help with custom stop words, see what it looks like. consider larger unit of analysis.
-- [ ] third consideration - break down by some categerocial variable (be it politics, region, etc.) and do text analysis that identifies the polarized words - Emily to send literature/tutorial
+- [x] make robot help with custom stop words, see what it looks like. consider larger unit of analysis.
+- [x] third consideration - break down by some categerocial variable (be it politics, region, etc.) and do text analysis
+  - [ ] that identifies the polarized words
 - [x] read emily's readings
 - [x] get point geometry for each mural
-- [ ] get region for each mural
+- [x] get region for each mural
 
 #### News outlets
 - [ ] import data into R
