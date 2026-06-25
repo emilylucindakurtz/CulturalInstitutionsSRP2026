@@ -3,4 +3,21 @@
 # Personal notes/things to do:
 
 remove the photo created + date situation? unsure... -'photo taken' or 'curated by' -  (more html tags too?) -project -mural -NA -art - the place... - numbers
+
 - [ ] do the text analysis recommended by Emily Kurtz
+- [ ] make robot help with custom stop words, see what it looks like.
+- [ ] consider larger unit of analysis.
+- [ ] third consideration - break down by some categerocial variable (be it politics, region, etc.) and do text analysis that identifies the polarized words - Emily to send literature/tutorial
+
+
+readings:
+- [ ] https://cran.r-project.org/web/packages/conversim/vignettes/Analyzing_Similarities_between_Two_Long_Speeches.html
+- [ ] https://medium.com/@celine.vdr/natural-language-processing-word-embeddings-e0b2edc773d2
+- [x] https://www.google.com/amp/s/www.r-bloggers.com/2015/10/text-mining-analysis-some-theory-and-practice-in-r/amp/
+  - [ ] couldn't access the article within here that had the info on how to do it
+
+
+cosine similarity
+
+tf-idf
+`TF-IDF (Term Frequency-Inverse Document Frequency) is a numerical statistic used in text analysis to reflect how important a word is to a document in a collection or corpus. It highlights words that are frequent in a specific document but rare across all documents, making them highly characteristic`
