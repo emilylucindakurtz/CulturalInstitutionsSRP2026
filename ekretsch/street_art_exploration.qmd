@@ -20,7 +20,9 @@ library(ggplot2)
 library(dplyr)
 ```
 
-## Street art !
+# Street art !
+
+## Importing data / cleaning / wrangling
 
 ```{r}
 # Reading the now-comma-free headers + the rest and cleaning
@@ -29,7 +31,7 @@ murals <- read_csv("../data/Murals/streetartcities_US_2026-06.csv",
 
 murals <- murals %>% 
   mutate(across(32:ncol(murals), as.character)) %>% #otherwise it tries to parse them as lgl
-  clean_names() #%>% # From janior package :)
+  clean_names()
 ```
 
 ```{r}
@@ -38,7 +40,8 @@ murals_clean <- murals %>%
   #select(where(function(x) !all(is.na(x)))) # could also do the ~ shorthand
   remove_empty("cols") %>% # From janitor package
   select(-country) %>% # It's US for all here
-  select(1:attribute_last_seen) %>% # removing the rest of the cols since most are almost 100% NA and not really helpful for me
+  select(1:attribute_last_seen) %>% 
+  # ^ removing the rest of the cols since most are almost 100% NA and not really helpful for me
   mutate(description_lower = tolower(description)) # for text analysis? or do later
 ```
 
@@ -51,6 +54,39 @@ for(i in 1:ncol(murals_clean)){
 }
 ```
 
+### Getting regions
+
+```{r}
+# Cache shapefiles so you don't have to re-download them
+options(tigris_use_cache = TRUE)
+
+# Download cartographic boundary polygons for US Census Regions
+region_polygons <- regions() %>% 
+  st_transform(crs = 4326) # ensuring the same coordinate reference systems
+```
+
+```{r}
+# Lil chart of regions
+ggplot() +
+  geom_sf(data = region_polygons, aes(fill = NAME), color = "white")
+```
+
+```{r}
+# https://sunsp.net/rspatial_book/spatialops.html 2.5
+# Automatically filters murals inside polygons AND pulls over the "NAME" column
+murals_clean <- st_as_sf(murals_clean, coords = c("longitude", "latitude"), crs = 4326)
+murals_clean <- st_join(murals_clean, region_polygons, join = st_within) %>%
+  #filter(!is.na(NAME)) %>%       # Optional: removes murals that didn't fall into any region
+  rename(region = NAME) %>% 
+  select(-c(31, 32, 33, 35, 36, 37, 38))
+
+# st_intersects could theoretically also work but it would include on the borders
+# st_contains would work if the two dfs were switched (bc a point can't contain a polygon)
+```
+
+## Text analysis
+
+### Tokenizing
 ```{r}
 # Text analysis of description
 # Just part 1 -- tokenizing
@@ -77,7 +113,7 @@ custom_stop_words <- c(
   "through", "impermanent", # "impermanent" is included as domain-specific — it appeared 469 times, almost certainly from a boilerplate template phrase rather than meaningful content.
   
   # URL / web noise
-  "https", "http", "com", "www", "instagram",
+  "https", "http", "com", "www", "instagram", "www.instagram.com"
   
   # Emily's words
   NA, "nbsp", "project", "painting", "street", "NA", "san"
@@ -90,44 +126,14 @@ custom_stop_words <- c(
  custom_df <- tibble(word = custom_stop_words, lexicon = "custom")
  stop_words_combined <- bind_rows(stop_words, custom_df)
 
-murals_description_words <- murals_clean %>% 
+murals_descrip_words <- murals_clean %>% 
   #mutate(description_lower = str_remove_all(description_lower, "\\d+")) %>% # removing nums (like years, etc)
   unnest_tokens(output = word, input = description_lower) %>% 
   #anti_join(get_stopwords(source = "stopwords-iso"), by="word") %>% #could change the source...
   anti_join(stop_words_combined, by = "word")
 ```
 
-## Group by region
-
-```{r}
-# Cache shapefiles so you don't have to re-download them
-options(tigris_use_cache = TRUE)
-
-# Download cartographic boundary polygons for US Census Regions
-region_polygons <- regions() %>% 
-  st_transform(crs = 4326) # ensuring the same coordinate reference systems
-```
-
-```{r}
-# Lil chart of regions
-ggplot() +
-  geom_sf(data = region_polygons, aes(fill = NAME), color = "white")
-```
-
-```{r}
-# https://sunsp.net/rspatial_book/spatialops.html 2.5
-# Automatically filters murals inside polygons AND pulls over the "NAME" column
-murals_clean <- st_as_sf(murals_clean, coords = c("longitude", "latitude"), crs = 4326)
-murals_clean_regions <- st_join(murals_clean, region_polygons, join = st_within) %>%
-  #filter(!is.na(NAME)) %>%       # Optional: removes murals that didn't fall into any region
-  rename(region = NAME) %>% 
-  select(-c(31, 32, 33, 35, 36, 37, 38))
-
-# st_intersects could theoretically also work but it would include on the borders
-# st_contains would work if the two dfs were switched (bc a point can't contain a polygon)
-```
-
-## Text analysis by region
+### Prev
 ```{r}
 # IDEAS:
 # region, state
@@ -136,15 +142,17 @@ murals_clean_regions <- st_join(murals_clean, region_polygons, join = st_within)
 # size of city
 
 # Prev:
-murals_description_words %>% 
-  group_by(city_id) %>% 
-  count(word) %>% 
-  slice_max(n, n = 3)
+#murals_descrip_words %>% 
+#  group_by(city_id) %>% 
+#  count(word) %>% 
+#  slice_max(n, n = 3)
 ```
+
+### By region
+
 ```{r}
-murals_clean_regions_tokens %>% 
+words_by_region <- murals_descrip_words %>% 
   group_by(region) %>% 
-  count(word) %>% 
-  slice_max(n, n = 10)
+  count(word)
 ```
 
