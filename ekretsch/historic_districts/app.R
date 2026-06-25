@@ -133,7 +133,7 @@ server <- function(input, output) {
     ggplot(data = temp_df, aes(y = reorder(category, counts), x = counts)) +
       geom_col() +
       labs(
-        title =selected_state(),
+        title = selected_state(),
         y = "Category",
         x = "Counts"
       )

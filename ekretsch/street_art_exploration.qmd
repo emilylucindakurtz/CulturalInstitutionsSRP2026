@@ -3,6 +3,7 @@ title: "murals_exploration"
 format: html
 editor: visual
 ---
+
 ```{r}
 # Load packages
 library(tidyverse)
@@ -19,7 +20,9 @@ library(arcgisgeocode)
 ```{r}
 # Reading the now-comma-free headers + the rest and cleaning
 murals <- read_csv("../data/Murals/streetartcities_US_2026-06.csv",
-                   na = c("", "NA", "Unknown", "Untitled")) %>% 
+                   na = c("", "NA", "Unknown", "Untitled"))
+
+murals <- murals %>% 
   mutate(across(32:ncol(murals), as.character)) %>% #otherwise it tries to parse them as lgl
   clean_names() #%>% # From janior package :)
 ```
@@ -52,6 +55,11 @@ remove_words <- tibble(
 #conservative vs liberal wrods/polarizing words
 # west coast
 # size of city
+
+
+
+
+
 
 murals_description_words <- murals_clean %>% 
   mutate(description_lower = str_remove_all(description_lower, "\\d+")) %>% # removing nums (like years, etc)
