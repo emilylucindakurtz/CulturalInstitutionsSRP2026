@@ -131,24 +131,52 @@ ggplot() +
 
 ```{r}
 # Find the regions for each
-murals_clean <- murals_clean %>% 
-  mutate(region = NA)
+#murals_clean <- murals_clean %>% 
+ # mutate(region = NA)
 
-murals_clean <- st_as_sf(murals_clean, coords = c("longitude", "latitude"), crs = 4326)
 
-for(i in 1:ncol(murals_clean)){
-  for(n in 1:4){
-    if(st_intersects(region_polygons[n, "geometry"], murals_clean[i, "geometry"])){
-      murals_clean[i, region] <- region_polygons[n, "NAME"]
-    }
-  }
-}
+#for(i in 1:ncol(murals_clean)){
+#  for(n in 1:4){
+#    if(st_intersects(region_polygons[n, "geometry"], murals_clean[i, "geometry"])){
+#      murals_clean[i, region] <- region_polygons[n, "NAME"]
+#    }
+#  }
+#}
 
 ```
 
 ```{r}
-points_inside <- st_filter(murals_clean, region_polygons[2,])
+# Find the regions for each
+#murals_clean <- st_as_sf(murals_clean, coords = c("longitude", "latitude"), crs = 4326)
+
+#murals_clean_regions <- murals_clean[0,] %>% 
+#  mutate(region = NA)
+
+#for(i in 1:4){
+#  print(region_polygons[i, "NAME"])
+#  temp_points <- st_filter(murals_clean, region_polygons[i,]) %>% 
+#    mutate(region = region_polygons[i, "NAME"])
+#  murals_clean_regions <- rbind(murals_clean_regions, temp_points)
+#}
+
 ```
+```{r}
+# https://sunsp.net/rspatial_book/spatialops.html 2.5
+# Automatically filters murals inside polygons AND pulls over the "NAME" column
+murals_clean <- st_as_sf(murals_clean, coords = c("longitude", "latitude"), crs = 4326)
+murals_clean_regions <- st_join(murals_clean, region_polygons, join = st_within) %>%
+  #filter(!is.na(NAME)) %>%       # Optional: removes murals that didn't fall into any region
+  rename(region = NAME) %>% 
+  select(-c(31, 32, 33, 35, 36, 37, 38))
+
+# st_intersects could theoretically also work but it would include on teh borders
+# st_contains would work if the two dfs were switched (bc a point can't contain a polygon)
+```
+```{r}
+#murals_clean_regions <- 
+```
+
+
 
 
 
