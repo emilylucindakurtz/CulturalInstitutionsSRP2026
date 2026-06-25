@@ -48,25 +48,139 @@ for(i in 1:ncol(murals_clean)){
 
 ```{r}
 # Text analysis of description
-remove_words <- tibble(
-  word = c(NA, "nbsp", "project", "mural", "murals", "painted", "paint", "painting", "street", "NA", "art", "https", "artist", "artists", "san", "www.instagram.com", "instagram", "created", "located", "curated")
-) #make robo do it
+
 #region, state
 #conservative vs liberal wrods/polarizing words
 # west coast
 # size of city
 
+# Used claude for some help with the custom stopwords
+custom_stop_words <- c(
+  # Standard English
+  "the", "of", "and", "a", "in", "to", "by", "is", "for", "on",
+  "this", "s", "with", "that", "it", "was", "from", "as", "at",
+  "i", "an", "are", "one", "has", "you", "all", "he", "my", "be",
+  "their", "we", "who", "can", "her", "but", "out", "our", "they",
+  "which", "so", "into", "have", "had", "an", "its", "been", "not",
+  "also", "more", "up", "or", "about", "than", "when", "will",
+  
+  # Domain-specific (high-frequency, low signal)
+  "mural", "murals", "art", "artist", "artists", "painted", "street",
+  "wall", "walls", "photo", "work", "project", "city", 
+  #"community",
+  "building", "piece", "created", "located", "curated", "paint",
+  "arts", "side", "part", "new", 
+  #"local", 
+  "life", 
+  #"people",
+  "through", "impermanent", # "impermanent" is included as domain-specific — it appeared 469 times, almost certainly from a boilerplate template phrase rather than meaningful content.
+  
+  # URL / web noise
+  "https", "http", "com", "www", "instagram",
+  
+  # Emily's words
+  NA, "nbsp", "project", "painting", "street", "NA", "san"
+  
+  # The places
+  
+)
 
-
+# To use with tidytext:
+ custom_df <- tibble(word = custom_stop_words, lexicon = "custom")
+ stop_words_combined <- bind_rows(stop_words, custom_df)
+# tokens |> anti_join(stop_words_combined, by = "word")
 
 
 
 murals_description_words <- murals_clean %>% 
-  mutate(description_lower = str_remove_all(description_lower, "\\d+")) %>% # removing nums (like years, etc)
+  #mutate(description_lower = str_remove_all(description_lower, "\\d+")) %>% # removing nums (like years, etc)
   unnest_tokens(output = word, input = description_lower) %>% 
-  anti_join(get_stopwords(source = "stopwords-iso"), by="word") %>% #could change the source...
-  anti_join(remove_words, by = "word") %>% 
+  #anti_join(get_stopwords(source = "stopwords-iso"), by="word") %>% #could change the source...
+  anti_join(stop_words_combined, by = "word") %>% 
   group_by(city_id) %>% 
   count(word) %>% 
   slice_max(n, n = 3)
 ```
+
+## Group by region
+
+```{r}
+# I was thinking use the long/lat because the city names aren't great for this
+```
+
+
+
+
+
+```{r}
+library(tigris)
+library(sf)
+library(ggplot2)
+library(dplyr)
+
+# Cache shapefiles so you don't have to re-download them
+options(tigris_use_cache = TRUE)
+
+# Download cartographic boundary polygons for US Census Regions
+region_polygons <- regions()
+```
+```{r}
+# Find the regions for each
+murals_clean <- murals_clean %>% 
+  mutate(region = NA)
+
+murals_clean <- st_as_sf(murals_clean, coords = c("longitude", "latitude"), crs = 4326)
+
+for(i in 1:ncol(murals_clean)){
+  for(n in 1:4){
+    if(st_contains(region_polygons[n, "geometry"], murals_clean[i, "geometry"])){
+      murals_clean[i, region] <- region_polygons[n, "NAME"]
+    }
+  }
+}
+
+```
+```{r}
+library(sf)
+
+# Create an example data frame
+df <- data.frame(
+  name = c("Point A", "Point B"),
+  lon  = c(-77.0369, -74.0060),
+  lat  = c(38.8977, 40.7128)
+)
+
+# Convert the data frame to a spatial object
+# Note: "coords" must list the longitude column first, then latitude
+sf_points <- st_as_sf(df, coords = c("lon", "lat"), crs = 4326)
+
+print(sf_points)
+```
+
+
+```{r}
+# Install and load the package
+library(tidygeocoder)
+#library(arcgisgeocode)
+
+
+
+# Reverse geocode and fetch full results
+results <- murals_clean[1,] %>%
+  tidygeocoder::reverse_geocode(
+    lat = latitude, 
+    long = longitude, 
+    method = "osm"
+  )
+
+
+# View the extracted administrative regions
+# OSM provides columns like 'state', 'county', 'region', or 'country'
+print(results[, c("name", "state", "county", "country")])
+```
+
+
+
+
+
+
