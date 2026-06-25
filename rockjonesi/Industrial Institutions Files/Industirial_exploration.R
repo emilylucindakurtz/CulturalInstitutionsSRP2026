@@ -8,6 +8,7 @@ library(tidytext)
 library(scales)
 library(tigris) 
 library(sf)
+library(readxl)
 
 PowerPlants_Raw <- read.csv("data/Industrial Institutions/PowerPlants_Raw.csv")
 fortune500 <- read.csv("data/Industrial Institutions/Fortune500HQ_Raw.csv") 
@@ -101,18 +102,22 @@ fortune500_Clean <- addLocation  %>% mutate(City = city, State = state, County =
                                                                                           TRUE ~ County))
 
 ## PowerPlants_Raw
-PowerPlants_Clean <- PowerPlants_Raw %>% mutate(City = Plant.City.Location, State = Plant.State.Location, Longitude = Plant.Longitude, Latitude = Plant.Latitude) %>%  select(Electric.Power.Plant.Name, 
-                                      Operating.Utility.Name, 
-                                      City,
-                                      State,
-                                      Primary.Energy.Source,
-                                      Longitude,
-                                      Latitude) 
+PowerPlants_Clean <- PowerPlants_Raw %>% mutate(City = Plant.City.Location, State = Plant.State.Location, Longitude = Plant.Longitude, Latitude = Plant.Latitude) %>%  
+  select(Electric.Power.Plant.Name, 
+         Operating.Utility.Name, 
+         City,
+         State,
+         Primary.Energy.Source,
+         Maximum.Summer.Capacity..Megawatts.,
+         Longitude,
+         Latitude) 
 
 
-write.csv(PowerPlants_Clean, "PowerPlants_Clean.csv", row.names = FALSE)
-write.csv(fortune500_Clean, "Fortune500HQ_Clean.csv", row.names = FALSE)
+#write.csv(PowerPlants_Clean, "PowerPlants_Clean.csv", row.names = FALSE)
+#write.csv(fortune500_Clean, "Fortune500HQ_Clean.csv", row.names = FALSE)
 
+
+#Does not contain housing data for LA, AK, or CT
 raw_text <- pdf_text("data/Industrial Institutions/2025Q4HousingPrices.pdf")
 
 pdf_prices <- data.frame(
@@ -131,6 +136,12 @@ pdf_prices <- data.frame(
 Fortune500_Housing <- fortune500_Clean %>% 
   left_join(pdf_prices, by = c("County", "State"))
 
+Fortune500_All_Housing <- fortune500_Clean %>% 
+  full_join(pdf_prices, by = c("County", "State"))
+
+
+county_HPI <- read_excel("data/Industrial Institutions/hpi_at_county.xlsx", skip = 5)
+
 
 
 
@@ -141,7 +152,7 @@ county_sf <- counties(cb = TRUE, class = "sf") %>%
          State = tolower(STATE_NAME))
 
 #standardizing variables for join
-housing_map <- Fortune500_Housing %>% 
+housing_map <- Fortune500_All_Housing %>% 
   mutate(County = tolower(County),
          State = tolower(State))
 
@@ -155,7 +166,7 @@ unique_county_prices <- housing_map %>%
 
 ##join housing prices to county shapefile information
 county_prices <- county_sf %>%
-  inner_join(unique_county_prices %>% select(County, State, Median.Home.Price), 
+  full_join(unique_county_prices %>% select(County, State, Median.Home.Price), 
              by = c("State","County")) 
 
 pal <- colorNumeric(
@@ -172,6 +183,10 @@ leaflet() %>%
     color = "black",
     weight = 1,
     smoothFactor = 0.5,
+    popup = ~paste0(
+      str_to_title(County), " County", "<br/>",
+      "Median Home Price: ", dollar(Median.Home.Price)
+      )
   ) %>%
   addMarkers(
     data = housing_map,
@@ -185,7 +200,7 @@ leaflet() %>%
     label = ~Company
   ) %>%
   addLegend(
-    data = county_prices,
+    data = (county_prices %>% drop_na()),
     position = "bottomright",
     pal = pal,
     values = ~Median.Home.Price,
@@ -213,5 +228,5 @@ ggplot(PowerPlants_Clean, aes(x = State, fill = Primary.Energy.Source)) +
   theme(axis.text.x = element_text(angle = 90)) +
   labs(y = "Proportion")
 
-write.csv(Fortune500_Housing, "Fortune500HQ_Housing.csv", row.names = FALSE)
+#write.csv(Fortune500_Housing, "Fortune500HQ_Housing.csv", row.names = FALSE)
 
