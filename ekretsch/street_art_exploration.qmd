@@ -122,7 +122,8 @@ library(dplyr)
 options(tigris_use_cache = TRUE)
 
 # Download cartographic boundary polygons for US Census Regions
-region_polygons <- regions()
+region_polygons <- regions() %>% 
+  st_transform(crs = 4326) # ensuring the same coordinate reference systems
 ```
 ```{r}
 # Find the regions for each
