@@ -138,7 +138,7 @@ murals_clean <- st_as_sf(murals_clean, coords = c("longitude", "latitude"), crs 
 
 for(i in 1:ncol(murals_clean)){
   for(n in 1:4){
-    if(st_contains(region_polygons[n, "geometry"], murals_clean[i, "geometry"])){
+    if(st_intersects(region_polygons[n, "geometry"], murals_clean[i, "geometry"])){
       murals_clean[i, region] <- region_polygons[n, "NAME"]
     }
   }
@@ -147,7 +147,7 @@ for(i in 1:ncol(murals_clean)){
 ```
 
 ```{r}
-
+points_inside <- st_filter(murals_clean, region_polygons[2,])
 ```
 
 
