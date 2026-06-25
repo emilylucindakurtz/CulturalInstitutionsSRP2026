@@ -1,10 +1,15 @@
 # Emily Kretschmer's Notes
 ## June 25
 #### Historic districts
-- [ ]
+- [ ] check for consistency in territory names (N. Mariana Islands)
 
 #### Street art
-- [ ] read emily's notes
+- [x] read emily's notes
+- [ ] make robot help with custom stop words, see what it looks like. consider larger unit of analysis.
+- [ ] third consideration - break down by some categerocial variable (be it politics, region, etc.) and do text analysis that identifies the polarized words - Emily to send literature/tutorial
+- [x] read emily's readings
+- [x] get point geometry for each mural
+- [ ] get region for each mural
 
 #### News outlets
 - [ ] import data into R
@@ -19,7 +24,6 @@
   - [x] do reverse text stuff
   - [x] make a zoom thing on the state selected
   - [x] eliminate the ones from the bar graph that have counts = 0
-- [ ] check for consistency in territory names (N. Mariana Islands)
 - [x] start the mapping of standardization
 
 #### Libraries
