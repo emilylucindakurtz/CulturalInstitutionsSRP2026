@@ -1,4 +1,13 @@
 # Emily Kretschmer's Notes
+
+## June 26/7/8
+#### Historic districts
+- [ ] 
+
+### Street art
+- [ ] add more stop words
+- [ ] 
+
 ## June 25
 #### Historic districts
 - [ ] check for consistency in territory names (N. Mariana Islands)
