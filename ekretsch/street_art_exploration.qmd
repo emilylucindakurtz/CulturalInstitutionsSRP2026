@@ -113,13 +113,14 @@ custom_stop_words <- c(
   "through", "impermanent", # "impermanent" is included as domain-specific — it appeared 469 times, almost certainly from a boilerplate template phrase rather than meaningful content.
   
   # URL / web noise
-  "https", "http", "com", "www", "instagram", "www.instagram.com"
+  "https", "http", "com", "www", "instagram", "www.instagram.com",
   
   # Emily's words
-  NA, "nbsp", "project", "painting", "street", "NA", "san"
+  NA, "nbsp", "project", "painting", "street", "NA", "san", "amp", "photos"
   
   # The places
   # Add/figure out later
+  
 )
 
 # To use with tidytext:
@@ -155,4 +156,33 @@ words_by_region <- murals_descrip_words %>%
   group_by(region) %>% 
   count(word)
 ```
+```{r}
+words_by_region %>% 
+  slice_max(n, n = 50)
+```
+
+### Further TA
+
+- https://cran.r-project.org/web/packages/conversim/vignettes/Analyzing_Similarities_between_Two_Long_Speeches.html
+- https://www.r-bloggers.com/2015/10/text-mining-analysis-some-theory-and-practice-in-r/
+^ https://www.rdatamining.com/home
+- https://medium.com/@celine.vdr/natural-language-processing-word-embeddings-e0b2edc773d2
+^ https://github.com/Celinevdr/Analysing-Similarities-and-Differences-Between-Republicans-and-Democrats-Through-Word-Embeddings/blob/master/GitHub_Finalproject.Rmd
+
+my
+- https://medium.com/data-science/r-packages-for-text-analysis-ad8d86684adb
+- https://stackoverflow.com/questions/8898521/finding-2-3-word-phrases-using-r-tm-package
+- https://www.rdatamining.com/examples/text-mining
+- https://www.slideshare.net/slideshow/r-by-example-mining-twitter-for/8504941
+
+vids
+- https://www.youtube.com/watch?v=7cwBhWYHgsA&t=44s
+- https://campus.datacamp.com/courses/introduction-to-natural-language-processing-in-r/representations-of-text?ex=12
+
+specifically cosine similarity
+```{r}
+
+```
+
+
 
