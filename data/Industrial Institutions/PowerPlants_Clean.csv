@@ -1,4 +1,4 @@
-"Electric.Power.Plant.Name","Operating.Utility.Name","Plant.City.Location","Plant.State.Location","Primary.Energy.Source","Plant.Longitude","Plant.Latitude"
+"Electric.Power.Plant.Name","Operating.Utility.Name","City","State","Primary.Energy.Source","Longitude","Latitude"
 "Tower","Wolverine Power Supply Coop","Tower","Michigan","petroleum",-84.29497,45.36282
 "Caro","Thumb Electric Coop of Mich","Caro","Michigan","petroleum",-83.3278,43.4659
 "Ubly","Thumb Electric Coop of Mich","Ubly","Michigan","petroleum",-82.9388,43.7217

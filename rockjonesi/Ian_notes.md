@@ -430,11 +430,26 @@ To do:
 
 ## June 24
 
-Had finished up with housing data merge, and so I have been thinking about effective ways to present the different sorts of information. I was inspired by the suggestions from Emily to some of the other groups about devloping shiny apps; I think this is the most effective way of portraying state/county level information, so I have started trying to produce some more basic shiny apps. Initially, I have just been testing out making bar charts from yesterday user driven. Meaning they can select a state and see the powerplant energy source distribution. 
+Had finished up with housing data merge, and so I have been thinking about effective ways to present the different sorts of information. I was inspired by the suggestions from Emily to some of the other groups about devloping shiny apps; I think this is the most effective way of portraying state/county level information, so I have started trying to produce some more basic shiny apps. Initially, I have just been testing out making bar charts from yesterday user driven. Meaning they can select a state and see the powerplant energy source distribution. <br>
 
-Got a basic app running well, but then tried to convert plots to plotly and can not get past "subscript out of bounds" error.
+Got a basic app running well, but then tried to convert plots to plotly and can not get past "subscript out of bounds" error. <br>
+
+- I spent much more time than I would have liked trying to solve this issue, to no avail. Even after trying AI for assitance. I am just going to return to using non-plotly plots, and might check in with Emily about any thoughts.
+
+I added a leaflet map to the power plant shiny app, thart allows closer inspection at the state level.
+<img width="586" height="501" alt="image" src="https://github.com/user-attachments/assets/6b146200-9077-4dde-ae8f-3d72ecc8d3cb" /> <br>
+here is a preview from the viewer pane. Users can select a state and will be able to see the locations and types of power plants that are in the state. By clicking on a point, a user can see the power plant name.
+
+I think this is a promising start for how we can present information most effectivley in an engaging manner. Depedning on how tomorrows meeting goes, I will look to do something similar for my other areas of exploration. 
+
+I think I need to bring more attention to the libraries data, as I haven't spent as much time visualizing that data.
+
+I want to add layer control to the power plant map but am having issues with the layers actually getting added/removed. Might need help with this.
 
 
+For next time:
+- [ ] More focus on library EDA, epescially pertaining to metro/urban relationships
+- [ ] check in with Rimona about the other industrial data
 
 
 

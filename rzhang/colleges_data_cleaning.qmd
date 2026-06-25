@@ -25,8 +25,6 @@ hbcu_page
 hbcu_table <- hbcu_page %>%
   html_element("table") %>%
   html_table(header = TRUE)
-
-glimpse(hbcu_table)
 ```
 
 ```{r}
@@ -38,7 +36,6 @@ lacs <- read_csv("../data/Colleges/US-News-Rankings-LACs-Through-2026.csv")
 ```{r}
 #reading in postsecondary schools locations
 postsecondary_school_locations <- read_csv("../data/Colleges/Postsecondary_School_Locations_2023-24.csv")
-glimpse(postsecondary_school_locations)
 ```
 
 
@@ -50,7 +47,6 @@ lacs_locations <- lacs %>%
       select(UNITID, LAT, LON, CITY, ZIP),
       by = c("IPEDS ID" = "UNITID")
   )
-lacs_locations
 ```
 
 
@@ -77,7 +73,15 @@ hbcus_locations <- hbcu_table %>%
   left_join(distinct_locations %>%
       select(NAME, LAT, LON), by = c("Name" = "NAME")
       )
-hbcus_locations
+```
+
+```{r}
+# adding state column to HBCU dataset
+hbcus_locations <- hbcus_locations %>%
+  mutate(State = str_extract(
+    Address, paste(state.name, collapse = "|")), 
+    .after = Address
+  )
 ```
 
 

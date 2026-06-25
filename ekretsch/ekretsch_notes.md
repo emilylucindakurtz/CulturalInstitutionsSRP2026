@@ -1,22 +1,30 @@
 # Emily Kretschmer's Notes
-## June 24
+## June 25
 #### Historic districts
+- [ ]
 
 #### Street art
-- [x] start shiny app
-  - [x] do reverse text stuff
-  - [ ] make a zoom thing on the state selected
-  - [x] eliminate the ones from the bar graph that have counts = 0
-- [ ] check for consistency in territory names (N. Mariana Islands)
-- [x] start the mapping of standardization
-
+- [ ] read emily's notes
 
 #### News outlets
 - [ ] import data into R
 
 #### Libraries
-- [ ] investigate careeronestop
+- [ ] get api
 
+
+## June 24
+#### Historic districts
+- [x] start shiny app
+  - [x] do reverse text stuff
+  - [x] make a zoom thing on the state selected
+  - [x] eliminate the ones from the bar graph that have counts = 0
+- [ ] check for consistency in territory names (N. Mariana Islands)
+- [x] start the mapping of standardization
+
+#### Libraries
+- [x] investigate careeronestop
+- [x] email request api key
 
 ## June 23
 #### Historic districts

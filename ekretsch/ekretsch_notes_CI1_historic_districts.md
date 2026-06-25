@@ -6,6 +6,11 @@ Interesting note: architecture highest category (for most states i think) except
 - [ ] shiny app where you can select the state and then a bar chart pops up for the cateories
   - [x] reverse text stuff
     - [ ] come back to this later maybe
+  - [x] state zoomy
+  - [ ] maybe add a separate page for something else...
+    - [ ] for other institutions?
+    - [ ] for actually seeing the historic districts
+  - [ ] add option for user to select the category
 - [x] do the proportional/standardization thing
   - [x] get data by state for area
 - [ ] Data cleaning:

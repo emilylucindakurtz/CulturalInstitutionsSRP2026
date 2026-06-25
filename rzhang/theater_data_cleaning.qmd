@@ -117,6 +117,7 @@ operas$latitude <- as.numeric(operas$latitude)
 operas$longitude <- as.numeric(operas$longitude)
 ```
 
+
 ```{r}
 #writing csv of all member operas in Opera America
 write_csv(operas, "opera_america_members.csv")
