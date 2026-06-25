@@ -4,7 +4,13 @@
 
 Notes from 06/25 -- working on doing text analysis and grouping by regions, and I have noticed one thing in particular:
 
-There are a lot of local street art institutions -- kotis street art (greensboro, nc), el muralcho (houston, tx). These are often mentioned in the descriptions. Although I am struggling with getting info from the text analysis about the sentiments, I definitely have noticed that there are groups/individuals that care very deeply about collecting/documenting/sharing information about local murals. It seems to be a very local thing that some people are very passionate about.
+There are a lot of local street art institutions -- kotis street art (greensboro, nc), el muralcho/lefchek (houston, tx). These are often mentioned in the descriptions. Although I am struggling with getting info from the text analysis about the sentiments, I definitely have noticed that there are groups/individuals that care very deeply about collecting/documenting/sharing information about local murals. It seems to be a very local thing that some people are very passionate about.
+
+<img width="874" height="263" alt="image" src="https://github.com/user-attachments/assets/a654d114-27e1-4004-87af-df1113bbf8a7" />
+<img width="874" height="263" alt="image" src="https://github.com/user-attachments/assets/cce5b2f6-9b16-4a7e-81b6-f5a01cc08feb" />
+<img width="874" height="263" alt="image" src="https://github.com/user-attachments/assets/99e993a5-6415-4b78-b677-e87b0effab20" />
+<img width="874" height="263" alt="image" src="https://github.com/user-attachments/assets/0f07e978-b2ce-47e5-af0e-d219feba356a" />
+
 
 remove the photo created + date situation? unsure... -'photo taken' or 'curated by' -  (more html tags too?) -project -mural -NA -art - the place... - numbers
 
@@ -16,7 +22,7 @@ remove the photo created + date situation? unsure... -'photo taken' or 'curated 
 
 readings:
 - [ ] https://cran.r-project.org/web/packages/conversim/vignettes/Analyzing_Similarities_between_Two_Long_Speeches.html
-- [ ] https://medium.com/@celine.vdr/natural-language-processing-word-embeddings-e0b2edc773d2
+- [x] https://medium.com/@celine.vdr/natural-language-processing-word-embeddings-e0b2edc773d2
 - [x] https://www.google.com/amp/s/www.r-bloggers.com/2015/10/text-mining-analysis-some-theory-and-practice-in-r/amp/
   - [ ] couldn't access the article within here that had the info on how to do it
 
