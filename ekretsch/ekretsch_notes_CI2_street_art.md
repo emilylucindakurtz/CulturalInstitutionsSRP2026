@@ -4,7 +4,7 @@
 
 Notes from 06/25 -- working on doing text analysis and grouping by regions, and I have noticed one thing in particular:
 
-There are a lot of local street art institutions -- kotis street art (greensboro, nc), el muralcho/lefchek (houston, tx). These are often mentioned in the descriptions. Although I am struggling with getting info from the text analysis about the sentiments, I definitely have noticed that there are groups/individuals that care very deeply about collecting/documenting/sharing information about local murals. It seems to be a very local thing that some people are very passionate about.
+There are a lot of local street art institutions -- kotis street art (greensboro, nc), el muralcho/lefchek (houston, tx AKA bayou city). These are often mentioned in the descriptions. Although I am struggling with getting info from the text analysis about the sentiments, I definitely have noticed that there are groups/individuals that care very deeply about collecting/documenting/sharing information about local murals. It seems to be a very local thing that some people are very passionate about.
 
 <img width="874" height="263" alt="image" src="https://github.com/user-attachments/assets/a654d114-27e1-4004-87af-df1113bbf8a7" />
 <img width="874" height="263" alt="image" src="https://github.com/user-attachments/assets/cce5b2f6-9b16-4a7e-81b6-f5a01cc08feb" />
