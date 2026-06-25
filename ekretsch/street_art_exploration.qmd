@@ -53,11 +53,7 @@ for(i in 1:ncol(murals_clean)){
 
 ```{r}
 # Text analysis of description
-
-#region, state
-#conservative vs liberal wrods/polarizing words
-# west coast
-# size of city
+# Just part 1 -- tokenizing
 
 # Used claude for some help with the custom stopwords
 custom_stop_words <- c(
@@ -87,24 +83,18 @@ custom_stop_words <- c(
   NA, "nbsp", "project", "painting", "street", "NA", "san"
   
   # The places
-  
+  # Add/figure out later
 )
 
 # To use with tidytext:
  custom_df <- tibble(word = custom_stop_words, lexicon = "custom")
  stop_words_combined <- bind_rows(stop_words, custom_df)
-# tokens |> anti_join(stop_words_combined, by = "word")
-
-
 
 murals_description_words <- murals_clean %>% 
   #mutate(description_lower = str_remove_all(description_lower, "\\d+")) %>% # removing nums (like years, etc)
   unnest_tokens(output = word, input = description_lower) %>% 
   #anti_join(get_stopwords(source = "stopwords-iso"), by="word") %>% #could change the source...
-  anti_join(stop_words_combined, by = "word") %>% 
-  group_by(city_id) %>% 
-  count(word) %>% 
-  slice_max(n, n = 3)
+  anti_join(stop_words_combined, by = "word")
 ```
 
 ## Group by region
@@ -133,6 +123,28 @@ murals_clean_regions <- st_join(murals_clean, region_polygons, join = st_within)
   rename(region = NAME) %>% 
   select(-c(31, 32, 33, 35, 36, 37, 38))
 
-# st_intersects could theoretically also work but it would include on teh borders
+# st_intersects could theoretically also work but it would include on the borders
 # st_contains would work if the two dfs were switched (bc a point can't contain a polygon)
 ```
+
+## Text analysis by region
+```{r}
+# IDEAS:
+# region, state
+# conservative vs liberal wrods/polarizing words
+# west coast
+# size of city
+
+# Prev:
+murals_description_words %>% 
+  group_by(city_id) %>% 
+  count(word) %>% 
+  slice_max(n, n = 3)
+```
+```{r}
+murals_clean_regions_tokens %>% 
+  group_by(region) %>% 
+  count(word) %>% 
+  slice_max(n, n = 10)
+```
+
