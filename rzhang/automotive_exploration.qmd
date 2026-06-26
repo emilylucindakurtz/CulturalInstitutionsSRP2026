@@ -1,0 +1,126 @@
+---
+title: "automotive_exploration"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(maps)
+library(ggplot2)
+library(sf)
+library(leaflet)
+library(ggplot2)
+```
+
+```{r}
+auto_assembly_plants <- read_csv("../data/Industrial Institutions/Auto_Assembly_Plants_Wikipedia.csv")
+EV_manufacturing_facilities <- read_csv("../data/Industrial Institutions/Clean_EV_ManufacturingFacilities.csv")
+```
+
+## EDA Graphs
+```{r}
+# filtering dataset to only Vehicle Assembly facilities to match with the wiki page
+clean_EVs <- EV_manufacturing_facilities %>%
+  filter(`Component Category` == "Vehicle Assembly")
+clean_EVs
+```
+
+```{r}
+auto_manufacturer_counts <- auto_assembly_plants %>%
+  count(Manufacturer, sort = TRUE)
+ggplot(auto_manufacturer_counts,
+       aes(x = n, y = reorder(Manufacturer, n))) +
+  geom_col() +
+  labs(
+    title = "Auto Assembly Plants by Manufacturer",
+    x = "Manufacturer",
+    y = "Number of plants"
+  ) +
+  theme_minimal()
+
+ev_parent_counts <- clean_EVs %>%
+  filter(!is.na(`Parent Company`)) %>%
+  count(`Parent Company`, sort = TRUE) %>%
+  slice_max(n, n = 15)
+
+ggplot(ev_parent_counts,
+       aes(x = n, y = reorder(`Parent Company`, n))) +
+  geom_col() +
+  labs(
+    title = "Top EV Manufacturing Parent Companies",
+    x = "Parent company",
+    y = "Number of facilities"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+ev_timeline <- clean_EVs %>%
+  filter(!is.na(`Announcement Effective Year`)) %>%
+  mutate(year = as.integer(`Announcement Effective Year`)) %>%
+  count(year)
+
+ggplot(ev_timeline, aes(x = year, y = n)) +
+  geom_col() +
+  labs(
+    title = "EV Manufacturing Announcements by Year",
+    x = "Announcement year",
+    y = "Number of announcements"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+# Keep only rows with usable coordinates
+auto_map <- auto_assembly_plants %>%
+  filter(!is.na(latitude), !is.na(longitude))
+
+ev_map <- clean_EVs %>%
+  filter(!is.na(latitude), !is.na(longitude))
+
+leaflet() %>%
+  addProviderTiles("CartoDB.Positron") %>%
+
+  # Auto assembly plants
+  addCircleMarkers(
+    data = auto_map,
+    lng = ~longitude,
+    lat = ~latitude,
+    radius = 5,
+    color = "blue",
+    fillOpacity = 0.7,
+    group = "Auto Assembly Plants",
+    popup = ~paste0(
+      "<strong>", `Plant Name`, "</strong><br>",
+      "Manufacturer: ", Manufacturer, "<br>",
+      "Address: ", Address, "<br>",
+      "Products: ", Products
+    )
+  ) %>%
+  
+  # EV manufacturing facilities
+  addCircleMarkers(
+    data = ev_map,
+    lng = ~longitude,
+    lat = ~latitude,
+    radius = 4,
+    color = "red",
+    fillOpacity = 0.6,
+    group = "EV Manufacturing Facilities",
+    popup = ~paste0(
+      "<strong>", `Facility Name`, "</strong><br>",
+      "Company: ", Company, "<br>",
+      "Parent Company: ", `Parent Company`, "<br>",
+      "City: ", City, ", ", State, "<br>",
+      "Component Category: ", `Component Category`, "<br>",
+      "Manufacturing Focus: ", `Manufacturing Focus`
+    )
+  ) %>%
+  
+  addLayersControl(
+    overlayGroups = c("Auto Assembly Plants", "EV Manufacturing Facilities"),
+    options = layersControlOptions(collapsed = FALSE)
+  )
+```
+
+

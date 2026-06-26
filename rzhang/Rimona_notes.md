@@ -213,5 +213,21 @@ Then, focus on mapping current data:
 Future plans: look at IPUMS or Census data, noting how more social factors such as population, income, or racial demographics may be associated with certain cultural institutions.
 
 ## 6/24
-Continue with previous tasks. 
+Finish visualizations in automotive industry. also graphs for
+- theater year built
+- level of importance (NRHP)
 
+and looking across datasets. 
+
+## 6/25
+Finished visualizations and mappings across datasets.
+- [X] explore visualizations using datasets
+- [X] conduct basic EDA across the data
+
+New tasks:
+- [ ] Search IPUMS and US Census data for more social factors, e.g. population, income, or racial demographics
+- [ ] Clean new data
+- [ ] Shiny app?
+
+## 6/26
+Continue searching and cleaning new data.

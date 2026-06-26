@@ -9,6 +9,7 @@ library(maps)
 library(ggplot2)
 library(sf)
 library(leaflet)
+library(ggplot2)
 ```
 
 
@@ -91,7 +92,6 @@ source_counts <- all_theatres %>%
 
 ggplot(source_counts, aes(x = source, y = n, fill = source)) +
   geom_col() +
-  coord_flip() +
   labs(
     title = "Number of Theatre Records by Dataset",
     x = "Dataset",
@@ -99,6 +99,34 @@ ggplot(source_counts, aes(x = source, y = n, fill = source)) +
   ) +
   theme_minimal()
 ```
+
+```{r}
+# Distribution of NRHP locations by level of significance
+
+significance_counts <- nrhp %>%
+  select(starts_with("Level of Significance")) %>%
+  pivot_longer(
+    everything(),
+    names_to = "level",
+    values_to = "present"
+  ) %>%
+  filter(present == TRUE) %>%
+  mutate(
+    level = sub("Level of Significance - ", "", level)
+  ) %>%
+  count(level)
+
+ggplot(significance_counts, aes(x = reorder(level, n), y = n)) +
+  geom_col(fill = "maroon") +
+  labs(
+    title = "NRHP Theatre Listings by Level of Significance",
+    x = "Level of Significance",
+    y = "Number of Theatres"
+  ) +
+  theme_minimal()
+
+```
+
 
 ## NRHP State-level Choropleth
 ```{r}
@@ -131,7 +159,6 @@ ggplot(states_theatres, aes(x = long, y = lat, group = group)) +
 
 
 ## All Theaters Leaflet
-
 ```{r}
 # remove any rows without coordinates
 all_theatres_clean <- all_theatres %>%
@@ -185,5 +212,4 @@ leaflet(all_theatres_sf) %>%
     options = layersControlOptions(collapsed = FALSE)
   )
 ```
-
 
