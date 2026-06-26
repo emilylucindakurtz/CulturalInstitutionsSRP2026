@@ -483,4 +483,17 @@ Was suggested that I expand the focus of my housing map: include housing informa
   - Also haven't checked in with my groups recently, so maybe should look to do that.
 
 
+## June 26 
+
+I was unable to get as much done today as I was travelling. I tried to clean up the data centers dataset that Emily sent me, and inquired about the CT counties structure. 
+
+Additionally, I started to make visuals of the library maps, but still have to fix some bugs in the code. Will get back on track Monday.
+
+
+
+
+
+
+
+
 
