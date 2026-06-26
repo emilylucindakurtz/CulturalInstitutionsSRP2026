@@ -143,7 +143,8 @@ Fortune500_All_Housing <- fortune500_Clean %>%
 county_HPI <- read_excel("data/Industrial Institutions/hpi_at_county.xlsx", skip = 5)
 
 
-
+data_centers <- read_csv("data/Industrial Institutions/data_centers_tracker_Raw.csv") %>% 
+  select(facility_name, address, city, state, zip, county, lat, long, status, operator_name, mw, sizerank, community_pushback)
 
 
 #getting the county shapefiles
