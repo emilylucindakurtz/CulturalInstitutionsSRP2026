@@ -18,37 +18,72 @@ library(forcats)
 
 Powerplants <- read.csv("PowerPlants_Clean.csv")
 
+state_counts <- Powerplants %>% 
+  group_by(State) %>% 
+  summarise(State.Powerplant.Count = n())
+
 state_sf <- states(cb = TRUE, class = "sf") %>% 
   mutate(State = str_to_title(NAME)) %>% 
-  filter(State %in% Powerplants$State)
-
+  filter(State %in% Powerplants$State) %>% 
+  left_join(state_counts, by = "State")
 
 #----user interface------
 
 ui <- navbarPage(
   title = "State-Level Information of Powerplant Energy Types",
 ##-------Tab 1------------ 
-  tabPanel(
-    title = "Explore by States",
-    
-    sidebarLayout(
-      
-      sidebarPanel(
-        width = 3,
-        h1("Find Your State"),
-        
-        selectInput(
-          inputId = "state_choice",
-          label = "Select",
-          choices = sort(unique(Powerplants$State))
+  # tabPanel(
+  #   title = "Explore by States",
+  #   
+  #   sidebarLayout(
+  #     
+  #     sidebarPanel(
+  #       width = 3,
+  #       h1("Find Your State"),
+  #       
+  #       selectInput(
+  #         inputId = "state_choice",
+  #         label = "Select",
+  #         choices = sort(unique(Powerplants$State))
+  #       )
+  #     ),
+  #     
+  # mainPanel(
+  #   plotOutput("Bar", height = 500),
+  #     )
+  #   )
+  # ),
+##-------map---------
+tabPanel(
+  title = "Map Power Plants by State",
+  
+  # Using fluidRow instead of sidebarLayout
+  fluidRow(
+    # Left column (takes up 4 out of 12 slots)
+    column(
+      width = 4,
+      # Wrapping the chart in a neat bslib card
+      card(
+        card_header(h4("Explore by State")), # Fixed the header text slightly!
+        card_body(
+          plotOutput("SidebarChart", height = 400)
         )
-      ),
-      
-  mainPanel(
-    plotOutput("Bar", height = 500),
+      )
+    ),
+    
+    # Right column (takes up 8 out of 12 slots)
+    column(
+      width = 8,
+      # Wrapping the map in a card too
+      card(
+        card_body(
+          leafletOutput("Map", height = 600)
+        )
       )
     )
-  ),
+  )
+),
+
 ##-------Tab 2------------  
   tabPanel(
     title = "Explore by Energy Sources",
@@ -69,27 +104,7 @@ ui <- navbarPage(
         plotOutput("Energy", height = 500)
       )
     )
-  ),
-tabPanel(
-  title = "Map Power Plants by State",
-  
-  sidebarLayout(
-    
-    sidebarPanel(
-      width = 3,
-      h1("Select a State to Map"),
-      
-      selectInput(
-        inputId = "choose_state",
-        label = "Select",
-        choices = sort(unique((Powerplants_sf$State)))
-      )
-    ),
-    mainPanel(
-      leafletOutput("Map", height = 600)
-    )
   )
-),
 )
 
 #-------sever-------
@@ -97,18 +112,18 @@ tabPanel(
 server <- function(input, output) {
   
   ##------by state plot---------
-  output$Bar <- renderPlot({
-    
-    state_subset <- Powerplants %>% filter(State == input$state_choice)
-      
-    ggplot(state_subset, aes(x = fct_infreq(Primary.Energy.Source), fill = Primary.Energy.Source)) +
-      geom_bar(color = "black") +
-      scale_fill_brewer(palette =  "Set3") +
-      theme(axis.text.x = element_text(angle = -90)) +
-      labs(y = "Count",
-           x = "Powerplant Primary Energy Source",
-           title = paste("Energy Source Distribution for", input$state_choice))
-  })
+  # output$Bar <- renderPlot({
+  #   
+  #   state_subset <- Powerplants %>% filter(State == input$state_choice)
+  #     
+  #   ggplot(state_subset, aes(x = fct_infreq(Primary.Energy.Source), fill = Primary.Energy.Source)) +
+  #     geom_bar(color = "black") +
+  #     scale_fill_brewer(palette =  "Set3") +
+  #     theme(axis.text.x = element_text(angle = -90)) +
+  #     labs(y = "Count",
+  #          x = "Powerplant Primary Energy Source",
+  #          title = paste("Energy Source Distribution for", input$state_choice))
+  # })
   
   ##------by energy plot----------
   output$Energy <- renderPlot({
@@ -130,54 +145,107 @@ server <- function(input, output) {
     })
   
   ##--------state power plants map---------
+  clicked_state <- reactiveVal(NULL)
+  
+  energy_source_pal <- colorFactor(
+    palette = "Set3", 
+    domain = Powerplants$Primary.Energy.Source
+  )
+  
+  powerplant_count_pal <- colorNumeric(
+    palette = "cividis",
+    domain = state_sf$State.Powerplant.Count
+  )
+  
+  all_sources <- sort(unique(Powerplants$Primary.Energy.Source))
+  leaflet_colors <- setNames(energy_source_pal(all_sources), all_sources)
+  
+  
   output$Map <- renderLeaflet({
-    powerplant_subset <- Powerplants_sf %>% filter(State == input$choose_state)
-    state_subset <- state_sf %>% filter(State == input$choose_state)
-    
-    pal <- colorFactor(
-      palette = "Set3", 
-      domain = powerplant_subset$Primary.Energy.Source
-    )
-    
-    map <- leaflet() %>% 
+    leaflet(state_sf) %>% 
       addProviderTiles(providers$CartoDB.Positron) %>% 
+      setView(lng = -98.58, lat = 39.82, zoom = 4) %>%
       addPolygons(
-        data = state_subset,
-        fillColor = "lightblue",
-        fillOpacity = 0.0,
+        layerId = ~State,
+        fillColor = ~powerplant_count_pal(State.Powerplant.Count),
+        fillOpacity = 0.3,
         color = "black",
-        opacity = 1,
-        weight = 1,
+        weight = 1
+      ) %>% 
+      
+      addLegend(
+        pal = powerplant_count_pal,
+        value = state_sf$State.Powerplant.Count, 
+        position = "bottomright",
+        title = "State Electric Power Plant Counts"
+      )
+  })
+    
+  observeEvent(input$Map_shape_click, {
+    clicked_state(input$Map_shape_click$id)
+    
+    state_fill_opacities <- ifelse(state_sf$State == clicked_state(), 0, 0.3)
+    
+    bbox_data <- state_sf[state_sf$State == clicked_state(), "geometry"]
+    bbox <- st_bbox(bbox_data)
+
+    powerplant_subset <- Powerplants[Powerplants$State == clicked_state(), ]
+    
+
+    leafletProxy("Map") %>% 
+      clearMarkers() %>% 
+      clearControls() %>% 
+      addPolygons(
+        data = state_sf,
+        layerId = ~State,
+        fillColor = ~powerplant_count_pal(State.Powerplant.Count),
+        fillOpacity = state_fill_opacities, 
+        color = "black",
+        weight = 1
+      ) %>%
+      fitBounds(
+        lng1 = bbox[["xmin"]], lat1 = bbox[["ymin"]],
+        lng2 = bbox[["xmax"]], lat2 = bbox[["ymax"]]
       ) %>% 
       addCircleMarkers(
         data = powerplant_subset,
         lat = ~Latitude,
         lng = ~Longitude,
         radius = 4,
-        fillColor = ~pal(Primary.Energy.Source),
+        fillColor = ~energy_source_pal(Primary.Energy.Source),
         fillOpacity = 1,
         popup = ~Electric.Power.Plant.Name,
         stroke = FALSE,
         group = ~Primary.Energy.Source,
         label = ~str_to_title(Primary.Energy.Source)
       ) %>% 
-      addLayersControl(
-        overlayGroups = sort(unique(str_to_title(powerplant_subset$Primary.Energy.Source))),
-        options = layersControlOptions(collapse = TRUE),
-        position = "topleft"
-      ) %>% 
       addLegend(
         data = powerplant_subset,
         position = "bottomleft",
-        pal = pal,
+        pal = energy_source_pal,
         values = ~Primary.Energy.Source,
         title = "Primary Energy Source",
         opacity = 0.8
       )
   })
   
+output$SidebarChart <- renderPlot({
+  req(clicked_state())
+  
+  state_subset <- Powerplants %>% filter(State == clicked_state())
+  
+  ggplot(state_subset, aes(x = fct_infreq(str_to_title(Primary.Energy.Source)), fill = Primary.Energy.Source)) +
+    geom_bar(color = "black") +
+    scale_fill_manual(values = leaflet_colors) +
+    theme(axis.text.x = element_text(angle = -90)) +
+    labs(y = "Count",
+         x = "Powerplant Primary Energy Source",
+         title = paste("Energy Source Distribution for", clicked_state()))
+  
+  })
   
 }
+
 
 shinyApp(ui, server)
 

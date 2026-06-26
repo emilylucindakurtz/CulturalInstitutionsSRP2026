@@ -1,22 +1,46 @@
 # Emily Kretschmer's Notes
-## June 24
+
+## June 26/7/8
 #### Historic districts
+- [ ] 
+
+### Street art
+- [ ] add more stop words
+- [ ] 
+
+## June 25
+#### Historic districts
+- [ ] check for consistency in territory names (N. Mariana Islands)
+- [ ] add filter for state + type of industry (drop down)
+- [ ] display dataset with those filters ^
 
 #### Street art
-- [x] start shiny app
-  - [x] do reverse text stuff
-  - [x] make a zoom thing on the state selected
-  - [x] eliminate the ones from the bar graph that have counts = 0
-- [ ] check for consistency in territory names (N. Mariana Islands)
-- [x] start the mapping of standardization
-
+- [x] read emily's notes
+- [x] make robot help with custom stop words, see what it looks like. consider larger unit of analysis.
+- [x] third consideration - break down by some categerocial variable (be it politics, region, etc.) and do text analysis
+  - [ ] that identifies the polarized words
+- [x] read emily's readings
+- [x] get point geometry for each mural
+- [x] get region for each mural
 
 #### News outlets
 - [ ] import data into R
 
 #### Libraries
-- [ ] investigate careeronestop
+- [ ] get api
 
+
+## June 24
+#### Historic districts
+- [x] start shiny app
+  - [x] do reverse text stuff
+  - [x] make a zoom thing on the state selected
+  - [x] eliminate the ones from the bar graph that have counts = 0
+- [x] start the mapping of standardization
+
+#### Libraries
+- [x] investigate careeronestop
+- [x] email request api key
 
 ## June 23
 #### Historic districts

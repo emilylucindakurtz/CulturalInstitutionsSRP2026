@@ -3,6 +3,7 @@ title: "murals_exploration"
 format: html
 editor: visual
 ---
+
 ```{r}
 # Load packages
 library(tidyverse)
@@ -12,16 +13,25 @@ library(tidytext)
 library(leaflet)
 library(lubridate)
 library(arcgisgeocode)
+
+library(tigris)
+library(sf)
+library(ggplot2)
+library(dplyr)
 ```
 
-## Street art !
+# Street art !
+
+## Importing data / cleaning / wrangling
 
 ```{r}
 # Reading the now-comma-free headers + the rest and cleaning
 murals <- read_csv("../data/Murals/streetartcities_US_2026-06.csv",
-                   na = c("", "NA", "Unknown", "Untitled")) %>% 
+                   na = c("", "NA", "Unknown", "Untitled"))
+
+murals <- murals %>% 
   mutate(across(32:ncol(murals), as.character)) %>% #otherwise it tries to parse them as lgl
-  clean_names() #%>% # From janior package :)
+  clean_names()
 ```
 
 ```{r}
@@ -30,7 +40,8 @@ murals_clean <- murals %>%
   #select(where(function(x) !all(is.na(x)))) # could also do the ~ shorthand
   remove_empty("cols") %>% # From janitor package
   select(-country) %>% # It's US for all here
-  select(1:attribute_last_seen) %>% # removing the rest of the cols since most are almost 100% NA and not really helpful for me
+  select(1:attribute_last_seen) %>% 
+  # ^ removing the rest of the cols since most are almost 100% NA and not really helpful for me
   mutate(description_lower = tolower(description)) # for text analysis? or do later
 ```
 
@@ -43,22 +54,135 @@ for(i in 1:ncol(murals_clean)){
 }
 ```
 
+### Getting regions
+
+```{r}
+# Cache shapefiles so you don't have to re-download them
+options(tigris_use_cache = TRUE)
+
+# Download cartographic boundary polygons for US Census Regions
+region_polygons <- regions() %>% 
+  st_transform(crs = 4326) # ensuring the same coordinate reference systems
+```
+
+```{r}
+# Lil chart of regions
+ggplot() +
+  geom_sf(data = region_polygons, aes(fill = NAME), color = "white")
+```
+
+```{r}
+# https://sunsp.net/rspatial_book/spatialops.html 2.5
+# Automatically filters murals inside polygons AND pulls over the "NAME" column
+murals_clean <- st_as_sf(murals_clean, coords = c("longitude", "latitude"), crs = 4326)
+murals_clean <- st_join(murals_clean, region_polygons, join = st_within) %>%
+  #filter(!is.na(NAME)) %>%       # Optional: removes murals that didn't fall into any region
+  rename(region = NAME) %>% 
+  select(-c(31, 32, 33, 35, 36, 37, 38))
+
+# st_intersects could theoretically also work but it would include on the borders
+# st_contains would work if the two dfs were switched (bc a point can't contain a polygon)
+```
+
+## Text analysis
+
+### Tokenizing
 ```{r}
 # Text analysis of description
-remove_words <- tibble(
-  word = c(NA, "nbsp", "project", "mural", "murals", "painted", "paint", "painting", "street", "NA", "art", "https", "artist", "artists", "san", "www.instagram.com", "instagram", "created", "located", "curated")
-) #make robo do it
-#region, state
-#conservative vs liberal wrods/polarizing words
+# Just part 1 -- tokenizing
+
+# Used claude for some help with the custom stopwords
+custom_stop_words <- c(
+  # Standard English
+  "the", "of", "and", "a", "in", "to", "by", "is", "for", "on",
+  "this", "s", "with", "that", "it", "was", "from", "as", "at",
+  "i", "an", "are", "one", "has", "you", "all", "he", "my", "be",
+  "their", "we", "who", "can", "her", "but", "out", "our", "they",
+  "which", "so", "into", "have", "had", "an", "its", "been", "not",
+  "also", "more", "up", "or", "about", "than", "when", "will",
+  
+  # Domain-specific (high-frequency, low signal)
+  "mural", "murals", "art", "artist", "artists", "painted", "street",
+  "wall", "walls", "photo", "work", "project", "city", 
+  #"community",
+  "building", "piece", "created", "located", "curated", "paint",
+  "arts", "side", "part", "new", 
+  #"local", 
+  "life", 
+  #"people",
+  "through", "impermanent", # "impermanent" is included as domain-specific — it appeared 469 times, almost certainly from a boilerplate template phrase rather than meaningful content.
+  
+  # URL / web noise
+  "https", "http", "com", "www", "instagram", "www.instagram.com",
+  
+  # Emily's words
+  NA, "nbsp", "project", "painting", "street", "NA", "san", "amp", "photos"
+  
+  # The places
+  # Add/figure out later
+  
+)
+
+# To use with tidytext:
+ custom_df <- tibble(word = custom_stop_words, lexicon = "custom")
+ stop_words_combined <- bind_rows(stop_words, custom_df)
+
+murals_descrip_words <- murals_clean %>% 
+  #mutate(description_lower = str_remove_all(description_lower, "\\d+")) %>% # removing nums (like years, etc)
+  unnest_tokens(output = word, input = description_lower) %>% 
+  #anti_join(get_stopwords(source = "stopwords-iso"), by="word") %>% #could change the source...
+  anti_join(stop_words_combined, by = "word")
+```
+
+### Prev
+```{r}
+# IDEAS:
+# region, state
+# conservative vs liberal wrods/polarizing words
 # west coast
 # size of city
 
-murals_description_words <- murals_clean %>% 
-  mutate(description_lower = str_remove_all(description_lower, "\\d+")) %>% # removing nums (like years, etc)
-  unnest_tokens(output = word, input = description_lower) %>% 
-  anti_join(get_stopwords(source = "stopwords-iso"), by="word") %>% #could change the source...
-  anti_join(remove_words, by = "word") %>% 
-  group_by(city_id) %>% 
-  count(word) %>% 
-  slice_max(n, n = 3)
+# Prev:
+#murals_descrip_words %>% 
+#  group_by(city_id) %>% 
+#  count(word) %>% 
+#  slice_max(n, n = 3)
 ```
+
+### By region
+
+```{r}
+words_by_region <- murals_descrip_words %>% 
+  group_by(region) %>% 
+  count(word)
+```
+```{r}
+words_by_region %>% 
+  slice_max(n, n = 50)
+```
+
+### Further TA
+
+- https://cran.r-project.org/web/packages/conversim/vignettes/Analyzing_Similarities_between_Two_Long_Speeches.html
+- https://www.r-bloggers.com/2015/10/text-mining-analysis-some-theory-and-practice-in-r/
+^ https://www.rdatamining.com/home
+- https://medium.com/@celine.vdr/natural-language-processing-word-embeddings-e0b2edc773d2
+^ https://github.com/Celinevdr/Analysing-Similarities-and-Differences-Between-Republicans-and-Democrats-Through-Word-Embeddings/blob/master/GitHub_Finalproject.Rmd
+
+my
+- https://medium.com/data-science/r-packages-for-text-analysis-ad8d86684adb
+- https://stackoverflow.com/questions/8898521/finding-2-3-word-phrases-using-r-tm-package
+- https://www.rdatamining.com/examples/text-mining
+- https://www.slideshare.net/slideshow/r-by-example-mining-twitter-for/8504941
+
+vids
+- https://www.youtube.com/watch?v=7cwBhWYHgsA&t=44s
+- https://campus.datacamp.com/courses/introduction-to-natural-language-processing-in-r/representations-of-text?ex=12
+
+specifically cosine similarity
+```{r}
+
+```
+
+
+

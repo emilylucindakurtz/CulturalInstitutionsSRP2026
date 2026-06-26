@@ -147,3 +147,17 @@ Next Meeting: penciled in for Wednesday, may be moved to Thursday depending on 9
 
 Emily will be working on general website to fit everyone's stories/work under one nicely laid out umbrella
 
+# June 25
+
+- Emily - historic districts shiny app, api key for career onestop for libraries
+-   put a layer for points on districts map
+-   allow user to filter not just by state but also type - display dataset with those filters
+- Ian - adding housing data to corporate dataset - leaflet plot with both pieces
+-   change over time? plot county level change over five years instead of raw housing costs that year
+-   animated map over time that they can play and pause
+-   Emily to send AI data center to Ian to compliment power plant work done so far
+-   wants to return attention to libraries
+- Rimona - theaters EDA started and websites scraped, made maps and plots for these and LACs and HBCUs
+-   will focus on automotive as well
+
+
