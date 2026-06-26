@@ -3,7 +3,8 @@
 library(tidyverse)
 library(purrr)
 library(maps)
-
+library(usdata)
+library(stringr)
 
 PL13 <- read.csv("data/Libraries/Puout13a.csv")
 PL14 <- read.csv("data/Libraries/PLS_FY2014_Outlet_puout14a.csv")
@@ -61,6 +62,63 @@ ggplot(library_changed, aes(x = LONGITUD, y = LATITUDE, color = ifelse(close < 2
 
 library_changed %>% count(close < 2023)
 #236 public libraries closed in the past 10 years. Only 160 new public libraries have arisen, as of 2023.
+
+
+#getting the county shapefiles
+county_sf <- counties(cb = TRUE, class = "sf") %>% 
+  mutate(County = tolower(NAME),
+         State = tolower(STATE_NAME))
+
+#standardizing variables for join
+library_map <- all_years %>% slice(-6203) %>% 
+  mutate(County = str_to_lower(CNTY),
+         State = str_to_lower(abbr2state(STABR)))
+
+
+
+#aggregating to deal with many-to-many join errors
+unique_county_locale <- library_map %>%
+  group_by(State, County) %>%
+  summarize(
+    LOCALE = mean(LOCALE, na.rm = TRUE), 
+    .groups = "drop"
+  )
+
+##join housing prices to county shapefile information
+county_library <- county_sf %>%
+  full_join(unique_county_locale %>% select(County, State, LOCALE), 
+            by = c("State","County")) 
+
+pal <- colorNumeric(
+  palette = "YlOrRd", 
+  domain = county_library$LOCALE
+)
+
+leaflet() %>%
+  addTiles() %>%
+  addPolygons(
+    data = county_library,
+    fillColor = ~pal(LOCALE),
+    fillOpacity = 0.6,
+    color = "black",
+    weight = 1,
+    smoothFactor = 0.5,
+    popup = ~paste0(
+      str_to_title(County), " County", "<br/>",
+      "Metro/Urban Ranking:", LOCALE
+    )
+  ) %>%
+  addMarkers(
+    data = library_map,
+    lng = ~LONGITUD, 
+    lat = ~LATITUDE,
+    popup = ~paste0(
+      FSCSKEY, "<br/>",
+      CITY, ", ", str_to_title(State), "<br/>",
+      LOCALE
+    ),
+    label = ~CITY
+  )
 
 
 
