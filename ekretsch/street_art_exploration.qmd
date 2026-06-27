@@ -180,9 +180,75 @@ vids
 - https://campus.datacamp.com/courses/introduction-to-natural-language-processing-in-r/representations-of-text?ex=12
 
 specifically cosine similarity
+
+
+#### Based on medium article
+https://medium.com/@celine.vdr/natural-language-processing-word-embeddings-e0b2edc773d2
 ```{r}
+# Setting up
+
+# Fitting the model: GloVe
+## Constructing a document-term matrix
+prep <- tolower
+tok <- word_tokenizer
+
+### For the whole dataset
+complete_tokens <- itoken(words_by_region)
+
+
+
+
+
 
 ```
+```{r}
+# Constructing a document-term matrix
+library(text2vec)
+
+prep_fun = tolower
+tok_fun = word_tokenizer
+
+## For the whole dataset
+manifesto_tokens = itoken(manifesto_us$description, 
+             preprocessor = prep_fun, 
+             tokenizer = tok_fun,
+             ids = manifesto_us$id, 
+             progressbar = FALSE)
+
+vocab_all = create_vocabulary(manifesto_tokens)
+
+vectorizer_all = vocab_vectorizer(vocab_all)
+dtm = create_dtm(manifesto_tokens, vectorizer_all)
+
+## For the democrats
+manifesto_democrat = itoken(manifesto_democrats$description, 
+             preprocessor = prep_fun, 
+             tokenizer = tok_fun,
+             ids = manifesto_democrats$id, 
+             progressbar = FALSE)
+
+vocab_d = create_vocabulary(manifesto_democrat)
+
+vectorizer_d = vocab_vectorizer(vocab_d)
+dtm_d = create_dtm(manifesto_democrat, vectorizer_d)
+
+# For the republicans
+manifesto_republican = itoken(manifesto_republicans$description, 
+             preprocessor = prep_fun, 
+             tokenizer = tok_fun,
+             ids = manifesto_republicans$id, 
+             progressbar = FALSE)
+
+vocab_r = create_vocabulary(manifesto_republican)
+
+vectorizer_r = vocab_vectorizer(vocab_r)
+dtm_r = create_dtm(manifes
+```
+
+```{r}
+# Cosine similarity
+```
+
 
 
 
