@@ -1,18 +1,28 @@
 # Emily Kretschmer's Notes
 
-## June 26/7/8
-#### Historic districts
-- [ ] 
-
-### Street art
-- [ ] add more stop words
-- [ ] 
-
-## June 25
+## June 29
 #### Historic districts
 - [ ] check for consistency in territory names (N. Mariana Islands)
 - [ ] add filter for state + type of industry (drop down)
 - [ ] display dataset with those filters ^
+
+### Street art
+- [ ] add more stop words
+- [ ] get new, cleaner version of street art qmd
+- [ ] go back to other resources/readings for text analysis for street art
+- [x] get cosine similarity working
+- [ ] figure out polarized words situation
+
+#### News outlets
+- [ ] import data into R
+
+#### Libraries
+- [ ] get api
+
+<img width="1470" height="888" alt="image" src="https://github.com/user-attachments/assets/2c43fca0-8860-4605-98fe-de8fd5858a81" />
+
+
+## June 25
 
 #### Street art
 - [x] read emily's notes
@@ -23,11 +33,7 @@
 - [x] get point geometry for each mural
 - [x] get region for each mural
 
-#### News outlets
-- [ ] import data into R
 
-#### Libraries
-- [ ] get api
 
 
 ## June 24
