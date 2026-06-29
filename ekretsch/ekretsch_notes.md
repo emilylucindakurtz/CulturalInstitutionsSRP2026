@@ -8,16 +8,18 @@
 
 ### Street art
 - [ ] add more stop words
+  - [ ] maybe clean the city id column so that there's no hyphens and then tokenize that and remove those words
 - [ ] get new, cleaner version of street art qmd
 - [ ] go back to other resources/readings for text analysis for street art
 - [x] get cosine similarity working
 - [ ] figure out polarized words situation
+- [ ] bigrams???
 
 #### News outlets
 - [ ] import data into R
 
 #### Libraries
-- [ ] get api
+- [ ] get api into r
 
 <img width="1470" height="888" alt="image" src="https://github.com/user-attachments/assets/2c43fca0-8860-4605-98fe-de8fd5858a81" />
 
