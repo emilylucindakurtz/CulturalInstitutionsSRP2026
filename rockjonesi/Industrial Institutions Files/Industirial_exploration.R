@@ -134,13 +134,13 @@ pdf_prices <- data.frame(
     County = str_remove(County, paste0("^", State, "\\s+"))) %>% select(-raw_content) %>% drop_na()
 
 Fortune500_Housing <- fortune500_Clean %>% 
-  left_join(pdf_prices, by = c("County", "State"))
+  left_join(pdf_prices, by = c("County", "State")) %>% mutate(Q4.2025.Median.Home.Price = Median.Home.Price) %>% select(-Median.Home.Price)
 
 Fortune500_All_Housing <- fortune500_Clean %>% 
-  full_join(pdf_prices, by = c("County", "State"))
+  full_join(pdf_prices, by = c("County", "State")) 
 
 
-county_HPI <- read_excel("data/Industrial Institutions/hpi_at_county.xlsx", skip = 5)
+county_HPI <- read_excel("data/Industrial Institutions/hpi_at_county.xlsx", skip = 5) %>% filter(Year > 1999)
 
 
 data_centers <- read_csv("data/Industrial Institutions/data_centers_tracker_Raw.csv") %>% 
@@ -230,4 +230,6 @@ ggplot(PowerPlants_Clean, aes(x = State, fill = Primary.Energy.Source)) +
   labs(y = "Proportion")
 
 #write.csv(Fortune500_Housing, "Fortune500HQ_Housing.csv", row.names = FALSE)
+#write.csv(county_HPI, "county_HPI.csv", row.names = FALSE)
+write.csv(Fortune500_All_Housing, "Fortune500_Housing_All_Counties.csv", row.names = FALSE)
 
