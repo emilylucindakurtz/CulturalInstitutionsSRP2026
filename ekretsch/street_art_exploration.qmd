@@ -297,12 +297,12 @@ descrip_words_df_2 %>%
   mutate(word = factor(word, levels = rev(unique(word)))) %>% 
   # ^ convert word col to a factor with levels set in reverse order of their current appearance
   group_by(region) %>% 
-  top_n(5) %>% 
+  slice_max(order_by = n, n = 5) %>% #top_n(5) %>% 
   ungroup() %>% 
   ggplot(aes(word, n, fill = region)) +
   geom_col() +
   labs(x = NULL, y = "n") +
-  facet_wrap(~region, ncol = 5, scales = "free") +
+  #facet_wrap(~region, ncol = 5, scales = "free") +
   coord_flip()
 ```
 
