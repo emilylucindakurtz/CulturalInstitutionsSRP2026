@@ -88,6 +88,7 @@ murals_clean <- st_join(murals_clean, region_polygons, join = st_within) %>%
 
 ### Tokenizing
 
+#### STOPWORDS
 ```{r}
 # Text analysis of description
 # Just part 1 -- tokenizing
@@ -202,7 +203,7 @@ descrip_words_dtm <- descrip_words_df %>%
 # ^ tidytext equivalent of the text2vec approach from earlier.
 
 # Fitting LDA
-lda <- LDA(descrip_words_dtm, k=5, control = list(seed = 1234)) 
+lda <- LDA(descrip_words_dtm, k=4, control = list(seed = 1234)) 
 # ^ seed thingy makes it reproducible. 1234 is arbitrary
 
 # Extracting top terms
@@ -291,6 +292,13 @@ results <- (as.matrix(cosine_similarity))
 results
 ```
 
+
+
+
+
+-----
+
+from article:
 Before I dive into the analysis, the following code is useful to identify already the similarities and differences between party platforms, using a simple ```quanteda```function and testing similarity using the cosine measure of similarity. The closer the cosine score is to 1, the more similar are the documents. 
 
 The table below shows the documents with the lowest cosine score and as such, the most different.
@@ -313,6 +321,10 @@ The table below shows the most similar party platforms, with similarity scores c
 pairs <- pairs[order(pairs$`Cosine Similarity`, decreasing = TRUE),] 
 head(pairs, n=10)
 ```
+
+
+
+----
 
 ### actual analysis
 
