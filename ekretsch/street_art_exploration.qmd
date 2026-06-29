@@ -83,6 +83,10 @@ murals_clean <- st_join(murals_clean, region_polygons, join = st_within) %>%
 # st_intersects could theoretically also work but it would include on the borders
 # st_contains would work if the two dfs were switched (bc a point can't contain a polygon)
 ```
+```{r}
+write.csv(murals_clean, "street_art_clean.csv")
+```
+
 
 ## Text analysis
 
