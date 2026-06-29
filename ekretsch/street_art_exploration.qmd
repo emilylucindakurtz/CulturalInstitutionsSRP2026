@@ -87,6 +87,7 @@ murals_clean <- st_join(murals_clean, region_polygons, join = st_within) %>%
 ## Text analysis
 
 ### Tokenizing
+
 ```{r}
 # Text analysis of description
 # Just part 1 -- tokenizing
@@ -135,6 +136,7 @@ murals_descrip_words <- murals_clean %>%
 ```
 
 ### Prev
+
 ```{r}
 # IDEAS:
 # region, state
@@ -156,6 +158,7 @@ words_by_region <- murals_descrip_words %>%
   group_by(region) %>% 
   count(word)
 ```
+
 ```{r}
 words_by_region %>% 
   slice_max(n, n = 50)
@@ -164,43 +167,51 @@ words_by_region %>%
 ### Further TA
 
 - https://cran.r-project.org/web/packages/conversim/vignettes/Analyzing_Similarities_between_Two_Long_Speeches.html
-- https://www.r-bloggers.com/2015/10/text-mining-analysis-some-theory-and-practice-in-r/
-^ https://www.rdatamining.com/home
-- https://medium.com/@celine.vdr/natural-language-processing-word-embeddings-e0b2edc773d2
-^ https://github.com/Celinevdr/Analysing-Similarities-and-Differences-Between-Republicans-and-Democrats-Through-Word-Embeddings/blob/master/GitHub_Finalproject.Rmd
+- https://www.r-bloggers.com/2015/10/text-mining-analysis-some-theory-and-practice-in-r/ \^ https://www.rdatamining.com/home
+- https://medium.com/@celine.vdr/natural-language-processing-word-embeddings-e0b2edc773d2 \^ https://github.com/Celinevdr/Analysing-Similarities-and-Differences-Between-Republicans-and-Democrats-Through-Word-Embeddings/blob/master/GitHub_Finalproject.Rmd
 
-my
-- https://medium.com/data-science/r-packages-for-text-analysis-ad8d86684adb
-- https://stackoverflow.com/questions/8898521/finding-2-3-word-phrases-using-r-tm-package
-- https://www.rdatamining.com/examples/text-mining
-- https://www.slideshare.net/slideshow/r-by-example-mining-twitter-for/8504941
+my - https://medium.com/data-science/r-packages-for-text-analysis-ad8d86684adb - https://stackoverflow.com/questions/8898521/finding-2-3-word-phrases-using-r-tm-package - https://www.rdatamining.com/examples/text-mining - https://www.slideshare.net/slideshow/r-by-example-mining-twitter-for/8504941
 
-vids
-- https://www.youtube.com/watch?v=7cwBhWYHgsA&t=44s
-- https://campus.datacamp.com/courses/introduction-to-natural-language-processing-in-r/representations-of-text?ex=12
+vids - https://www.youtube.com/watch?v=7cwBhWYHgsA&t=44s - https://campus.datacamp.com/courses/introduction-to-natural-language-processing-in-r/representations-of-text?ex=12
 
 specifically cosine similarity
 
-
 #### Based on medium article
+
 https://medium.com/@celine.vdr/natural-language-processing-word-embeddings-e0b2edc773d2
+
 ```{r}
+library(text2vec)
+
 # Setting up
 
 # Fitting the model: GloVe
 ## Constructing a document-term matrix
-prep <- tolower
-tok <- word_tokenizer
 
 ### For the whole dataset
-complete_tokens <- itoken(words_by_region)
-
-
-
-
-
-
+complete_tokens <- itoken(murals_clean$description_lower,
+                          preprocessor = tolower, 
+                          # ^ lowercases all inputs... already done (CBL!)
+                          tokenizer = word_tokenizer, 
+                          # ^ splits text into individual word tokens
+                          ids = murals_clean$id,
+                          progressbar = FALSE)
+                          # ^ supress consoloe output
 ```
+```{r}
+# Table of each unique word
+vocab_all <- create_vocabulary(complete_tokens)
+```
+```{r}
+# Turning the vocabulary into a vectorizer function (basically a lookup that maps each word to a column index). This is what lets create_dtm() know which column each word belongs to.
+vectorizer_all <- vocab_vectorizer(vocab_all)
+```
+```{r}
+# Building the document-term matrix — a sparse matrix where rows are documents (indexed by id) and columns are vocabulary words, with cell values representing word counts. Sparse format means zeroes aren't stored explicitly, keeping memory usage low.
+dtm = create_dtm(complete_tokens, vectorizer_all)
+```
+
+
 ```{r}
 # Constructing a document-term matrix
 library(text2vec)
@@ -242,13 +253,9 @@ manifesto_republican = itoken(manifesto_republicans$description,
 vocab_r = create_vocabulary(manifesto_republican)
 
 vectorizer_r = vocab_vectorizer(vocab_r)
-dtm_r = create_dtm(manifes
+dtm_r = create_dtm(manifesto_republican, vectorizer_r)
 ```
 
 ```{r}
 # Cosine similarity
 ```
-
-
-
-
