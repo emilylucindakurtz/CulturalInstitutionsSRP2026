@@ -462,7 +462,7 @@ Was suggested that I expand the focus of my housing map: include housing informa
 - updated the housing map to reflect all county 2025 Q4 median housing prices.
 - found additional county-level housing data from the FHFA.
   - https://www.fhfa.gov/data/hpi/datasets?tab=annual-data
-  - large comprehensive dataset providing county HPI and % changes since 1975
+  - large comprehensive dataset providing county HPI and % changes
   - Will look for ways to incorporate it, maybe creating another shiny app with a slider availible to show price change overtime.
     - How will time related to the corporate headquarters though if they are stagnant?
     - Also, HPI is a more complex metric to understand so maybe also keep the median comparison for 2025, and then just shade by HPI % change?
@@ -488,6 +488,23 @@ Was suggested that I expand the focus of my housing map: include housing informa
 I was unable to get as much done today as I was travelling. I tried to clean up the data centers dataset that Emily sent me, and inquired about the CT counties structure. 
 
 Additionally, I started to make visuals of the library maps, but still have to fix some bugs in the code. Will get back on track Monday.
+
+
+## June 29
+
+Worked to repair the library mapping issues, however I am unsatisfied with the information that is provided by the map I created. 
+- maybe should have taken a different approach to the visualization of this information, or had done it on a different scale? (State scale vs county)
+<img width="653" height="346" alt="image" src="https://github.com/user-attachments/assets/91a28ede-fcdf-4d37-8446-e840a2b29917" />
+
+Additionally, to be presentable I should reclassify all the LOCALE measurements to align with their descriptive meanings rather than just leaving them on a non-linear, numeric, scale. I think for now I am going to continue to dive deeper into the industrial institution work, and then revisit these topics later. 
+
+
+In regards to mapping out HPU over time:
+- HPI is a more representative measure of cost appreciation over time, as it examines the costs of the same properties overtime rather than just a general median summary measurement. I think I will
+
+- Made a good amount of progress on the housing data over time portion of the industries shiny app
+  - there are still issues though where it will crash when I am trying to zoom in.
+
 
 
 
