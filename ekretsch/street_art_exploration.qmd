@@ -259,8 +259,8 @@ descrip_words_df_2 %>%
 library(quanteda)
 
 # dropping NA (so that I don't get an error for dfm) CBL
-murals_clean_new <- murals_clean %>% 
-  drop_na(description)
+#murals_clean_new <- murals_clean %>% 
+#  drop_na(description)
 #murals_clean_new$description[is.na(murals_clean_new$description)] <- ""
 
 # Creating a corpus
@@ -269,24 +269,26 @@ murals_corpus <- corpus(murals_clean, text_field = "description")
 
 
 # Make document feature matrix
-dfmat <- dfm(tokens(murals_corpus)) #murals_descrip_words
 dfmat <- murals_corpus %>% 
   tokens(remove_punct = TRUE) %>% # can also add remove_numbers = TRUE. # lowercase conversions by default
   tokens_remove(pattern = stop_words_combined) %>% 
   tokens_wordstem() %>% 
   dfm()
+
+# Group by region
+dfmat_grouped <- dfm_group(dfmat, groups = murals_clean$region)
 ```
 ```{r}
 library(quanteda.textstats)
 
-cosine_similarity <- textstat_simil(dfmat, method = "cosine", margin = "documents")
+cosine_similarity <- textstat_simil(dfmat_grouped, method = "cosine", margin = "documents")
 # margin = "documents" tells the function to calculate text similarity between entire documents (rows of DFM) rather than between individual words or features (columns of DFM)
 ```
 
 
 ```{r}
 results <- (as.matrix(cosine_similarity))
-
+results
 ```
 
 Before I dive into the analysis, the following code is useful to identify already the similarities and differences between party platforms, using a simple ```quanteda```function and testing similarity using the cosine measure of similarity. The closer the cosine score is to 1, the more similar are the documents. 
