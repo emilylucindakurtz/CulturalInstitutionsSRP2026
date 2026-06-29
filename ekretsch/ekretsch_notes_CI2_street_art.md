@@ -2,14 +2,18 @@
 
 # Personal notes/things to do:
 06/29
-Update on cosine similarity:
-<img width="379" height="193" alt="image" src="https://github.com/user-attachments/assets/066dc8a5-3d1b-4d0f-a63c-b4e481da9d76" />
-
-DTM vs DFM???
-<img width="681" height="517" alt="image" src="https://github.com/user-attachments/assets/7c13f037-8370-4028-8605-fba6739e8d9c" />
-
-Most pop words
-<img width="729" height="482" alt="image" src="https://github.com/user-attachments/assets/5503a5cf-b490-4bde-9b84-720642e08f68" />
+- https://www.youtube.com/watch?v=IUAHUEy1V0Q
+  - LDA -- one of the things from the medium article
+    - Mixed-membership model -- so the same words may appear in multiple
+    - <img width="718" height="437" alt="image" src="https://github.com/user-attachments/assets/51aaa86c-a9c0-455e-a120-317219d274cc" />
+  - DTM -- document term matrix
+    - Representation of a corpus in matrix format -- the rows are documents and the columns are any word that appears in the entire corpus -- cells count the number of times the word appears in each document
+- Update on cosine similarity:
+  - <img width="379" height="193" alt="image" src="https://github.com/user-attachments/assets/066dc8a5-3d1b-4d0f-a63c-b4e481da9d76" />
+- DTM vs DFM???
+  - <img width="681" height="517" alt="image" src="https://github.com/user-attachments/assets/7c13f037-8370-4028-8605-fba6739e8d9c" />
+- Most pop words
+  - <img width="729" height="482" alt="image" src="https://github.com/user-attachments/assets/5503a5cf-b490-4bde-9b84-720642e08f68" />
 
 
 Notes from 06/27 -- 
