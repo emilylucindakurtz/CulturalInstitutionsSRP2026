@@ -1,0 +1,3333 @@
+"Company","City","State","County","Latitude","Longitude","Median.Home.Price"
+"Voya ","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Adobe","San Jose","California","Santa Clara",37.3382082,-121.8863286,1558540
+"Walt Disney","Burbank","California","Los Angeles",34.1808392,-118.3089661,883230
+"Glenworth Financial","Richmond","Virginia",NA,37.5407246,-77.4360481,NA
+"Expeditors","Seattle","Washington","King",47.605838,-122.334683,903970
+"Dana Incorporated",NA,"Ohio","Lucas",41.574963,-83.6842561,182700
+"Jefferies Financial Group","New York","New York","New York",40.760264,-73.9745164,1172110
+"Wesco International Inc","Pittsburgh","Pennsylvania","Allegheny",40.4337234,-80.0057853,254090
+"Huntington Ingalls Industries","Newport News","Virginia",NA,36.9882362,-76.4371783,NA
+"Amphenol",NA,"Connecticut","South Central Connecticut Planning Region",41.4570108,-72.8230736,NA
+"United Rentals","Stamford","Connecticut","Western Connecticut Planning Region",41.0406771,-73.5572187,NA
+"Assurant","New York","New York","New York",40.7077916,-74.0089405,1172110
+"Alaska Air Group","Seattle","Washington","King",47.6062095,-122.3320708,903970
+"SpartanNash Company","Byron Township","Michigan","Kent",42.825551,-85.684614,343290
+"Darden Restaurants",NA,"Florida","Orange",28.4180207,-81.4248443,431320
+"THOR INDUSTRIES","Elkhart","Indiana","Elkhart",41.6819935,-85.9766671,251910
+"EMCOR Norwalk","Norwalk","Connecticut","Western Connecticut Planning Region",41.1493739,-73.4269254,NA
+"Masco Corp",NA,"Michigan","Wayne",42.36837,-83.3527097,206910
+"Caesars Entertainment","Las Vegas","Nevada","Clark",36.1165658,-115.1752403,457490
+"JetBlue Airways Corporation","New York","New York","Queens",40.7509337,-73.9385978,763630
+"WEC Energy Group","Milwaukee","Wisconsin","Milwaukee",43.0370226,-87.9138533,270080
+"W. R. Berkley Corporation",NA,"Connecticut","Western Connecticut Planning Region",41.018681,-73.6223224,NA
+"EnLink Midstream","Dallas","Texas","Dallas",32.7920752,-96.7951114,329370
+"Anixter Glenview",NA,"Illinois","Cook",42.0974698,-87.8239375,357630
+"Osh Kosh","Oshkosh","Wisconsin","Winnebago",44.0247062,-88.5426136,268680
+"Builders FirstSource","Dallas","Texas","Dallas",32.78536,-96.796337,329370
+"Ryder System","Miami","Florida","Miami-Dade",25.7616798,-80.1917902,555610
+"Dean Foods Company","Dallas","Texas","Dallas",32.8055096,-96.7923794,329370
+"PPL","Allentown","Pennsylvania","Lehigh",40.6081366,-75.5704494,354850
+"Yum China Holdings","Plano","Texas","Collin",33.0198431,-96.6988856,541940
+"Hershey","Derry Township","Pennsylvania","Dauphin",40.2859239,-76.6502468,275820
+"Alliance Data Systems","Plano","Texas","Collin",33.0198431,-96.6988856,541940
+"Berry Global","Evansville","Indiana","Vanderburgh",37.9789909,-87.5726435,218440
+"Fidelity National Information Services","Jacksonville","Florida","Duval",30.3321838,-81.655651,339790
+"Tractor Supply Company  Brentwood",NA,"Tennessee","Williamson",36.0322969,-86.8128372,888220
+"Zimmer Biomet Warsaw",NA,"Indiana","Kosciusko",41.2405012,-85.8838898,269650
+"Conagra Brands","Chicago","Illinois","Cook",41.8781136,-87.6297982,357630
+"Foot Locker","New York","New York","New York",40.7551834,-73.9863177,1172110
+"Dick’s Sporting Goods",NA,"Pennsylvania","Allegheny",40.5184013,-80.1667247,254090
+"Fifth Third Bank","Cincinnati","Ohio","Hamilton",39.1669811,-84.4114303,283180
+"Eversource",NA,"Massachusetts","Norfolk",42.2029952,-71.1596834,754290
+"Cheniere Energy Inc","Houston","Texas","Harris",29.7601536,-95.3653756,306470
+"National Oilwell Varco",NA,"Texas","Williamson",30.4899915,-97.8276561,466650
+"Auto-Owners Insurance","Lansing","Michigan","Eaton",42.7218607,-84.6384575,251950
+"Erie Insurance Arena","Erie","Pennsylvania","Erie",42.1280011,-80.0808889,218730
+"Jones Financial (Edward Jones)",NA,"Missouri","St. Louis",38.6008862,-90.4328968,312860
+"Liberty Media Corporation",NA,"Colorado","Douglas",39.553121,-104.846177,748570
+"Frontier Communications","Norwalk","Connecticut","Western Connecticut Planning Region",41.117744,-73.4081575,NA
+"Levi's Store","San Francisco","California",NA,37.7852456,-122.4061345,NA
+"J.B. Hunt Transport Services",NA,"Arkansas","Benton",36.2447313,-94.1494438,403390
+"Peabody Energy","Saint Louis","Missouri",NA,38.626689,-90.1925651,NA
+"Western Union","Denver","Colorado",NA,39.7402176,-104.9759495,NA
+"UNIVAR",NA,"Illinois","DuPage",41.8089191,-88.0111746,435690
+"WESTLAKE CHEMICAL","Houston","Texas","Harris",29.7604267,-95.3698028,306470
+"Thrivent Financial for Lutherans","Minneapolis","Minnesota","Hennepin",44.977753,-93.2650108,407520
+"Rockwell Collins","West Palm Beach","Florida","Palm Beach",26.7153424,-80.0533746,521590
+"Campbell Soup Company","Camden","New Jersey","Camden",39.9390315,-75.1080212,352080
+"WILLIAMS","Tulsa","Oklahoma","Tulsa",36.1539816,-95.992775,268610
+"Veritiv Corporation",NA,"Georgia","Gwinnett",33.929775,-84.2512483,433860
+"GameStop",NA,"Texas","Tarrant",32.9342919,-97.0780654,350700
+"Navient","Wilmington","Delaware","New Castle",39.7382681,-75.559152,391290
+"Simon Property Group","Indianapolis","Indiana","Marion",39.7669989,-86.1621681,250140
+"Williams-Sonoma","San Francisco","California",NA,37.7886383,-122.4074984,NA
+"Yum Brands","Louisville","Kentucky","Jefferson",38.2526647,-85.7584557,266760
+"Windstream Holdings Little Rock","Little Rock","Arkansas","Pulaski",34.7464809,-92.2895948,243290
+"Hilton Worldwide Holdings",NA,"Virginia","Fairfax",38.9338676,-77.1772604,782680
+"Harley-Davidson Museum","Milwaukee","Wisconsin","Milwaukee",43.0316706,-87.9165244,270080
+"First American Financial","Santa Ana","California","Orange",33.702007,-117.860141,1057230
+"Air Products & Chemicals","Allentown","Pennsylvania","Lehigh",40.6022939,-75.4714098,354850
+"TreeHouse Foods",NA,"Illinois","DuPage",41.8494532,-87.9473067,435690
+"Fiserv",NA,"Wisconsin","Waukesha",43.0338095,-88.1409438,461590
+"Zoetis Inc.",NA,"New Jersey","Morris",40.8470715,-74.4447772,677650
+"Brighthouse Financial","Charlotte","North Carolina","Mecklenburg",35.2270869,-80.8431267,471910
+"Ingredion",NA,"Illinois","Cook",41.8453955,-87.9052856,357630
+"ON Semiconductor","Phoenix","Arizona","Maricopa",33.4636186,-111.9701255,488740
+"","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Tapestry","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Peter Kiewit Sons’","Omaha","Nebraska","Douglas",41.2565369,-95.9345034,300310
+"NetApp","Sunnyvale","California","Santa Clara",37.4149198,-122.0095976,1558540
+"Intuit","Mountain View","California","Santa Clara",37.4283625,-122.097623,1558540
+"Old Republic International Corporation","Chicago","Illinois","Cook",41.887068,-87.6241579,357630
+"Graphic Packaging International","Augusta","Georgia","Richmond",33.327532,-81.954097,213950
+"AVIS",NA,"New Jersey","Morris",40.867239,-74.4229417,677650
+"Vistra/TXU Energy Corporate Office","Irving","Texas","Dallas",32.898375,-96.9642376,329370
+"Hd Supply Holdings Inc","Atlanta","Georgia","Cobb",33.8772177,-84.4728859,464530
+"Realogy Holdings Corp.",NA,"New Jersey","Morris",40.7716197,-74.4231855,677650
+"Clorox Co","Oakland","California","Alameda",37.8035821,-122.2721165,1108180
+"Polaris Industries Inc",NA,"Minnesota","Hennepin",45.057507,-93.5765367,407520
+"Booz Allen Hamilton Inc",NA,"Virginia","Fairfax",38.9218202,-77.2319233,782680
+"L3Harris Technologies: Communication Systems-West","Salt Lake City","Utah","Salt Lake",40.7835097,-111.9527848,599530
+"Ralph Lauren New York","New York","New York","New York",40.7715155,-73.9653656,1172110
+"Analog Devices",NA,"Massachusetts","Norfolk",42.2104866,-71.1806236,754290
+"Post Holdings Inc",NA,"Missouri","St. Louis",38.6165266,-90.334968,312860
+"S and P Global","New York","New York","New York",40.7499719,-73.9921676,1172110
+"Intercontinental Exchange","Atlanta","Georgia","Fulton",33.9088822,-84.4307488,514220
+"Ameren Corporation","Saint Louis","Missouri",NA,38.6224443,-90.2095588,NA
+"Franklin Templeton Investments","San Mateo","California","San Mateo",37.5437749,-122.2942274,1601600
+"iHeartMedia San Antonio","San Antonio","Texas","Bexar",29.6476256,-98.4542381,289900
+"NCR Global","Atlanta","Georgia","Fulton",33.7791502,-84.3896015,514220
+"Beacon Roofing Supply Inc",NA,"Virginia","Fairfax",38.9634821,-77.3815185,782680
+"ABM Industries","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Mutual of Omaha® Insurance Co.","Omaha","Nebraska","Douglas",41.2585024,-95.962269,300310
+"M&T Bank Buffalo","Buffalo","New York","Erie",43.0270869,-78.8004483,277470
+"HESS New York","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Advanced Micro Devices","Santa Clara","California","Santa Clara",37.3829254,-121.9703842,1558540
+"AGCO",NA,"Georgia","Gwinnett",34.0028786,-84.1446376,433860
+"Cintas Center","Cincinnati","Ohio","Hamilton",39.1503616,-84.4718415,283180
+"Dillard's","Little Rock","Arkansas","Pulaski",34.7534674,-92.3418963,243290
+"COTY","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Ascena Retail Group Inc (ASNA)",NA,"New Jersey","Bergen",41.0738813,-74.171283,694830
+"Pioneer Natural Resources Company","Irving","Texas","Dallas",32.8712639,-96.9388561,329370
+"Marathon Oil","Houston","Texas","Harris",29.7493564,-95.4715705,306470
+"First Data","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Seaboard Corporation Shawnee Mission",NA,"Kansas","Johnson",39.0081599,-94.690957,452240
+"Hertz Global Holdings",NA,"Florida","Lee",26.438136,-81.8067523,377990
+"Chemours","Wilmington","Delaware","New Castle",39.744655,-75.5483909,391290
+"Northern Trust","Chicago","Illinois","Cook",41.8815778,-87.6325811,357630
+"Calpine","Houston","Texas","Harris",29.7604267,-95.3698028,306470
+"Rockwell Automation","Milwaukee","Wisconsin","Milwaukee",43.0185625,-87.9133706,270080
+"O'Reilly Auto Parts Distribution Center",NA,"Minnesota","Hennepin",45.0748278,-93.3737396,407520
+"Burlington Stores",NA,"New Jersey","Burlington",40.071222,-74.8648873,403170
+"Hormel Foods",NA,"Minnesota","Mower",43.6666296,-92.9746367,194110
+"Altice USA",NA,"New York","Suffolk",40.789142,-73.134961,663980
+"Regeneron Pharmaceuticals",NA,"New York","Westchester",41.0767773,-73.8263889,732670
+"Ulta Beauty",NA,"Illinois","Will",41.6986416,-88.0683955,362310
+"Advance Auto Parts","Raleigh","North Carolina","Wake",35.7795897,-78.6381787,527840
+"Wynn Resorts","Las Vegas","Nevada","Clark",36.1265953,-115.1653652,457490
+"Regions Financial","Birmingham","Alabama","Jefferson",33.5185892,-86.8103567,270680
+"Mosaic",NA,"Minnesota","Hennepin",45.0105194,-93.4555093,407520
+"Wayfair","Boston","Massachusetts","Suffolk",42.347118,-71.078357,739680
+"RR Donnelley and Sons","Chicago","Illinois","Cook",41.8781136,-87.6297982,357630
+"PVH","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Hanesbrands","Winston-Salem","North Carolina","Forsyth",36.0911416,-80.2851295,302120
+"Public Service Enterprise Group","Newark","New Jersey","Essex",40.7370367,-74.1680642,612980
+"AK Steel Holding",NA,"Ohio","Tuscarawas",40.2339147,-81.3445012,217140
+"Interpublic Group of Companies","New York","New York","New York",40.7583114,-73.9679267,1172110
+"","New York","New York","New York",40.7581073,-73.9726262,1172110
+"Markel Corporation",NA,"Virginia","Henrico",37.661594,-77.576847,400330
+"Autoliv Americas",NA,"Michigan","Oakland",42.6944224,-83.274261,388210
+"CMS Energy","Jackson","Michigan","Jackson",42.2466617,-84.4022463,222630
+"Asbury Automotive Group",NA,"Georgia","Gwinnett",34.0051075,-84.0933453,433860
+"DCP Midstream Partners LP","Denver","Colorado",NA,39.743468,-104.9885753,NA
+"Owens-Illinois",NA,"Ohio","Wood",41.5285372,-83.6479919,254870
+"Alleghany Corporation","New York","New York","New York",40.7542881,-73.9876105,1172110
+"Boston Scientific Corporation","Marlborough","Massachusetts","Middlesex",42.3611457,-71.5615488,793120
+"MasTec Network Solutions",NA,"Florida","Miami-Dade",25.7632876,-80.2567796,555610
+"Xerox","Norwalk","Connecticut","Western Connecticut Planning Region",41.117744,-73.4081575,NA
+"Arthur Gallagher Rolling Meadows",NA,"Illinois","Cook",42.0535852,-88.0168425,357630
+"Olin Corporation",NA,"Missouri","St. Louis",38.6482951,-90.333205,312860
+"Owens & Minor",NA,"Virginia","Hanover",37.6087561,-77.3733139,442590
+"Travelcenters of America",NA,"Ohio","Cuyahoga",41.4553232,-81.9179173,225250
+"Sonic Automotive","Charlotte","North Carolina","Mecklenburg",35.1767046,-80.7969848,471910
+"Packaging Corp of America",NA,"Illinois","Lake",42.2586342,-87.840625,392350
+"Mohawk Industries",NA,"Georgia","Gordon",34.502587,-84.9510542,231830
+"Owens Corning","Toledo","Ohio","Lucas",41.6461679,-83.5342454,182700
+"Republic Services","Phoenix","Arizona","Maricopa",33.4483771,-112.0740373,488740
+"Insight Enterprises","Tempe","Arizona","Maricopa",33.3422522,-111.9527302,488740
+"Sanmina Corporation","San Jose","California","Santa Clara",37.390754,-121.930046,1558540
+"Toll Brothers","Horsham Township","Pennsylvania","Montgomery",40.1784422,-75.1285061,485590
+"Eastman Chemical","Kingsport","Tennessee","Sullivan",36.548434,-82.5618186,269950
+"American Financial Group","Cincinnati","Ohio","Hamilton",39.1031182,-84.5120196,283180
+"PulteGroup","Atlanta","Georgia","Fulton",33.7489954,-84.3879824,514220
+"Celanese Corporation","Irving","Texas","Dallas",32.871208,-96.943557,329370
+"Avery Dennison","Glendale","California","Los Angeles",34.1425078,-118.255075,883230
+"Leidos Holdings","Richmond","Virginia",NA,37.5407246,-77.4360481,NA
+"NVR Inc","Reston","Virginia","Fairfax",38.9519446,-77.3502091,782680
+"Graybar Electric Supply",NA,"Missouri","St. Louis",38.7082563,-90.3327602,312860
+"Everett","Everett","Washington","Snohomish",47.9789848,-122.2020795,751400
+"Western & Southern Financial Group Findlay","Findlay","Ohio","Hancock",41.0427625,-83.6288263,247240
+"Spirit Aerosystems Holdings","Wichita","Kansas","Sedgwick",37.6871761,-97.330053,230800
+"Newmont Goldcorp",NA,"Colorado","Arapahoe",39.6172101,-104.9508141,593960
+"American Axle and Manufacturing","Detroit","Michigan","Wayne",42.331427,-83.0457538,206910
+"Magellan Health","Scottsdale","Arizona","Maricopa",33.5084918,-111.9271907,488740
+"Motorola Solutions Inc","Chicago","Illinois","Cook",41.8809559,-87.6406245,357630
+"Citizens Financial Group","Providence","Rhode Island","Providence",41.827414,-71.410773,444090
+"J M Smucker Co Store & Cafe",NA,"Ohio","Wayne",40.8027783,-81.7630265,266630
+"Keycorp",NA,"Ohio","Cuyahoga",41.3853982,-81.441808,225250
+"Dover Corporation",NA,"Illinois","DuPage",41.8332067,-88.0075585,435690
+"Apache Corp","Houston","Texas","Harris",29.744689,-95.4616265,306470
+"American Tower Corporation","Boston","Massachusetts","Suffolk",42.346449,-71.079981,739680
+"Keurig Dr Pepper",NA,"Massachusetts","Middlesex",42.4817587,-71.2211466,793120
+"Casey's General Stores Inc","Ankeny","Iowa","Polk",41.693711,-93.57317,288360
+"Raymond James Financial","Saint Petersburg","Florida","Pinellas",27.8887405,-82.6669628,400470
+"Weyerhaeuser Company Seattle","Seattle","Washington","King",47.6004408,-122.332628,903970
+"Activision Blizzard","Santa Monica","California","Los Angeles",34.0198026,-118.4524457,883230
+"Quest Diagnostics Corporate",NA,"New Jersey","Hudson",40.7878337,-74.0449297,610440
+"Constellation Brands Inc",NA,"New York","Ontario",43.0284222,-77.4348227,273020
+"Fidelity National Financial","Jacksonville","Florida","Duval",30.3181782,-81.6764314,339790
+"A-Mark Previous Metals El Segundo",NA,"California","Los Angeles",33.9191799,-118.4164652,883230
+"UGI Corporation","Upper Merion Township","Pennsylvania","Montgomery",40.0885417,-75.4070304,485590
+"United Natural Foods","Providence","Rhode Island","Providence",41.8239891,-71.4128343,444090
+"Chesapeake Energy","Oklahoma City","Oklahoma","Oklahoma",35.4675602,-97.5164276,250080
+"Navistar International",NA,"Illinois","DuPage",41.801141,-88.0747875,435690
+"Delek US Holdings",NA,"Tennessee","Williamson",36.0331164,-86.7827772,888220
+"American Family Insurance Group","Madison","Wisconsin","Dane",43.0730517,-89.4012302,458010
+"IQVIA Holdings","Durham","North Carolina","Durham",35.9940329,-78.898619,445390
+"SunTrust Banks","Atlanta","Georgia","Fulton",33.7489954,-84.3879824,514220
+"Ally Financial","Detroit","Michigan","Wayne",42.331427,-83.0457538,206910
+"Targa Resources","Houston","Texas","Harris",29.7604267,-95.3698028,306470
+"BorgWarner Propulsion Technical Center",NA,"Michigan","Oakland",42.6970837,-83.2535823,388210
+"Silver Spring","Silver Spring","Maryland","Montgomery",38.9906657,-77.026088,680160
+"CenterPoint Energy Plaza","Houston","Texas","Harris",29.7571169,-95.3679888,306470
+"Pacific Life Insurance Co",NA,"California","Orange",33.6194334,-117.877543,1057230
+"DEVON ENERGY","Oklahoma City","Oklahoma","Oklahoma",35.4675602,-97.5164276,250080
+"AES","Arlington","Virginia","Arlington",38.8799697,-77.1067698,973410
+"EBAY","San Jose","California","Santa Clara",37.3382082,-121.8863286,1558540
+"Molson Coors Brewing","Denver","Colorado",NA,39.7392358,-104.990251,NA
+"Universal Health Services","Upper Merion Township","Pennsylvania","Montgomery",40.1012856,-75.3835525,485590
+"Live Nation Entertainment",NA,"California","Los Angeles",34.0736204,-118.4003563,883230
+"NRG Energy","Princeton","New Jersey","Mercer",40.3572976,-74.6672226,461940
+"L3 Technologies","New York","New York","New York",40.7492599,-73.975865,1172110
+"Charles Schwab","San Francisco","California",NA,37.7906917,-122.3928271,NA
+"Entergy","New Orleans","Louisiana","Orleans Parish",29.9510658,-90.0715323,NA
+"Lam Research","Fremont","California","Alameda",37.5485396,-121.988583,1108180
+"Baxter International",NA,"Illinois","Lake",42.1711365,-87.8445119,392350
+"Office Depot","Boca Raton","Florida","Palm Beach",26.3683064,-80.1289321,521590
+"Crown Holdings",NA,"Pennsylvania","Bucks",40.245664,-74.8459972,491060
+"Quanta Service","Houston","Texas","Harris",29.7604267,-95.3698028,306470
+"W.W. Grainger",NA,"Illinois","Lake",42.2586342,-87.840625,392350
+"AutoZone","Memphis","Tennessee","Shelby",35.1495343,-90.0489801,292520
+"Expedia Group","Bellevue","Washington","King",47.6101497,-122.2015159,903970
+"Corning",NA,"New York","Steuben",42.1428521,-77.0546903,146260
+"Laboratory Corp. of America","Burlington","North Carolina","Alamance",36.0956918,-79.4377991,295500
+"Norfolk Southern","Norfolk","Virginia",NA,36.8507689,-76.2858726,NA
+"Huntsman LLC","The Woodlands","Texas","Montgomery",30.1596297,-95.4564633,368940
+"Reliance Steel & Aluminum Co","Los Angeles","California","Los Angeles",34.051473,-118.2514575,883230
+"Xcel Energy","Minneapolis","Minnesota","Hennepin",44.9795754,-93.2705091,407520
+"Unum Group","Chattanooga","Tennessee","Hamilton",35.0456297,-85.3096801,372350
+"Group 1 Automotive","Houston","Texas","Harris",29.7777447,-95.5438873,306470
+"BALL","Broomfield","Colorado",NA,39.9205411,-105.0866504,NA
+"Farmers Insurance Exchange",NA,"California","Yolo",38.6785157,-121.7732971,633030
+"Sempra Energy","San Diego","California","San Diego",32.715738,-117.1610838,928550
+"Nvidia","Santa Clara","California","Santa Clara",37.3541079,-121.9552356,1558540
+"Tenneco",NA,"Illinois","Lake",42.2586342,-87.840625,392350
+"MGM Resorts International Career Center",NA,"Nevada","Clark",36.0712215,-115.1451887,457490
+"Lithia Motors","Medford","Oregon","Jackson",42.3265152,-122.8755949,462170
+"Steel Dynamics","Fort Wayne","Indiana","Allen",41.079273,-85.1393513,260380
+"FirstEnergy Corp.","Akron","Ohio","Summit",41.083384,-81.5183258,241300
+"LKQ ","Chicago","Illinois","Cook",41.8781136,-87.6297982,357630
+"J.C. Penney","Plano","Texas","Collin",33.0198431,-96.6988856,541940
+"CSX Corporation","Jacksonville","Florida","Duval",30.3245211,-81.6640579,339790
+"Consolidated Edison Inc","New York","New York","New York",40.7277719,-73.9728317,1172110
+"Bed Bath & Beyond","New York","New York","New York",40.7726316,-73.9818792,1172110
+"Murphy USA","El Dorado","Arkansas","Union",33.20763,-92.6662674,124330
+"ONEOK Field","Tulsa","Oklahoma","Tulsa",36.1604414,-95.9890152,268610
+"Edison International",NA,"California","Los Angeles",34.0540475,-118.0806461,883230
+"Global Partners LP","Waltham","Massachusetts","Middlesex",42.3547248,-71.2624797,793120
+"Discover Financial Services",NA,"Illinois","Lake",42.1567624,-87.8901097,392350
+"VF","Greensboro","North Carolina","Guilford",36.0726354,-79.7919754,316460
+"Reinsurance Group of America Inc.",NA,"Missouri","St. Louis",38.661306,-90.56653,312860
+"Core-Mark Holding","South San Francisco","California","San Mateo",37.654656,-122.4077498,1601600
+"Ameriprise Financial -  Minneapolis","Minneapolis","Minnesota","Hennepin",44.975179,-93.2691191,407520
+"Viacom","New York","New York","New York",40.7579353,-73.9861885,1172110
+"State Street Corporation","Boston","Massachusetts","Suffolk",42.3527258,-71.0584443,739680
+"BB and T Corp Winston-Salem","Winston-Salem","North Carolina","Forsyth",36.0998596,-80.244216,302120
+"BJ's Wholesale Club",NA,"Massachusetts","Worcester",42.2695216,-71.6161294,484170
+"Guardian Life Ins. Co. of America","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Newell Brands Hoboken",NA,"New Jersey","Hudson",40.7386606,-74.0277171,610440
+"Henry Schein Inc",NA,"New York","Suffolk",40.7677654,-73.4175771,663980
+"L Brands OH",NA,"Ohio","Franklin",39.9789437,-82.779035,327270
+"Salesforce.com San Francisco","San Francisco","California",NA,37.7894338,-122.3964928,NA
+"ADP Roseland",NA,"New Jersey","Essex",40.8155809,-74.31007,612980
+"Dominion Energy Richmond","Richmond","Virginia",NA,37.541585,-77.437031,NA
+"Anadarko","The Woodlands","Texas","Montgomery",30.1658207,-95.4612625,368940
+"Alcoa Corporation","Pittsburgh","Pennsylvania","Allegheny",40.4477654,-80.0011301,254090
+"Biogen","Cambridge","Massachusetts","Middlesex",42.3662897,-71.0857637,793120
+"Kellogg","Battle Creek","Michigan","Calhoun",42.3523378,-85.2396898,183040
+"Stryker","Kalamazoo","Michigan","Kalamazoo",42.2428207,-85.5553397,274280
+"Dish Network Englewood","Englewood","Colorado","Douglas",39.54598,-104.856233,748570
+"Estee Lauder New York","New York","New York","New York",40.7623565,-73.9693612,1172110
+"Las Vegas Sands Corp Las Vegas","Las Vegas","Nevada","Clark",36.0894731,-115.1674317,457490
+"Textron","Providence","Rhode Island","Providence",41.8249766,-71.4089253,444090
+"Stanley black & decker","New Britain","Connecticut","Capitol Planning Region",41.677591,-72.7691948,NA
+"Arconic New York","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Loews Regency New York","New York","New York","New York",40.7645507,-73.969144,1172110
+"Qurate Retail Englewood","Englewood","Colorado","Arapahoe",39.6477653,-104.9877597,593960
+"Kinder Morgan","Houston","Texas","Harris",29.7580033,-95.3676218,306470
+"Community Health Systems Franklin","Franklin","Tennessee","Williamson",35.9250637,-86.8688899,888220
+"United States Steel Pittsburgh","Pittsburgh","Pennsylvania","Allegheny",40.4406248,-79.9958864,254090
+"BlackRock New York","New York","New York","New York",40.7590777,-73.9736148,1172110
+"DTE Energy",NA,"Michigan","Washtenaw",42.374059,-84.078522,407140
+"Principal Financial Group","Des Moines","Iowa","Polk",41.5886935,-93.6275465,288360
+"Parker Hannifin Corp",NA,"Ohio","Cuyahoga",41.5065902,-81.4611707,225250
+"CBS Corporation","New York","New York","New York",40.7611804,-73.9788194,1172110
+"Booking Holdings Norwalk","Norwalk","Connecticut","Western Connecticut Planning Region",41.117744,-73.4081575,NA
+"Ecolab","Saint Paul","Minnesota","Ramsey",44.9463336,-93.0973332,343940
+"ITW  Glenview",NA,"Illinois","Cook",42.0579748,-87.8041219,357630
+"Waste Management - Houston Houston","Houston","Texas","Harris",29.7561602,-95.3648818,306470
+"Land O Lakes",NA,"Minnesota","Ramsey",45.062663,-93.150847,343940
+"Mastercard",NA,"New York","Westchester",41.0234636,-73.7142761,732670
+"Marsh Mclennan: Geiger Richard","New York","New York","New York",40.7568777,-73.9820345,1172110
+"Ross Dress for Less",NA,"California","Alameda",37.7020159,-121.9314005,1108180
+"Jacobs Engineering Group Dallas","Dallas","Texas","Dallas",32.7766642,-96.7969879,329370
+"Celgene Corporation",NA,"New Jersey","Union",40.7090186,-74.3452692,647330
+"Omnicom Group Inc","New York","New York","New York",40.7573566,-73.9753734,1172110
+"PPG Industries Inc","Pittsburgh","Pennsylvania","Allegheny",40.4398325,-80.0034907,254090
+"PayPal","San Jose","California","Santa Clara",37.3763719,-121.9226185,1558540
+"Goodyear Auto Service",NA,"Ohio","Summit",40.9774039,-81.4927201,241300
+"Colgate-Palmolive Company","New York","New York","New York",40.7570209,-73.9746695,1172110
+"Supervalu  Eden Prairie",NA,"Minnesota","Hennepin",44.8562646,-93.4634171,407520
+"General Mills  Minneapolis",NA,"Minnesota","Hennepin",44.9947801,-93.3931409,407520
+"Texas Instruments","Dallas","Texas","Dallas",32.7766642,-96.7969879,329370
+"Aramark HQ","Philadelphia","Pennsylvania","Philadelphia",39.953533,-75.1793605,266610
+"Netflix Los Gatos",NA,"California","Santa Clara",37.2571032,-121.9641779,1558540
+"Nordstrom Downtown Seattle","Seattle","Washington","King",47.6123411,-122.336287,903970
+"Becton Dickinson  Franklin Lakes",NA,"New Jersey","Bergen",41.0169734,-74.2107153,694830
+"Rockingham Estates by D.R. Horton America's Builder","Arlington","Texas","Tarrant",32.6176787,-97.0883611,350700
+"Cognizant",NA,"New Jersey","Bergen",40.8729475,-74.0069886,694830
+"American Electric Power Co","Columbus","Ohio","Franklin",39.9651773,-83.0060034,327270
+"CDW",NA,"Illinois","Lake",42.1973796,-87.8886482,392350
+"WestRock  Atlanta","Atlanta","Georgia","Fulton",33.9343834,-84.3544514,514220
+"Jones Lang La Salle","Chicago","Illinois","Cook",41.880557,-87.6298254,357630
+"Davita","Denver","Colorado",NA,39.7521886,-105.0034965,NA
+"Lincoln Financial Group","Radnor Township","Pennsylvania","Delaware",40.043008,-75.3656481,385930
+"Gap San Francisco","San Francisco","California",NA,37.7848185,-122.4074974,NA
+"C.H. Robinson",NA,"Minnesota","Hennepin",44.820863,-93.460822,407520
+"NextEra Energy Resources",NA,"Florida","Palm Beach",26.8591495,-80.0583923,521590
+"PG&E San Francisco","San Francisco","California",NA,37.7915801,-122.3958235,NA
+"Applied Materials Inc","Santa Clara","California","Santa Clara",37.3776247,-121.9787818,1558540
+"EOG Resources Inc","Houston","Texas","Harris",29.7587886,-95.3708019,306470
+"XPO Logistics","Bridgeport","Connecticut","Greater Bridgeport Planning Region",41.179974,-73.1706748,NA
+"NGL Energy Partners LP","Tulsa","Oklahoma","Tulsa",36.0742323,-95.9250989,268610
+"Emerson Electric Co.",NA,"Missouri","St. Louis",38.7315866,-90.2790342,312860
+"Sherwin-Williams - Corporate Office","Cleveland","Ohio","Cuyahoga",41.4973117,-81.6924784,225250
+"Performans Food Group Richmond","Richmond","Virginia",NA,37.5407246,-77.4360481,NA
+"HollyFrontier Corporation","Dallas","Texas","Dallas",32.794481,-96.8081869,329370
+"CarMax","Charlottesville","Virginia","Albemarle",38.0324236,-78.4460289,568920
+"Synchrony Financial","Stamford","Connecticut","Western Connecticut Planning Region",41.097221,-73.561771,NA
+"Tenet Healthcare Corporation","Dallas","Texas","Dallas",32.7847875,-96.8026417,329370
+"Kimberly-Clark Corporation","Irving","Texas","Dallas",32.8700521,-96.9505585,329370
+"Freeport-McMoRan Inc.","Phoenix","Arizona","Maricopa",33.4516712,-112.073049,488740
+"Genuine Parts","Atlanta","Georgia","Fulton",33.7489954,-84.3879824,514220
+"Molina Healthcare","Long Beach","California","Los Angeles",33.7700504,-118.1937395,883230
+"Occidental Petroleum","Houston","Texas","Harris",29.7604267,-95.3698028,306470
+"Icahn Enterprises","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Avnet","Phoenix","Arizona","Maricopa",33.4274453,-111.9799387,488740
+"Fluor","Irving","Texas","Dallas",32.8140177,-96.9488945,329370
+"Bank of New York Mellon","New York","New York","New York",40.714291,-74.0117809,1172110
+"Altria Group Inc.",NA,"Virginia","Henrico",37.6024176,-77.5178714,400330
+"Hartford Financial Services: Delacruz Cedric","Hartford","Connecticut","Hartford",41.769703,-72.6869808,NA
+"Danaher Corporation","Washington","District of Columbia",NA,38.901756,-77.0493404,NA
+"PNC Financial Services","Pittsburgh","Pennsylvania","Allegheny",40.4406248,-79.9958864,254090
+"SYNNEX","Fremont","California","Alameda",37.5485396,-121.988583,1108180
+"AECOM","Los Angeles","California","Los Angeles",34.0522342,-118.2436849,883230
+"Kohl’s",NA,"Wisconsin","Waukesha",43.1788967,-88.1173132,461590
+"WellCare Health Plans","Tampa","Florida","Hillsborough",27.950575,-82.4571776,422180
+"Lennar","Miami","Florida","Miami-Dade",25.7616798,-80.1917902,555610
+"VISA","San Francisco","California",NA,37.7749295,-122.4194155,NA
+"Western Digital","San Jose","California","Santa Clara",37.3382082,-121.8863286,1558540
+"Marriott International","Bethesda","Maryland","Montgomery",38.984652,-77.0947092,680160
+"Broadcom","San Jose","California","Santa Clara",37.3382082,-121.8863286,1558540
+"McDonald’s","Chicago","Illinois","Cook",41.8781136,-87.6297982,357630
+"Whirlpool","Benton Harbor","Michigan","Berrien",42.1167065,-86.4541894,255630
+"LEAR",NA,"Michigan","Oakland",42.4733688,-83.2218731,388210
+"CBRE Global Headquarters","Los Angeles","California","Los Angeles",34.0516422,-118.2535883,883230
+"AutoNation","Fort Lauderdale","Florida","Broward",26.1224386,-80.1373174,479150
+"Tesla HQ","Palo Alto","California","Santa Clara",37.3947057,-122.1503251,1558540
+"AFLAC","Columbus","Georgia","Muscogee",32.4609764,-84.9877094,227150
+"Southwest Airlines","Dallas","Texas","Dallas",32.7766642,-96.7969879,329370
+"ManpowerGroup","Milwaukee","Wisconsin","Milwaukee",43.0389025,-87.9064736,270080
+"JABIL","Saint Petersburg","Florida","Pinellas",27.7676008,-82.6402915,400470
+"Gilead Sciences",NA,"California","San Mateo",37.5669611,-122.2816328,1601600
+"Bristol-Myers Squibb","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Qualcomm","San Jose","California","Santa Clara",37.3654663,-121.9151577,1558540
+"Penske Automotive Group",NA,"Michigan","Oakland",42.6026454,-83.2879437,388210
+"DOLLAR TREE","Chesapeake","Virginia",NA,36.7682088,-76.2874927,NA
+"UNION PACIFIC","Omaha","Nebraska","Douglas",41.2565369,-95.9345034,300310
+"International Paper","Memphis","Tennessee","Shelby",35.1006964,-89.8497443,292520
+"CENTURYLINK","Monroe","Louisiana","Ouachita Parish",32.5093109,-92.1193012,NA
+"SOUTHERN","Atlanta","Georgia","Fulton",33.7489954,-84.3879824,514220
+"PACCAR ","Bellevue","Washington","King",47.6170064,-122.1997509,903970
+"AMGEN","Thousand Oaks","California","Ventura",34.1705609,-118.8375937,890010
+"Cummins","Indianapolis","Indiana","Marion",39.7681486,-86.1518866,250140
+"Halliburton","Houston","Texas","Harris",29.9377567,-95.3404419,306470
+"Duke Energy","Charlotte","North Carolina","Mecklenburg",35.223998,-80.848639,471910
+"US Foods Holdings",NA,"Illinois","Cook",41.9867507,-87.8721602,357630
+"Thermo Fisher Scientific","Waltham","Massachusetts","Middlesex",42.3929224,-71.2615943,793120
+"Eli Lilly and Company Corporate Center","Indianapolis","Indiana","Marion",39.7559112,-86.1530808,250140
+"DXC Technology",NA,"Virginia","Fairfax",38.9233855,-77.2214581,782680
+"Starbucks","Seattle","Washington","King",47.610021,-122.342583,903970
+"NUCOR","Charlotte","North Carolina","Mecklenburg",35.2270869,-80.8431267,471910
+"Dollar General Corporate Headquarters",NA,"Tennessee","Davidson",36.3090261,-86.699065,452700
+"MACY'S","Cincinnati","Ohio","Hamilton",39.1031182,-84.5120196,283180
+"U.S. BANCORP","Minneapolis","Minnesota","Hennepin",44.977753,-93.2650108,407520
+"Mondelez International",NA,"Illinois","Lake",42.1711365,-87.8445119,392350
+"Kraft Heinz Innovation Center",NA,"Pennsylvania","Allegheny",40.6592545,-80.100283,254090
+"Raytheon Company",NA,"Massachusetts","Middlesex",42.6378861,-71.2451602,793120
+"PBF Energy",NA,"New Jersey","Morris",40.8474943,-74.4546895,677650
+"INTL FCStone","New York","New York","New York",40.7552112,-73.9801333,1172110
+"Northwestern Mutual","Milwaukee","Wisconsin","Milwaukee",43.040905,-87.901114,270080
+"Philip Morris International Inc","New York","New York","New York",40.7518892,-73.9782981,1172110
+"Arrow Electronics","Centennial","Colorado","Arapahoe",39.5814958,-104.8822406,593960
+"Northrop Grumman","Falls Church","Virginia","Fairfax",38.8671114,-77.2148893,782680
+"Rite Aid",NA,"Pennsylvania",NA,40.2401756,-76.9353966,NA
+"TRAVELERS  New York",NA,"New York","Suffolk",40.7736489,-73.4157247,663980
+"Micron Technology","Boise","Idaho","Ada",43.6150186,-116.2023137,556040
+"Twenty-First Century Fox","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Abbott Laboratories",NA,"Illinois","Lake",42.3008372,-87.8944668,392350
+"Hewlett Packard Enterprise","Palo Alto","California","Santa Clara",37.4418834,-122.1430195,1558540
+"USAA","San Antonio","Texas","Bexar",29.4241219,-98.4936282,289900
+"Coca-Cola","Atlanta","Georgia","Fulton",33.7489954,-84.3879824,514220
+"Progressive",NA,"Ohio","Cuyahoga",41.5519952,-81.4392828,225250
+"Capital One Financial",NA,"Virginia","Fairfax",38.9338676,-77.1772604,782680
+"CHS",NA,"Minnesota","Dakota",44.8480218,-93.0427153,400830
+"ABBVIE",NA,"Illinois","Lake",42.325578,-87.8411818,392350
+"3M","Saint Paul","Minnesota","Ramsey",44.9537029,-93.0899578,343940
+"Plains GP holdings","Houston","Texas","Harris",29.7604267,-95.3698028,306470
+"Exelon","Chicago","Illinois","Cook",41.8781136,-87.6297982,357630
+"General Dynamics","Falls Church","Virginia",NA,38.882334,-77.1710914,NA
+"Publix Super Markets","Lakeland","Florida","Polk",28.0394654,-81.9498042,302500
+"NIKE","Beaverton","Oregon","Washington",45.4888761,-122.8013771,621730
+"Enterprise Products Partners","Houston","Texas","Harris",29.7604267,-95.3698028,306470
+"Tech Data","Clearwater","Florida","Pinellas",27.9658533,-82.8001026,400470
+"DEERE","Moline","Illinois","Rock Island",41.5067003,-90.5151342,161500
+"ConocoPhillips","Houston","Texas","Harris",29.7604267,-95.3698028,306470
+"TJX","Framingham","Massachusetts","Middlesex",42.279286,-71.4161565,793120
+"Massachusetts Mutual Life Insurance","Springfield","Massachusetts","Hampden",42.1014831,-72.589811,344760
+"World Fuel Services","Miami","Florida","Miami-Dade",25.7616798,-80.1917902,555610
+"ALLSTATE",NA,"Illinois","Cook",42.1275267,-87.8289548,357630
+"Oracle ","Redwood City","California","San Mateo",37.4852152,-122.2363548,1601600
+"Tyson Foods","Springdale","Arkansas","Washington",36.1867442,-94.1288141,363520
+"TIAA","New York","New York","New York",40.7127753,-74.0059728,1172110
+"United Continental Holdings","Chicago","Illinois","Cook",41.8781136,-87.6297982,357630
+"Honeywell International",NA,"New Jersey","Morris",40.8395922,-74.4818698,677650
+"Merck Kenilworth",NA,"New Jersey","Union",40.6764911,-74.2907032,647330
+"Liberty Mutual Insurance Group","Boston","Massachusetts","Suffolk",42.3600825,-71.0588801,739680
+"Best Buy",NA,"Minnesota","Hennepin",44.8832982,-93.2830021,407520
+"Nationwide","Columbus","Ohio","Franklin",39.9611755,-82.9987942,327270
+"American Express","New York","New York","New York",40.7127753,-74.0059728,1172110
+"New York Life Insurance","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Charter Communications","Stamford","Connecticut","Western Connecticut Planning Region",41.0534302,-73.5387341,NA
+"Delta Air Lines","Atlanta","Georgia","Fulton",33.7489954,-84.3879824,514220
+"American Airlines Group","Fort Worth","Texas","Tarrant",32.7554883,-97.3307658,350700
+"HCA Healthcare","Nashville","Tennessee","Davidson",36.1626638,-86.7816016,452700
+"AIG","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Cigna",NA,"Connecticut","Capitol Planning Region",41.826488,-72.7300945,NA
+"CISCO Systems","San Jose","California","Santa Clara",37.3382082,-121.8863286,1558540
+"Morgan Stanley ","New York","New York","New York",40.7599978,-73.9854317,1172110
+"Goldman Sachs Group","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Pfizer","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Lockheed Martin","Bethesda","Maryland","Montgomery",38.984652,-77.0947092,680160
+"Energy Transfer","Dallas","Texas","Dallas",32.7766642,-96.7969879,329370
+"Caterpillar",NA,"Illinois","Lake",42.1711365,-87.8445119,392350
+"Facebook",NA,"California","San Mateo",37.4529598,-122.1817252,1601600
+"Humana","Louisville","Kentucky","Jefferson",38.2526647,-85.7584557,266760
+"HP","Palo Alto","California","Santa Clara",37.4418834,-122.1430195,1558540
+"SYSCO","Houston","Texas","Harris",29.7604267,-95.3698028,306470
+"Albertsons","Boise","Idaho","Ada",43.6150186,-116.2023137,556040
+"Centene","Saint Louis","Missouri",NA,38.6270025,-90.1994042,NA
+"Prudential Financial","Newark","New Jersey","Essex",40.7335424,-74.1710255,612980
+"Archer Daniels Midland","Chicago","Illinois","Cook",41.8781136,-87.6297982,357630
+"Pepsico","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Fedex","Memphis","Tennessee","Shelby",35.1495343,-90.0489801,292520
+"United Technologies",NA,"Connecticut","Capitol Planning Region",41.7360305,-72.795027,NA
+"Procter and Gamble","Cincinnati","Ohio","Hamilton",39.1031182,-84.5120196,283180
+"MetLife","New York","New York","New York",40.7127753,-74.0059728,1172110
+"INTEL","Santa Clara","California","Santa Clara",37.3541079,-121.9552356,1558540
+"Lowes",NA,"North Carolina","Iredell",35.5859146,-80.8081413,376430
+"United Parcel Service","Atlanta","Georgia","Fulton",33.7489954,-84.3879824,514220
+"Freddie Mac",NA,"Virginia","Fairfax",38.9338676,-77.1772604,782680
+"Target","Minneapolis","Minnesota","Hennepin",44.9748915,-93.2743017,407520
+"IBM",NA,"New York","Westchester",41.1135751,-73.7160522,732670
+"Johnson And Johnson","New Brunswick","New Jersey","Middlesex",40.4993693,-74.4419126,549800
+"State Farm Insurance","Bloomington","Illinois","McLean",40.4771561,-88.9548523,239350
+"DuPont De Nemours  ",NA,"Delaware","New Castle",39.7828904,-75.5671468,391290
+"Dell Technologies ","Round Rock","Texas","Williamson",30.4883856,-97.6704209,466650
+"Anthem","Indianapolis","Indiana","Marion",39.76462,-86.15301,250140
+"Comcast","Philadelphia","Pennsylvania","Philadelphia",39.9549688,-75.168451,266610
+"Marathon Petrolium","Findlay","Ohio","Hancock",41.04422,-83.6499321,247240
+"Citigroup","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Wells Fargo","San Francisco","California",NA,37.7749295,-122.4194155,NA
+"Boeing","Chicago","Illinois","Cook",41.8781136,-87.6297982,357630
+"Home Depot","Atlanta","Georgia","Fulton",33.7489954,-84.3879824,514220
+"Microsoft",NA,"Washington","King",47.6739881,-122.121512,903970
+"Bank of America","Charlotte","North Carolina","Mecklenburg",35.2270869,-80.8431267,471910
+"Valero Technology","San Antonio","Texas","Bexar",29.4241219,-98.4936282,289900
+"Phillips","Houston","Texas","Harris",29.7604267,-95.3698028,306470
+"Fannie Mae","Washington","District of Columbia",NA,38.9071923,-77.0368707,NA
+"General Electric","Boston","Massachusetts","Suffolk",42.3600825,-71.0588801,739680
+"Kroger","Cincinnati","Ohio","Hamilton",39.1031182,-84.5120196,283180
+"Verizon Communication","New York","New York","New York",40.7127753,-74.0059728,1172110
+"JP Morgan","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Walgreens Boots Alliance",NA,"Illinois","Lake",42.1711365,-87.8445119,392350
+"Cardinal Health","Dublin","Ohio","Franklin",40.0992294,-83.1140771,327270
+"Alphabet","Mountain View","California","Santa Clara",37.3860517,-122.0838511,1558540
+"Costco Wholesale",NA,"Washington","King",47.5301011,-122.0326191,903970
+"General Motors","Detroit","Michigan","Wayne",42.331427,-83.0457538,206910
+"Exxon Mobil","Irving","Texas","Dallas",32.8140177,-96.9488945,329370
+"McKesson","Irving","Texas","Dallas",32.8140177,-96.9488945,329370
+"Ford Motor",NA,"Michigan","Wayne",42.3222599,-83.1763145,206910
+"Chevron",NA,"California","Contra Costa",37.7799273,-121.9780153,887170
+"Amerisource Bergen Drug Corporation Chesterbrook","Tredyffrin Township","Pennsylvania","Chester",40.0686079,-75.4683046,566540
+"AT&T  ","Dallas","Texas","Dallas",32.8687682,-96.7692323,329370
+"CVS Health ","Woonsocket","Rhode Island","Providence",41.9914346,-71.4889544,444090
+"UnitedHealth Group",NA,"Minnesota","Hennepin",44.9211836,-93.4687489,407520
+"Amazon","Seattle","Washington","King",47.6062095,-122.3320708,903970
+"Berkshire Hathaway INC.","Omaha","Nebraska","Douglas",41.2565369,-95.9345034,300310
+"Apple","Cupertino","California","Santa Clara",37.3229978,-122.0321823,1558540
+"Walmart","Bentonville","Arkansas","Benton",36.3728538,-94.2088172,403390
+NA,NA,"Alabama","Autauga",NA,NA,213520
+NA,NA,"Alabama","Baldwin",NA,NA,352240
+NA,NA,"Alabama","Barbour",NA,NA,117620
+NA,NA,"Alabama","Bibb",NA,NA,149900
+NA,NA,"Alabama","Blount",NA,NA,180250
+NA,NA,"Alabama","Bullock",NA,NA,85120
+NA,NA,"Alabama","Butler",NA,NA,103970
+NA,NA,"Alabama","Calhoun",NA,NA,174780
+NA,NA,"Alabama","Chambers",NA,NA,141480
+NA,NA,"Alabama","Cherokee",NA,NA,187220
+NA,NA,"Alabama","Chilton",NA,NA,165940
+NA,NA,"Alabama","Choctaw",NA,NA,128560
+NA,NA,"Alabama","Clarke",NA,NA,126790
+NA,NA,"Alabama","Clay",NA,NA,163260
+NA,NA,"Alabama","Cleburne",NA,NA,172530
+NA,NA,"Alabama","Coffee",NA,NA,196490
+NA,NA,"Alabama","Colbert",NA,NA,179010
+NA,NA,"Alabama","Conecuh",NA,NA,109710
+NA,NA,"Alabama","Coosa",NA,NA,120330
+NA,NA,"Alabama","Covington",NA,NA,158460
+NA,NA,"Alabama","Crenshaw",NA,NA,118770
+NA,NA,"Alabama","Cullman",NA,NA,234930
+NA,NA,"Alabama","Dale",NA,NA,149500
+NA,NA,"Alabama","Dallas",NA,NA,98560
+NA,NA,"Alabama","DeKalb",NA,NA,170760
+NA,NA,"Alabama","Elmore",NA,NA,251030
+NA,NA,"Alabama","Escambia",NA,NA,142210
+NA,NA,"Alabama","Etowah",NA,NA,180080
+NA,NA,"Alabama","Fayette",NA,NA,131170
+NA,NA,"Alabama","Franklin",NA,NA,141690
+NA,NA,"Alabama","Geneva",NA,NA,139440
+NA,NA,"Alabama","Greene",NA,NA,83950
+NA,NA,"Alabama","Hale",NA,NA,131920
+NA,NA,"Alabama","Henry",NA,NA,171760
+NA,NA,"Alabama","Houston",NA,NA,218490
+NA,NA,"Alabama","Jackson",NA,NA,166170
+NA,NA,"Alabama","Lamar",NA,NA,118770
+NA,NA,"Alabama","Lauderdale",NA,NA,249140
+NA,NA,"Alabama","Lawrence",NA,NA,170590
+NA,NA,"Alabama","Lee",NA,NA,311910
+NA,NA,"Alabama","Limestone",NA,NA,346380
+NA,NA,"Alabama","Lowndes",NA,NA,88930
+NA,NA,"Alabama","Macon",NA,NA,106270
+NA,NA,"Alabama","Madison",NA,NA,343270
+NA,NA,"Alabama","Marengo",NA,NA,111890
+NA,NA,"Alabama","Marion",NA,NA,111060
+NA,NA,"Alabama","Marshall",NA,NA,236700
+NA,NA,"Alabama","Mobile",NA,NA,213550
+NA,NA,"Alabama","Monroe",NA,NA,125650
+NA,NA,"Alabama","Montgomery",NA,NA,214040
+NA,NA,"Alabama","Morgan",NA,NA,224050
+NA,NA,"Alabama","Perry",NA,NA,90010
+NA,NA,"Alabama","Pickens",NA,NA,129080
+NA,NA,"Alabama","Pike",NA,NA,164190
+NA,NA,"Alabama","Randolph",NA,NA,189200
+NA,NA,"Alabama","Russell",NA,NA,171320
+NA,NA,"Alabama","St. Clair",NA,NA,244240
+NA,NA,"Alabama","Shelby",NA,NA,359260
+NA,NA,"Alabama","Sumter",NA,NA,86060
+NA,NA,"Alabama","Talladega",NA,NA,181800
+NA,NA,"Alabama","Tallapoosa",NA,NA,165130
+NA,NA,"Alabama","Tuscaloosa",NA,NA,269430
+NA,NA,"Alabama","Walker",NA,NA,165220
+NA,NA,"Alabama","Washington",NA,NA,166380
+NA,NA,"Alabama","Wilcox",NA,NA,102930
+NA,NA,"Alabama","Winston",NA,NA,123870
+NA,NA,"Arizona","Apache",NA,NA,60230
+NA,NA,"Arizona","Cochise",NA,NA,238870
+NA,NA,"Arizona","Coconino",NA,NA,495110
+NA,NA,"Arizona","Gila",NA,NA,277850
+NA,NA,"Arizona","Graham",NA,NA,218650
+NA,NA,"Arizona","Greenlee",NA,NA,163580
+NA,NA,"Arizona","La Paz",NA,NA,140060
+NA,NA,"Arizona","Mohave",NA,NA,310760
+NA,NA,"Arizona","Navajo",NA,NA,195860
+NA,NA,"Arizona","Pima",NA,NA,357200
+NA,NA,"Arizona","Pinal",NA,NA,385890
+NA,NA,"Arizona","Santa Cruz",NA,NA,240310
+NA,NA,"Arizona","Yavapai",NA,NA,470940
+NA,NA,"Arizona","Yuma",NA,NA,257940
+NA,NA,"Arkansas","Arkansas",NA,NA,142020
+NA,NA,"Arkansas","Ashley",NA,NA,94510
+NA,NA,"Arkansas","Baxter",NA,NA,179550
+NA,NA,"Arkansas","Boone",NA,NA,194260
+NA,NA,"Arkansas","Bradley",NA,NA,97490
+NA,NA,"Arkansas","Calhoun",NA,NA,113840
+NA,NA,"Arkansas","Carroll",NA,NA,216370
+NA,NA,"Arkansas","Chicot",NA,NA,91630
+NA,NA,"Arkansas","Clark",NA,NA,159400
+NA,NA,"Arkansas","Clay",NA,NA,97280
+NA,NA,"Arkansas","Cleburne",NA,NA,184900
+NA,NA,"Arkansas","Columbia",NA,NA,156410
+NA,NA,"Arkansas","Conway",NA,NA,158470
+NA,NA,"Arkansas","Craighead",NA,NA,233560
+NA,NA,"Arkansas","Crawford",NA,NA,197070
+NA,NA,"Arkansas","Crittenden",NA,NA,163790
+NA,NA,"Arkansas","Cross",NA,NA,120830
+NA,NA,"Arkansas","Dallas",NA,NA,100060
+NA,NA,"Arkansas","Desha",NA,NA,93480
+NA,NA,"Arkansas","Drew",NA,NA,144790
+NA,NA,"Arkansas","Faulkner",NA,NA,276420
+NA,NA,"Arkansas","Franklin",NA,NA,141010
+NA,NA,"Arkansas","Fulton",NA,NA,117030
+NA,NA,"Arkansas","Garland",NA,NA,244800
+NA,NA,"Arkansas","Grant",NA,NA,166900
+NA,NA,"Arkansas","Greene",NA,NA,174100
+NA,NA,"Arkansas","Hempstead",NA,NA,108700
+NA,NA,"Arkansas","Hot Spring",NA,NA,155390
+NA,NA,"Arkansas","Howard",NA,NA,158260
+NA,NA,"Arkansas","Independence",NA,NA,146640
+NA,NA,"Arkansas","Izard",NA,NA,132760
+NA,NA,"Arkansas","Jackson",NA,NA,101090
+NA,NA,"Arkansas","Johnson",NA,NA,139140
+NA,NA,"Arkansas","Lafayette",NA,NA,83300
+NA,NA,"Arkansas","Lawrence",NA,NA,101700
+NA,NA,"Arkansas","Lee",NA,NA,77440
+NA,NA,"Arkansas","Little River",NA,NA,116720
+NA,NA,"Arkansas","Logan",NA,NA,143870
+NA,NA,"Arkansas","Lonoke",NA,NA,233480
+NA,NA,"Arkansas","Madison",NA,NA,185880
+NA,NA,"Arkansas","Marion",NA,NA,167930
+NA,NA,"Arkansas","Miller",NA,NA,155230
+NA,NA,"Arkansas","Mississippi",NA,NA,125970
+NA,NA,"Arkansas","Monroe",NA,NA,91220
+NA,NA,"Arkansas","Montgomery",NA,NA,156210
+NA,NA,"Arkansas","Nevada",NA,NA,85660
+NA,NA,"Arkansas","Newton",NA,NA,174100
+NA,NA,"Arkansas","Ouachita",NA,NA,105000
+NA,NA,"Arkansas","Perry",NA,NA,134390
+NA,NA,"Arkansas","Phillips",NA,NA,80420
+NA,NA,"Arkansas","Pike",NA,NA,125050
+NA,NA,"Arkansas","Poinsett",NA,NA,105460
+NA,NA,"Arkansas","Polk",NA,NA,142330
+NA,NA,"Arkansas","Pope",NA,NA,174920
+NA,NA,"Arkansas","Prairie",NA,NA,99130
+NA,NA,"Arkansas","Randolph",NA,NA,134300
+NA,NA,"Arkansas","St. Francis",NA,NA,93480
+NA,NA,"Arkansas","Saline",NA,NA,247420
+NA,NA,"Arkansas","Scott",NA,NA,118260
+NA,NA,"Arkansas","Searcy",NA,NA,113120
+NA,NA,"Arkansas","Sebastian",NA,NA,230600
+NA,NA,"Arkansas","Sevier",NA,NA,120940
+NA,NA,"Arkansas","Sharp",NA,NA,108080
+NA,NA,"Arkansas","Stone",NA,NA,176470
+NA,NA,"Arkansas","Van Buren",NA,NA,139550
+NA,NA,"Arkansas","White",NA,NA,169890
+NA,NA,"Arkansas","Woodruff",NA,NA,109520
+NA,NA,"Arkansas","Yell",NA,NA,147670
+NA,NA,"California","Alpine",NA,NA,599330
+NA,NA,"California","Amador",NA,NA,456760
+NA,NA,"California","Butte",NA,NA,426830
+NA,NA,"California","Calaveras",NA,NA,464270
+NA,NA,"California","Colusa",NA,NA,399480
+NA,NA,"California","Del Norte",NA,NA,347290
+NA,NA,"California","El Dorado",NA,NA,713970
+NA,NA,"California","Fresno",NA,NA,418020
+NA,NA,"California","Glenn",NA,NA,357850
+NA,NA,"California","Humboldt",NA,NA,500220
+NA,NA,"California","Imperial",NA,NA,384900
+NA,NA,"California","Inyo",NA,NA,354090
+NA,NA,"California","Kern",NA,NA,370810
+NA,NA,"California","Kings",NA,NA,357180
+NA,NA,"California","Lake",NA,NA,337950
+NA,NA,"California","Lassen",NA,NA,269400
+NA,NA,"California","Marin",NA,NA,1571930
+NA,NA,"California","Mariposa",NA,NA,393900
+NA,NA,"California","Mendocino",NA,NA,569470
+NA,NA,"California","Merced",NA,NA,393140
+NA,NA,"California","Modoc",NA,NA,228180
+NA,NA,"California","Mono",NA,NA,649290
+NA,NA,"California","Monterey",NA,NA,820500
+NA,NA,"California","Napa",NA,NA,876270
+NA,NA,"California","Nevada",NA,NA,656400
+NA,NA,"California","Placer",NA,NA,696290
+NA,NA,"California","Plumas",NA,NA,365770
+NA,NA,"California","Riverside",NA,NA,610760
+NA,NA,"California","Sacramento",NA,NA,560590
+NA,NA,"California","San Benito",NA,NA,827960
+NA,NA,"California","San Bernardino",NA,NA,554210
+NA,NA,"California","San Francisco",NA,NA,1335890
+NA,NA,"California","San Joaquin",NA,NA,555950
+NA,NA,"California","San Luis Obispo",NA,NA,923240
+NA,NA,"California","Santa Barbara",NA,NA,927220
+NA,NA,"California","Santa Cruz",NA,NA,975640
+NA,NA,"California","Shasta",NA,NA,376880
+NA,NA,"California","Sierra",NA,NA,337030
+NA,NA,"California","Siskiyou",NA,NA,314290
+NA,NA,"California","Solano",NA,NA,631290
+NA,NA,"California","Sonoma",NA,NA,822440
+NA,NA,"California","Stanislaus",NA,NA,475150
+NA,NA,"California","Sutter",NA,NA,451880
+NA,NA,"California","Tehama",NA,NA,363030
+NA,NA,"California","Trinity",NA,NA,330840
+NA,NA,"California","Tulare",NA,NA,371080
+NA,NA,"California","Tuolumne",NA,NA,439900
+NA,NA,"California","Yuba",NA,NA,419080
+NA,NA,"Colorado","Adams",NA,NA,523610
+NA,NA,"Colorado","Alamosa",NA,NA,247100
+NA,NA,"Colorado","Archuleta",NA,NA,494100
+NA,NA,"Colorado","Baca",NA,NA,127010
+NA,NA,"Colorado","Bent",NA,NA,151820
+NA,NA,"Colorado","Boulder",NA,NA,794560
+NA,NA,"Colorado","Broomfield",NA,NA,691630
+NA,NA,"Colorado","Chaffee",NA,NA,687970
+NA,NA,"Colorado","Cheyenne",NA,NA,193770
+NA,NA,"Colorado","Clear Creek",NA,NA,613310
+NA,NA,"Colorado","Conejos",NA,NA,199870
+NA,NA,"Colorado","Costilla",NA,NA,190880
+NA,NA,"Colorado","Crowley",NA,NA,120090
+NA,NA,"Colorado","Custer",NA,NA,405220
+NA,NA,"Colorado","Delta",NA,NA,354680
+NA,NA,"Colorado","Denver",NA,NA,641430
+NA,NA,"Colorado","Dolores",NA,NA,255880
+NA,NA,"Colorado","Eagle",NA,NA,867590
+NA,NA,"Colorado","Elbert",NA,NA,715410
+NA,NA,"Colorado","El Paso",NA,NA,493990
+NA,NA,"Colorado","Fremont",NA,NA,334840
+NA,NA,"Colorado","Garfield",NA,NA,545460
+NA,NA,"Colorado","Gilpin",NA,NA,578440
+NA,NA,"Colorado","Grand",NA,NA,621630
+NA,NA,"Colorado","Gunnison",NA,NA,642610
+NA,NA,"Colorado","Hinsdale",NA,NA,452550
+NA,NA,"Colorado","Huerfano",NA,NA,256090
+NA,NA,"Colorado","Jackson",NA,NA,247620
+NA,NA,"Colorado","Jefferson",NA,NA,673890
+NA,NA,"Colorado","Kiowa",NA,NA,166900
+NA,NA,"Colorado","Kit Carson",NA,NA,247510
+NA,NA,"Colorado","Lake",NA,NA,481700
+NA,NA,"Colorado","La Plata",NA,NA,611290
+NA,NA,"Colorado","Larimer",NA,NA,620960
+NA,NA,"Colorado","Las Animas",NA,NA,245550
+NA,NA,"Colorado","Lincoln",NA,NA,254750
+NA,NA,"Colorado","Logan",NA,NA,253510
+NA,NA,"Colorado","Mesa",NA,NA,432300
+NA,NA,"Colorado","Mineral",NA,NA,444900
+NA,NA,"Colorado","Moffat",NA,NA,299190
+NA,NA,"Colorado","Montezuma",NA,NA,342490
+NA,NA,"Colorado","Montrose",NA,NA,401400
+NA,NA,"Colorado","Morgan",NA,NA,349930
+NA,NA,"Colorado","Otero",NA,NA,174550
+NA,NA,"Colorado","Ouray",NA,NA,764550
+NA,NA,"Colorado","Park",NA,NA,536310
+NA,NA,"Colorado","Phillips",NA,NA,266840
+NA,NA,"Colorado","Pitkin",NA,NA,1177210
+NA,NA,"Colorado","Prowers",NA,NA,165970
+NA,NA,"Colorado","Pueblo",NA,NA,303280
+NA,NA,"Colorado","Rio Blanco",NA,NA,283580
+NA,NA,"Colorado","Rio Grande",NA,NA,247510
+NA,NA,"Colorado","Routt",NA,NA,883300
+NA,NA,"Colorado","Saguache",NA,NA,219710
+NA,NA,"Colorado","San Juan",NA,NA,446970
+NA,NA,"Colorado","San Miguel",NA,NA,744810
+NA,NA,"Colorado","Sedgwick",NA,NA,153990
+NA,NA,"Colorado","Summit",NA,NA,971350
+NA,NA,"Colorado","Teller",NA,NA,487790
+NA,NA,"Colorado","Washington",NA,NA,233770
+NA,NA,"Colorado","Weld",NA,NA,502860
+NA,NA,"Colorado","Yuma",NA,NA,218780
+NA,NA,"Delaware","Kent",NA,NA,361800
+NA,NA,"Florida","Alachua",NA,NA,329580
+NA,NA,"Florida","Baker",NA,NA,261380
+NA,NA,"Florida","Bay",NA,NA,360250
+NA,NA,"Florida","Bradford",NA,NA,219710
+NA,NA,"Florida","Brevard",NA,NA,373540
+NA,NA,"Florida","Calhoun",NA,NA,150230
+NA,NA,"Florida","Charlotte",NA,NA,322260
+NA,NA,"Florida","Citrus",NA,NA,290430
+NA,NA,"Florida","Clay",NA,NA,364530
+NA,NA,"Florida","Collier",NA,NA,611790
+NA,NA,"Florida","Columbia",NA,NA,248760
+NA,NA,"Florida","DeSoto",NA,NA,180000
+NA,NA,"Florida","Dixie",NA,NA,136480
+NA,NA,"Florida","Escambia",NA,NA,289260
+NA,NA,"Florida","Franklin",NA,NA,282570
+NA,NA,"Florida","Gadsden",NA,NA,175840
+NA,NA,"Florida","Gilchrist",NA,NA,200250
+NA,NA,"Florida","Glades",NA,NA,141650
+NA,NA,"Florida","Gulf",NA,NA,258480
+NA,NA,"Florida","Hamilton",NA,NA,114970
+NA,NA,"Florida","Hardee",NA,NA,158810
+NA,NA,"Florida","Hendry",NA,NA,226630
+NA,NA,"Florida","Hernando",NA,NA,328800
+NA,NA,"Florida","Highlands",NA,NA,252790
+NA,NA,"Florida","Holmes",NA,NA,113940
+NA,NA,"Florida","Indian River",NA,NA,398720
+NA,NA,"Florida","Jackson",NA,NA,124900
+NA,NA,"Florida","Jefferson",NA,NA,233850
+NA,NA,"Florida","Lafayette",NA,NA,162530
+NA,NA,"Florida","Lake",NA,NA,359120
+NA,NA,"Florida","Leon",NA,NA,321520
+NA,NA,"Florida","Levy",NA,NA,197060
+NA,NA,"Florida","Liberty",NA,NA,131620
+NA,NA,"Florida","Madison",NA,NA,120140
+NA,NA,"Florida","Manatee",NA,NA,426610
+NA,NA,"Florida","Marion",NA,NA,273690
+NA,NA,"Florida","Martin",NA,NA,542680
+NA,NA,"Florida","Monroe",NA,NA,906950
+NA,NA,"Florida","Nassau",NA,NA,426340
+NA,NA,"Florida","Okaloosa",NA,NA,393150
+NA,NA,"Florida","Okeechobee",NA,NA,199540
+NA,NA,"Florida","Osceola",NA,NA,394920
+NA,NA,"Florida","Pasco",NA,NA,343270
+NA,NA,"Florida","Putnam",NA,NA,171840
+NA,NA,"Florida","St. Johns",NA,NA,557590
+NA,NA,"Florida","St. Lucie",NA,NA,390370
+NA,NA,"Florida","Santa Rosa",NA,NA,360150
+NA,NA,"Florida","Sarasota",NA,NA,459060
+NA,NA,"Florida","Seminole",NA,NA,423450
+NA,NA,"Florida","Sumter",NA,NA,426800
+NA,NA,"Florida","Suwannee",NA,NA,177420
+NA,NA,"Florida","Taylor",NA,NA,118490
+NA,NA,"Florida","Union",NA,NA,175250
+NA,NA,"Florida","Volusia",NA,NA,348340
+NA,NA,"Florida","Wakulla",NA,NA,259690
+NA,NA,"Florida","Walton",NA,NA,460710
+NA,NA,"Florida","Washington",NA,NA,176800
+NA,NA,"Georgia","Appling",NA,NA,79770
+NA,NA,"Georgia","Atkinson",NA,NA,82170
+NA,NA,"Georgia","Bacon",NA,NA,105460
+NA,NA,"Georgia","Baker",NA,NA,127830
+NA,NA,"Georgia","Baldwin",NA,NA,189190
+NA,NA,"Georgia","Banks",NA,NA,289250
+NA,NA,"Georgia","Barrow",NA,NA,351060
+NA,NA,"Georgia","Bartow",NA,NA,343290
+NA,NA,"Georgia","Ben Hill",NA,NA,117220
+NA,NA,"Georgia","Berrien",NA,NA,136870
+NA,NA,"Georgia","Bibb",NA,NA,221330
+NA,NA,"Georgia","Bleckley",NA,NA,155600
+NA,NA,"Georgia","Brantley",NA,NA,107610
+NA,NA,"Georgia","Brooks",NA,NA,146970
+NA,NA,"Georgia","Bryan",NA,NA,355680
+NA,NA,"Georgia","Bulloch",NA,NA,269380
+NA,NA,"Georgia","Burke",NA,NA,160020
+NA,NA,"Georgia","Butts",NA,NA,245970
+NA,NA,"Georgia","Calhoun",NA,NA,84250
+NA,NA,"Georgia","Camden",NA,NA,271880
+NA,NA,"Georgia","Candler",NA,NA,165580
+NA,NA,"Georgia","Carroll",NA,NA,309860
+NA,NA,"Georgia","Catoosa",NA,NA,309780
+NA,NA,"Georgia","Charlton",NA,NA,148520
+NA,NA,"Georgia","Chatham",NA,NA,366360
+NA,NA,"Georgia","Chattahoochee",NA,NA,106180
+NA,NA,"Georgia","Chattooga",NA,NA,120230
+NA,NA,"Georgia","Cherokee",NA,NA,493360
+NA,NA,"Georgia","Clarke",NA,NA,351890
+NA,NA,"Georgia","Clay",NA,NA,98180
+NA,NA,"Georgia","Clayton",NA,NA,270810
+NA,NA,"Georgia","Clinch",NA,NA,87780
+NA,NA,"Georgia","Coffee",NA,NA,134070
+NA,NA,"Georgia","Colquitt",NA,NA,126270
+NA,NA,"Georgia","Columbia",NA,NA,345360
+NA,NA,"Georgia","Cook",NA,NA,163810
+NA,NA,"Georgia","Coweta",NA,NA,423740
+NA,NA,"Georgia","Crawford",NA,NA,175380
+NA,NA,"Georgia","Crisp",NA,NA,145820
+NA,NA,"Georgia","Dade",NA,NA,205650
+NA,NA,"Georgia","Dawson",NA,NA,415770
+NA,NA,"Georgia","Decatur",NA,NA,165160
+NA,NA,"Georgia","DeKalb",NA,NA,383770
+NA,NA,"Georgia","Dodge",NA,NA,122830
+NA,NA,"Georgia","Dooly",NA,NA,111700
+NA,NA,"Georgia","Dougherty",NA,NA,151150
+NA,NA,"Georgia","Douglas",NA,NA,339100
+NA,NA,"Georgia","Early",NA,NA,136560
+NA,NA,"Georgia","Echols",NA,NA,131030
+NA,NA,"Georgia","Effingham",NA,NA,328430
+NA,NA,"Georgia","Elbert",NA,NA,147690
+NA,NA,"Georgia","Emanuel",NA,NA,98500
+NA,NA,"Georgia","Evans",NA,NA,143740
+NA,NA,"Georgia","Fannin",NA,NA,318890
+NA,NA,"Georgia","Fayette",NA,NA,474250
+NA,NA,"Georgia","Floyd",NA,NA,260820
+NA,NA,"Georgia","Forsyth",NA,NA,657030
+NA,NA,"Georgia","Franklin",NA,NA,186170
+NA,NA,"Georgia","Gilmer",NA,NA,326580
+NA,NA,"Georgia","Glascock",NA,NA,128760
+NA,NA,"Georgia","Glynn",NA,NA,358580
+NA,NA,"Georgia","Grady",NA,NA,158510
+NA,NA,"Georgia","Greene",NA,NA,410620
+NA,NA,"Georgia","Habersham",NA,NA,247850
+NA,NA,"Georgia","Hall",NA,NA,399690
+NA,NA,"Georgia","Hancock",NA,NA,92150
+NA,NA,"Georgia","Haralson",NA,NA,232570
+NA,NA,"Georgia","Harris",NA,NA,313070
+NA,NA,"Georgia","Hart",NA,NA,223720
+NA,NA,"Georgia","Heard",NA,NA,190970
+NA,NA,"Georgia","Henry",NA,NA,355560
+NA,NA,"Georgia","Houston",NA,NA,260170
+NA,NA,"Georgia","Irwin",NA,NA,109830
+NA,NA,"Georgia","Jackson",NA,NA,409790
+NA,NA,"Georgia","Jasper",NA,NA,248830
+NA,NA,"Georgia","Jeff Davis",NA,NA,123040
+NA,NA,"Georgia","Jefferson",NA,NA,109620
+NA,NA,"Georgia","Jenkins",NA,NA,96620
+NA,NA,"Georgia","Johnson",NA,NA,98700
+NA,NA,"Georgia","Jones",NA,NA,207870
+NA,NA,"Georgia","Lamar",NA,NA,221330
+NA,NA,"Georgia","Lanier",NA,NA,171360
+NA,NA,"Georgia","Laurens",NA,NA,160690
+NA,NA,"Georgia","Lee",NA,NA,247960
+NA,NA,"Georgia","Liberty",NA,NA,264050
+NA,NA,"Georgia","Lincoln",NA,NA,172550
+NA,NA,"Georgia","Long",NA,NA,236720
+NA,NA,"Georgia","Lowndes",NA,NA,249600
+NA,NA,"Georgia","Lumpkin",NA,NA,320240
+NA,NA,"Georgia","McDuffie",NA,NA,179650
+NA,NA,"Georgia","McIntosh",NA,NA,197390
+NA,NA,"Georgia","Macon",NA,NA,101200
+NA,NA,"Georgia","Madison",NA,NA,224220
+NA,NA,"Georgia","Marion",NA,NA,159330
+NA,NA,"Georgia","Meriwether",NA,NA,172560
+NA,NA,"Georgia","Miller",NA,NA,128970
+NA,NA,"Georgia","Mitchell",NA,NA,110250
+NA,NA,"Georgia","Monroe",NA,NA,289840
+NA,NA,"Georgia","Montgomery",NA,NA,120130
+NA,NA,"Georgia","Morgan",NA,NA,356020
+NA,NA,"Georgia","Murray",NA,NA,185720
+NA,NA,"Georgia","Newton",NA,NA,321920
+NA,NA,"Georgia","Oconee",NA,NA,471090
+NA,NA,"Georgia","Oglethorpe",NA,NA,236360
+NA,NA,"Georgia","Paulding",NA,NA,383160
+NA,NA,"Georgia","Peach",NA,NA,216130
+NA,NA,"Georgia","Pickens",NA,NA,340120
+NA,NA,"Georgia","Pierce",NA,NA,159440
+NA,NA,"Georgia","Pike",NA,NA,312420
+NA,NA,"Georgia","Polk",NA,NA,195120
+NA,NA,"Georgia","Pulaski",NA,NA,163920
+NA,NA,"Georgia","Putnam",NA,NA,259290
+NA,NA,"Georgia","Quitman",NA,NA,108790
+NA,NA,"Georgia","Rabun",NA,NA,307030
+NA,NA,"Georgia","Randolph",NA,NA,93820
+NA,NA,"Georgia","Rockdale",NA,NA,368130
+NA,NA,"Georgia","Schley",NA,NA,149670
+NA,NA,"Georgia","Screven",NA,NA,129280
+NA,NA,"Georgia","Seminole",NA,NA,126790
+NA,NA,"Georgia","Spalding",NA,NA,275820
+NA,NA,"Georgia","Stephens",NA,NA,182330
+NA,NA,"Georgia","Stewart",NA,NA,67710
+NA,NA,"Georgia","Sumter",NA,NA,125020
+NA,NA,"Georgia","Talbot",NA,NA,121790
+NA,NA,"Georgia","Taliaferro",NA,NA,71660
+NA,NA,"Georgia","Tattnall",NA,NA,145610
+NA,NA,"Georgia","Taylor",NA,NA,91210
+NA,NA,"Georgia","Telfair",NA,NA,117840
+NA,NA,"Georgia","Terrell",NA,NA,126660
+NA,NA,"Georgia","Thomas",NA,NA,204580
+NA,NA,"Georgia","Tift",NA,NA,171820
+NA,NA,"Georgia","Toombs",NA,NA,142490
+NA,NA,"Georgia","Towns",NA,NA,328770
+NA,NA,"Georgia","Treutlen",NA,NA,104110
+NA,NA,"Georgia","Troup",NA,NA,247950
+NA,NA,"Georgia","Turner",NA,NA,101200
+NA,NA,"Georgia","Twiggs",NA,NA,118950
+NA,NA,"Georgia","Union",NA,NA,319720
+NA,NA,"Georgia","Upson",NA,NA,175460
+NA,NA,"Georgia","Walker",NA,NA,246990
+NA,NA,"Georgia","Walton",NA,NA,405750
+NA,NA,"Georgia","Ware",NA,NA,113890
+NA,NA,"Georgia","Warren",NA,NA,69790
+NA,NA,"Georgia","Washington",NA,NA,117010
+NA,NA,"Georgia","Wayne",NA,NA,169320
+NA,NA,"Georgia","Webster",NA,NA,85910
+NA,NA,"Georgia","Wheeler",NA,NA,91740
+NA,NA,"Georgia","White",NA,NA,290080
+NA,NA,"Georgia","Whitfield",NA,NA,256230
+NA,NA,"Georgia","Wilcox",NA,NA,91110
+NA,NA,"Georgia","Wilkes",NA,NA,127620
+NA,NA,"Georgia","Wilkinson",NA,NA,89760
+NA,NA,"Georgia","Worth",NA,NA,112210
+NA,NA,"Hawaii","Hawaii",NA,NA,614650
+NA,NA,"Hawaii","Honolulu",NA,NA,924690
+NA,NA,"Hawaii","Kauai",NA,NA,995450
+NA,NA,"Hawaii","Maui",NA,NA,1124510
+NA,NA,"Idaho","Adams",NA,NA,371990
+NA,NA,"Idaho","Bannock",NA,NA,346720
+NA,NA,"Idaho","Bear Lake",NA,NA,271700
+NA,NA,"Idaho","Benewah",NA,NA,289980
+NA,NA,"Idaho","Bingham",NA,NA,289780
+NA,NA,"Idaho","Blaine",NA,NA,726490
+NA,NA,"Idaho","Boise",NA,NA,489060
+NA,NA,"Idaho","Bonner",NA,NA,482050
+NA,NA,"Idaho","Bonneville",NA,NA,399940
+NA,NA,"Idaho","Boundary",NA,NA,405580
+NA,NA,"Idaho","Butte",NA,NA,214990
+NA,NA,"Idaho","Camas",NA,NA,300360
+NA,NA,"Idaho","Canyon",NA,NA,424350
+NA,NA,"Idaho","Caribou",NA,NA,238600
+NA,NA,"Idaho","Cassia",NA,NA,281190
+NA,NA,"Idaho","Clark",NA,NA,214300
+NA,NA,"Idaho","Clearwater",NA,NA,264980
+NA,NA,"Idaho","Custer",NA,NA,377120
+NA,NA,"Idaho","Elmore",NA,NA,312710
+NA,NA,"Idaho","Franklin",NA,NA,380090
+NA,NA,"Idaho","Fremont",NA,NA,310430
+NA,NA,"Idaho","Gem",NA,NA,440370
+NA,NA,"Idaho","Gooding",NA,NA,247890
+NA,NA,"Idaho","Idaho",NA,NA,306480
+NA,NA,"Idaho","Jefferson",NA,NA,410500
+NA,NA,"Idaho","Jerome",NA,NA,268540
+NA,NA,"Idaho","Kootenai",NA,NA,585630
+NA,NA,"Idaho","Latah",NA,NA,364180
+NA,NA,"Idaho","Lemhi",NA,NA,322190
+NA,NA,"Idaho","Lewis",NA,NA,222600
+NA,NA,"Idaho","Lincoln",NA,NA,252540
+NA,NA,"Idaho","Madison",NA,NA,409830
+NA,NA,"Idaho","Minidoka",NA,NA,259450
+NA,NA,"Idaho","Nez Perce",NA,NA,346470
+NA,NA,"Idaho","Oneida",NA,NA,268740
+NA,NA,"Idaho","Owyhee",NA,NA,369600
+NA,NA,"Idaho","Payette",NA,NA,337700
+NA,NA,"Idaho","Power",NA,NA,222670
+NA,NA,"Idaho","Shoshone",NA,NA,264190
+NA,NA,"Idaho","Teton",NA,NA,682220
+NA,NA,"Idaho","Twin Falls",NA,NA,381470
+NA,NA,"Idaho","Valley",NA,NA,649120
+NA,NA,"Idaho","Washington",NA,NA,274770
+NA,NA,"Illinois","Adams",NA,NA,174690
+NA,NA,"Illinois","Alexander",NA,NA,64250
+NA,NA,"Illinois","Bond",NA,NA,151540
+NA,NA,"Illinois","Boone",NA,NA,232280
+NA,NA,"Illinois","Brown",NA,NA,161480
+NA,NA,"Illinois","Bureau",NA,NA,136340
+NA,NA,"Illinois","Calhoun",NA,NA,198560
+NA,NA,"Illinois","Carroll",NA,NA,123020
+NA,NA,"Illinois","Cass",NA,NA,104320
+NA,NA,"Illinois","Champaign",NA,NA,235070
+NA,NA,"Illinois","Christian",NA,NA,124090
+NA,NA,"Illinois","Clark",NA,NA,142250
+NA,NA,"Illinois","Clay",NA,NA,104640
+NA,NA,"Illinois","Clinton",NA,NA,200120
+NA,NA,"Illinois","Coles",NA,NA,136880
+NA,NA,"Illinois","Crawford",NA,NA,130110
+NA,NA,"Illinois","Cumberland",NA,NA,135370
+NA,NA,"Illinois","DeKalb",NA,NA,277220
+NA,NA,"Illinois","De Witt",NA,NA,139990
+NA,NA,"Illinois","Douglas",NA,NA,161590
+NA,NA,"Illinois","Edgar",NA,NA,104540
+NA,NA,"Illinois","Edwards",NA,NA,107440
+NA,NA,"Illinois","Effingham",NA,NA,203590
+NA,NA,"Illinois","Fayette",NA,NA,140420
+NA,NA,"Illinois","Ford",NA,NA,127350
+NA,NA,"Illinois","Franklin",NA,NA,95620
+NA,NA,"Illinois","Fulton",NA,NA,115170
+NA,NA,"Illinois","Gallatin",NA,NA,89070
+NA,NA,"Illinois","Greene",NA,NA,102280
+NA,NA,"Illinois","Grundy",NA,NA,289360
+NA,NA,"Illinois","Hamilton",NA,NA,122160
+NA,NA,"Illinois","Hancock",NA,NA,122260
+NA,NA,"Illinois","Hardin",NA,NA,111520
+NA,NA,"Illinois","Henderson",NA,NA,112160
+NA,NA,"Illinois","Henry",NA,NA,161500
+NA,NA,"Illinois","Iroquois",NA,NA,148050
+NA,NA,"Illinois","Jackson",NA,NA,147510
+NA,NA,"Illinois","Jasper",NA,NA,134830
+NA,NA,"Illinois","Jefferson",NA,NA,135370
+NA,NA,"Illinois","Jersey",NA,NA,178790
+NA,NA,"Illinois","Jo Daviess",NA,NA,225510
+NA,NA,"Illinois","Johnson",NA,NA,172440
+NA,NA,"Illinois","Kane",NA,NA,374990
+NA,NA,"Illinois","Kankakee",NA,NA,218920
+NA,NA,"Illinois","Kendall",NA,NA,369130
+NA,NA,"Illinois","Knox",NA,NA,120220
+NA,NA,"Illinois","LaSalle",NA,NA,185220
+NA,NA,"Illinois","Lawrence",NA,NA,106470
+NA,NA,"Illinois","Lee",NA,NA,166100
+NA,NA,"Illinois","Livingston",NA,NA,152780
+NA,NA,"Illinois","Logan",NA,NA,144400
+NA,NA,"Illinois","McDonough",NA,NA,115500
+NA,NA,"Illinois","McHenry",NA,NA,350280
+NA,NA,"Illinois","Macon",NA,NA,148980
+NA,NA,"Illinois","Macoupin",NA,NA,143740
+NA,NA,"Illinois","Madison",NA,NA,203340
+NA,NA,"Illinois","Marion",NA,NA,110660
+NA,NA,"Illinois","Marshall",NA,NA,151130
+NA,NA,"Illinois","Mason",NA,NA,111090
+NA,NA,"Illinois","Massac",NA,NA,130970
+NA,NA,"Illinois","Menard",NA,NA,193860
+NA,NA,"Illinois","Mercer",NA,NA,156280
+NA,NA,"Illinois","Monroe",NA,NA,293410
+NA,NA,"Illinois","Montgomery",NA,NA,120650
+NA,NA,"Illinois","Morgan",NA,NA,140530
+NA,NA,"Illinois","Moultrie",NA,NA,143970
+NA,NA,"Illinois","Ogle",NA,NA,203270
+NA,NA,"Illinois","Peoria",NA,NA,180980
+NA,NA,"Illinois","Perry",NA,NA,120970
+NA,NA,"Illinois","Piatt",NA,NA,188520
+NA,NA,"Illinois","Pike",NA,NA,108940
+NA,NA,"Illinois","Pope",NA,NA,154500
+NA,NA,"Illinois","Pulaski",NA,NA,91430
+NA,NA,"Illinois","Putnam",NA,NA,185540
+NA,NA,"Illinois","Randolph",NA,NA,145150
+NA,NA,"Illinois","Richland",NA,NA,120330
+NA,NA,"Illinois","St. Clair",NA,NA,210310
+NA,NA,"Illinois","Saline",NA,NA,101310
+NA,NA,"Illinois","Sangamon",NA,NA,205880
+NA,NA,"Illinois","Schuyler",NA,NA,117860
+NA,NA,"Illinois","Scott",NA,NA,103570
+NA,NA,"Illinois","Shelby",NA,NA,147300
+NA,NA,"Illinois","Stark",NA,NA,110600
+NA,NA,"Illinois","Stephenson",NA,NA,144930
+NA,NA,"Illinois","Tazewell",NA,NA,185850
+NA,NA,"Illinois","Union",NA,NA,141500
+NA,NA,"Illinois","Wabash",NA,NA,112700
+NA,NA,"Illinois","Warren",NA,NA,112810
+NA,NA,"Illinois","Washington",NA,NA,167280
+NA,NA,"Illinois","Wayne",NA,NA,118930
+NA,NA,"Illinois","White",NA,NA,116140
+NA,NA,"Illinois","Whiteside",NA,NA,136550
+NA,NA,"Illinois","Williamson",NA,NA,180170
+NA,NA,"Illinois","Winnebago",NA,NA,194150
+NA,NA,"Illinois","Woodford",NA,NA,209130
+NA,NA,"Indiana","Adams",NA,NA,189470
+NA,NA,"Indiana","Bartholomew",NA,NA,247150
+NA,NA,"Indiana","Benton",NA,NA,157260
+NA,NA,"Indiana","Blackford",NA,NA,114170
+NA,NA,"Indiana","Boone",NA,NA,419400
+NA,NA,"Indiana","Brown",NA,NA,280120
+NA,NA,"Indiana","Carroll",NA,NA,188400
+NA,NA,"Indiana","Cass",NA,NA,142100
+NA,NA,"Indiana","Clark",NA,NA,246320
+NA,NA,"Indiana","Clay",NA,NA,161820
+NA,NA,"Indiana","Clinton",NA,NA,174280
+NA,NA,"Indiana","Crawford",NA,NA,125000
+NA,NA,"Indiana","Daviess",NA,NA,209440
+NA,NA,"Indiana","Dearborn",NA,NA,254430
+NA,NA,"Indiana","Decatur",NA,NA,211450
+NA,NA,"Indiana","DeKalb",NA,NA,206140
+NA,NA,"Indiana","Delaware",NA,NA,164620
+NA,NA,"Indiana","Dubois",NA,NA,244380
+NA,NA,"Indiana","Fayette",NA,NA,138810
+NA,NA,"Indiana","Floyd",NA,NA,277130
+NA,NA,"Indiana","Fountain",NA,NA,152300
+NA,NA,"Indiana","Franklin",NA,NA,260810
+NA,NA,"Indiana","Fulton",NA,NA,166210
+NA,NA,"Indiana","Gibson",NA,NA,184430
+NA,NA,"Indiana","Grant",NA,NA,139340
+NA,NA,"Indiana","Greene",NA,NA,162730
+NA,NA,"Indiana","Hamilton",NA,NA,455310
+NA,NA,"Indiana","Hancock",NA,NA,324260
+NA,NA,"Indiana","Harrison",NA,NA,238220
+NA,NA,"Indiana","Hendricks",NA,NA,351950
+NA,NA,"Indiana","Henry",NA,NA,163980
+NA,NA,"Indiana","Howard",NA,NA,183360
+NA,NA,"Indiana","Huntington",NA,NA,171630
+NA,NA,"Indiana","Jackson",NA,NA,189360
+NA,NA,"Indiana","Jasper",NA,NA,235900
+NA,NA,"Indiana","Jay",NA,NA,124790
+NA,NA,"Indiana","Jefferson",NA,NA,206670
+NA,NA,"Indiana","Jennings",NA,NA,171520
+NA,NA,"Indiana","Johnson",NA,NA,324990
+NA,NA,"Indiana","Knox",NA,NA,146240
+NA,NA,"Indiana","LaGrange",NA,NA,271780
+NA,NA,"Indiana","Lake",NA,NA,273700
+NA,NA,"Indiana","LaPorte",NA,NA,227570
+NA,NA,"Indiana","Lawrence",NA,NA,185860
+NA,NA,"Indiana","Marshall",NA,NA,217610
+NA,NA,"Indiana","Martin",NA,NA,169290
+NA,NA,"Indiana","Miami",NA,NA,134030
+NA,NA,"Indiana","Monroe",NA,NA,353390
+NA,NA,"Indiana","Montgomery",NA,NA,182460
+NA,NA,"Indiana","Morgan",NA,NA,277940
+NA,NA,"Indiana","Newton",NA,NA,182650
+NA,NA,"Indiana","Noble",NA,NA,209010
+NA,NA,"Indiana","Ohio",NA,NA,222760
+NA,NA,"Indiana","Orange",NA,NA,168550
+NA,NA,"Indiana","Owen",NA,NA,183120
+NA,NA,"Indiana","Parke",NA,NA,160580
+NA,NA,"Indiana","Perry",NA,NA,173540
+NA,NA,"Indiana","Pike",NA,NA,164510
+NA,NA,"Indiana","Porter",NA,NA,334090
+NA,NA,"Indiana","Posey",NA,NA,228380
+NA,NA,"Indiana","Pulaski",NA,NA,166100
+NA,NA,"Indiana","Putnam",NA,NA,227870
+NA,NA,"Indiana","Randolph",NA,NA,120440
+NA,NA,"Indiana","Ripley",NA,NA,236300
+NA,NA,"Indiana","Rush",NA,NA,177150
+NA,NA,"Indiana","St. Joseph",NA,NA,220530
+NA,NA,"Indiana","Scott",NA,NA,168230
+NA,NA,"Indiana","Shelby",NA,NA,221100
+NA,NA,"Indiana","Spencer",NA,NA,196690
+NA,NA,"Indiana","Starke",NA,NA,167480
+NA,NA,"Indiana","Steuben",NA,NA,229610
+NA,NA,"Indiana","Sullivan",NA,NA,138660
+NA,NA,"Indiana","Switzerland",NA,NA,186710
+NA,NA,"Indiana","Tippecanoe",NA,NA,303270
+NA,NA,"Indiana","Tipton",NA,NA,183360
+NA,NA,"Indiana","Union",NA,NA,184260
+NA,NA,"Indiana","Vermillion",NA,NA,119620
+NA,NA,"Indiana","Vigo",NA,NA,163730
+NA,NA,"Indiana","Wabash",NA,NA,166950
+NA,NA,"Indiana","Warren",NA,NA,193820
+NA,NA,"Indiana","Warrick",NA,NA,284630
+NA,NA,"Indiana","Washington",NA,NA,178670
+NA,NA,"Indiana","Wayne",NA,NA,154630
+NA,NA,"Indiana","Wells",NA,NA,206550
+NA,NA,"Indiana","White",NA,NA,186810
+NA,NA,"Indiana","Whitley",NA,NA,229340
+NA,NA,"Iowa","Adair",NA,NA,169010
+NA,NA,"Iowa","Adams",NA,NA,138670
+NA,NA,"Iowa","Allamakee",NA,NA,181550
+NA,NA,"Iowa","Appanoose",NA,NA,130870
+NA,NA,"Iowa","Audubon",NA,NA,128450
+NA,NA,"Iowa","Benton",NA,NA,217050
+NA,NA,"Iowa","Black Hawk",NA,NA,212410
+NA,NA,"Iowa","Boone",NA,NA,223810
+NA,NA,"Iowa","Bremer",NA,NA,224040
+NA,NA,"Iowa","Buchanan",NA,NA,185450
+NA,NA,"Iowa","Buena Vista",NA,NA,168060
+NA,NA,"Iowa","Butler",NA,NA,174280
+NA,NA,"Iowa","Calhoun",NA,NA,125180
+NA,NA,"Iowa","Carroll",NA,NA,185450
+NA,NA,"Iowa","Cass",NA,NA,158370
+NA,NA,"Iowa","Cedar",NA,NA,222650
+NA,NA,"Iowa","Cerro Gordo",NA,NA,175340
+NA,NA,"Iowa","Cherokee",NA,NA,167220
+NA,NA,"Iowa","Chickasaw",NA,NA,192410
+NA,NA,"Iowa","Clarke",NA,NA,169750
+NA,NA,"Iowa","Clay",NA,NA,188190
+NA,NA,"Iowa","Clayton",NA,NA,177550
+NA,NA,"Iowa","Clinton",NA,NA,169220
+NA,NA,"Iowa","Crawford",NA,NA,161950
+NA,NA,"Iowa","Dallas",NA,NA,400970
+NA,NA,"Iowa","Davis",NA,NA,170590
+NA,NA,"Iowa","Decatur",NA,NA,120020
+NA,NA,"Iowa","Delaware",NA,NA,187450
+NA,NA,"Iowa","Des Moines",NA,NA,143830
+NA,NA,"Iowa","Dickinson",NA,NA,285240
+NA,NA,"Iowa","Dubuque",NA,NA,266640
+NA,NA,"Iowa","Emmet",NA,NA,120230
+NA,NA,"Iowa","Fayette",NA,NA,144150
+NA,NA,"Iowa","Floyd",NA,NA,151210
+NA,NA,"Iowa","Franklin",NA,NA,130760
+NA,NA,"Iowa","Fremont",NA,NA,162690
+NA,NA,"Iowa","Greene",NA,NA,163740
+NA,NA,"Iowa","Grundy",NA,NA,202820
+NA,NA,"Iowa","Guthrie",NA,NA,184550
+NA,NA,"Iowa","Hamilton",NA,NA,164800
+NA,NA,"Iowa","Hancock",NA,NA,148990
+NA,NA,"Iowa","Hardin",NA,NA,129080
+NA,NA,"Iowa","Harrison",NA,NA,182260
+NA,NA,"Iowa","Henry",NA,NA,173120
+NA,NA,"Iowa","Howard",NA,NA,155740
+NA,NA,"Iowa","Humboldt",NA,NA,164170
+NA,NA,"Iowa","Ida",NA,NA,114750
+NA,NA,"Iowa","Iowa",NA,NA,204310
+NA,NA,"Iowa","Jackson",NA,NA,184400
+NA,NA,"Iowa","Jasper",NA,NA,196300
+NA,NA,"Iowa","Jefferson",NA,NA,172170
+NA,NA,"Iowa","Johnson",NA,NA,343000
+NA,NA,"Iowa","Jones",NA,NA,192650
+NA,NA,"Iowa","Keokuk",NA,NA,125070
+NA,NA,"Iowa","Kossuth",NA,NA,156260
+NA,NA,"Iowa","Lee",NA,NA,148990
+NA,NA,"Iowa","Linn",NA,NA,239250
+NA,NA,"Iowa","Louisa",NA,NA,158160
+NA,NA,"Iowa","Lucas",NA,NA,126650
+NA,NA,"Iowa","Lyon",NA,NA,242350
+NA,NA,"Iowa","Madison",NA,NA,251160
+NA,NA,"Iowa","Mahaska",NA,NA,166270
+NA,NA,"Iowa","Marion",NA,NA,245510
+NA,NA,"Iowa","Marshall",NA,NA,153310
+NA,NA,"Iowa","Mills",NA,NA,246260
+NA,NA,"Iowa","Mitchell",NA,NA,184500
+NA,NA,"Iowa","Monona",NA,NA,150570
+NA,NA,"Iowa","Monroe",NA,NA,164690
+NA,NA,"Iowa","Montgomery",NA,NA,127920
+NA,NA,"Iowa","Muscatine",NA,NA,191880
+NA,NA,"Iowa","O'Brien",NA,NA,182400
+NA,NA,"Iowa","Osceola",NA,NA,129180
+NA,NA,"Iowa","Page",NA,NA,132030
+NA,NA,"Iowa","Palo Alto",NA,NA,129820
+NA,NA,"Iowa","Plymouth",NA,NA,241190
+NA,NA,"Iowa","Pocahontas",NA,NA,103370
+NA,NA,"Iowa","Pottawattamie",NA,NA,225550
+NA,NA,"Iowa","Poweshiek",NA,NA,220540
+NA,NA,"Iowa","Ringgold",NA,NA,164590
+NA,NA,"Iowa","Sac",NA,NA,148990
+NA,NA,"Iowa","Scott",NA,NA,255560
+NA,NA,"Iowa","Shelby",NA,NA,172810
+NA,NA,"Iowa","Sioux",NA,NA,263530
+NA,NA,"Iowa","Story",NA,NA,295240
+NA,NA,"Iowa","Tama",NA,NA,156580
+NA,NA,"Iowa","Taylor",NA,NA,123490
+NA,NA,"Iowa","Union",NA,NA,128550
+NA,NA,"Iowa","Van Buren",NA,NA,120750
+NA,NA,"Iowa","Wapello",NA,NA,131820
+NA,NA,"Iowa","Warren",NA,NA,276260
+NA,NA,"Iowa","Washington",NA,NA,212260
+NA,NA,"Iowa","Wayne",NA,NA,117280
+NA,NA,"Iowa","Webster",NA,NA,162060
+NA,NA,"Iowa","Winnebago",NA,NA,142250
+NA,NA,"Iowa","Winneshiek",NA,NA,273120
+NA,NA,"Iowa","Woodbury",NA,NA,212840
+NA,NA,"Iowa","Worth",NA,NA,153630
+NA,NA,"Iowa","Wright",NA,NA,126020
+NA,NA,"Kansas","Allen",NA,NA,114080
+NA,NA,"Kansas","Anderson",NA,NA,181720
+NA,NA,"Kansas","Atchison",NA,NA,154470
+NA,NA,"Kansas","Barber",NA,NA,102840
+NA,NA,"Kansas","Barton",NA,NA,134010
+NA,NA,"Kansas","Bourbon",NA,NA,120650
+NA,NA,"Kansas","Brown",NA,NA,125210
+NA,NA,"Kansas","Butler",NA,NA,270040
+NA,NA,"Kansas","Chase",NA,NA,116300
+NA,NA,"Kansas","Chautauqua",NA,NA,69440
+NA,NA,"Kansas","Cherokee",NA,NA,106130
+NA,NA,"Kansas","Cheyenne",NA,NA,133480
+NA,NA,"Kansas","Clark",NA,NA,92870
+NA,NA,"Kansas","Clay",NA,NA,165290
+NA,NA,"Kansas","Cloud",NA,NA,106020
+NA,NA,"Kansas","Coffey",NA,NA,166880
+NA,NA,"Kansas","Comanche",NA,NA,73790
+NA,NA,"Kansas","Cowley",NA,NA,128180
+NA,NA,"Kansas","Crawford",NA,NA,140580
+NA,NA,"Kansas","Decatur",NA,NA,94890
+NA,NA,"Kansas","Dickinson",NA,NA,155640
+NA,NA,"Kansas","Doniphan",NA,NA,137880
+NA,NA,"Kansas","Douglas",NA,NA,350640
+NA,NA,"Kansas","Edwards",NA,NA,75170
+NA,NA,"Kansas","Elk",NA,NA,72620
+NA,NA,"Kansas","Ellis",NA,NA,229320
+NA,NA,"Kansas","Ellsworth",NA,NA,121820
+NA,NA,"Kansas","Finney",NA,NA,213530
+NA,NA,"Kansas","Ford",NA,NA,160200
+NA,NA,"Kansas","Franklin",NA,NA,207720
+NA,NA,"Kansas","Geary",NA,NA,177570
+NA,NA,"Kansas","Gove",NA,NA,125530
+NA,NA,"Kansas","Graham",NA,NA,95310
+NA,NA,"Kansas","Grant",NA,NA,116940
+NA,NA,"Kansas","Gray",NA,NA,218400
+NA,NA,"Kansas","Greeley",NA,NA,122140
+NA,NA,"Kansas","Greenwood",NA,NA,94040
+NA,NA,"Kansas","Hamilton",NA,NA,122770
+NA,NA,"Kansas","Harper",NA,NA,88850
+NA,NA,"Kansas","Harvey",NA,NA,185690
+NA,NA,"Kansas","Haskell",NA,NA,175040
+NA,NA,"Kansas","Hodgeman",NA,NA,107720
+NA,NA,"Kansas","Jackson",NA,NA,210120
+NA,NA,"Kansas","Jefferson",NA,NA,219850
+NA,NA,"Kansas","Jewell",NA,NA,68490
+NA,NA,"Kansas","Kearny",NA,NA,213000
+NA,NA,"Kansas","Kingman",NA,NA,117790
+NA,NA,"Kansas","Kiowa",NA,NA,164650
+NA,NA,"Kansas","Labette",NA,NA,100300
+NA,NA,"Kansas","Lane",NA,NA,134750
+NA,NA,"Kansas","Leavenworth",NA,NA,335680
+NA,NA,"Kansas","Lincoln",NA,NA,102730
+NA,NA,"Kansas","Linn",NA,NA,181480
+NA,NA,"Kansas","Logan",NA,NA,125000
+NA,NA,"Kansas","Lyon",NA,NA,159670
+NA,NA,"Kansas","McPherson",NA,NA,223920
+NA,NA,"Kansas","Marion",NA,NA,131680
+NA,NA,"Kansas","Marshall",NA,NA,135390
+NA,NA,"Kansas","Meade",NA,NA,157860
+NA,NA,"Kansas","Miami",NA,NA,300760
+NA,NA,"Kansas","Mitchell",NA,NA,141860
+NA,NA,"Kansas","Montgomery",NA,NA,107820
+NA,NA,"Kansas","Morris",NA,NA,137400
+NA,NA,"Kansas","Morton",NA,NA,101890
+NA,NA,"Kansas","Nemaha",NA,NA,230280
+NA,NA,"Kansas","Neosho",NA,NA,118000
+NA,NA,"Kansas","Ness",NA,NA,95100
+NA,NA,"Kansas","Norton",NA,NA,107610
+NA,NA,"Kansas","Osage",NA,NA,158930
+NA,NA,"Kansas","Osborne",NA,NA,91600
+NA,NA,"Kansas","Ottawa",NA,NA,175990
+NA,NA,"Kansas","Pawnee",NA,NA,98600
+NA,NA,"Kansas","Phillips",NA,NA,102310
+NA,NA,"Kansas","Pottawatomie",NA,NA,252840
+NA,NA,"Kansas","Pratt",NA,NA,121500
+NA,NA,"Kansas","Rawlins",NA,NA,110050
+NA,NA,"Kansas","Reno",NA,NA,140480
+NA,NA,"Kansas","Republic",NA,NA,80150
+NA,NA,"Kansas","Rice",NA,NA,110900
+NA,NA,"Kansas","Riley",NA,NA,263020
+NA,NA,"Kansas","Rooks",NA,NA,94360
+NA,NA,"Kansas","Rush",NA,NA,88630
+NA,NA,"Kansas","Russell",NA,NA,126160
+NA,NA,"Kansas","Saline",NA,NA,190410
+NA,NA,"Kansas","Scott",NA,NA,169630
+NA,NA,"Kansas","Seward",NA,NA,144720
+NA,NA,"Kansas","Shawnee",NA,NA,215290
+NA,NA,"Kansas","Sheridan",NA,NA,177270
+NA,NA,"Kansas","Sherman",NA,NA,144930
+NA,NA,"Kansas","Smith",NA,NA,99770
+NA,NA,"Kansas","Stafford",NA,NA,103480
+NA,NA,"Kansas","Stanton",NA,NA,71880
+NA,NA,"Kansas","Stevens",NA,NA,137080
+NA,NA,"Kansas","Sumner",NA,NA,139140
+NA,NA,"Kansas","Thomas",NA,NA,183100
+NA,NA,"Kansas","Trego",NA,NA,128180
+NA,NA,"Kansas","Wabaunsee",NA,NA,179710
+NA,NA,"Kansas","Wallace",NA,NA,111320
+NA,NA,"Kansas","Washington",NA,NA,124150
+NA,NA,"Kansas","Wichita",NA,NA,105280
+NA,NA,"Kansas","Wilson",NA,NA,99130
+NA,NA,"Kansas","Woodson",NA,NA,86090
+NA,NA,"Kansas","Wyandotte",NA,NA,211280
+NA,NA,"Kentucky","Adair",NA,NA,157880
+NA,NA,"Kentucky","Allen",NA,NA,201330
+NA,NA,"Kentucky","Anderson",NA,NA,235670
+NA,NA,"Kentucky","Ballard",NA,NA,152650
+NA,NA,"Kentucky","Barren",NA,NA,186360
+NA,NA,"Kentucky","Bath",NA,NA,135900
+NA,NA,"Kentucky","Bell",NA,NA,93180
+NA,NA,"Kentucky","Boone",NA,NA,325930
+NA,NA,"Kentucky","Bourbon",NA,NA,241370
+NA,NA,"Kentucky","Boyd",NA,NA,140080
+NA,NA,"Kentucky","Boyle",NA,NA,219760
+NA,NA,"Kentucky","Bracken",NA,NA,130670
+NA,NA,"Kentucky","Breathitt",NA,NA,73600
+NA,NA,"Kentucky","Breckinridge",NA,NA,164060
+NA,NA,"Kentucky","Bullitt",NA,NA,285330
+NA,NA,"Kentucky","Butler",NA,NA,116320
+NA,NA,"Kentucky","Caldwell",NA,NA,124070
+NA,NA,"Kentucky","Calloway",NA,NA,191800
+NA,NA,"Kentucky","Campbell",NA,NA,291540
+NA,NA,"Kentucky","Carlisle",NA,NA,126050
+NA,NA,"Kentucky","Carroll",NA,NA,147520
+NA,NA,"Kentucky","Carter",NA,NA,139040
+NA,NA,"Kentucky","Casey",NA,NA,142700
+NA,NA,"Kentucky","Christian",NA,NA,209130
+NA,NA,"Kentucky","Clark",NA,NA,216630
+NA,NA,"Kentucky","Clay",NA,NA,94960
+NA,NA,"Kentucky","Clinton",NA,NA,127940
+NA,NA,"Kentucky","Crittenden",NA,NA,133280
+NA,NA,"Kentucky","Cumberland",NA,NA,147730
+NA,NA,"Kentucky","Daviess",NA,NA,217920
+NA,NA,"Kentucky","Edmonson",NA,NA,168910
+NA,NA,"Kentucky","Elliott",NA,NA,129300
+NA,NA,"Kentucky","Estill",NA,NA,125110
+NA,NA,"Kentucky","Fayette",NA,NA,335160
+NA,NA,"Kentucky","Fleming",NA,NA,141030
+NA,NA,"Kentucky","Floyd",NA,NA,103340
+NA,NA,"Kentucky","Franklin",NA,NA,226770
+NA,NA,"Kentucky","Fulton",NA,NA,82810
+NA,NA,"Kentucky","Gallatin",NA,NA,186280
+NA,NA,"Kentucky","Garrard",NA,NA,214520
+NA,NA,"Kentucky","Grant",NA,NA,219000
+NA,NA,"Kentucky","Graves",NA,NA,154740
+NA,NA,"Kentucky","Grayson",NA,NA,172330
+NA,NA,"Kentucky","Green",NA,NA,130870
+NA,NA,"Kentucky","Greenup",NA,NA,143610
+NA,NA,"Kentucky","Hancock",NA,NA,146520
+NA,NA,"Kentucky","Hardin",NA,NA,260570
+NA,NA,"Kentucky","Harlan",NA,NA,77160
+NA,NA,"Kentucky","Harrison",NA,NA,211590
+NA,NA,"Kentucky","Hart",NA,NA,152860
+NA,NA,"Kentucky","Henderson",NA,NA,176130
+NA,NA,"Kentucky","Henry",NA,NA,205330
+NA,NA,"Kentucky","Hickman",NA,NA,121130
+NA,NA,"Kentucky","Hopkins",NA,NA,149510
+NA,NA,"Kentucky","Jackson",NA,NA,116740
+NA,NA,"Kentucky","Jessamine",NA,NA,282210
+NA,NA,"Kentucky","Johnson",NA,NA,125850
+NA,NA,"Kentucky","Kenton",NA,NA,297810
+NA,NA,"Kentucky","Knott",NA,NA,80620
+NA,NA,"Kentucky","Knox",NA,NA,124270
+NA,NA,"Kentucky","Larue",NA,NA,187650
+NA,NA,"Kentucky","Laurel",NA,NA,166990
+NA,NA,"Kentucky","Lawrence",NA,NA,116950
+NA,NA,"Kentucky","Lee",NA,NA,87840
+NA,NA,"Kentucky","Leslie",NA,NA,72240
+NA,NA,"Kentucky","Letcher",NA,NA,70570
+NA,NA,"Kentucky","Lewis",NA,NA,100510
+NA,NA,"Kentucky","Lincoln",NA,NA,154220
+NA,NA,"Kentucky","Livingston",NA,NA,131500
+NA,NA,"Kentucky","Logan",NA,NA,172640
+NA,NA,"Kentucky","Lyon",NA,NA,198400
+NA,NA,"Kentucky","McCracken",NA,NA,219650
+NA,NA,"Kentucky","McCreary",NA,NA,89310
+NA,NA,"Kentucky","McLean",NA,NA,154100
+NA,NA,"Kentucky","Madison",NA,NA,281320
+NA,NA,"Kentucky","Magoffin",NA,NA,93180
+NA,NA,"Kentucky","Marion",NA,NA,175990
+NA,NA,"Kentucky","Marshall",NA,NA,181960
+NA,NA,"Kentucky","Martin",NA,NA,90980
+NA,NA,"Kentucky","Mason",NA,NA,169080
+NA,NA,"Kentucky","Meade",NA,NA,215710
+NA,NA,"Kentucky","Menifee",NA,NA,131710
+NA,NA,"Kentucky","Mercer",NA,NA,211800
+NA,NA,"Kentucky","Metcalfe",NA,NA,115380
+NA,NA,"Kentucky","Monroe",NA,NA,121340
+NA,NA,"Kentucky","Montgomery",NA,NA,180290
+NA,NA,"Kentucky","Morgan",NA,NA,123750
+NA,NA,"Kentucky","Muhlenberg",NA,NA,133380
+NA,NA,"Kentucky","Nelson",NA,NA,246940
+NA,NA,"Kentucky","Nicholas",NA,NA,128780
+NA,NA,"Kentucky","Ohio",NA,NA,127100
+NA,NA,"Kentucky","Oldham",NA,NA,420730
+NA,NA,"Kentucky","Owen",NA,NA,176620
+NA,NA,"Kentucky","Owsley",NA,NA,83860
+NA,NA,"Kentucky","Pendleton",NA,NA,167040
+NA,NA,"Kentucky","Perry",NA,NA,96110
+NA,NA,"Kentucky","Pike",NA,NA,117260
+NA,NA,"Kentucky","Powell",NA,NA,147730
+NA,NA,"Kentucky","Pulaski",NA,NA,197880
+NA,NA,"Kentucky","Robertson",NA,NA,172850
+NA,NA,"Kentucky","Rockcastle",NA,NA,129400
+NA,NA,"Kentucky","Rowan",NA,NA,169400
+NA,NA,"Kentucky","Russell",NA,NA,170860
+NA,NA,"Kentucky","Scott",NA,NA,303690
+NA,NA,"Kentucky","Shelby",NA,NA,316250
+NA,NA,"Kentucky","Simpson",NA,NA,240170
+NA,NA,"Kentucky","Spencer",NA,NA,342400
+NA,NA,"Kentucky","Taylor",NA,NA,182380
+NA,NA,"Kentucky","Todd",NA,NA,174530
+NA,NA,"Kentucky","Trigg",NA,NA,213560
+NA,NA,"Kentucky","Trimble",NA,NA,178460
+NA,NA,"Kentucky","Union",NA,NA,109410
+NA,NA,"Kentucky","Warren",NA,NA,296830
+NA,NA,"Kentucky","Washington",NA,NA,187620
+NA,NA,"Kentucky","Wayne",NA,NA,142070
+NA,NA,"Kentucky","Webster",NA,NA,115680
+NA,NA,"Kentucky","Whitley",NA,NA,137990
+NA,NA,"Kentucky","Wolfe",NA,NA,79360
+NA,NA,"Kentucky","Woodford",NA,NA,315470
+NA,NA,"Maine","Androscoggin",NA,NA,323000
+NA,NA,"Maine","Aroostook",NA,NA,172330
+NA,NA,"Maine","Cumberland",NA,NA,526740
+NA,NA,"Maine","Franklin",NA,NA,206600
+NA,NA,"Maine","Hancock",NA,NA,329370
+NA,NA,"Maine","Kennebec",NA,NA,298390
+NA,NA,"Maine","Knox",NA,NA,344760
+NA,NA,"Maine","Lincoln",NA,NA,353040
+NA,NA,"Maine","Oxford",NA,NA,230580
+NA,NA,"Maine","Penobscot",NA,NA,263880
+NA,NA,"Maine","Piscataquis",NA,NA,180600
+NA,NA,"Maine","Sagadahoc",NA,NA,350640
+NA,NA,"Maine","Somerset",NA,NA,177100
+NA,NA,"Maine","Waldo",NA,NA,273450
+NA,NA,"Maine","Washington",NA,NA,171690
+NA,NA,"Maine","York",NA,NA,479510
+NA,NA,"Maryland","Anne Arundel",NA,NA,499970
+NA,NA,"Maryland","Baltimore",NA,NA,369090
+NA,NA,"Maryland","Calvert",NA,NA,506930
+NA,NA,"Maryland","Caroline",NA,NA,298690
+NA,NA,"Maryland","Carroll",NA,NA,475500
+NA,NA,"Maryland","Cecil",NA,NA,381510
+NA,NA,"Maryland","Charles",NA,NA,475640
+NA,NA,"Maryland","Dorchester",NA,NA,270170
+NA,NA,"Maryland","Frederick",NA,NA,518460
+NA,NA,"Maryland","Garrett",NA,NA,242270
+NA,NA,"Maryland","Harford",NA,NA,416800
+NA,NA,"Maryland","Howard",NA,NA,648020
+NA,NA,"Maryland","Kent",NA,NA,340700
+NA,NA,"Maryland","Prince George's",NA,NA,448780
+NA,NA,"Maryland","Queen Anne's",NA,NA,475710
+NA,NA,"Maryland","St. Mary's",NA,NA,427600
+NA,NA,"Maryland","Somerset",NA,NA,185170
+NA,NA,"Maryland","Talbot",NA,NA,421830
+NA,NA,"Maryland","Washington",NA,NA,321070
+NA,NA,"Maryland","Wicomico",NA,NA,294970
+NA,NA,"Maryland","Worcester",NA,NA,385790
+NA,NA,"Massachusetts","Barnstable",NA,NA,709130
+NA,NA,"Massachusetts","Bristol",NA,NA,531330
+NA,NA,"Massachusetts","Dukes",NA,NA,1269310
+NA,NA,"Massachusetts","Essex",NA,NA,683210
+NA,NA,"Massachusetts","Nantucket",NA,NA,1735310
+NA,NA,"Massachusetts","Plymouth",NA,NA,629030
+NA,NA,"Michigan","Alcona",NA,NA,173180
+NA,NA,"Michigan","Alger",NA,NA,187440
+NA,NA,"Michigan","Allegan",NA,NA,332320
+NA,NA,"Michigan","Alpena",NA,NA,163710
+NA,NA,"Michigan","Antrim",NA,NA,271790
+NA,NA,"Michigan","Arenac",NA,NA,160200
+NA,NA,"Michigan","Baraga",NA,NA,146910
+NA,NA,"Michigan","Barry",NA,NA,278620
+NA,NA,"Michigan","Bay",NA,NA,178070
+NA,NA,"Michigan","Benzie",NA,NA,303920
+NA,NA,"Michigan","Branch",NA,NA,172860
+NA,NA,"Michigan","Cass",NA,NA,225490
+NA,NA,"Michigan","Charlevoix",NA,NA,294450
+NA,NA,"Michigan","Cheboygan",NA,NA,204770
+NA,NA,"Michigan","Chippewa",NA,NA,172220
+NA,NA,"Michigan","Clare",NA,NA,142330
+NA,NA,"Michigan","Clinton",NA,NA,306540
+NA,NA,"Michigan","Crawford",NA,NA,173390
+NA,NA,"Michigan","Delta",NA,NA,167120
+NA,NA,"Michigan","Dickinson",NA,NA,163080
+NA,NA,"Michigan","Emmet",NA,NA,335830
+NA,NA,"Michigan","Genesee",NA,NA,214030
+NA,NA,"Michigan","Gladwin",NA,NA,172650
+NA,NA,"Michigan","Gogebic",NA,NA,114040
+NA,NA,"Michigan","Grand Traverse",NA,NA,426140
+NA,NA,"Michigan","Gratiot",NA,NA,156910
+NA,NA,"Michigan","Hillsdale",NA,NA,187330
+NA,NA,"Michigan","Houghton",NA,NA,170100
+NA,NA,"Michigan","Huron",NA,NA,164140
+NA,NA,"Michigan","Ingham",NA,NA,229650
+NA,NA,"Michigan","Ionia",NA,NA,252460
+NA,NA,"Michigan","Iosco",NA,NA,151270
+NA,NA,"Michigan","Iron",NA,NA,116060
+NA,NA,"Michigan","Isabella",NA,NA,196160
+NA,NA,"Michigan","Kalkaska",NA,NA,200950
+NA,NA,"Michigan","Keweenaw",NA,NA,180630
+NA,NA,"Michigan","Lake",NA,NA,142440
+NA,NA,"Michigan","Lapeer",NA,NA,278710
+NA,NA,"Michigan","Leelanau",NA,NA,487630
+NA,NA,"Michigan","Lenawee",NA,NA,255840
+NA,NA,"Michigan","Livingston",NA,NA,404780
+NA,NA,"Michigan","Luce",NA,NA,119140
+NA,NA,"Michigan","Mackinac",NA,NA,185630
+NA,NA,"Michigan","Macomb",NA,NA,283060
+NA,NA,"Michigan","Manistee",NA,NA,193820
+NA,NA,"Michigan","Marquette",NA,NA,263920
+NA,NA,"Michigan","Mason",NA,NA,233600
+NA,NA,"Michigan","Mecosta",NA,NA,190310
+NA,NA,"Michigan","Menominee",NA,NA,161480
+NA,NA,"Michigan","Midland",NA,NA,236480
+NA,NA,"Michigan","Missaukee",NA,NA,181270
+NA,NA,"Michigan","Monroe",NA,NA,266270
+NA,NA,"Michigan","Montcalm",NA,NA,229140
+NA,NA,"Michigan","Montmorency",NA,NA,168710
+NA,NA,"Michigan","Muskegon",NA,NA,235010
+NA,NA,"Michigan","Newaygo",NA,NA,196970
+NA,NA,"Michigan","Oceana",NA,NA,202220
+NA,NA,"Michigan","Ogemaw",NA,NA,164780
+NA,NA,"Michigan","Ontonagon",NA,NA,118820
+NA,NA,"Michigan","Osceola",NA,NA,165310
+NA,NA,"Michigan","Oscoda",NA,NA,133500
+NA,NA,"Michigan","Otsego",NA,NA,233710
+NA,NA,"Michigan","Presque Isle",NA,NA,160950
+NA,NA,"Michigan","Roscommon",NA,NA,168820
+NA,NA,"Michigan","Saginaw",NA,NA,165080
+NA,NA,"Michigan","St. Clair",NA,NA,257570
+NA,NA,"Michigan","St. Joseph",NA,NA,189670
+NA,NA,"Michigan","Sanilac",NA,NA,179030
+NA,NA,"Michigan","Schoolcraft",NA,NA,150840
+NA,NA,"Michigan","Shiawassee",NA,NA,210090
+NA,NA,"Michigan","Tuscola",NA,NA,159030
+NA,NA,"Michigan","Van Buren",NA,NA,243230
+NA,NA,"Michigan","Wexford",NA,NA,181270
+NA,NA,"Minnesota","Aitkin",NA,NA,268100
+NA,NA,"Minnesota","Anoka",NA,NA,371200
+NA,NA,"Minnesota","Becker",NA,NA,304990
+NA,NA,"Minnesota","Beltrami",NA,NA,248920
+NA,NA,"Minnesota","Benton",NA,NA,272700
+NA,NA,"Minnesota","Big Stone",NA,NA,177230
+NA,NA,"Minnesota","Blue Earth",NA,NA,289720
+NA,NA,"Minnesota","Brown",NA,NA,200390
+NA,NA,"Minnesota","Carlton",NA,NA,262480
+NA,NA,"Minnesota","Carver",NA,NA,480980
+NA,NA,"Minnesota","Cass",NA,NA,302160
+NA,NA,"Minnesota","Chippewa",NA,NA,163610
+NA,NA,"Minnesota","Chisago",NA,NA,362050
+NA,NA,"Minnesota","Clay",NA,NA,281620
+NA,NA,"Minnesota","Clearwater",NA,NA,201340
+NA,NA,"Minnesota","Cook",NA,NA,352370
+NA,NA,"Minnesota","Cottonwood",NA,NA,177440
+NA,NA,"Minnesota","Crow Wing",NA,NA,341470
+NA,NA,"Minnesota","Dodge",NA,NA,299020
+NA,NA,"Minnesota","Douglas",NA,NA,336850
+NA,NA,"Minnesota","Faribault",NA,NA,141810
+NA,NA,"Minnesota","Fillmore",NA,NA,231730
+NA,NA,"Minnesota","Freeborn",NA,NA,179330
+NA,NA,"Minnesota","Goodhue",NA,NA,298810
+NA,NA,"Minnesota","Grant",NA,NA,200180
+NA,NA,"Minnesota","Houston",NA,NA,254270
+NA,NA,"Minnesota","Hubbard",NA,NA,296190
+NA,NA,"Minnesota","Isanti",NA,NA,315030
+NA,NA,"Minnesota","Itasca",NA,NA,236030
+NA,NA,"Minnesota","Jackson",NA,NA,164650
+NA,NA,"Minnesota","Kanabec",NA,NA,239070
+NA,NA,"Minnesota","Kandiyohi",NA,NA,254890
+NA,NA,"Minnesota","Kittson",NA,NA,141280
+NA,NA,"Minnesota","Koochiching",NA,NA,164130
+NA,NA,"Minnesota","Lac qui Parle",NA,NA,165180
+NA,NA,"Minnesota","Lake",NA,NA,252900
+NA,NA,"Minnesota","Lake of the Woods",NA,NA,226490
+NA,NA,"Minnesota","Le Sueur",NA,NA,331720
+NA,NA,"Minnesota","Lincoln",NA,NA,172310
+NA,NA,"Minnesota","Lyon",NA,NA,210350
+NA,NA,"Minnesota","McLeod",NA,NA,257930
+NA,NA,"Minnesota","Mahnomen",NA,NA,169680
+NA,NA,"Minnesota","Marshall",NA,NA,172410
+NA,NA,"Minnesota","Martin",NA,NA,171360
+NA,NA,"Minnesota","Meeker",NA,NA,260970
+NA,NA,"Minnesota","Mille Lacs",NA,NA,270720
+NA,NA,"Minnesota","Morrison",NA,NA,260450
+NA,NA,"Minnesota","Murray",NA,NA,194310
+NA,NA,"Minnesota","Nicollet",NA,NA,278290
+NA,NA,"Minnesota","Nobles",NA,NA,206680
+NA,NA,"Minnesota","Norman",NA,NA,154170
+NA,NA,"Minnesota","Olmsted",NA,NA,353170
+NA,NA,"Minnesota","Otter Tail",NA,NA,286130
+NA,NA,"Minnesota","Pennington",NA,NA,204900
+NA,NA,"Minnesota","Pine",NA,NA,250810
+NA,NA,"Minnesota","Pipestone",NA,NA,146940
+NA,NA,"Minnesota","Polk",NA,NA,231780
+NA,NA,"Minnesota","Pope",NA,NA,267370
+NA,NA,"Minnesota","Red Lake",NA,NA,169790
+NA,NA,"Minnesota","Redwood",NA,NA,165810
+NA,NA,"Minnesota","Renville",NA,NA,171050
+NA,NA,"Minnesota","Rice",NA,NA,354780
+NA,NA,"Minnesota","Rock",NA,NA,235090
+NA,NA,"Minnesota","Roseau",NA,NA,192530
+NA,NA,"Minnesota","St. Louis",NA,NA,263880
+NA,NA,"Minnesota","Scott",NA,NA,442910
+NA,NA,"Minnesota","Sherburne",NA,NA,399600
+NA,NA,"Minnesota","Sibley",NA,NA,243050
+NA,NA,"Minnesota","Stearns",NA,NA,292930
+NA,NA,"Minnesota","Steele",NA,NA,257200
+NA,NA,"Minnesota","Stevens",NA,NA,212550
+NA,NA,"Minnesota","Swift",NA,NA,169160
+NA,NA,"Minnesota","Todd",NA,NA,217690
+NA,NA,"Minnesota","Traverse",NA,NA,119590
+NA,NA,"Minnesota","Wabasha",NA,NA,274800
+NA,NA,"Minnesota","Wadena",NA,NA,181320
+NA,NA,"Minnesota","Waseca",NA,NA,231420
+NA,NA,"Minnesota","Washington",NA,NA,450730
+NA,NA,"Minnesota","Watonwan",NA,NA,170210
+NA,NA,"Minnesota","Wilkin",NA,NA,190960
+NA,NA,"Minnesota","Winona",NA,NA,246720
+NA,NA,"Minnesota","Wright",NA,NA,396200
+NA,NA,"Minnesota","Yellow Medicine",NA,NA,162140
+NA,NA,"Mississippi","Adams",NA,NA,113840
+NA,NA,"Mississippi","Alcorn",NA,NA,148810
+NA,NA,"Mississippi","Amite",NA,NA,105560
+NA,NA,"Mississippi","Attala",NA,NA,109540
+NA,NA,"Mississippi","Benton",NA,NA,110070
+NA,NA,"Mississippi","Bolivar",NA,NA,136140
+NA,NA,"Mississippi","Calhoun",NA,NA,94570
+NA,NA,"Mississippi","Carroll",NA,NA,114780
+NA,NA,"Mississippi","Chickasaw",NA,NA,114990
+NA,NA,"Mississippi","Choctaw",NA,NA,122740
+NA,NA,"Mississippi","Claiborne",NA,NA,86610
+NA,NA,"Mississippi","Clarke",NA,NA,123680
+NA,NA,"Mississippi","Clay",NA,NA,135200
+NA,NA,"Mississippi","Coahoma",NA,NA,94570
+NA,NA,"Mississippi","Copiah",NA,NA,117160
+NA,NA,"Mississippi","Covington",NA,NA,110070
+NA,NA,"Mississippi","DeSoto",NA,NA,306830
+NA,NA,"Mississippi","Forrest",NA,NA,194950
+NA,NA,"Mississippi","Franklin",NA,NA,106710
+NA,NA,"Mississippi","Greene",NA,NA,97080
+NA,NA,"Mississippi","Grenada",NA,NA,138450
+NA,NA,"Mississippi","Hancock",NA,NA,233860
+NA,NA,"Mississippi","Harrison",NA,NA,245640
+NA,NA,"Mississippi","Hinds",NA,NA,167680
+NA,NA,"Mississippi","Holmes",NA,NA,84200
+NA,NA,"Mississippi","Humphreys",NA,NA,91950
+NA,NA,"Mississippi","Issaquena",NA,NA,116030
+NA,NA,"Mississippi","Itawamba",NA,NA,149130
+NA,NA,"Mississippi","Jasper",NA,NA,112160
+NA,NA,"Mississippi","Jefferson",NA,NA,85140
+NA,NA,"Mississippi","Jefferson Davis",NA,NA,94360
+NA,NA,"Mississippi","Jones",NA,NA,145460
+NA,NA,"Mississippi","Kemper",NA,NA,104310
+NA,NA,"Mississippi","Lafayette",NA,NA,330300
+NA,NA,"Mississippi","Lamar",NA,NA,284590
+NA,NA,"Mississippi","Lauderdale",NA,NA,154260
+NA,NA,"Mississippi","Lawrence",NA,NA,104720
+NA,NA,"Mississippi","Leake",NA,NA,122320
+NA,NA,"Mississippi","Lee",NA,NA,228400
+NA,NA,"Mississippi","Leflore",NA,NA,105980
+NA,NA,"Mississippi","Lincoln",NA,NA,163160
+NA,NA,"Mississippi","Lowndes",NA,NA,171850
+NA,NA,"Mississippi","Madison",NA,NA,317390
+NA,NA,"Mississippi","Marion",NA,NA,128600
+NA,NA,"Mississippi","Marshall",NA,NA,171670
+NA,NA,"Mississippi","Monroe",NA,NA,126510
+NA,NA,"Mississippi","Montgomery",NA,NA,132790
+NA,NA,"Mississippi","Neshoba",NA,NA,104720
+NA,NA,"Mississippi","Newton",NA,NA,111320
+NA,NA,"Mississippi","Noxubee",NA,NA,95090
+NA,NA,"Mississippi","Oktibbeha",NA,NA,248930
+NA,NA,"Mississippi","Panola",NA,NA,133840
+NA,NA,"Mississippi","Pearl River",NA,NA,190910
+NA,NA,"Mississippi","Perry",NA,NA,131230
+NA,NA,"Mississippi","Pike",NA,NA,116030
+NA,NA,"Mississippi","Pontotoc",NA,NA,164520
+NA,NA,"Mississippi","Prentiss",NA,NA,128290
+NA,NA,"Mississippi","Quitman",NA,NA,72890
+NA,NA,"Mississippi","Rankin",NA,NA,260400
+NA,NA,"Mississippi","Scott",NA,NA,111740
+NA,NA,"Mississippi","Sharkey",NA,NA,102630
+NA,NA,"Mississippi","Simpson",NA,NA,125480
+NA,NA,"Mississippi","Smith",NA,NA,117920
+NA,NA,"Mississippi","Stone",NA,NA,168040
+NA,NA,"Mississippi","Sunflower",NA,NA,105040
+NA,NA,"Mississippi","Tallahatchie",NA,NA,86190
+NA,NA,"Mississippi","Tate",NA,NA,213690
+NA,NA,"Mississippi","Tippah",NA,NA,129960
+NA,NA,"Mississippi","Tishomingo",NA,NA,151950
+NA,NA,"Mississippi","Tunica",NA,NA,179850
+NA,NA,"Mississippi","Union",NA,NA,171120
+NA,NA,"Mississippi","Walthall",NA,NA,132580
+NA,NA,"Mississippi","Warren",NA,NA,163790
+NA,NA,"Mississippi","Washington",NA,NA,108910
+NA,NA,"Mississippi","Wayne",NA,NA,95400
+NA,NA,"Mississippi","Webster",NA,NA,125770
+NA,NA,"Mississippi","Wilkinson",NA,NA,94250
+NA,NA,"Mississippi","Winston",NA,NA,130490
+NA,NA,"Mississippi","Yalobusha",NA,NA,128080
+NA,NA,"Mississippi","Yazoo",NA,NA,161070
+NA,NA,"Missouri","Adair",NA,NA,172460
+NA,NA,"Missouri","Andrew",NA,NA,219670
+NA,NA,"Missouri","Atchison",NA,NA,111160
+NA,NA,"Missouri","Audrain",NA,NA,148940
+NA,NA,"Missouri","Barry",NA,NA,195460
+NA,NA,"Missouri","Barton",NA,NA,142070
+NA,NA,"Missouri","Bates",NA,NA,178560
+NA,NA,"Missouri","Benton",NA,NA,185160
+NA,NA,"Missouri","Bollinger",NA,NA,189380
+NA,NA,"Missouri","Boone",NA,NA,317910
+NA,NA,"Missouri","Buchanan",NA,NA,190500
+NA,NA,"Missouri","Butler",NA,NA,151020
+NA,NA,"Missouri","Caldwell",NA,NA,174060
+NA,NA,"Missouri","Callaway",NA,NA,211670
+NA,NA,"Missouri","Camden",NA,NA,317860
+NA,NA,"Missouri","Cape Girardeau",NA,NA,241830
+NA,NA,"Missouri","Carroll",NA,NA,122290
+NA,NA,"Missouri","Carter",NA,NA,165900
+NA,NA,"Missouri","Cass",NA,NA,328890
+NA,NA,"Missouri","Cedar",NA,NA,174960
+NA,NA,"Missouri","Chariton",NA,NA,167470
+NA,NA,"Missouri","Christian",NA,NA,306820
+NA,NA,"Missouri","Clark",NA,NA,136030
+NA,NA,"Missouri","Clay",NA,NA,311430
+NA,NA,"Missouri","Clinton",NA,NA,237100
+NA,NA,"Missouri","Cole",NA,NA,278030
+NA,NA,"Missouri","Cooper",NA,NA,211800
+NA,NA,"Missouri","Crawford",NA,NA,179520
+NA,NA,"Missouri","Dade",NA,NA,177560
+NA,NA,"Missouri","Dallas",NA,NA,198740
+NA,NA,"Missouri","Daviess",NA,NA,168400
+NA,NA,"Missouri","DeKalb",NA,NA,172550
+NA,NA,"Missouri","Dent",NA,NA,174330
+NA,NA,"Missouri","Douglas",NA,NA,175060
+NA,NA,"Missouri","Dunklin",NA,NA,101580
+NA,NA,"Missouri","Franklin",NA,NA,253990
+NA,NA,"Missouri","Gasconade",NA,NA,187240
+NA,NA,"Missouri","Gentry",NA,NA,139470
+NA,NA,"Missouri","Greene",NA,NA,264530
+NA,NA,"Missouri","Grundy",NA,NA,117090
+NA,NA,"Missouri","Harrison",NA,NA,113970
+NA,NA,"Missouri","Henry",NA,NA,167150
+NA,NA,"Missouri","Hickory",NA,NA,183290
+NA,NA,"Missouri","Holt",NA,NA,143840
+NA,NA,"Missouri","Howard",NA,NA,165070
+NA,NA,"Missouri","Howell",NA,NA,180060
+NA,NA,"Missouri","Iron",NA,NA,124170
+NA,NA,"Missouri","Jackson",NA,NA,263860
+NA,NA,"Missouri","Jasper",NA,NA,195180
+NA,NA,"Missouri","Jefferson",NA,NA,273760
+NA,NA,"Missouri","Johnson",NA,NA,245320
+NA,NA,"Missouri","Knox",NA,NA,105540
+NA,NA,"Missouri","Laclede",NA,NA,175270
+NA,NA,"Missouri","Lafayette",NA,NA,226330
+NA,NA,"Missouri","Lawrence",NA,NA,182240
+NA,NA,"Missouri","Lewis",NA,NA,135510
+NA,NA,"Missouri","Lincoln",NA,NA,288730
+NA,NA,"Missouri","Linn",NA,NA,128330
+NA,NA,"Missouri","Livingston",NA,NA,153730
+NA,NA,"Missouri","McDonald",NA,NA,161460
+NA,NA,"Missouri","Macon",NA,NA,155180
+NA,NA,"Missouri","Madison",NA,NA,165490
+NA,NA,"Missouri","Maries",NA,NA,228040
+NA,NA,"Missouri","Marion",NA,NA,168610
+NA,NA,"Missouri","Mercer",NA,NA,109180
+NA,NA,"Missouri","Miller",NA,NA,200460
+NA,NA,"Missouri","Mississippi",NA,NA,113450
+NA,NA,"Missouri","Moniteau",NA,NA,190990
+NA,NA,"Missouri","Monroe",NA,NA,155390
+NA,NA,"Missouri","Montgomery",NA,NA,185990
+NA,NA,"Missouri","Morgan",NA,NA,202330
+NA,NA,"Missouri","New Madrid",NA,NA,116360
+NA,NA,"Missouri","Newton",NA,NA,202180
+NA,NA,"Missouri","Nodaway",NA,NA,184740
+NA,NA,"Missouri","Oregon",NA,NA,117920
+NA,NA,"Missouri","Osage",NA,NA,234460
+NA,NA,"Missouri","Ozark",NA,NA,175480
+NA,NA,"Missouri","Pemiscot",NA,NA,100960
+NA,NA,"Missouri","Perry",NA,NA,195880
+NA,NA,"Missouri","Pettis",NA,NA,173090
+NA,NA,"Missouri","Phelps",NA,NA,214930
+NA,NA,"Missouri","Pike",NA,NA,151960
+NA,NA,"Missouri","Platte",NA,NA,396940
+NA,NA,"Missouri","Polk",NA,NA,214920
+NA,NA,"Missouri","Pulaski",NA,NA,197540
+NA,NA,"Missouri","Putnam",NA,NA,124380
+NA,NA,"Missouri","Ralls",NA,NA,175060
+NA,NA,"Missouri","Randolph",NA,NA,165800
+NA,NA,"Missouri","Ray",NA,NA,207830
+NA,NA,"Missouri","Reynolds",NA,NA,157890
+NA,NA,"Missouri","Ripley",NA,NA,124480
+NA,NA,"Missouri","St. Charles",NA,NA,358110
+NA,NA,"Missouri","St. Clair",NA,NA,163510
+NA,NA,"Missouri","Ste. Genevieve",NA,NA,231270
+NA,NA,"Missouri","St. Francois",NA,NA,192860
+NA,NA,"Missouri","Saline",NA,NA,156640
+NA,NA,"Missouri","Schuyler",NA,NA,143110
+NA,NA,"Missouri","Scotland",NA,NA,165280
+NA,NA,"Missouri","Scott",NA,NA,160700
+NA,NA,"Missouri","Shannon",NA,NA,163930
+NA,NA,"Missouri","Shelby",NA,NA,103980
+NA,NA,"Missouri","Stoddard",NA,NA,149150
+NA,NA,"Missouri","Stone",NA,NA,259160
+NA,NA,"Missouri","Sullivan",NA,NA,120320
+NA,NA,"Missouri","Taney",NA,NA,227730
+NA,NA,"Missouri","Texas",NA,NA,152690
+NA,NA,"Missouri","Vernon",NA,NA,165280
+NA,NA,"Missouri","Warren",NA,NA,270840
+NA,NA,"Missouri","Washington",NA,NA,134590
+NA,NA,"Missouri","Wayne",NA,NA,111780
+NA,NA,"Missouri","Webster",NA,NA,238940
+NA,NA,"Missouri","Worth",NA,NA,100540
+NA,NA,"Missouri","Wright",NA,NA,166630
+NA,NA,"Montana","Beaverhead",NA,NA,318640
+NA,NA,"Montana","Big Horn",NA,NA,148210
+NA,NA,"Montana","Blaine",NA,NA,160710
+NA,NA,"Montana","Broadwater",NA,NA,440910
+NA,NA,"Montana","Carbon",NA,NA,433900
+NA,NA,"Montana","Carter",NA,NA,205880
+NA,NA,"Montana","Cascade",NA,NA,306390
+NA,NA,"Montana","Chouteau",NA,NA,214770
+NA,NA,"Montana","Custer",NA,NA,226450
+NA,NA,"Montana","Daniels",NA,NA,191000
+NA,NA,"Montana","Dawson",NA,NA,191510
+NA,NA,"Montana","Deer Lodge",NA,NA,239470
+NA,NA,"Montana","Fallon",NA,NA,253010
+NA,NA,"Montana","Fergus",NA,NA,244020
+NA,NA,"Montana","Flathead",NA,NA,612270
+NA,NA,"Montana","Gallatin",NA,NA,758720
+NA,NA,"Montana","Garfield",NA,NA,175600
+NA,NA,"Montana","Glacier",NA,NA,170640
+NA,NA,"Montana","Golden Valley",NA,NA,219320
+NA,NA,"Montana","Granite",NA,NA,364530
+NA,NA,"Montana","Hill",NA,NA,209390
+NA,NA,"Montana","Jefferson",NA,NA,461890
+NA,NA,"Montana","Judith Basin",NA,NA,246290
+NA,NA,"Montana","Lake",NA,NA,435950
+NA,NA,"Montana","Lewis and Clark",NA,NA,478320
+NA,NA,"Montana","Liberty",NA,NA,174770
+NA,NA,"Montana","Lincoln",NA,NA,306440
+NA,NA,"Montana","McCone",NA,NA,218700
+NA,NA,"Montana","Madison",NA,NA,485860
+NA,NA,"Montana","Meagher",NA,NA,268510
+NA,NA,"Montana","Mineral",NA,NA,376520
+NA,NA,"Montana","Missoula",NA,NA,545710
+NA,NA,"Montana","Musselshell",NA,NA,242880
+NA,NA,"Montana","Park",NA,NA,483180
+NA,NA,"Montana","Petroleum",NA,NA,208150
+NA,NA,"Montana","Phillips",NA,NA,204230
+NA,NA,"Montana","Pondera",NA,NA,213010
+NA,NA,"Montana","Powder River",NA,NA,198540
+NA,NA,"Montana","Powell",NA,NA,316780
+NA,NA,"Montana","Prairie",NA,NA,171260
+NA,NA,"Montana","Ravalli",NA,NA,492580
+NA,NA,"Montana","Richland",NA,NA,271820
+NA,NA,"Montana","Roosevelt",NA,NA,122780
+NA,NA,"Montana","Rosebud",NA,NA,188520
+NA,NA,"Montana","Sanders",NA,NA,371040
+NA,NA,"Montana","Sheridan",NA,NA,128160
+NA,NA,"Montana","Silver Bow",NA,NA,263760
+NA,NA,"Montana","Stillwater",NA,NA,419410
+NA,NA,"Montana","Sweet Grass",NA,NA,341170
+NA,NA,"Montana","Teton",NA,NA,272850
+NA,NA,"Montana","Toole",NA,NA,225720
+NA,NA,"Montana","Treasure",NA,NA,238020
+NA,NA,"Montana","Valley",NA,NA,205050
+NA,NA,"Montana","Wheatland",NA,NA,186860
+NA,NA,"Montana","Wibaux",NA,NA,101910
+NA,NA,"Montana","Yellowstone",NA,NA,386160
+NA,NA,"Nebraska","Adams",NA,NA,201070
+NA,NA,"Nebraska","Antelope",NA,NA,135680
+NA,NA,"Nebraska","Arthur",NA,NA,193570
+NA,NA,"Nebraska","Banner",NA,NA,214190
+NA,NA,"Nebraska","Blaine",NA,NA,121720
+NA,NA,"Nebraska","Boone",NA,NA,180870
+NA,NA,"Nebraska","Box Butte",NA,NA,173470
+NA,NA,"Nebraska","Boyd",NA,NA,108290
+NA,NA,"Nebraska","Brown",NA,NA,118600
+NA,NA,"Nebraska","Buffalo",NA,NA,256560
+NA,NA,"Nebraska","Burt",NA,NA,153060
+NA,NA,"Nebraska","Butler",NA,NA,191800
+NA,NA,"Nebraska","Cass",NA,NA,263960
+NA,NA,"Nebraska","Cedar",NA,NA,192630
+NA,NA,"Nebraska","Chase",NA,NA,172740
+NA,NA,"Nebraska","Cherry",NA,NA,158480
+NA,NA,"Nebraska","Cheyenne",NA,NA,145460
+NA,NA,"Nebraska","Clay",NA,NA,162020
+NA,NA,"Nebraska","Colfax",NA,NA,150670
+NA,NA,"Nebraska","Cuming",NA,NA,186180
+NA,NA,"Nebraska","Custer",NA,NA,164310
+NA,NA,"Nebraska","Dakota",NA,NA,199010
+NA,NA,"Nebraska","Dawes",NA,NA,157120
+NA,NA,"Nebraska","Dawson",NA,NA,173060
+NA,NA,"Nebraska","Deuel",NA,NA,104330
+NA,NA,"Nebraska","Dixon",NA,NA,167080
+NA,NA,"Nebraska","Dodge",NA,NA,217210
+NA,NA,"Nebraska","Dundy",NA,NA,149320
+NA,NA,"Nebraska","Fillmore",NA,NA,157230
+NA,NA,"Nebraska","Franklin",NA,NA,99540
+NA,NA,"Nebraska","Frontier",NA,NA,155980
+NA,NA,"Nebraska","Furnas",NA,NA,102460
+NA,NA,"Nebraska","Gage",NA,NA,181180
+NA,NA,"Nebraska","Garden",NA,NA,114950
+NA,NA,"Nebraska","Garfield",NA,NA,183880
+NA,NA,"Nebraska","Gosper",NA,NA,237930
+NA,NA,"Nebraska","Grant",NA,NA,142340
+NA,NA,"Nebraska","Greeley",NA,NA,124950
+NA,NA,"Nebraska","Hall",NA,NA,233870
+NA,NA,"Nebraska","Hamilton",NA,NA,264170
+NA,NA,"Nebraska","Harlan",NA,NA,151810
+NA,NA,"Nebraska","Hayes",NA,NA,133380
+NA,NA,"Nebraska","Hitchcock",NA,NA,100690
+NA,NA,"Nebraska","Holt",NA,NA,171910
+NA,NA,"Nebraska","Hooker",NA,NA,97670
+NA,NA,"Nebraska","Howard",NA,NA,217730
+NA,NA,"Nebraska","Jefferson",NA,NA,134840
+NA,NA,"Nebraska","Johnson",NA,NA,161910
+NA,NA,"Nebraska","Kearney",NA,NA,232620
+NA,NA,"Nebraska","Keith",NA,NA,174930
+NA,NA,"Nebraska","Keya Paha",NA,NA,113290
+NA,NA,"Nebraska","Kimball",NA,NA,113910
+NA,NA,"Nebraska","Knox",NA,NA,132970
+NA,NA,"Nebraska","Lancaster",NA,NA,297580
+NA,NA,"Nebraska","Lincoln",NA,NA,197320
+NA,NA,"Nebraska","Logan",NA,NA,182220
+NA,NA,"Nebraska","Loup",NA,NA,189820
+NA,NA,"Nebraska","McPherson",NA,NA,126620
+NA,NA,"Nebraska","Madison",NA,NA,217100
+NA,NA,"Nebraska","Merrick",NA,NA,183160
+NA,NA,"Nebraska","Morrill",NA,NA,120890
+NA,NA,"Nebraska","Nance",NA,NA,137450
+NA,NA,"Nebraska","Nemaha",NA,NA,137130
+NA,NA,"Nebraska","Nuckolls",NA,NA,100480
+NA,NA,"Nebraska","Otoe",NA,NA,209920
+NA,NA,"Nebraska","Pawnee",NA,NA,82680
+NA,NA,"Nebraska","Perkins",NA,NA,163680
+NA,NA,"Nebraska","Phelps",NA,NA,202940
+NA,NA,"Nebraska","Pierce",NA,NA,204090
+NA,NA,"Nebraska","Platte",NA,NA,233140
+NA,NA,"Nebraska","Polk",NA,NA,197730
+NA,NA,"Nebraska","Red Willow",NA,NA,166180
+NA,NA,"Nebraska","Richardson",NA,NA,104440
+NA,NA,"Nebraska","Rock",NA,NA,122350
+NA,NA,"Nebraska","Saline",NA,NA,205540
+NA,NA,"Nebraska","Sarpy",NA,NA,352190
+NA,NA,"Nebraska","Saunders",NA,NA,281360
+NA,NA,"Nebraska","Scotts Bluff",NA,NA,175450
+NA,NA,"Nebraska","Seward",NA,NA,249670
+NA,NA,"Nebraska","Sheridan",NA,NA,118080
+NA,NA,"Nebraska","Sherman",NA,NA,158270
+NA,NA,"Nebraska","Sioux",NA,NA,103400
+NA,NA,"Nebraska","Stanton",NA,NA,203460
+NA,NA,"Nebraska","Thayer",NA,NA,127870
+NA,NA,"Nebraska","Thomas",NA,NA,113700
+NA,NA,"Nebraska","Thurston",NA,NA,119330
+NA,NA,"Nebraska","Valley",NA,NA,160980
+NA,NA,"Nebraska","Washington",NA,NA,308180
+NA,NA,"Nebraska","Wayne",NA,NA,230740
+NA,NA,"Nebraska","Webster",NA,NA,122450
+NA,NA,"Nebraska","Wheeler",NA,NA,152540
+NA,NA,"Nebraska","York",NA,NA,197210
+NA,NA,"Nevada","Churchill",NA,NA,339310
+NA,NA,"Nevada","Douglas",NA,NA,632950
+NA,NA,"Nevada","Elko",NA,NA,309990
+NA,NA,"Nevada","Esmeralda",NA,NA,112010
+NA,NA,"Nevada","Eureka",NA,NA,84960
+NA,NA,"Nevada","Humboldt",NA,NA,286240
+NA,NA,"Nevada","Lander",NA,NA,219900
+NA,NA,"Nevada","Lincoln",NA,NA,225760
+NA,NA,"Nevada","Lyon",NA,NA,376540
+NA,NA,"Nevada","Mineral",NA,NA,160650
+NA,NA,"Nevada","Nye",NA,NA,299200
+NA,NA,"Nevada","Pershing",NA,NA,184620
+NA,NA,"Nevada","Storey",NA,NA,436470
+NA,NA,"Nevada","Washoe",NA,NA,585300
+NA,NA,"Nevada","White Pine",NA,NA,226270
+NA,NA,"New Hampshire","Belknap",NA,NA,452800
+NA,NA,"New Hampshire","Carroll",NA,NA,407060
+NA,NA,"New Hampshire","Cheshire",NA,NA,339750
+NA,NA,"New Hampshire","Coos",NA,NA,197720
+NA,NA,"New Hampshire","Grafton",NA,NA,420040
+NA,NA,"New Hampshire","Hillsborough",NA,NA,501480
+NA,NA,"New Hampshire","Merrimack",NA,NA,457510
+NA,NA,"New Hampshire","Rockingham",NA,NA,614940
+NA,NA,"New Hampshire","Strafford",NA,NA,420570
+NA,NA,"New Hampshire","Sullivan",NA,NA,281240
+NA,NA,"New Jersey","Atlantic",NA,NA,346470
+NA,NA,"New Jersey","Cumberland",NA,NA,263810
+NA,NA,"New Jersey","Gloucester",NA,NA,365530
+NA,NA,"New Jersey","Hunterdon",NA,NA,580220
+NA,NA,"New Jersey","Monmouth",NA,NA,714650
+NA,NA,"New Jersey","Ocean",NA,NA,480140
+NA,NA,"New Jersey","Passaic",NA,NA,513010
+NA,NA,"New Jersey","Salem",NA,NA,290050
+NA,NA,"New Jersey","Somerset",NA,NA,636840
+NA,NA,"New Jersey","Sussex",NA,NA,440810
+NA,NA,"New Jersey","Warren",NA,NA,400600
+NA,NA,"New Mexico","Bernalillo",NA,NA,334250
+NA,NA,"New Mexico","Catron",NA,NA,170420
+NA,NA,"New Mexico","Chaves",NA,NA,159600
+NA,NA,"New Mexico","Cibola",NA,NA,127970
+NA,NA,"New Mexico","Colfax",NA,NA,170620
+NA,NA,"New Mexico","Curry",NA,NA,174710
+NA,NA,"New Mexico","De Baca",NA,NA,191340
+NA,NA,"New Mexico","Doña Ana",NA,NA,258190
+NA,NA,"New Mexico","Eddy",NA,NA,216950
+NA,NA,"New Mexico","Grant",NA,NA,179200
+NA,NA,"New Mexico","Guadalupe",NA,NA,112250
+NA,NA,"New Mexico","Harding",NA,NA,71430
+NA,NA,"New Mexico","Hidalgo",NA,NA,113270
+NA,NA,"New Mexico","Lea",NA,NA,195320
+NA,NA,"New Mexico","Lincoln",NA,NA,237970
+NA,NA,"New Mexico","Los Alamos",NA,NA,505950
+NA,NA,"New Mexico","Luna",NA,NA,130620
+NA,NA,"New Mexico","McKinley",NA,NA,106740
+NA,NA,"New Mexico","Mora",NA,NA,125110
+NA,NA,"New Mexico","Otero",NA,NA,210630
+NA,NA,"New Mexico","Quay",NA,NA,88990
+NA,NA,"New Mexico","Rio Arriba",NA,NA,248690
+NA,NA,"New Mexico","Roosevelt",NA,NA,138580
+NA,NA,"New Mexico","Sandoval",NA,NA,365160
+NA,NA,"New Mexico","San Juan",NA,NA,219610
+NA,NA,"New Mexico","San Miguel",NA,NA,192360
+NA,NA,"New Mexico","Santa Fe",NA,NA,498030
+NA,NA,"New Mexico","Sierra",NA,NA,155720
+NA,NA,"New Mexico","Socorro",NA,NA,140320
+NA,NA,"New Mexico","Taos",NA,NA,390640
+NA,NA,"New Mexico","Torrance",NA,NA,164500
+NA,NA,"New Mexico","Union",NA,NA,125210
+NA,NA,"New Mexico","Valencia",NA,NA,253600
+NA,NA,"New York","Albany",NA,NA,341590
+NA,NA,"New York","Allegany",NA,NA,108340
+NA,NA,"New York","Bronx",NA,NA,601850
+NA,NA,"New York","Broome",NA,NA,178580
+NA,NA,"New York","Cattaraugus",NA,NA,141680
+NA,NA,"New York","Cayuga",NA,NA,198030
+NA,NA,"New York","Chautauqua",NA,NA,147330
+NA,NA,"New York","Chemung",NA,NA,149370
+NA,NA,"New York","Chenango",NA,NA,146900
+NA,NA,"New York","Clinton",NA,NA,203890
+NA,NA,"New York","Columbia",NA,NA,369750
+NA,NA,"New York","Cortland",NA,NA,172680
+NA,NA,"New York","Delaware",NA,NA,195050
+NA,NA,"New York","Dutchess",NA,NA,471510
+NA,NA,"New York","Essex",NA,NA,225730
+NA,NA,"New York","Franklin",NA,NA,154890
+NA,NA,"New York","Fulton",NA,NA,173740
+NA,NA,"New York","Genesee",NA,NA,181630
+NA,NA,"New York","Greene",NA,NA,289330
+NA,NA,"New York","Hamilton",NA,NA,277180
+NA,NA,"New York","Herkimer",NA,NA,158130
+NA,NA,"New York","Jefferson",NA,NA,218170
+NA,NA,"New York","Kings",NA,NA,967390
+NA,NA,"New York","Lewis",NA,NA,176940
+NA,NA,"New York","Livingston",NA,NA,184620
+NA,NA,"New York","Madison",NA,NA,203170
+NA,NA,"New York","Monroe",NA,NA,258750
+NA,NA,"New York","Montgomery",NA,NA,167780
+NA,NA,"New York","Nassau",NA,NA,746770
+NA,NA,"New York","Niagara",NA,NA,221450
+NA,NA,"New York","Oneida",NA,NA,218190
+NA,NA,"New York","Onondaga",NA,NA,255230
+NA,NA,"New York","Orange",NA,NA,453350
+NA,NA,"New York","Orleans",NA,NA,148880
+NA,NA,"New York","Oswego",NA,NA,169150
+NA,NA,"New York","Otsego",NA,NA,190790
+NA,NA,"New York","Putnam",NA,NA,563580
+NA,NA,"New York","Rensselaer",NA,NA,288070
+NA,NA,"New York","Richmond",NA,NA,723340
+NA,NA,"New York","Rockland",NA,NA,707650
+NA,NA,"New York","St. Lawrence",NA,NA,119950
+NA,NA,"New York","Saratoga",NA,NA,407560
+NA,NA,"New York","Schenectady",NA,NA,281630
+NA,NA,"New York","Schoharie",NA,NA,203200
+NA,NA,"New York","Schuyler",NA,NA,183010
+NA,NA,"New York","Seneca",NA,NA,165540
+NA,NA,"New York","Sullivan",NA,NA,299760
+NA,NA,"New York","Tioga",NA,NA,176600
+NA,NA,"New York","Tompkins",NA,NA,334420
+NA,NA,"New York","Ulster",NA,NA,419670
+NA,NA,"New York","Warren",NA,NA,346220
+NA,NA,"New York","Washington",NA,NA,218140
+NA,NA,"New York","Wayne",NA,NA,189490
+NA,NA,"New York","Wyoming",NA,NA,172890
+NA,NA,"New York","Yates",NA,NA,196750
+NA,NA,"North Carolina","Alexander",NA,NA,214410
+NA,NA,"North Carolina","Alleghany",NA,NA,226560
+NA,NA,"North Carolina","Anson",NA,NA,153380
+NA,NA,"North Carolina","Ashe",NA,NA,256410
+NA,NA,"North Carolina","Avery",NA,NA,280350
+NA,NA,"North Carolina","Beaufort",NA,NA,203250
+NA,NA,"North Carolina","Bertie",NA,NA,103890
+NA,NA,"North Carolina","Bladen",NA,NA,142500
+NA,NA,"North Carolina","Brunswick",NA,NA,401560
+NA,NA,"North Carolina","Buncombe",NA,NA,433580
+NA,NA,"North Carolina","Burke",NA,NA,229690
+NA,NA,"North Carolina","Cabarrus",NA,NA,399860
+NA,NA,"North Carolina","Caldwell",NA,NA,232630
+NA,NA,"North Carolina","Camden",NA,NA,355560
+NA,NA,"North Carolina","Carteret",NA,NA,399120
+NA,NA,"North Carolina","Caswell",NA,NA,173510
+NA,NA,"North Carolina","Catawba",NA,NA,302980
+NA,NA,"North Carolina","Chatham",NA,NA,545880
+NA,NA,"North Carolina","Cherokee",NA,NA,245020
+NA,NA,"North Carolina","Chowan",NA,NA,248710
+NA,NA,"North Carolina","Clay",NA,NA,293640
+NA,NA,"North Carolina","Cleveland",NA,NA,245130
+NA,NA,"North Carolina","Columbus",NA,NA,153990
+NA,NA,"North Carolina","Craven",NA,NA,304610
+NA,NA,"North Carolina","Cumberland",NA,NA,229340
+NA,NA,"North Carolina","Currituck",NA,NA,394710
+NA,NA,"North Carolina","Dare",NA,NA,485610
+NA,NA,"North Carolina","Davidson",NA,NA,266220
+NA,NA,"North Carolina","Davie",NA,NA,264150
+NA,NA,"North Carolina","Duplin",NA,NA,144920
+NA,NA,"North Carolina","Edgecombe",NA,NA,126090
+NA,NA,"North Carolina","Franklin",NA,NA,340120
+NA,NA,"North Carolina","Gaston",NA,NA,318740
+NA,NA,"North Carolina","Gates",NA,NA,180150
+NA,NA,"North Carolina","Graham",NA,NA,179940
+NA,NA,"North Carolina","Granville",NA,NA,261260
+NA,NA,"North Carolina","Greene",NA,NA,120990
+NA,NA,"North Carolina","Halifax",NA,NA,112020
+NA,NA,"North Carolina","Harnett",NA,NA,296600
+NA,NA,"North Carolina","Haywood",NA,NA,276700
+NA,NA,"North Carolina","Henderson",NA,NA,409800
+NA,NA,"North Carolina","Hertford",NA,NA,125730
+NA,NA,"North Carolina","Hoke",NA,NA,225240
+NA,NA,"North Carolina","Hyde",NA,NA,130790
+NA,NA,"North Carolina","Jackson",NA,NA,300290
+NA,NA,"North Carolina","Johnston",NA,NA,344780
+NA,NA,"North Carolina","Jones",NA,NA,137440
+NA,NA,"North Carolina","Lee",NA,NA,294170
+NA,NA,"North Carolina","Lenoir",NA,NA,127100
+NA,NA,"North Carolina","Lincoln",NA,NA,399760
+NA,NA,"North Carolina","McDowell",NA,NA,180470
+NA,NA,"North Carolina","Macon",NA,NA,265690
+NA,NA,"North Carolina","Madison",NA,NA,282050
+NA,NA,"North Carolina","Martin",NA,NA,115710
+NA,NA,"North Carolina","Mitchell",NA,NA,232150
+NA,NA,"North Carolina","Montgomery",NA,NA,170550
+NA,NA,"North Carolina","Moore",NA,NA,380770
+NA,NA,"North Carolina","Nash",NA,NA,221640
+NA,NA,"North Carolina","New Hanover",NA,NA,447650
+NA,NA,"North Carolina","Northampton",NA,NA,120770
+NA,NA,"North Carolina","Onslow",NA,NA,272370
+NA,NA,"North Carolina","Orange",NA,NA,535790
+NA,NA,"North Carolina","Pamlico",NA,NA,228670
+NA,NA,"North Carolina","Pasquotank",NA,NA,247450
+NA,NA,"North Carolina","Pender",NA,NA,355380
+NA,NA,"North Carolina","Perquimans",NA,NA,244390
+NA,NA,"North Carolina","Person",NA,NA,220220
+NA,NA,"North Carolina","Pitt",NA,NA,253310
+NA,NA,"North Carolina","Polk",NA,NA,332250
+NA,NA,"North Carolina","Randolph",NA,NA,249210
+NA,NA,"North Carolina","Richmond",NA,NA,134800
+NA,NA,"North Carolina","Robeson",NA,NA,109690
+NA,NA,"North Carolina","Rockingham",NA,NA,200800
+NA,NA,"North Carolina","Rowan",NA,NA,304280
+NA,NA,"North Carolina","Rutherford",NA,NA,289640
+NA,NA,"North Carolina","Sampson",NA,NA,158950
+NA,NA,"North Carolina","Scotland",NA,NA,121190
+NA,NA,"North Carolina","Stanly",NA,NA,302930
+NA,NA,"North Carolina","Stokes",NA,NA,204640
+NA,NA,"North Carolina","Surry",NA,NA,207470
+NA,NA,"North Carolina","Swain",NA,NA,218340
+NA,NA,"North Carolina","Transylvania",NA,NA,394060
+NA,NA,"North Carolina","Tyrrell",NA,NA,173510
+NA,NA,"North Carolina","Union",NA,NA,477280
+NA,NA,"North Carolina","Vance",NA,NA,170340
+NA,NA,"North Carolina","Warren",NA,NA,162640
+NA,NA,"North Carolina","Washington",NA,NA,132790
+NA,NA,"North Carolina","Watauga",NA,NA,378550
+NA,NA,"North Carolina","Wayne",NA,NA,229200
+NA,NA,"North Carolina","Wilkes",NA,NA,190700
+NA,NA,"North Carolina","Wilson",NA,NA,232790
+NA,NA,"North Carolina","Yadkin",NA,NA,188520
+NA,NA,"North Carolina","Yancey",NA,NA,256410
+NA,NA,"North Dakota","Adams",NA,NA,122510
+NA,NA,"North Dakota","Barnes",NA,NA,187990
+NA,NA,"North Dakota","Benson",NA,NA,97400
+NA,NA,"North Dakota","Billings",NA,NA,358220
+NA,NA,"North Dakota","Bottineau",NA,NA,209090
+NA,NA,"North Dakota","Bowman",NA,NA,178460
+NA,NA,"North Dakota","Burke",NA,NA,171100
+NA,NA,"North Dakota","Burleigh",NA,NA,345910
+NA,NA,"North Dakota","Cass",NA,NA,322190
+NA,NA,"North Dakota","Cavalier",NA,NA,136150
+NA,NA,"North Dakota","Dickey",NA,NA,175760
+NA,NA,"North Dakota","Divide",NA,NA,181380
+NA,NA,"North Dakota","Dunn",NA,NA,297620
+NA,NA,"North Dakota","Eddy",NA,NA,134200
+NA,NA,"North Dakota","Emmons",NA,NA,126840
+NA,NA,"North Dakota","Foster",NA,NA,181280
+NA,NA,"North Dakota","Golden Valley",NA,NA,134090
+NA,NA,"North Dakota","Grand Forks",NA,NA,295970
+NA,NA,"North Dakota","Grant",NA,NA,100860
+NA,NA,"North Dakota","Griggs",NA,NA,129110
+NA,NA,"North Dakota","Hettinger",NA,NA,126950
+NA,NA,"North Dakota","Kidder",NA,NA,169480
+NA,NA,"North Dakota","LaMoure",NA,NA,126840
+NA,NA,"North Dakota","Logan",NA,NA,110390
+NA,NA,"North Dakota","McHenry",NA,NA,163420
+NA,NA,"North Dakota","McIntosh",NA,NA,91120
+NA,NA,"North Dakota","McKenzie",NA,NA,378350
+NA,NA,"North Dakota","McLean",NA,NA,245780
+NA,NA,"North Dakota","Mercer",NA,NA,214830
+NA,NA,"North Dakota","Morton",NA,NA,271850
+NA,NA,"North Dakota","Mountrail",NA,NA,251840
+NA,NA,"North Dakota","Nelson",NA,NA,151190
+NA,NA,"North Dakota","Oliver",NA,NA,233440
+NA,NA,"North Dakota","Pembina",NA,NA,129000
+NA,NA,"North Dakota","Pierce",NA,NA,159410
+NA,NA,"North Dakota","Ramsey",NA,NA,215690
+NA,NA,"North Dakota","Ransom",NA,NA,208870
+NA,NA,"North Dakota","Renville",NA,NA,179650
+NA,NA,"North Dakota","Richland",NA,NA,198700
+NA,NA,"North Dakota","Rolette",NA,NA,112340
+NA,NA,"North Dakota","Sargent",NA,NA,176620
+NA,NA,"North Dakota","Sheridan",NA,NA,119370
+NA,NA,"North Dakota","Sioux",NA,NA,92420
+NA,NA,"North Dakota","Slope",NA,NA,183980
+NA,NA,"North Dakota","Stark",NA,NA,294050
+NA,NA,"North Dakota","Steele",NA,NA,141450
+NA,NA,"North Dakota","Stutsman",NA,NA,225540
+NA,NA,"North Dakota","Towner",NA,NA,145890
+NA,NA,"North Dakota","Traill",NA,NA,217210
+NA,NA,"North Dakota","Walsh",NA,NA,143610
+NA,NA,"North Dakota","Ward",NA,NA,304330
+NA,NA,"North Dakota","Wells",NA,NA,123920
+NA,NA,"North Dakota","Williams",NA,NA,308220
+NA,NA,"Ohio","Adams",NA,NA,172160
+NA,NA,"Ohio","Allen",NA,NA,195090
+NA,NA,"Ohio","Ashland",NA,NA,195860
+NA,NA,"Ohio","Ashtabula",NA,NA,179920
+NA,NA,"Ohio","Athens",NA,NA,193970
+NA,NA,"Ohio","Auglaize",NA,NA,199010
+NA,NA,"Ohio","Belmont",NA,NA,170140
+NA,NA,"Ohio","Brown",NA,NA,205090
+NA,NA,"Ohio","Butler",NA,NA,299800
+NA,NA,"Ohio","Carroll",NA,NA,195270
+NA,NA,"Ohio","Champaign",NA,NA,213890
+NA,NA,"Ohio","Clark",NA,NA,211470
+NA,NA,"Ohio","Clermont",NA,NA,308680
+NA,NA,"Ohio","Clinton",NA,NA,222180
+NA,NA,"Ohio","Columbiana",NA,NA,178660
+NA,NA,"Ohio","Coshocton",NA,NA,163040
+NA,NA,"Ohio","Crawford",NA,NA,143330
+NA,NA,"Ohio","Darke",NA,NA,181600
+NA,NA,"Ohio","Defiance",NA,NA,171120
+NA,NA,"Ohio","Delaware",NA,NA,492930
+NA,NA,"Ohio","Erie",NA,NA,248310
+NA,NA,"Ohio","Fairfield",NA,NA,332250
+NA,NA,"Ohio","Fayette",NA,NA,178980
+NA,NA,"Ohio","Fulton",NA,NA,199180
+NA,NA,"Ohio","Gallia",NA,NA,163150
+NA,NA,"Ohio","Geauga",NA,NA,398190
+NA,NA,"Ohio","Greene",NA,NA,302120
+NA,NA,"Ohio","Guernsey",NA,NA,165350
+NA,NA,"Ohio","Hardin",NA,NA,158530
+NA,NA,"Ohio","Harrison",NA,NA,127390
+NA,NA,"Ohio","Henry",NA,NA,176780
+NA,NA,"Ohio","Highland",NA,NA,177090
+NA,NA,"Ohio","Hocking",NA,NA,195440
+NA,NA,"Ohio","Holmes",NA,NA,280680
+NA,NA,"Ohio","Huron",NA,NA,174050
+NA,NA,"Ohio","Jackson",NA,NA,158010
+NA,NA,"Ohio","Jefferson",NA,NA,141380
+NA,NA,"Ohio","Knox",NA,NA,251010
+NA,NA,"Ohio","Lake",NA,NA,247810
+NA,NA,"Ohio","Lawrence",NA,NA,154330
+NA,NA,"Ohio","Licking",NA,NA,335580
+NA,NA,"Ohio","Logan",NA,NA,213060
+NA,NA,"Ohio","Lorain",NA,NA,258610
+NA,NA,"Ohio","Madison",NA,NA,259760
+NA,NA,"Ohio","Mahoning",NA,NA,182770
+NA,NA,"Ohio","Marion",NA,NA,182120
+NA,NA,"Ohio","Medina",NA,NA,340690
+NA,NA,"Ohio","Meigs",NA,NA,125090
+NA,NA,"Ohio","Mercer",NA,NA,220810
+NA,NA,"Ohio","Miami",NA,NA,285330
+NA,NA,"Ohio","Monroe",NA,NA,149620
+NA,NA,"Ohio","Montgomery",NA,NA,219000
+NA,NA,"Ohio","Morgan",NA,NA,158220
+NA,NA,"Ohio","Morrow",NA,NA,230880
+NA,NA,"Ohio","Muskingum",NA,NA,213370
+NA,NA,"Ohio","Noble",NA,NA,171530
+NA,NA,"Ohio","Ottawa",NA,NA,229320
+NA,NA,"Ohio","Paulding",NA,NA,147630
+NA,NA,"Ohio","Perry",NA,NA,200370
+NA,NA,"Ohio","Pickaway",NA,NA,266720
+NA,NA,"Ohio","Pike",NA,NA,171740
+NA,NA,"Ohio","Portage",NA,NA,280760
+NA,NA,"Ohio","Preble",NA,NA,193530
+NA,NA,"Ohio","Putnam",NA,NA,210850
+NA,NA,"Ohio","Richland",NA,NA,178350
+NA,NA,"Ohio","Ross",NA,NA,234440
+NA,NA,"Ohio","Sandusky",NA,NA,168490
+NA,NA,"Ohio","Scioto",NA,NA,162940
+NA,NA,"Ohio","Seneca",NA,NA,162200
+NA,NA,"Ohio","Shelby",NA,NA,218190
+NA,NA,"Ohio","Stark",NA,NA,218830
+NA,NA,"Ohio","Trumbull",NA,NA,171360
+NA,NA,"Ohio","Union",NA,NA,403610
+NA,NA,"Ohio","Van Wert",NA,NA,159370
+NA,NA,"Ohio","Vinton",NA,NA,157280
+NA,NA,"Ohio","Warren",NA,NA,404540
+NA,NA,"Ohio","Washington",NA,NA,181210
+NA,NA,"Ohio","Williams",NA,NA,157280
+NA,NA,"Ohio","Wyandot",NA,NA,171320
+NA,NA,"Oklahoma","Adair",NA,NA,123150
+NA,NA,"Oklahoma","Alfalfa",NA,NA,106110
+NA,NA,"Oklahoma","Atoka",NA,NA,164760
+NA,NA,"Oklahoma","Beaver",NA,NA,136010
+NA,NA,"Oklahoma","Beckham",NA,NA,150020
+NA,NA,"Oklahoma","Blaine",NA,NA,132660
+NA,NA,"Oklahoma","Bryan",NA,NA,182840
+NA,NA,"Oklahoma","Caddo",NA,NA,120960
+NA,NA,"Oklahoma","Canadian",NA,NA,281850
+NA,NA,"Oklahoma","Carter",NA,NA,176150
+NA,NA,"Oklahoma","Cherokee",NA,NA,176150
+NA,NA,"Oklahoma","Choctaw",NA,NA,132250
+NA,NA,"Oklahoma","Cimarron",NA,NA,103080
+NA,NA,"Oklahoma","Cleveland",NA,NA,260740
+NA,NA,"Oklahoma","Coal",NA,NA,120960
+NA,NA,"Oklahoma","Comanche",NA,NA,180610
+NA,NA,"Oklahoma","Cotton",NA,NA,119070
+NA,NA,"Oklahoma","Craig",NA,NA,157340
+NA,NA,"Oklahoma","Creek",NA,NA,202370
+NA,NA,"Oklahoma","Custer",NA,NA,189740
+NA,NA,"Oklahoma","Delaware",NA,NA,183260
+NA,NA,"Oklahoma","Dewey",NA,NA,139670
+NA,NA,"Oklahoma","Ellis",NA,NA,124510
+NA,NA,"Oklahoma","Garfield",NA,NA,167370
+NA,NA,"Oklahoma","Garvin",NA,NA,154510
+NA,NA,"Oklahoma","Grady",NA,NA,210930
+NA,NA,"Oklahoma","Grant",NA,NA,110500
+NA,NA,"Oklahoma","Greer",NA,NA,114060
+NA,NA,"Oklahoma","Harmon",NA,NA,83320
+NA,NA,"Oklahoma","Harper",NA,NA,103710
+NA,NA,"Oklahoma","Haskell",NA,NA,145100
+NA,NA,"Oklahoma","Hughes",NA,NA,106630
+NA,NA,"Oklahoma","Jackson",NA,NA,165590
+NA,NA,"Oklahoma","Jefferson",NA,NA,86250
+NA,NA,"Oklahoma","Johnston",NA,NA,121790
+NA,NA,"Oklahoma","Kay",NA,NA,130360
+NA,NA,"Oklahoma","Kingfisher",NA,NA,225600
+NA,NA,"Oklahoma","Kiowa",NA,NA,100460
+NA,NA,"Oklahoma","Latimer",NA,NA,112800
+NA,NA,"Oklahoma","Le Flore",NA,NA,146290
+NA,NA,"Oklahoma","Lincoln",NA,NA,170650
+NA,NA,"Oklahoma","Logan",NA,NA,252850
+NA,NA,"Oklahoma","Love",NA,NA,178770
+NA,NA,"Oklahoma","McClain",NA,NA,262280
+NA,NA,"Oklahoma","McCurtain",NA,NA,151060
+NA,NA,"Oklahoma","McIntosh",NA,NA,152840
+NA,NA,"Oklahoma","Major",NA,NA,156390
+NA,NA,"Oklahoma","Marshall",NA,NA,171970
+NA,NA,"Oklahoma","Mayes",NA,NA,196750
+NA,NA,"Oklahoma","Murray",NA,NA,167060
+NA,NA,"Oklahoma","Muskogee",NA,NA,167480
+NA,NA,"Oklahoma","Noble",NA,NA,153050
+NA,NA,"Oklahoma","Nowata",NA,NA,144060
+NA,NA,"Oklahoma","Okfuskee",NA,NA,121160
+NA,NA,"Oklahoma","Okmulgee",NA,NA,125650
+NA,NA,"Oklahoma","Osage",NA,NA,188790
+NA,NA,"Oklahoma","Ottawa",NA,NA,128900
+NA,NA,"Oklahoma","Pawnee",NA,NA,136330
+NA,NA,"Oklahoma","Payne",NA,NA,256750
+NA,NA,"Oklahoma","Pittsburg",NA,NA,164030
+NA,NA,"Oklahoma","Pontotoc",NA,NA,183370
+NA,NA,"Oklahoma","Pottawatomie",NA,NA,199470
+NA,NA,"Oklahoma","Pushmataha",NA,NA,138310
+NA,NA,"Oklahoma","Roger Mills",NA,NA,164970
+NA,NA,"Oklahoma","Rogers",NA,NA,280950
+NA,NA,"Oklahoma","Seminole",NA,NA,104020
+NA,NA,"Oklahoma","Sequoyah",NA,NA,150280
+NA,NA,"Oklahoma","Stephens",NA,NA,151900
+NA,NA,"Oklahoma","Texas",NA,NA,170930
+NA,NA,"Oklahoma","Tillman",NA,NA,83420
+NA,NA,"Oklahoma","Wagoner",NA,NA,280020
+NA,NA,"Oklahoma","Washington",NA,NA,181070
+NA,NA,"Oklahoma","Washita",NA,NA,123780
+NA,NA,"Oklahoma","Woods",NA,NA,145940
+NA,NA,"Oklahoma","Woodward",NA,NA,176680
+NA,NA,"Oregon","Baker",NA,NA,295140
+NA,NA,"Oregon","Benton",NA,NA,567570
+NA,NA,"Oregon","Clackamas",NA,NA,650850
+NA,NA,"Oregon","Clatsop",NA,NA,483950
+NA,NA,"Oregon","Columbia",NA,NA,429210
+NA,NA,"Oregon","Coos",NA,NA,349090
+NA,NA,"Oregon","Crook",NA,NA,482600
+NA,NA,"Oregon","Curry",NA,NA,394040
+NA,NA,"Oregon","Deschutes",NA,NA,683430
+NA,NA,"Oregon","Douglas",NA,NA,331410
+NA,NA,"Oregon","Gilliam",NA,NA,195620
+NA,NA,"Oregon","Grant",NA,NA,237370
+NA,NA,"Oregon","Harney",NA,NA,250190
+NA,NA,"Oregon","Hood River",NA,NA,682050
+NA,NA,"Oregon","Jefferson",NA,NA,386700
+NA,NA,"Oregon","Josephine",NA,NA,416880
+NA,NA,"Oregon","Klamath",NA,NA,336480
+NA,NA,"Oregon","Lake",NA,NA,226830
+NA,NA,"Oregon","Lane",NA,NA,465290
+NA,NA,"Oregon","Lincoln",NA,NA,424520
+NA,NA,"Oregon","Linn",NA,NA,431240
+NA,NA,"Oregon","Malheur",NA,NA,257220
+NA,NA,"Oregon","Marion",NA,NA,443890
+NA,NA,"Oregon","Morrow",NA,NA,248430
+NA,NA,"Oregon","Multnomah",NA,NA,575310
+NA,NA,"Oregon","Polk",NA,NA,478500
+NA,NA,"Oregon","Sherman",NA,NA,218880
+NA,NA,"Oregon","Tillamook",NA,NA,444570
+NA,NA,"Oregon","Umatilla",NA,NA,321600
+NA,NA,"Oregon","Union",NA,NA,304440
+NA,NA,"Oregon","Wallowa",NA,NA,407990
+NA,NA,"Oregon","Wasco",NA,NA,379670
+NA,NA,"Oregon","Wheeler",NA,NA,281500
+NA,NA,"Oregon","Yamhill",NA,NA,494270
+NA,NA,"Pennsylvania","Adams",NA,NA,300580
+NA,NA,"Pennsylvania","Armstrong",NA,NA,174490
+NA,NA,"Pennsylvania","Beaver",NA,NA,203610
+NA,NA,"Pennsylvania","Bedford",NA,NA,188190
+NA,NA,"Pennsylvania","Berks",NA,NA,304620
+NA,NA,"Pennsylvania","Blair",NA,NA,170350
+NA,NA,"Pennsylvania","Bradford",NA,NA,197130
+NA,NA,"Pennsylvania","Butler",NA,NA,318300
+NA,NA,"Pennsylvania","Cambria",NA,NA,131110
+NA,NA,"Pennsylvania","Cameron",NA,NA,93460
+NA,NA,"Pennsylvania","Carbon",NA,NA,253280
+NA,NA,"Pennsylvania","Centre",NA,NA,346300
+NA,NA,"Pennsylvania","Clarion",NA,NA,163690
+NA,NA,"Pennsylvania","Clearfield",NA,NA,145930
+NA,NA,"Pennsylvania","Clinton",NA,NA,184930
+NA,NA,"Pennsylvania","Columbia",NA,NA,216890
+NA,NA,"Pennsylvania","Crawford",NA,NA,169270
+NA,NA,"Pennsylvania","Cumberland",NA,NA,326060
+NA,NA,"Pennsylvania","Elk",NA,NA,140460
+NA,NA,"Pennsylvania","Fayette",NA,NA,172710
+NA,NA,"Pennsylvania","Forest",NA,NA,121220
+NA,NA,"Pennsylvania","Franklin",NA,NA,290700
+NA,NA,"Pennsylvania","Fulton",NA,NA,219200
+NA,NA,"Pennsylvania","Greene",NA,NA,161800
+NA,NA,"Pennsylvania","Huntingdon",NA,NA,192610
+NA,NA,"Pennsylvania","Indiana",NA,NA,167900
+NA,NA,"Pennsylvania","Jefferson",NA,NA,146870
+NA,NA,"Pennsylvania","Juniata",NA,NA,228140
+NA,NA,"Pennsylvania","Lackawanna",NA,NA,244540
+NA,NA,"Pennsylvania","Lancaster",NA,NA,351930
+NA,NA,"Pennsylvania","Lawrence",NA,NA,171790
+NA,NA,"Pennsylvania","Lebanon",NA,NA,302560
+NA,NA,"Pennsylvania","Luzerne",NA,NA,215060
+NA,NA,"Pennsylvania","Lycoming",NA,NA,225330
+NA,NA,"Pennsylvania","McKean",NA,NA,109860
+NA,NA,"Pennsylvania","Mercer",NA,NA,196950
+NA,NA,"Pennsylvania","Mifflin",NA,NA,164740
+NA,NA,"Pennsylvania","Monroe",NA,NA,313720
+NA,NA,"Pennsylvania","Montour",NA,NA,260840
+NA,NA,"Pennsylvania","Northampton",NA,NA,363310
+NA,NA,"Pennsylvania","Perry",NA,NA,249540
+NA,NA,"Pennsylvania","Pike",NA,NA,289000
+NA,NA,"Pennsylvania","Potter",NA,NA,160960
+NA,NA,"Pennsylvania","Schuylkill",NA,NA,178620
+NA,NA,"Pennsylvania","Snyder",NA,NA,226350
+NA,NA,"Pennsylvania","Somerset",NA,NA,180090
+NA,NA,"Pennsylvania","Sullivan",NA,NA,207220
+NA,NA,"Pennsylvania","Susquehanna",NA,NA,227510
+NA,NA,"Pennsylvania","Tioga",NA,NA,190400
+NA,NA,"Pennsylvania","Union",NA,NA,252430
+NA,NA,"Pennsylvania","Venango",NA,NA,125950
+NA,NA,"Pennsylvania","Warren",NA,NA,134050
+NA,NA,"Pennsylvania","Washington",NA,NA,249590
+NA,NA,"Pennsylvania","Wayne",NA,NA,254530
+NA,NA,"Pennsylvania","Westmoreland",NA,NA,236810
+NA,NA,"Pennsylvania","Wyoming",NA,NA,230010
+NA,NA,"Pennsylvania","York",NA,NA,287820
+NA,NA,"Rhode Island","Bristol",NA,NA,540700
+NA,NA,"Rhode Island","Kent",NA,NA,429680
+NA,NA,"Rhode Island","Newport",NA,NA,690760
+NA,NA,"Rhode Island","Washington",NA,NA,648140
+NA,NA,"South Carolina","Abbeville",NA,NA,188500
+NA,NA,"South Carolina","Aiken",NA,NA,271480
+NA,NA,"South Carolina","Allendale",NA,NA,80330
+NA,NA,"South Carolina","Anderson",NA,NA,274780
+NA,NA,"South Carolina","Bamberg",NA,NA,103110
+NA,NA,"South Carolina","Barnwell",NA,NA,111750
+NA,NA,"South Carolina","Beaufort",NA,NA,568350
+NA,NA,"South Carolina","Berkeley",NA,NA,361780
+NA,NA,"South Carolina","Calhoun",NA,NA,177680
+NA,NA,"South Carolina","Charleston",NA,NA,599780
+NA,NA,"South Carolina","Cherokee",NA,NA,149710
+NA,NA,"South Carolina","Chester",NA,NA,163390
+NA,NA,"South Carolina","Chesterfield",NA,NA,122510
+NA,NA,"South Carolina","Clarendon",NA,NA,166570
+NA,NA,"South Carolina","Colleton",NA,NA,171320
+NA,NA,"South Carolina","Darlington",NA,NA,165700
+NA,NA,"South Carolina","Dillon",NA,NA,90030
+NA,NA,"South Carolina","Dorchester",NA,NA,365130
+NA,NA,"South Carolina","Edgefield",NA,NA,213950
+NA,NA,"South Carolina","Fairfield",NA,NA,156100
+NA,NA,"South Carolina","Florence",NA,NA,231270
+NA,NA,"South Carolina","Georgetown",NA,NA,379320
+NA,NA,"South Carolina","Greenville",NA,NA,353270
+NA,NA,"South Carolina","Greenwood",NA,NA,214650
+NA,NA,"South Carolina","Hampton",NA,NA,118080
+NA,NA,"South Carolina","Horry",NA,NA,339400
+NA,NA,"South Carolina","Jasper",NA,NA,343160
+NA,NA,"South Carolina","Kershaw",NA,NA,274520
+NA,NA,"South Carolina","Lancaster",NA,NA,396770
+NA,NA,"South Carolina","Laurens",NA,NA,210530
+NA,NA,"South Carolina","Lee",NA,NA,110280
+NA,NA,"South Carolina","Lexington",NA,NA,281950
+NA,NA,"South Carolina","McCormick",NA,NA,177850
+NA,NA,"South Carolina","Marion",NA,NA,98260
+NA,NA,"South Carolina","Marlboro",NA,NA,86450
+NA,NA,"South Carolina","Newberry",NA,NA,182700
+NA,NA,"South Carolina","Oconee",NA,NA,315440
+NA,NA,"South Carolina","Orangeburg",NA,NA,126510
+NA,NA,"South Carolina","Pickens",NA,NA,270620
+NA,NA,"South Carolina","Richland",NA,NA,282460
+NA,NA,"South Carolina","Saluda",NA,NA,151250
+NA,NA,"South Carolina","Spartanburg",NA,NA,278560
+NA,NA,"South Carolina","Sumter",NA,NA,170880
+NA,NA,"South Carolina","Union",NA,NA,109220
+NA,NA,"South Carolina","Williamsburg",NA,NA,110170
+NA,NA,"South Carolina","York",NA,NA,427630
+NA,NA,"South Dakota","Aurora",NA,NA,158460
+NA,NA,"South Dakota","Beadle",NA,NA,182660
+NA,NA,"South Dakota","Bennett",NA,NA,163150
+NA,NA,"South Dakota","Bon Homme",NA,NA,139890
+NA,NA,"South Dakota","Brookings",NA,NA,276020
+NA,NA,"South Dakota","Brown",NA,NA,230640
+NA,NA,"South Dakota","Brule",NA,NA,226160
+NA,NA,"South Dakota","Buffalo",NA,NA,122890
+NA,NA,"South Dakota","Butte",NA,NA,255160
+NA,NA,"South Dakota","Campbell",NA,NA,120900
+NA,NA,"South Dakota","Charles Mix",NA,NA,177960
+NA,NA,"South Dakota","Clark",NA,NA,165240
+NA,NA,"South Dakota","Clay",NA,NA,242330
+NA,NA,"South Dakota","Codington",NA,NA,247960
+NA,NA,"South Dakota","Corson",NA,NA,72810
+NA,NA,"South Dakota","Custer",NA,NA,388160
+NA,NA,"South Dakota","Davison",NA,NA,214680
+NA,NA,"South Dakota","Day",NA,NA,181090
+NA,NA,"South Dakota","Deuel",NA,NA,214790
+NA,NA,"South Dakota","Dewey",NA,NA,72600
+NA,NA,"South Dakota","Douglas",NA,NA,174100
+NA,NA,"South Dakota","Edmunds",NA,NA,170350
+NA,NA,"South Dakota","Fall River",NA,NA,201540
+NA,NA,"South Dakota","Faulk",NA,NA,153870
+NA,NA,"South Dakota","Grant",NA,NA,178380
+NA,NA,"South Dakota","Gregory",NA,NA,145940
+NA,NA,"South Dakota","Haakon",NA,NA,171290
+NA,NA,"South Dakota","Hamlin",NA,NA,217600
+NA,NA,"South Dakota","Hand",NA,NA,166180
+NA,NA,"South Dakota","Hanson",NA,NA,199450
+NA,NA,"South Dakota","Harding",NA,NA,173270
+NA,NA,"South Dakota","Hughes",NA,NA,252450
+NA,NA,"South Dakota","Hutchinson",NA,NA,170040
+NA,NA,"South Dakota","Hyde",NA,NA,189440
+NA,NA,"South Dakota","Jackson",NA,NA,122360
+NA,NA,"South Dakota","Jerauld",NA,NA,157310
+NA,NA,"South Dakota","Jones",NA,NA,145630
+NA,NA,"South Dakota","Kingsbury",NA,NA,176820
+NA,NA,"South Dakota","Lake",NA,NA,258290
+NA,NA,"South Dakota","Lawrence",NA,NA,361460
+NA,NA,"South Dakota","Lincoln",NA,NA,377320
+NA,NA,"South Dakota","Lyman",NA,NA,172960
+NA,NA,"South Dakota","McCook",NA,NA,238120
+NA,NA,"South Dakota","McPherson",NA,NA,89300
+NA,NA,"South Dakota","Marshall",NA,NA,163260
+NA,NA,"South Dakota","Meade",NA,NA,317920
+NA,NA,"South Dakota","Mellette",NA,NA,87730
+NA,NA,"South Dakota","Miner",NA,NA,148760
+NA,NA,"South Dakota","Minnehaha",NA,NA,336650
+NA,NA,"South Dakota","Moody",NA,NA,236280
+NA,NA,"South Dakota","Pennington",NA,NA,369050
+NA,NA,"South Dakota","Perkins",NA,NA,119550
+NA,NA,"South Dakota","Potter",NA,NA,126540
+NA,NA,"South Dakota","Roberts",NA,NA,161170
+NA,NA,"South Dakota","Sanborn",NA,NA,141450
+NA,NA,"South Dakota","Spink",NA,NA,128620
+NA,NA,"South Dakota","Stanley",NA,NA,212280
+NA,NA,"South Dakota","Sully",NA,NA,214270
+NA,NA,"South Dakota","Todd",NA,NA,56230
+NA,NA,"South Dakota","Tripp",NA,NA,138640
+NA,NA,"South Dakota","Turner",NA,NA,230670
+NA,NA,"South Dakota","Union",NA,NA,322690
+NA,NA,"South Dakota","Walworth",NA,NA,142500
+NA,NA,"South Dakota","Yankton",NA,NA,235650
+NA,NA,"South Dakota","Ziebach",NA,NA,103900
+NA,NA,"Tennessee","Anderson",NA,NA,275260
+NA,NA,"Tennessee","Bedford",NA,NA,295770
+NA,NA,"Tennessee","Benton",NA,NA,161560
+NA,NA,"Tennessee","Bledsoe",NA,NA,199210
+NA,NA,"Tennessee","Blount",NA,NA,401780
+NA,NA,"Tennessee","Bradley",NA,NA,351430
+NA,NA,"Tennessee","Campbell",NA,NA,196160
+NA,NA,"Tennessee","Cannon",NA,NA,257690
+NA,NA,"Tennessee","Carroll",NA,NA,149780
+NA,NA,"Tennessee","Carter",NA,NA,174860
+NA,NA,"Tennessee","Cheatham",NA,NA,346350
+NA,NA,"Tennessee","Chester",NA,NA,167740
+NA,NA,"Tennessee","Claiborne",NA,NA,168180
+NA,NA,"Tennessee","Clay",NA,NA,143470
+NA,NA,"Tennessee","Cocke",NA,NA,166290
+NA,NA,"Tennessee","Coffee",NA,NA,259590
+NA,NA,"Tennessee","Crockett",NA,NA,167130
+NA,NA,"Tennessee","Cumberland",NA,NA,335840
+NA,NA,"Tennessee","Decatur",NA,NA,146830
+NA,NA,"Tennessee","DeKalb",NA,NA,247700
+NA,NA,"Tennessee","Dickson",NA,NA,313320
+NA,NA,"Tennessee","Dyer",NA,NA,175020
+NA,NA,"Tennessee","Fayette",NA,NA,348450
+NA,NA,"Tennessee","Fentress",NA,NA,176910
+NA,NA,"Tennessee","Franklin",NA,NA,249170
+NA,NA,"Tennessee","Gibson",NA,NA,165030
+NA,NA,"Tennessee","Giles",NA,NA,246440
+NA,NA,"Tennessee","Grainger",NA,NA,201010
+NA,NA,"Tennessee","Greene",NA,NA,269050
+NA,NA,"Tennessee","Grundy",NA,NA,161980
+NA,NA,"Tennessee","Hamblen",NA,NA,255940
+NA,NA,"Tennessee","Hancock",NA,NA,141470
+NA,NA,"Tennessee","Hardeman",NA,NA,128000
+NA,NA,"Tennessee","Hardin",NA,NA,168710
+NA,NA,"Tennessee","Hawkins",NA,NA,182690
+NA,NA,"Tennessee","Haywood",NA,NA,160290
+NA,NA,"Tennessee","Henderson",NA,NA,173340
+NA,NA,"Tennessee","Henry",NA,NA,168500
+NA,NA,"Tennessee","Hickman",NA,NA,229160
+NA,NA,"Tennessee","Houston",NA,NA,181650
+NA,NA,"Tennessee","Humphreys",NA,NA,203420
+NA,NA,"Tennessee","Jackson",NA,NA,163560
+NA,NA,"Tennessee","Jefferson",NA,NA,243610
+NA,NA,"Tennessee","Johnson",NA,NA,187850
+NA,NA,"Tennessee","Knox",NA,NA,388370
+NA,NA,"Tennessee","Lake",NA,NA,102970
+NA,NA,"Tennessee","Lauderdale",NA,NA,150620
+NA,NA,"Tennessee","Lawrence",NA,NA,204470
+NA,NA,"Tennessee","Lewis",NA,NA,182380
+NA,NA,"Tennessee","Lincoln",NA,NA,241600
+NA,NA,"Tennessee","Loudon",NA,NA,356230
+NA,NA,"Tennessee","McMinn",NA,NA,222770
+NA,NA,"Tennessee","McNairy",NA,NA,170180
+NA,NA,"Tennessee","Macon",NA,NA,230800
+NA,NA,"Tennessee","Madison",NA,NA,253650
+NA,NA,"Tennessee","Marion",NA,NA,202240
+NA,NA,"Tennessee","Marshall",NA,NA,294290
+NA,NA,"Tennessee","Maury",NA,NA,420300
+NA,NA,"Tennessee","Meigs",NA,NA,189320
+NA,NA,"Tennessee","Monroe",NA,NA,239290
+NA,NA,"Tennessee","Montgomery",NA,NA,330050
+NA,NA,"Tennessee","Moore",NA,NA,300080
+NA,NA,"Tennessee","Morgan",NA,NA,174910
+NA,NA,"Tennessee","Obion",NA,NA,140520
+NA,NA,"Tennessee","Overton",NA,NA,182170
+NA,NA,"Tennessee","Perry",NA,NA,133470
+NA,NA,"Tennessee","Pickett",NA,NA,187750
+NA,NA,"Tennessee","Polk",NA,NA,176810
+NA,NA,"Tennessee","Putnam",NA,NA,354560
+NA,NA,"Tennessee","Rhea",NA,NA,216670
+NA,NA,"Tennessee","Roane",NA,NA,244960
+NA,NA,"Tennessee","Robertson",NA,NA,361890
+NA,NA,"Tennessee","Rutherford",NA,NA,445950
+NA,NA,"Tennessee","Scott",NA,NA,131370
+NA,NA,"Tennessee","Sequatchie",NA,NA,240980
+NA,NA,"Tennessee","Sevier",NA,NA,379180
+NA,NA,"Tennessee","Smith",NA,NA,249310
+NA,NA,"Tennessee","Stewart",NA,NA,210470
+NA,NA,"Tennessee","Sumner",NA,NA,436130
+NA,NA,"Tennessee","Tipton",NA,NA,246000
+NA,NA,"Tennessee","Trousdale",NA,NA,345220
+NA,NA,"Tennessee","Unicoi",NA,NA,197110
+NA,NA,"Tennessee","Union",NA,NA,208820
+NA,NA,"Tennessee","Van Buren",NA,NA,167450
+NA,NA,"Tennessee","Warren",NA,NA,202890
+NA,NA,"Tennessee","Washington",NA,NA,294830
+NA,NA,"Tennessee","Wayne",NA,NA,137470
+NA,NA,"Tennessee","Weakley",NA,NA,159030
+NA,NA,"Tennessee","White",NA,NA,217930
+NA,NA,"Tennessee","Wilson",NA,NA,485110
+NA,NA,"Texas","Anderson",NA,NA,193230
+NA,NA,"Texas","Andrews",NA,NA,204070
+NA,NA,"Texas","Angelina",NA,NA,177270
+NA,NA,"Texas","Aransas",NA,NA,266970
+NA,NA,"Texas","Archer",NA,NA,193530
+NA,NA,"Texas","Armstrong",NA,NA,174100
+NA,NA,"Texas","Atascosa",NA,NA,178180
+NA,NA,"Texas","Austin",NA,NA,301590
+NA,NA,"Texas","Bailey",NA,NA,109810
+NA,NA,"Texas","Bandera",NA,NA,283780
+NA,NA,"Texas","Bastrop",NA,NA,350220
+NA,NA,"Texas","Baylor",NA,NA,107510
+NA,NA,"Texas","Bee",NA,NA,116060
+NA,NA,"Texas","Bell",NA,NA,275310
+NA,NA,"Texas","Blanco",NA,NA,504190
+NA,NA,"Texas","Borden",NA,NA,113560
+NA,NA,"Texas","Bosque",NA,NA,209500
+NA,NA,"Texas","Bowie",NA,NA,212420
+NA,NA,"Texas","Brazoria",NA,NA,326680
+NA,NA,"Texas","Brazos",NA,NA,323230
+NA,NA,"Texas","Brewster",NA,NA,236710
+NA,NA,"Texas","Briscoe",NA,NA,94160
+NA,NA,"Texas","Brooks",NA,NA,84470
+NA,NA,"Texas","Brown",NA,NA,165700
+NA,NA,"Texas","Burleson",NA,NA,195550
+NA,NA,"Texas","Burnet",NA,NA,358720
+NA,NA,"Texas","Caldwell",NA,NA,241410
+NA,NA,"Texas","Calhoun",NA,NA,160080
+NA,NA,"Texas","Callahan",NA,NA,152980
+NA,NA,"Texas","Cameron",NA,NA,168260
+NA,NA,"Texas","Camp",NA,NA,180510
+NA,NA,"Texas","Carson",NA,NA,145170
+NA,NA,"Texas","Cass",NA,NA,152660
+NA,NA,"Texas","Castro",NA,NA,99060
+NA,NA,"Texas","Chambers",NA,NA,334710
+NA,NA,"Texas","Cherokee",NA,NA,176540
+NA,NA,"Texas","Childress",NA,NA,130770
+NA,NA,"Texas","Clay",NA,NA,175520
+NA,NA,"Texas","Cochran",NA,NA,55480
+NA,NA,"Texas","Coke",NA,NA,122940
+NA,NA,"Texas","Coleman",NA,NA,96460
+NA,NA,"Texas","Collingsworth",NA,NA,108450
+NA,NA,"Texas","Colorado",NA,NA,218780
+NA,NA,"Texas","Comal",NA,NA,453600
+NA,NA,"Texas","Comanche",NA,NA,162260
+NA,NA,"Texas","Concho",NA,NA,112000
+NA,NA,"Texas","Cooke",NA,NA,250690
+NA,NA,"Texas","Coryell",NA,NA,226060
+NA,NA,"Texas","Cottle",NA,NA,61840
+NA,NA,"Texas","Crane",NA,NA,134940
+NA,NA,"Texas","Crosby",NA,NA,83100
+NA,NA,"Texas","Culberson",NA,NA,82690
+NA,NA,"Texas","Dallam",NA,NA,157880
+NA,NA,"Texas","Dawson",NA,NA,107820
+NA,NA,"Texas","Deaf Smith",NA,NA,126490
+NA,NA,"Texas","Delta",NA,NA,163740
+NA,NA,"Texas","Denton",NA,NA,471880
+NA,NA,"Texas","DeWitt",NA,NA,178210
+NA,NA,"Texas","Dickens",NA,NA,68090
+NA,NA,"Texas","Dimmit",NA,NA,89160
+NA,NA,"Texas","Donley",NA,NA,100520
+NA,NA,"Texas","Duval",NA,NA,93230
+NA,NA,"Texas","Eastland",NA,NA,140570
+NA,NA,"Texas","Ector",NA,NA,221420
+NA,NA,"Texas","Ellis",NA,NA,377410
+NA,NA,"Texas","El Paso",NA,NA,213670
+NA,NA,"Texas","Erath",NA,NA,280610
+NA,NA,"Texas","Falls",NA,NA,115650
+NA,NA,"Texas","Fannin",NA,NA,243700
+NA,NA,"Texas","Fayette",NA,NA,306480
+NA,NA,"Texas","Fisher",NA,NA,81960
+NA,NA,"Texas","Floyd",NA,NA,93430
+NA,NA,"Texas","Foard",NA,NA,73730
+NA,NA,"Texas","Fort Bend",NA,NA,414550
+NA,NA,"Texas","Franklin",NA,NA,235980
+NA,NA,"Texas","Freestone",NA,NA,175190
+NA,NA,"Texas","Frio",NA,NA,112310
+NA,NA,"Texas","Gaines",NA,NA,209290
+NA,NA,"Texas","Galveston",NA,NA,350550
+NA,NA,"Texas","Garza",NA,NA,81130
+NA,NA,"Texas","Gillespie",NA,NA,480410
+NA,NA,"Texas","Glasscock",NA,NA,255690
+NA,NA,"Texas","Goliad",NA,NA,180000
+NA,NA,"Texas","Gonzales",NA,NA,165910
+NA,NA,"Texas","Gray",NA,NA,107300
+NA,NA,"Texas","Grayson",NA,NA,274910
+NA,NA,"Texas","Gregg",NA,NA,237020
+NA,NA,"Texas","Grimes",NA,NA,247560
+NA,NA,"Texas","Guadalupe",NA,NA,325980
+NA,NA,"Texas","Hale",NA,NA,121480
+NA,NA,"Texas","Hall",NA,NA,89780
+NA,NA,"Texas","Hamilton",NA,NA,154020
+NA,NA,"Texas","Hansford",NA,NA,130140
+NA,NA,"Texas","Hardeman",NA,NA,85400
+NA,NA,"Texas","Hardin",NA,NA,208920
+NA,NA,"Texas","Harrison",NA,NA,192810
+NA,NA,"Texas","Hartley",NA,NA,273730
+NA,NA,"Texas","Haskell",NA,NA,102920
+NA,NA,"Texas","Hays",NA,NA,436040
+NA,NA,"Texas","Hemphill",NA,NA,214500
+NA,NA,"Texas","Henderson",NA,NA,252880
+NA,NA,"Texas","Hidalgo",NA,NA,168390
+NA,NA,"Texas","Hill",NA,NA,186870
+NA,NA,"Texas","Hockley",NA,NA,132430
+NA,NA,"Texas","Hood",NA,NA,391460
+NA,NA,"Texas","Hopkins",NA,NA,230560
+NA,NA,"Texas","Houston",NA,NA,171960
+NA,NA,"Texas","Howard",NA,NA,162260
+NA,NA,"Texas","Hudspeth",NA,NA,66740
+NA,NA,"Texas","Hunt",NA,NA,294890
+NA,NA,"Texas","Hutchinson",NA,NA,124200
+NA,NA,"Texas","Irion",NA,NA,218560
+NA,NA,"Texas","Jack",NA,NA,261950
+NA,NA,"Texas","Jackson",NA,NA,212620
+NA,NA,"Texas","Jasper",NA,NA,142240
+NA,NA,"Texas","Jeff Davis",NA,NA,235880
+NA,NA,"Texas","Jefferson",NA,NA,181600
+NA,NA,"Texas","Jim Hogg",NA,NA,134940
+NA,NA,"Texas","Jim Wells",NA,NA,128890
+NA,NA,"Texas","Johnson",NA,NA,335250
+NA,NA,"Texas","Jones",NA,NA,101460
+NA,NA,"Texas","Karnes",NA,NA,155380
+NA,NA,"Texas","Kaufman",NA,NA,340630
+NA,NA,"Texas","Kendall",NA,NA,522610
+NA,NA,"Texas","Kent",NA,NA,127430
+NA,NA,"Texas","Kerr",NA,NA,334940
+NA,NA,"Texas","Kimble",NA,NA,209910
+NA,NA,"Texas","King",NA,NA,54330
+NA,NA,"Texas","Kinney",NA,NA,85510
+NA,NA,"Texas","Kleberg",NA,NA,168200
+NA,NA,"Texas","Knox",NA,NA,80610
+NA,NA,"Texas","Lamar",NA,NA,209290
+NA,NA,"Texas","Lamb",NA,NA,85930
+NA,NA,"Texas","Lampasas",NA,NA,253720
+NA,NA,"Texas","La Salle",NA,NA,101980
+NA,NA,"Texas","Lavaca",NA,NA,238070
+NA,NA,"Texas","Lee",NA,NA,279260
+NA,NA,"Texas","Leon",NA,NA,194380
+NA,NA,"Texas","Liberty",NA,NA,207730
+NA,NA,"Texas","Limestone",NA,NA,171230
+NA,NA,"Texas","Lipscomb",NA,NA,129620
+NA,NA,"Texas","Live Oak",NA,NA,166010
+NA,NA,"Texas","Llano",NA,NA,371750
+NA,NA,"Texas","Lubbock",NA,NA,232750
+NA,NA,"Texas","Lynn",NA,NA,153600
+NA,NA,"Texas","McCulloch",NA,NA,156940
+NA,NA,"Texas","McLennan",NA,NA,294770
+NA,NA,"Texas","McMullen",NA,NA,101250
+NA,NA,"Texas","Madison",NA,NA,183740
+NA,NA,"Texas","Marion",NA,NA,105840
+NA,NA,"Texas","Martin",NA,NA,182280
+NA,NA,"Texas","Mason",NA,NA,306160
+NA,NA,"Texas","Matagorda",NA,NA,180300
+NA,NA,"Texas","Maverick",NA,NA,165490
+NA,NA,"Texas","Medina",NA,NA,244230
+NA,NA,"Texas","Menard",NA,NA,113140
+NA,NA,"Texas","Midland",NA,NA,329160
+NA,NA,"Texas","Milam",NA,NA,197920
+NA,NA,"Texas","Mills",NA,NA,233270
+NA,NA,"Texas","Mitchell",NA,NA,89470
+NA,NA,"Texas","Montague",NA,NA,215230
+NA,NA,"Texas","Moore",NA,NA,159130
+NA,NA,"Texas","Morris",NA,NA,125550
+NA,NA,"Texas","Motley",NA,NA,91770
+NA,NA,"Texas","Nacogdoches",NA,NA,195940
+NA,NA,"Texas","Navarro",NA,NA,179990
+NA,NA,"Texas","Newton",NA,NA,107510
+NA,NA,"Texas","Nolan",NA,NA,100420
+NA,NA,"Texas","Nueces",NA,NA,232170
+NA,NA,"Texas","Ochiltree",NA,NA,140150
+NA,NA,"Texas","Oldham",NA,NA,169770
+NA,NA,"Texas","Orange",NA,NA,174290
+NA,NA,"Texas","Palo Pinto",NA,NA,206470
+NA,NA,"Texas","Panola",NA,NA,164860
+NA,NA,"Texas","Parker",NA,NA,423350
+NA,NA,"Texas","Parmer",NA,NA,152980
+NA,NA,"Texas","Pecos",NA,NA,172790
+NA,NA,"Texas","Polk",NA,NA,192710
+NA,NA,"Texas","Potter",NA,NA,156640
+NA,NA,"Texas","Presidio",NA,NA,126490
+NA,NA,"Texas","Rains",NA,NA,251420
+NA,NA,"Texas","Randall",NA,NA,258870
+NA,NA,"Texas","Reagan",NA,NA,178840
+NA,NA,"Texas","Real",NA,NA,117310
+NA,NA,"Texas","Red River",NA,NA,126700
+NA,NA,"Texas","Reeves",NA,NA,123050
+NA,NA,"Texas","Refugio",NA,NA,103240
+NA,NA,"Texas","Roberts",NA,NA,168410
+NA,NA,"Texas","Robertson",NA,NA,190330
+NA,NA,"Texas","Rockwall",NA,NA,424050
+NA,NA,"Texas","Runnels",NA,NA,113980
+NA,NA,"Texas","Rusk",NA,NA,176220
+NA,NA,"Texas","Sabine",NA,NA,159650
+NA,NA,"Texas","San Augustine",NA,NA,104170
+NA,NA,"Texas","San Jacinto",NA,NA,212610
+NA,NA,"Texas","San Patricio",NA,NA,217080
+NA,NA,"Texas","San Saba",NA,NA,175920
+NA,NA,"Texas","Schleicher",NA,NA,127950
+NA,NA,"Texas","Scurry",NA,NA,118670
+NA,NA,"Texas","Shackelford",NA,NA,182280
+NA,NA,"Texas","Shelby",NA,NA,105840
+NA,NA,"Texas","Sherman",NA,NA,153190
+NA,NA,"Texas","Smith",NA,NA,296730
+NA,NA,"Texas","Somervell",NA,NA,301890
+NA,NA,"Texas","Starr",NA,NA,91560
+NA,NA,"Texas","Stephens",NA,NA,114920
+NA,NA,"Texas","Sterling",NA,NA,153290
+NA,NA,"Texas","Stonewall",NA,NA,50680
+NA,NA,"Texas","Sutton",NA,NA,162360
+NA,NA,"Texas","Swisher",NA,NA,89990
+NA,NA,"Texas","Taylor",NA,NA,208600
+NA,NA,"Texas","Terrell",NA,NA,143380
+NA,NA,"Texas","Terry",NA,NA,109910
+NA,NA,"Texas","Throckmorton",NA,NA,93330
+NA,NA,"Texas","Titus",NA,NA,181450
+NA,NA,"Texas","Tom Green",NA,NA,245940
+NA,NA,"Texas","Travis",NA,NA,547760
+NA,NA,"Texas","Trinity",NA,NA,124610
+NA,NA,"Texas","Tyler",NA,NA,164030
+NA,NA,"Texas","Upshur",NA,NA,172620
+NA,NA,"Texas","Upton",NA,NA,113660
+NA,NA,"Texas","Uvalde",NA,NA,157250
+NA,NA,"Texas","Val Verde",NA,NA,171640
+NA,NA,"Texas","Van Zandt",NA,NA,257360
+NA,NA,"Texas","Victoria",NA,NA,213380
+NA,NA,"Texas","Walker",NA,NA,273940
+NA,NA,"Texas","Waller",NA,NA,377170
+NA,NA,"Texas","Ward",NA,NA,157150
+NA,NA,"Texas","Washington",NA,NA,300430
+NA,NA,"Texas","Webb",NA,NA,216720
+NA,NA,"Texas","Wharton",NA,NA,198030
+NA,NA,"Texas","Wheeler",NA,NA,110640
+NA,NA,"Texas","Wichita",NA,NA,178900
+NA,NA,"Texas","Wilbarger",NA,NA,93230
+NA,NA,"Texas","Willacy",NA,NA,76750
+NA,NA,"Texas","Wilson",NA,NA,327510
+NA,NA,"Texas","Winkler",NA,NA,154540
+NA,NA,"Texas","Wise",NA,NA,350700
+NA,NA,"Texas","Wood",NA,NA,225760
+NA,NA,"Texas","Yoakum",NA,NA,190410
+NA,NA,"Texas","Young",NA,NA,183320
+NA,NA,"Texas","Zapata",NA,NA,101250
+NA,NA,"Texas","Zavala",NA,NA,103030
+NA,NA,"Utah","Beaver",NA,NA,293150
+NA,NA,"Utah","Box Elder",NA,NA,417040
+NA,NA,"Utah","Cache",NA,NA,496890
+NA,NA,"Utah","Carbon",NA,NA,236110
+NA,NA,"Utah","Daggett",NA,NA,291700
+NA,NA,"Utah","Davis",NA,NA,576840
+NA,NA,"Utah","Duchesne",NA,NA,293150
+NA,NA,"Utah","Emery",NA,NA,225980
+NA,NA,"Utah","Garfield",NA,NA,328690
+NA,NA,"Utah","Grand",NA,NA,556640
+NA,NA,"Utah","Iron",NA,NA,446490
+NA,NA,"Utah","Juab",NA,NA,446520
+NA,NA,"Utah","Kane",NA,NA,424580
+NA,NA,"Utah","Millard",NA,NA,294180
+NA,NA,"Utah","Morgan",NA,NA,671470
+NA,NA,"Utah","Piute",NA,NA,273620
+NA,NA,"Utah","Rich",NA,NA,345740
+NA,NA,"Utah","San Juan",NA,NA,231670
+NA,NA,"Utah","Sanpete",NA,NA,358760
+NA,NA,"Utah","Sevier",NA,NA,321560
+NA,NA,"Utah","Summit",NA,NA,1096840
+NA,NA,"Utah","Tooele",NA,NA,489710
+NA,NA,"Utah","Uintah",NA,NA,308540
+NA,NA,"Utah","Utah",NA,NA,616450
+NA,NA,"Utah","Wasatch",NA,NA,813520
+NA,NA,"Utah","Washington",NA,NA,568140
+NA,NA,"Utah","Wayne",NA,NA,425510
+NA,NA,"Utah","Weber",NA,NA,460060
+NA,NA,"Vermont","Addison",NA,NA,384620
+NA,NA,"Vermont","Bennington",NA,NA,298050
+NA,NA,"Vermont","Caledonia",NA,NA,242680
+NA,NA,"Vermont","Chittenden",NA,NA,481360
+NA,NA,"Vermont","Essex",NA,NA,183690
+NA,NA,"Vermont","Franklin",NA,NA,313710
+NA,NA,"Vermont","Grand Isle",NA,NA,403110
+NA,NA,"Vermont","Lamoille",NA,NA,324460
+NA,NA,"Vermont","Orange",NA,NA,288890
+NA,NA,"Vermont","Orleans",NA,NA,237890
+NA,NA,"Vermont","Rutland",NA,NA,244280
+NA,NA,"Vermont","Washington",NA,NA,335430
+NA,NA,"Vermont","Windham",NA,NA,297730
+NA,NA,"Vermont","Windsor",NA,NA,315620
+NA,NA,"Virginia","Accomack",NA,NA,214160
+NA,NA,"Virginia","Alleghany",NA,NA,131870
+NA,NA,"Virginia","Amelia",NA,NA,294640
+NA,NA,"Virginia","Amherst",NA,NA,217270
+NA,NA,"Virginia","Appomattox",NA,NA,212360
+NA,NA,"Virginia","Augusta",NA,NA,335650
+NA,NA,"Virginia","Bath",NA,NA,216670
+NA,NA,"Virginia","Bedford",NA,NA,302080
+NA,NA,"Virginia","Bland",NA,NA,159440
+NA,NA,"Virginia","Botetourt",NA,NA,306790
+NA,NA,"Virginia","Brunswick",NA,NA,149590
+NA,NA,"Virginia","Buchanan",NA,NA,99480
+NA,NA,"Virginia","Buckingham",NA,NA,181770
+NA,NA,"Virginia","Campbell",NA,NA,216460
+NA,NA,"Virginia","Caroline",NA,NA,321040
+NA,NA,"Virginia","Carroll",NA,NA,164050
+NA,NA,"Virginia","Charles City",NA,NA,251860
+NA,NA,"Virginia","Charlotte",NA,NA,151050
+NA,NA,"Virginia","Chesterfield",NA,NA,417130
+NA,NA,"Virginia","Clarke",NA,NA,566220
+NA,NA,"Virginia","Craig",NA,NA,200500
+NA,NA,"Virginia","Culpeper",NA,NA,428940
+NA,NA,"Virginia","Cumberland",NA,NA,249670
+NA,NA,"Virginia","Dickenson",NA,NA,107660
+NA,NA,"Virginia","Dinwiddie",NA,NA,268970
+NA,NA,"Virginia","Essex",NA,NA,249590
+NA,NA,"Virginia","Fauquier",NA,NA,592470
+NA,NA,"Virginia","Floyd",NA,NA,236280
+NA,NA,"Virginia","Fluvanna",NA,NA,327400
+NA,NA,"Virginia","Franklin",NA,NA,255020
+NA,NA,"Virginia","Frederick",NA,NA,416870
+NA,NA,"Virginia","Giles",NA,NA,160950
+NA,NA,"Virginia","Gloucester",NA,NA,344900
+NA,NA,"Virginia","Goochland",NA,NA,522300
+NA,NA,"Virginia","Grayson",NA,NA,157340
+NA,NA,"Virginia","Greene",NA,NA,357840
+NA,NA,"Virginia","Greensville",NA,NA,167090
+NA,NA,"Virginia","Halifax",NA,NA,163210
+NA,NA,"Virginia","Henry",NA,NA,141300
+NA,NA,"Virginia","Highland",NA,NA,209650
+NA,NA,"Virginia","Isle of Wight",NA,NA,371470
+NA,NA,"Virginia","James City",NA,NA,519640
+NA,NA,"Virginia","King and Queen",NA,NA,241640
+NA,NA,"Virginia","King George",NA,NA,448970
+NA,NA,"Virginia","King William",NA,NA,329380
+NA,NA,"Virginia","Lancaster",NA,NA,342780
+NA,NA,"Virginia","Lee",NA,NA,103670
+NA,NA,"Virginia","Loudoun",NA,NA,813560
+NA,NA,"Virginia","Louisa",NA,NA,328970
+NA,NA,"Virginia","Lunenburg",NA,NA,157340
+NA,NA,"Virginia","Madison",NA,NA,388170
+NA,NA,"Virginia","Mathews",NA,NA,376060
+NA,NA,"Virginia","Mecklenburg",NA,NA,201890
+NA,NA,"Virginia","Middlesex",NA,NA,369190
+NA,NA,"Virginia","Montgomery",NA,NA,356310
+NA,NA,"Virginia","Nelson",NA,NA,335330
+NA,NA,"Virginia","New Kent",NA,NA,410660
+NA,NA,"Virginia","Northampton",NA,NA,331460
+NA,NA,"Virginia","Northumberland",NA,NA,363530
+NA,NA,"Virginia","Nottoway",NA,NA,175580
+NA,NA,"Virginia","Orange",NA,NA,381770
+NA,NA,"Virginia","Page",NA,NA,244450
+NA,NA,"Virginia","Patrick",NA,NA,160800
+NA,NA,"Virginia","Powhatan",NA,NA,434030
+NA,NA,"Virginia","Prince Edward",NA,NA,227050
+NA,NA,"Virginia","Prince George",NA,NA,306120
+NA,NA,"Virginia","Prince William",NA,NA,587940
+NA,NA,"Virginia","Pulaski",NA,NA,204200
+NA,NA,"Virginia","Rappahannock",NA,NA,530830
+NA,NA,"Virginia","Richmond",NA,NA,242670
+NA,NA,"Virginia","Roanoke",NA,NA,335860
+NA,NA,"Virginia","Rockbridge",NA,NA,260800
+NA,NA,"Virginia","Rockingham",NA,NA,341550
+NA,NA,"Virginia","Russell",NA,NA,126420
+NA,NA,"Virginia","Scott",NA,NA,148190
+NA,NA,"Virginia","Shenandoah",NA,NA,309130
+NA,NA,"Virginia","Smyth",NA,NA,146340
+NA,NA,"Virginia","Southampton",NA,NA,226630
+NA,NA,"Virginia","Spotsylvania",NA,NA,454640
+NA,NA,"Virginia","Stafford",NA,NA,557160
+NA,NA,"Virginia","Surry",NA,NA,248830
+NA,NA,"Virginia","Sussex",NA,NA,191770
+NA,NA,"Virginia","Tazewell",NA,NA,124010
+NA,NA,"Virginia","Warren",NA,NA,358610
+NA,NA,"Virginia","Washington",NA,NA,221760
+NA,NA,"Virginia","Westmoreland",NA,NA,282610
+NA,NA,"Virginia","Wise",NA,NA,124320
+NA,NA,"Virginia","Wythe",NA,NA,179460
+NA,NA,"Virginia","York",NA,NA,497340
+NA,NA,"Washington","Adams",NA,NA,281780
+NA,NA,"Washington","Asotin",NA,NA,337050
+NA,NA,"Washington","Benton",NA,NA,467800
+NA,NA,"Washington","Chelan",NA,NA,569660
+NA,NA,"Washington","Clallam",NA,NA,459220
+NA,NA,"Washington","Clark",NA,NA,575510
+NA,NA,"Washington","Columbia",NA,NA,279620
+NA,NA,"Washington","Cowlitz",NA,NA,439240
+NA,NA,"Washington","Douglas",NA,NA,451320
+NA,NA,"Washington","Ferry",NA,NA,292190
+NA,NA,"Washington","Franklin",NA,NA,448990
+NA,NA,"Washington","Garfield",NA,NA,246620
+NA,NA,"Washington","Grant",NA,NA,326730
+NA,NA,"Washington","Grays Harbor",NA,NA,351070
+NA,NA,"Washington","Island",NA,NA,649240
+NA,NA,"Washington","Jefferson",NA,NA,551600
+NA,NA,"Washington","Kitsap",NA,NA,596200
+NA,NA,"Washington","Kittitas",NA,NA,512840
+NA,NA,"Washington","Klickitat",NA,NA,438500
+NA,NA,"Washington","Lewis",NA,NA,450870
+NA,NA,"Washington","Lincoln",NA,NA,301890
+NA,NA,"Washington","Mason",NA,NA,443960
+NA,NA,"Washington","Okanogan",NA,NA,309100
+NA,NA,"Washington","Pacific",NA,NA,345190
+NA,NA,"Washington","Pend Oreille",NA,NA,379320
+NA,NA,"Washington","Pierce",NA,NA,586680
+NA,NA,"Washington","San Juan",NA,NA,824000
+NA,NA,"Washington","Skagit",NA,NA,632050
+NA,NA,"Washington","Skamania",NA,NA,539060
+NA,NA,"Washington","Spokane",NA,NA,448170
+NA,NA,"Washington","Stevens",NA,NA,361480
+NA,NA,"Washington","Thurston",NA,NA,548980
+NA,NA,"Washington","Wahkiakum",NA,NA,409110
+NA,NA,"Washington","Walla Walla",NA,NA,421590
+NA,NA,"Washington","Whatcom",NA,NA,660250
+NA,NA,"Washington","Whitman",NA,NA,370760
+NA,NA,"Washington","Yakima",NA,NA,365650
+NA,NA,"West Virginia","Barbour",NA,NA,141140
+NA,NA,"West Virginia","Berkeley",NA,NA,292970
+NA,NA,"West Virginia","Boone",NA,NA,93450
+NA,NA,"West Virginia","Braxton",NA,NA,126160
+NA,NA,"West Virginia","Brooke",NA,NA,156530
+NA,NA,"West Virginia","Cabell",NA,NA,186480
+NA,NA,"West Virginia","Calhoun",NA,NA,107540
+NA,NA,"West Virginia","Clay",NA,NA,109510
+NA,NA,"West Virginia","Doddridge",NA,NA,172070
+NA,NA,"West Virginia","Fayette",NA,NA,113210
+NA,NA,"West Virginia","Gilmer",NA,NA,89670
+NA,NA,"West Virginia","Grant",NA,NA,187370
+NA,NA,"West Virginia","Greenbrier",NA,NA,159440
+NA,NA,"West Virginia","Hampshire",NA,NA,225180
+NA,NA,"West Virginia","Hancock",NA,NA,144690
+NA,NA,"West Virginia","Hardy",NA,NA,177950
+NA,NA,"West Virginia","Harrison",NA,NA,190900
+NA,NA,"West Virginia","Jackson",NA,NA,168210
+NA,NA,"West Virginia","Jefferson",NA,NA,361080
+NA,NA,"West Virginia","Kanawha",NA,NA,152370
+NA,NA,"West Virginia","Lewis",NA,NA,162440
+NA,NA,"West Virginia","Lincoln",NA,NA,105700
+NA,NA,"West Virginia","Logan",NA,NA,110640
+NA,NA,"West Virginia","McDowell",NA,NA,53500
+NA,NA,"West Virginia","Marion",NA,NA,178380
+NA,NA,"West Virginia","Marshall",NA,NA,159600
+NA,NA,"West Virginia","Mason",NA,NA,128730
+NA,NA,"West Virginia","Mercer",NA,NA,130230
+NA,NA,"West Virginia","Mingo",NA,NA,96840
+NA,NA,"West Virginia","Monongalia",NA,NA,297690
+NA,NA,"West Virginia","Monroe",NA,NA,167250
+NA,NA,"West Virginia","Morgan",NA,NA,242310
+NA,NA,"West Virginia","Nicholas",NA,NA,130120
+NA,NA,"West Virginia","Ohio",NA,NA,176850
+NA,NA,"West Virginia","Pendleton",NA,NA,196680
+NA,NA,"West Virginia","Pleasants",NA,NA,147430
+NA,NA,"West Virginia","Pocahontas",NA,NA,163080
+NA,NA,"West Virginia","Preston",NA,NA,172100
+NA,NA,"West Virginia","Putnam",NA,NA,224140
+NA,NA,"West Virginia","Raleigh",NA,NA,143710
+NA,NA,"West Virginia","Randolph",NA,NA,154940
+NA,NA,"West Virginia","Ritchie",NA,NA,124020
+NA,NA,"West Virginia","Roane",NA,NA,130650
+NA,NA,"West Virginia","Summers",NA,NA,149920
+NA,NA,"West Virginia","Taylor",NA,NA,159220
+NA,NA,"West Virginia","Tucker",NA,NA,165650
+NA,NA,"West Virginia","Tyler",NA,NA,129800
+NA,NA,"West Virginia","Upshur",NA,NA,182770
+NA,NA,"West Virginia","Wayne",NA,NA,136220
+NA,NA,"West Virginia","Webster",NA,NA,81430
+NA,NA,"West Virginia","Wetzel",NA,NA,115460
+NA,NA,"West Virginia","Wirt",NA,NA,113060
+NA,NA,"West Virginia","Wood",NA,NA,168030
+NA,NA,"West Virginia","Wyoming",NA,NA,88710
+NA,NA,"Wisconsin","Adams",NA,NA,214340
+NA,NA,"Wisconsin","Ashland",NA,NA,181780
+NA,NA,"Wisconsin","Barron",NA,NA,231210
+NA,NA,"Wisconsin","Bayfield",NA,NA,257040
+NA,NA,"Wisconsin","Brown",NA,NA,322950
+NA,NA,"Wisconsin","Buffalo",NA,NA,227680
+NA,NA,"Wisconsin","Burnett",NA,NA,246900
+NA,NA,"Wisconsin","Calumet",NA,NA,289110
+NA,NA,"Wisconsin","Chippewa",NA,NA,312110
+NA,NA,"Wisconsin","Clark",NA,NA,184450
+NA,NA,"Wisconsin","Columbia",NA,NA,294790
+NA,NA,"Wisconsin","Crawford",NA,NA,195770
+NA,NA,"Wisconsin","Dodge",NA,NA,274650
+NA,NA,"Wisconsin","Door",NA,NA,365700
+NA,NA,"Wisconsin","Douglas",NA,NA,220400
+NA,NA,"Wisconsin","Dunn",NA,NA,259600
+NA,NA,"Wisconsin","Eau Claire",NA,NA,313490
+NA,NA,"Wisconsin","Florence",NA,NA,184880
+NA,NA,"Wisconsin","Fond du Lac",NA,NA,246310
+NA,NA,"Wisconsin","Forest",NA,NA,197470
+NA,NA,"Wisconsin","Grant",NA,NA,214230
+NA,NA,"Wisconsin","Green",NA,NA,267070
+NA,NA,"Wisconsin","Green Lake",NA,NA,229920
+NA,NA,"Wisconsin","Iowa",NA,NA,275850
+NA,NA,"Wisconsin","Iron",NA,NA,177090
+NA,NA,"Wisconsin","Jackson",NA,NA,209320
+NA,NA,"Wisconsin","Jefferson",NA,NA,323430
+NA,NA,"Wisconsin","Juneau",NA,NA,189680
+NA,NA,"Wisconsin","Kenosha",NA,NA,305440
+NA,NA,"Wisconsin","Kewaunee",NA,NA,236050
+NA,NA,"Wisconsin","La Crosse",NA,NA,299800
+NA,NA,"Wisconsin","Lafayette",NA,NA,207620
+NA,NA,"Wisconsin","Langlade",NA,NA,168870
+NA,NA,"Wisconsin","Lincoln",NA,NA,205690
+NA,NA,"Wisconsin","Manitowoc",NA,NA,229280
+NA,NA,"Wisconsin","Marathon",NA,NA,265570
+NA,NA,"Wisconsin","Marinette",NA,NA,169290
+NA,NA,"Wisconsin","Marquette",NA,NA,224590
+NA,NA,"Wisconsin","Menominee",NA,NA,117630
+NA,NA,"Wisconsin","Monroe",NA,NA,224160
+NA,NA,"Wisconsin","Oconto",NA,NA,245820
+NA,NA,"Wisconsin","Oneida",NA,NA,254480
+NA,NA,"Wisconsin","Outagamie",NA,NA,313670
+NA,NA,"Wisconsin","Ozaukee",NA,NA,459900
+NA,NA,"Wisconsin","Pepin",NA,NA,229280
+NA,NA,"Wisconsin","Pierce",NA,NA,343320
+NA,NA,"Wisconsin","Polk",NA,NA,290230
+NA,NA,"Wisconsin","Portage",NA,NA,274540
+NA,NA,"Wisconsin","Price",NA,NA,173460
+NA,NA,"Wisconsin","Racine",NA,NA,288650
+NA,NA,"Wisconsin","Richland",NA,NA,210820
+NA,NA,"Wisconsin","Rock",NA,NA,270420
+NA,NA,"Wisconsin","Rusk",NA,NA,174420
+NA,NA,"Wisconsin","St. Croix",NA,NA,400830
+NA,NA,"Wisconsin","Sauk",NA,NA,330160
+NA,NA,"Wisconsin","Sawyer",NA,NA,252130
+NA,NA,"Wisconsin","Shawano",NA,NA,207080
+NA,NA,"Wisconsin","Sheboygan",NA,NA,276710
+NA,NA,"Wisconsin","Taylor",NA,NA,210390
+NA,NA,"Wisconsin","Trempealeau",NA,NA,231310
+NA,NA,"Wisconsin","Vernon",NA,NA,238890
+NA,NA,"Wisconsin","Vilas",NA,NA,320230
+NA,NA,"Wisconsin","Walworth",NA,NA,380010
+NA,NA,"Wisconsin","Washburn",NA,NA,241350
+NA,NA,"Wisconsin","Washington",NA,NA,400940
+NA,NA,"Wisconsin","Waupaca",NA,NA,225650
+NA,NA,"Wisconsin","Waushara",NA,NA,216800
+NA,NA,"Wisconsin","Wood",NA,NA,228430
+NA,NA,"Wyoming","Albany",NA,NA,344730
+NA,NA,"Wyoming","Big Horn",NA,NA,224120
+NA,NA,"Wyoming","Campbell",NA,NA,288930
+NA,NA,"Wyoming","Carbon",NA,NA,230540
+NA,NA,"Wyoming","Converse",NA,NA,303010
+NA,NA,"Wyoming","Crook",NA,NA,295860
+NA,NA,"Wyoming","Fremont",NA,NA,278270
+NA,NA,"Wyoming","Goshen",NA,NA,248040
+NA,NA,"Wyoming","Hot Springs",NA,NA,235510
+NA,NA,"Wyoming","Johnson",NA,NA,338310
+NA,NA,"Wyoming","Laramie",NA,NA,391530
+NA,NA,"Wyoming","Lincoln",NA,NA,385720
+NA,NA,"Wyoming","Natrona",NA,NA,320460
+NA,NA,"Wyoming","Niobrara",NA,NA,229300
+NA,NA,"Wyoming","Park",NA,NA,414600
+NA,NA,"Wyoming","Platte",NA,NA,308390
+NA,NA,"Wyoming","Sheridan",NA,NA,408810
+NA,NA,"Wyoming","Sublette",NA,NA,389450
+NA,NA,"Wyoming","Sweetwater",NA,NA,260250
+NA,NA,"Wyoming","Teton",NA,NA,1691440
+NA,NA,"Wyoming","Uinta",NA,NA,300210
+NA,NA,"Wyoming","Washakie",NA,NA,213250
+NA,NA,"Wyoming","Weston",NA,NA,229510
