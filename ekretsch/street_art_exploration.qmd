@@ -234,13 +234,15 @@ word_vectors =  wv_main + t(wv_context)
 ```
 
 
-# Doing the stemming thing
+### Topic modelling
+I don't think this really shows anything...
 ```{r}
 # Preprocessing
-library(SnowballC) # for wordstem function # this chunk took forever
+library(SnowballC) # for wordstem function 
+# this chunk took forever
 descrip_words_df <- murals_descrip_words %>% 
   mutate(word = wordStem(word)) %>% 
-  count(id, word, wort = TRUE) %>% 
+  count(id, word, sort = TRUE) %>% 
   ungroup()
 ```
 ```{r}
@@ -253,7 +255,7 @@ descrip_words_dtm <- descrip_words_df %>%
 # ^ tidytext equivalent of the text2vec approach from earlier.
 
 # Fitting LDA
-lda <- LDA(descrip_words_dtm, k=10, control = list(seed = 1234)) 
+lda <- LDA(descrip_words_dtm, k=5, control = list(seed = 1234)) 
 # ^ seed thingy makes it reproducible. 1234 is arbitrary
 
 # Extracting top terms
@@ -278,33 +280,43 @@ top_terms %>%
   coord_flip()
 ```
 
+-----
 
+# Most frequent usage of words by region?
+```{r}
+descrip_words_df_2 <- murals_descrip_words %>% 
+  mutate(word = wordStem(word)) %>% 
+  count(region, word, sort = TRUE)
+```
 
-```{r echo=FALSE}
-manifesto_word <- manifesto_us %>%
-  unnest_tokens(word,description) %>%
-  anti_join(stop_words) %>%
-  mutate(word = wordStem(word)) %>%
-  count(id, word, sort=TRUE) %>%
-  ungroup()
+```{r}
+# a graph for that
 
-manifesto_dtm <- manifesto_word %>%
-  cast_dtm(id, word, n)
-
-lda <- LDA(manifesto_dtm, k = 4, control = list(seed = 1234))
-
-topics <- tidy(lda, matrix = "beta")
-
-top_terms <- topics %>%
-  group_by(topic) %>%
-  top_n(10, beta) %>%
-  ungroup() %>%
-  arrange(topic, -beta)
-
-top_terms %>%
-  mutate(term = reorder(term, beta)) %>%
-  ggplot(aes(term, beta, fill = factor(topic))) +
-  geom_col(show.legend = FALSE) +
-  facet_wrap(~ topic, scales = "free") +
+descrip_words_df_2 %>% 
+  arrange(desc(n)) %>% 
+  mutate(word = factor(word, levels = rev(unique(word)))) %>% 
+  # ^ convert word col to a factor with levels set in reverse order of their current appearance
+  group_by(region) %>% 
+  top_n(5) %>% 
+  ungroup() %>% 
+  ggplot(aes(word, n, fill = region)) +
+  geom_col() +
+  labs(x = NULL, y = "n") +
+  facet_wrap(~region, ncol = 5, scales = "free") +
   coord_flip()
 ```
+
+```{r}
+manifesto_words %>%
+  arrange(desc(n)) %>%
+  mutate(word = factor(word, levels = rev(unique(word)))) %>% 
+  group_by(party) %>% 
+  top_n(15) %>% 
+  ungroup() %>%
+  ggplot(aes(word, n, fill = party)) +
+  geom_col(show.legend = FALSE) +
+  labs(x = NULL, y = "n") +
+  facet_wrap(~party, ncol = 2, scales = "free") +
+  coord_flip()
+```
+
