@@ -194,7 +194,8 @@ complete_tokens <- itoken(murals_clean$description_lower,
                           # ^ lowercases all inputs... already done (CBL!)
                           tokenizer = word_tokenizer, 
                           # ^ splits text into individual word tokens
-                          ids = murals_clean$id,
+                          ids = murals_clean$id, # maybe change this since
+                          # she does row number for id
                           progressbar = FALSE)
                           # ^ supress consoloe output
 ```
@@ -210,52 +211,100 @@ vectorizer_all <- vocab_vectorizer(vocab_all)
 # Building the document-term matrix — a sparse matrix where rows are documents (indexed by id) and columns are vocabulary words, with cell values representing word counts. Sparse format means zeroes aren't stored explicitly, keeping memory usage low.
 dtm = create_dtm(complete_tokens, vectorizer_all)
 ```
-
-
 ```{r}
-# Constructing a document-term matrix
-library(text2vec)
-
-prep_fun = tolower
-tok_fun = word_tokenizer
-
-## For the whole dataset
-manifesto_tokens = itoken(manifesto_us$description, 
-             preprocessor = prep_fun, 
-             tokenizer = tok_fun,
-             ids = manifesto_us$id, 
-             progressbar = FALSE)
-
-vocab_all = create_vocabulary(manifesto_tokens)
-
-vectorizer_all = vocab_vectorizer(vocab_all)
-dtm = create_dtm(manifesto_tokens, vectorizer_all)
-
-## For the democrats
-manifesto_democrat = itoken(manifesto_democrats$description, 
-             preprocessor = prep_fun, 
-             tokenizer = tok_fun,
-             ids = manifesto_democrats$id, 
-             progressbar = FALSE)
-
-vocab_d = create_vocabulary(manifesto_democrat)
-
-vectorizer_d = vocab_vectorizer(vocab_d)
-dtm_d = create_dtm(manifesto_democrat, vectorizer_d)
-
-# For the republicans
-manifesto_republican = itoken(manifesto_republicans$description, 
-             preprocessor = prep_fun, 
-             tokenizer = tok_fun,
-             ids = manifesto_republicans$id, 
-             progressbar = FALSE)
-
-vocab_r = create_vocabulary(manifesto_republican)
-
-vectorizer_r = vocab_vectorizer(vocab_r)
-dtm_r = create_dtm(manifesto_republican, vectorizer_r)
+# Should i do one for each region??? not sure...
 ```
+```{r}
+# Setting up GloVe algorithm
+
+
+
+vocab_all = prune_vocabulary(vocab_all, term_count_min = 5L)
+vectorizer_all = vocab_vectorizer(vocab_all)
+tcm = create_tcm(platforms_tokens, vectorizer_all, skip_grams_window = 5L)
+glove = GlobalVectors$new(word_vectors_size = 50, vocabulary = vocab_all, x_max = 10)
+wv_main = glove$fit_transform(tcm, n_iter = 50, convergence_tol = 0.00001)
+wv_context = glove$components
+word_vectors =  wv_main + t(wv_context)
+```
+
 
 ```{r}
 # Cosine similarity
+```
+
+
+# Doing the stemming thing
+```{r}
+# Preprocessing
+library(SnowballC) # for wordstem function # this chunk took forever
+descrip_words_df <- murals_descrip_words %>% 
+  mutate(word = wordStem(word)) %>% 
+  count(id, word, wort = TRUE) %>% 
+  ungroup()
+```
+```{r}
+library(topicmodels) # for lda
+library(reshape2) # dependency of topicmodels
+# Building DTM
+descrip_words_dtm <- descrip_words_df %>% 
+  cast_dtm(id, word, n) # cols = words, and cell vals = counts
+
+# ^ tidytext equivalent of the text2vec approach from earlier.
+
+# Fitting LDA
+lda <- LDA(descrip_words_dtm, k=10, control = list(seed = 1234)) 
+# ^ seed thingy makes it reproducible. 1234 is arbitrary
+
+# Extracting top terms
+topics <- tidy(lda, matrix = "beta") 
+# ^ Extracts the beta matrix (per-topic word probabilities.) Each row is a word-topic pair with a beta value representing how probable that word is for that topic. Higher beta = more characteristic of that topic.
+
+# Get just top 10
+top_terms <- topics %>%
+  group_by(topic) %>%
+  top_n(10, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta)
+```
+
+```{r}
+# Plot
+top_terms %>%
+  mutate(term = reorder(term, beta)) %>%
+  ggplot(aes(term, beta, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  coord_flip()
+```
+
+
+
+```{r echo=FALSE}
+manifesto_word <- manifesto_us %>%
+  unnest_tokens(word,description) %>%
+  anti_join(stop_words) %>%
+  mutate(word = wordStem(word)) %>%
+  count(id, word, sort=TRUE) %>%
+  ungroup()
+
+manifesto_dtm <- manifesto_word %>%
+  cast_dtm(id, word, n)
+
+lda <- LDA(manifesto_dtm, k = 4, control = list(seed = 1234))
+
+topics <- tidy(lda, matrix = "beta")
+
+top_terms <- topics %>%
+  group_by(topic) %>%
+  top_n(10, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta)
+
+top_terms %>%
+  mutate(term = reorder(term, beta)) %>%
+  ggplot(aes(term, beta, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  coord_flip()
 ```
