@@ -179,60 +179,7 @@ specifically cosine similarity
 #### Based on medium article
 
 https://medium.com/@celine.vdr/natural-language-processing-word-embeddings-e0b2edc773d2
-
-```{r}
-library(text2vec)
-
-# Setting up
-
-# Fitting the model: GloVe
-## Constructing a document-term matrix
-
-### For the whole dataset
-complete_tokens <- itoken(murals_clean$description_lower,
-                          preprocessor = tolower, 
-                          # ^ lowercases all inputs... already done (CBL!)
-                          tokenizer = word_tokenizer, 
-                          # ^ splits text into individual word tokens
-                          ids = murals_clean$id, # maybe change this since
-                          # she does row number for id
-                          progressbar = FALSE)
-                          # ^ supress consoloe output
-```
-```{r}
-# Table of each unique word
-vocab_all <- create_vocabulary(complete_tokens)
-```
-```{r}
-# Turning the vocabulary into a vectorizer function (basically a lookup that maps each word to a column index). This is what lets create_dtm() know which column each word belongs to.
-vectorizer_all <- vocab_vectorizer(vocab_all)
-```
-```{r}
-# Building the document-term matrix — a sparse matrix where rows are documents (indexed by id) and columns are vocabulary words, with cell values representing word counts. Sparse format means zeroes aren't stored explicitly, keeping memory usage low.
-dtm = create_dtm(complete_tokens, vectorizer_all)
-```
-```{r}
-# Should i do one for each region??? not sure...
-```
-```{r}
-# Setting up GloVe algorithm
-
-
-
-vocab_all = prune_vocabulary(vocab_all, term_count_min = 5L)
-vectorizer_all = vocab_vectorizer(vocab_all)
-tcm = create_tcm(platforms_tokens, vectorizer_all, skip_grams_window = 5L)
-glove = GlobalVectors$new(word_vectors_size = 50, vocabulary = vocab_all, x_max = 10)
-wv_main = glove$fit_transform(tcm, n_iter = 50, convergence_tol = 0.00001)
-wv_context = glove$components
-word_vectors =  wv_main + t(wv_context)
-```
-
-
-```{r}
-# Cosine similarity
-```
-
+https://github.com/Celinevdr/Analysing-Similarities-and-Differences-Between-Republicans-and-Democrats-Through-Word-Embeddings/blob/master/GitHub_Finalproject.Rmd
 
 ### Topic modelling
 I don't think this really shows anything...
@@ -306,17 +253,96 @@ descrip_words_df_2 %>%
   coord_flip()
 ```
 
+
+### Brief cosine similarity
 ```{r}
-manifesto_words %>%
-  arrange(desc(n)) %>%
-  mutate(word = factor(word, levels = rev(unique(word)))) %>% 
-  group_by(party) %>% 
-  top_n(15) %>% 
-  ungroup() %>%
-  ggplot(aes(word, n, fill = party)) +
-  geom_col(show.legend = FALSE) +
-  labs(x = NULL, y = "n") +
-  facet_wrap(~party, ncol = 2, scales = "free") +
-  coord_flip()
+library(quanteda)
+
+# Creating a corpus
+murals_corpus <- corpus(murals_clean, text_field = "description")
+#docnames(murals_corpus) <- docid
+
+# Make document feature matrix
+dfmat <- dfm(tokens(murals_corpus)) #murals_descrip_words
 ```
+```{r}
+
+```
+
+
+
+Before I dive into the analysis, the following code is useful to identify already the similarities and differences between party platforms, using a simple ```quanteda```function and testing similarity using the cosine measure of similarity. The closer the cosine score is to 1, the more similar are the documents. 
+
+The table below shows the documents with the lowest cosine score and as such, the most different.
+
+```{r echo=FALSE}
+cosine_sim <- textstat_simil(dfmat, method = "cosine", margin = "documents")
+results <- (as.matrix(cosine_sim))
+pairs <- subset(melt(results), value!=1)
+pairs <- data.frame(t(apply(pairs, 1, sort)))
+pairs <- unique(pairs)
+pairs <- pairs [ ,c(3,2,1)]
+names(pairs)<- c("Platform1", "Platform2", "Cosine Similarity")
+pairs <- pairs[order(pairs$`Cosine Similarity`),] 
+head(pairs, n=10)
+```
+
+The table below shows the most similar party platforms, with similarity scores closest to 1. 
+
+```{r echo=FALSE}
+pairs <- pairs[order(pairs$`Cosine Similarity`, decreasing = TRUE),] 
+head(pairs, n=10)
+```
+
+### actual analysis
+
+```{r}
+library(text2vec)
+
+# Setting up
+
+# Fitting the model: GloVe
+## Constructing a document-term matrix
+
+### For the whole dataset
+complete_tokens <- itoken(murals_clean$description_lower,
+                          preprocessor = tolower, 
+                          # ^ lowercases all inputs... already done (CBL!)
+                          tokenizer = word_tokenizer, 
+                          # ^ splits text into individual word tokens
+                          ids = murals_clean$id, # maybe change this since
+                          # she does row number for id
+                          progressbar = FALSE)
+                          # ^ supress consoloe output
+```
+```{r}
+# Table of each unique word
+vocab_all <- create_vocabulary(complete_tokens)
+```
+```{r}
+# Turning the vocabulary into a vectorizer function (basically a lookup that maps each word to a column index). This is what lets create_dtm() know which column each word belongs to.
+vectorizer_all <- vocab_vectorizer(vocab_all)
+```
+```{r}
+# Building the document-term matrix — a sparse matrix where rows are documents (indexed by id) and columns are vocabulary words, with cell values representing word counts. Sparse format means zeroes aren't stored explicitly, keeping memory usage low.
+dtm = create_dtm(complete_tokens, vectorizer_all)
+```
+```{r}
+# Should i do one for each region??? not sure...
+```
+```{r}
+# Setting up GloVe algorithm
+
+
+
+vocab_all = prune_vocabulary(vocab_all, term_count_min = 5L)
+vectorizer_all = vocab_vectorizer(vocab_all)
+tcm = create_tcm(platforms_tokens, vectorizer_all, skip_grams_window = 5L)
+glove = GlobalVectors$new(word_vectors_size = 50, vocabulary = vocab_all, x_max = 10)
+wv_main = glove$fit_transform(tcm, n_iter = 50, convergence_tol = 0.00001)
+wv_context = glove$components
+word_vectors =  wv_main + t(wv_context)
+```
+
+
 
