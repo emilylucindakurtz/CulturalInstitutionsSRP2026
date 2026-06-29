@@ -1,6 +1,13 @@
 # Emily's Notes for Street Art Dataset + Analysis
 
 # Personal notes/things to do:
+06/29
+<img width="729" height="482" alt="image" src="https://github.com/user-attachments/assets/5503a5cf-b490-4bde-9b84-720642e08f68" />
+
+
+Notes from 06/27 -- 
+- I'm thinking it might be better to do image analysis than text analysis...
+- google cloud vision api first 1,000 free?
 
 Notes from 06/25 -- working on doing text analysis and grouping by regions, and I have noticed one thing in particular:
 
