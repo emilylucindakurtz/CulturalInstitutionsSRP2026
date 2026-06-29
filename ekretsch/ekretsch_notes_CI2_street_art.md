@@ -2,6 +2,13 @@
 
 # Personal notes/things to do:
 06/29
+Update on cosine similarity:
+<img width="379" height="193" alt="image" src="https://github.com/user-attachments/assets/066dc8a5-3d1b-4d0f-a63c-b4e481da9d76" />
+
+DTM vs DFM???
+<img width="681" height="517" alt="image" src="https://github.com/user-attachments/assets/7c13f037-8370-4028-8605-fba6739e8d9c" />
+
+Most pop words
 <img width="729" height="482" alt="image" src="https://github.com/user-attachments/assets/5503a5cf-b490-4bde-9b84-720642e08f68" />
 
 
