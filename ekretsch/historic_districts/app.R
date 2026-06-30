@@ -52,41 +52,44 @@ my_palette <- colorNumeric(
 )
 
 # Define UI -----
-ui <- navbarPage(
-  windowTitle = "Historic Districts",
-  theme = bslib::bs_theme(version = 5),
+ui <- page_fluid(
+  titlePanel("Historic Districts"),
   
-  tabPanel(
-    title = "Base",
-    bslib::page_fillable(
-      leafletOutput("map", width = "100%", height = "100%"),),
-    absolutePanel(id = "controls", class = "panel panel-default",
-                  top = 75, left = 55, width = 250, fixed=TRUE,
-                  draggable = TRUE, height = "auto",
-                  plotOutput("categories_dist")),
+  sidebarLayout(
+    position = "right",
     
-                  
-    # sidebarLayout(
-    #   position = "right",
-    #   
-    #   sidebarPanel(
-    #     plotOutput("categories_dist")
-    #   ),
-    #   
-    #   mainPanel(
-    #     title = "Historic Districts",
-    #     leafletOutput("map")
-    #   )
-    # )
-  ),
-  tabPanel(
-    title = "Detailed",
+    sidebarPanel(
+      plotOutput("categories_dist")
+    ),
     
+    mainPanel(
+      title = "Historic Districts",
+      leafletOutput("map")
+    ),
   )
-  
-  
-  
 )
+  
+# )
+# ui <- navbarPage(
+#   windowTitle = "Historic Districts",
+#   #theme = bslib::bs_theme(version = 5),
+#   
+#   tabPanel(
+#     title = "Base",
+#     sidebarLayout(
+#       position = "right",
+#       sidebarPanel(
+#         plotOutput("categories_dist") 
+#       ),
+#       mainPanel(
+#         leafletOutput("map") 
+#       )
+#     )
+#   ),
+#   tabPanel(
+#     title = "Detailed"
+#   ),
+# )
 
 # Define server logic -----
 server <- function(input, output) {
@@ -146,8 +149,10 @@ server <- function(input, output) {
   output$categories_dist <- renderPlot({
     req(selected_state())     # Prevent error on startup when no state is clicked yet
     
+    state_name <- selected_state()
+    
     temp_df <- categories_counts %>% 
-      rename(counts = selected_state()) %>%  # Get just the column of the state that was clicked.
+      rename(counts = all_of(selected_state())) %>%  # Get just the column of the state that was clicked.
       select(category, counts) %>% 
       filter(counts >0)
       
