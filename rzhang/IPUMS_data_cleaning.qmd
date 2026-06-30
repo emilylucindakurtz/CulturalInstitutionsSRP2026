@@ -1,0 +1,99 @@
+---
+title: "IPUMS_data_cleaning"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(rvest)
+library(dplyr)
+library(readr)
+library(stringr)
+library(janitor)
+library(tigris)
+```
+
+```{r}
+lines <- read_lines("nhgis0001_ds271_2024_county_codebook.txt")
+IPUMS_data <- read_csv("nhgis0001_ds271_2024_county.csv")
+NRHP_LHAT <- read_csv("../data/Theaters/NRHP_LHAT_joined.csv")
+colleges <- read_csv("../data/Colleges/joined_colleges.csv")
+auto_ev_facilities <- read_csv("../data/Industrial Institutions/auto_ev_map.csv")
+```
+
+```{r}
+# adding a GEOID column
+IPUMS_data <- IPUMS_data %>%
+  mutate(GEOID = substr(
+    GEO_ID, 
+    nchar(GEO_ID) - 4, 
+    nchar(GEO_ID)))
+```
+
+
+```{r}
+# writing function to join IPUMS variables with institution datasets
+
+join_ipums <- function(data, lon, lat, counties, ipums) {
+
+  # convert to sf object
+  data_sf <- data %>%
+    filter(
+      !is.na(.data[[lon]]),
+      !is.na(.data[[lat]])
+    ) %>%
+    st_as_sf(
+      coords = c(lon, lat),
+      crs = 4326,
+      remove = FALSE
+    )
+
+  # match CRS
+  data_sf <- st_transform(data_sf, st_crs(counties))
+
+  # spatial join to counties
+  data_county <- st_join(
+    data_sf,
+    counties,
+    join = st_within
+  )
+
+  # join NHGIS/IPUMS demographics
+  data_ipums <- data_county %>%
+    left_join(ipums, by = "GEOID")
+
+  return(data_ipums)
+}
+```
+
+
+```{r}
+theaters_IPUMS <- join_ipums(
+  NRHP_LHAT,
+  lon = "longitude",
+  lat = "latitude",
+  counties = counties,
+  ipums = IPUMS_data
+)
+
+colleges_IPUMS <- join_ipums(
+  colleges,
+  lon = "Longitude",
+  lat = "Latitude",
+  counties = counties,
+  ipums = IPUMS_data
+)
+
+auto_ev_IPUMS <- join_ipums(
+  auto_ev_facilities,
+  lon = "longitude",
+  lat = "latitude",
+  counties = counties,
+  ipums = IPUMS_data
+)
+```
+
+
+
+
+
