@@ -27,7 +27,9 @@ categories_counts <- by_state %>%
   t() %>% # Transposes (rows become columns, columns become rows) (returns a matrix)
   as.data.frame() %>% 
   rownames_to_column(var = "category") %>% 
-  mutate(category = gsub("_", " ", str_remove(category, "aos_")))
+  mutate(category_og = category, 
+         category = gsub("_", " ", str_remove(category, "aos_")),
+         category_nice = str_to_title(category)) # for the user stuff so that we can get the OG)
 
 # Get state geometries
 states_sf <- tigris::states(cb = TRUE, resolution = "20m") %>% 
@@ -58,6 +60,7 @@ my_palette <- colorNumeric(
 ui <- navset_pill(
   nav_panel("Page 1",
             page_fluid(
+              shinythemes::themeSelector(),
                 titlePanel("Historic Districts"),
 
                 sidebarLayout(
@@ -79,7 +82,7 @@ ui <- navset_pill(
               titlePanel("Detailed Historic Districts"),
               
               sidebarLayout(
-                position = "right",
+                position = "left",
                 
                 sidebarPanel(
                   selectInput(
@@ -91,8 +94,10 @@ ui <- navset_pill(
                   checkboxGroupInput(
                     inputId = "categories",
                     label = "What categories would you like?",
-                    choices = colnames(historic_districts)[25:ncol(historic_districts)],
-                    selected = colnames(historic_districts)[25:ncol(historic_districts)] # checks all boxes by default
+                    choices = sort(categories_counts$category_nice)
+                    #selected = "Archeology"
+                    #choices = colnames(historic_districts)[25:ncol(historic_districts)],
+                    #selected = colnames(historic_districts)[25:ncol(historic_districts)] # checks all boxes by default
                     # NEED TO FIX THE aos_ thing ...
                     # also the length lol
                   ),
@@ -106,12 +111,8 @@ ui <- navset_pill(
 
 # ------------------------------------------------------------------------------
 
-# Define server logic -----
+# ----- Define server logic -----
 server <- function(input, output) {
-  
-  #output$categories_dist <- renderPlot({
-  #  ggplot()
-  #})
     
   output$map <- renderLeaflet({
     leaflet(map_data) %>% 
@@ -138,7 +139,7 @@ server <- function(input, output) {
   })
   
   
-  # MAP CLICKING STUFF -----
+  # ----- MAP CLICKING STUFF -----
   
   # Getting the user input from clicking
   selected_state <- reactiveVal(NULL) # Reactive function!!!
@@ -160,7 +161,7 @@ server <- function(input, output) {
       )
   })
   
-  # Output histogram
+  # ----- Output histogram -----
   output$categories_dist <- renderPlot({
     req(selected_state())     # Prevent error on startup when no state is clicked yet
     
@@ -183,7 +184,7 @@ server <- function(input, output) {
 
 }
 
-# Run the app -----
+# ----- Run the app -----
 shinyApp(ui = ui, server = server)
 
 
