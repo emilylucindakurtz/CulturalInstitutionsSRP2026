@@ -5,6 +5,9 @@ library(purrr)
 library(maps)
 library(usdata)
 library(stringr)
+library(sf)
+library(tigris)
+library(leaflet)
 
 PL13 <- read.csv("data/Libraries/Puout13a.csv")
 PL14 <- read.csv("data/Libraries/PLS_FY2014_Outlet_puout14a.csv")
@@ -66,8 +69,9 @@ library_changed %>% count(close < 2023)
 
 #getting the county shapefiles
 county_sf <- counties(cb = TRUE, class = "sf") %>% 
-  mutate(County = tolower(NAME),
-         State = tolower(STATE_NAME))
+  sf::st_transform(4326) %>% 
+  mutate(County = str_to_lower(NAME),
+         State = str_to_lower(STATE_NAME))
 
 #standardizing variables for join
 library_map <- all_years %>% slice(-6203) %>% 
@@ -86,13 +90,25 @@ unique_county_locale <- library_map %>%
 
 ##join housing prices to county shapefile information
 county_library <- county_sf %>%
-  full_join(unique_county_locale %>% select(County, State, LOCALE), 
+  left_join(unique_county_locale, 
             by = c("State","County")) 
 
 pal <- colorNumeric(
   palette = "YlOrRd", 
-  domain = county_library$LOCALE
+  domain = county_library$LOCALE,
+  na.color = "#d3d3d3"
 )
+
+
+# 1. Clean up the text in your boundary dataset
+county_library <- county_library %>%
+  mutate(across(where(is.character), ~iconv(., to = "UTF-8", sub = "")))
+
+library_map <- library_map %>%
+  mutate(across(where(is.character), ~iconv(., to = "UTF-8", sub = "")))
+
+FSCSKEY_library <- library_map %>%
+  distinct(FSCSKEY, .keep_all = TRUE)
 
 leaflet() %>%
   addTiles() %>%
@@ -109,15 +125,23 @@ leaflet() %>%
     )
   ) %>%
   addMarkers(
-    data = library_map,
+    data = FSCSKEY_library ,
     lng = ~LONGITUD, 
     lat = ~LATITUDE,
+    clusterOptions = markerClusterOptions(),
     popup = ~paste0(
       FSCSKEY, "<br/>",
       CITY, ", ", str_to_title(State), "<br/>",
-      LOCALE
+      "Metro/Ubran Classification: ", LOCALE
     ),
     label = ~CITY
+  ) %>% 
+  addLegend(
+    data = (FSCSKEY_library %>% drop_na()),
+    position = "bottomright",
+    pal = pal,
+    values = ~LOCALE
+    
   )
 
 

@@ -13,11 +13,19 @@ library(tigris)
 library(sf)
 library(htmlwidgets)
 library(forcats)
+library(usa)
 
 
 
 Powerplants <- read.csv("PowerPlants_Clean.csv")
+Headquarters <- read.csv("Fortune500HQ_Housing.csv")
+HPI <- read.csv("county_HPI.csv")
 
+
+
+
+
+#Power Plant Data Merge
 state_counts <- Powerplants %>% 
   group_by(State) %>% 
   summarise(State.Powerplant.Count = n())
@@ -27,85 +35,109 @@ state_sf <- states(cb = TRUE, class = "sf") %>%
   filter(State %in% Powerplants$State) %>% 
   left_join(state_counts, by = "State")
 
+#F500HQ Data Merge
+HPI <- HPI %>% mutate(County = str_to_lower(County),
+                      State = str_to_lower(state_convert(State, to = "name")))
+
+county_sf <- counties(cb = TRUE, class = "sf") %>% 
+  mutate(County = tolower(NAME),
+         State = tolower(STATE_NAME))
+
+housing_map <- Headquarters %>% 
+  mutate(County = tolower(County),
+         State = tolower(State))
+
+unique_county_prices <- housing_map %>%
+  group_by(State, County) %>%
+  summarize(
+    Median.Home.Price = mean(Median.Home.Price, na.rm = TRUE), 
+    .groups = "drop"
+  ) 
+county_prices <- county_sf %>%
+  full_join(unique_county_prices, 
+            by = c("State","County")) 
+
+HQHPICNTY <- county_prices %>% full_join(HPI, by = c("State","County"))
+
+max <- HQHPICNTY %>% select(Year) %>% drop_na() %>% mutate(Year = as.numeric(Year)) %>% pull(Year) %>% max()
+min <- HQHPICNTY %>% select(Year) %>% drop_na() %>% mutate(Year = as.numeric(Year)) %>% pull(Year) %>% min()
+
+
 #----user interface------
 
 ui <- navbarPage(
-  title = "State-Level Information of Powerplant Energy Types",
-##-------Tab 1------------ 
-  # tabPanel(
-  #   title = "Explore by States",
-  #   
-  #   sidebarLayout(
-  #     
-  #     sidebarPanel(
-  #       width = 3,
-  #       h1("Find Your State"),
-  #       
-  #       selectInput(
-  #         inputId = "state_choice",
-  #         label = "Select",
-  #         choices = sort(unique(Powerplants$State))
-  #       )
-  #     ),
-  #     
-  # mainPanel(
-  #   plotOutput("Bar", height = 500),
-  #     )
-  #   )
-  # ),
-##-------map---------
+  title = "Exploring Industrial Institutions in the United States",
 tabPanel(
-  title = "Map Power Plants by State",
-  
-  # Using fluidRow instead of sidebarLayout
-  fluidRow(
-    # Left column (takes up 4 out of 12 slots)
-    column(
-      width = 4,
-      # Wrapping the chart in a neat bslib card
-      card(
-        card_header(h4("Explore by State")), # Fixed the header text slightly!
-        card_body(
-          plotOutput("SidebarChart", height = 400)
-        )
-      )
-    ),
+  title = "Home"
+),
+navbarMenu(
+  title = "Electric Power Plants",
+##-------map---------
+  tabPanel(
+    title = "Map Power Plants by State",
     
-    # Right column (takes up 8 out of 12 slots)
-    column(
-      width = 8,
-      # Wrapping the map in a card too
-      card(
-        card_body(
-          leafletOutput("Map", height = 600)
+    fluidRow(
+      column(
+        width = 4,
+        card(
+          card_header(h4("Explore by State")),
+          card_body(
+            plotOutput("SidebarChart", height = 400)
+          )
+        )
+      ),
+      column(
+        width = 8,
+        card(
+          card_body(
+            leafletOutput("Map", height = 600)
+          )
         )
       )
     )
-  )
-),
-
-##-------Tab 2------------  
+  ),
+  ##-------Tab 2------------  
+    tabPanel(
+      title = "Explore by Energy Sources",
+      
+      sidebarLayout(
+        
+        sidebarPanel(
+          width = 3,
+          h1("Choose an Energy Souce"),
+          
+          selectInput(
+            inputId = "energy_choice",
+            label = "Select",
+            choices = sort(unique(str_to_title(Powerplants$Primary.Energy.Source)))
+          )
+        ),
+        mainPanel(
+          plotOutput("Energy", height = 500)
+        )
+      )
+    )
+  ),
+navbarMenu(
+  title = "Fortune 500 Headquarters",
+  
   tabPanel(
-    title = "Explore by Energy Sources",
+    title = "HPI Chnage Overtime in the Presence of Megacorporations",
     
     sidebarLayout(
       
       sidebarPanel(
-        width = 3,
-        h1("Choose an Energy Souce"),
-        
-        selectInput(
-          inputId = "energy_choice",
-          label = "Select",
-          choices = sort(unique(str_to_title(Powerplants$Primary.Energy.Source)))
-        )
+        sliderInput("Year", "Slide to Change the Year", min = min, max = max, 2000, animate = animationOptions(interval = 1))
       ),
-      mainPanel(
-        plotOutput("Energy", height = 500)
+    
+    mainPanel(
+      leafletOutput("Housing", height = 500)
+        )
       )
     )
   )
 )
+
 
 #-------sever-------
 
@@ -243,6 +275,78 @@ output$SidebarChart <- renderPlot({
          title = paste("Energy Source Distribution for", clicked_state()))
   
   })
+
+pal <- colorNumeric(
+  palette = "YlOrRd", 
+  domain = HQHPICNTY$Annual.Change....
+)
+
+
+output$Housing <- renderLeaflet({
+    leaflet(state_sf) %>% 
+      addProviderTiles(providers$CartoDB.Positron) %>% 
+      setView(lng = -98.58, lat = 39.82, zoom = 4) %>%
+      addPolygons(
+        fillColor = "lightblue",
+        fillOpacity = 0.3,
+        color = "black",
+        weight = 1
+      ) %>% 
+    addMarkers(
+      data = housing_map,
+      lng = ~Longitude, 
+      lat = ~Latitude,
+      layerId = ~Company,
+      label = ~Company
+    ) 
+})
+
+zoomed_state <- reactiveVal(NULL)
+
+observeEvent(input$Housing_marker_click, {
+
+  company <- input$Housing_marker_click
+  req(company$id)
+  
+  clicked_company <- housing_map %>% filter(Company == company$id)
+  state_focus <- clicked_company$State[1]
+  
+  zoomed_state(state_focus)
+  
+  bbox_data <- state_sf[state_sf$State == state_focus, ]
+  bbox <- st_bbox(bbox_data)
+  
+  leafletProxy("Housing") %>% 
+    fitBounds(
+      lng1 = bbox[["xmin"]], lat1 = bbox[["ymin"]],
+      lng2 = bbox[["xmax"]], lat2 = bbox[["ymax"]]
+    ) 
+})
+
+observe({
+  req(zoomed_state())
+  req(input$Year)
+  
+  year_state_subset <- HQHPICNTY %>% filter(Year == input$Year, State == zoomed_state())
+  
+  leafletProxy("Housing") %>% 
+    clearGroup("counties") %>% 
+    addPolygons(
+      data = year_state_subset,
+      group = "counties",
+      layerId = ~County,
+      pal = ~pal(Annual.Change....),
+      layer = ~HPI
+    ) %>% 
+    addMarkers(
+      data = housing_map,
+      lng = ~Longitude,
+      lat = ~Latitude,
+      layerId = ~County,
+      label = ~Company
+    )
+})
+
   
 }
 

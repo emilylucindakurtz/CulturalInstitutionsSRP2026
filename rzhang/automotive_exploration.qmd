@@ -71,13 +71,77 @@ ggplot(ev_timeline, aes(x = year, y = n)) +
 ```
 
 ```{r}
-# Keep only rows with usable coordinates
-auto_map <- auto_assembly_plants %>%
-  filter(!is.na(latitude), !is.na(longitude))
+# checking rows with empty city values
+clean_EVs %>%
+  filter(is.na(City) | City == "") %>%
+  select(Company, `Facility Name`, State)
 
+# cleaning those rows
 ev_map <- clean_EVs %>%
-  filter(!is.na(latitude), !is.na(longitude))
+  filter(!is.na(City), City != "")
 
+# changing Ontario facility coordinates from Canada to California 
+ev_map <- clean_EVs %>%
+  mutate(
+    latitude = if_else(
+      Company == "Cenntro Automotive",
+      34.0633,
+      latitude
+    ),
+    longitude = if_else(
+      Company == "Cenntro Automotive",
+      -117.6509,
+      longitude
+    )
+  )
+
+auto_map <- auto_assembly_plants %>%
+  filter(Address != "TBA")
+```
+
+
+```{r}
+# creating a clean joined dataset
+ev_map_clean <- ev_map %>%
+  mutate(
+    company = Company,
+    facility_name = `Facility Name`,
+    city = City,
+    state = State,
+    address = Address,
+    latitude = latitude,
+    longitude = longitude,
+    products_or_focus = `Manufacturing Focus`,
+    source_dataset = "EV manufacturing",
+    EV_facility = TRUE,
+    .keep = "none"
+  )
+
+auto_map_clean <- auto_map %>%
+  mutate(
+    company = Manufacturer,
+    facility_name = `Plant Name`,
+    city = NA_character_,
+    state = NA_character_,
+    address = Address,
+    latitude = latitude,
+    longitude = longitude,
+    products_or_focus = Products,
+    source_dataset = "Auto assembly",
+    EV_facility = FALSE,
+    .keep = "none"
+  )
+
+combined_auto_ev_map <- bind_rows(ev_map_clean, auto_map_clean)
+```
+
+```{r}
+write_csv(combined_auto_ev_map, "auto_ev_map.csv")
+```
+
+
+
+```{r}
 leaflet() %>%
   addProviderTiles("CartoDB.Positron") %>%
 
@@ -122,5 +186,4 @@ leaflet() %>%
     options = layersControlOptions(collapsed = FALSE)
   )
 ```
-
 

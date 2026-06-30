@@ -1,6 +1,10 @@
 # Emily's Notes for Historic Districts Dataset + Analysis
 Interesting note: architecture highest category (for most states i think) except for alaska where it is industry
 
+https://shiny.posit.co/r/articles/build/layout-guide/ -- Multi-page apps
+<img width="1456" height="710" alt="image" src="https://github.com/user-attachments/assets/8dd1829a-f403-4db4-86e1-f7e60b96976f" />
+
+
 # Personal notes/things to do/ideas for further analysis:
 - `#\| eval: false`
 - [ ] shiny app where you can select the state and then a bar chart pops up for the cateories
