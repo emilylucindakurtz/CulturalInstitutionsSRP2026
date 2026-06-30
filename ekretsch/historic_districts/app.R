@@ -52,22 +52,97 @@ my_palette <- colorNumeric(
 )
 
 # Define UI -----
-ui <- page_fluid(
-  titlePanel("Historic Districts"),
-  
-  sidebarLayout(
-    position = "right",
-    
-    sidebarPanel(
-      plotOutput("categories_dist")
-    ),
-    
-    mainPanel(
-      title = "Historic Districts",
-      leafletOutput("map")
-    ),
-  )
+
+# ui <- page_fluid(
+#   titlePanel("Historic Districts"),
+# 
+#   sidebarLayout(
+#     position = "right",
+# 
+#     sidebarPanel(
+#       plotOutput("categories_dist")
+#     ),
+# 
+#     mainPanel(
+#       title = "Historic Districts",
+#       leafletOutput("map")
+#     ),
+#   )
+#  )
+
+ui <- navset_pill(
+  nav_panel("A",
+            page_fluid(
+                titlePanel("Historic Districts"),
+
+                sidebarLayout(
+                  position = "right",
+
+                  sidebarPanel(
+                    plotOutput("categories_dist")
+                  ),
+
+                  mainPanel(
+                    title = "Historic Districts",
+                    leafletOutput("map")
+                  ),
+                )
+               )
+          ),
+  nav_panel("B")
 )
+
+
+# 
+# ui <- page_navbar( 
+#   nav_panel("A", "Page A content"), 
+#   nav_panel("B", "Page B content"), 
+#   nav_panel("C", "Page C content"), 
+#   title = "App with navbar", 
+#   id = "page", 
+# ) 
+# 
+# ui <- page_navbar(
+#   nav_panel("A",
+#             sidebarLayout(
+#               position = "right",
+#               
+#               sidebarPanel(
+#                 plotOutput("categories_dist")
+#               ),
+#               
+#               mainPanel(
+#                 title = "Historic Districts",
+#                 leafletOutput("map")
+#               ),
+#             )
+#           ),
+#   nav_panel("B",
+#             )
+# )
+
+
+# 
+# ui <- navbarPage(
+#   title = "Historic Districts",
+#   tabPanel(
+#     title = "Home"
+#   ),
+#   navbarMenu(
+#     tabPanel(
+#       title = "Page1",
+#       sidebarLayout(
+#         position = "right",
+#         sidebarPanel(
+#           plotOutput("categories_dist")
+#         ),
+#         mainPanel(
+#           leafletOutput("map")
+#         )
+#       )
+#     )
+#   )
+# )
   
 # )
 # ui <- navbarPage(
