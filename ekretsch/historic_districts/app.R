@@ -56,7 +56,7 @@ my_palette <- colorNumeric(
 
 
 ui <- navset_pill(
-  nav_panel("A",
+  nav_panel("Page 1",
             page_fluid(
                 titlePanel("Historic Districts"),
 
@@ -74,105 +74,35 @@ ui <- navset_pill(
                 )
                )
           ),
-  nav_panel("B")
+  nav_panel("Page 2",
+            page_fluid(
+              titlePanel("Detailed Historic Districts"),
+              
+              sidebarLayout(
+                position = "right",
+                
+                sidebarPanel(
+                  selectInput(
+                    inputId = "state_choice",
+                    label = "Choose state:",
+                    choices = sort(unique(map_data$NAME))
+                    
+                  ),
+                  checkboxGroupInput(
+                    inputId = "categories",
+                    label = "What categories would you like?",
+                    choices = colnames(historic_districts)[25:ncol(historic_districts)],
+                    selected = colnames(historic_districts)[25:ncol(historic_districts)] # checks all boxes by default
+                    # NEED TO FIX THE aos_ thing ...
+                    # also the length lol
+                  ),
+                ),
+                mainPanel(
+                  leafletOutput("map2")
+                )
+              )
+            ))
 )
-
-#OG
-
-# ui <- page_fluid(
-#   titlePanel("Historic Districts"),
-# 
-#   sidebarLayout(
-#     position = "right",
-# 
-#     sidebarPanel(
-#       plotOutput("categories_dist")
-#     ),
-# 
-#     mainPanel(
-#       title = "Historic Districts",
-#       leafletOutput("map")
-#     ),
-#   )
-#  )
-
-
-
-
-
-# 
-# ui <- page_navbar( 
-#   nav_panel("A", "Page A content"), 
-#   nav_panel("B", "Page B content"), 
-#   nav_panel("C", "Page C content"), 
-#   title = "App with navbar", 
-#   id = "page", 
-# ) 
-# 
-# ui <- page_navbar(
-#   nav_panel("A",
-#             sidebarLayout(
-#               position = "right",
-#               
-#               sidebarPanel(
-#                 plotOutput("categories_dist")
-#               ),
-#               
-#               mainPanel(
-#                 title = "Historic Districts",
-#                 leafletOutput("map")
-#               ),
-#             )
-#           ),
-#   nav_panel("B",
-#             )
-# )
-
-
-# 
-# ui <- navbarPage(
-#   title = "Historic Districts",
-#   tabPanel(
-#     title = "Home"
-#   ),
-#   navbarMenu(
-#     tabPanel(
-#       title = "Page1",
-#       sidebarLayout(
-#         position = "right",
-#         sidebarPanel(
-#           plotOutput("categories_dist")
-#         ),
-#         mainPanel(
-#           leafletOutput("map")
-#         )
-#       )
-#     )
-#   )
-# )
-  
-# )
-# ui <- navbarPage(
-#   windowTitle = "Historic Districts",
-#   #theme = bslib::bs_theme(version = 5),
-#   
-#   tabPanel(
-#     title = "Base",
-#     sidebarLayout(
-#       position = "right",
-#       sidebarPanel(
-#         plotOutput("categories_dist") 
-#       ),
-#       mainPanel(
-#         leafletOutput("map") 
-#       )
-#     )
-#   ),
-#   tabPanel(
-#     title = "Detailed"
-#   ),
-# )
-
 
 # ------------------------------------------------------------------------------
 
@@ -255,3 +185,111 @@ server <- function(input, output) {
 
 # Run the app -----
 shinyApp(ui = ui, server = server)
+
+
+
+
+
+# ------------------------------------------------------------------------------
+
+
+
+#OG
+
+# ui <- page_fluid(
+#   titlePanel("Historic Districts"),
+# 
+#   sidebarLayout(
+#     position = "right",
+# 
+#     sidebarPanel(
+#       plotOutput("categories_dist")
+#     ),
+# 
+#     mainPanel(
+#       title = "Historic Districts",
+#       leafletOutput("map")
+#     ),
+#   )
+#  )
+
+
+
+
+
+# 
+# ui <- page_navbar( 
+#   nav_panel("A", "Page A content"), 
+#   nav_panel("B", "Page B content"), 
+#   nav_panel("C", "Page C content"), 
+#   title = "App with navbar", 
+#   id = "page", 
+# ) 
+# 
+# ui <- page_navbar(
+#   nav_panel("A",
+#             sidebarLayout(
+#               position = "right",
+#               
+#               sidebarPanel(
+#                 plotOutput("categories_dist")
+#               ),
+#               
+#               mainPanel(
+#                 title = "Historic Districts",
+#                 leafletOutput("map")
+#               ),
+#             )
+#           ),
+#   nav_panel("B",
+#             )
+# )
+
+
+# 
+# ui <- navbarPage(
+#   title = "Historic Districts",
+#   tabPanel(
+#     title = "Home"
+#   ),
+#   navbarMenu(
+#     tabPanel(
+#       title = "Page1",
+#       sidebarLayout(
+#         position = "right",
+#         sidebarPanel(
+#           plotOutput("categories_dist")
+#         ),
+#         mainPanel(
+#           leafletOutput("map")
+#         )
+#       )
+#     )
+#   )
+# )
+
+# )
+# ui <- navbarPage(
+#   windowTitle = "Historic Districts",
+#   #theme = bslib::bs_theme(version = 5),
+#   
+#   tabPanel(
+#     title = "Base",
+#     sidebarLayout(
+#       position = "right",
+#       sidebarPanel(
+#         plotOutput("categories_dist") 
+#       ),
+#       mainPanel(
+#         leafletOutput("map") 
+#       )
+#     )
+#   ),
+#   tabPanel(
+#     title = "Detailed"
+#   ),
+# )
+
+
+
+
