@@ -505,7 +505,13 @@ In regards to mapping out HPU over time:
 - Made a good amount of progress on the housing data over time portion of the industries shiny app
   - there are still issues though where it will crash when I am trying to zoom in.
 
+## June 30
 
+Today I worked on fixing the issues with the housing portion of my Shiny app. I was able to debug it and have it run how i would like to. There is an animated slider, and so viewers can observe how the HPI has shifted over the past ~25years. However, I am searching for a good color pallette that will me best present these anual % changes, as the scale is fairly skewed, meaning that the fill colors of states aren't reflecting the patterns in a way that I think is the most accurate and easy to digest. --> will continue to search tomorrow
+
+- I alo have ideas for suuplemental graphs to go on this page, tht will really allow viewers to view housing trends in relation to corporate HQ. However, it involves calculating total % change over the 25 years, which posed a problem of mismatching data. There is a lot more missing state HPI info for the 2023-24-25 years than in the early 2000s. Maybe there was some issue that caused the N/As? I might also just have to base the calculation on a 20 year change rather than 25 or so. 
+
+also in my to-do for tomorrow
 
 
 
