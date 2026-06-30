@@ -68,4 +68,3 @@ wiki_auto_plants <- wiki_auto_plants %>%
 write_csv(Clean_EV_ManufacturingFacilities, "Clean_EV_ManufacturingFacilities.csv")
 write_csv(wiki_auto_plants, "Wikipedia_auto_plants.csv")
 ```
-

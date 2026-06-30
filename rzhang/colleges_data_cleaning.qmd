@@ -84,9 +84,41 @@ hbcus_locations <- hbcus_locations %>%
   )
 ```
 
-
 ```{r}
-#writing csvs for completed, cleaned datasets 
+# writing csvs for completed, cleaned datasets 
 write_csv(lacs_locations, "LACs_coordinates.csv")
 write_csv(hbcus_locations, "HBCUs_coordinates.csv")
+```
+
+```{r}
+# creating a joined csv
+lacs_locations <- lacs_locations %>%
+  mutate(college_type = "LAC")
+
+hbcus_locations <- hbcus_locations %>%
+  mutate(college_type = "HBCU")
+
+lacs_clean <- lacs_locations %>%
+  rename(
+    College = `College Name`,
+    City = CITY,
+    Latitude = LAT,
+    Longitude = LON
+  ) %>%
+  mutate(college_type = "LAC")
+
+hbcus_clean <- hbcus_locations %>%
+  rename(
+    College = Name,
+    Latitude = LAT,
+    Longitude = LON
+  ) %>%
+  mutate(college_type = "HBCU")
+
+# combine into one dataset
+joined_colleges <- bind_rows(lacs_clean, hbcus_clean)
+```
+
+```{r}
+write_csv(joined_colleges, "joined_colleges.csv")
 ```

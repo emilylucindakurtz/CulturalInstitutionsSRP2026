@@ -231,3 +231,7 @@ New tasks:
 
 ## 6/26
 Continue searching and cleaning new data.
+
+## 6/29
+- Found and cleaned IPUMS (NHGIS) dataset
+
