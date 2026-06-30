@@ -30,7 +30,8 @@ categories_counts <- by_state %>%
   mutate(category = gsub("_", " ", str_remove(category, "aos_")))
 
 # Get state geometries
-states_sf <- tigris::states(cb = TRUE, resolution = "20m")
+states_sf <- tigris::states(cb = TRUE, resolution = "20m") %>% 
+  st_transform(crs = 4326)
 
 # Join data to shapefile
 map_data <- states_sf %>% 
@@ -51,30 +52,48 @@ my_palette <- colorNumeric(
 )
 
 # Define UI -----
-ui <- page_fluid(
-  titlePanel("Historic Districts"),
+ui <- navbarPage(
+  windowTitle = "Historic Districts",
+  theme = bslib::bs_theme(version = 5),
   
-  sidebarLayout(
-    position = "right",
+  tabPanel(
+    title = "Base",
+    bslib::page_fillable(
+      leafletOutput("map", width = "100%", height = "100%"),),
+    absolutePanel(id = "controls", class = "panel panel-default",
+                  top = 75, left = 55, width = 250, fixed=TRUE,
+                  draggable = TRUE, height = "auto",
+                  plotOutput("categories_dist")),
     
-    sidebarPanel(
-      plotOutput("categories_dist")
-    ),
+                  
+    # sidebarLayout(
+    #   position = "right",
+    #   
+    #   sidebarPanel(
+    #     plotOutput("categories_dist")
+    #   ),
+    #   
+    #   mainPanel(
+    #     title = "Historic Districts",
+    #     leafletOutput("map")
+    #   )
+    # )
+  ),
+  tabPanel(
+    title = "Detailed",
     
-    mainPanel(
-      title = "Historic Districts",
-      leafletOutput("map")
-    )
   )
+  
+  
   
 )
 
 # Define server logic -----
 server <- function(input, output) {
   
-  output$categories_dist <- renderPlot({
-    ggplot()
-  })
+  #output$categories_dist <- renderPlot({
+  #  ggplot()
+  #})
     
   output$map <- renderLeaflet({
     leaflet(map_data) %>% 
@@ -100,6 +119,7 @@ server <- function(input, output) {
       )
   })
   
+  
   # MAP CLICKING STUFF -----
   
   # Getting the user input from clicking
@@ -124,9 +144,10 @@ server <- function(input, output) {
   
   # Output histogram
   output$categories_dist <- renderPlot({
-    #selected_state()
+    req(selected_state())     # Prevent error on startup when no state is clicked yet
+    
     temp_df <- categories_counts %>% 
-      rename(counts = selected_state()) %>% 
+      rename(counts = selected_state()) %>%  # Get just the column of the state that was clicked.
       select(category, counts) %>% 
       filter(counts >0)
       
