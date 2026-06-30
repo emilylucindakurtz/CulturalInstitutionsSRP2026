@@ -53,22 +53,7 @@ my_palette <- colorNumeric(
 
 # Define UI -----
 
-# ui <- page_fluid(
-#   titlePanel("Historic Districts"),
-# 
-#   sidebarLayout(
-#     position = "right",
-# 
-#     sidebarPanel(
-#       plotOutput("categories_dist")
-#     ),
-# 
-#     mainPanel(
-#       title = "Historic Districts",
-#       leafletOutput("map")
-#     ),
-#   )
-#  )
+
 
 ui <- navset_pill(
   nav_panel("A",
@@ -91,6 +76,28 @@ ui <- navset_pill(
           ),
   nav_panel("B")
 )
+
+#OG
+
+# ui <- page_fluid(
+#   titlePanel("Historic Districts"),
+# 
+#   sidebarLayout(
+#     position = "right",
+# 
+#     sidebarPanel(
+#       plotOutput("categories_dist")
+#     ),
+# 
+#     mainPanel(
+#       title = "Historic Districts",
+#       leafletOutput("map")
+#     ),
+#   )
+#  )
+
+
+
 
 
 # 
@@ -165,6 +172,9 @@ ui <- navset_pill(
 #     title = "Detailed"
 #   ),
 # )
+
+
+# ------------------------------------------------------------------------------
 
 # Define server logic -----
 server <- function(input, output) {
