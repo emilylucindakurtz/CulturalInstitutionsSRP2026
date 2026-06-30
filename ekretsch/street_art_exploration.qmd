@@ -83,10 +83,16 @@ murals_clean <- st_join(murals_clean, region_polygons, join = st_within) %>%
 # st_intersects could theoretically also work but it would include on the borders
 # st_contains would work if the two dfs were switched (bc a point can't contain a polygon)
 ```
+```{r}
+write.csv(murals_clean, "street_art_clean.csv")
+```
+
 
 ## Text analysis
 
 ### Tokenizing
+
+#### STOPWORDS
 ```{r}
 # Text analysis of description
 # Just part 1 -- tokenizing
@@ -116,7 +122,7 @@ custom_stop_words <- c(
   "https", "http", "com", "www", "instagram", "www.instagram.com",
   
   # Emily's words
-  NA, "nbsp", "project", "painting", "street", "NA", "san", "amp", "photos"
+  "nbsp", "project", "painting", "street", "NA", "san", "amp", "photos"
   
   # The places
   # Add/figure out later
@@ -135,6 +141,7 @@ murals_descrip_words <- murals_clean %>%
 ```
 
 ### Prev
+
 ```{r}
 # IDEAS:
 # region, state
@@ -156,6 +163,7 @@ words_by_region <- murals_descrip_words %>%
   group_by(region) %>% 
   count(word)
 ```
+
 ```{r}
 words_by_region %>% 
   slice_max(n, n = 50)
@@ -164,24 +172,212 @@ words_by_region %>%
 ### Further TA
 
 - https://cran.r-project.org/web/packages/conversim/vignettes/Analyzing_Similarities_between_Two_Long_Speeches.html
-- https://www.r-bloggers.com/2015/10/text-mining-analysis-some-theory-and-practice-in-r/
-^ https://www.rdatamining.com/home
-- https://medium.com/@celine.vdr/natural-language-processing-word-embeddings-e0b2edc773d2
-^ https://github.com/Celinevdr/Analysing-Similarities-and-Differences-Between-Republicans-and-Democrats-Through-Word-Embeddings/blob/master/GitHub_Finalproject.Rmd
+- https://www.r-bloggers.com/2015/10/text-mining-analysis-some-theory-and-practice-in-r/ \^ https://www.rdatamining.com/home
+- https://medium.com/@celine.vdr/natural-language-processing-word-embeddings-e0b2edc773d2 \^ https://github.com/Celinevdr/Analysing-Similarities-and-Differences-Between-Republicans-and-Democrats-Through-Word-Embeddings/blob/master/GitHub_Finalproject.Rmd
 
-my
-- https://medium.com/data-science/r-packages-for-text-analysis-ad8d86684adb
-- https://stackoverflow.com/questions/8898521/finding-2-3-word-phrases-using-r-tm-package
-- https://www.rdatamining.com/examples/text-mining
-- https://www.slideshare.net/slideshow/r-by-example-mining-twitter-for/8504941
+my - https://medium.com/data-science/r-packages-for-text-analysis-ad8d86684adb - https://stackoverflow.com/questions/8898521/finding-2-3-word-phrases-using-r-tm-package - https://www.rdatamining.com/examples/text-mining - https://www.slideshare.net/slideshow/r-by-example-mining-twitter-for/8504941
 
-vids
-- https://www.youtube.com/watch?v=7cwBhWYHgsA&t=44s
-- https://campus.datacamp.com/courses/introduction-to-natural-language-processing-in-r/representations-of-text?ex=12
+vids - https://www.youtube.com/watch?v=7cwBhWYHgsA&t=44s - https://campus.datacamp.com/courses/introduction-to-natural-language-processing-in-r/representations-of-text?ex=12
 
 specifically cosine similarity
-```{r}
 
+#### Based on medium article
+
+https://medium.com/@celine.vdr/natural-language-processing-word-embeddings-e0b2edc773d2
+https://github.com/Celinevdr/Analysing-Similarities-and-Differences-Between-Republicans-and-Democrats-Through-Word-Embeddings/blob/master/GitHub_Finalproject.Rmd
+
+### Topic modelling
+I don't think this really shows anything...
+```{r}
+# Preprocessing
+library(SnowballC) # for wordstem function 
+# this chunk took forever
+descrip_words_df <- murals_descrip_words %>% 
+  mutate(word = wordStem(word)) %>% 
+  count(id, word, sort = TRUE) %>% 
+  ungroup()
+```
+```{r}
+library(topicmodels) # for lda
+library(reshape2) # dependency of topicmodels
+# Building DTM
+descrip_words_dtm <- descrip_words_df %>% 
+  cast_dtm(id, word, n) # cols = words, and cell vals = counts
+
+# ^ tidytext equivalent of the text2vec approach from earlier.
+
+# Fitting LDA
+lda <- LDA(descrip_words_dtm, k=4, control = list(seed = 1234)) 
+# ^ seed thingy makes it reproducible. 1234 is arbitrary
+
+# Extracting top terms
+topics <- tidy(lda, matrix = "beta") 
+# ^ Extracts the beta matrix (per-topic word probabilities.) Each row is a word-topic pair with a beta value representing how probable that word is for that topic. Higher beta = more characteristic of that topic.
+
+# Get just top 10
+top_terms <- topics %>%
+  group_by(topic) %>%
+  top_n(10, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta)
+```
+
+```{r}
+# Plot
+top_terms %>%
+  mutate(term = reorder(term, beta)) %>%
+  ggplot(aes(term, beta, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  coord_flip()
+```
+
+-----
+
+# Most frequent usage of words by region?
+```{r}
+descrip_words_df_2 <- murals_descrip_words %>% 
+  mutate(word = wordStem(word)) %>% 
+  count(region, word, sort = TRUE)
+```
+
+```{r}
+# a graph for that
+
+descrip_words_df_2 %>% 
+  arrange(desc(n)) %>% 
+  mutate(word = factor(word, levels = rev(unique(word)))) %>% 
+  # ^ convert word col to a factor with levels set in reverse order of their current appearance
+  group_by(region) %>% 
+  slice_max(order_by = n, n = 5) %>% #top_n(5) %>% 
+  ungroup() %>% 
+  ggplot(aes(word, n, fill = region)) +
+  geom_col() +
+  labs(x = NULL, y = "n") +
+  #facet_wrap(~region, ncol = 5, scales = "free") +
+  coord_flip()
+```
+
+
+### Brief cosine similarity
+```{r}
+library(quanteda)
+
+# dropping NA (so that I don't get an error for dfm) CBL
+#murals_clean_new <- murals_clean %>% 
+#  drop_na(description)
+#murals_clean_new$description[is.na(murals_clean_new$description)] <- ""
+
+# Creating a corpus
+murals_corpus <- corpus(murals_clean, text_field = "description")
+#docnames(murals_corpus) <- docid
+
+
+# Make document feature matrix
+dfmat <- murals_corpus %>% 
+  tokens(remove_punct = TRUE) %>% # can also add remove_numbers = TRUE. # lowercase conversions by default
+  tokens_remove(pattern = stop_words_combined) %>% 
+  tokens_wordstem() %>% 
+  dfm()
+
+# Group by region
+dfmat_grouped <- dfm_group(dfmat, groups = murals_clean$region)
+```
+```{r}
+library(quanteda.textstats)
+
+cosine_similarity <- textstat_simil(dfmat_grouped, method = "cosine", margin = "documents")
+# margin = "documents" tells the function to calculate text similarity between entire documents (rows of DFM) rather than between individual words or features (columns of DFM)
+```
+
+
+```{r}
+results <- (as.matrix(cosine_similarity))
+results
+```
+
+
+
+
+
+-----
+
+from article:
+Before I dive into the analysis, the following code is useful to identify already the similarities and differences between party platforms, using a simple ```quanteda```function and testing similarity using the cosine measure of similarity. The closer the cosine score is to 1, the more similar are the documents. 
+
+The table below shows the documents with the lowest cosine score and as such, the most different.
+
+```{r echo=FALSE}
+cosine_sim <- textstat_simil(dfmat, method = "cosine", margin = "documents")
+results <- (as.matrix(cosine_sim))
+pairs <- subset(melt(results), value!=1)
+pairs <- data.frame(t(apply(pairs, 1, sort)))
+pairs <- unique(pairs)
+pairs <- pairs [ ,c(3,2,1)]
+names(pairs)<- c("Platform1", "Platform2", "Cosine Similarity")
+pairs <- pairs[order(pairs$`Cosine Similarity`),] 
+head(pairs, n=10)
+```
+
+The table below shows the most similar party platforms, with similarity scores closest to 1. 
+
+```{r echo=FALSE}
+pairs <- pairs[order(pairs$`Cosine Similarity`, decreasing = TRUE),] 
+head(pairs, n=10)
+```
+
+
+
+----
+
+### actual analysis
+
+```{r}
+library(text2vec)
+
+# Setting up
+
+# Fitting the model: GloVe
+## Constructing a document-term matrix
+
+### For the whole dataset
+complete_tokens <- itoken(murals_clean$description_lower,
+                          preprocessor = tolower, 
+                          # ^ lowercases all inputs... already done (CBL!)
+                          tokenizer = word_tokenizer, 
+                          # ^ splits text into individual word tokens
+                          ids = murals_clean$id, # maybe change this since
+                          # she does row number for id
+                          progressbar = FALSE)
+                          # ^ supress consoloe output
+```
+```{r}
+# Table of each unique word
+vocab_all <- create_vocabulary(complete_tokens)
+```
+```{r}
+# Turning the vocabulary into a vectorizer function (basically a lookup that maps each word to a column index). This is what lets create_dtm() know which column each word belongs to.
+vectorizer_all <- vocab_vectorizer(vocab_all)
+```
+```{r}
+# Building the document-term matrix — a sparse matrix where rows are documents (indexed by id) and columns are vocabulary words, with cell values representing word counts. Sparse format means zeroes aren't stored explicitly, keeping memory usage low.
+dtm = create_dtm(complete_tokens, vectorizer_all)
+```
+```{r}
+# Should i do one for each region??? not sure...
+```
+```{r}
+# Setting up GloVe algorithm
+
+
+
+vocab_all = prune_vocabulary(vocab_all, term_count_min = 5L)
+vectorizer_all = vocab_vectorizer(vocab_all)
+tcm = create_tcm(platforms_tokens, vectorizer_all, skip_grams_window = 5L)
+glove = GlobalVectors$new(word_vectors_size = 50, vocabulary = vocab_all, x_max = 10)
+wv_main = glove$fit_transform(tcm, n_iter = 50, convergence_tol = 0.00001)
+wv_context = glove$components
+word_vectors =  wv_main + t(wv_context)
 ```
 
 

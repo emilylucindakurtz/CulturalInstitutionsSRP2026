@@ -118,11 +118,11 @@ areas_cleaned <- areas_cleaned %>%
     water_area_acres = water_area_sq_mi * 640
   )
 ```
+
 ```{r}
 # deleting that first annoying row (the totals)
 areas_cleaned <- areas_cleaned[-1,]
 ```
-
 
 ```{r}
 write_csv(areas_cleaned, "us_areas_cleaned.csv")
