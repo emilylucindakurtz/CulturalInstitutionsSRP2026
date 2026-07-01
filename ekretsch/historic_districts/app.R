@@ -2,6 +2,8 @@
 library(shiny)
 library(bslib)
 library(thematic)
+library(shinythemes)
+
 
 library(leaflet)
 library(tigris)
@@ -10,6 +12,7 @@ library(sf)
 library(tidyverse)
 
 library(janitor)
+
 
 # 
 # Enable automatic matching of plots to the application theme
@@ -73,7 +76,7 @@ ui <- page_fluid(
   navset_pill(
     nav_panel("Page 1",
          #   page_fluid(
-              shinythemes::themeSelector(),
+              #shinythemes::themeSelector(),
                 titlePanel("Historic Districts"),
 
                 sidebarLayout(
@@ -102,6 +105,8 @@ ui <- page_fluid(
                     inputId = "state_choice",
                     label = "Choose state:",
                     choices = c("All", sort(unique(map_data$NAME)))
+                    #choices = sort(unique(map_data$NAME))
+                    
                     
                   ),
                   checkboxGroupInput(
@@ -134,24 +139,30 @@ server <- function(input, output) {
   output$map2 <- renderLeaflet({
     leaflet(map_data) %>% 
       addProviderTiles("CartoDB.Positron") %>% 
-      setView(lng = -85, lat = 39.50, zoom = 4) %>% # set it to US to start
+      setView(lng = -85, lat = 39.5, zoom = 4) %>% # set it to US to start
       addPolylines(data = states_sf, color = "black", opacity = 1, weight = 2) #uh yikes
   })
   
   # Trigger an event every time the user changes the dropdown selection
   observeEvent(input$state_choice, {
-    selected_polygon <- states_sf %>% filter(NAME == input$state_choice)
-    bbox <- st_bbox(selected_polygon)
+    if(input$state_choice == "All"){
+      leafletProxy("map2") %>% 
+        setView(lng = -85, lat = 39.5, zoom = 4)
+    } else{
+      selected_polygon <- states_sf %>% filter(NAME == input$state_choice)
+      bbox <- st_bbox(selected_polygon)
+      
+      leafletProxy("map2") %>%
+        fitBounds(lng1 = bbox[["xmin"]], lat1 = bbox[["ymin"]], 
+                  lng2 = bbox[["xmax"]], lat2 = bbox[["ymax"]])
+    } #add another thing for alaska... not sure what's going on there
     
-    leafletProxy("map2") %>%
-      fitBounds(lng1 = bbox[["xmin"]], lat1 = bbox[["ymin"]], 
-                lng2 = bbox[["xmax"]], lat2 = bbox[["ymax"]]) # CBL add option for "All"
   })
   
   # Trigger an event every time the user changes the checkbox selection
   observeEvent(input$categories_choice, {
     
-    cols_to_check <- c('hi')
+    cols_to_check <- c()
     
     for(i in seq_along(input$categories_choice)){
       df_index <- which(categories_counts$category_nice == input$categories_choice[i])
@@ -173,8 +184,7 @@ server <- function(input, output) {
         }
       }
       
-      #filtered_data <- filtered_data %>% 
-      #  filter(selected == TRUE |  .data[[temp_col]] == 1) # so that it actually reads within the column
+      
     }
     
     filtered_data <- filtered_data %>% 
