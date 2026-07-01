@@ -62,11 +62,28 @@ HQHPICNTY <- county_prices %>% full_join(HPI, by = c("State","County"))
 max <- HQHPICNTY %>% select(Year) %>% drop_na() %>% mutate(Year = as.numeric(Year)) %>% pull(Year) %>% max()
 min <- HQHPICNTY %>% select(Year) %>% drop_na() %>% mutate(Year = as.numeric(Year)) %>% pull(Year) %>% min()
 
-HPI_2000 <- HPI %>% filter(Year == 2000) %>% group_by(State) %>% summarize(avg_hpi = mean(HPI))
-HPI_2025 <- HPI %>% filter(Year == 2016) %>% group_by(State) %>% summarize(avg_hpi = mean(HPI))
 
-HPI_State_Change <- HPI %>% 
-  mutate(total_hpi_change = ((HPI_2000$HPI) - (HPI_2025$HPI))/100)
+HPI_State_Change <- HPI %>%
+  filter(Year %in% c(2000, 2025), !is.na(HPI)) %>%
+  group_by(State, Year) %>%
+  summarize(avg_hpi = mean(HPI), .groups = "drop") %>%
+  pivot_wider(names_from = Year, values_from = avg_hpi, names_prefix = "avg_hpi_") %>%
+  mutate(total_hpi_change = ((avg_hpi_2025 - avg_hpi_2000)/avg_hpi_2000),
+         State = str_to_title(State))
+
+HPI_sf <- state_sf %>% full_join(HPI_State_Change, by = "State") %>% drop_na()
+
+HQ_counts <- Headquarters %>%
+  group_by(State) %>%
+  summarize(num_HQ = n(), .groups = "drop")
+
+Headquarters_bar <- state_sf %>%
+  left_join(HQ_counts, by = "State") %>%
+  mutate(num_HQ = replace_na(num_HQ, 0))
+
+                                                                                                    
+
+
 
 
 #----user interface------
@@ -78,7 +95,7 @@ tabPanel(
 ),
 navbarMenu(
   title = "Electric Power Plants",
-##-------map---------
+
   tabPanel(
     title = "Map Power Plants by State",
     
@@ -102,7 +119,7 @@ navbarMenu(
       )
     )
   ),
-  ##-------Tab 2------------  
+
     tabPanel(
       title = "Explore by Energy Sources",
       
@@ -127,20 +144,32 @@ navbarMenu(
 navbarMenu(
   title = "Fortune 500 Headquarters",
   
+  
+  
+  
   tabPanel(
     title = "HPI Change Overtime in the Presence of Megacorporations",
     
     sidebarLayout(
       
       sidebarPanel(
-        uiOutput("slider")
+        uiOutput("slider"),
+        plotOutput("StateHPIChart", height = 400)
       ),
     
     mainPanel(
       leafletOutput("Housing", height = 500)
         )
       )
+    ),
+  tabPanel(
+    title = "HPI Change Over 25 Years",
+    
+    mainPanel(
+      leafletOutput("HPI", height = 400),
+      plotOutput("Companycount", height = 400)
     )
+  )
   )
 )
 
@@ -362,7 +391,69 @@ output$slider <- renderUI({
 })
 ###side map under this one, plotting just overall HPI % change since 2000. Should supplement with a bar graph with state counts of # of F500 companies, to see 
 ##if there is a trend between amount of these comapnies and HPI % change
+
+HPIPerPal <- colorNumeric(
+  palette = "YlGn", 
+  domain = HPI_sf$total_hpi_change
+)
   
+output$HPI <- renderLeaflet({
+  leaflet(HPI_sf) %>% 
+    addProviderTiles(providers$CartoDB.Positron) %>% 
+    setView(lng = -98.58, lat = 39.82, zoom = 4) %>%
+    addPolygons(
+      layerId = ~State,
+      fillColor = ~HPIPerPal(total_hpi_change),
+      fillOpacity = 0.5,
+      color = "black",
+      weight = 1,
+      label = ~percent(round(total_hpi_change, 3))
+    ) %>% 
+    
+    addLegend(
+      pal = HPIPerPal,
+      values = HPI_State_Change$total_hpi_change, 
+      position = "bottomright",
+      title = "HPI Percent Change",
+      labFormat = labelFormat(suffix = "%", transform = function(x) x * 100)
+    )
+})
+
+leaflet_colors <- setNames(HPIPerPal(HPI_sf$total_hpi_change), HPI_sf$State)
+
+output$Companycount <- renderPlot({
+  
+  ggplot(Headquarters_bar, aes(x = reorder(State, -num_HQ), y = num_HQ, fill = State)) +
+    geom_col(color = "black", alpha = 0.5) +
+    scale_x_discrete(drop = FALSE) +
+    scale_fill_manual(values = leaflet_colors) +
+    theme(axis.text.x = element_text(angle = -90),
+          legend.position = "none") +
+    labs(y = "Count",
+         x = "State",
+         title = "Fortune 500 Headquater Count by State")
+    
+})
+
+
+output$StateHPIChart <- renderPlot({
+  req(zoomed_state())
+  
+  state_subset <- HPI %>% filter(State == zoomed_state(), !is.na(Annual.Change....)) %>% group_by(Year) %>% summarize(avg_annual_change = mean(Annual.Change....))
+  
+  ggplot(state_subset, aes(x = as.factor(Year), y = avg_annual_change, fill = ifelse(avg_annual_change > 0, "lightgreen", "red"))) +
+    geom_col(color = "black", alpha = 0.3) +
+    geom_hline(yintercept = 0)+
+    scale_fill_identity() +
+    theme(axis.text.x = element_text(angle = -90),
+          legend.position = "none") +
+    labs(x = "Year",
+         y = "Anual % Change",
+         title = paste("Year-to-Year HPI Percent Change for: ", str_to_title(zoomed_state())))
+  
+})
+
+
 }
 
 
