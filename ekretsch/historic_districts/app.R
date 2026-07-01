@@ -1,6 +1,7 @@
 # Packages
 library(shiny)
 library(bslib)
+library(thematic)
 
 library(leaflet)
 library(tigris)
@@ -10,7 +11,18 @@ library(tidyverse)
 
 library(janitor)
 
-# Getting data n such -----
+# 
+# Enable automatic matching of plots to the application theme
+# Use font = "auto" to automatically carry over Google Fonts or custom CSS typography
+# 1. Set the underlying complete theme globally
+#ggplot2::theme_set(ggplot2::theme_minimal())
+
+# 2. Initialize thematic
+#thematic_shiny(font = "auto")
+# Set the default global theme to Minimal
+theme_set(theme_bw())
+
+# ----- Getting data n such -----
 historic_districts <- read_csv("../../data/Historic Districts/historic_districts_clean4.csv")
 areas <- read_csv("../../data/Historic Districts/us_areas_cleaned.csv")
 
@@ -57,9 +69,10 @@ my_palette <- colorNumeric(
 
 
 
-ui <- navset_pill(
-  nav_panel("Page 1",
-            page_fluid(
+ui <- page_fluid(
+  navset_pill(
+    nav_panel("Page 1",
+         #   page_fluid(
               shinythemes::themeSelector(),
                 titlePanel("Historic Districts"),
 
@@ -71,14 +84,14 @@ ui <- navset_pill(
                   ),
 
                   mainPanel(
-                    title = "Historic Districts",
+                    #title = "Historic Districts",
                     leafletOutput("map")
-                  ),
+                  )
                 )
-               )
+               #)
           ),
   nav_panel("Page 2",
-            page_fluid(
+          #  page_fluid(
               titlePanel("Detailed Historic Districts"),
               
               sidebarLayout(
@@ -88,31 +101,100 @@ ui <- navset_pill(
                   selectInput(
                     inputId = "state_choice",
                     label = "Choose state:",
-                    choices = sort(unique(map_data$NAME))
+                    choices = c("All", sort(unique(map_data$NAME)))
                     
                   ),
                   checkboxGroupInput(
-                    inputId = "categories",
-                    label = "What categories would you like?",
+                    inputId = "categories_choice",
+                    label = "Which categories would you like?",
+                    #choices = sort(categories_counts$category_og)
                     choices = sort(categories_counts$category_nice)
                     #selected = "Archeology"
                     #choices = colnames(historic_districts)[25:ncol(historic_districts)],
-                    #selected = colnames(historic_districts)[25:ncol(historic_districts)] # checks all boxes by default
-                    # NEED TO FIX THE aos_ thing ...
-                    # also the length lol
                   ),
+                  textOutput("test_text")
                 ),
                 mainPanel(
                   leafletOutput("map2")
+                  
                 )
               )
-            ))
+    )
+  )
 )
+
 
 # ------------------------------------------------------------------------------
 
 # ----- Define server logic -----
 server <- function(input, output) {
+  
+  # ----- Page 2 -----
+  
+  output$map2 <- renderLeaflet({
+    leaflet(map_data) %>% 
+      addProviderTiles("CartoDB.Positron") %>% 
+      setView(lng = -85, lat = 39.50, zoom = 4) %>% # set it to US to start
+      addPolylines(data = states_sf, color = "black", opacity = 1, weight = 2) #uh yikes
+  })
+  
+  # Trigger an event every time the user changes the dropdown selection
+  observeEvent(input$state_choice, {
+    selected_polygon <- states_sf %>% filter(NAME == input$state_choice)
+    bbox <- st_bbox(selected_polygon)
+    
+    leafletProxy("map2") %>%
+      fitBounds(lng1 = bbox[["xmin"]], lat1 = bbox[["ymin"]], 
+                lng2 = bbox[["xmax"]], lat2 = bbox[["ymax"]]) # CBL add option for "All"
+  })
+  
+  # Trigger an event every time the user changes the checkbox selection
+  observeEvent(input$categories_choice, {
+    
+    cols_to_check <- c('hi')
+    
+    for(i in seq_along(input$categories_choice)){
+      df_index <- which(categories_counts$category_nice == input$categories_choice[i])
+      cols_to_check <- c(cols_to_check, categories_counts[df_index, "category_og"])
+    }
+    
+    output$test_text <- renderText({ cols_to_check })
+    
+    filtered_data <- map_data %>% 
+      mutate(selected = FALSE)
+    
+    
+    for(n in seq_along(cols_to_check)){ 
+      temp_col <- cols_to_check[n]
+      
+      for(z in seq_along(filtered_data[,temp_col])){
+        if(filtered_data[z, temp_col] == 1){
+          filtered_data[z, 'selected'] = TRUE
+        }
+      }
+      
+      #filtered_data <- filtered_data %>% 
+      #  filter(selected == TRUE |  .data[[temp_col]] == 1) # so that it actually reads within the column
+    }
+    
+    filtered_data <- filtered_data %>% 
+      filter(selected == TRUE)
+    
+    leafletProxy("map2") %>% 
+      clearMarkers()     # Clear previous markers to avoid duplicates
+    
+    # Only add markers if at least one checkbox is selected
+    if(nrow(filtered_data) > 0){
+      leafletProxy("map2", data = filtered_data) %>% 
+        addMarkers(
+          popup = ~name
+        )
+    }
+    
+  })
+
+    
+  # ----- Page 1 -----
     
   output$map <- renderLeaflet({
     leaflet(map_data) %>% 
@@ -178,7 +260,8 @@ server <- function(input, output) {
         title = selected_state(),
         y = "Category",
         x = "Counts"
-      )
+      ) +
+      theme_bw() #CBL -- 
   })
   
 
