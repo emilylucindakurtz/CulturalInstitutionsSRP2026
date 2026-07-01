@@ -44,33 +44,31 @@ categories_counts <- by_state %>%
   rownames_to_column(var = "category") %>% 
   mutate(category_og = category, 
          category = gsub("_", " ", str_remove(category, "aos_")),
-         category_nice = str_to_title(category)) # for the user stuff so that we can get the OG)
+         category_nice = str_to_title(category)) # for the user stuff so that we can get the OG
 
 # Get state geometries
 states_sf <- tigris::states(cb = TRUE, resolution = "20m") %>% 
   st_transform(crs = 4326)
 
 # Join data to shapefile
-map_data <- states_sf %>% 
+choropleth_area_data <- states_sf %>% 
   left_join(by_state, by = c("NAME" = "state")) %>% 
   left_join(areas, by = c("NAME" = "state_or_territory")) %>% 
   mutate(total_acreage_hd = total_acreage) %>% 
   select(-total_acreage)
 
 # Standardizing (historic district acreage by total state land acreage)
-map_data <- map_data %>% 
+choropleth_area_data <- choropleth_area_data %>% 
   mutate(standardized_hd_acreage = total_acreage_hd/land_area_acres) 
 
 # Color palette (UNSURE IF THIS SHOULD GO HERE OR LaTER)
 my_palette <- colorNumeric(
   palette = "viridis", 
-  domain = map_data$standardized_hd_acreage,
+  domain = choropleth_area_data$standardized_hd_acreage,
   na.color = "transparent"
 )
 
 # Define UI -----
-
-
 
 ui <- page_fluid(
   navset_pill(
@@ -104,8 +102,8 @@ ui <- page_fluid(
                   selectInput(
                     inputId = "state_choice",
                     label = "Choose state:",
-                    choices = c("All", sort(unique(map_data$NAME)))
-                    #choices = sort(unique(map_data$NAME))
+                    choices = c("All", sort(unique(choropleth_area_data$NAME)))
+                    #choices = sort(unique(choropleth_area_data$NAME))
                     
                     
                   ),
@@ -137,7 +135,7 @@ server <- function(input, output) {
   # ----- Page 2 -----
   
   output$map2 <- renderLeaflet({
-    leaflet(map_data) %>% 
+    leaflet() %>% 
       addProviderTiles("CartoDB.Positron") %>% 
       setView(lng = -85, lat = 39.5, zoom = 4) %>% # set it to US to start
       addPolylines(data = states_sf, color = "black", opacity = 1, weight = 2) #uh yikes
@@ -175,12 +173,12 @@ server <- function(input, output) {
     leafletProxy("map2") %>% clearMarkers()
     
     if(length(cols_to_check) > 0) {
-      filtered_data <- map_data %>%
+      filtered_data <- historic_districts %>%
         filter(if_any(all_of(cols_to_check), ~ .x == 1)) # a district shows up if it matches any selected category
       
       if (nrow(filtered_data) > 0) {
         leafletProxy("map2", data = filtered_data) %>% 
-          addMarkers()
+          addCircleMarkers(~longitude, ~latitude, popup = ~property_name, radius = 2)
           #          addMarkers(popup = ~name)
 
       }
@@ -200,7 +198,7 @@ server <- function(input, output) {
   #   
   #   output$test_text <- renderText({ cols_to_check })
   #   
-  #   filtered_data <- map_data %>% 
+  #   filtered_data <- choropleth_area_data %>% 
   #     mutate(selected = FALSE)
   #   
   #   
@@ -236,13 +234,13 @@ server <- function(input, output) {
   # ----- Page 1 -----
     
   output$map <- renderLeaflet({
-    leaflet(map_data) %>% 
+    leaflet(choropleth_area_data) %>% 
       addProviderTiles("CartoDB.Positron") %>% 
       
       setView(lng = -85, lat = 39.50, zoom = 4) %>% 
       
       addPolygons(
-        layerId = ~NAME, # so it takes the NAME column from map_data
+        layerId = ~NAME, # so it takes the NAME column from choropleth_area_data
         fillColor = ~my_palette(standardized_hd_acreage),
         fillOpacity = .75,
         color = "white", # border color
@@ -253,7 +251,7 @@ server <- function(input, output) {
       
       addLegend(
         pal = my_palette,
-        value = map_data$standardized_hd_acreage, # same as values   = ~total_num_districts
+        value = choropleth_area_data$standardized_hd_acreage, # same as values   = ~total_num_districts
         position = "bottomright",
         title = "Hist. Dist. area/state land area"
       )
@@ -271,7 +269,7 @@ server <- function(input, output) {
     selected_state(input$map_shape_click$id) # value of NAME for clicked state
     
     # Get the bounding box for that state so we can zoom
-    bbox_data <- map_data[map_data$NAME == selected_state(), "geometry"]
+    bbox_data <- choropleth_area_data[choropleth_area_data$NAME == selected_state(), "geometry"]
     bbox <- st_bbox(bbox_data)
     # ^ st_bbox() is a function in the R sf (Simple Features) package used to calculate or return the bounding box of a spatial object. It returns a named numeric vector containing the minimum and maximum coordinates (\(xmin, ymin, xmax, ymax\)) that define the rectangular extent of a spatial dataset
     
