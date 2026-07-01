@@ -134,6 +134,36 @@ server <- function(input, output) {
   
   # ----- Page 2 -----
   
+  # function for changing filters
+  
+  update_districts <- function() {
+    # Get a character vector of the underlying column names
+    cols_to_check <- categories_counts %>% 
+      filter(category_nice %in% input$categories_choice) %>% 
+      pull(category_og)
+    
+    # Clear previous markers to avoid duplicates
+    leafletProxy("map2") %>% clearMarkers()
+    
+    # Filter historic districts for only those that fit the user's specifications
+    if(length(cols_to_check) > 0) {
+      
+      filtered_data <- historic_districts %>%
+        filter(if_any(all_of(cols_to_check), ~ .x == 1)) # a district shows up if it matches any selected category
+      
+      if(input$state_choice != "All"){
+        filtered_data <- filtered_data %>% 
+          filter(state == input$state_choice)
+      }
+      
+      # Add markers if there are datapoints to plot
+      if (nrow(filtered_data) > 0) {
+        leafletProxy("map2", data = filtered_data) %>% 
+          addCircleMarkers(~longitude, ~latitude, popup = ~property_name, radius = 5, color = "pink", fillOpacity = 1, weight = 1)
+      }
+    }
+  }
+  
   output$map2 <- renderLeaflet({
     leaflet() %>% 
       addProviderTiles("CartoDB.Positron") %>% 
@@ -155,35 +185,18 @@ server <- function(input, output) {
                   lng2 = bbox[["xmax"]], lat2 = bbox[["ymax"]])
     } #add another thing for alaska... not sure what's going on there
     
+    update_districts()
+    
   })
   
   # Trigger an event every time the user changes the checkbox selection
   observeEvent(input$categories_choice, {
+    update_districts()
     
-    # Get a character vector of the underlying column names
-    cols_to_check <- categories_counts %>% 
-      filter(category_nice %in% input$categories_choice) %>% 
-      pull(category_og)
-    
-    #output$test_text <- renderText({
-    #  cols_to_check
-    #})
-    
-    # Clear previous markers to avoid duplicates
-    leafletProxy("map2") %>% clearMarkers()
-    
-    if(length(cols_to_check) > 0) {
-      filtered_data <- historic_districts %>%
-        filter(if_any(all_of(cols_to_check), ~ .x == 1)) # a district shows up if it matches any selected category
-      
-      if (nrow(filtered_data) > 0) {
-        leafletProxy("map2", data = filtered_data) %>% 
-          addCircleMarkers(~longitude, ~latitude, popup = ~property_name, radius = 2)
-          #          addMarkers(popup = ~name)
-
-      }
-    }
   })
+  
+  
+  
   
   # 
   # 
