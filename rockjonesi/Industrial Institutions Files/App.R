@@ -62,6 +62,12 @@ HQHPICNTY <- county_prices %>% full_join(HPI, by = c("State","County"))
 max <- HQHPICNTY %>% select(Year) %>% drop_na() %>% mutate(Year = as.numeric(Year)) %>% pull(Year) %>% max()
 min <- HQHPICNTY %>% select(Year) %>% drop_na() %>% mutate(Year = as.numeric(Year)) %>% pull(Year) %>% min()
 
+HPI_2000 <- HPI %>% filter(Year == 2000) %>% group_by(State) %>% summarize(avg_hpi = mean(HPI))
+HPI_2025 <- HPI %>% filter(Year == 2016) %>% group_by(State) %>% summarize(avg_hpi = mean(HPI))
+
+HPI_State_Change <- HPI %>% 
+  mutate(total_hpi_change = ((HPI_2000$HPI) - (HPI_2025$HPI))/100)
+
 
 #----user interface------
 
@@ -122,12 +128,12 @@ navbarMenu(
   title = "Fortune 500 Headquarters",
   
   tabPanel(
-    title = "HPI Chnage Overtime in the Presence of Megacorporations",
+    title = "HPI Change Overtime in the Presence of Megacorporations",
     
     sidebarLayout(
       
       sidebarPanel(
-        sliderInput("Year", "Slide to Change the Year", min = min, max = max, 2000, animate = animationOptions(interval = 1))
+        uiOutput("slider")
       ),
     
     mainPanel(
@@ -142,20 +148,6 @@ navbarMenu(
 #-------sever-------
 
 server <- function(input, output) {
-  
-  ##------by state plot---------
-  # output$Bar <- renderPlot({
-  #   
-  #   state_subset <- Powerplants %>% filter(State == input$state_choice)
-  #     
-  #   ggplot(state_subset, aes(x = fct_infreq(Primary.Energy.Source), fill = Primary.Energy.Source)) +
-  #     geom_bar(color = "black") +
-  #     scale_fill_brewer(palette =  "Set3") +
-  #     theme(axis.text.x = element_text(angle = -90)) +
-  #     labs(y = "Count",
-  #          x = "Powerplant Primary Energy Source",
-  #          title = paste("Energy Source Distribution for", input$state_choice))
-  # })
   
   ##------by energy plot----------
   output$Energy <- renderPlot({
@@ -202,7 +194,8 @@ server <- function(input, output) {
         fillColor = ~powerplant_count_pal(State.Powerplant.Count),
         fillOpacity = 0.3,
         color = "black",
-        weight = 1
+        weight = 1,
+        label = ~State.Powerplant.Count
       ) %>% 
       
       addLegend(
@@ -277,7 +270,7 @@ output$SidebarChart <- renderPlot({
   })
 
 pal <- colorNumeric(
-  palette = "YlOrRd", 
+  palette = "PiYG", 
   domain = HQHPICNTY$Annual.Change....
 )
 
@@ -287,7 +280,8 @@ output$Housing <- renderLeaflet({
       addProviderTiles(providers$CartoDB.Positron) %>% 
       setView(lng = -98.58, lat = 39.82, zoom = 4) %>%
       addPolygons(
-        fillColor = "lightblue",
+        group = "base_states",
+        fillColor = "white",
         fillOpacity = 0.3,
         color = "black",
         weight = 1
@@ -313,8 +307,11 @@ observeEvent(input$Housing_marker_click, {
   
   zoomed_state(state_focus)
   
-  bbox_data <- state_sf[state_sf$State == state_focus, ]
+  bbox_data <- state_sf[state_sf$State == str_to_title(state_focus), ]
   bbox <- st_bbox(bbox_data)
+  
+  current_year <- if (!is.null(input$Year)) input$Year else 2000
+  year_state_subset <- HQHPICNTY %>% filter(Year == current_year, State == str_to_title(state_focus))
   
   leafletProxy("Housing") %>% 
     fitBounds(
@@ -323,30 +320,48 @@ observeEvent(input$Housing_marker_click, {
     ) 
 })
 
+selected_data <- reactive({
+  req(zoomed_state())
+  current_year <- if (!is.null(input$Year)) input$Year else 2000
+  
+  HQHPICNTY %>% 
+    filter(Year == current_year, State == zoomed_state()) %>% 
+    filter(!st_is_empty(geometry))
+})
+
 observe({
   req(zoomed_state())
   req(input$Year)
-  
-  year_state_subset <- HQHPICNTY %>% filter(Year == input$Year, State == zoomed_state())
+
+  df <- selected_data()
   
   leafletProxy("Housing") %>% 
     clearGroup("counties") %>% 
     addPolygons(
-      data = year_state_subset,
+      data = df,
       group = "counties",
       layerId = ~County,
-      pal = ~pal(Annual.Change....),
-      layer = ~HPI
-    ) %>% 
-    addMarkers(
-      data = housing_map,
-      lng = ~Longitude,
-      lat = ~Latitude,
-      layerId = ~County,
-      label = ~Company
+      fillColor = ~pal(Annual.Change....),
+      fillOpacity = 0.8,
+      label = ~as.character(HPI),
+      color = "black",
+      weight = 1
     )
 })
 
+output$slider <- renderUI({
+  req(zoomed_state())
+  
+  sliderInput("Year", 
+              "Slide to Change the Year", 
+              min = 2000, 
+              max = 2025, 
+              2000, 
+              animate = animationOptions(interval = 1500, loop = TRUE)
+  )
+})
+###side map under this one, plotting just overall HPI % change since 2000. Should supplement with a bar graph with state counts of # of F500 companies, to see 
+##if there is a trend between amount of these comapnies and HPI % change
   
 }
 
