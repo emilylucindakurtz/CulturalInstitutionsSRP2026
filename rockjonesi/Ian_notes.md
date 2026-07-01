@@ -514,6 +514,23 @@ Today I worked on fixing the issues with the housing portion of my Shiny app. I 
 also in my to-do for tomorrow
 
 
+## July 1
+
+Continued working on the housing/fortune 500 related parts of my shiny app. I added three more relevant graphs. In a new tab, users can now explore the overall (25 year) HPI % change by state, and a corresponding state-level graph providing the counts of number of forune 500 HQ that are in a given state. This was to try and reveal any trends that might have been present between higher HPI changes and the # of companies in a state. They share the color coding, and it can be seen that there aren't any obvious trends. 
+
+<img width="674" height="604" alt="image" src="https://github.com/user-attachments/assets/38b4c5f4-d818-4f47-89ff-f348ba083ee7" />
+
+
+Additionally, next to the main map where users can examine HPI change at the county level, I added supplemental map that shows the states YOY HPI trend over the 25 observed years. 
+
+<img width="889" height="430" alt="image" src="https://github.com/user-attachments/assets/16954140-6716-4e96-b82b-1c456df77cfc" />
+
+
+I still need to start the data centers map that emily suggested
+
+
+
+
 
 
 
