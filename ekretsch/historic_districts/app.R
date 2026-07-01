@@ -22,7 +22,7 @@ library(janitor)
 
 # 2. Initialize thematic
 #thematic_shiny(font = "auto")
-# Set the default global theme to Minimal
+# Set the default global theme to bw
 theme_set(theme_bw())
 
 # ----- Getting data n such -----
@@ -162,46 +162,75 @@ server <- function(input, output) {
   # Trigger an event every time the user changes the checkbox selection
   observeEvent(input$categories_choice, {
     
-    cols_to_check <- c()
+    # Get a character vector of the underlying column names
+    cols_to_check <- categories_counts %>% 
+      filter(category_nice %in% input$categories_choice) %>% 
+      pull(category_og)
     
-    for(i in seq_along(input$categories_choice)){
-      df_index <- which(categories_counts$category_nice == input$categories_choice[i])
-      cols_to_check <- c(cols_to_check, categories_counts[df_index, "category_og"])
-    }
+    #output$test_text <- renderText({
+    #  cols_to_check
+    #})
     
-    output$test_text <- renderText({ cols_to_check })
+    # Clear previous markers to avoid duplicates
+    leafletProxy("map2") %>% clearMarkers()
     
-    filtered_data <- map_data %>% 
-      mutate(selected = FALSE)
-    
-    
-    for(n in seq_along(cols_to_check)){ 
-      temp_col <- cols_to_check[n]
+    if(length(cols_to_check) > 0) {
+      filtered_data <- map_data %>%
+        filter(if_any(all_of(cols_to_check), ~ .x == 1)) # a district shows up if it matches any selected category
       
-      for(z in seq_along(filtered_data[,temp_col])){
-        if(filtered_data[z, temp_col] == 1){
-          filtered_data[z, 'selected'] = TRUE
-        }
+      if (nrow(filtered_data) > 0) {
+        leafletProxy("map2", data = filtered_data) %>% 
+          addMarkers()
+          #          addMarkers(popup = ~name)
+
       }
-      
-      
     }
-    
-    filtered_data <- filtered_data %>% 
-      filter(selected == TRUE)
-    
-    leafletProxy("map2") %>% 
-      clearMarkers()     # Clear previous markers to avoid duplicates
-    
-    # Only add markers if at least one checkbox is selected
-    if(nrow(filtered_data) > 0){
-      leafletProxy("map2", data = filtered_data) %>% 
-        addMarkers(
-          popup = ~name
-        )
-    }
-    
   })
+  
+  # 
+  # 
+  # observeEvent(input$categories_choice, {
+  #   
+  #   cols_to_check <- c()
+  #   
+  #   for(i in seq_along(input$categories_choice)){
+  #     df_index <- which(categories_counts$category_nice == input$categories_choice[i])
+  #     cols_to_check <- c(cols_to_check, categories_counts[df_index, "category_og"])
+  #   }
+  #   
+  #   output$test_text <- renderText({ cols_to_check })
+  #   
+  #   filtered_data <- map_data %>% 
+  #     mutate(selected = FALSE)
+  #   
+  #   
+  #   for(n in seq_along(cols_to_check)){ 
+  #     temp_col <- cols_to_check[n]
+  #     
+  #     for(z in seq_along(filtered_data[,temp_col])){
+  #       if(filtered_data[z, temp_col] == 1){
+  #         filtered_data[z, 'selected'] = TRUE
+  #       }
+  #     }
+  #     
+  #     
+  #   }
+  #   
+  #   filtered_data <- filtered_data %>% 
+  #     filter(selected == TRUE)
+  #   
+  #   leafletProxy("map2") %>% 
+  #     clearMarkers()     # Clear previous markers to avoid duplicates
+  #   
+  #   # Only add markers if at least one checkbox is selected
+  #   if(nrow(filtered_data) > 0){
+  #     leafletProxy("map2", data = filtered_data) %>% 
+  #       addMarkers(
+  #         popup = ~name
+  #       )
+  #   }
+  #   
+  # })
 
     
   # ----- Page 1 -----
