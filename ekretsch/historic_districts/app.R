@@ -115,11 +115,11 @@ ui <- page_fluid(
                     #selected = "Archeology"
                     #choices = colnames(historic_districts)[25:ncol(historic_districts)],
                   ),
-                  textOutput("test_text")
+                  
                 ),
                 mainPanel(
-                  leafletOutput("map2")
-                  
+                  leafletOutput("map2"),
+                  tableOutput("table2")
                 )
               )
     )
@@ -134,7 +134,10 @@ server <- function(input, output) {
   
   # ----- Page 2 -----
   
-  # function for changing filters
+  # Reactive value to hold the currently filtered dataset (shared by map and table)
+  districts_filtered <- reactiveVal(NULL)
+  
+  # Function for reaction to changing filters
   
   update_districts <- function() {
     # Get a character vector of the underlying column names
@@ -161,8 +164,20 @@ server <- function(input, output) {
         leafletProxy("map2", data = filtered_data) %>% 
           addCircleMarkers(~longitude, ~latitude, popup = ~property_name, radius = 5, color = "pink", fillOpacity = 1, weight = 1)
       }
+      
+      districts_filtered(filtered_data)
+      
+    } else {
+      districts_filtered(NULL) # if nothing is selected then clear the table
     }
   }
+  
+  
+  
+  output$table2 <- renderTable({
+    req(districts_filtered()) # Make sure that there is actually something to put
+    districts_filtered()
+  })
   
   output$map2 <- renderLeaflet({
     leaflet() %>% 
@@ -192,7 +207,6 @@ server <- function(input, output) {
   # Trigger an event every time the user changes the checkbox selection
   observeEvent(input$categories_choice, {
     update_districts()
-    
   })
   
   
