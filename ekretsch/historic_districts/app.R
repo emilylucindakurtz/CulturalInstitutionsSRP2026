@@ -119,7 +119,7 @@ ui <- page_fluid(
                 ),
                 mainPanel(
                   leafletOutput("map2"),
-                  tableOutput("table2")
+                  dataTableOutput("table2")
                 )
               )
     )
@@ -174,9 +174,10 @@ server <- function(input, output) {
   
   
   
-  output$table2 <- renderTable({
+  output$table2 <- renderDataTable({
     req(districts_filtered()) # Make sure that there is actually something to put
-    districts_filtered()
+    districts_filtered() %>% 
+      select(ref_number,	property_name,	state,	county,	city,	street_number,	area_of_significance,	external_link)
   })
   
   output$map2 <- renderLeaflet({
