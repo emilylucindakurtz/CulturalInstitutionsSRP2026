@@ -66,54 +66,48 @@ my_palette <- colorNumeric(
 
 # Define UI -----
 
-ui <- page_fluid(
-  navset_pill(
-    nav_panel("Page 1",
-              #   page_fluid(
-              #shinythemes::themeSelector(),
-              titlePanel("Historic Districts"),
-              
-              sidebarLayout(
-                position = "right",
-                
-                sidebarPanel(
-                  plotOutput("categories_dist")
-                ),
-                
-                mainPanel(
-                  #title = "Historic Districts",
-                  leafletOutput("map")
-                )
-              )
-              #)
+ui <- page_navbar(
+    #theme = shinytheme("flatly"),
+    title = "Historic Districts",
+    
+    nav_panel(
+      title = "Title",
+      sidebarLayout(
+        position = "right",
+        sidebarPanel(
+          plotOutput("categories_dist")
+        ),
+        
+        mainPanel(
+          #title = "Historic Districts",
+          leafletOutput("map")
+        )
+      )
     ),
-    nav_panel("Page 2",
-              #  page_fluid(
-              titlePanel("Detailed Historic Districts"),
-              sidebarLayout(
-                position = "left",
-                sidebarPanel(
-                  selectInput(
-                    inputId = "state_choice",
-                    label = "Choose state:",
-                    choices = c("All", sort(unique(choropleth_area_data$NAME)))
-                  ),
-                  checkboxGroupInput(
-                    inputId = "categories_choice",
-                    label = "Which categories would you like?",
-                    #choices = sort(categories_counts$category_og)
-                    choices = sort(categories_counts$category_nice)
-                  )
-                ),
-                mainPanel(
-                  leafletOutput("map2"),
-                  dataTableOutput("table2")
-                )
-              )
+    nav_panel(
+      title = "Title2",
+      sidebarLayout(
+        position = "left",
+        sidebarPanel(
+          selectInput(
+            inputId = "state_choice",
+            label = "Choose state:",
+            choices = c("All", sort(unique(choropleth_area_data$NAME)))
+          ),
+          checkboxGroupInput(
+            inputId = "categories_choice",
+            label = "Which categories would you like?",
+            #choices = sort(categories_counts$category_og)
+            choices = sort(categories_counts$category_nice)
+          )
+        ),
+        mainPanel(
+          leafletOutput("map2"),
+          dataTableOutput("table2")
+        )
+      )
     )
   )
-)
-
 
 # ------------------------------------------------------------------------------
 
