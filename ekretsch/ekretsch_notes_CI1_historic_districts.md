@@ -22,7 +22,7 @@
   - [x] Deal with the geocoding properly
     - [x] fix the NAs
   - [x] need to deal with the boundary increase boundary decrease situation that results in duplicates
-     
+     07/01-02
 <img width="1470" height="919" alt="image" src="https://github.com/user-attachments/assets/ecd5c44f-afa8-4adf-ab98-7db728d0fcb6" />
 
   still gonna be some issues due to inconsistency in naming:
