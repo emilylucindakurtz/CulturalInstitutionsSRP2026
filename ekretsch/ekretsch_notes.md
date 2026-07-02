@@ -19,7 +19,7 @@ Historic districts
 - [ ] maybe change the circle markers to the number things
 - [ ] start working on blog post thing
   - [ ] mention that historic districts can fall into multiple categories
-- [ ] maybe change standardization to % of acres that are historic districts?
+- [x] maybe change standardization to % of acres that are historic districts?
 
 
 personal notes
