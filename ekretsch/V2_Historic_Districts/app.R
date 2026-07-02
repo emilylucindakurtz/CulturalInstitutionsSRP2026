@@ -67,11 +67,38 @@ my_palette <- colorNumeric(
 # Define UI -----
 
 ui <- page_navbar(
-    #theme = shinytheme("flatly"),
-    title = "Historic Districts",
+#    theme = shinytheme("flatly"),
+  theme = bs_theme(bootswatch = "lux"), # morph also goo
+  #data-bs-theme="dark",
+  title = "Historic Districts",
+  fillable = TRUE, # Acts as page_fillable() for all tabs
     
+  nav_panel(
+    title = "Finder",
+    sidebarLayout(
+      position = "left",
+      sidebarPanel(
+        selectInput(
+          inputId = "state_choice",
+          label = "Choose state:",
+          choices = c("All", sort(unique(choropleth_area_data$NAME)))
+        ),
+        checkboxGroupInput(
+          inputId = "categories_choice",
+          label = "Which categories would you like?",
+          #choices = sort(categories_counts$category_og)
+          choices = sort(categories_counts$category_nice)
+        )
+      ),
+      mainPanel(
+        leafletOutput("map2"),
+        DT::DTOutput("table2")
+      )
+    )
+  ),
+  
     nav_panel(
-      title = "Title",
+      title = "Analysis",
       sidebarLayout(
         position = "right",
         sidebarPanel(
@@ -83,36 +110,15 @@ ui <- page_navbar(
           leafletOutput("map")
         )
       )
-    ),
-    nav_panel(
-      title = "Title2",
-      sidebarLayout(
-        position = "left",
-        sidebarPanel(
-          selectInput(
-            inputId = "state_choice",
-            label = "Choose state:",
-            choices = c("All", sort(unique(choropleth_area_data$NAME)))
-          ),
-          checkboxGroupInput(
-            inputId = "categories_choice",
-            label = "Which categories would you like?",
-            #choices = sort(categories_counts$category_og)
-            choices = sort(categories_counts$category_nice)
-          )
-        ),
-        mainPanel(
-          leafletOutput("map2"),
-          dataTableOutput("table2")
-        )
-      )
     )
+    
   )
 
 # ------------------------------------------------------------------------------
 
 # ----- Define server logic -----
 server <- function(input, output) {
+  #bs_themer()
   
   # ----- Page 2 -----
   
@@ -127,8 +133,21 @@ server <- function(input, output) {
       filter(category_nice %in% input$categories_choice) %>% 
       pull(category_og)
     
-    # Clear previous markers to avoid duplicates
-    leafletProxy("map2") %>% clearMarkers()
+    # Clear previous markers and shapes to avoid duplicates
+    leafletProxy("map2") %>% 
+      clearMarkers() %>% 
+      clearShapes()
+    
+    if(input$state_choice != "All"){
+      
+      filtered_states_sf <- states_sf %>% 
+        filter(NAME == input$state_choice)
+      
+      leafletProxy("map2") %>% 
+        addPolylines(data = filtered_states_sf, color = "black", opacity = 1, weight = 2)
+    }
+    
+    
     
     # Filter historic districts for only those that fit the user's specifications
     if(length(cols_to_check) > 0) {
@@ -140,11 +159,7 @@ server <- function(input, output) {
         filtered_data <- filtered_data %>% 
           filter(state == input$state_choice)
         
-        filtered_states_sf <- states_sf %>% 
-          filter(NAME == input$state_choice)
         
-        leafletProxy("map2") %>% 
-          addPolylines(data = filtered_states_sf, color = "black", opacity = 1, weight = 2)
       }
       
       # Add markers if there are datapoints to plot
@@ -160,10 +175,19 @@ server <- function(input, output) {
     }
   }
   
-  output$table2 <- renderDataTable({
+  output$table2 <- DT::renderDT({
     req(districts_filtered()) # Make sure that there is actually something to put
-    districts_filtered() %>% 
+    data_to_show <- districts_filtered() %>% 
       select(ref_number,	property_name,	state,	county,	city,	street_number,	area_of_significance,	external_link)
+    
+    DT::datatable(
+      data_to_show,
+      options = list(
+        scrollX = TRUE,   # Enforces a horizontal scrollbar instead of stretching the page
+        autoWidth = FALSE # Lets the browser scale column widths dynamically
+      )
+    )
+    
   })
   
   output$map2 <- renderLeaflet({
