@@ -81,7 +81,6 @@ ui <- page_navbar(
     
       h2("Find historic districts"),
       p("Explanation of the page loading..."),
-    
     card(
       sidebarLayout(
         position = "left",
@@ -91,7 +90,6 @@ ui <- page_navbar(
             label = "Choose state:",
             choices = c("All", sort(unique(choropleth_area_data$NAME)))
           ),
-          
           pickerInput(
             inputId = "categories_choice",
             label = "Choose categories:",
@@ -115,7 +113,6 @@ ui <- page_navbar(
         )
       )
     )
-    
   ),
   
     nav_panel(
@@ -145,19 +142,14 @@ ui <- page_navbar(
             card(
               textOutput("dist_state"),
               plotlyOutput("categories_dist")
-              
             )
           ),
-          
           mainPanel(
             h2("Standardized historic district acreage by state"),
             p("Percent of each state's land area that is filled by historic districts"),
             card(
               leafletOutput("map"),
-              
             ),
-            
-            
           )
         )
       ),
@@ -168,8 +160,6 @@ ui <- page_navbar(
         p("Further, it is interesting to compare the distributions of most popular categories for historic districts between states. [add alaska thing]")
       )
       )
-      
-      
     )
     
   )
