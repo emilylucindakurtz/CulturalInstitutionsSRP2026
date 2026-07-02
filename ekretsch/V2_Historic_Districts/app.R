@@ -78,7 +78,6 @@ ui <- page_navbar(
     
   nav_panel(
     title = "Finder",
-    
       h2("Find historic districts"),
       p("Explanation of the page loading..."),
     card(
@@ -134,6 +133,7 @@ ui <- page_navbar(
         max-height: none !important;
         flex: none !important; /* Prevents flexbox from collapsing the body */
       }"))),
+      
       card(
         card(
         sidebarLayout(
@@ -153,6 +153,7 @@ ui <- page_navbar(
           )
         )
       ),
+      
       card(
         h4("Analysis: "),
         p("This plot shows the percent of each state's area that is taken up by historic districts (historic district acreage of each state divided by that state's total area)."),
