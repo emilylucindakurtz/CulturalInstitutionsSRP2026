@@ -1,5 +1,36 @@
 # Emily Kretschmer's Notes
 
+## July 02!
+Historic districts
+
+- [x] get better theme
+- [x] For the ggplot -- make it just the top 5 or 10 or something
+- [x] make into plotly
+- [x] fix the ggplot -- it's too small and doesn't look so nice. figure out how to match to shiny theme
+- [x] fix the tabs
+- [x] fix switch to cards
+- [x] fix the state selector overlapping thing
+- [x] add filter for state
+- [x] add the table
+- [x] add an option to check all for categories
+- [x] maybe make a function
+- [x] for states, just outline the one selected.
+- [x] fix how the table looks
+- [ ] maybe change the circle markers to the number things
+- [ ] start working on blog post thing
+  - [ ] mention that historic districts can fall into multiple categories
+- [ ] maybe change standardization to % of acres that are historic districts?
+
+
+personal notes
+- [ ] look into other data
+- [ ] look into animations!
+- [ ] racial demographics?
+- [ ] taxes/resources
+- [ ] undercounting/bias/resouces? -- qualitative
+- [ ] per capita
+
+
 ## June 29
 #### Historic districts
 - [ ] check for consistency in territory names (N. Mariana Islands)
