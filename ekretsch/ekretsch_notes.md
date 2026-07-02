@@ -23,6 +23,7 @@ Historic districts
 - [x] switch ggplot to ggplotly
 - [x] fix tooltip on ggplotly
 - [x] fix scrolling issue
+- [ ] **investigate cali and colorado!**
 
 
 personal notes
