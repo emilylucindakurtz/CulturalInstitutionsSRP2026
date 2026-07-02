@@ -140,7 +140,6 @@ write_csv(combined_auto_ev_map, "auto_ev_map.csv")
 ```
 
 
-
 ```{r}
 leaflet() %>%
   addProviderTiles("CartoDB.Positron") %>%

@@ -225,8 +225,8 @@ Finished visualizations and mappings across datasets.
 - [X] conduct basic EDA across the data
 
 New tasks:
-- [ ] Search IPUMS and US Census data for more social factors, e.g. population, income, or racial demographics
-- [ ] Clean new data
+- [X] Search IPUMS and US Census data for more social factors, e.g. population, income, or racial demographics
+- [X] Clean new data
 - [ ] Shiny app?
 
 ## 6/26
@@ -234,4 +234,21 @@ Continue searching and cleaning new data.
 
 ## 6/29
 - Found and cleaned IPUMS (NHGIS) dataset
+- Created a few mappings with IPUMS variables
+
+- Also, remember citation for NHGIS data:
+Jonathan Schroeder, David Van Riper, Steven Manson, Katherine Knowles, Tracy Kugler, Finn Roberts, and Steven Ruggles. IPUMS National Historical Geographic Information System: Version 20.0 [dataset]. Minneapolis, MN: IPUMS. 2025. http://doi.org/10.18128/D050.V20.0
+
+## 6/30
+Continue with visualizations and exploring IPUMS data in relation to institutional data.
+
+Also, clean coordinates!
+
+Then began constructing basic Shiny app.
+
+## 7/1 
+Realized that I downloaded 1-year data from 2024 that did not include information for all the counties --> then re-downloaded data but from 2020-2024 (ACS 5-Year Period).
+
+More data cleaning included:
+- remaking NRHP_LHAT joined dataset such that the NRHP no longer included operas and only locations with 'theat(er/re)' in the name.
 

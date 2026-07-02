@@ -37,7 +37,7 @@ glimpse(all_theater_types)
 #splitting addresses into groups of 100 for easier geocoding
 groups <- split(all_theater_types, ceiling(seq_len(nrow(all_theater_types)) / 100))
 
-geocoded_groups <- map(groups,~ geocode(.x, address = Address, method = "arcgis", lat = latitude, long = longitude))
+geocoded_groups <- purrr::map(groups,~ geocode(.x, address = Address, method = "arcgis", lat = latitude, long = longitude))
 ```
 
 ```{r}
@@ -210,9 +210,7 @@ write_csv(all_theatres, "LHAT_theaters.csv")
 #renaming to distinguish datasets
 NRHP_all_theaters_geocoded <- all_theaters_geocoded
 LHAT_theaters <- all_theatres
-```
 
-```{r}
 # change state names to match
 NRHP_all_theaters_geocoded <- NRHP_all_theaters_geocoded %>%
   mutate(state = state.abb[match(State, toupper(state.name))])
@@ -237,4 +235,12 @@ NRHP_LHAT_joined <- NRHP_all_theaters_geocoded %>%
 write_csv(NRHP_LHAT_joined, "NRHP_LHAT_joined.csv")
 ```
 
+```{r}
+# cleaning theaters data to only have locations with "theater" or "theatre" in their name
+theaters_only <- NRHP_LHAT_joined %>%
+  filter(str_detect(`Property Name`, regex("theat(er|re)", ignore_case = TRUE)))
+```
 
+```{r}
+write_csv(theaters_only, "NRHP_LHAT_only_theaters.csv")
+```

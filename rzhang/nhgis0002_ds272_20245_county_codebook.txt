@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
-Codebook for NHGIS data file 'nhgis0001_ds271_2024_county'
+Codebook for NHGIS data file 'nhgis0002_ds272_20245_county'
 --------------------------------------------------------------------------------
  
 Contents
@@ -14,12 +14,12 @@ Additional documentation on NHGIS data sources is available at:
 Data Summary
 --------------------------------------------------------------------------------
  
-Year:             2024
+Year:             2020-2024
 Geographic level: County (by State)
 Extent:           All areas
-Dataset:          2024 American Community Survey: 1-Year Data
-   NHGIS code:    2024_ACS1
-   NHGIS ID:      ds271
+Dataset:          2024 American Community Survey: 5-Year Data [2020-2024, Block Groups & Larger Areas]
+   NHGIS code:    2020_2024_ACS5a
+   NHGIS ID:      ds272
 Breakdown(s):     Geographic Component:
                      Total area (00)
 Data type(s):     (E) Estimates
@@ -30,27 +30,22 @@ Tables:
 1. Total Population
    Universe:    Total population
    Source code: B01003
-   NHGIS code:  ATLO
+   NHGIS code:  AUO6
  
 2. Race
    Universe:    Total population
    Source code: B02001
-   NHGIS code:  ATLP
+   NHGIS code:  AUO7
  
 3. Educational Attainment for the Population 25 Years and Over
    Universe:    Population 25 years and over
    Source code: B15003
-   NHGIS code:  ATYZ
+   NHGIS code:  AUQ8
  
 4. Median Household Income in the Past 12 Months (in 2024 Inflation-Adjusted Dollars)
    Universe:    Households
    Source code: B19013
-   NHGIS code:  AT34
- 
-5. Housing Units
-   Universe:    Housing units
-   Source code: B25001
-   NHGIS code:  AUBZ
+   NHGIS code:  AURU
  
 --------------------------------------------------------------------------------
 Data Dictionary
@@ -67,20 +62,33 @@ Context Fields
         COUNTY:      County Name
         COUNTYA:     County Code
         COUSUBA:     County Subdivision Code
-        PLACEA:      Place Code
+        PLACEA:      Place/Remainder Code
+        TRACTA:      Census Tract Code
+        BLKGRPA:     Block Group Code
+        CONCITA:     Consolidated City Code
         AIANHHA:     American Indian Area/Alaska Native Area/Hawaiian Home Land Code
+        RES_ONLYA:   American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only) Code
+        TRUSTA:      American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land Code
+        AIHHTLI:     American Indian/Hawaiian Home Land Trust Land Indicator
+        AITSA:       Tribal Subdivision/Remainder Code
         ANRCA:       Alaska Native Regional Corporation Code
         CBSAA:       Metropolitan Statistical Area/Micropolitan Statistical Area Code
         CSAA:        Combined Statistical Area Code
         METDIVA:     Metropolitan Division Code
         UAA:         Urban Area Code
         CDCURRA:     Congressional District (2025-2027, 119th Congress) Code
+        SLDUA:       State Legislative District (Upper Chamber) Code
+        SLDLA:       State Legislative District (Lower Chamber) Code
+        ZCTA5A:      5-Digit ZIP Code Tabulation Area Code
+        SUBMCDA:     Subminor Civil Division Code
         SDELMA:      School District (Elementary)/Remainder Code
         SDSECA:      School District (Secondary)/Remainder Code
         SDUNIA:      School District (Unified)/Remainder Code
         PCI:         Principal City Indicator
         PUMAA:       Public Use Microdata Area Code
         GEO_ID:      Census Geographic Identifier
+        BTTRA:       Tribal Census Tract Code
+        BTBGA:       Tribal Block Group Code
         TL_GEO_ID:   TIGER/Line Shapefile Geographic Identifier
  
 Data Type (E):
@@ -91,65 +99,59 @@ Data Type (E):
     Table 1:     Total Population
     Universe:    Total population
     Source code: B01003
-    NHGIS code:  ATLO
-        ATLOE001:    Total
+    NHGIS code:  AUO6
+        AUO6E001:    Total
  
     Table 2:     Race
     Universe:    Total population
     Source code: B02001
-    NHGIS code:  ATLP
-        ATLPE001:    Total
-        ATLPE002:    White alone
-        ATLPE003:    Black or African American alone
-        ATLPE004:    American Indian and Alaska Native alone
-        ATLPE005:    Asian alone
-        ATLPE006:    Native Hawaiian and Other Pacific Islander alone
-        ATLPE007:    Some Other Race alone
-        ATLPE008:    Two or More Races
-        ATLPE009:    Two or More Races: Two races including Some Other Race
-        ATLPE010:    Two or More Races: Two races excluding Some Other Race, and three or more races
+    NHGIS code:  AUO7
+        AUO7E001:    Total
+        AUO7E002:    White alone
+        AUO7E003:    Black or African American alone
+        AUO7E004:    American Indian and Alaska Native alone
+        AUO7E005:    Asian alone
+        AUO7E006:    Native Hawaiian and Other Pacific Islander alone
+        AUO7E007:    Some Other Race alone
+        AUO7E008:    Two or More Races
+        AUO7E009:    Two or More Races: Two races including Some Other Race
+        AUO7E010:    Two or More Races: Two races excluding Some Other Race, and three or more races
  
     Table 3:     Educational Attainment for the Population 25 Years and Over
     Universe:    Population 25 years and over
     Source code: B15003
-    NHGIS code:  ATYZ
-        ATYZE001:    Total
-        ATYZE002:    No schooling completed
-        ATYZE003:    Nursery school
-        ATYZE004:    Kindergarten
-        ATYZE005:    1st grade
-        ATYZE006:    2nd grade
-        ATYZE007:    3rd grade
-        ATYZE008:    4th grade
-        ATYZE009:    5th grade
-        ATYZE010:    6th grade
-        ATYZE011:    7th grade
-        ATYZE012:    8th grade
-        ATYZE013:    9th grade
-        ATYZE014:    10th grade
-        ATYZE015:    11th grade
-        ATYZE016:    12th grade, no diploma
-        ATYZE017:    Regular high school diploma
-        ATYZE018:    GED or alternative credential
-        ATYZE019:    Some college, less than 1 year
-        ATYZE020:    Some college, 1 or more years, no degree
-        ATYZE021:    Associate's degree
-        ATYZE022:    Bachelor's degree
-        ATYZE023:    Master's degree
-        ATYZE024:    Professional school degree
-        ATYZE025:    Doctorate degree
+    NHGIS code:  AUQ8
+        AUQ8E001:    Total
+        AUQ8E002:    No schooling completed
+        AUQ8E003:    Nursery school
+        AUQ8E004:    Kindergarten
+        AUQ8E005:    1st grade
+        AUQ8E006:    2nd grade
+        AUQ8E007:    3rd grade
+        AUQ8E008:    4th grade
+        AUQ8E009:    5th grade
+        AUQ8E010:    6th grade
+        AUQ8E011:    7th grade
+        AUQ8E012:    8th grade
+        AUQ8E013:    9th grade
+        AUQ8E014:    10th grade
+        AUQ8E015:    11th grade
+        AUQ8E016:    12th grade, no diploma
+        AUQ8E017:    Regular high school diploma
+        AUQ8E018:    GED or alternative credential
+        AUQ8E019:    Some college, less than 1 year
+        AUQ8E020:    Some college, 1 or more years, no degree
+        AUQ8E021:    Associate's degree
+        AUQ8E022:    Bachelor's degree
+        AUQ8E023:    Master's degree
+        AUQ8E024:    Professional school degree
+        AUQ8E025:    Doctorate degree
  
     Table 4:     Median Household Income in the Past 12 Months (in 2024 Inflation-Adjusted Dollars)
     Universe:    Households
     Source code: B19013
-    NHGIS code:  AT34
-        AT34E001:    Median household income in the past 12 months (in 2024 inflation-adjusted dollars)
- 
-    Table 5:     Housing Units
-    Universe:    Housing units
-    Source code: B25001
-    NHGIS code:  AUBZ
-        AUBZE001:    Total
+    NHGIS code:  AURU
+        AURUE001:    Median household income in the past 12 months (in 2024 inflation-adjusted dollars)
  
 Data Type (M):
     Margins of error
@@ -159,65 +161,59 @@ Data Type (M):
     Table 1:     Total Population
     Universe:    Total population
     Source code: B01003
-    NHGIS code:  ATLO
-        ATLOM001:    Total
+    NHGIS code:  AUO6
+        AUO6M001:    Total
  
     Table 2:     Race
     Universe:    Total population
     Source code: B02001
-    NHGIS code:  ATLP
-        ATLPM001:    Total
-        ATLPM002:    White alone
-        ATLPM003:    Black or African American alone
-        ATLPM004:    American Indian and Alaska Native alone
-        ATLPM005:    Asian alone
-        ATLPM006:    Native Hawaiian and Other Pacific Islander alone
-        ATLPM007:    Some Other Race alone
-        ATLPM008:    Two or More Races
-        ATLPM009:    Two or More Races: Two races including Some Other Race
-        ATLPM010:    Two or More Races: Two races excluding Some Other Race, and three or more races
+    NHGIS code:  AUO7
+        AUO7M001:    Total
+        AUO7M002:    White alone
+        AUO7M003:    Black or African American alone
+        AUO7M004:    American Indian and Alaska Native alone
+        AUO7M005:    Asian alone
+        AUO7M006:    Native Hawaiian and Other Pacific Islander alone
+        AUO7M007:    Some Other Race alone
+        AUO7M008:    Two or More Races
+        AUO7M009:    Two or More Races: Two races including Some Other Race
+        AUO7M010:    Two or More Races: Two races excluding Some Other Race, and three or more races
  
     Table 3:     Educational Attainment for the Population 25 Years and Over
     Universe:    Population 25 years and over
     Source code: B15003
-    NHGIS code:  ATYZ
-        ATYZM001:    Total
-        ATYZM002:    No schooling completed
-        ATYZM003:    Nursery school
-        ATYZM004:    Kindergarten
-        ATYZM005:    1st grade
-        ATYZM006:    2nd grade
-        ATYZM007:    3rd grade
-        ATYZM008:    4th grade
-        ATYZM009:    5th grade
-        ATYZM010:    6th grade
-        ATYZM011:    7th grade
-        ATYZM012:    8th grade
-        ATYZM013:    9th grade
-        ATYZM014:    10th grade
-        ATYZM015:    11th grade
-        ATYZM016:    12th grade, no diploma
-        ATYZM017:    Regular high school diploma
-        ATYZM018:    GED or alternative credential
-        ATYZM019:    Some college, less than 1 year
-        ATYZM020:    Some college, 1 or more years, no degree
-        ATYZM021:    Associate's degree
-        ATYZM022:    Bachelor's degree
-        ATYZM023:    Master's degree
-        ATYZM024:    Professional school degree
-        ATYZM025:    Doctorate degree
+    NHGIS code:  AUQ8
+        AUQ8M001:    Total
+        AUQ8M002:    No schooling completed
+        AUQ8M003:    Nursery school
+        AUQ8M004:    Kindergarten
+        AUQ8M005:    1st grade
+        AUQ8M006:    2nd grade
+        AUQ8M007:    3rd grade
+        AUQ8M008:    4th grade
+        AUQ8M009:    5th grade
+        AUQ8M010:    6th grade
+        AUQ8M011:    7th grade
+        AUQ8M012:    8th grade
+        AUQ8M013:    9th grade
+        AUQ8M014:    10th grade
+        AUQ8M015:    11th grade
+        AUQ8M016:    12th grade, no diploma
+        AUQ8M017:    Regular high school diploma
+        AUQ8M018:    GED or alternative credential
+        AUQ8M019:    Some college, less than 1 year
+        AUQ8M020:    Some college, 1 or more years, no degree
+        AUQ8M021:    Associate's degree
+        AUQ8M022:    Bachelor's degree
+        AUQ8M023:    Master's degree
+        AUQ8M024:    Professional school degree
+        AUQ8M025:    Doctorate degree
  
     Table 4:     Median Household Income in the Past 12 Months (in 2024 Inflation-Adjusted Dollars)
     Universe:    Households
     Source code: B19013
-    NHGIS code:  AT34
-        AT34M001:    Median household income in the past 12 months (in 2024 inflation-adjusted dollars)
- 
-    Table 5:     Housing Units
-    Universe:    Housing units
-    Source code: B25001
-    NHGIS code:  AUBZ
-        AUBZM001:    Total
+    NHGIS code:  AURU
+        AURUM001:    Median household income in the past 12 months (in 2024 inflation-adjusted dollars)
  
 --------------------------------------------------------------------------------
 Citation and Use of NHGIS Data
