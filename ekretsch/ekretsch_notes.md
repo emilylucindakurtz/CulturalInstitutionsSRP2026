@@ -20,6 +20,9 @@ Historic districts
 - [ ] start working on blog post thing
   - [ ] mention that historic districts can fall into multiple categories
 - [x] maybe change standardization to % of acres that are historic districts?
+- [x] switch ggplot to ggplotly
+- [x] fix tooltip on ggplotly
+- [x] fix scrolling issue
 
 
 personal notes
