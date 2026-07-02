@@ -11,6 +11,7 @@
 - [x] deal with de-select thing.
 - [ ] fix dc ??
 - [ ] fix the alabama ones showing up somewhere else...
+- [ ] - [ ] **investigate cali and colorado!**
 
       
 - [ ] shiny app where you can select the state and then a bar chart pops up for the cateories
