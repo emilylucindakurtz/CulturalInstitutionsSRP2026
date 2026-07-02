@@ -3,6 +3,7 @@ library(shiny)
 library(bslib)
 library(thematic)
 library(shinythemes)
+library(shinyWidgets)
 
 library(leaflet)
 library(tigris)
@@ -83,11 +84,25 @@ ui <- page_navbar(
           label = "Choose state:",
           choices = c("All", sort(unique(choropleth_area_data$NAME)))
         ),
-        checkboxGroupInput(
+        
+        # checkboxGroupInput(
+        #   inputId = "categories_choice",
+        #   label = "Which categories would you like?",
+        #   #choices = sort(categories_counts$category_og)
+        #   choices = sort(categories_counts$category_nice)
+        # )
+        
+        
+        pickerInput(
           inputId = "categories_choice",
-          label = "Which categories would you like?",
-          #choices = sort(categories_counts$category_og)
-          choices = sort(categories_counts$category_nice)
+          label = "Choose categories:",
+          choices = sort(categories_counts$category_nice),
+          multiple = TRUE,
+          options = pickerOptions(
+            actiosnBox = TRUE, # adds select all/deselct all buttns
+            liveSearch = TRUE, # allowing user to search
+            size = 10 # max visible items before scrolling
+          )
         )
       ),
       mainPanel(
@@ -178,7 +193,7 @@ server <- function(input, output) {
   output$table2 <- DT::renderDT({
     req(districts_filtered()) # Make sure that there is actually something to put
     data_to_show <- districts_filtered() %>% 
-      select(ref_number,	property_name,	state,	county,	city,	street_number,	area_of_significance,	external_link)
+      select(ref_number,	property_name,	state,	county,	city,	street_number,	area_of_significance)
     
     DT::datatable(
       data_to_show,
