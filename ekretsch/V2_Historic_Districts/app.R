@@ -21,7 +21,7 @@ library(janitor)
 # 2. Initialize thematic
 #thematic_shiny(font = "auto")
 # Set the default global theme to bw
-theme_set(theme_bw())
+#theme_set(theme_bw())
 
 # ----- Getting data n such -----
 historic_districts <- read_csv("../../data/Historic Districts/historic_districts_clean4.csv")
@@ -76,55 +76,71 @@ ui <- page_navbar(
     
   nav_panel(
     title = "Finder",
-    sidebarLayout(
-      position = "left",
-      sidebarPanel(
-        selectInput(
-          inputId = "state_choice",
-          label = "Choose state:",
-          choices = c("All", sort(unique(choropleth_area_data$NAME)))
-        ),
-        
-        # checkboxGroupInput(
-        #   inputId = "categories_choice",
-        #   label = "Which categories would you like?",
-        #   #choices = sort(categories_counts$category_og)
-        #   choices = sort(categories_counts$category_nice)
-        # )
-        
-        
-        pickerInput(
-          inputId = "categories_choice",
-          label = "Choose categories:",
-          choices = sort(categories_counts$category_nice),
-          multiple = TRUE,
-          options = pickerOptions(
-            actionsBox = TRUE, # adds select all/deselct all buttns
-            liveSearch = TRUE, # allowing user to search
-            size = 10 # max visible items before scrolling
+    
+      h2("Find historic districts!"),
+      p("Explanation of the page loading..."),
+    
+    card(
+      sidebarLayout(
+        position = "left",
+        sidebarPanel(
+          selectInput(
+            inputId = "state_choice",
+            label = "Choose state:",
+            choices = c("All", sort(unique(choropleth_area_data$NAME)))
+          ),
+          
+          pickerInput(
+            inputId = "categories_choice",
+            label = "Choose categories:",
+            choices = sort(categories_counts$category_nice),
+            multiple = TRUE,
+            options = pickerOptions(
+              actionsBox = TRUE, # adds select all/deselct all buttns
+              liveSearch = TRUE, # allowing user to search
+              size = 10 # max visible items before scrolling
+            )
           )
+        ),
+        mainPanel(
+          card(
+            leafletOutput("map2")
+          ),
+          card(
+            DT::DTOutput("table2")
+          )
+          
         )
-      ),
-      mainPanel(
-        leafletOutput("map2"),
-        DT::DTOutput("table2")
       )
     )
+    
   ),
   
     nav_panel(
       title = "Analysis",
-      sidebarLayout(
-        position = "right",
-        sidebarPanel(
-          plotOutput("categories_dist")
-        ),
-        
-        mainPanel(
-          #title = "Historic Districts",
-          leafletOutput("map")
+      card(
+        sidebarLayout(
+          position = "right",
+          sidebarPanel(
+            plotOutput("categories_dist")
+          ),
+          
+          mainPanel(
+            h2("Standardized historic district acreage by state"),
+            card(
+              leafletOutput("map"),
+              
+            ),
+            card(
+              h4("Analysis: "),
+              p("This plot shows the historic district acreage of each state divided by that state's total area. [Add more analysis/explanation.]")  
+            )
+            
+          )
         )
       )
+      
+      
     )
     
   )
@@ -134,6 +150,7 @@ ui <- page_navbar(
 # ----- Define server logic -----
 server <- function(input, output) {
   #bs_themer()
+  thematic_shiny(font = "auto")
   
   # ----- Page 2 -----
   
