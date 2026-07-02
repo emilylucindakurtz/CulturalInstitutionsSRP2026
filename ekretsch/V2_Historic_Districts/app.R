@@ -58,7 +58,7 @@ choropleth_area_data <- states_sf %>%
 
 # Standardizing (historic district acreage by total state land acreage)
 choropleth_area_data <- choropleth_area_data %>% 
-  mutate(standardized_hd_acreage = total_acreage_hd/land_area_acres) 
+  mutate(standardized_hd_acreage = total_acreage_hd/land_area_acres*100) 
 
 # Color palette (UNSURE IF THIS SHOULD GO HERE OR LaTER)
 my_palette <- colorNumeric(
@@ -120,7 +120,25 @@ ui <- page_navbar(
   
     nav_panel(
       title = "Analysis",
+      
+      # CSS for scrolling below is from gemini... 
+      tags$head(
+        tags$style(HTML("
+      /* Force the bslib card grid/container to allow natural height */
+      .bslib-card, .card {
+        height: auto !important;
+        min-height: max-content !important;
+        max-height: none !important;
+      }
+      /* Remove internal scrollbars from the card body */
+      .card-body, .bslib-card-body {
+        overflow: visible !important;
+        height: auto !important;
+        max-height: none !important;
+        flex: none !important; /* Prevents flexbox from collapsing the body */
+      }"))),
       card(
+        card(
         sidebarLayout(
           position = "right",
           sidebarPanel(
@@ -133,18 +151,22 @@ ui <- page_navbar(
           
           mainPanel(
             h2("Standardized historic district acreage by state"),
+            p("Percent of each state's land area that is filled by historic districts"),
             card(
               leafletOutput("map"),
               
             ),
-            card(
-              h4("Analysis: "),
-              p("This plot shows the historic district acreage of each state divided by that state's total area. [Add more analysis/explanation.]"),
-              p("Key was originally Hist. Dist. area/state land area")
-            )
+            
             
           )
         )
+      ),
+      card(
+        h4("Analysis: "),
+        p("This plot shows the percent of each state's area that is taken up by historic districts (historic district acreage of each state divided by that state's total area)."),
+        p("The choropleth map reveals there is an overwhelming concentration of historic districts on the East Coast, in particular Virginia."),
+        p("Further, it is interesting to compare the distributions of most popular categories for historic districts between states. [add alaska thing]")
+      )
       )
       
       
@@ -278,7 +300,7 @@ server <- function(input, output) {
         pal = my_palette,
         value = choropleth_area_data$standardized_hd_acreage, # same as values   = ~total_num_districts
         position = "bottomright",
-        title = "Key"
+        title = paste("Key (%)")
       )
   })
   
