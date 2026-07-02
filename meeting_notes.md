@@ -160,4 +160,14 @@ Emily will be working on general website to fit everyone's stories/work under on
 - Rimona - theaters EDA started and websites scraped, made maps and plots for these and LACs and HBCUs
 -   will focus on automotive as well
 
+# June 30
 
+Questions:
+- what are we looking at for the next two weeks?
+
+- Ian - library EDA
+- Emily - text analysis for street art, historic district mapping shiny app
+- Rimona - finished automotive data, made some viz and maps, collected IPUMS data exploring auto, theaters, colleges based on some demographic info
+- Zoe - shiny app for museum basically done, satellite to come in future
+
+- meet again on thursday

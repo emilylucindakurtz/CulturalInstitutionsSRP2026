@@ -26,7 +26,7 @@ library(dplyr)
 
 ### Getting regions
 ```{r}
-murals_clean <- historic_districts <- read_csv("../../data/Murals/street_art_clean.csv")
+murals_clean <- read_csv("../data/Murals/street_art_clean.csv")
 ```
 
 ```{r}
@@ -43,8 +43,6 @@ region_polygons <- regions() %>%
 ggplot() +
   geom_sf(data = region_polygons, aes(fill = NAME), color = "white")
 ```
-
-
 
 ## Text analysis
 
@@ -93,7 +91,7 @@ custom_stop_words <- c(
  stop_words_combined <- bind_rows(stop_words, custom_df)
 
 murals_descrip_words <- murals_clean %>% 
-  #mutate(description_lower = str_remove_all(description_lower, "\\d+")) %>% # removing nums (like years, etc)
+  mutate(description_lower = str_remove_all(description_lower, "\\d+")) %>% # removing nums (like years, etc)
   unnest_tokens(output = word, input = description_lower) %>% 
   #anti_join(get_stopwords(source = "stopwords-iso"), by="word") %>% #could change the source...
   anti_join(stop_words_combined, by = "word")

@@ -505,6 +505,29 @@ In regards to mapping out HPU over time:
 - Made a good amount of progress on the housing data over time portion of the industries shiny app
   - there are still issues though where it will crash when I am trying to zoom in.
 
+## June 30
+
+Today I worked on fixing the issues with the housing portion of my Shiny app. I was able to debug it and have it run how i would like to. There is an animated slider, and so viewers can observe how the HPI has shifted over the past ~25years. However, I am searching for a good color pallette that will me best present these anual % changes, as the scale is fairly skewed, meaning that the fill colors of states aren't reflecting the patterns in a way that I think is the most accurate and easy to digest. --> will continue to search tomorrow
+
+- I alo have ideas for suuplemental graphs to go on this page, tht will really allow viewers to view housing trends in relation to corporate HQ. However, it involves calculating total % change over the 25 years, which posed a problem of mismatching data. There is a lot more missing state HPI info for the 2023-24-25 years than in the early 2000s. Maybe there was some issue that caused the N/As? I might also just have to base the calculation on a 20 year change rather than 25 or so. 
+
+also in my to-do for tomorrow
+
+
+## July 1
+
+Continued working on the housing/fortune 500 related parts of my shiny app. I added three more relevant graphs. In a new tab, users can now explore the overall (25 year) HPI % change by state, and a corresponding state-level graph providing the counts of number of forune 500 HQ that are in a given state. This was to try and reveal any trends that might have been present between higher HPI changes and the # of companies in a state. They share the color coding, and it can be seen that there aren't any obvious trends. 
+
+<img width="674" height="604" alt="image" src="https://github.com/user-attachments/assets/38b4c5f4-d818-4f47-89ff-f348ba083ee7" />
+
+
+Additionally, next to the main map where users can examine HPI change at the county level, I added supplemental map that shows the states YOY HPI trend over the 25 observed years. 
+
+<img width="889" height="430" alt="image" src="https://github.com/user-attachments/assets/16954140-6716-4e96-b82b-1c456df77cfc" />
+
+
+I still need to start the data centers map that emily suggested
+
 
 
 
