@@ -9,6 +9,8 @@ library(leaflet)
 library(tigris)
 library(sf)
 
+library(plotly)
+
 library(tidyverse)
 
 library(janitor)
@@ -77,7 +79,7 @@ ui <- page_navbar(
   nav_panel(
     title = "Finder",
     
-      h2("Find historic districts!"),
+      h2("Find historic districts"),
       p("Explanation of the page loading..."),
     
     card(
@@ -122,7 +124,11 @@ ui <- page_navbar(
         sidebarLayout(
           position = "right",
           sidebarPanel(
-            plotOutput("categories_dist")
+            card(
+              textOutput("dist_state"),
+              plotlyOutput("categories_dist")
+              
+            )
           ),
           
           mainPanel(
@@ -133,7 +139,8 @@ ui <- page_navbar(
             ),
             card(
               h4("Analysis: "),
-              p("This plot shows the historic district acreage of each state divided by that state's total area. [Add more analysis/explanation.]")  
+              p("This plot shows the historic district acreage of each state divided by that state's total area. [Add more analysis/explanation.]"),
+              p("Key was originally Hist. Dist. area/state land area")
             )
             
           )
@@ -190,8 +197,6 @@ server <- function(input, output) {
       if(input$state_choice != "All"){
         filtered_data <- filtered_data %>% 
           filter(state == input$state_choice)
-        
-        
       }
       
       # Add markers if there are datapoints to plot
@@ -273,7 +278,7 @@ server <- function(input, output) {
         pal = my_palette,
         value = choropleth_area_data$standardized_hd_acreage, # same as values   = ~total_num_districts
         position = "bottomright",
-        title = "Hist. Dist. area/state land area"
+        title = "Key"
       )
   })
   
@@ -301,7 +306,16 @@ server <- function(input, output) {
   })
   
   # ----- Output histogram -----
-  output$categories_dist <- renderPlot({
+  
+  output$dist_state <- renderText({
+    if(is.null(selected_state())){
+      "Click on a state to see its top 5 historic district categories"
+    } else{
+      paste0("Top 5 historic district categories in ", selected_state())
+    }
+  })
+  
+  output$categories_dist <- renderPlotly({
     req(selected_state())     # Prevent error on startup when no state is clicked yet
     
     state_name <- selected_state()
@@ -311,14 +325,29 @@ server <- function(input, output) {
       select(category, counts) %>% 
       filter(counts >0)
     
-    ggplot(data = temp_df, aes(y = reorder(category, counts), x = counts)) +
+    p <- temp_df %>% 
+      mutate(tooltip_text = paste(
+        paste0("Category: ", category),
+        paste0("Counts: ", counts),
+        sep = "\n"
+      )) %>% 
+      slice_max(order_by = counts, n = 5) %>% 
+      ggplot(aes(y = reorder(category, counts), x = counts, text = tooltip_text)) +
       geom_col() +
-      labs(
-        title = selected_state(),
-        y = "Category",
-        x = "Counts"
+      scale_y_discrete(labels = scales::label_wrap(10)) +
+      theme_minimal() + #CBL -- 
+      theme(
+        axis.text = element_text(size = 8),
+        axis.title.y = element_text(margin = margin(r = 50))
+        #axis.text.x = element_text(angle = 30, hjust = 0.5, vjust = 0.5)
       ) +
-      theme_bw() #CBL -- 
+      labs(
+        #title = paste0(selected_state(), " top 5 categories of historic districts"),
+        y = NULL,
+        x = "Count"
+      )
+    
+    ggplotly(p, tooltip = "text")
   })
   
   
