@@ -157,12 +157,18 @@ server <- function(input, output) {
       if(input$state_choice != "All"){
         filtered_data <- filtered_data %>% 
           filter(state == input$state_choice)
+        
+        filtered_states_sf <- states_sf %>% 
+          filter(NAME == input$state_choice)
+        
+        leafletProxy("map2") %>% 
+          addPolylines(data = filtered_states_sf, color = "black", opacity = 1, weight = 2)
       }
       
       # Add markers if there are datapoints to plot
       if (nrow(filtered_data) > 0) {
         leafletProxy("map2", data = filtered_data) %>% 
-          addCircleMarkers(~longitude, ~latitude, popup = ~property_name, radius = 5, color = "pink", fillOpacity = 1, weight = 1)
+          addCircleMarkers(~longitude, ~latitude, popup = ~property_name, radius = 5, color = "red", fillOpacity = 1, weight = 1)
       }
       
       districts_filtered(filtered_data)
@@ -172,8 +178,6 @@ server <- function(input, output) {
     }
   }
   
-  
-  
   output$table2 <- renderDataTable({
     req(districts_filtered()) # Make sure that there is actually something to put
     districts_filtered() %>% 
@@ -182,9 +186,9 @@ server <- function(input, output) {
   
   output$map2 <- renderLeaflet({
     leaflet() %>% 
-      addProviderTiles("CartoDB.Positron") %>% 
+      addProviderTiles("OpenStreetMap.HOT") %>% 
       setView(lng = -85, lat = 39.5, zoom = 4) %>% # set it to US to start
-      addPolylines(data = states_sf, color = "black", opacity = 1, weight = 2) #uh yikes
+      #addPolylines(data = states_sf, color = "black", opacity = 1, weight = 2) #uh yikes
   })
   
   # Trigger an event every time the user changes the dropdown selection
@@ -273,7 +277,7 @@ server <- function(input, output) {
         fillOpacity = .75,
         color = "white", # border color
         weight = 1,
-        smoothFactor = 0.5, # slightly crisper borders -- default is 1 (higher values > more simplification > jaggier borders but shorter rendering)
+        smoothFactor = 0.5 # slightly crisper borders -- default is 1 (higher values > more simplification > jaggier borders but shorter rendering)
         # add the highlight/hover and tooltip things
       ) %>% 
       
