@@ -99,7 +99,7 @@ ui <- page_navbar(
           choices = sort(categories_counts$category_nice),
           multiple = TRUE,
           options = pickerOptions(
-            actiosnBox = TRUE, # adds select all/deselct all buttns
+            actionsBox = TRUE, # adds select all/deselct all buttns
             liveSearch = TRUE, # allowing user to search
             size = 10 # max visible items before scrolling
           )
