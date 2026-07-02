@@ -2,12 +2,14 @@
 
 # Personal notes/things to do/ideas for further analysis:
 
-- [ ] fix the checkbox situation
+- [x] fix the checkbox situation
 - [ ] add specific location for alaska zoomy
 - [ ] maybe add an option for being able to click on one point in the table and then zooming
 - [ ] maybe add option for selecting multiple states -- so checkboxes there too (not dropdown)?
 - [ ] fix the bar at the top
 - [ ] maybe add state density?
+- [x] deal with de-select thing.
+- [ ] fix dc ??
 
       
 - [ ] shiny app where you can select the state and then a bar chart pops up for the cateories
