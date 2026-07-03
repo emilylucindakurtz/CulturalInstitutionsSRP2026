@@ -7,6 +7,7 @@ library(pdftools)
 library(tidytext)
 library(scales)
 library(tigris) 
+library(rvest)
 library(sf)
 library(readxl)
 
@@ -231,5 +232,53 @@ ggplot(PowerPlants_Clean, aes(x = State, fill = Primary.Energy.Source)) +
 
 #write.csv(Fortune500_Housing, "Fortune500HQ_Housing.csv", row.names = FALSE)
 #write.csv(county_HPI, "county_HPI.csv", row.names = FALSE)
-write.csv(Fortune500_All_Housing, "Fortune500_Housing_All_Counties.csv", row.names = FALSE)
+#write.csv(Fortune500_All_Housing, "Fortune500_Housing_All_Counties.csv", row.names = FALSE)
+
+
+
+ggplot() +
+  geom_density_2d_filled(data = PowerPlants_Clean,
+                  aes(x = Longitude, y = Latitude, fill = after_stat(nlevel), weight = Maximum.Summer.Capacity..Megawatts.)) +
+  geom_sf(data = state_sf, fill = NA, color = "black", linewidth = 0.3) +
+  coord_sf(xlim = c(-125, -66), ylim = c(24, 50), expand = FALSE) +
+  scale_fill_gradientn(colors = c("#a4d96c", "yellow", "orange", "red")) +
+  theme_void() +
+  theme(legend.position = "none")
+
+
+
+fortuneurl <- "https://www.50pros.com/fortune500"
+webpage <- read_html(fortuneurl)
+
+
+my_css_selector <- ".sm\\:max-w-\\[220px\\], .sm\\:px-3 + .text-text-secondary span"
+
+scraped_data <- webpage %>%
+  html_elements(css = my_css_selector) %>%
+  html_text(trim = TRUE)
+
+
+data_matrix <- matrix(scraped_data, ncol = 3, byrow = TRUE)
+fortune_rev <- as.data.frame(data_matrix)
+colnames(fortune_rev) <- c("Company", "Sector", "Revenue")
+fortune_rev <- fortune_rev %>% mutate(Company = str_to_lower(Company),
+                                      Company = fct_collapse(Company,
+                                        "zoetis inc." = c("zoetis inc.",
+                                                          "zoetis"),
+                                        "zimmer biomet warsaw" = c("zimmer biomet warsaw",
+                                                                   "zimmer biomet"),
+                                        "yum china holdings" = c("yum china holdings",
+                                                                 "china holdings"),
+                                        "xpo logistics" = c("xpo logistics",
+                                                            "xpo"),
+                                        
+                                      ))
+Fortune500_Housing <- Fortune500_Housing %>% mutate(Company = str_to_lower(Company))
+
+Fortune500_full <- Fortune500_Housing %>% full_join(fortune_rev, by = "Company")
+
+
+
+
+
 
