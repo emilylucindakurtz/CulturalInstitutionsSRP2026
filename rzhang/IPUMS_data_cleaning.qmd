@@ -172,78 +172,6 @@ leaflet() %>%
 
 
 ```{r}
-leaflet(counties_map) %>%
-  addProviderTiles(providers$CartoDB.Positron) %>%
-  setView(lng = -98.5, lat = 39.8, zoom = 4) %>%   # center on continental US
-  addPolygons(
-    fillColor = ~population_pal(total_population),
-    weight = 0.5,
-    opacity = 1,
-    color = "white",
-    fillOpacity = 0.7,
-    label = labels,
-    labelOptions = labelOptions(
-      style = list("font-weight" = "normal", padding = "3px 8px"),
-      textsize = "13px",
-      direction = "auto"
-    ),
-    highlightOptions = highlightOptions(
-      weight = 2,
-      color = "#666",
-      fillOpacity = 0.9,
-      bringToFront = TRUE
-    )
-  ) %>%
-  addLegend(
-    pal = population_pal,
-    values = ~total_population,
-    opacity = 0.7,
-    title = "Total Population",
-    position = "bottomright"
-  )
-```
-
-
-
-# bum ahh code 
-
-
-
-```{r}
-income_palette <- colorNumeric(
-  palette = "viridis",
-  domain = counties_IPUMS$median_household_income,
-  na.color = "transparent"
-)
-
-leaflet(counties_IPUMS) %>%
-  addProviderTiles("CartoDB.Positron") %>%
-  addPolygons(
-    fillColor = ~income_palette(median_household_income),
-    fillOpacity = 0.7,
-    weight = 0.3,
-    color = "white",
-    popup = ~paste0(
-      "<b>", NAME, "</b><br>",
-      "Median household income: $",
-      comma(median_household_income)
-    )
-  ) %>%
-  addLegend(
-    position = "bottomright",
-    pal = income_palette,
-    values = ~median_household_income,
-    title = "Median Household Income",
-    labFormat = labelFormat(prefix = "$", big.mark = ",")
-  )
-```
-
-
-
-
-# i might freak
-
-```{r}
 # writing function to join IPUMS variables with institution datasets
 
 join_ipums <- function(data, lon, lat, counties, ipums) {
@@ -314,8 +242,6 @@ auto_ev_IPUMS <- join_ipums(
 )
 ```
 
-
-
 ```{r}
 # applying function to all datasets
 IPUMS_data <- rename_nhgis_codes(IPUMS_data)
@@ -350,37 +276,6 @@ sum(is.na(counties_income$median_household_income))
 
 
 ```{r}
-income_pal <- colorNumeric(
-  palette = "viridis",
-  domain = counties_income_no_na$median_household_income
-)
-
-leaflet(counties_income_no_na) %>%
-  addProviderTiles("CartoDB.Positron") %>%
-  addPolygons(
-    fillColor = ~income_pal(median_household_income),
-    fillOpacity = 0.75,
-    weight = 0.3,
-    color = "white",
-    popup = ~paste0(
-      "<b>", NAME, "</b><br>",
-      "Median household income: $",
-      comma(median_household_income)
-    )
-  ) %>%
-  addLegend(
-    position = "bottomright",
-    pal = income_pal,
-    values = ~median_household_income,
-    title = "Median Household Income",
-    labFormat = labelFormat(prefix = "$", big.mark = ",")
-  )
-```
-
-
-# bleh
-
-```{r}
 # comparing distributions of median household income by county
 
 income_compare <- bind_rows(
@@ -404,51 +299,6 @@ ggplot(income_compare, aes(type, median_household_income, fill = type)) +
   geom_boxplot() +
   theme_minimal()
 ```
-
-
-```{r}
-# Create a color palette
-income_palette <- colorNumeric(
-  palette = "YlGnBu",
-  domain = counties_IPUMS$median_household_income,
-  na.color = "grey"
-)
-
-leaflet(counties_IPUMS) %>%
-  addProviderTiles("CartoDB.Positron") %>%
-
-  addPolygons(
-    fillColor = ~income_palette(median_household_income),
-    fillOpacity = 0.8,
-    color = "white",
-    weight = 0.3,
-    smoothFactor = 0.2,
-
-    popup = ~paste0(
-      "<b>", NAME, ", ", STATE_NAME, "</b><br>",
-      "Median household income: $",
-      comma(median_household_income)
-    ),
-
-    highlightOptions = highlightOptions(
-      weight = 2,
-      color = "black",
-      bringToFront = TRUE
-    )
-  ) %>%
-
-  addLegend(
-    position = "bottomright",
-    pal = income_palette,
-    values = ~median_household_income,
-    title = "Median Household Income",
-    labFormat = labelFormat(prefix = "$", big.mark = ","),
-    opacity = 0.8
-  )
-```
-
-
-#ignore above lols
 
 ```{r}
 # make sure GEOID is character in both datasets
@@ -478,105 +328,6 @@ counties_IPUMS %>%
     missing_income = sum(is.na(median_household_income))
   )
 ```
-
-#boof
-
-```{r}
-# make sure GEOID matches in both datasets
-counties <- counties %>%
-  mutate(GEOID = as.character(GEOID))
-
-IPUMS_data <- IPUMS_data %>%
-  mutate(GEOID = as.character(GEOID))
-
-# join income data to ALL counties
-counties_IPUMS <- counties %>%
-  left_join(IPUMS_data, by = "GEOID") %>%
-  rename_ipums()
-
-counties_IPUMS %>%
-  summarise(
-    total_counties = n(),
-    missing_income = sum(is.na(median_household_income))
-  )
-```
-
-```{r}
-leaflet(counties_IPUMS) %>%
-  addProviderTiles("CartoDB.Positron") %>%
-  
-  addPolygons(
-    fillColor = ~income_pal(median_household_income),
-    fillOpacity = 0.7,
-    weight = 0.4,
-    color = "white",
-    popup = ~paste0(
-      NAME, ", ", STATE_NAME, "<br>",
-      "Median household income: $",
-      scales::comma(median_household_income)
-    )
-  ) %>%
-  
-  addCircleMarkers(
-    data = theaters_IPUMS,
-    lng = ~longitude,
-    lat = ~latitude,
-    color = "red",
-    radius = 3,
-    stroke = FALSE,
-    fillOpacity = 0.8
-  ) %>%
-  
-  addLegend(
-    "bottomright",
-    pal = income_pal,
-    values = counties_IPUMS$median_household_income,
-    title = "Median Household Income"
-  )
-
-nrow(IPSUM_data)
-sum(is.na(IPSUM_data$median_household_income))
-```
-
-
-
-
-
-# boomf
-```{r}
-# median household income by county & theaters
-leaflet(counties_IPUMS) %>%
-  addProviderTiles("CartoDB.Positron") %>%
-  
-  addPolygons(
-    fillColor = ~income_pal(median_household_income),
-    fillOpacity = 0.7,
-    weight = 0.4,
-    color = "white",
-    popup = ~paste0(
-      "Median household income: $",
-      scales::comma(median_household_income)
-    )
-  ) %>%
-  
-  addCircleMarkers(
-    data = theaters_IPUMS,
-    lng = ~longitude,
-    lat = ~latitude,
-    color = "red",
-    radius = 3,
-    stroke = FALSE,
-    fillOpacity = 0.8
-  ) %>%
-  
-  addLegend(
-    "bottomright",
-    pal = income_pal,
-    values = ~median_household_income,
-    title = "Median Household Income"
-  )
-```
-
 
 ```{r}
 # mapping median household income & colleges
@@ -643,5 +394,4 @@ leaflet(counties_IPUMS) %>%
     options = layersControlOptions(collapsed = FALSE)
   )
 ```
-
 
