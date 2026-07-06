@@ -10,6 +10,8 @@ library(tigris)
 library(rvest)
 library(sf)
 library(readxl)
+library(geosphere)
+library(leaflet.extras)
 
 PowerPlants_Raw <- read.csv("data/Industrial Institutions/PowerPlants_Raw.csv")
 fortune500 <- read.csv("data/Industrial Institutions/Fortune500HQ_Raw.csv") 
@@ -236,46 +238,168 @@ ggplot(PowerPlants_Clean, aes(x = State, fill = Primary.Energy.Source)) +
 
 
 
-ggplot() +
-  geom_density_2d_filled(data = PowerPlants_Clean,
-                  aes(x = Longitude, y = Latitude, fill = after_stat(nlevel), weight = Maximum.Summer.Capacity..Megawatts.)) +
-  geom_sf(data = state_sf, fill = NA, color = "black", linewidth = 0.3) +
-  coord_sf(xlim = c(-125, -66), ylim = c(24, 50), expand = FALSE) +
-  scale_fill_gradientn(colors = c("#a4d96c", "yellow", "orange", "red")) +
-  theme_void() +
-  theme(legend.position = "none")
+
+data_centers <- data_centers %>% mutate(
+  mw_clean = parse_number(gsub("-.*", "", mw)), 
+  mw_clean = ifelse(is.na(mw_clean), 0, mw_clean)) %>% 
+  filter(!is.na(lat) & !is.na(long)) %>% 
+  st_as_sf(coords = c("long", "lat"), crs = 4326)
 
 
 
-fortuneurl <- "https://www.50pros.com/fortune500"
-webpage <- read_html(fortuneurl)
+powerplant_produc <- PowerPlants_Clean %>% rename(mw_capacity = Maximum.Summer.Capacity..Megawatts.) %>% 
+  mutate(mw_capacity = ifelse(is.na(mw_capacity), 0, mw_capacity)) %>% 
+  filter(!is.na(Latitude) & !is.na(Longitude))
+US <- st_transform(US, crs = 4326)
+
+maplibre(
+  style = "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json"
+) %>% add_fill_layer(id = "country", 
+                     source = US,
+                     fill_color = "navy",
+                     fill_opacity = 0.2) %>% 
+  add_circle_layer(
+    id = "circles",
+    source = powerplant_produc,
+    circle_radius = 2,
+    circle_color = "red",
+    circle_stroke_width = .1,
+    circle_stroke_color = "black",
+    cluster_options = cluster_options()
+    )
 
 
-my_css_selector <- ".sm\\:max-w-\\[220px\\], .sm\\:px-3 + .text-text-secondary span"
 
-scraped_data <- webpage %>%
-  html_elements(css = my_css_selector) %>%
-  html_text(trim = TRUE)
+heatmap_colors <- c("blue", "cyan", "limegreen", "yellow", "red")
+
+leaflet(powerplant_produc) %>%
+  addProviderTiles(providers$CartoDB.Positron) %>% 
+  addCircleMarkers(
+    data = powerplant_produc,
+    lat = ~Latitude,
+    lng = ~Longitude,
+    label = ~paste0("mw capacity: ", mw_capacity),
+    radius = 3,
+    weight = .03,
+    fillOpacity = 0,
+    fillColor = "black"
+  ) %>% 
+  addHeatmap(
+    lng = ~Longitude, 
+    lat = ~Latitude, 
+    intensity = ~mw_capacity, # heating by the plant's mw capacity
+    blur = 10, 
+    radius = 13
+    ) %>% 
+  addCircleMarkers(
+    data = data_centers,
+    lat = ~lat,
+    lng = ~long,
+    label = ~paste0("mw consumption: ", ifelse(mw_clean == 0, "unknown", mw_clean)),
+    radius = ~rescale(mw_clean, c(3,8)),
+    weight = 0,
+    fillOpacity = 1,
+    fillColor = "black"
+  ) %>% 
+  addLegend(
+    position = "bottomright",
+    colors = rev(heatmap_colors), 
+    labels = rev(c("Low", "", "Medium", "", "High")),
+    title = "Production Capacity (MW)",
+    opacity = 0.7
+  )
 
 
-data_matrix <- matrix(scraped_data, ncol = 3, byrow = TRUE)
-fortune_rev <- as.data.frame(data_matrix)
-colnames(fortune_rev) <- c("Company", "Sector", "Revenue")
-fortune_rev <- fortune_rev %>% mutate(Company = str_to_lower(Company),
-                                      Company = fct_collapse(Company,
-                                        "zoetis inc." = c("zoetis inc.",
-                                                          "zoetis"),
-                                        "zimmer biomet warsaw" = c("zimmer biomet warsaw",
-                                                                   "zimmer biomet"),
-                                        "yum china holdings" = c("yum china holdings",
-                                                                 "china holdings"),
-                                        "xpo logistics" = c("xpo logistics",
-                                                            "xpo"),
-                                        
-                                      ))
-Fortune500_Housing <- Fortune500_Housing %>% mutate(Company = str_to_lower(Company))
 
-Fortune500_full <- Fortune500_Housing %>% full_join(fortune_rev, by = "Company")
+radius_meters <- 50 * 1609.34
+
+distance_matrix <- distm(
+  x = data_centers[, c("long", "lat")], 
+  y = powerplant_produc[, c("Longitude", "Latitude")], 
+  fun = distGeo
+)
+
+data_centers$local_mw_capacity <- apply(distance_matrix, 1, function(row_distances) {
+  plants_in_range <- row_distances <= radius_meters
+  sum(powerplant_produc$mw_capacity[plants_in_range], na.rm = TRUE)
+})
+
+
+data_centers <- data_centers %>%
+  mutate(
+    pct_consumed = ifelse(local_mw_capacity > 0, 
+                          (mw_clean / local_mw_capacity) * 100, 
+                          NA) 
+  )
+
+
+my_bins <- c(0, 10, 50, 100, 500) 
+
+pal <- colorBin(
+  palette = "YlOrRd",
+  domain = data_centers$pct_consumed,
+  bins = my_bins,
+  na.color = "gray"
+)
+
+# Build the map
+leaflet(data_centers) %>%
+  addProviderTiles(providers$CartoDB.DarkMatter) %>%
+  addCircles(
+    lng = ~long, 
+    lat = ~lat,
+    radius = radius_meters,
+    stroke = FALSE,    
+    fillOpacity = 0,   
+    
+
+    highlightOptions = highlightOptions(
+      stroke = TRUE, 
+      color = "yellow", 
+      weight = 2,
+      fillOpacity = 0.1,
+      bringToFront = FALSE
+    )
+  ) %>%
+  addCircleMarkers(
+    data = powerplant_produc,
+    lat = ~Latitude,
+    lng = ~Longitude,
+    label = ~paste0("mw capacity: ", mw_capacity),
+    radius = 2,
+    weight = 1,
+    stroke = TRUE,
+    color = "white",
+    fillOpacity = .5,
+    fillColor = "blue"
+  ) %>% 
+  addCircleMarkers(
+    lng = ~long, 
+    lat = ~lat,
+    radius = 6,
+    weight = 1,
+    color = "#ffffff",
+    fillColor = ~pal(pct_consumed),
+    fillOpacity = 0.9,
+    label = ~paste0("Consumes ", ifelse(pct_consumed == 0, "unknown", round(pct_consumed, 1)), "% of local power")
+  ) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = ~pct_consumed,
+    title = "% of Local Power Consumed",
+    opacity = 1
+  ) 
+
+
+
+
+
+
+
+
+
+
 
 
 

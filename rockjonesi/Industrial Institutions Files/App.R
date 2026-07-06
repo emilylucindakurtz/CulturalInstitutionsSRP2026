@@ -78,6 +78,15 @@ Headquarters_bar <- state_sf %>%
   left_join(HQ_counts, by = "State") %>%
   mutate(num_HQ = replace_na(num_HQ, 0))
 
+usPOP <- read.csv("usPOP.csv") 
+
+usPOP <- usPOP %>%
+  mutate(State = str_replace_all(State, "\\.", " "), 
+         Population = parse_number(Population))
+
+
+Headquarters_bar <- Headquarters_bar %>% full_join(usPOP, by = "State") 
+Headquarters_bar <- Headquarters_bar %>% mutate(HQ_per_cap = (num_HQ/Population)*1000000)
                                                                                                     
 
 
@@ -429,7 +438,7 @@ leaflet_colors <- setNames(HPIPerPal(HPI_sf$total_hpi_change), HPI_sf$State)
 
 output$Companycount <- renderPlot({
   
-  ggplot(Headquarters_bar, aes(x = reorder(State, -num_HQ), y = num_HQ, fill = State)) +
+  ggplot(Headquarters_bar, aes(x = reorder(State, -HQ_per_cap), y = HQ_per_cap, fill = State)) +
     geom_col(color = "black", alpha = 0.5) +
     scale_x_discrete(drop = FALSE) +
     scale_fill_manual(values = leaflet_colors) +
@@ -437,7 +446,7 @@ output$Companycount <- renderPlot({
           legend.position = "none") +
     labs(y = "Count",
          x = "State",
-         title = "Fortune 500 Headquater Count by State")
+         title = "Fortune 500 Companies per 1 Million People by State")
     
 })
 
