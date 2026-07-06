@@ -251,4 +251,24 @@ Realized that I downloaded 1-year data from 2024 that did not include informatio
 
 More data cleaning included:
 - remaking NRHP_LHAT joined dataset such that the NRHP no longer included operas and only locations with 'theat(er/re)' in the name.
+- [X] finished basic shiny app
 
+Updated tasks!
+- Revise/add more to Shiny app (features focused on usability, navigation, clarity) 
+- Construct EDA graphs that depict helpful summaries of each dataset, and in turn understanding for users  
+
+## 7/2
+Notes from team meeting:
+- keep accessibility in mind for graphs and app design, such as color palettes and descriptions
+ - change color palette for population 
+ - modify the scale so smaller populations are better distinguishable
+ - change color of location points ('red-green' color-blindness)
+- try to resolve problem with data being absent when switching between institutions
+
+## 7/5
+Revisions made:
+- data point color palette to Okabe_Ito (designed to distinguishable under color vision deficiencies)
+- scaled ranges to 7 bins for improved shading across counties
+ - added breaks to show value-ranges instead of percentiles; included a note for users
+- data would not initially load for maps of other institutions because Shiny suspends rendering for outputs of un-clicked tabs; resolved by adding outputOptions() and 'suspendWhenHidden = FALSE' to render all maps when the app is opened.
+ - however, does make loading the app slower
