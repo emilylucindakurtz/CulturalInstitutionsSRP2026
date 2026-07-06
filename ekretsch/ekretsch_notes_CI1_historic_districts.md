@@ -2,11 +2,18 @@
 
 # Personal notes/things to do/ideas for further analysis:
 
-- [ ] fix the checkbox situation
+- [x] fix the checkbox situation
 - [ ] add specific location for alaska zoomy
+- [ ] maybe add an option for being able to click on one point in the table and then zooming
+- [ ] maybe add option for selecting multiple states -- so checkboxes there too (not dropdown)?
+- [ ] fix the bar at the top
+- [ ] maybe add state density?
+- [x] deal with de-select thing.
+- [ ] fix dc ??
+- [ ] fix the alabama ones showing up somewhere else...
+- [ ] - [ ] **investigate cali and colorado!**
 
-
-- `#\| eval: false`
+      
 - [ ] shiny app where you can select the state and then a bar chart pops up for the cateories
   - [x] reverse text stuff
     - [ ] come back to this later maybe
@@ -22,6 +29,9 @@
   - [x] Deal with the geocoding properly
     - [x] fix the NAs
   - [x] need to deal with the boundary increase boundary decrease situation that results in duplicates
+     07/01-02
+<img width="1470" height="919" alt="image" src="https://github.com/user-attachments/assets/ecd5c44f-afa8-4adf-ab98-7db728d0fcb6" />
+
   still gonna be some issues due to inconsistency in naming:
 <img width="348" height="43" alt="image" src="https://github.com/user-attachments/assets/043c51fc-b8ab-4c2f-a57b-073bf6645aa8" />
 <img width="348" height="43" alt="image" src="https://github.com/user-attachments/assets/4b34184b-6362-4aad-905b-6a4769ae6a2f" />

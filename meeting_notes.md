@@ -171,3 +171,11 @@ Questions:
 - Zoe - shiny app for museum basically done, satellite to come in future
 
 - meet again on thursday
+
+# July 2
+
+- Emily - historic districts shiny app
+- Ian - Fortune 500s - scrape/gather extra data?
+- Rimona - shiny app
+
+Meet again next Monday

@@ -33,7 +33,7 @@ by_state <- historic_districts %>%
   group_by(state) %>% 
   summarise(total_acreage = sum(acreage_of_property, na.rm=TRUE),
             total_num_districts = n(),
-            across(25:last_col(), \(x) sum(x, na.rm = TRUE))) # NEED TO ADD THE COUNTS FOR EACH CATEGORY
+            across(25:last_col(), function(x) sum(x, na.rm = TRUE))) # NEED TO ADD THE COUNTS FOR EACH CATEGORY
 
 categories_counts <- by_state %>% 
   select(state, 4:ncol(by_state)) %>% 
@@ -114,8 +114,7 @@ ui <- page_fluid(
                     choices = sort(categories_counts$category_nice)
                     #selected = "Archeology"
                     #choices = colnames(historic_districts)[25:ncol(historic_districts)],
-                  ),
-                  
+                  )
                 ),
                 mainPanel(
                   leafletOutput("map2"),
@@ -168,7 +167,7 @@ server <- function(input, output) {
       # Add markers if there are datapoints to plot
       if (nrow(filtered_data) > 0) {
         leafletProxy("map2", data = filtered_data) %>% 
-          addCircleMarkers(~longitude, ~latitude, popup = ~property_name, radius = 5, color = "red", fillOpacity = 1, weight = 1)
+          addCircleMarkers(~longitude, ~latitude, popup = ~property_name, radius = 5, color = "black", fillOpacity = .5, weight = 1)
       }
       
       districts_filtered(filtered_data)
@@ -187,7 +186,7 @@ server <- function(input, output) {
   output$map2 <- renderLeaflet({
     leaflet() %>% 
       addProviderTiles("OpenStreetMap.HOT") %>% 
-      setView(lng = -85, lat = 39.5, zoom = 4) %>% # set it to US to start
+      setView(lng = -85, lat = 39.5, zoom = 4) # %>% # set it to US to start
       #addPolylines(data = states_sf, color = "black", opacity = 1, weight = 2) #uh yikes
   })
   
