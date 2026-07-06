@@ -43,7 +43,7 @@ rename_nhgis_codes <- function(data) {
 
 IPUMS_data <- rename_nhgis_codes(IPUMS_data) %>%
   mutate(
-    ## NHGIS/Census uses large negative values for "not applicable" cells, so any true income value is >= 0 and negatives are recoded NA
+    ## Any true income value is >= 0 and negatives are recoded NA
     median_household_income = ifelse(median_household_income < 0, NA_real_, median_household_income),
     GEOID = str_pad(as.character(TL_GEO_ID), 5, pad = "0"),
     pct_white = 100 * white / race_total,
@@ -74,7 +74,7 @@ counties_sf_raw <- counties(cb = TRUE, resolution = "20m", year = 2024)
 counties_sf <- counties_sf_raw %>%
   left_join(IPUMS_data, by = "GEOID") %>%
   filter(!is.na(total_population)) %>%
-  filter(!STATEFP %in% c("60", "66", "69", "72", "78")) %>%  # drop AS, GU, MP, PR, VI coordinates
+  filter(!STATEFP %in% c("60", "66", "69", "72", "78")) %>%     # drop AS, GU, MP, PR, VI coordinates
   st_transform(crs = 4326)
 
 # Load and clean each institution dataset
@@ -87,7 +87,7 @@ colleges <- read_csv("data/joined_colleges.csv") %>%
     name = College,
     latitude = Latitude,
     longitude = Longitude,
-    type = college_type,                 # "LAC" / "HBCU"
+    type = college_type, # "LAC" / "HBCU"
     popup = sprintf("<strong>%s</strong><br/>%s, %s<br/>Type: %s",
                     College, City, State, college_type)
   )
@@ -143,7 +143,7 @@ clean_state <- function(x) {
 opera <- opera_raw %>%
   mutate(state = clean_state(state)) %>%
   filter(
-    state %in% us_states,                # drop Canadian provinces & international
+    state %in% us_states,  # drop Canadian provinces & international
     !is.na(latitude), !is.na(longitude),
     !type %in% c("", "TEST"),
     !is.na(type)
@@ -158,10 +158,37 @@ opera <- opera_raw %>%
 
 opera_type_choices <- sort(unique(opera$type))
 
-# Pick fixed-color palette for consistency across levels
+# Spatial joineach point's county-level IPUMS values for boxplots
+join_institution_to_county <- function(points_df, counties_sf) {
+  ipums_cols <- unname(ipums_var_choices)
+  county_lookup <- counties_sf %>% select(GEOID, all_of(ipums_cols))
+  
+  pts_sf <- points_df %>%
+    mutate(.row_id = row_number()) %>%
+    st_as_sf(coords = c("longitude", "latitude"), crs = 4326, remove = FALSE)
+  
+  primary <- st_join(pts_sf, county_lookup, join = st_within) %>%
+    st_drop_geometry()
+  
+  unmatched_ids <- primary$.row_id[is.na(primary$GEOID)]
+  
+  if (length(unmatched_ids) > 0) {
+    fallback <- pts_sf %>%
+      filter(.row_id %in% unmatched_ids) %>%
+      st_join(county_lookup, join = st_nearest_feature) %>%
+      st_drop_geometry() %>%
+      select(.row_id, GEOID, all_of(ipums_cols))
+    
+    primary <- rows_update(primary, fallback, by = ".row_id")
+  }
+  
+  primary %>% select(-.row_id)
+}
 
-type_color_ramp <- c("#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00",
-                     "#a65628", "#f781bf", "#999999", "#dede00")
+# Use Okabe-Ito colorblind-safe palette for consistency across levels
+
+type_color_ramp <- c("#8B008B", "#009E73", "#0072B2", "#CC79A7", "#56B4E9",
+                     "#D55E00", "#F0E442", "#999999", "#E69F00")
 
 get_type_pal <- function(type_values) {
   lev <- sort(unique(type_values))
@@ -191,6 +218,7 @@ mapPageUI <- function(id, type_choices, institution_label) {
       hr(),
       helpText("County shading = 2020-2024 ACS 5-year estimates (IPUMS NHGIS).",
                "Points = institution locations."),
+      helpText("Color bins are based on data quantiles, thus bin widths shown in the legend may look uneven."),
       if (institution_label == "opera company") {
         helpText(em("Note: non-US Opera America members (Canada, other countries) ",
                     "are excluded since they can't be matched to a US county. "))
@@ -219,12 +247,21 @@ mapPageServer <- function(id, points_data) {
         addMapPane("pointsPane", zIndex = 450)
     })
     
+    # Render all maps
+    outputOptions(output, "map", suspendWhenHidden = FALSE)
+    
     observe({
       var <- input$ipums_var
       var_label <- names(ipums_var_choices)[ipums_var_choices == var]
       values <- counties_sf[[var]]
       
-      county_pal <- colorNumeric("YlOrRd", domain = values, na.color = "#f0f0f0")
+      # Build bins with same number of counties for improved display of variation
+      n_bins <- 7
+      breaks <- quantile(values, probs = seq(0, 1, length.out = n_bins + 1),
+                         na.rm = TRUE)
+      breaks <- unique(breaks)       # collapse duplicate edges
+      county_pal <- colorBin("YlOrRd", domain = values, bins = breaks,
+                             na.color = "#f0f0f0")
       
       county_labels <- sprintf(
         "<strong>%s</strong><br/>%s: %s",
@@ -235,7 +272,7 @@ mapPageServer <- function(id, points_data) {
       ) %>% lapply(HTML)
       
       pts <- filtered_points()
-      type_pal <- colorFactor("Set1", domain = points_data$type)
+      type_pal <- get_type_pal(points_data$type)
       
       leafletProxy(session$ns("map"), data = NULL, session = session) %>%
         clearShapes() %>%
@@ -252,7 +289,8 @@ mapPageServer <- function(id, points_data) {
         ) %>%
         addLegend(
           pal = county_pal, values = values, opacity = 0.7,
-          title = var_label, position = "bottomright"
+          title = var_label, position = "bottomright",
+          labFormat = labelFormat(big.mark = ",")
         ) %>%
         addCircleMarkers(
           data = pts,
