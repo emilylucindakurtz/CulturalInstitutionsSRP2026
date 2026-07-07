@@ -2,10 +2,6 @@
 # This is a Shiny web application. You can run the application by clicking
 # the 'Run App' button above.
 #
-# Find out more about building applications with Shiny here:
-#
-#    https://shiny.posit.co/
-#
 
 library(shiny)
 library(tidyverse)
@@ -54,7 +50,7 @@ IPUMS_data <- rename_nhgis_codes(IPUMS_data) %>%
     pct_two_or_more = 100 * two_or_more_races / race_total,
     pct_bachelors_plus = 100 * (bachelors_degree + masters_degree +professional_degree + doctorate_degree) / education_total_25plus)
 
-# Variable choices exposed to the user (label = column name)
+# Variable choices shown to user (label = column name)
 ipums_var_choices <- c(
   "Total Population" = "total_population",
   "Median Household Income ($)" = "median_household_income",
@@ -67,6 +63,18 @@ ipums_var_choices <- c(
   "Bachelor's Degree or Higher, 25+ (%)" = "pct_bachelors_plus"
 )
 
+##  Variable choices grouped into optgroups for the dropdown UI 
+ipums_var_choices_ui <- list(
+  "Population & Income" = c("Total Population" = "total_population",
+                            "Median Household Income ($)" = "median_household_income"),
+  "Race (%)" = c("White alone" = "pct_white",
+                 "Black or African American alone" = "pct_black",
+                 "Asian alone" = "pct_asian",
+                 "American Indian / Alaska Native alone" = "pct_aian",
+                 "Native Hawaiian / Pacific Islander alone" = "pct_nhpi",
+                 "Two or More Races" = "pct_two_or_more"),
+  "Education (25+)" = c("Bachelor's Degree or Higher" = "pct_bachelors_plus")
+)
 
 # Add county boundaries and joining data
 counties_sf_raw <- counties(cb = TRUE, resolution = "20m", year = 2024)
@@ -75,6 +83,11 @@ counties_sf <- counties_sf_raw %>%
   left_join(IPUMS_data, by = "GEOID") %>%
   filter(!is.na(total_population)) %>%
   filter(!STATEFP %in% c("60", "66", "69", "72", "78")) %>%     # drop AS, GU, MP, PR, VI coordinates
+  st_transform(crs = 4326)
+
+## Outline state boundaries
+states_sf <- states(cb = TRUE, resolution = "20m", year = 2024) %>%
+  filter(!STATEFP %in% c("60", "66", "69", "72", "78")) %>%
   st_transform(crs = 4326)
 
 # Load and clean each institution dataset
@@ -159,31 +172,25 @@ opera <- opera_raw %>%
 opera_type_choices <- sort(unique(opera$type))
 
 # Spatial joineach point's county-level IPUMS values for boxplots
-join_institution_to_county <- function(points_df, counties_sf) {
-  ipums_cols <- unname(ipums_var_choices)
-  county_lookup <- counties_sf %>% select(GEOID, all_of(ipums_cols))
+attach_county_data <- function(points_df) {
+  pts_sf <- st_as_sf(points_df, coords = c("longitude", "latitude"),
+                     crs = 4326, remove = FALSE)
   
-  pts_sf <- points_df %>%
-    mutate(.row_id = row_number()) %>%
-    st_as_sf(coords = c("longitude", "latitude"), crs = 4326, remove = FALSE)
+  joined <- st_join(
+    pts_sf,
+    counties_sf %>% select(GEOID, NAME_E, all_of(unname(ipums_var_choices))),
+    join = st_within,
+    left = TRUE
+  )
   
-  primary <- st_join(pts_sf, county_lookup, join = st_within) %>%
-    st_drop_geometry()
-  
-  unmatched_ids <- primary$.row_id[is.na(primary$GEOID)]
-  
-  if (length(unmatched_ids) > 0) {
-    fallback <- pts_sf %>%
-      filter(.row_id %in% unmatched_ids) %>%
-      st_join(county_lookup, join = st_nearest_feature) %>%
-      st_drop_geometry() %>%
-      select(.row_id, GEOID, all_of(ipums_cols))
-    
-    primary <- rows_update(primary, fallback, by = ".row_id")
-  }
-  
-  primary %>% select(-.row_id)
+  st_drop_geometry(joined)
 }
+
+colleges        <- attach_county_data(colleges)
+auto_facilities <- attach_county_data(auto_facilities)
+theaters        <- attach_county_data(theaters)
+opera           <- attach_county_data(opera)
+
 
 # Use Okabe-Ito colorblind-safe palette for consistency across levels
 
@@ -196,17 +203,44 @@ get_type_pal <- function(type_values) {
   colorFactor(palette = cols, domain = factor(type_values, levels = lev))
 }
 
+## Match boxplot colors with the map points colors
+get_type_colors <- function(type_values) {
+  lev <- sort(unique(type_values))
+  setNames(type_color_ramp[seq_along(lev)], lev)
+}
+
 # Map UI page for each institution
-mapPageUI <- function(id, type_choices, institution_label) {
+mapPageUI <- function(id, type_choices, institution_label, institution_choices) {
   ns <- NS(id)
   
   sidebarLayout(
     sidebarPanel(
       width = 3,
+      
+      ## Search box for mapping specific institutions
+      selectizeInput(
+        ns("search_institution"),
+        tagList("Search for a", institution_label, ":"),
+        choices = c("Type to search..." = "", institution_choices),
+        options = list(placeholder = "Type to search...")
+      ),
+      hr(),
+      
+      div(
+        style = "display: flex; align-items: center; gap: 6px;",
+        tags$label("Shade counties by:", style = "margin-bottom: 0;"),
+        tooltip(
+          icon("circle-info"),
+          paste("Color bins are based on data quantiles: each color covers",
+                "roughly the same number of counties, not an equal-sized range",
+                "of values. Thus, legend bin widths may look uneven."),
+          placement = "right"
+        )
+      ),
       selectInput(
         ns("ipums_var"),
-        "Shade counties by:",
-        choices = ipums_var_choices,
+        label = NULL,
+        choices = ipums_var_choices_ui,
         selected = "total_population"
       ),
       checkboxGroupInput(
@@ -226,7 +260,23 @@ mapPageUI <- function(id, type_choices, institution_label) {
     ),
     mainPanel(
       width = 9,
-      leafletOutput(ns("map"), height = "750px")
+      fluidRow(
+        column(7, leafletOutput(ns("map"), height = "700px")),
+        column(5,
+               plotOutput(ns("boxplot"), height = "700px"),
+               div(
+                 style = "display: flex; align-items: flex-start; gap: 6px;",
+                 tooltip(
+                   icon("circle-info"),
+                   paste("Boxplot shows the selected variable's value in",
+                         "counties across each institution (not the ",
+                         "institution's own data)."),
+                   placement = "right"
+                   ),
+                 helpText(em("What is this chart showing?"))
+               )
+        )
+      )
     )
   )
 }
@@ -244,7 +294,14 @@ mapPageServer <- function(id, points_data) {
         addProviderTiles(providers$CartoDB.Positron) %>%
         setView(lng = -98.5, lat = 39.8, zoom = 4) %>%
         # Dedicated pane for institution points
-        addMapPane("pointsPane", zIndex = 450)
+        addMapPane("pointsPane", zIndex = 450) %>%
+        addMapPane("statePane", zIndex = 410) %>%
+        addPolygons(
+          data = states_sf,
+          fill = FALSE,
+          color = "#4d4d4d", weight = 1.3, opacity = 0.8,
+          options = pathOptions(pane = "statePane", interactive = FALSE)
+        )
     })
     
     # Render all maps
@@ -285,7 +342,8 @@ mapPageServer <- function(id, points_data) {
           label = county_labels,
           labelOptions = labelOptions(textsize = "13px"),
           highlightOptions = highlightOptions(weight = 2, color = "#666",
-                                              fillOpacity = 0.9, bringToFront = TRUE)
+                                              fillOpacity = 0.9, bringToFront = TRUE),
+          group = "counties"
         ) %>%
         addLegend(
           pal = county_pal, values = values, opacity = 0.7,
@@ -299,27 +357,104 @@ mapPageServer <- function(id, points_data) {
           color = ~type_pal(type),
           label = lapply(pts$popup, HTML),
           labelOptions = labelOptions(textsize = "12px"),
-          options = pathOptions(pane = "pointsPane")
+          options = pathOptions(pane = "pointsPane"),
+          group = "institutions"
         ) %>%
         addLegend(
           pal = type_pal, values = points_data$type,
           title = "Institution Type", position = "bottomleft"
         )
     })
+    
+    # Search box for finding the selected institution on the map
+    observeEvent(input$search_institution, {
+      req(input$search_institution != "")
+      
+      match_row <- points_data %>%
+        filter(name == input$search_institution) %>%
+        slice(1)
+      
+      req(nrow(match_row) == 1)
+      
+      leafletProxy(session$ns("map"), session = session) %>%
+        clearGroup("search_highlight") %>%
+        setView(lng = match_row$longitude, lat = match_row$latitude, zoom = 10) %>%
+        addCircleMarkers(
+          lng = match_row$longitude, lat = match_row$latitude,
+          radius = 12, color = "#222222", weight = 3,
+          fillColor = "#FFD700", fillOpacity = 0.9,
+          options = pathOptions(pane = "pointsPane"),
+          group = "search_highlight"
+        ) %>%
+        addPopups(
+          lng = match_row$longitude, lat = match_row$latitude,
+          popup = HTML(match_row$popup)
+        )
+    })
+    
+    # EDA boxplots: distribution of the selected IPUMS variable split by institution type
+    output$boxplot <- renderPlot({
+      var <- input$ipums_var
+      var_label <- names(ipums_var_choices)[ipums_var_choices == var]
+      
+      df <- filtered_points() %>%
+        filter(!is.na(.data[[var]]))
+      
+      req(nrow(df) > 0)
+      
+      type_colors <- get_type_colors(points_data$type)
+      
+      ## Label each x-axis category with its sample size
+      counts <- table(df$type)
+      x_labels <- setNames(paste0(names(counts), "\n(n=", counts, ")"),
+                           names(counts))
+      
+      ## Log scale to prevent compression by outlier counties
+      log_scale_vars <- c("total_population", "median_household_income")
+      
+      p <- ggplot(df, aes(x = type, y = .data[[var]], fill = type)) +
+        geom_boxplot(outlier.alpha = 0.4, width = 0.6) +
+        geom_jitter(width = 0.15, size = 1.5, alpha = 0.4, color = "black") +
+        scale_fill_manual(values = type_colors, guide = "none") +
+        scale_x_discrete(labels = x_labels) +
+        labs(
+          title = paste(var_label, "by Institution Type"),
+          subtitle = "Value = the county each institution is located in",
+          x = NULL,
+          y = var_label
+        ) +
+        theme_minimal(base_size = 13) +
+        theme(plot.title = element_text(face = "bold"))
+      
+      if (var %in% log_scale_vars) {
+        p <- p +
+          scale_y_log10(labels = scales::comma) +
+          labs(y = paste0(var_label, " (log scale)"))
+      } else {
+        p <- p + scale_y_continuous(labels = scales::comma)
+      }
+      p
+    })
+    
   })
 }
 
 
-# Define UI for application that draws a histogram
+# Define UI for application
 ui <- navbarPage(
-  title = "Mapping Cultural Institutions",
-  tabPanel("Colleges", mapPageUI("colleges", college_type_choices, "college")),
-  tabPanel("Automotive & EV Facilities", mapPageUI("auto", auto_type_choices, "facility")),
-  tabPanel("Historic Theaters", mapPageUI("theaters", theater_type_choices, "theater")),
-  tabPanel("Opera Companies", mapPageUI("opera", opera_type_choices, "opera company"))
+  title = "Institution Location Explorer",
+  theme = bs_theme(version = 5),
+  tabPanel("Colleges", mapPageUI("colleges", college_type_choices, "college",
+                                 sort(unique(colleges$name)))),
+  tabPanel("Automotive & EV Facilities", mapPageUI("auto", auto_type_choices, "facility",
+                                                   sort(unique(auto_facilities$name)))),
+  tabPanel("Historic Theaters", mapPageUI("theaters", theater_type_choices, "theater",
+                                          sort(unique(theaters$name)))),
+  tabPanel("Opera Companies", mapPageUI("opera", opera_type_choices, "opera company",
+                                        sort(unique(opera$name))))
 )
 
-# Define server logic required to draw a histogram
+# Define server logic
 server <- function(input, output, session) {
   mapPageServer("colleges", colleges)
   mapPageServer("auto", auto_facilities)

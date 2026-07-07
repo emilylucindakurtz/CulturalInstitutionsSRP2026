@@ -272,3 +272,22 @@ Revisions made:
  - added breaks to show value-ranges instead of percentiles; included a note for users
 - data would not initially load for maps of other institutions because Shiny suspends rendering for outputs of un-clicked tabs; resolved by adding outputOptions() and 'suspendWhenHidden = FALSE' to render all maps when the app is opened.
  - however, does make loading the app slower
+ 
+## 7/6 
+- Added EDA boxplots by institution type
+ - shows the selected IPUMS variable's value (in the institution's county) split by institution type and colored to match the map's point colors
+ - required info on which county each institution point falls in; used st_join to convert points to county polygons
+  - Q: is there a way to load the graphs in a separate file and then load them in Shiny? would that be faster?
+ 
+ New tasks:
+ - Update Shiny app layout; explore graph placements and page designs
+ - Write blog post
+
+Considerations:
+- would a homepage be helpful?
+- should the blog post be included in the shiny app or as a .qmd file
+- what should be done for codebook?
+
+Blog post ideas:
+- HBCUs located in counties with higher percentages of Black populations compared to LACs, reflecting broader historical context
+- EV facilities located in counties with higher household-median-incomes than other automotive facilities; could reflect the growing industry and targeted customers 
