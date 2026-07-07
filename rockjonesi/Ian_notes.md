@@ -549,8 +549,8 @@ Heatmap by power plant energy source
 maybe down to state level as well
 
 
+<img width="866" height="413" alt="image" src="https://github.com/user-attachments/assets/a9492408-4702-4132-8793-8145a04d72c0" />
 
 
-
-
+integrated the heat map into my Shiny app. Allows users to explore energy production in the US or in a specific state based on a certain type of primary energy source. 
 
