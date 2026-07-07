@@ -250,23 +250,6 @@ data_centers <- data_centers %>% mutate(
 powerplant_produc <- PowerPlants_Clean %>% rename(mw_capacity = Maximum.Summer.Capacity..Megawatts.) %>% 
   mutate(mw_capacity = ifelse(is.na(mw_capacity), 0, mw_capacity)) %>% 
   filter(!is.na(Latitude) & !is.na(Longitude))
-US <- st_transform(US, crs = 4326)
-
-maplibre(
-  style = "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json"
-) %>% add_fill_layer(id = "country", 
-                     source = US,
-                     fill_color = "navy",
-                     fill_opacity = 0.2) %>% 
-  add_circle_layer(
-    id = "circles",
-    source = powerplant_produc,
-    circle_radius = 2,
-    circle_color = "red",
-    circle_stroke_width = .1,
-    circle_stroke_color = "black",
-    cluster_options = cluster_options()
-    )
 
 
 
@@ -311,29 +294,23 @@ leaflet(powerplant_produc) %>%
 
 
 
-radius_meters <- 50 * 1609.34
+local_range <- 50 * 1609.34
 
-distance_matrix <- distm(
-  x = data_centers[, c("long", "lat")], 
-  y = powerplant_produc[, c("Longitude", "Latitude")], 
-  fun = distGeo
-)
-
-data_centers$local_mw_capacity <- apply(distance_matrix, 1, function(row_distances) {
-  plants_in_range <- row_distances <= radius_meters
-  sum(powerplant_produc$mw_capacity[plants_in_range], na.rm = TRUE)
-})
-
-
+#
 data_centers <- data_centers %>%
   mutate(
-    pct_consumed = ifelse(local_mw_capacity > 0, 
-                          (mw_clean / local_mw_capacity) * 100, 
-                          NA) 
+    local_mw_capacity = map2_dbl(long, lat, function(dc_long, dc_lat) {
+      distances <- distGeo(c(dc_long, dc_lat), powerplant_produc[, c("Longitude", "Latitude")])
+      sum(powerplant_produc$mw_capacity[distances <= local_range], na.rm = TRUE)
+    }),
+    pct_consumed = ifelse(local_mw_capacity > 0, (mw_clean / local_mw_capacity) * 100, NA)
   )
 
+#write.csv(data_centers, "data_centers.csv", row.names = FALSE)
 
-my_bins <- c(0, 10, 50, 100, 500) 
+
+my_bins <- c(0, 10, 50, 100, 500, 10000) 
+
 
 pal <- colorBin(
   palette = "YlOrRd",
@@ -348,14 +325,12 @@ leaflet(data_centers) %>%
   addCircles(
     lng = ~long, 
     lat = ~lat,
-    radius = radius_meters,
+    radius = local_range,
     stroke = FALSE,    
     fillOpacity = 0,   
-    
-
     highlightOptions = highlightOptions(
       stroke = TRUE, 
-      color = "yellow", 
+      color = "green", 
       weight = 2,
       fillOpacity = 0.1,
       bringToFront = FALSE
@@ -366,7 +341,7 @@ leaflet(data_centers) %>%
     lat = ~Latitude,
     lng = ~Longitude,
     label = ~paste0("mw capacity: ", mw_capacity),
-    radius = 2,
+    radius = 2.5,
     weight = 1,
     stroke = TRUE,
     color = "white",
@@ -381,12 +356,12 @@ leaflet(data_centers) %>%
     color = "#ffffff",
     fillColor = ~pal(pct_consumed),
     fillOpacity = 0.9,
-    label = ~paste0("Consumes ", ifelse(pct_consumed == 0, "unknown", round(pct_consumed, 1)), "% of local power")
+    label = ~paste0("Consumes ", ifelse(mw_clean == 0, "unknown", mw_clean), " mw. Which is ", ifelse(pct_consumed == 0, "unknown", round(pct_consumed, 1)), "% of local plant power")
   ) %>%
   addLegend(
     position = "bottomright",
     pal = pal,
-    values = ~pct_consumed,
+    values = pct_consumed,
     title = "% of Local Power Consumed",
     opacity = 1
   ) 

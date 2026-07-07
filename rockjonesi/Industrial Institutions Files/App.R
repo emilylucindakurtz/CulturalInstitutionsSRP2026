@@ -87,7 +87,12 @@ usPOP <- usPOP %>%
 
 Headquarters_bar <- Headquarters_bar %>% full_join(usPOP, by = "State") 
 Headquarters_bar <- Headquarters_bar %>% mutate(HQ_per_cap = (num_HQ/Population)*1000000)
-                                                                                                    
+                                                                                              
+data_centers <- read.csv("data_centers.csv") %>% mutate(State = str_to_title(state_convert(state, to = "name")))
+
+powerplant_produc <- Powerplants %>% rename(mw_capacity = Maximum.Summer.Capacity..Megawatts.) %>% 
+  mutate(mw_capacity = ifelse(is.na(mw_capacity), 0, mw_capacity)) %>% 
+  filter(!is.na(Latitude) & !is.na(Longitude))
 
 
 
@@ -145,7 +150,31 @@ navbarMenu(
           plotOutput("Energy", height = 500)
         )
       )
+    ),
+  tabPanel(
+    title = "Data Centers",
+    
+    sidebarLayout(
+      
+      sidebarPanel(
+        width = 3,
+        
+        selectInput(
+          inputId = "energy_source",
+          label = "Select",
+          choices = c("All", sort(unique(str_to_title(Powerplants$Primary.Energy.Source))))
+        ),
+        selectInput(
+          inputId = "State",
+          label = "select",
+          choices = c("United States", sort(unique(str_to_title(Powerplants$State))))
+        )
+      ),
+      mainPanel(
+        leafletOutput("Heatmap", height = 500)
+      )
     )
+  )
   ),
 navbarMenu(
   title = "Fortune 500 Headquarters",
@@ -470,6 +499,119 @@ output$StateHPIChart <- renderPlot({
 })
 
 #trend between company revenue and % change?
+
+energy_subset <- reactive({
+  if(is.null(input$energy_source) || input$energy_source == "All") {
+    return(powerplant_produc)
+  }
+  
+  powerplant_produc %>% 
+    mutate(Primary.Energy.Source = tolower(Primary.Energy.Source)) %>% 
+    filter(Primary.Energy.Source == tolower(input$energy_source))
+  
+})
+
+state_subset <- reactive({
+  if(is.null(input$State) || input$State == "United States") {
+    return(energy_subset())
+  }
+  
+  energy_subset() %>% 
+    mutate(State = str_to_title(State)) %>% 
+    filter(State == input$State)
+})
+
+DC_subset <- reactive({
+  if(is.null(input$State) || input$State == "United States") {
+    return(data_centers)
+  }
+  
+  data_centers %>% 
+    mutate(State = str_to_title(State)) %>% 
+    filter(State == input$State)
+})
+
+
+output$Heatmap <- renderLeaflet({
+  heatmap_colors <- c("blue", "cyan", "limegreen", "yellow", "red")
+  
+  
+  leaflet(state_subset()) %>%
+    addProviderTiles(providers$CartoDB.Positron) %>% 
+    addCircleMarkers(
+      lat = ~Latitude,
+      lng = ~Longitude,
+      label = ~paste0("mw capacity: ", mw_capacity),
+      radius = 3,
+      weight = .03,
+      fillOpacity = 0,
+      fillColor = "black",
+      group = "plants"
+    ) %>% 
+    addHeatmap(
+      lng = ~Longitude, 
+      lat = ~Latitude, 
+      intensity = ~mw_capacity, 
+      blur = 10, 
+      radius = 13,
+    ) %>% 
+    addCircleMarkers(
+      data = DC_subset(),
+      lat = ~lat,
+      lng = ~long,
+      label = ~paste0("mw consumption: ", ifelse(mw_clean == 0, "unknown", mw_clean)),
+      radius = ~rescale(mw_clean, c(3,8)), 
+      weight = 0,
+      fillOpacity = 1,
+      fillColor = "black",
+      group = "dcs"
+    ) %>% 
+    addLegend(
+      position = "bottomright",
+      colors = rev(heatmap_colors), 
+      labels = rev(c("Low", "", "Medium", "", "High")),
+      title = "Production Capacity (MW)",
+      opacity = 0.7
+    )
+})
+
+observe({
+  leafletProxy("Heatmap") %>%
+    clearGroup("plants") %>%
+    clearGroup("dcs") %>%
+    removeWebGLHeatmap(layerId = "heat") %>%
+    addCircleMarkers(
+      data = state_subset(),
+      lat = ~Latitude,
+      lng = ~Longitude,
+      label = ~paste0("mw capacity: ", mw_capacity, " Source: ", Primary.Energy.Source),
+      radius = 3,
+      weight = .03,
+      fillOpacity = 0,
+      fillColor = "black",
+      group = "plants"
+    ) %>% 
+    addHeatmap(
+      data = state_subset(),
+      lng = ~Longitude, 
+      lat = ~Latitude, 
+      intensity = ~mw_capacity, 
+      blur = 10, 
+      radius = 13,
+      layerId = "heat"
+    ) %>% 
+    addCircleMarkers(
+      data = DC_subset(),
+      lat = ~lat,
+      lng = ~long,
+      label = ~paste0("mw consumption: ", ifelse(mw_clean == 0, "unknown", mw_clean)),
+      radius = ~rescale(mw_clean, c(3,8)), 
+      weight = 0,
+      fillOpacity = 1,
+      fillColor = "black",
+      group = "dcs"
+    )
+})
 
 }
 
