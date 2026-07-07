@@ -543,6 +543,10 @@ I feel like the heatmap part is informative, but have the data centers just plot
 This map plots all the the power plants and data centers in the US. However, for each data center, I have created a 50 mile radius of the surrounding power plants. I then calculated what percent of the produced power plant energy is being re-consumed by the near by data center based on how much energy it needs. A user can hover over a data center on the map to see the highlighted radius containing all the powerplants used for the pct consumption calculations.
 
 
+## July 7
+Meeting notes:
+Heatmap by power plant energy source
+maybe down to state level as well
 
 
 
