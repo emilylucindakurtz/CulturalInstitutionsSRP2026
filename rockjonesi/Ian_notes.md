@@ -529,6 +529,19 @@ Additionally, next to the main map where users can examine HPI change at the cou
 I still need to start the data centers map that emily suggested
 
 
+## July 2,3,6
+
+Over the span of these days I had been wrestling with the challange of the data centers map. I made iterations of both suggestions that Emily gave me, leaving me with two map products that were made in leaflet. I want to get feedback first, but eventually I would hope to integrate this into my shiny app. One of these maps is a heat map that is coloring based on the mw capacities of power plants across the US. On top of the heat map, are the data center locations, sized by their mw consumption values.
+
+<img width="800" height="446" alt="image" src="https://github.com/user-attachments/assets/139526dd-8a4d-42e9-846f-af0ed6a9739d" />
+
+I feel like the heatmap part is informative, but have the data centers just plotted on top isn't super effective. I think it could be cool to use the heat map at a state-level as well; it would inform viewers which powerplants/areas of a state produce the most energy for that state, and it could potentially extend to also coloring by the type of power plant, meaning it would also show which types are producing the most energy for the state. In terms of actual data center information and how they are consuming energy, I believe the next map is more effective.
+
+
+<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/f765789e-dcbd-4510-bff1-92307c651b7b" />
+
+This map plots all the the power plants and data centers in the US. However, for each data center, I have created a 50 mile radius of the surrounding power plants. I then calculated what percent of the produced power plant energy is being re-consumed by the near by data center based on how much energy it needs. A user can hover over a data center on the map to see the highlighted radius containing all the powerplants used for the pct consumption calculations.
+
 
 
 
