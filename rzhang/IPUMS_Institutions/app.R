@@ -194,8 +194,8 @@ opera           <- attach_county_data(opera)
 
 # Use Okabe-Ito colorblind-safe palette for consistency across levels
 
-type_color_ramp <- c("#8B008B", "#009E73", "#0072B2", "#CC79A7", "#56B4E9",
-                     "#D55E00", "#F0E442", "#999999", "#E69F00")
+type_color_ramp <- c("#8F2CE0", "#56B4E9", "#FF17E5", "#40D4C9", "#A3EEFF",
+                     "#730E9E", "#F0E442", "#999999", "#004fdb")
 
 get_type_pal <- function(type_values) {
   lev <- sort(unique(type_values))
@@ -252,9 +252,8 @@ mapPageUI <- function(id, type_choices, institution_label, institution_choices) 
       hr(),
       helpText("County shading = 2020-2024 ACS 5-year estimates (IPUMS NHGIS).",
                "Points = institution locations."),
-      helpText("Color bins are based on data quantiles, thus bin widths shown in the legend may look uneven."),
       if (institution_label == "opera company") {
-        helpText(em("Note: non-US Opera America members (Canada, other countries) ",
+        helpText(em("Non-US Opera America members (Canada, other countries) ",
                     "are excluded since they can't be matched to a US county. "))
       }
     ),
@@ -290,7 +289,7 @@ mapPageServer <- function(id, points_data) {
     })
     
     output$map <- renderLeaflet({
-      leaflet() %>%
+      leaflet(options = leafletOptions(preferCanvas = TRUE)) %>%
         addProviderTiles(providers$CartoDB.Positron) %>%
         setView(lng = -98.5, lat = 39.8, zoom = 4) %>%
         # Dedicated pane for institution points
@@ -417,6 +416,7 @@ mapPageServer <- function(id, points_data) {
         geom_jitter(width = 0.15, size = 1.5, alpha = 0.4, color = "black") +
         scale_fill_manual(values = type_colors, guide = "none") +
         scale_x_discrete(labels = x_labels) +
+        coord_flip() +
         labs(
           title = paste(var_label, "by Institution Type"),
           subtitle = "Value = the county each institution is located in",
