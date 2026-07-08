@@ -59,8 +59,42 @@ county_prices <- county_sf %>%
 
 HQHPICNTY <- county_prices %>% full_join(HPI, by = c("State","County"))
 
-max <- HQHPICNTY %>% select(Year) %>% drop_na() %>% mutate(Year = as.numeric(Year)) %>% pull(Year) %>% max()
-min <- HQHPICNTY %>% select(Year) %>% drop_na() %>% mutate(Year = as.numeric(Year)) %>% pull(Year) %>% min()
+
+HPI_State_Change <- HPI %>%
+  filter(Year %in% c(2000, 2025), !is.na(HPI)) %>%
+  group_by(State, Year) %>%
+  summarize(avg_hpi = mean(HPI), .groups = "drop") %>%
+  pivot_wider(names_from = Year, values_from = avg_hpi, names_prefix = "avg_hpi_") %>%
+  mutate(total_hpi_change = ((avg_hpi_2025 - avg_hpi_2000)/avg_hpi_2000),
+         State = str_to_title(State))
+
+HPI_sf <- state_sf %>% full_join(HPI_State_Change, by = "State") %>% drop_na()
+
+HQ_counts <- Headquarters %>%
+  group_by(State) %>%
+  summarize(num_HQ = n(), .groups = "drop")
+
+Headquarters_bar <- state_sf %>%
+  left_join(HQ_counts, by = "State") %>%
+  mutate(num_HQ = replace_na(num_HQ, 0))
+
+usPOP <- read.csv("usPOP.csv") 
+
+usPOP <- usPOP %>%
+  mutate(State = str_replace_all(State, "\\.", " "), 
+         Population = parse_number(Population))
+
+
+Headquarters_bar <- Headquarters_bar %>% full_join(usPOP, by = "State") 
+Headquarters_bar <- Headquarters_bar %>% mutate(HQ_per_cap = (num_HQ/Population)*1000000)
+                                                                                              
+data_centers <- read.csv("data_centers.csv") %>% mutate(State = str_to_title(state_convert(state, to = "name")))
+
+powerplant_produc <- Powerplants %>% rename(mw_capacity = Maximum.Summer.Capacity..Megawatts.) %>% 
+  mutate(mw_capacity = ifelse(is.na(mw_capacity), 0, mw_capacity)) %>% 
+  filter(!is.na(Latitude) & !is.na(Longitude))
+
+
 
 
 #----user interface------
@@ -72,7 +106,7 @@ tabPanel(
 ),
 navbarMenu(
   title = "Electric Power Plants",
-##-------map---------
+
   tabPanel(
     title = "Map Power Plants by State",
     
@@ -96,7 +130,7 @@ navbarMenu(
       )
     )
   ),
-  ##-------Tab 2------------  
+
     tabPanel(
       title = "Explore by Energy Sources",
       
@@ -116,25 +150,61 @@ navbarMenu(
           plotOutput("Energy", height = 500)
         )
       )
-    )
-  ),
-navbarMenu(
-  title = "Fortune 500 Headquarters",
-  
+    ),
   tabPanel(
-    title = "HPI Chnage Overtime in the Presence of Megacorporations",
+    title = "Data Centers",
     
     sidebarLayout(
       
       sidebarPanel(
-        sliderInput("Year", "Slide to Change the Year", min = min, max = max, 2000, animate = animationOptions(interval = 1))
+        width = 3,
+        
+        selectInput(
+          inputId = "energy_source",
+          label = "Select",
+          choices = c("All", sort(unique(str_to_title(Powerplants$Primary.Energy.Source))))
+        ),
+        selectInput(
+          inputId = "State",
+          label = "select",
+          choices = c("United States", sort(unique(str_to_title(Powerplants$State))))
+        )
+      ),
+      mainPanel(
+        leafletOutput("Heatmap", height = 500)
+      )
+    )
+  )
+  ),
+navbarMenu(
+  title = "Fortune 500 Headquarters",
+  
+  
+  
+  
+  tabPanel(
+    title = "HPI Change Overtime in the Presence of Megacorporations",
+    
+    sidebarLayout(
+      
+      sidebarPanel(
+        uiOutput("slider"),
+        plotOutput("StateHPIChart", height = 400)
       ),
     
     mainPanel(
       leafletOutput("Housing", height = 500)
         )
       )
+    ),
+  tabPanel(
+    title = "HPI Change Over 25 Years",
+    
+    mainPanel(
+      leafletOutput("HPI", height = 400),
+      plotOutput("Companycount", height = 400)
     )
+  )
   )
 )
 
@@ -142,20 +212,6 @@ navbarMenu(
 #-------sever-------
 
 server <- function(input, output) {
-  
-  ##------by state plot---------
-  # output$Bar <- renderPlot({
-  #   
-  #   state_subset <- Powerplants %>% filter(State == input$state_choice)
-  #     
-  #   ggplot(state_subset, aes(x = fct_infreq(Primary.Energy.Source), fill = Primary.Energy.Source)) +
-  #     geom_bar(color = "black") +
-  #     scale_fill_brewer(palette =  "Set3") +
-  #     theme(axis.text.x = element_text(angle = -90)) +
-  #     labs(y = "Count",
-  #          x = "Powerplant Primary Energy Source",
-  #          title = paste("Energy Source Distribution for", input$state_choice))
-  # })
   
   ##------by energy plot----------
   output$Energy <- renderPlot({
@@ -192,7 +248,6 @@ server <- function(input, output) {
   all_sources <- sort(unique(Powerplants$Primary.Energy.Source))
   leaflet_colors <- setNames(energy_source_pal(all_sources), all_sources)
   
-  
   output$Map <- renderLeaflet({
     leaflet(state_sf) %>% 
       addProviderTiles(providers$CartoDB.Positron) %>% 
@@ -202,7 +257,8 @@ server <- function(input, output) {
         fillColor = ~powerplant_count_pal(State.Powerplant.Count),
         fillOpacity = 0.3,
         color = "black",
-        weight = 1
+        weight = 1,
+        label = ~State.Powerplant.Count
       ) %>% 
       
       addLegend(
@@ -276,9 +332,11 @@ output$SidebarChart <- renderPlot({
   
   })
 
+max_hpi_change <- max(abs(HQHPICNTY$Annual.Change....), na.rm = TRUE)
+
 pal <- colorNumeric(
-  palette = "YlOrRd", 
-  domain = HQHPICNTY$Annual.Change....
+  palette = "PiYG", 
+  domain = c(-max_hpi_change, max_hpi_change)
 )
 
 
@@ -287,8 +345,9 @@ output$Housing <- renderLeaflet({
       addProviderTiles(providers$CartoDB.Positron) %>% 
       setView(lng = -98.58, lat = 39.82, zoom = 4) %>%
       addPolygons(
-        fillColor = "lightblue",
-        fillOpacity = 0.3,
+        group = "base_states",
+        fillColor = "white",
+        fillOpacity = 0.6,
         color = "black",
         weight = 1
       ) %>% 
@@ -313,8 +372,11 @@ observeEvent(input$Housing_marker_click, {
   
   zoomed_state(state_focus)
   
-  bbox_data <- state_sf[state_sf$State == state_focus, ]
+  bbox_data <- state_sf[state_sf$State == str_to_title(state_focus), ]
   bbox <- st_bbox(bbox_data)
+  
+  current_year <- if (!is.null(input$Year)) input$Year else 2000
+  year_state_subset <- HQHPICNTY %>% filter(Year == current_year, State == str_to_title(state_focus))
   
   leafletProxy("Housing") %>% 
     fitBounds(
@@ -323,31 +385,234 @@ observeEvent(input$Housing_marker_click, {
     ) 
 })
 
+selected_state <- reactive({
+  req(zoomed_state())
+  current_year <- if (!is.null(input$Year)) input$Year else 2000
+  
+  HQHPICNTY %>% 
+    filter(Year == current_year, State == zoomed_state()) %>% 
+    filter(!st_is_empty(geometry), !is.na(Annual.Change....)) 
+})
+
 observe({
   req(zoomed_state())
   req(input$Year)
-  
-  year_state_subset <- HQHPICNTY %>% filter(Year == input$Year, State == zoomed_state())
+
+  county_subset <- selected_state()
   
   leafletProxy("Housing") %>% 
     clearGroup("counties") %>% 
+    clearControls() %>% 
     addPolygons(
-      data = year_state_subset,
+      data = county_subset,
       group = "counties",
       layerId = ~County,
-      pal = ~pal(Annual.Change....),
-      layer = ~HPI
+      fillColor = ~pal(Annual.Change....),
+      fillOpacity = 1,
+      label = ~as.character(HPI),
+      color = "black",
+      weight = 1
     ) %>% 
-    addMarkers(
-      data = housing_map,
-      lng = ~Longitude,
-      lat = ~Latitude,
-      layerId = ~County,
-      label = ~Company
+    addLegend(
+      pal = pal,
+      values = county_subset$Annual.Change....,
+      title = "YoY % Change in HPI",
+      position = "bottomright",
+      opacity = 1
     )
 })
 
+output$slider <- renderUI({
+  req(zoomed_state())
   
+  sliderInput("Year", 
+              "Slide to Change the Year", 
+              min = 2000, 
+              max = 2025, 
+              2000, 
+              animate = animationOptions(interval = 2500, loop = TRUE)
+  )
+})
+###side map under this one, plotting just overall HPI % change since 2000. Should supplement with a bar graph with state counts of # of F500 companies, to see 
+##if there is a trend between amount of these comapnies and HPI % change
+
+HPIPerPal <- colorNumeric(
+  palette = "YlGn", 
+  domain = HPI_sf$total_hpi_change
+)
+  
+output$HPI <- renderLeaflet({
+  leaflet(HPI_sf) %>% 
+    addProviderTiles(providers$CartoDB.Positron) %>% 
+    setView(lng = -98.58, lat = 39.82, zoom = 4) %>%
+    addPolygons(
+      layerId = ~State,
+      fillColor = ~HPIPerPal(total_hpi_change),
+      fillOpacity = 0.5,
+      color = "black",
+      weight = 1,
+      label = ~percent(round(total_hpi_change, 3))
+    ) %>% 
+    
+    addLegend(
+      pal = HPIPerPal,
+      values = HPI_State_Change$total_hpi_change, 
+      position = "bottomright",
+      title = "HPI Percent Change",
+      labFormat = labelFormat(suffix = "%", transform = function(x) x * 100)
+    )
+})
+
+leaflet_colors <- setNames(HPIPerPal(HPI_sf$total_hpi_change), HPI_sf$State)
+
+output$Companycount <- renderPlot({
+  
+  ggplot(Headquarters_bar, aes(x = reorder(State, -HQ_per_cap), y = HQ_per_cap, fill = State)) +
+    geom_col(color = "black", alpha = 0.5) +
+    scale_x_discrete(drop = FALSE) +
+    scale_fill_manual(values = leaflet_colors) +
+    theme(axis.text.x = element_text(angle = -90),
+          legend.position = "none") +
+    labs(y = "Count",
+         x = "State",
+         title = "Fortune 500 Companies per 1 Million People by State")
+    
+})
+
+
+output$StateHPIChart <- renderPlot({
+  req(zoomed_state())
+  
+  state_subset <- HPI %>% filter(State == zoomed_state(), !is.na(Annual.Change....)) %>% 
+    group_by(Year) %>% summarize(avg_annual_change = mean(Annual.Change....))
+  
+  ggplot(state_subset, aes(x = as.factor(Year), y = avg_annual_change, fill = ifelse(avg_annual_change > 0, "lightgreen", "red"))) +
+    geom_col(color = "black", alpha = 0.3) +
+    geom_hline(yintercept = 0)+
+    scale_fill_identity() +
+    theme(axis.text.x = element_text(angle = -90),
+          legend.position = "none") +
+    labs(x = "Year",
+         y = "Anual % Change",
+         title = paste("Annual Percent Change Averaged Across : ", str_to_title(zoomed_state())))
+  
+})
+
+#trend between company revenue and % change?
+
+energy_subset <- reactive({
+  if(is.null(input$energy_source) || input$energy_source == "All") {
+    return(powerplant_produc)
+  }
+  
+  powerplant_produc %>% 
+    mutate(Primary.Energy.Source = tolower(Primary.Energy.Source)) %>% 
+    filter(Primary.Energy.Source == tolower(input$energy_source))
+  
+})
+
+state_subset <- reactive({
+  if(is.null(input$State) || input$State == "United States") {
+    return(energy_subset())
+  }
+  
+  energy_subset() %>% 
+    mutate(State = str_to_title(State)) %>% 
+    filter(State == input$State)
+})
+
+DC_subset <- reactive({
+  if(is.null(input$State) || input$State == "United States") {
+    return(data_centers)
+  }
+  
+  data_centers %>% 
+    mutate(State = str_to_title(State)) %>% 
+    filter(State == input$State)
+})
+
+
+output$Heatmap <- renderLeaflet({
+  heatmap_colors <- c("blue", "cyan", "limegreen", "yellow", "red")
+  
+  
+  leaflet(state_subset()) %>%
+    addProviderTiles(providers$CartoDB.Positron) %>% 
+    addCircleMarkers(
+      lat = ~Latitude,
+      lng = ~Longitude,
+      label = ~paste0("mw capacity: ", mw_capacity),
+      radius = 3,
+      weight = .03,
+      fillOpacity = 0,
+      fillColor = "black",
+      group = "plants"
+    ) %>% 
+    addHeatmap(
+      lng = ~Longitude, 
+      lat = ~Latitude, 
+      intensity = ~mw_capacity, 
+      blur = 10, 
+      radius = 13,
+    ) %>% 
+    addCircleMarkers(
+      data = DC_subset(),
+      lat = ~lat,
+      lng = ~long,
+      label = ~paste0("mw consumption: ", ifelse(mw_clean == 0, "unknown", mw_clean)),
+      radius = ~rescale(mw_clean, c(3,8)), 
+      weight = 0,
+      fillOpacity = 1,
+      fillColor = "black",
+      group = "dcs"
+    ) %>% 
+    addLegend(
+      position = "bottomright",
+      colors = rev(heatmap_colors), 
+      labels = rev(c("Low", "", "Medium", "", "High")),
+      title = "Production Capacity (MW)",
+      opacity = 0.7
+    )
+})
+
+observe({
+  leafletProxy("Heatmap") %>%
+    clearGroup("plants") %>%
+    clearGroup("dcs") %>%
+    removeWebGLHeatmap(layerId = "heat") %>%
+    addCircleMarkers(
+      data = state_subset(),
+      lat = ~Latitude,
+      lng = ~Longitude,
+      label = ~paste0("mw capacity: ", mw_capacity, " Source: ", Primary.Energy.Source),
+      radius = 3,
+      weight = .03,
+      fillOpacity = 0,
+      fillColor = "black",
+      group = "plants"
+    ) %>% 
+    addHeatmap(
+      data = state_subset(),
+      lng = ~Longitude, 
+      lat = ~Latitude, 
+      intensity = ~mw_capacity, 
+      blur = 10, 
+      radius = 13,
+      layerId = "heat"
+    ) %>% 
+    addCircleMarkers(
+      data = DC_subset(),
+      lat = ~lat,
+      lng = ~long,
+      label = ~paste0("mw consumption: ", ifelse(mw_clean == 0, "unknown", mw_clean)),
+      radius = ~rescale(mw_clean, c(3,8)), 
+      weight = 0,
+      fillOpacity = 1,
+      fillColor = "black",
+      group = "dcs"
+    )
+})
+
 }
 
 

@@ -5,157 +5,86 @@ library(DT)
 library(geosphere)
 library(jsonlite)
 
-
-museum_data <- read_csv("../data/Museum/whichmuseum_details_12000_geo.csv") %>%
+museum_data <- read_csv("../data/Museum/museum_app_final.csv") %>%
   filter(!is.na(latitude), !is.na(longitude)) %>%
   mutate(
     website_link = if_else(is.na(website_link), "", website_link),
-    museum_url = if_else(is.na(museum_url), "", museum_url),
+    ticket_link = if_else(is.na(ticket_link), "", ticket_link),
+    visit_link = if_else(is.na(visit_link), "", visit_link),
+    hours_summary = if_else(is.na(hours_summary), "", hours_summary),
+    admission_summary = if_else(is.na(admission_summary), "", admission_summary),
+    accessibility_summary = if_else(is.na(accessibility_summary), "", accessibility_summary),
     category = if_else(is.na(category), "Unknown", category),
-    state = case_when(
-      str_detect(state, "^FL") ~ "Florida",
-      str_detect(state, "^NJ") ~ "New Jersey",
-      str_detect(state, "^NY") ~ "New York",
-      TRUE ~ state
+    theme = if_else(is.na(theme), "Other", theme),
+    recommended_for = if_else(is.na(recommended_for), "General visitors", recommended_for),
+    basic_intro = if_else(
+      is.na(basic_intro) | basic_intro == "",
+      paste0(museum_name, " is a ", category, " museum located in ", state, ", United States."),
+      basic_intro
     ),
-    basic_intro = paste0(
-      museum_name,
-      " is a ",
-      category,
-      " museum located in ",
-      state,
-      ", United States."
-    ),
-    theme = case_when(
-      str_detect(str_to_lower(museum_name), "children|kids|child") ~ "Children",
-      str_detect(str_to_lower(museum_name), "zoo|aquarium|wildlife|botanical|nature") ~ "Nature",
-      str_detect(str_to_lower(museum_name), "air|space|aviation|flight|railroad|railway|transport|car|auto") ~ "Transportation",
-      str_detect(str_to_lower(museum_name), "military|war|naval|army|veteran") ~ "Military",
-      str_detect(str_to_lower(category), "history") ~ "History",
-      str_detect(str_to_lower(category), "art") ~ "Art",
-      str_detect(str_to_lower(category), "science|technology") ~ "Science",
-      TRUE ~ "Other"
-    )
-  ) %>%
-  filter(state %in% state.name | state == "Washington DC")
+    museum_id = row_number()
+  )
 
 state_choices <- c("All", sort(unique(museum_data$state)))
 category_choices <- c("All", sort(unique(museum_data$category)))
 theme_choices <- c("All", sort(unique(museum_data$theme)))
-
 
 ui <- fluidPage(
   titlePanel("Museum Explorer"),
   
   sidebarLayout(
     sidebarPanel(
-      textInput(
-        "keyword",
-        "Search by keyword",
-        placeholder = "Try art, history, science, children..."
-      ),
+      textInput("keyword", "Search by keyword",
+                placeholder = "Try art, history, science, children..."),
       
-      selectInput(
-        "category",
-        "Category",
-        choices = category_choices,
-        selected = "All"
-      ),
+      selectInput("category", "Category", choices = category_choices, selected = "All"),
+      selectInput("theme", "Theme", choices = theme_choices, selected = "All"),
+      selectInput("state", "State", choices = state_choices, selected = "All"),
       
-      selectInput(
-        "theme",
-        "Theme",
-        choices = theme_choices,
-        selected = "All"
-      ),
-      
-      selectInput(
-        "state",
-        "State",
-        choices = state_choices,
-        selected = "All"
-      ),
-      
-      checkboxInput(
-        "has_website",
-        "Only show museums with website",
-        value = FALSE
-      ),
+      checkboxInput("has_website", "Only show museums with website", FALSE),
+      checkboxInput("has_ticket", "Only show museums with ticket/admission link", FALSE),
+      checkboxInput("has_hours", "Only show museums with hours information", FALSE),
       
       hr(),
-      
       h4("Find museums near ZIP code"),
+      textInput("zip", "ZIP code", placeholder = "Example: 55454"),
+      numericInput("radius", "Radius in miles", value = 25, min = 1, max = 200),
       
-      textInput(
-        "zip",
-        "ZIP code",
-        placeholder = "Example: 55454"
-      ),
-      
-      numericInput(
-        "radius",
-        "Radius in miles",
-        value = 25,
-        min = 1,
-        max = 200
-      ),
-      
-      actionButton(
-        "clear_zip",
-        "Clear ZIP search"
-      ),
-      
-      br(),
-      br(),
-      
-      actionButton(
-        "apply_filters",
-        "Apply Filters",
-        class = "btn-primary"
-      ),
-      
-      hr(),
-      
-      h4("Selected Museum"),
-      uiOutput("museum_profile")
+      actionButton("clear_zip", "Clear ZIP search"),
+      br(), br(),
+      actionButton("apply_filters", "Apply Filters", class = "btn-primary")
     ),
     
     mainPanel(
       h3(textOutput("result_count")),
       leafletOutput("museum_map", height = 600),
       br(),
+      
+      h3("Museum Details"),
+      wellPanel(uiOutput("museum_profile")),
+      br(),
+      
       DTOutput("museum_table")
     )
   )
 )
-
-
 
 server <- function(input, output, session) {
   
   selected_museum <- reactiveVal(NULL)
   
   zip_location <- reactive({
-    if (input$zip == "") {
-      return(NULL)
-    }
+    if (input$zip == "") return(NULL)
     
     query <- paste(input$zip, "United States")
-    
     url <- paste0(
       "https://nominatim.openstreetmap.org/search?q=",
       URLencode(query),
       "&format=json&limit=1"
     )
     
-    result <- tryCatch(
-      jsonlite::fromJSON(url),
-      error = function(e) NULL
-    )
-    
-    if (is.null(result) || nrow(result) == 0) {
-      return(NULL)
-    }
+    result <- tryCatch(jsonlite::fromJSON(url), error = function(e) NULL)
+    if (is.null(result) || nrow(result) == 0) return(NULL)
     
     tibble(
       latitude = as.numeric(result$lat[1]),
@@ -171,23 +100,27 @@ server <- function(input, output, session) {
     data <- museum_data
     
     if (input$category != "All") {
-      data <- data %>%
-        filter(category == input$category)
+      data <- data %>% filter(category == input$category)
     }
     
     if (input$theme != "All") {
-      data <- data %>%
-        filter(theme == input$theme)
+      data <- data %>% filter(theme == input$theme)
     }
     
     if (input$state != "All") {
-      data <- data %>%
-        filter(state == input$state)
+      data <- data %>% filter(state == input$state)
     }
     
     if (input$has_website) {
-      data <- data %>%
-        filter(website_link != "")
+      data <- data %>% filter(website_link != "")
+    }
+    
+    if (input$has_ticket) {
+      data <- data %>% filter(ticket_link != "")
+    }
+    
+    if (input$has_hours) {
+      data <- data %>% filter(hours_summary != "")
     }
     
     if (input$keyword != "") {
@@ -198,7 +131,9 @@ server <- function(input, output, session) {
           str_detect(str_to_lower(museum_name), keyword) |
             str_detect(str_to_lower(category), keyword) |
             str_detect(str_to_lower(theme), keyword) |
-            str_detect(str_to_lower(full_address), keyword)
+            str_detect(str_to_lower(full_address), keyword) |
+            str_detect(str_to_lower(recommended_for), keyword) |
+            str_detect(str_to_lower(basic_intro), keyword)
         )
     }
     
@@ -217,7 +152,6 @@ server <- function(input, output, session) {
     }
     
     selected_museum(NULL)
-    
     data
   }, ignoreNULL = FALSE)
   
@@ -228,26 +162,20 @@ server <- function(input, output, session) {
   output$museum_map <- renderLeaflet({
     data <- filtered_museums()
     
-    leaflet(data) %>%
+    leaflet(data, options = leafletOptions(preferCanvas = TRUE)) %>%
       addTiles() %>%
-      addCircleMarkers(
+      addMarkers(
         lng = ~longitude,
         lat = ~latitude,
-        radius = 4,
-        stroke = FALSE,
-        fillOpacity = 0.7,
+        layerId = ~museum_id,
         popup = ~paste0(
           "<b>", museum_name, "</b><br>",
           category, "<br>",
           theme, "<br>",
           full_address, "<br>",
-          ifelse(
-            website_link != "",
-            paste0("<a href='", website_link, "' target='_blank'>Website</a>"),
-            "No website available"
-          )
+          "Click marker for details."
         ),
-        layerId = ~museum_url
+        clusterOptions = markerClusterOptions()
       )
   })
   
@@ -255,21 +183,28 @@ server <- function(input, output, session) {
     data <- filtered_museums()
     
     table_data <- data %>%
+      mutate(
+        ticket_status = if_else(ticket_link != "", "Ticket link found", "Check official website"),
+        hours_status = if_else(hours_summary != "", "Hours info found", "Check official website")
+      ) %>%
       select(
+        museum_id,
         museum_name,
         category,
         theme,
         state,
         full_address,
+        ticket_status,
+        hours_status,
         website_link,
-        museum_url,
         any_of("distance_miles")
       )
     
     datatable(
       table_data,
-      options = list(pageLength = 10),
-      rownames = FALSE
+      options = list(pageLength = 10, scrollX = TRUE),
+      rownames = FALSE,
+      selection = "single"
     )
   })
   
@@ -277,23 +212,40 @@ server <- function(input, output, session) {
     click <- input$museum_map_marker_click
     
     selected <- filtered_museums() %>%
-      filter(museum_url == click$id) %>%
+      filter(museum_id == as.numeric(click$id)) %>%
       slice(1)
     
     selected_museum(selected)
+  })
+  
+  observeEvent(input$museum_table_rows_selected, {
+    selected_row <- input$museum_table_rows_selected
+    
+    if (length(selected_row) > 0) {
+      selected <- filtered_museums() %>%
+        slice(selected_row)
+      
+      selected_museum(selected)
+    }
   })
   
   output$museum_profile <- renderUI({
     museum <- selected_museum()
     
     if (is.null(museum) || nrow(museum) == 0) {
-      return(p("Click a museum on the map to see details."))
+      return(p("Click a museum on the map or select a row in the table to see details."))
     }
     
+    google_maps_link <- paste0(
+      "https://www.google.com/maps/search/?api=1&query=",
+      URLencode(museum$full_address)
+    )
+    
     tagList(
-      h3(paste0("🏛 ", museum$museum_name)),
+      h2(paste0("🏛 ", museum$museum_name)),
       p(strong("Category: "), museum$category),
       p(strong("Theme: "), museum$theme),
+      p(strong("Recommended for: "), museum$recommended_for),
       p(strong("State: "), museum$state),
       p(strong("📍 Address: "), museum$full_address),
       p(strong("About: "), museum$basic_intro),
@@ -302,24 +254,60 @@ server <- function(input, output, session) {
         p(strong("Distance: "), round(museum$distance_miles, 1), " miles")
       },
       
-      if (museum$website_link != "") {
-        tags$p(
-          tags$a(
-            href = museum$website_link,
-            target = "_blank",
-            "🌐 Visit official website"
-          )
-        )
+      if (museum$hours_summary != "") {
+        p(strong("🕒 Hours info: "), museum$hours_summary)
       },
       
-      if (museum$museum_url != "") {
-        tags$p(
-          tags$a(
-            href = museum$museum_url,
-            target = "_blank",
-            "🔎 View WhichMuseum page"
-          )
-        )
+      if (museum$admission_summary != "") {
+        p(strong("🎟 Admission info: "), museum$admission_summary)
+      },
+      
+      if (museum$accessibility_summary != "") {
+        p(strong("♿ Accessibility: "), museum$accessibility_summary)
+      },
+      
+      hr(),
+      h4("Visitor Links"),
+      
+      tags$p(tags$a(
+        href = google_maps_link,
+        target = "_blank",
+        onclick = "window.open(this.href); return false;",
+        "🧭 Open in Google Maps"
+      )),
+      
+      if (museum$website_link != "") {
+        tags$p(tags$a(
+          href = museum$website_link,
+          target = "_blank",
+          onclick = "window.open(this.href); return false;",
+          "🌐 Visit official website"
+        ))
+      },
+      
+      if (museum$ticket_link != "") {
+        tags$p(tags$a(
+          href = museum$ticket_link,
+          target = "_blank",
+          onclick = "window.open(this.href); return false;",
+          "🎟 Buy tickets / admission"
+        ))
+      } else if (museum$website_link != "") {
+        tags$p(tags$a(
+          href = museum$website_link,
+          target = "_blank",
+          onclick = "window.open(this.href); return false;",
+          "🎟 Check tickets on official website"
+        ))
+      },
+      
+      if (museum$visit_link != "") {
+        tags$p(tags$a(
+          href = museum$visit_link,
+          target = "_blank",
+          onclick = "window.open(this.href); return false;",
+          "🕒 Plan your visit / hours"
+        ))
       }
     )
   })

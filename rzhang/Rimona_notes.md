@@ -225,8 +225,8 @@ Finished visualizations and mappings across datasets.
 - [X] conduct basic EDA across the data
 
 New tasks:
-- [ ] Search IPUMS and US Census data for more social factors, e.g. population, income, or racial demographics
-- [ ] Clean new data
+- [X] Search IPUMS and US Census data for more social factors, e.g. population, income, or racial demographics
+- [X] Clean new data
 - [ ] Shiny app?
 
 ## 6/26
@@ -234,4 +234,87 @@ Continue searching and cleaning new data.
 
 ## 6/29
 - Found and cleaned IPUMS (NHGIS) dataset
+- Created a few mappings with IPUMS variables
+
+- Also, remember citation for NHGIS data:
+Jonathan Schroeder, David Van Riper, Steven Manson, Katherine Knowles, Tracy Kugler, Finn Roberts, and Steven Ruggles. IPUMS National Historical Geographic Information System: Version 20.0 [dataset]. Minneapolis, MN: IPUMS. 2025. http://doi.org/10.18128/D050.V20.0
+
+## 6/30
+Continue with visualizations and exploring IPUMS data in relation to institutional data.
+
+Also, clean coordinates!
+
+Then began constructing basic Shiny app.
+
+## 7/1 
+Realized that I downloaded 1-year data from 2024 that did not include information for all the counties --> then re-downloaded data but from 2020-2024 (ACS 5-Year Period).
+
+More data cleaning included:
+- remaking NRHP_LHAT joined dataset such that the NRHP no longer included operas and only locations with 'theat(er/re)' in the name.
+- [X] finished basic shiny app
+
+Updated tasks!
+- Revise/add more to Shiny app (features focused on usability, navigation, clarity) 
+- Construct EDA graphs that depict helpful summaries of each dataset, and in turn understanding for users  
+
+## 7/2
+Notes from team meeting:
+- keep accessibility in mind for graphs and app design, such as color palettes and descriptions
+ - change color palette for population 
+ - modify the scale so smaller populations are better distinguishable
+ - change color of location points ('red-green' color-blindness)
+- try to resolve problem with data being absent when switching between institutions
+
+## 7/5
+Revisions made:
+- data point color palette to Okabe_Ito (designed to distinguishable under color vision deficiencies)
+- scaled ranges to 7 bins for improved shading across counties
+ - added breaks to show value-ranges instead of percentiles; included a note for users
+- data would not initially load for maps of other institutions because Shiny suspends rendering for outputs of un-clicked tabs; resolved by adding outputOptions() and 'suspendWhenHidden = FALSE' to render all maps when the app is opened.
+ - however, does make loading the app slower
+ 
+## 7/6 
+- Added EDA boxplots by institution type
+ - shows the selected IPUMS variable's value (in the institution's county) split by institution type and colored to match the map's point colors
+ - required info on which county each institution point falls in; used st_join to convert points to county polygons
+  - Q: is there a way to load the graphs in a separate file and then load them in Shiny? would that be faster?
+ 
+ New tasks:
+ - Update Shiny app layout; explore graph placements and page designs
+ - Write blog post
+
+Considerations:
+- would a homepage be helpful?
+- should the blog post be included in the shiny app or as a .qmd file
+- what should be done for codebook?
+
+Blog post ideas:
+- HBCUs located in counties with higher percentages of Black populations compared to LACs, reflecting broader historical context
+- EV facilities located in counties with higher household-median-incomes than other automotive facilities; could reflect the growing industry and targeted customers 
+
+## 7/7
+Task list:
+ - Shiny app
+  - [X] test different colors/color palettes 
+  - [X] fix layout and labeling of graphs
+  - [ ] add homepage/more contextual info on data for users
+  - [ ] fix data point on in opera dataset
+  
+ - Blog post:
+  - [ ] add page on Shiny App
+  
+- Organize/clean files
+
+
+## 7/8
+Recurring issue with app... in the maps failing to load after continuous interaction with the app.
+ - data points load (as boxplots are not affected), so problem is most likely with the basemap tiles.
+ - switched polygon rendering from SVG to Canvas to reduce memory usage and faster rendering
+
+Continue with tasks:
+ - [ ] add homepage/more contextual info on data for users
+  - [ ] fix data point on in opera dataset
+  
+ - Blog post:
+  - [ ] add page on Shiny App
 
