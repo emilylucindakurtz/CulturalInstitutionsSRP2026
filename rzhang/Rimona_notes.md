@@ -291,3 +291,30 @@ Considerations:
 Blog post ideas:
 - HBCUs located in counties with higher percentages of Black populations compared to LACs, reflecting broader historical context
 - EV facilities located in counties with higher household-median-incomes than other automotive facilities; could reflect the growing industry and targeted customers 
+
+## 7/7
+Task list:
+ - Shiny app
+  - [X] test different colors/color palettes 
+  - [X] fix layout and labeling of graphs
+  - [ ] add homepage/more contextual info on data for users
+  - [ ] fix data point on in opera dataset
+  
+ - Blog post:
+  - [ ] add page on Shiny App
+  
+- Organize/clean files
+
+
+## 7/8
+Recurring issue with app... in the maps failing to load after continuous interaction with the app.
+ - data points load (as boxplots are not affected), so problem is most likely with the basemap tiles.
+ - switched polygon rendering from SVG to Canvas to reduce memory usage and faster rendering
+
+Continue with tasks:
+ - [ ] add homepage/more contextual info on data for users
+  - [ ] fix data point on in opera dataset
+  
+ - Blog post:
+  - [ ] add page on Shiny App
+
