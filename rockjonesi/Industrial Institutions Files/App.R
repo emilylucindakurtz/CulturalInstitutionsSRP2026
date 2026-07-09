@@ -9,6 +9,7 @@ library(leaflet)
 library(pdftools)
 library(tidytext)
 library(scales)
+library(shinyWidgets)
 library(tigris) 
 library(sf)
 library(htmlwidgets)
@@ -76,7 +77,7 @@ HQ_counts <- Headquarters %>%
 
 Headquarters_bar <- state_sf %>%
   left_join(HQ_counts, by = "State") %>%
-  mutate(num_HQ = replace_na(num_HQ, 0))
+  mutate(num_HQ = replace_na(num_HQ, 0)) 
 
 usPOP <- read.csv("usPOP.csv") 
 
@@ -86,7 +87,8 @@ usPOP <- usPOP %>%
 
 
 Headquarters_bar <- Headquarters_bar %>% full_join(usPOP, by = "State") 
-Headquarters_bar <- Headquarters_bar %>% mutate(HQ_per_cap = (num_HQ/Population)*1000000)
+Headquarters_bar <- Headquarters_bar %>% mutate(HQ_per_cap = (num_HQ/Population)*1000000) %>% 
+  full_join(HPI_State_Change, by = c("State")) 
                                                                                               
 data_centers <- read.csv("data_centers.csv") %>% mutate(State = str_to_title(state_convert(state, to = "name")))
 
@@ -101,9 +103,6 @@ powerplant_produc <- Powerplants %>% rename(mw_capacity = Maximum.Summer.Capacit
 
 ui <- navbarPage(
   title = "Exploring Industrial Institutions in the United States",
-tabPanel(
-  title = "Home"
-),
 navbarMenu(
   title = "Electric Power Plants",
 
@@ -159,19 +158,23 @@ navbarMenu(
       sidebarPanel(
         width = 3,
         
-        selectInput(
+        pickerInput(
           inputId = "energy_source",
           label = "Select",
-          choices = c("All", sort(unique(str_to_title(Powerplants$Primary.Energy.Source))))
+          choices = c("All", sort(unique(str_to_title(Powerplants$Primary.Energy.Source)))),
+          selected = "All",
+          multiple = TRUE
         ),
         selectInput(
           inputId = "State",
           label = "select",
-          choices = c("United States", sort(unique(str_to_title(Powerplants$State))))
+          choices = c("United States", sort(unique(str_to_title(Powerplants$State)))),
+          selected = "United States"
         )
       ),
       mainPanel(
-        leafletOutput("Heatmap", height = 500)
+        leafletOutput("Heatmap", height = 500),
+        leafletOutput("Data_centers", height = 500)
       )
     )
   )
@@ -318,25 +321,33 @@ server <- function(input, output) {
   })
   
 output$SidebarChart <- renderPlot({
-  req(clicked_state())
+  if (is.null(clicked_state())) {
+    state_subset <- Powerplants 
+    title <- "Energy Source Distribution for the US"
+  } else {
+    state_subset <- Powerplants %>% filter(State == clicked_state())
+    title <- paste("Energy Source Distribution for", clicked_state())
+  }
   
-  state_subset <- Powerplants %>% filter(State == clicked_state())
-  
+
   ggplot(state_subset, aes(x = fct_infreq(str_to_title(Primary.Energy.Source)), fill = Primary.Energy.Source)) +
     geom_bar(color = "black") +
     scale_fill_manual(values = leaflet_colors) +
     theme(axis.text.x = element_text(angle = -90)) +
     labs(y = "Count",
          x = "Powerplant Primary Energy Source",
-         title = paste("Energy Source Distribution for", clicked_state()))
+         title = title)
   
   })
 
-max_hpi_change <- max(abs(HQHPICNTY$Annual.Change....), na.rm = TRUE)
+
+max_abs_val <- max(abs(HQHPICNTY$Annual.Change....), na.rm = TRUE)
+
+cus <- c("darkred", "#8e0152", "#ffffff", "limegreen", "#276419")
 
 pal <- colorNumeric(
-  palette = "PiYG", 
-  domain = c(-max_hpi_change, max_hpi_change)
+  palette = cus,
+  domain = c(-max_abs_val, max_abs_val)
 )
 
 
@@ -347,7 +358,7 @@ output$Housing <- renderLeaflet({
       addPolygons(
         group = "base_states",
         fillColor = "white",
-        fillOpacity = 0.6,
+        fillOpacity = 0,
         color = "black",
         weight = 1
       ) %>% 
@@ -463,14 +474,14 @@ output$HPI <- renderLeaflet({
     )
 })
 
-leaflet_colors <- setNames(HPIPerPal(HPI_sf$total_hpi_change), HPI_sf$State)
+leaflet_colors2 <- setNames(HPIPerPal(HPI_sf$total_hpi_change), HPI_sf$State)
 
 output$Companycount <- renderPlot({
   
-  ggplot(Headquarters_bar, aes(x = reorder(State, -HQ_per_cap), y = HQ_per_cap, fill = State)) +
+  ggplot(Headquarters_bar, aes(x = reorder(State, -total_hpi_change), y = HQ_per_cap, fill = State)) +
     geom_col(color = "black", alpha = 0.5) +
     scale_x_discrete(drop = FALSE) +
-    scale_fill_manual(values = leaflet_colors) +
+    scale_fill_manual(values = leaflet_colors2) +
     theme(axis.text.x = element_text(angle = -90),
           legend.position = "none") +
     labs(y = "Count",
@@ -501,13 +512,13 @@ output$StateHPIChart <- renderPlot({
 #trend between company revenue and % change?
 
 energy_subset <- reactive({
-  if(is.null(input$energy_source) || input$energy_source == "All") {
+  if(is.null(input$energy_source) || "All" %in% input$energy_source) {
     return(powerplant_produc)
   }
   
   powerplant_produc %>% 
     mutate(Primary.Energy.Source = tolower(Primary.Energy.Source)) %>% 
-    filter(Primary.Energy.Source == tolower(input$energy_source))
+    filter(Primary.Energy.Source %in% tolower(input$energy_source))
   
 })
 
@@ -532,9 +543,10 @@ DC_subset <- reactive({
 })
 
 
+data_centers$dc_radius <- rescale(data_centers$mw_clean, to = c(3, 8))
+
 output$Heatmap <- renderLeaflet({
   heatmap_colors <- c("blue", "cyan", "limegreen", "yellow", "red")
-  
   
   leaflet(state_subset()) %>%
     addProviderTiles(providers$CartoDB.Positron) %>% 
@@ -553,33 +565,67 @@ output$Heatmap <- renderLeaflet({
       lat = ~Latitude, 
       intensity = ~mw_capacity, 
       blur = 10, 
-      radius = 13,
+      radius = 13
     ) %>% 
+    
+    #Small Data Centers (0-100 MW)
     addCircleMarkers(
-      data = DC_subset(),
+      data = subset(DC_subset(), mw_clean <= 100),
       lat = ~lat,
       lng = ~long,
       label = ~paste0("mw consumption: ", ifelse(mw_clean == 0, "unknown", mw_clean)),
-      radius = ~rescale(mw_clean, c(3,8)), 
-      weight = 0,
-      fillOpacity = 1,
-      fillColor = "black",
-      group = "dcs"
+      radius = ~dc_radius, 
+      weight = 0, fillOpacity = 1, fillColor = "black",
+      group = "Small (0-100 MW)"
     ) %>% 
+    
+    #Hyperscale Data Centers (100-1000 MW)
+    addCircleMarkers(
+      data = subset(DC_subset(), mw_clean > 100 & mw_clean <= 1000),
+      lat = ~lat,
+      lng = ~long,
+      label = ~paste0("mw consumption: ", ifelse(mw_clean == 0, "unknown", mw_clean)),
+      radius = ~dc_radius, 
+      weight = 0, fillOpacity = 1, fillColor = "black",
+      group = "Hyperscale (100-1000 MW)"
+    ) %>% 
+    
+    #Mega Campus Data Centers (>1000 MW)
+    addCircleMarkers(
+      data = subset(DC_subset(), mw_clean > 1000),
+      lat = ~lat,
+      lng = ~long,
+      label = ~paste0("mw consumption: ", ifelse(mw_clean == 0, "unknown", mw_clean)),
+      radius = ~dc_radius, 
+      weight = 0, fillOpacity = 1, fillColor = "black",
+      group = "Mega Campus (>1000 MW)"
+    ) %>% 
+    
     addLegend(
       position = "bottomright",
       colors = rev(heatmap_colors), 
       labels = rev(c("Low", "", "Medium", "", "High")),
       title = "Production Capacity (MW)",
       opacity = 0.7
+    ) %>%
+    addLayersControl(
+      overlayGroups = c(
+        "Small (0-100 MW)", 
+        "Hyperscale (100-1000 MW)", 
+        "Mega Campus (>1000 MW)"
+      ),
+      options = layersControlOptions(collapsed = FALSE)
     )
 })
 
 observe({
   leafletProxy("Heatmap") %>%
     clearGroup("plants") %>%
-    clearGroup("dcs") %>%
+    clearGroup("Small (0-100 MW)") %>%
+    clearGroup("Hyperscale (100-1000 MW)") %>%
+    clearGroup("Mega Campus (>1000 MW)") %>%
     removeWebGLHeatmap(layerId = "heat") %>%
+    
     addCircleMarkers(
       data = state_subset(),
       lat = ~Latitude,
@@ -600,16 +646,104 @@ observe({
       radius = 13,
       layerId = "heat"
     ) %>% 
+    
+    #Small Data Centers (0-100 MW)
     addCircleMarkers(
-      data = DC_subset(),
+      data = subset(DC_subset(), mw_clean <= 100),
       lat = ~lat,
       lng = ~long,
       label = ~paste0("mw consumption: ", ifelse(mw_clean == 0, "unknown", mw_clean)),
-      radius = ~rescale(mw_clean, c(3,8)), 
-      weight = 0,
-      fillOpacity = 1,
-      fillColor = "black",
-      group = "dcs"
+      radius = ~dc_radius, 
+      weight = 0, fillOpacity = 1, fillColor = "black",
+      group = "Small (0-100 MW)"
+    ) %>% 
+    
+    #Hyperscale Data Centers (100-1000 MW)
+    addCircleMarkers(
+      data = subset(DC_subset(), mw_clean > 100 & mw_clean <= 1000),
+      lat = ~lat,
+      lng = ~long,
+      label = ~paste0("mw consumption: ", ifelse(mw_clean == 0, "unknown", mw_clean)),
+      radius = ~dc_radius, 
+      weight = 0, fillOpacity = 1, fillColor = "black",
+      group = "Hyperscale (100-1000 MW)"
+    ) %>% 
+    
+    #Mega Campus Data Centers (>1000 MW)
+    addCircleMarkers(
+      data = subset(DC_subset(), mw_clean > 1000),
+      lat = ~lat,
+      lng = ~long,
+      label = ~paste0("mw consumption: ", ifelse(mw_clean == 0, "unknown", mw_clean)),
+      radius = ~dc_radius, 
+      weight = 0, fillOpacity = 1, fillColor = "black",
+      group = "Mega Campus (>1000 MW)"
+    )
+})
+
+output$Data_centers <- renderLeaflet({
+  my_bins <- c(0, 10, 50, 100, 500, 10000) 
+  
+  
+  pal <- colorBin(
+    palette = "YlOrRd",
+    domain = data_centers$pct_consumed,
+    bins = my_bins,
+    na.color = "gray"
+  )
+  
+  # Build the map
+  leaflet(data_centers) %>%
+    addProviderTiles(providers$CartoDB.DarkMatter) %>%
+    addCircles(
+      lng = ~long, 
+      lat = ~lat,
+      radius = local_range,
+      stroke = TRUE,              # Turn stroke back on
+      color = "#ffffff01",        # Hack: A line that is 99% transparent
+      weight = 1,   
+      fillColor = "#ffffff01",    # Hack: A fill that is 99% transparent
+      highlightOptions = highlightOptions(
+        stroke = TRUE, 
+        color = "green", 
+        weight = 2,
+        fillOpacity = 0.1,
+        bringToFront = FALSE      # Must be FALSE so it doesn't shuffle the deck on hover
+      )
+    ) %>%
+    addCircleMarkers(
+      data = powerplant_produc,
+      lat = ~Latitude,
+      lng = ~Longitude,
+      label = ~paste0("mw capacity: ", mw_capacity),
+      radius = 2.5,
+      weight = 1,
+      stroke = TRUE,
+      color = "white",
+      fillOpacity = .5,
+      fillColor = "blue"
+    ) %>% 
+    addCircleMarkers(
+      lng = ~long, 
+      lat = ~lat,
+      radius = 6,
+      weight = 1,
+      color = "#ffffff",
+      fillColor = ~pal(pct_consumed),
+      fillOpacity = 0.9,
+      label = ~paste0("Consumes ", ifelse(mw_clean == 0, "unknown", mw_clean), " mw. Which is ", ifelse(pct_consumed == 0, "unknown", round(pct_consumed, 1)), "% of local plant power")
+    ) %>%
+    addLegend(
+      position = "bottomright",
+      pal = pal,
+      values = pct_consumed,
+      title = "% of Local Power Consumed",
+      opacity = 1
+    ) %>% 
+    addLegend(
+      position = "bottomleft",
+      colors = "transparent",      
+      labels = "🔵 Power Plants"   
     )
 })
 
