@@ -318,3 +318,8 @@ Continue with tasks:
  - Blog post:
   - [ ] add page on Shiny App
 
+Blog post ideas (cont.):
+- HBCUs located in counties with higher percentages of Black populations compared to LACs, reflecting broader historical context
+- EV facilities located in counties with higher household-median-incomes than other automotive facilities; could reflect the growing industry and targeted customers 
+ - however, not a large difference between averages
+- Operas located in counties with higher household-median-incomes in comparison to theaters; could be due to it offering a more curated/uncommon activity

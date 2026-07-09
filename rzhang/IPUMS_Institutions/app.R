@@ -194,8 +194,8 @@ opera           <- attach_county_data(opera)
 
 # Use Okabe-Ito colorblind-safe palette for consistency across levels
 
-type_color_ramp <- c("#8F2CE0", "#56B4E9", "#FF17E5", "#40D4C9", "#A3EEFF",
-                     "#730E9E", "#F0E442", "#999999", "#004fdb")
+type_color_ramp <- c("#D41159", "#FFD67A", "#F16EB7", "#FFB3F4", "#F57714",
+                     "#730E9E", "#999999")
 
 get_type_pal <- function(type_values) {
   lev <- sort(unique(type_values))
@@ -262,7 +262,8 @@ mapPageUI <- function(id, type_choices, institution_label, institution_choices) 
       fluidRow(
         column(7, leafletOutput(ns("map"), height = "700px")),
         column(5,
-               plotOutput(ns("boxplot"), height = "700px"),
+               uiOutput(ns("boxplot_title")),
+               plotOutput(ns("boxplot"), height = "670px"),
                div(
                  style = "display: flex; align-items: flex-start; gap: 6px;",
                  tooltip(
@@ -316,7 +317,7 @@ mapPageServer <- function(id, points_data) {
       breaks <- quantile(values, probs = seq(0, 1, length.out = n_bins + 1),
                          na.rm = TRUE)
       breaks <- unique(breaks)       # collapse duplicate edges
-      county_pal <- colorBin("YlOrRd", domain = values, bins = breaks,
+      county_pal <- colorBin("Blues", domain = values, bins = breaks,
                              na.color = "#f0f0f0")
       
       county_labels <- sprintf(
@@ -391,6 +392,16 @@ mapPageServer <- function(id, points_data) {
         )
     })
     
+    ## Chart heading, rendered as HTML to show entire variable titles
+    output$boxplot_title <- renderUI({
+      var <- input$ipums_var
+      var_label <- names(ipums_var_choices)[ipums_var_choices == var]
+      tagList(
+        tags$h4(paste(var_label, "by Institution Type"), style = "margin-bottom: 2px;"),
+        tags$p("Value = the county each institution is located in", style = "color: #666; font-size: 0.9em; margin-top: 0;")
+      )
+    })
+    
     # EDA boxplots: distribution of the selected IPUMS variable split by institution type
     output$boxplot <- renderPlot({
       var <- input$ipums_var
@@ -417,12 +428,7 @@ mapPageServer <- function(id, points_data) {
         scale_fill_manual(values = type_colors, guide = "none") +
         scale_x_discrete(labels = x_labels) +
         coord_flip() +
-        labs(
-          title = paste(var_label, "by Institution Type"),
-          subtitle = "Value = the county each institution is located in",
-          x = NULL,
-          y = var_label
-        ) +
+        labs(x = NULL, y = var_label) +
         theme_minimal(base_size = 13) +
         theme(plot.title = element_text(face = "bold"))
       
