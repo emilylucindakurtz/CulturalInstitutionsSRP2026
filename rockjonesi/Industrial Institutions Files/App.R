@@ -9,9 +9,11 @@ library(leaflet)
 library(pdftools)
 library(tidytext)
 library(scales)
+library(DT)
 library(shinyWidgets)
 library(tigris) 
 library(sf)
+library(htmltools)
 library(htmlwidgets)
 library(forcats)
 library(usa)
@@ -21,10 +23,11 @@ library(usa)
 Powerplants <- read.csv("PowerPlants_Clean.csv")
 Headquarters <- read.csv("Fortune500HQ_Housing.csv")
 HPI <- read.csv("county_HPI.csv")
+US_Housing <- read.csv("Fortune500_Housing_All_Counties.csv")
 
 
 
-
+#-------DATA CLEANING---------
 
 #Power Plant Data Merge
 state_counts <- Powerplants %>% 
@@ -44,7 +47,7 @@ county_sf <- counties(cb = TRUE, class = "sf") %>%
   mutate(County = tolower(NAME),
          State = tolower(STATE_NAME))
 
-housing_map <- Headquarters %>% 
+housing_map <- US_Housing %>% 
   mutate(County = tolower(County),
          State = tolower(State))
 
@@ -54,11 +57,12 @@ unique_county_prices <- housing_map %>%
     Median.Home.Price = mean(Median.Home.Price, na.rm = TRUE), 
     .groups = "drop"
   ) 
-county_prices <- county_sf %>%
-  full_join(unique_county_prices, 
-            by = c("State","County")) 
 
-HQHPICNTY <- county_prices %>% full_join(HPI, by = c("State","County"))
+county_prices <- county_sf %>%
+  full_join(unique_county_prices %>% select(County, State, Median.Home.Price), 
+            by = c("State","County"))
+
+HQHPICNTY <- county_sf %>% left_join(HPI, by = c("State", "County"), relationship = "many-to-many")
 
 
 HPI_State_Change <- HPI %>%
@@ -101,14 +105,14 @@ powerplant_produc <- Powerplants %>% rename(mw_capacity = Maximum.Summer.Capacit
 
 #----user interface------
 
-ui <- navbarPage(
+ui <- page_fillable(
   title = "Exploring Industrial Institutions in the United States",
-navbarMenu(
+navset_card_tab(
   title = "Electric Power Plants",
 
-  tabPanel(
-    title = "Map Power Plants by State",
-    
+  nav_panel(
+    "Power Plants", "1st panel",
+
     fluidRow(
       column(
         width = 4,
@@ -132,13 +136,13 @@ navbarMenu(
 
     tabPanel(
       title = "Explore by Energy Sources",
-      
+
       sidebarLayout(
-        
+
         sidebarPanel(
           width = 3,
           h1("Choose an Energy Souce"),
-          
+
           selectInput(
             inputId = "energy_choice",
             label = "Select",
@@ -152,12 +156,12 @@ navbarMenu(
     ),
   tabPanel(
     title = "Data Centers",
-    
+
     sidebarLayout(
-      
+
       sidebarPanel(
         width = 3,
-        
+
         pickerInput(
           inputId = "energy_source",
           label = "Select",
@@ -174,27 +178,28 @@ navbarMenu(
       ),
       mainPanel(
         leafletOutput("Heatmap", height = 500),
-        leafletOutput("Data_centers", height = 500)
+        div(style = "overflow-y: auto;",dataTableOutput("Heatmap_Data")),
+        #leafletOutput("Data_centers", height = 500)
       )
     )
   )
   ),
 navbarMenu(
   title = "Fortune 500 Headquarters",
-  
-  
-  
-  
+
+
+
+
   tabPanel(
     title = "HPI Change Overtime in the Presence of Megacorporations",
-    
+
     sidebarLayout(
-      
+
       sidebarPanel(
         uiOutput("slider"),
         plotOutput("StateHPIChart", height = 400)
       ),
-    
+
     mainPanel(
       leafletOutput("Housing", height = 500)
         )
@@ -202,14 +207,13 @@ navbarMenu(
     ),
   tabPanel(
     title = "HPI Change Over 25 Years",
-    
-    mainPanel(
+
       leafletOutput("HPI", height = 400),
       plotOutput("Companycount", height = 400)
-    )
   )
   )
 )
+
 
 
 #-------sever-------
@@ -350,6 +354,10 @@ pal <- colorNumeric(
   domain = c(-max_abs_val, max_abs_val)
 )
 
+County_pal <- colorNumeric(
+  palette = "YlOrRd", 
+  domain = county_prices$Median.Home.Price
+)
 
 output$Housing <- renderLeaflet({
     leaflet(state_sf) %>% 
@@ -362,13 +370,36 @@ output$Housing <- renderLeaflet({
         color = "black",
         weight = 1
       ) %>% 
+    addPolygons(
+      data = county_prices,
+      group = "all_counties",
+      fillColor = ~County_pal(Median.Home.Price),
+      fillOpacity = 0.6,
+      color = "black",
+      weight = 1,
+      smoothFactor = 0.5,
+      label = ~paste0(str_to_title(County), " County"),
+      popup = ~paste0(
+        str_to_title(County), " County,", "<br/>",
+        "Median Home Price: ", dollar(Median.Home.Price)
+      ) 
+    ) %>% 
     addMarkers(
       data = housing_map,
       lng = ~Longitude, 
       lat = ~Latitude,
       layerId = ~Company,
       label = ~Company
-    ) 
+    ) %>% 
+    addLegend(
+      data = (county_prices %>% drop_na()),
+      position = "bottomright",
+      pal = County_pal,
+      values = ~Median.Home.Price,
+      title = "2025 Median Home Price",
+      labFormat = labelFormat(prefix = "$"),
+      opacity = 0.8
+    )
 })
 
 zoomed_state <- reactiveVal(NULL)
@@ -413,6 +444,7 @@ observe({
   
   leafletProxy("Housing") %>% 
     clearGroup("counties") %>% 
+    clearGroup("all_counties") %>% 
     clearControls() %>% 
     addPolygons(
       data = county_subset,
@@ -420,7 +452,10 @@ observe({
       layerId = ~County,
       fillColor = ~pal(Annual.Change....),
       fillOpacity = 1,
-      label = ~as.character(HPI),
+      label = ~str_to_title(County),
+      popup = ~paste0(str_to_title(County), " County,", "<br/>",
+                      "HPI: ", as.character(HPI), "<br/>",
+                      Annual.Change....,"% Change From ", (as.numeric(Year) - 1)),
       color = "black",
       weight = 1
     ) %>% 
@@ -430,6 +465,11 @@ observe({
       title = "YoY % Change in HPI",
       position = "bottomright",
       opacity = 1
+     ) %>% 
+    addLegend(
+      position = "topright",
+      colors = character(0),
+      title = paste0("Year: ", if (!is.null(input$Year)) as.character(input$Year) else "2000")
     )
 })
 
@@ -441,7 +481,7 @@ output$slider <- renderUI({
               min = 2000, 
               max = 2025, 
               2000, 
-              animate = animationOptions(interval = 2500, loop = TRUE)
+              animate = animationOptions(interval = 3500, loop = TRUE)
   )
 })
 ###side map under this one, plotting just overall HPI % change since 2000. Should supplement with a bar graph with state counts of # of F500 companies, to see 
@@ -681,6 +721,13 @@ observe({
     )
 })
 
+
+output$Heatmap_Data <- renderDataTable({
+plants <- state_subset() %>% arrange(-mw_capacity)},
+options = list(pageLength = 15)
+)
+
+
 output$Data_centers <- renderLeaflet({
   my_bins <- c(0, 10, 50, 100, 500, 10000) 
   
@@ -691,6 +738,8 @@ output$Data_centers <- renderLeaflet({
     bins = my_bins,
     na.color = "gray"
   )
+  
+  local_range <- 50 * 1609.34
   
   # Build the map
   leaflet(data_centers) %>%
