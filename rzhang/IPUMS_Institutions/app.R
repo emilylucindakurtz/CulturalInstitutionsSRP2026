@@ -171,7 +171,7 @@ opera <- opera_raw %>%
 
 opera_type_choices <- sort(unique(opera$type))
 
-# Spatial joineach point's county-level IPUMS values for boxplots
+# Spatial join each point's county-level IPUMS values for boxplots
 attach_county_data <- function(points_df) {
   pts_sf <- st_as_sf(points_df, coords = c("longitude", "latitude"),
                      crs = 4326, remove = FALSE)
@@ -446,10 +446,67 @@ mapPageServer <- function(id, points_data) {
 }
 
 
-# Define UI for application
+# UI for application
 ui <- navbarPage(
   title = "Institution Location Explorer",
+  id = "main_nav",   # allows path between buttons on homepage and other tabs
+  selected = "Home",
   theme = bs_theme(version = 5),
+  
+  ## Homepage
+  tabPanel("Home", fluidPage(
+    div(style = "text-align: center; padding: 40px 20px 10px; max-width: 750px; margin: 0 auto;",
+        h1("Institution Location Explorer"),
+        p( "Explore institutions in the United States of America and how ",
+           "each maps onto demographic and economic landscapes across ",
+           "counties. Choose from specialized colleges, automotive & EV ", 
+           "manufacturing facilities, historic theaters, and opera companies.",
+           style = "font-size: 1.15em; color: #555;")
+        ),
+    hr(),
+    h3("Institutions", style = "text-align: center; margin-top: 30px; margin-bottom: 20px;"),
+    layout_columns(
+      col_widths = c(3, 3, 3, 3),
+      card(
+        card_header(icon("graduation-cap"), " Colleges"),
+        p("Liberal Arts Colleges and HBCUs across the U.S."),
+        actionButton("nav_colleges", "Explore", class = "btn-outline-primary btn-sm")
+      ),
+      card(
+        card_header(icon("car"), " Automotive & EV"),
+        p("Vehicle assembly and EV manufacturing facilities."),
+        actionButton("nav_auto", "Explore", class = "btn-outline-primary btn-sm")
+      ),
+      card(
+        card_header(icon("landmark"), " Historic Theaters"),
+        p("NRHP-listed and League of Historic American Theatres members."),
+        actionButton("nav_theaters", "Explore", class = "btn-outline-primary btn-sm")
+      ),
+      card(
+        card_header(icon("music"), " Opera Companies"),
+        p("Opera America member companies nationwide."),
+        actionButton("nav_opera", "Explore", class = "btn-outline-primary btn-sm")
+      )
+    ),
+    div(
+      style = "text-align: center; margin: 30px 0 10px;",
+      actionButton("nav_blog", "Read the Blog Post \u2192", class = "btn-primary")
+    )
+  ),
+  hr(),
+  div(
+    style = "max-width: 1100px; margin: 20px auto;",
+    h3("Ways to navigate the app"),
+    tags$ol(
+      style = "font-size: 1.05em; line-height: 1.9;",
+      tags$li("Select a tab above for institution type."),
+      tags$li("Shade the map by any Census variable using the dropdown on the left (pick between population, income, race, or education)."),
+      tags$li("Filter by type with the checkboxes (e.g. LAC vs. HBCU, EV vs. traditional auto facility)."),
+      tags$li("Search for a specific institution by name to find it on the map."),
+      tags$li("Compare distributions in the boxplot next to the map"),
+      tags$li("Read the analysis on the Blog Post tab for a deeper look at one pattern found in the data.")
+    ))
+  ),
   tabPanel("Colleges", mapPageUI("colleges", college_type_choices, "college",
                                  sort(unique(colleges$name)))),
   tabPanel("Automotive & EV Facilities", mapPageUI("auto", auto_type_choices, "facility",
@@ -460,8 +517,25 @@ ui <- navbarPage(
                                         sort(unique(opera$name))))
 )
 
-# Define server logic
+
+# Server
 server <- function(input, output, session) {
+  observeEvent(input$nav_colleges, {
+    updateNavbarPage(session, "main_nav", selected = "Colleges")
+  })
+  observeEvent(input$nav_auto, {
+    updateNavbarPage(session, "main_nav", selected = "Automotive & EV Facilities")
+  })
+  observeEvent(input$nav_theaters, {
+    updateNavbarPage(session, "main_nav", selected = "Historic Theaters")
+  })
+  observeEvent(input$nav_opera, {
+    updateNavbarPage(session, "main_nav", selected = "Opera Companies")
+  })
+  observeEvent(input$nav_blog, {
+    updateNavbarPage(session, "main_nav", selected = "Blog Post")
+  })
+  
   mapPageServer("colleges", colleges)
   mapPageServer("auto", auto_facilities)
   mapPageServer("theaters", theaters)
