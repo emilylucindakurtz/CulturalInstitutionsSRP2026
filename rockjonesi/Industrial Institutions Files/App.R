@@ -5,6 +5,7 @@ library(bslib)
 library(plotly)
 library(tidygeocoder)
 library(tidyverse)
+library(leaflet.extras)
 library(leaflet)
 library(pdftools)
 library(tidytext)
@@ -94,7 +95,8 @@ Headquarters_bar <- Headquarters_bar %>% full_join(usPOP, by = "State")
 Headquarters_bar <- Headquarters_bar %>% mutate(HQ_per_cap = (num_HQ/Population)*1000000) %>% 
   full_join(HPI_State_Change, by = c("State")) 
                                                                                               
-data_centers <- read.csv("data_centers.csv") %>% mutate(State = str_to_title(state_convert(state, to = "name")))
+data_centers <- read.csv("data_centers.csv") %>% 
+  mutate(State = str_to_title(state_convert(state, to = "name")))
 
 powerplant_produc <- Powerplants %>% rename(mw_capacity = Maximum.Summer.Capacity..Megawatts.) %>% 
   mutate(mw_capacity = ifelse(is.na(mw_capacity), 0, mw_capacity)) %>% 
@@ -103,141 +105,114 @@ powerplant_produc <- Powerplants %>% rename(mw_capacity = Maximum.Summer.Capacit
 
 
 
-#----user interface------
-
-ui <- page_fillable(
-  title = "Exploring Industrial Institutions in the United States",
-navset_card_tab(
-  title = "Electric Power Plants",
-
-  nav_panel(
-    "Power Plants", "1st panel",
-
-    fluidRow(
-      column(
-        width = 4,
-        card(
-          card_header(h4("Explore by State")),
-          card_body(
-            plotOutput("SidebarChart", height = 400)
-          )
+ui <- page_fluid(
+  page_navbar(
+    navset_card_underline(
+#Home tab----
+      nav_panel(
+        "Home"
+      ),
+#PP tab ----
+      nav_panel(
+        "Power Plants",
+        layout_columns(
+          card(
+            layout_columns(
+              plotOutput("SidebarChart", height = 400),
+              div(
+                selectInput(
+                  inputId = "energy_choice",
+                  label = "Select Energy Type",
+                  choices = sort(unique(str_to_title(Powerplants$Primary.Energy.Source))),
+                  width = "100%"
+                ),
+                plotOutput("Energy", height = 400)
+              ),
+              col_widths = c(6,6)
+            )
+          ),
+          card(
+            leafletOutput("Map", height = 700)
+            ),
+          col_widths = c(12, 12)
         )
       ),
-      column(
-        width = 8,
-        card(
-          card_body(
-            leafletOutput("Map", height = 600)
-          )
+#DC tab----
+      nav_panel(
+        "Data Centers",
+        layout_columns(
+          card(
+            card_body(
+              fillable = TRUE,
+              layout_columns(
+                leafletOutput("Heatmap", height = 700),
+                  div(
+                    pickerInput(
+                      inputId = "energy_source",
+                      label = "Select Energy Type(s)",
+                      choices = c("All", sort(unique(str_to_title(Powerplants$Primary.Energy.Source)))),
+                      selected = "All",
+                      multiple = TRUE,
+                      width = "100%"
+                    ),
+                    selectInput(
+                      inputId = "State",
+                      label = "Select State",
+                      choices = c("United States", sort(unique(str_to_title(Powerplants$State)))),
+                      selected = "United States",
+                      width = "100%"
+                    ),
+                    div(
+                      style = "max-height: 450px; overflow-y: auto;", 
+                      dataTableOutput("Heatmap_Data")
+                    )
+                  ),
+                col_widths = c(8,4)
+              )
+            )
+          ),
+          card(
+            layout_columns(
+              leafletOutput("Data_centers", height = 500),
+              col_widths = c(10)
+            )
+          ),
+          col_widths = c(13,12)
+        )
+      ),
+#Housing tab----
+      nav_panel(
+        "Corporate and Housing",
+        layout_columns(
+          card(
+            layout_columns(
+              div(
+                uiOutput("slider"),
+                plotOutput("StateHPIChart", height = 400)
+              ),
+              leafletOutput("Housing", height = 500),
+              col_widths = c(5,7)
+            )
+          ),
+          card(
+            layout_columns(
+              leafletOutput("HPI", height = 400),
+              plotOutput("Companycount", height = 400),
+              col_widths = c(7,5)
+            )
+          ),
+          col_widths = c(12,12)
         )
       )
     )
-  ),
-
-    tabPanel(
-      title = "Explore by Energy Sources",
-
-      sidebarLayout(
-
-        sidebarPanel(
-          width = 3,
-          h1("Choose an Energy Souce"),
-
-          selectInput(
-            inputId = "energy_choice",
-            label = "Select",
-            choices = sort(unique(str_to_title(Powerplants$Primary.Energy.Source)))
-          )
-        ),
-        mainPanel(
-          plotOutput("Energy", height = 500)
-        )
-      )
-    ),
-  tabPanel(
-    title = "Data Centers",
-
-    sidebarLayout(
-
-      sidebarPanel(
-        width = 3,
-
-        pickerInput(
-          inputId = "energy_source",
-          label = "Select",
-          choices = c("All", sort(unique(str_to_title(Powerplants$Primary.Energy.Source)))),
-          selected = "All",
-          multiple = TRUE
-        ),
-        selectInput(
-          inputId = "State",
-          label = "select",
-          choices = c("United States", sort(unique(str_to_title(Powerplants$State)))),
-          selected = "United States"
-        )
-      ),
-      mainPanel(
-        leafletOutput("Heatmap", height = 500),
-        div(style = "overflow-y: auto;",dataTableOutput("Heatmap_Data")),
-        #leafletOutput("Data_centers", height = 500)
-      )
-    )
-  )
-  ),
-navbarMenu(
-  title = "Fortune 500 Headquarters",
-
-
-
-
-  tabPanel(
-    title = "HPI Change Overtime in the Presence of Megacorporations",
-
-    sidebarLayout(
-
-      sidebarPanel(
-        uiOutput("slider"),
-        plotOutput("StateHPIChart", height = 400)
-      ),
-
-    mainPanel(
-      leafletOutput("Housing", height = 500)
-        )
-      )
-    ),
-  tabPanel(
-    title = "HPI Change Over 25 Years",
-
-      leafletOutput("HPI", height = 400),
-      plotOutput("Companycount", height = 400)
-  )
   )
 )
-
 
 
 #-------sever-------
 
 server <- function(input, output) {
   
-  ##------by energy plot----------
-  output$Energy <- renderPlot({
-    
-    energy_subset <- Powerplants %>% mutate(Primary.Energy.Source = str_to_title(Primary.Energy.Source)) %>% 
-      filter(Primary.Energy.Source == input$energy_choice)
-    
-    ggplot(energy_subset, aes(x = fct_infreq(State), fill = Primary.Energy.Source)) +
-      geom_bar(color = "black") +
-      scale_x_discrete(drop = FALSE) +
-      scale_fill_brewer(palette =  "Set3") +
-      theme(axis.text.x = element_text(angle = -90),
-            legend.position = "none") +
-      labs(y = "Count",
-           x = "Primary Energy Source",
-           title = paste("Primary Energy Source:", str_to_title(input$Primary.Energy.Source)))
-    
-    
-    })
   
   ##--------state power plants map---------
   clicked_state <- reactiveVal(NULL)
@@ -345,6 +320,26 @@ output$SidebarChart <- renderPlot({
   })
 
 
+##------by energy plot----------
+output$Energy <- renderPlot({
+  
+  energy_subset <- Powerplants %>% 
+    filter(str_to_title(Primary.Energy.Source) == input$energy_choice)
+  
+  ggplot(energy_subset, aes(x = fct_infreq(State), fill = Primary.Energy.Source)) +
+    geom_bar(color = "black") +
+    scale_x_discrete(drop = FALSE) +
+    scale_fill_manual(values = leaflet_colors) +
+    theme(axis.text.x = element_text(angle = -90),
+          legend.position = "none") +
+    labs(y = "Count",
+         x = "Primary Energy Source",
+         title = paste("Primary Energy Source:", str_to_title(input$Primary.Energy.Source)))
+  
+  
+})
+
+
 max_abs_val <- max(abs(HQHPICNTY$Annual.Change....), na.rm = TRUE)
 
 cus <- c("darkred", "#8e0152", "#ffffff", "limegreen", "#276419")
@@ -442,6 +437,7 @@ observe({
 
   county_subset <- selected_state()
   
+  
   leafletProxy("Housing") %>% 
     clearGroup("counties") %>% 
     clearGroup("all_counties") %>% 
@@ -469,6 +465,7 @@ observe({
     addLegend(
       position = "topright",
       colors = character(0),
+      labels = character(0),
       title = paste0("Year: ", if (!is.null(input$Year)) as.character(input$Year) else "2000")
     )
 })
@@ -642,7 +639,7 @@ output$Heatmap <- renderLeaflet({
     ) %>% 
     
     addLegend(
-      position = "bottomright",
+      position = "bottomleft",
       colors = rev(heatmap_colors), 
       labels = rev(c("Low", "", "Medium", "", "High")),
       title = "Production Capacity (MW)",
@@ -785,12 +782,12 @@ output$Data_centers <- renderLeaflet({
     addLegend(
       position = "bottomright",
       pal = pal,
-      values = pct_consumed,
+      values = data_centers$pct_consumed,
       title = "% of Local Power Consumed",
       opacity = 1
     ) %>% 
     addLegend(
-      position = "bottomleft",
+      position = "topright",
       colors = "transparent",      
       labels = "🔵 Power Plants"   
     )
