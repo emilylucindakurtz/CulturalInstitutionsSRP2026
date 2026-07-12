@@ -132,9 +132,13 @@ ui <- page_fluid(
             )
           ),
           card(
+            card_header("Map of US Electric Power Plants"),
             leafletOutput("Map", height = 700)
             ),
-          col_widths = c(12, 12)
+          card(
+            textOutput("Test")
+          ),
+          col_widths = c(12, 12,12)
         )
       ),
 #DC tab----
@@ -186,15 +190,22 @@ ui <- page_fluid(
         layout_columns(
           card(
             layout_columns(
+              leafletOutput("Housing", height = 500),
               div(
                 uiOutput("slider"),
                 plotOutput("StateHPIChart", height = 400)
               ),
-              leafletOutput("Housing", height = 500),
-              col_widths = c(5,7)
+              col_widths = c(7,5)
             )
           ),
           card(
+            card_header(
+              tooltip(
+                span("Map of HPI (%) Change From 2000-2025 ", icon("info-circle")),
+                "The Housing Price Index (HPI) is a measure of percent change in a residential property's price relative to a 
+                baseline of 100 HPI. An HPI of 200 would indicate a property price has doubled compared to the base price."
+              )
+            ),
             layout_columns(
               leafletOutput("HPI", height = 400),
               plotOutput("Companycount", height = 400),
@@ -247,7 +258,7 @@ server <- function(input, output) {
         pal = powerplant_count_pal,
         value = state_sf$State.Powerplant.Count, 
         position = "bottomright",
-        title = "State Electric Power Plant Counts"
+        title = "Total Power Plant Count"
       )
   })
     
@@ -302,10 +313,10 @@ server <- function(input, output) {
 output$SidebarChart <- renderPlot({
   if (is.null(clicked_state())) {
     state_subset <- Powerplants 
-    title <- "Energy Source Distribution for the US"
+    title <- "Primary Energy Source Distribution for the US"
   } else {
     state_subset <- Powerplants %>% filter(State == clicked_state())
-    title <- paste("Energy Source Distribution for", clicked_state())
+    title <- paste("Primary Energy Source Distribution for", clicked_state())
   }
   
 
@@ -506,7 +517,7 @@ output$HPI <- renderLeaflet({
       pal = HPIPerPal,
       values = HPI_State_Change$total_hpi_change, 
       position = "bottomright",
-      title = "HPI Percent Change",
+      title = "Total HPI Change (%)",
       labFormat = labelFormat(suffix = "%", transform = function(x) x * 100)
     )
 })
@@ -541,7 +552,7 @@ output$StateHPIChart <- renderPlot({
     theme(axis.text.x = element_text(angle = -90),
           legend.position = "none") +
     labs(x = "Year",
-         y = "Anual % Change",
+         y = "Anual Change (%)",
          title = paste("Annual Percent Change Averaged Across : ", str_to_title(zoomed_state())))
   
 })
@@ -791,6 +802,10 @@ output$Data_centers <- renderLeaflet({
       colors = "transparent",      
       labels = "🔵 Power Plants"   
     )
+})
+
+output$Test <- renderText({
+  expr = "test"
 })
 
 }
