@@ -326,8 +326,14 @@ Blog post ideas (cont.):
 
 
 ## 7/9
- - [X] add homepage/more contextual info on data for users
+ - [X] add homepage/more contextual info about the app (what it's about, how to use)
   - used CSS and HTML to format the homepage; might add more later
+  - References:
+   - https://engineering-shiny.org/css.html
+   - https://shiny.posit.co/r/articles/build/css/
+   - https://shiny.posit.co/r/reference/shiny/1.8.0/icon.html
+   - many W3Schools tutorials - https://www.w3schools.com/howto/default.asp
+  - also used Claude to help debug
 
 Continued tasks:
 - [ ] fix data point on in opera dataset
@@ -337,7 +343,7 @@ Continued tasks:
 
 ### Blog post notes/drafts:
 #### Majority of HBCUs are located in South, with few/none in certain regions (Northeast, Midwest).
-- Yhy are there few HBCUs in the Northeast/Midwest regions of the US?
+- Why are there few HBCUs located in the Northeast/Midwest regions of the US?
 
 - First HBCUs were founded in Pennsylvania (Cheyney University) and Ohio before the American Civil War  (1861–65)
 - After the end of the Civil War and the abolition of slavery, along with support from the Freedmen’s Bureau (federal org that operated during Reconstruction to help former slaves adjust to freedom), HBCUs were founded throughout the South.
@@ -350,4 +356,11 @@ Sources:
 - https://www.britannica.com/topic/historically-black-colleges-and-universities
 - https://hbcufirst.com/resources/hbcu-history-timeline
 - https://journals.openedition.org/qds/4044
+
+
+## 7/10
+Tasks today:
+
+- Examine app for any remaining errors/issues
+
 
