@@ -1,0 +1,287 @@
+---
+title: "Satellite-Based Environmental Analysis of Cultural and Community Institutions"
+author: "Zoe Zhang"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-fold: false
+  pdf:
+    toc: true
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+library(tidyverse)
+library(knitr)
+library(gt)
+
+satellite_all <- read_csv(
+  "../outputs/Satellite/satellite_all_indicators.csv"
+)
+
+summary_table <- read_csv(
+  "../outputs/Satellite/satellite_summary_all_indicators.csv"
+)
+
+anova_table <- read_csv(
+  "../outputs/Satellite/Table2_ANOVA_Results.csv"
+)
+```
+
+# Introduction
+
+Understanding the environments surrounding key institutions offers valuable insights into urban development, infrastructure, and patterns of human activity. Unlike approaches relying solely on demographic or administrative data, remote sensing satellite imagery provides a standardized method for characterizing environmental conditions across thousands of locations.
+This project compares three categories of institutions across the United States:
+
+- Fortune 500 Headquarters
+- Power Plants
+- Sports Venues
+
+using three satellite-derived environmental indicators:
+
+- Nighttime Lights (VIIRS)
+- Nitrogen Dioxide (NO₂)
+- Impervious Surface
+
+Together, these variables describe different aspects of the built environment, including nighttime human activity, atmospheric pollution, and land development.
+
+The objective of this study is to investigate whether different institution types occupy systematically different environments and to explore the relationships among these environmental indicators.
+
+---
+
+# Data Sources
+
+Three publicly available satellite-derived datasets were used.
+
+## Nighttime Lights
+
+Nighttime light intensity was obtained from the VIIRS Day/Night Band annual composite. Nighttime lights are widely used as a proxy for urban activity, economic development, and human presence.
+
+## Nitrogen Dioxide (NO₂)
+
+Tropospheric NO₂ concentrations were extracted from satellite observations. NO₂ is commonly associated with transportation networks, industrial activity, and fossil fuel combustion.
+
+## Impervious Surface
+
+Impervious surface percentage was derived from satellite land cover products. High values indicate dense built environments consisting of roads, parking lots, and buildings.
+
+---
+
+# Methods
+
+The workflow consisted of the following steps:
+
+1. Import satellite measurements for each institution.
+2. Merge Nighttime Lights, NO₂, and Impervious Surface datasets.
+3. Remove observations containing missing values.
+4. Calculate summary statistics for each institution type.
+5. Visualize distributions of satellite indicators.
+6. Examine correlations among indicators.
+7. Perform one-way ANOVA to test differences between institution categories.
+8. Conduct Tukey post-hoc tests for pairwise comparisons.
+
+---
+
+# Summary Statistics
+
+The cleaned dataset contains environmental measurements for all three institution categories.
+
+```{r}
+summary_table |>
+  gt()
+```
+
+Fortune 500 headquarters typically exhibit the highest levels of nighttime lighting intensity and impervious surface coverage, reflecting the characteristics of highly urbanized environments.
+
+Power plants exhibit significantly lower nighttime light intensity and a lower proportion of impervious surfaces, reflecting their location outside densely populated urban cores.
+
+Sports venues occupy an intermediate position between these two extremes.
+
+---
+
+# Distribution of Satellite Indicators
+
+The following visualization compares the distributions of each satellite indicator across institution types.
+
+```{r}
+satellite_long <- satellite_all |>
+  pivot_longer(
+    cols=c(avg_rad,no2,impervious_surface),
+    names_to="indicator",
+    values_to="value"
+  ) |>
+  mutate(
+    indicator=recode(
+      indicator,
+      avg_rad="Nighttime Lights",
+      no2="NO₂",
+      impervious_surface="Impervious Surface"
+    )
+  )
+
+ggplot(
+    satellite_long,
+    aes(
+        institution_type,
+        value,
+        fill=institution_type
+    )
+)+
+geom_violin(alpha=.6)+
+geom_boxplot(width=.12,outlier.shape=NA)+
+facet_wrap(~indicator,scales="free_y")+
+theme_minimal(base_size=14)+
+theme(legend.position="none")+
+labs(
+title="Distribution of Satellite Indicators by Institution Type",
+x="Institution Type",
+y=""
+)
+```
+
+Nighttime Lights provide the clearest separation between institution categories. Fortune 500 headquarters are concentrated in highly illuminated urban environments, while power plants are generally located in less illuminated regions.
+
+Impervious Surface exhibits a similar pattern, reflecting differences in surrounding urban development.
+
+NO₂ concentrations display greater overlap but still show meaningful variation among institution types.
+
+---
+
+# Correlation Analysis
+
+```{r}
+corr <- satellite_all %>%
+  select(
+    avg_rad,
+    no2,
+    impervious_surface
+  ) %>%
+  cor(use = "complete.obs")
+
+corr_long <- corr %>%
+  as.data.frame() %>%
+  rownames_to_column("indicator_1") %>%
+  pivot_longer(
+    cols = -indicator_1,
+    names_to = "indicator_2",
+    values_to = "correlation"
+  ) %>%
+  mutate(
+    indicator_1 = recode(
+      indicator_1,
+      avg_rad = "Nighttime Lights",
+      no2 = "NO₂",
+      impervious_surface = "Impervious Surface"
+    ),
+    indicator_2 = recode(
+      indicator_2,
+      avg_rad = "Nighttime Lights",
+      no2 = "NO₂",
+      impervious_surface = "Impervious Surface"
+    )
+  )
+
+ggplot(
+  corr_long,
+  aes(
+    x = indicator_1,
+    y = indicator_2,
+    fill = correlation
+  )
+) +
+  geom_tile() +
+  geom_text(
+    aes(label = round(correlation, 2)),
+    size = 6
+  ) +
+  scale_fill_gradient2(
+    limits = c(-1, 1),
+    midpoint = 0
+  ) +
+  labs(
+    title = "Correlation Among Satellite Indicators",
+    x = NULL,
+    y = NULL,
+    fill = "Correlation"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    axis.text.x = element_text(
+      angle = 30,
+      hjust = 1
+    )
+  )
+```
+
+All three satellite indicators are positively correlated.
+
+Impervious Surface exhibits the strongest relationship with Nighttime Lights, suggesting that urban development is closely associated with increased nighttime human activity.
+
+NO₂ also displays positive relationships with both indicators, indicating that pollution generally increases alongside urbanization.
+
+---
+
+# Statistical Analysis
+
+One-way ANOVA was performed separately for each satellite indicator.
+
+```{r}
+anova_table |>
+gt()
+```
+
+All three indicators demonstrate statistically significant differences among institution categories.
+
+Subsequent Tukey post-hoc comparisons indicate that nearly every pairwise comparison is statistically significant, suggesting that each institution type occupies distinct environmental settings.
+
+---
+
+# Discussion
+
+Satellite-derived environmental indicators successfully distinguish different categories of institutions.
+
+Fortune 500 headquarters consistently occur within highly urbanized environments characterized by bright nighttime illumination and extensive impervious surfaces.
+
+Power plants exhibit substantially different environmental characteristics, reflecting industrial siting decisions and land-use requirements.
+
+Sports venues occupy intermediate environments, combining proximity to population centers with relatively large developed land areas.
+
+Together, these findings demonstrate the usefulness of remote sensing products for characterizing institutional landscapes at national scales.
+
+---
+
+# Limitations
+
+Several limitations should be acknowledged.
+
+- Satellite observations describe surrounding environments rather than institutional activity itself.
+- The analysis represents a single time period and does not capture temporal changes.
+- Institution locations are represented by point coordinates, which may not fully represent the spatial extent of large facilities.
+
+---
+
+# Future Work
+
+Future work may incorporate additional environmental indicators, including:
+
+- NDVI vegetation index
+- Land surface temperature
+- Population density
+- Road network density
+- Building footprint density
+
+Machine learning approaches could also be used to classify institution types using combinations of satellite-derived environmental variables.
+
+Integrating these environmental indicators into the Museum Explorer application would provide users with richer geographic context surrounding cultural institutions.
+
+---
+
+# Conclusion
+
+This study demonstrates that satellite-derived environmental indicators provide meaningful insights into the built environments surrounding different institution types.
+
+By integrating datasets on nighttime lights, nitrogen dioxide (NO₂), and impervious surfaces, we identified systematic differences among Fortune 500 headquarters, power plants, and sports stadiums. These findings demonstrate how remote sensing technology can complement traditional spatial datasets and facilitate large-scale analysis of environments shaped by human activity.
