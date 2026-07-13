@@ -1,6 +1,5 @@
 #
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
+# This is a Shiny web application. Click the 'Run App' button above to start.
 #
 
 library(shiny)
@@ -10,6 +9,7 @@ library(tigris)
 library(leaflet)
 library(htmltools)
 library(scales)
+library(bslib)
 
 options(tigris_use_cache = TRUE)
 
@@ -90,88 +90,20 @@ states_sf <- states(cb = TRUE, resolution = "20m", year = 2024) %>%
   filter(!STATEFP %in% c("60", "66", "69", "72", "78")) %>%
   st_transform(crs = 4326)
 
-# Load and clean each institution dataset
-### Standardized to common columns: name, latitude, longitude, type, popup
 
-## Colleges --
-colleges <- read_csv("data/joined_colleges.csv") %>%
-  filter(!is.na(Latitude), !is.na(Longitude)) %>%
-  transmute(
-    name = College,
-    latitude = Latitude,
-    longitude = Longitude,
-    type = college_type, # "LAC" / "HBCU"
-    popup = sprintf("<strong>%s</strong><br/>%s, %s<br/>Type: %s",
-                    College, City, State, college_type)
-  )
+# Clean Institution Data
+colleges <- read_csv("data/colleges_app_clean.csv")
+auto_facilities <- read_csv("data/auto_facilities_app_clean.csv")
+theaters <- read_csv("data/theaters_app_clean.csv")
+opera <- read_csv("data/opera_app_clean.csv")
 
 college_type_choices <- sort(unique(colleges$type))
-
-## Automotive/EV facilities --
-auto_facilities <- read_csv("data/auto_ev_map.csv") %>%
-  filter(!is.na(latitude), !is.na(longitude)) %>%
-  transmute(
-    name = facility_name,
-    latitude, longitude,
-    type = ifelse(EV_facility, "EV Facility", "Traditional/Other Facility"),
-    popup = sprintf("<strong>%s</strong><br/>%s<br/>%s, %s<br/>%s",
-                    facility_name, company, city, state, products_or_focus)
-  )
-
 auto_type_choices <- sort(unique(auto_facilities$type))
-
-## Theaters (NRHP/LHAT) --
-theaters <- read_csv("data/NRHP_LHAT_only_theaters.csv") %>%
-  filter(!is.na(latitude), !is.na(longitude)) %>%
-  transmute(
-    name = `Property Name`,
-    latitude, longitude,
-    type = ifelse(LHAT_member, "LHAT Member Theater", "NRHP-Listed Only"),
-    popup = sprintf("<strong>%s</strong><br/>%s, %s<br/>Listed: %s<br/>Type: %s",
-                    `Property Name`, City, state, `Listed Date`,
-                    ifelse(LHAT_member, "LHAT Member Theater", "NRHP-Listed Only"))
-  )
-
 theater_type_choices <- sort(unique(theaters$type))
-
-## Opera companies --
-
-### US state abbreviations (+DC) valid for county map
-us_states <- c(state.abb, "DC")
-
-### light cleanup of the messy `state` field - see caveats above
-opera_raw <- read_csv("data/opera_america_members.csv")
-
-clean_state <- function(x) {
-  x <- str_trim(x)
-  x <- recode(x,
-              "California"  = "CA", "Massachusetts" = "MA", "New Jersey" = "NJ",
-              "New York"    = "NY", "Ohio" = "OH", "FLORIDA" = "FL",
-              "nj" = "NJ", "New york " = "NY", .default = x
-  )
-  x <- str_remove(x, "`")  # fixes "MD`"
-  x
-}
-
-opera <- opera_raw %>%
-  mutate(state = clean_state(state)) %>%
-  filter(
-    state %in% us_states,  # drop Canadian provinces & international
-    !is.na(latitude), !is.na(longitude),
-    !type %in% c("", "TEST"),
-    !is.na(type)
-  ) %>%
-  transmute(
-    name = name,
-    latitude, longitude,
-    type = type,
-    popup = sprintf("<strong>%s</strong><br/>%s, %s<br/>Type: %s",
-                    name, city, state, type)
-  )
-
 opera_type_choices <- sort(unique(opera$type))
 
-# Spatial joineach point's county-level IPUMS values for boxplots
+
+# Spatial join each point's county-level IPUMS values for boxplots
 attach_county_data <- function(points_df) {
   pts_sf <- st_as_sf(points_df, coords = c("longitude", "latitude"),
                      crs = 4326, remove = FALSE)
@@ -186,10 +118,10 @@ attach_county_data <- function(points_df) {
   st_drop_geometry(joined)
 }
 
-colleges        <- attach_county_data(colleges)
+colleges <- attach_county_data(colleges)
 auto_facilities <- attach_county_data(auto_facilities)
-theaters        <- attach_county_data(theaters)
-opera           <- attach_county_data(opera)
+theaters <- attach_county_data(theaters)
+opera <- attach_county_data(opera)
 
 
 # Use Okabe-Ito colorblind-safe palette for consistency across levels
@@ -446,10 +378,67 @@ mapPageServer <- function(id, points_data) {
 }
 
 
-# Define UI for application
+# UI for application
 ui <- navbarPage(
   title = "Institution Location Explorer",
+  id = "main_nav",   # allows path between buttons on homepage and other tabs
+  selected = "Home",
   theme = bs_theme(version = 5),
+  
+  ## Homepage
+  tabPanel("Home", fluidPage(
+    div(style = "text-align: center; padding: 40px 20px 10px; max-width: 750px; margin: 0 auto;",
+        h1("Institution Location Explorer"),
+        p( "Explore institutions in the United States of America and how ",
+           "each maps onto demographic and economic landscapes across ",
+           "counties. Choose from specialized colleges, automotive & EV ", 
+           "manufacturing facilities, historic theaters, and opera companies.",
+           style = "font-size: 1.15em; color: #555;")
+        ),
+    hr(),
+    h3("Institutions", style = "text-align: center; margin-top: 30px; margin-bottom: 20px;"),
+    layout_columns(
+      col_widths = c(3, 3, 3, 3),
+      card(
+        card_header(icon("graduation-cap"), " Colleges"),
+        p("Liberal Arts Colleges and HBCUs across the U.S."),
+        actionButton("nav_colleges", "Explore", class = "btn-outline-primary btn-sm")
+      ),
+      card(
+        card_header(icon("car"), " Automotive & EV"),
+        p("Vehicle assembly and EV manufacturing facilities."),
+        actionButton("nav_auto", "Explore", class = "btn-outline-primary btn-sm")
+      ),
+      card(
+        card_header(icon("landmark"), " Historic Theaters"),
+        p("NRHP-listed and League of Historic American Theatres members."),
+        actionButton("nav_theaters", "Explore", class = "btn-outline-primary btn-sm")
+      ),
+      card(
+        card_header(icon("music"), " Opera Companies"),
+        p("Opera America member companies nationwide."),
+        actionButton("nav_opera", "Explore", class = "btn-outline-primary btn-sm")
+      )
+    ),
+    div(
+      style = "text-align: center; margin: 30px 0 10px;",
+      actionButton("nav_blog", "Read the Blog Post \u2192", class = "btn-primary")
+    )
+  ),
+  hr(),
+  div(
+    style = "max-width: 1100px; margin: 20px auto;",
+    h3("Ways to navigate the app"),
+    tags$ol(
+      style = "font-size: 1.05em; line-height: 1.9;",
+      tags$li("Select a tab above for institution type."),
+      tags$li("Shade the map by any Census variable using the dropdown on the left (pick between population, income, race, or education)."),
+      tags$li("Filter by type with the checkboxes (e.g. LAC vs. HBCU, EV vs. traditional auto facility)."),
+      tags$li("Search for a specific institution by name to find it on the map."),
+      tags$li("Compare distributions in the boxplot next to the map"),
+      tags$li("Read the analysis on the Blog Post tab for a deeper look at one pattern found in the data.")
+    ))
+  ),
   tabPanel("Colleges", mapPageUI("colleges", college_type_choices, "college",
                                  sort(unique(colleges$name)))),
   tabPanel("Automotive & EV Facilities", mapPageUI("auto", auto_type_choices, "facility",
@@ -460,8 +449,25 @@ ui <- navbarPage(
                                         sort(unique(opera$name))))
 )
 
-# Define server logic
+
+# Server
 server <- function(input, output, session) {
+  observeEvent(input$nav_colleges, {
+    updateNavbarPage(session, "main_nav", selected = "Colleges")
+  })
+  observeEvent(input$nav_auto, {
+    updateNavbarPage(session, "main_nav", selected = "Automotive & EV Facilities")
+  })
+  observeEvent(input$nav_theaters, {
+    updateNavbarPage(session, "main_nav", selected = "Historic Theaters")
+  })
+  observeEvent(input$nav_opera, {
+    updateNavbarPage(session, "main_nav", selected = "Opera Companies")
+  })
+  observeEvent(input$nav_blog, {
+    updateNavbarPage(session, "main_nav", selected = "Blog Post")
+  })
+  
   mapPageServer("colleges", colleges)
   mapPageServer("auto", auto_facilities)
   mapPageServer("theaters", theaters)

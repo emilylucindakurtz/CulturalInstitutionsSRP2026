@@ -323,3 +323,44 @@ Blog post ideas (cont.):
 - EV facilities located in counties with higher household-median-incomes than other automotive facilities; could reflect the growing industry and targeted customers 
  - however, not a large difference between averages
 - Operas located in counties with higher household-median-incomes in comparison to theaters; could be due to it offering a more curated/uncommon activity
+
+
+## 7/9
+ - [X] add homepage/more contextual info about the app (what it's about, how to use)
+  - used CSS and HTML to format the homepage; might add more later
+  - References:
+   - https://engineering-shiny.org/css.html
+   - https://shiny.posit.co/r/articles/build/css/
+   - https://shiny.posit.co/r/reference/shiny/1.8.0/icon.html
+   - many W3Schools tutorials - https://www.w3schools.com/howto/default.asp
+  - also used Claude to help debug
+
+Continued tasks:
+- [ ] fix data point on in opera dataset
+  
+ - Blog post:
+  - [ ] add page on Shiny App
+
+### Blog post notes/drafts:
+#### Majority of HBCUs are located in South, with few/none in certain regions (Northeast, Midwest).
+- Why are there few HBCUs located in the Northeast/Midwest regions of the US?
+
+- First HBCUs were founded in Pennsylvania (Cheyney University) and Ohio before the American Civil War  (1861–65)
+- After the end of the Civil War and the abolition of slavery, along with support from the Freedmen’s Bureau (federal org that operated during Reconstruction to help former slaves adjust to freedom), HBCUs were founded throughout the South.
+- In the South, where segregation and inequality was most prevalent towards Black people, HBCUs facilitated access to education. Many remain today as both vital institutions that provide higher education for Black students and carrying America's history.
+- Educational inequality is not only rooted in history, but still persists today.
+ - Other potential questions: Why is there a lack of LACs in the South?
+
+Sources:
+
+- https://www.britannica.com/topic/historically-black-colleges-and-universities
+- https://hbcufirst.com/resources/hbcu-history-timeline
+- https://journals.openedition.org/qds/4044
+
+
+## 7/10
+Tasks today:
+
+- Examine app for any remaining errors/issues
+
+
