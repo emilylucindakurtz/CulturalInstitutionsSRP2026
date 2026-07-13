@@ -360,7 +360,10 @@ Sources:
 
 ## 7/10
 Tasks today:
-
 - Examine app for any remaining errors/issues
 
-
+## 7/13
+Last day!
+- [ ] Finish blog post and put into shiny app
+- [ ] Last checks and changes on data and app pages
+- [ ] Send about-me bio to Emily
