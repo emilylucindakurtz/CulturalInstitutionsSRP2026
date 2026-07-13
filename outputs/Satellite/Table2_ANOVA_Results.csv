@@ -1,0 +1,4 @@
+Indicator,DF,F Statistic,P Value,Significant
+Nighttime Lights,2,2585.72,0,***
+NO₂,2,487.3,3.5199999999999987e-206,***
+Impervious Surface,2,1066.95,0,***

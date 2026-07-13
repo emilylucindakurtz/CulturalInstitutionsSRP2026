@@ -5,13 +5,16 @@ library(bslib)
 library(plotly)
 library(tidygeocoder)
 library(tidyverse)
+library(leaflet.extras)
 library(leaflet)
 library(pdftools)
 library(tidytext)
 library(scales)
+library(DT)
 library(shinyWidgets)
 library(tigris) 
 library(sf)
+library(htmltools)
 library(htmlwidgets)
 library(forcats)
 library(usa)
@@ -21,10 +24,11 @@ library(usa)
 Powerplants <- read.csv("PowerPlants_Clean.csv")
 Headquarters <- read.csv("Fortune500HQ_Housing.csv")
 HPI <- read.csv("county_HPI.csv")
+US_Housing <- read.csv("Fortune500_Housing_All_Counties.csv")
 
 
 
-
+#-------DATA CLEANING---------
 
 #Power Plant Data Merge
 state_counts <- Powerplants %>% 
@@ -44,7 +48,7 @@ county_sf <- counties(cb = TRUE, class = "sf") %>%
   mutate(County = tolower(NAME),
          State = tolower(STATE_NAME))
 
-housing_map <- Headquarters %>% 
+housing_map <- US_Housing %>% 
   mutate(County = tolower(County),
          State = tolower(State))
 
@@ -54,11 +58,12 @@ unique_county_prices <- housing_map %>%
     Median.Home.Price = mean(Median.Home.Price, na.rm = TRUE), 
     .groups = "drop"
   ) 
-county_prices <- county_sf %>%
-  full_join(unique_county_prices, 
-            by = c("State","County")) 
 
-HQHPICNTY <- county_prices %>% full_join(HPI, by = c("State","County"))
+county_prices <- county_sf %>%
+  full_join(unique_county_prices %>% select(County, State, Median.Home.Price), 
+            by = c("State","County"))
+
+HQHPICNTY <- county_sf %>% left_join(HPI, by = c("State", "County"), relationship = "many-to-many")
 
 
 HPI_State_Change <- HPI %>%
@@ -90,7 +95,8 @@ Headquarters_bar <- Headquarters_bar %>% full_join(usPOP, by = "State")
 Headquarters_bar <- Headquarters_bar %>% mutate(HQ_per_cap = (num_HQ/Population)*1000000) %>% 
   full_join(HPI_State_Change, by = c("State")) 
                                                                                               
-data_centers <- read.csv("data_centers.csv") %>% mutate(State = str_to_title(state_convert(state, to = "name")))
+data_centers <- read.csv("data_centers.csv") %>% 
+  mutate(State = str_to_title(state_convert(state, to = "name")))
 
 powerplant_produc <- Powerplants %>% rename(mw_capacity = Maximum.Summer.Capacity..Megawatts.) %>% 
   mutate(mw_capacity = ifelse(is.na(mw_capacity), 0, mw_capacity)) %>% 
@@ -99,115 +105,117 @@ powerplant_produc <- Powerplants %>% rename(mw_capacity = Maximum.Summer.Capacit
 
 
 
-#----user interface------
-
-ui <- navbarPage(
-  title = "Exploring Industrial Institutions in the United States",
-navbarMenu(
-  title = "Electric Power Plants",
-
-  tabPanel(
-    title = "Map Power Plants by State",
-    
-    fluidRow(
-      column(
-        width = 4,
-        card(
-          card_header(h4("Explore by State")),
-          card_body(
-            plotOutput("SidebarChart", height = 400)
-          )
+ui <- page_fluid(
+  page_navbar(
+    navset_card_underline(
+#Home tab----
+      nav_panel(
+        "Home"
+      ),
+#PP tab ----
+      nav_panel(
+        "Power Plants",
+        layout_columns(
+          card(
+            layout_columns(
+              plotOutput("SidebarChart", height = 400),
+              div(
+                selectInput(
+                  inputId = "energy_choice",
+                  label = "Select Energy Type",
+                  choices = sort(unique(str_to_title(Powerplants$Primary.Energy.Source))),
+                  width = "100%"
+                ),
+                plotOutput("Energy", height = 400)
+              ),
+              col_widths = c(6,6)
+            )
+          ),
+          card(
+            card_header("Map of US Electric Power Plants"),
+            leafletOutput("Map", height = 700)
+            ),
+          card(
+            textOutput("Test")
+          ),
+          col_widths = c(12, 12,12)
         )
       ),
-      column(
-        width = 8,
-        card(
-          card_body(
-            leafletOutput("Map", height = 600)
-          )
+#DC tab----
+      nav_panel(
+        "Data Centers",
+        layout_columns(
+          card(
+            card_body(
+              fillable = TRUE,
+              layout_columns(
+                leafletOutput("Heatmap", height = 700),
+                  div(
+                    pickerInput(
+                      inputId = "energy_source",
+                      label = "Select Energy Type(s)",
+                      choices = c("All", sort(unique(str_to_title(Powerplants$Primary.Energy.Source)))),
+                      selected = "All",
+                      multiple = TRUE,
+                      width = "100%"
+                    ),
+                    selectInput(
+                      inputId = "State",
+                      label = "Select State",
+                      choices = c("United States", sort(unique(str_to_title(Powerplants$State)))),
+                      selected = "United States",
+                      width = "100%"
+                    ),
+                    div(
+                      style = "max-height: 450px; overflow-y: auto;", 
+                      dataTableOutput("Heatmap_Data")
+                    )
+                  ),
+                col_widths = c(8,4)
+              )
+            )
+          ),
+          card(
+            layout_columns(
+              leafletOutput("Data_centers", height = 500),
+              col_widths = c(10)
+            )
+          ),
+          col_widths = c(13,12)
+        )
+      ),
+#Housing tab----
+      nav_panel(
+        "Corporate and Housing",
+        layout_columns(
+          card(
+            layout_columns(
+              leafletOutput("Housing", height = 500),
+              div(
+                uiOutput("slider"),
+                plotOutput("StateHPIChart", height = 400)
+              ),
+              col_widths = c(7,5)
+            )
+          ),
+          card(
+            card_header(
+              tooltip(
+                span("Map of HPI (%) Change From 2000-2025 ", icon("info-circle")),
+                "The Housing Price Index (HPI) is a measure of percent change in a residential property's price relative to a 
+                baseline of 100 HPI. An HPI of 200 would indicate a property price has doubled compared to the base price."
+              )
+            ),
+            layout_columns(
+              leafletOutput("HPI", height = 400),
+              plotOutput("Companycount", height = 400),
+              col_widths = c(7,5)
+            )
+          ),
+          col_widths = c(12,12)
         )
       )
     )
-  ),
-
-    tabPanel(
-      title = "Explore by Energy Sources",
-      
-      sidebarLayout(
-        
-        sidebarPanel(
-          width = 3,
-          h1("Choose an Energy Souce"),
-          
-          selectInput(
-            inputId = "energy_choice",
-            label = "Select",
-            choices = sort(unique(str_to_title(Powerplants$Primary.Energy.Source)))
-          )
-        ),
-        mainPanel(
-          plotOutput("Energy", height = 500)
-        )
-      )
-    ),
-  tabPanel(
-    title = "Data Centers",
-    
-    sidebarLayout(
-      
-      sidebarPanel(
-        width = 3,
-        
-        pickerInput(
-          inputId = "energy_source",
-          label = "Select",
-          choices = c("All", sort(unique(str_to_title(Powerplants$Primary.Energy.Source)))),
-          selected = "All",
-          multiple = TRUE
-        ),
-        selectInput(
-          inputId = "State",
-          label = "select",
-          choices = c("United States", sort(unique(str_to_title(Powerplants$State)))),
-          selected = "United States"
-        )
-      ),
-      mainPanel(
-        leafletOutput("Heatmap", height = 500),
-        leafletOutput("Data_centers", height = 500)
-      )
-    )
-  )
-  ),
-navbarMenu(
-  title = "Fortune 500 Headquarters",
-  
-  
-  
-  
-  tabPanel(
-    title = "HPI Change Overtime in the Presence of Megacorporations",
-    
-    sidebarLayout(
-      
-      sidebarPanel(
-        uiOutput("slider"),
-        plotOutput("StateHPIChart", height = 400)
-      ),
-    
-    mainPanel(
-      leafletOutput("Housing", height = 500)
-        )
-      )
-    ),
-  tabPanel(
-    title = "HPI Change Over 25 Years",
-    
-    mainPanel(
-      leafletOutput("HPI", height = 400),
-      plotOutput("Companycount", height = 400)
-    )
-  )
   )
 )
 
@@ -216,24 +224,6 @@ navbarMenu(
 
 server <- function(input, output) {
   
-  ##------by energy plot----------
-  output$Energy <- renderPlot({
-    
-    energy_subset <- Powerplants %>% mutate(Primary.Energy.Source = str_to_title(Primary.Energy.Source)) %>% 
-      filter(Primary.Energy.Source == input$energy_choice)
-    
-    ggplot(energy_subset, aes(x = fct_infreq(State), fill = Primary.Energy.Source)) +
-      geom_bar(color = "black") +
-      scale_x_discrete(drop = FALSE) +
-      scale_fill_brewer(palette =  "Set3") +
-      theme(axis.text.x = element_text(angle = -90),
-            legend.position = "none") +
-      labs(y = "Count",
-           x = "Primary Energy Source",
-           title = paste("Primary Energy Source:", str_to_title(input$Primary.Energy.Source)))
-    
-    
-    })
   
   ##--------state power plants map---------
   clicked_state <- reactiveVal(NULL)
@@ -268,7 +258,7 @@ server <- function(input, output) {
         pal = powerplant_count_pal,
         value = state_sf$State.Powerplant.Count, 
         position = "bottomright",
-        title = "State Electric Power Plant Counts"
+        title = "Total Power Plant Count"
       )
   })
     
@@ -323,10 +313,10 @@ server <- function(input, output) {
 output$SidebarChart <- renderPlot({
   if (is.null(clicked_state())) {
     state_subset <- Powerplants 
-    title <- "Energy Source Distribution for the US"
+    title <- "Primary Energy Source Distribution for the US"
   } else {
     state_subset <- Powerplants %>% filter(State == clicked_state())
-    title <- paste("Energy Source Distribution for", clicked_state())
+    title <- paste("Primary Energy Source Distribution for", clicked_state())
   }
   
 
@@ -341,6 +331,26 @@ output$SidebarChart <- renderPlot({
   })
 
 
+##------by energy plot----------
+output$Energy <- renderPlot({
+  
+  energy_subset <- Powerplants %>% 
+    filter(str_to_title(Primary.Energy.Source) == input$energy_choice)
+  
+  ggplot(energy_subset, aes(x = fct_infreq(State), fill = Primary.Energy.Source)) +
+    geom_bar(color = "black") +
+    scale_x_discrete(drop = FALSE) +
+    scale_fill_manual(values = leaflet_colors) +
+    theme(axis.text.x = element_text(angle = -90),
+          legend.position = "none") +
+    labs(y = "Count",
+         x = "Primary Energy Source",
+         title = paste("Primary Energy Source:", str_to_title(input$Primary.Energy.Source)))
+  
+  
+})
+
+
 max_abs_val <- max(abs(HQHPICNTY$Annual.Change....), na.rm = TRUE)
 
 cus <- c("darkred", "#8e0152", "#ffffff", "limegreen", "#276419")
@@ -350,6 +360,10 @@ pal <- colorNumeric(
   domain = c(-max_abs_val, max_abs_val)
 )
 
+County_pal <- colorNumeric(
+  palette = "YlOrRd", 
+  domain = county_prices$Median.Home.Price
+)
 
 output$Housing <- renderLeaflet({
     leaflet(state_sf) %>% 
@@ -362,13 +376,36 @@ output$Housing <- renderLeaflet({
         color = "black",
         weight = 1
       ) %>% 
+    addPolygons(
+      data = county_prices,
+      group = "all_counties",
+      fillColor = ~County_pal(Median.Home.Price),
+      fillOpacity = 0.6,
+      color = "black",
+      weight = 1,
+      smoothFactor = 0.5,
+      label = ~paste0(str_to_title(County), " County"),
+      popup = ~paste0(
+        str_to_title(County), " County,", "<br/>",
+        "Median Home Price: ", dollar(Median.Home.Price)
+      ) 
+    ) %>% 
     addMarkers(
       data = housing_map,
       lng = ~Longitude, 
       lat = ~Latitude,
       layerId = ~Company,
       label = ~Company
-    ) 
+    ) %>% 
+    addLegend(
+      data = (county_prices %>% drop_na()),
+      position = "bottomright",
+      pal = County_pal,
+      values = ~Median.Home.Price,
+      title = "2025 Median Home Price",
+      labFormat = labelFormat(prefix = "$"),
+      opacity = 0.8
+    )
 })
 
 zoomed_state <- reactiveVal(NULL)
@@ -411,8 +448,10 @@ observe({
 
   county_subset <- selected_state()
   
+  
   leafletProxy("Housing") %>% 
     clearGroup("counties") %>% 
+    clearGroup("all_counties") %>% 
     clearControls() %>% 
     addPolygons(
       data = county_subset,
@@ -420,7 +459,10 @@ observe({
       layerId = ~County,
       fillColor = ~pal(Annual.Change....),
       fillOpacity = 1,
-      label = ~as.character(HPI),
+      label = ~str_to_title(County),
+      popup = ~paste0(str_to_title(County), " County,", "<br/>",
+                      "HPI: ", as.character(HPI), "<br/>",
+                      Annual.Change....,"% Change From ", (as.numeric(Year) - 1)),
       color = "black",
       weight = 1
     ) %>% 
@@ -430,6 +472,12 @@ observe({
       title = "YoY % Change in HPI",
       position = "bottomright",
       opacity = 1
+     ) %>% 
+    addLegend(
+      position = "topright",
+      colors = character(0),
+      labels = character(0),
+      title = paste0("Year: ", if (!is.null(input$Year)) as.character(input$Year) else "2000")
     )
 })
 
@@ -441,7 +489,7 @@ output$slider <- renderUI({
               min = 2000, 
               max = 2025, 
               2000, 
-              animate = animationOptions(interval = 2500, loop = TRUE)
+              animate = animationOptions(interval = 3500, loop = TRUE)
   )
 })
 ###side map under this one, plotting just overall HPI % change since 2000. Should supplement with a bar graph with state counts of # of F500 companies, to see 
@@ -469,7 +517,7 @@ output$HPI <- renderLeaflet({
       pal = HPIPerPal,
       values = HPI_State_Change$total_hpi_change, 
       position = "bottomright",
-      title = "HPI Percent Change",
+      title = "Total HPI Change (%)",
       labFormat = labelFormat(suffix = "%", transform = function(x) x * 100)
     )
 })
@@ -504,7 +552,7 @@ output$StateHPIChart <- renderPlot({
     theme(axis.text.x = element_text(angle = -90),
           legend.position = "none") +
     labs(x = "Year",
-         y = "Anual % Change",
+         y = "Anual Change (%)",
          title = paste("Annual Percent Change Averaged Across : ", str_to_title(zoomed_state())))
   
 })
@@ -602,7 +650,7 @@ output$Heatmap <- renderLeaflet({
     ) %>% 
     
     addLegend(
-      position = "bottomright",
+      position = "bottomleft",
       colors = rev(heatmap_colors), 
       labels = rev(c("Low", "", "Medium", "", "High")),
       title = "Production Capacity (MW)",
@@ -681,6 +729,13 @@ observe({
     )
 })
 
+
+output$Heatmap_Data <- renderDataTable({
+plants <- state_subset() %>% arrange(-mw_capacity)},
+options = list(pageLength = 15)
+)
+
+
 output$Data_centers <- renderLeaflet({
   my_bins <- c(0, 10, 50, 100, 500, 10000) 
   
@@ -691,6 +746,8 @@ output$Data_centers <- renderLeaflet({
     bins = my_bins,
     na.color = "gray"
   )
+  
+  local_range <- 50 * 1609.34
   
   # Build the map
   leaflet(data_centers) %>%
@@ -736,15 +793,19 @@ output$Data_centers <- renderLeaflet({
     addLegend(
       position = "bottomright",
       pal = pal,
-      values = pct_consumed,
+      values = data_centers$pct_consumed,
       title = "% of Local Power Consumed",
       opacity = 1
     ) %>% 
     addLegend(
-      position = "bottomleft",
+      position = "topright",
       colors = "transparent",      
       labels = "🔵 Power Plants"   
     )
+})
+
+output$Test <- renderText({
+  expr = "test"
 })
 
 }
