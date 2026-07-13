@@ -168,7 +168,7 @@ unique_county_prices <- housing_map %>%
     .groups = "drop"
   )
 
-##join housing prices to county shapefile information
+##join housing prices to county shapefile info
 county_prices <- county_sf %>%
   full_join(unique_county_prices %>% select(County, State, Median.Home.Price), 
              by = c("State","County")) 
@@ -293,10 +293,10 @@ leaflet(powerplant_produc) %>%
   )
 
 
-
+#pct_consumption claculations based on 50 mile radius
 local_range <- 50 * 1609.34
 
-#
+
 data_centers <- data_centers %>%
   mutate(
     local_mw_capacity = map2_dbl(long, lat, function(dc_long, dc_lat) {
