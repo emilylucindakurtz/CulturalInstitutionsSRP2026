@@ -1,6 +1,5 @@
 #
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
+# This is a Shiny web application. Click the 'Run App' button above to start.
 #
 
 library(shiny)
@@ -10,6 +9,7 @@ library(tigris)
 library(leaflet)
 library(htmltools)
 library(scales)
+library(bslib)
 
 options(tigris_use_cache = TRUE)
 
@@ -90,86 +90,18 @@ states_sf <- states(cb = TRUE, resolution = "20m", year = 2024) %>%
   filter(!STATEFP %in% c("60", "66", "69", "72", "78")) %>%
   st_transform(crs = 4326)
 
-# Load and clean each institution dataset
-### Standardized to common columns: name, latitude, longitude, type, popup
 
-## Colleges --
-colleges <- read_csv("data/joined_colleges.csv") %>%
-  filter(!is.na(Latitude), !is.na(Longitude)) %>%
-  transmute(
-    name = College,
-    latitude = Latitude,
-    longitude = Longitude,
-    type = college_type, # "LAC" / "HBCU"
-    popup = sprintf("<strong>%s</strong><br/>%s, %s<br/>Type: %s",
-                    College, City, State, college_type)
-  )
+# Clean Institution Data
+colleges <- read_csv("data/colleges_app_clean.csv")
+auto_facilities <- read_csv("data/auto_facilities_app_clean.csv")
+theaters <- read_csv("data/theaters_app_clean.csv")
+opera <- read_csv("data/opera_app_clean.csv")
 
 college_type_choices <- sort(unique(colleges$type))
-
-## Automotive/EV facilities --
-auto_facilities <- read_csv("data/auto_ev_map.csv") %>%
-  filter(!is.na(latitude), !is.na(longitude)) %>%
-  transmute(
-    name = facility_name,
-    latitude, longitude,
-    type = ifelse(EV_facility, "EV Facility", "Traditional/Other Facility"),
-    popup = sprintf("<strong>%s</strong><br/>%s<br/>%s, %s<br/>%s",
-                    facility_name, company, city, state, products_or_focus)
-  )
-
 auto_type_choices <- sort(unique(auto_facilities$type))
-
-## Theaters (NRHP/LHAT) --
-theaters <- read_csv("data/NRHP_LHAT_only_theaters.csv") %>%
-  filter(!is.na(latitude), !is.na(longitude)) %>%
-  transmute(
-    name = `Property Name`,
-    latitude, longitude,
-    type = ifelse(LHAT_member, "LHAT Member Theater", "NRHP-Listed Only"),
-    popup = sprintf("<strong>%s</strong><br/>%s, %s<br/>Listed: %s<br/>Type: %s",
-                    `Property Name`, City, state, `Listed Date`,
-                    ifelse(LHAT_member, "LHAT Member Theater", "NRHP-Listed Only"))
-  )
-
 theater_type_choices <- sort(unique(theaters$type))
-
-## Opera companies --
-
-### US state abbreviations (+DC) valid for county map
-us_states <- c(state.abb, "DC")
-
-### light cleanup of the messy `state` field - see caveats above
-opera_raw <- read_csv("data/opera_america_members.csv")
-
-clean_state <- function(x) {
-  x <- str_trim(x)
-  x <- recode(x,
-              "California"  = "CA", "Massachusetts" = "MA", "New Jersey" = "NJ",
-              "New York"    = "NY", "Ohio" = "OH", "FLORIDA" = "FL",
-              "nj" = "NJ", "New york " = "NY", .default = x
-  )
-  x <- str_remove(x, "`")  # fixes "MD`"
-  x
-}
-
-opera <- opera_raw %>%
-  mutate(state = clean_state(state)) %>%
-  filter(
-    state %in% us_states,  # drop Canadian provinces & international
-    !is.na(latitude), !is.na(longitude),
-    !type %in% c("", "TEST"),
-    !is.na(type)
-  ) %>%
-  transmute(
-    name = name,
-    latitude, longitude,
-    type = type,
-    popup = sprintf("<strong>%s</strong><br/>%s, %s<br/>Type: %s",
-                    name, city, state, type)
-  )
-
 opera_type_choices <- sort(unique(opera$type))
+
 
 # Spatial join each point's county-level IPUMS values for boxplots
 attach_county_data <- function(points_df) {
@@ -186,10 +118,10 @@ attach_county_data <- function(points_df) {
   st_drop_geometry(joined)
 }
 
-colleges        <- attach_county_data(colleges)
+colleges <- attach_county_data(colleges)
 auto_facilities <- attach_county_data(auto_facilities)
-theaters        <- attach_county_data(theaters)
-opera           <- attach_county_data(opera)
+theaters <- attach_county_data(theaters)
+opera <- attach_county_data(opera)
 
 
 # Use Okabe-Ito colorblind-safe palette for consistency across levels
