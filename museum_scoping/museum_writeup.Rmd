@@ -1,0 +1,244 @@
+---
+title: "Museum Explorer: A Searchable Dashboard for Cultural Institutions in the United States"
+author: "Zoe Zhang"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+  pdf_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(DT)
+
+museum_data <- read_csv("../data/Museum/museum_app_final.csv", show_col_types = FALSE)
+```
+
+# Introduction
+
+Museums not only preserve history, culture, science, and art but also serve as vital educational and community resources. While there are thousands of museums across the United States, finding one that aligns with personal interests often requires navigating multiple websites with inconsistent information.
+
+The Museum Explorer project aims to create an interactive dashboard that allows users to explore a wide range of museums through a unified interface. Rather than relying on a single source, the project integrates data from WhichMuseum, official museum websites, and geographic information services to deliver a richer browsing experience.
+
+The dashboard enables users to search for museums by category, theme, keyword, and location, while providing practical visitor information—such as official website links, ticketing pages, visitor guidelines, and opening hours.
+
+---
+
+# Data Sources
+
+The dashboard integrates information from several sources.
+
+## WhichMuseum
+
+WhichMuseum served as the primary source of museum information, including:
+
+- Museum names
+- Categories
+- Addresses
+- Geographic coordinates
+- Links to official museum websites
+
+Approximately **12,000 museums** across the United States were collected.
+
+## Official Museum Websites
+
+Each museum website was visited automatically using web scraping.
+
+Information extracted includes:
+
+- Ticket or admission pages
+- Visit planning pages
+- Opening hours
+- Admission information
+- Accessibility information
+
+## OpenStreetMap
+
+OpenStreetMap's Nominatim API was used for ZIP-code geocoding, allowing users to search for museums within a specified radius of any ZIP code in the United States.
+
+---
+
+# Data Collection
+
+The project involved automated data collection across multiple stages.
+
+First, museum metadata was gathered from the WhichMuseum platform.
+
+Subsequently, automated web crawling techniques were used to visit each museum's official website. The system located relevant visitor information pages by identifying hyperlinks containing keywords such as ticket, admission, visit, and hours.
+
+In addition, the project collected textual content from the museum websites and retrieved information regarding:
+
+- Opening hours
+- Admission policies
+- Accessibility services
+
+Given the significant structural variations among museum websites, the data extraction process was designed for robustness rather than relying on a standardized page layout.
+
+---
+
+# Data Cleaning and Feature Engineering
+
+After collection, several preprocessing steps were performed to improve consistency.
+
+## Data Cleaning
+
+Cleaning included:
+
+- Removing duplicate museums
+- Removing observations without geographic coordinates
+- Standardizing state names
+- Handling missing values
+- Merging multiple datasets
+
+## Feature Engineering
+
+Several additional variables were created for the dashboard.
+
+### Museum Themes
+
+Museums were grouped into broader themes such as:
+
+- Art
+- History
+- Science
+- Nature
+- Transportation
+- Military
+- Children
+- Other
+
+These themes simplify browsing beyond the original WhichMuseum categories.
+
+### Visitor Information
+
+Additional features include:
+
+- Official website availability
+- Ticket/admission links
+- Visit planning links
+- Opening hours summaries
+- Admission summaries
+- Accessibility summaries
+
+These variables were generated automatically through web scraping.
+
+---
+
+# Interactive Dashboard
+
+The Museum Explorer dashboard provides several interactive tools for exploring museums.
+
+## Search and Filtering
+
+Users can search museums using:
+
+- keyword search
+- museum category
+- museum theme
+- state
+- website availability
+- ticket availability
+- opening hours availability
+
+These filters allow users to quickly identify museums that match their interests.
+
+## Geographic Search
+
+Users may also enter any U.S. ZIP code and specify a search radius.
+
+The dashboard calculates distances using geographic coordinates and displays nearby museums on an interactive map.
+
+## Interactive Map
+
+Museums are displayed using Leaflet.
+
+Clicking on any marker immediately displays detailed information about the selected museum.
+
+Marker clustering is used to improve performance when displaying thousands of museums simultaneously.
+
+## Museum Detail Panel
+
+Selecting a museum reveals detailed visitor information, including:
+
+- museum description
+- address
+- category
+- theme
+- recommended visitor group
+- operating hours
+- admission information
+- accessibility information
+
+The panel also provides direct links to:
+
+- Google Maps
+- Official museum website
+- Ticket or admission page
+- Visit planning page
+
+This allows users to transition directly from exploration to trip planning.
+
+---
+
+# Dashboard Features
+
+The completed dashboard integrates several components into a single application.
+
+Major features include:
+
+- Interactive Leaflet map
+- Keyword search
+- Category filtering
+- Theme filtering
+- State filtering
+- ZIP-code radius search
+- Museum detail panel
+- Ticket page links
+- Visit planning links
+- Opening hours summaries
+- Admission summaries
+- Accessibility summaries
+- Interactive data table
+
+Together, these features provide a centralized platform for discovering museums across the United States.
+
+---
+
+# Limitations
+
+It must be acknowledged that there are certain limitations.
+
+Museum websites vary significantly, making it impossible to automatically extract comparable information across different museums.
+
+Opening hours may change with the seasons or holidays, meaning that the scraped information could become outdated over time.
+
+Finally, some museums do not publish visitor information in a structured format, which limits the amount of information that can be automatically extracted.
+
+---
+
+# Future Work
+
+The “Museum Explorer” platform could be further enhanced through several improvements.
+
+Future development directions might include:
+
+- Automated generation of museum summaries (using AI technology)
+- Personalized museum recommendations
+- Itinerary planning across multiple museums
+- Visitor reviews and ratings
+- Integration of datasets from additional cultural institutions
+- Access to real-time opening hours via official APIs (where feasible)
+
+Additionally, Large Language Models (LLMs) could be leveraged to summarize museum collections and recommend museums based on user interests.
+
+---
+
+# Conclusion
+
+The "Museum Explorer" project demonstrates how a combination of diverse public data sources, web scraping, and Geographic Information Systems (GIS) can be used to create an interactive platform for discovering museums.
+
+By integrating museum metadata, visitor information, and spatial search capabilities into a unified dashboard, the application offers users a more comprehensive and convenient way to explore cultural institutions across the United States.
+
+Furthermore, the project illustrates how automated data collection and interactive visualization technologies can both enhance public access to cultural resources and support future research on museums and cultural institutions.
