@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Zoe Zhang">
+
+<title>Satellite-Based Environmental Analysis of Cultural and Community Institutions</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Satellite_writeup_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Satellite_writeup_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Satellite_writeup_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Satellite_writeup_files/libs/quarto-html/popper.min.js"></script>
+<script src="Satellite_writeup_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Satellite_writeup_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Satellite_writeup_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Satellite_writeup_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Satellite_writeup_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Satellite_writeup_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Satellite_writeup_files/libs/bootstrap/bootstrap-138a6193a3bd40baf1e627da441a4734.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources">Data Sources</a>
+  <ul class="collapse">
+  <li><a href="#nighttime-lights" id="toc-nighttime-lights" class="nav-link" data-scroll-target="#nighttime-lights">Nighttime Lights</a></li>
+  <li><a href="#nitrogen-dioxide-no₂" id="toc-nitrogen-dioxide-no₂" class="nav-link" data-scroll-target="#nitrogen-dioxide-no₂">Nitrogen Dioxide (NO₂)</a></li>
+  <li><a href="#impervious-surface" id="toc-impervious-surface" class="nav-link" data-scroll-target="#impervious-surface">Impervious Surface</a></li>
+  </ul></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics">Summary Statistics</a></li>
+  <li><a href="#distribution-of-satellite-indicators" id="toc-distribution-of-satellite-indicators" class="nav-link" data-scroll-target="#distribution-of-satellite-indicators">Distribution of Satellite Indicators</a></li>
+  <li><a href="#correlation-analysis" id="toc-correlation-analysis" class="nav-link" data-scroll-target="#correlation-analysis">Correlation Analysis</a></li>
+  <li><a href="#statistical-analysis" id="toc-statistical-analysis" class="nav-link" data-scroll-target="#statistical-analysis">Statistical Analysis</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
+  <li><a href="#future-work" id="toc-future-work" class="nav-link" data-scroll-target="#future-work">Future Work</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Satellite_writeup.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Satellite-Based Environmental Analysis of Cultural and Community Institutions</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Zoe Zhang </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Understanding the environments surrounding key institutions offers valuable insights into urban development, infrastructure, and patterns of human activity. Unlike approaches relying solely on demographic or administrative data, remote sensing satellite imagery provides a standardized method for characterizing environmental conditions across thousands of locations. This project compares three categories of institutions across the United States:</p>
+<ul>
+<li>Fortune 500 Headquarters</li>
+<li>Power Plants</li>
+<li>Sports Venues</li>
+</ul>
+<p>using three satellite-derived environmental indicators:</p>
+<ul>
+<li>Nighttime Lights (VIIRS)</li>
+<li>Nitrogen Dioxide (NO₂)</li>
+<li>Impervious Surface</li>
+</ul>
+<p>Together, these variables describe different aspects of the built environment, including nighttime human activity, atmospheric pollution, and land development.</p>
+<p>The objective of this study is to investigate whether different institution types occupy systematically different environments and to explore the relationships among these environmental indicators.</p>
+<hr>
+</section>
+<section id="data-sources" class="level1">
+<h1>Data Sources</h1>
+<p>Three publicly available satellite-derived datasets were used.</p>
+<section id="nighttime-lights" class="level2">
+<h2 class="anchored" data-anchor-id="nighttime-lights">Nighttime Lights</h2>
+<p>Nighttime light intensity was obtained from the VIIRS Day/Night Band annual composite. Nighttime lights are widely used as a proxy for urban activity, economic development, and human presence.</p>
+</section>
+<section id="nitrogen-dioxide-no₂" class="level2">
+<h2 class="anchored" data-anchor-id="nitrogen-dioxide-no₂">Nitrogen Dioxide (NO₂)</h2>
+<p>Tropospheric NO₂ concentrations were extracted from satellite observations. NO₂ is commonly associated with transportation networks, industrial activity, and fossil fuel combustion.</p>
+</section>
+<section id="impervious-surface" class="level2">
+<h2 class="anchored" data-anchor-id="impervious-surface">Impervious Surface</h2>
+<p>Impervious surface percentage was derived from satellite land cover products. High values indicate dense built environments consisting of roads, parking lots, and buildings.</p>
+<hr>
+</section>
+</section>
+<section id="methods" class="level1">
+<h1>Methods</h1>
+<p>The workflow consisted of the following steps:</p>
+<ol type="1">
+<li>Import satellite measurements for each institution.</li>
+<li>Merge Nighttime Lights, NO₂, and Impervious Surface datasets.</li>
+<li>Remove observations containing missing values.</li>
+<li>Calculate summary statistics for each institution type.</li>
+<li>Visualize distributions of satellite indicators.</li>
+<li>Examine correlations among indicators.</li>
+<li>Perform one-way ANOVA to test differences between institution categories.</li>
+<li>Conduct Tukey post-hoc tests for pairwise comparisons.</li>
+</ol>
+<hr>
+</section>
+<section id="summary-statistics" class="level1">
+<h1>Summary Statistics</h1>
+<p>The cleaned dataset contains environmental measurements for all three institution categories.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="aieslftnxt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#aieslftnxt table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#aieslftnxt thead, #aieslftnxt tbody, #aieslftnxt tfoot, #aieslftnxt tr, #aieslftnxt td, #aieslftnxt th {
+  border-style: none;
+}
+
+#aieslftnxt p {
+  margin: 0;
+  padding: 0;
+}
+
+#aieslftnxt .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#aieslftnxt .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#aieslftnxt .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#aieslftnxt .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#aieslftnxt .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#aieslftnxt .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aieslftnxt .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#aieslftnxt .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#aieslftnxt .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#aieslftnxt .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#aieslftnxt .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#aieslftnxt .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#aieslftnxt .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#aieslftnxt .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#aieslftnxt .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#aieslftnxt .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#aieslftnxt .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#aieslftnxt .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#aieslftnxt .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aieslftnxt .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#aieslftnxt .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#aieslftnxt .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#aieslftnxt .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aieslftnxt .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#aieslftnxt .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#aieslftnxt .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aieslftnxt .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aieslftnxt .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#aieslftnxt .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aieslftnxt .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#aieslftnxt .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aieslftnxt .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#aieslftnxt .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aieslftnxt .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#aieslftnxt .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aieslftnxt .gt_left {
+  text-align: left;
+}
+
+#aieslftnxt .gt_center {
+  text-align: center;
+}
+
+#aieslftnxt .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#aieslftnxt .gt_font_normal {
+  font-weight: normal;
+}
+
+#aieslftnxt .gt_font_bold {
+  font-weight: bold;
+}
+
+#aieslftnxt .gt_font_italic {
+  font-style: italic;
+}
+
+#aieslftnxt .gt_super {
+  font-size: 65%;
+}
+
+#aieslftnxt .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#aieslftnxt .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#aieslftnxt .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#aieslftnxt .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#aieslftnxt .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#aieslftnxt .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#aieslftnxt .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#aieslftnxt .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#aieslftnxt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="institution_type" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">institution_type</th>
+<th id="n" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n</th>
+<th id="mean_light" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">mean_light</th>
+<th id="median_light" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">median_light</th>
+<th id="mean_no2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">mean_no2</th>
+<th id="median_no2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">median_no2</th>
+<th id="mean_impervious" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">mean_impervious</th>
+<th id="median_impervious" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">median_impervious</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="institution_type">Fortune 500 HQ</td>
+<td class="gt_row gt_right" headers="n">499</td>
+<td class="gt_row gt_right" headers="mean_light">119.25229</td>
+<td class="gt_row gt_right" headers="median_light">93.158330</td>
+<td class="gt_row gt_right" headers="mean_no2">5.128576e-05</td>
+<td class="gt_row gt_right" headers="median_no2">4.416409e-05</td>
+<td class="gt_row gt_right" headers="mean_impervious">83.50501</td>
+<td class="gt_row gt_right" headers="median_impervious">89</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="institution_type">Power Plant</td>
+<td class="gt_row gt_right" headers="n">13323</td>
+<td class="gt_row gt_right" headers="mean_light">15.75714</td>
+<td class="gt_row gt_right" headers="median_light">3.086667</td>
+<td class="gt_row gt_right" headers="mean_no2">2.936823e-05</td>
+<td class="gt_row gt_right" headers="median_no2">2.623091e-05</td>
+<td class="gt_row gt_right" headers="mean_impervious">36.17826</td>
+<td class="gt_row gt_right" headers="median_impervious">17</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="institution_type">Sports Venue</td>
+<td class="gt_row gt_right" headers="n">2225</td>
+<td class="gt_row gt_right" headers="mean_light">70.82671</td>
+<td class="gt_row gt_right" headers="median_light">62.105835</td>
+<td class="gt_row gt_right" headers="mean_no2">3.189231e-05</td>
+<td class="gt_row gt_right" headers="median_no2">3.001898e-05</td>
+<td class="gt_row gt_right" headers="mean_impervious">69.53348</td>
+<td class="gt_row gt_right" headers="median_impervious">81</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Fortune 500 headquarters typically exhibit the highest levels of nighttime lighting intensity and impervious surface coverage, reflecting the characteristics of highly urbanized environments.</p>
+<p>Power plants exhibit significantly lower nighttime light intensity and a lower proportion of impervious surfaces, reflecting their location outside densely populated urban cores.</p>
+<p>Sports venues occupy an intermediate position between these two extremes.</p>
+<hr>
+</section>
+<section id="distribution-of-satellite-indicators" class="level1">
+<h1>Distribution of Satellite Indicators</h1>
+<p>The following visualization compares the distributions of each satellite indicator across institution types.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Satellite_writeup_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Nighttime Lights provide the clearest separation between institution categories. Fortune 500 headquarters are concentrated in highly illuminated urban environments, while power plants are generally located in less illuminated regions.</p>
+<p>Impervious Surface exhibits a similar pattern, reflecting differences in surrounding urban development.</p>
+<p>NO₂ concentrations display greater overlap but still show meaningful variation among institution types.</p>
+<hr>
+</section>
+<section id="correlation-analysis" class="level1">
+<h1>Correlation Analysis</h1>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Satellite_writeup_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>All three satellite indicators are positively correlated.</p>
+<p>Impervious Surface exhibits the strongest relationship with Nighttime Lights, suggesting that urban development is closely associated with increased nighttime human activity.</p>
+<p>NO₂ also displays positive relationships with both indicators, indicating that pollution generally increases alongside urbanization.</p>
+<hr>
+</section>
+<section id="statistical-analysis" class="level1">
+<h1>Statistical Analysis</h1>
+<p>One-way ANOVA was performed separately for each satellite indicator.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="gwzrhfqcin" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gwzrhfqcin table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#gwzrhfqcin thead, #gwzrhfqcin tbody, #gwzrhfqcin tfoot, #gwzrhfqcin tr, #gwzrhfqcin td, #gwzrhfqcin th {
+  border-style: none;
+}
+
+#gwzrhfqcin p {
+  margin: 0;
+  padding: 0;
+}
+
+#gwzrhfqcin .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#gwzrhfqcin .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#gwzrhfqcin .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#gwzrhfqcin .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#gwzrhfqcin .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gwzrhfqcin .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gwzrhfqcin .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gwzrhfqcin .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#gwzrhfqcin .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#gwzrhfqcin .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#gwzrhfqcin .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#gwzrhfqcin .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#gwzrhfqcin .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#gwzrhfqcin .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#gwzrhfqcin .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#gwzrhfqcin .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#gwzrhfqcin .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#gwzrhfqcin .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#gwzrhfqcin .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gwzrhfqcin .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#gwzrhfqcin .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#gwzrhfqcin .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#gwzrhfqcin .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gwzrhfqcin .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#gwzrhfqcin .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#gwzrhfqcin .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gwzrhfqcin .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gwzrhfqcin .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#gwzrhfqcin .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gwzrhfqcin .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#gwzrhfqcin .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gwzrhfqcin .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gwzrhfqcin .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gwzrhfqcin .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gwzrhfqcin .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gwzrhfqcin .gt_left {
+  text-align: left;
+}
+
+#gwzrhfqcin .gt_center {
+  text-align: center;
+}
+
+#gwzrhfqcin .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#gwzrhfqcin .gt_font_normal {
+  font-weight: normal;
+}
+
+#gwzrhfqcin .gt_font_bold {
+  font-weight: bold;
+}
+
+#gwzrhfqcin .gt_font_italic {
+  font-style: italic;
+}
+
+#gwzrhfqcin .gt_super {
+  font-size: 65%;
+}
+
+#gwzrhfqcin .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#gwzrhfqcin .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#gwzrhfqcin .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#gwzrhfqcin .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#gwzrhfqcin .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#gwzrhfqcin .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#gwzrhfqcin .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#gwzrhfqcin .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#gwzrhfqcin div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Indicator" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Indicator</th>
+<th id="DF" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">DF</th>
+<th id="F-Statistic" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">F Statistic</th>
+<th id="P-Value" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">P Value</th>
+<th id="Significant" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Significant</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Indicator">Nighttime Lights</td>
+<td class="gt_row gt_right" headers="DF">2</td>
+<td class="gt_row gt_right" headers="F Statistic">2585.72</td>
+<td class="gt_row gt_right" headers="P Value">0.00e+00</td>
+<td class="gt_row gt_right" headers="Significant">***</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Indicator">NO₂</td>
+<td class="gt_row gt_right" headers="DF">2</td>
+<td class="gt_row gt_right" headers="F Statistic">487.30</td>
+<td class="gt_row gt_right" headers="P Value">3.52e-206</td>
+<td class="gt_row gt_right" headers="Significant">***</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Indicator">Impervious Surface</td>
+<td class="gt_row gt_right" headers="DF">2</td>
+<td class="gt_row gt_right" headers="F Statistic">1066.95</td>
+<td class="gt_row gt_right" headers="P Value">0.00e+00</td>
+<td class="gt_row gt_right" headers="Significant">***</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>All three indicators demonstrate statistically significant differences among institution categories.</p>
+<p>Subsequent Tukey post-hoc comparisons indicate that nearly every pairwise comparison is statistically significant, suggesting that each institution type occupies distinct environmental settings.</p>
+<hr>
+</section>
+<section id="discussion" class="level1">
+<h1>Discussion</h1>
+<p>Satellite-derived environmental indicators successfully distinguish different categories of institutions.</p>
+<p>Fortune 500 headquarters consistently occur within highly urbanized environments characterized by bright nighttime illumination and extensive impervious surfaces.</p>
+<p>Power plants exhibit substantially different environmental characteristics, reflecting industrial siting decisions and land-use requirements.</p>
+<p>Sports venues occupy intermediate environments, combining proximity to population centers with relatively large developed land areas.</p>
+<p>Together, these findings demonstrate the usefulness of remote sensing products for characterizing institutional landscapes at national scales.</p>
+<hr>
+</section>
+<section id="limitations" class="level1">
+<h1>Limitations</h1>
+<p>Several limitations should be acknowledged.</p>
+<ul>
+<li>Satellite observations describe surrounding environments rather than institutional activity itself.</li>
+<li>The analysis represents a single time period and does not capture temporal changes.</li>
+<li>Institution locations are represented by point coordinates, which may not fully represent the spatial extent of large facilities.</li>
+</ul>
+<hr>
+</section>
+<section id="future-work" class="level1">
+<h1>Future Work</h1>
+<p>Future work may incorporate additional environmental indicators, including:</p>
+<ul>
+<li>NDVI vegetation index</li>
+<li>Land surface temperature</li>
+<li>Population density</li>
+<li>Road network density</li>
+<li>Building footprint density</li>
+</ul>
+<p>Machine learning approaches could also be used to classify institution types using combinations of satellite-derived environmental variables.</p>
+<p>Integrating these environmental indicators into the Museum Explorer application would provide users with richer geographic context surrounding cultural institutions.</p>
+<hr>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>This study demonstrates that satellite-derived environmental indicators provide meaningful insights into the built environments surrounding different institution types.</p>
+<p>By integrating datasets on nighttime lights, nitrogen dioxide (NO₂), and impervious surfaces, we identified systematic differences among Fortune 500 headquarters, power plants, and sports stadiums. These findings demonstrate how remote sensing technology can complement traditional spatial datasets and facilitate large-scale analysis of environments shaped by human activity.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
