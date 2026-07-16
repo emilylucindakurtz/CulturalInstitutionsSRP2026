@@ -157,13 +157,6 @@ mapPageUI <- function(id, type_choices, institution_label, institution_choices) 
       div(
         style = "display: flex; align-items: center; gap: 6px;",
         tags$label("Shade counties by:", style = "margin-bottom: 0;"),
-        tooltip(
-          icon("circle-info"),
-          paste("Color bins are based on data quantiles: each color covers",
-                "roughly the same number of counties, not an equal-sized range",
-                "of values. Thus, legend bin widths may look uneven."),
-          placement = "right"
-        )
       ),
       selectInput(
         ns("ipums_var"),
@@ -194,14 +187,6 @@ mapPageUI <- function(id, type_choices, institution_label, institution_choices) 
                plotOutput(ns("boxplot"), height = "670px"),
                div(
                  style = "display: flex; align-items: flex-start; gap: 6px;",
-                 tooltip(
-                   icon("circle-info"),
-                   paste("Boxplot shows the selected variable's value in",
-                         "counties across each institution (not the ",
-                         "institution's own data)."),
-                   placement = "right"
-                   ),
-                 helpText(em("What is this chart showing?"))
                )
         )
       )

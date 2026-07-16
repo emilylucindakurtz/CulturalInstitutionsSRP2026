@@ -42,17 +42,17 @@ Altogether, future analysis may address whether these differences reflect dispar
 
 **Colleges**
 
--   [britannica.com – Historically Black Colleges and Universities](https://www.britannica.com/topic/historically-black-colleges-and-universities)
--   [hbcufirst.com – HBCU History Timeline](https://hbcufirst.com/resources/hbcu-history-timeline)
+-   [britannica.com-Historically Black Colleges and Universities](https://www.britannica.com/topic/historically-black-colleges-and-universities)
+-   [hbcufirst.com-HBCU History Timeline](https://hbcufirst.com/resources/hbcu-history-timeline)
 -   [journals.openedition.org](https://journals.openedition.org/qds/4044)
--   [archives.gov – The Great Migration](https://www.archives.gov/research/african-americans/migrations/great-migration)
+-   [archives.gov-The Great Migration](https://www.archives.gov/research/african-americans/migrations/great-migration)
 
 **Automotive Facilities**
 
--   [motorcities.org – Southwest Detroit Auto Heritage Guide](https://www.motorcities.org/southwest-detroit-auto-heritage-guide/early-auto-boom)
--   [recurrentauto.com – States Leading the EV Revolution](https://www.recurrentauto.com/research/states-leading-the-ev-revolution)
+-   [motorcities.org-Southwest Detroit Auto Heritage Guide](https://www.motorcities.org/southwest-detroit-auto-heritage-guide/early-auto-boom)
+-   [recurrentauto.com-States Leading the EV Revolution](https://www.recurrentauto.com/research/states-leading-the-ev-revolution)
 
 **Theaters and Operas**
 
--   [americantheatre.org – Going National: How America's Regional Theatre Movement Changed the Game](https://www.americantheatre.org/2015/06/16/going-national-how-americas-regional-theatre-movement-changed-the-game/)
+-   [americantheatre.org-Going National: How America's Regional Theatre Movement Changed the Game](https://www.americantheatre.org/2015/06/16/going-national-how-americas-regional-theatre-movement-changed-the-game/)
 -   [researchguides.library.vanderbilt.edu](https://researchguides.library.vanderbilt.edu/c.php?g=69054&p=449679)
