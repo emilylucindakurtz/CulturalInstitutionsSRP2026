@@ -10,6 +10,7 @@ library(leaflet)
 library(htmltools)
 library(scales)
 library(bslib)
+library(markdown)
 
 options(tigris_use_cache = TRUE)
 
@@ -83,11 +84,6 @@ counties_sf <- counties_sf_raw %>%
   left_join(IPUMS_data, by = "GEOID") %>%
   filter(!is.na(total_population)) %>%
   filter(!STATEFP %in% c("60", "66", "69", "72", "78")) %>%     # drop AS, GU, MP, PR, VI coordinates
-  st_transform(crs = 4326)
-
-## Outline state boundaries
-states_sf <- states(cb = TRUE, resolution = "20m", year = 2024) %>%
-  filter(!STATEFP %in% c("60", "66", "69", "72", "78")) %>%
   st_transform(crs = 4326)
 
 
@@ -446,7 +442,34 @@ ui <- navbarPage(
   tabPanel("Historic Theaters", mapPageUI("theaters", theater_type_choices, "theater",
                                           sort(unique(theaters$name)))),
   tabPanel("Opera Companies", mapPageUI("opera", opera_type_choices, "opera company",
-                                        sort(unique(opera$name))))
+                                        sort(unique(opera$name)))),
+  ## Blog Post tab
+  tabPanel(
+    "Blog Post",
+    fluidPage(
+      tags$head(
+        tags$style(HTML(".blog-content img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+          }
+        "))
+      ),
+      fluidRow(
+        column(
+          8, offset = 2,
+          div(
+            class = "blog-content",
+            style = "font-size: 1.05em; line-height: 1.65; padding-top: 20px;",
+            ### Use markdown package to read blog_post.md into app
+            includeMarkdown("blog_post.md")
+          )
+        )
+      )
+    )
+  )
 )
 
 

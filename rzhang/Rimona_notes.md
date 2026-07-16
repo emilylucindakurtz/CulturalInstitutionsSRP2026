@@ -364,6 +364,9 @@ Tasks today:
 
 ## 7/13
 Last day!
+- [X] Finished cleaning opera dataset (manually inputting missing coordinates and removing NA locations)
+
 - [ ] Finish blog post and put into shiny app
+ - [ ] Also add an "About Data" page - include info about opera member-types, focus on LACs and HBCUs, and etc
 - [ ] Last checks and changes on data and app pages
 - [ ] Send about-me bio to Emily
