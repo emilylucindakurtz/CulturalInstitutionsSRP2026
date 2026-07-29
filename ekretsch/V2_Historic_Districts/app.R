@@ -103,7 +103,8 @@ ui <- page_navbar(
               liveSearch = TRUE, # allowing user to search
               size = 10 # max visible items before scrolling
             )
-          )
+          ),
+          plotlyOutput("categories_dist_p1")
         ),
         mainPanel(
           card(
@@ -182,8 +183,10 @@ server <- function(input, output) {
   # Reactive value to hold the currently filtered dataset (shared by map and table)
   districts_filtered <- reactiveVal(NULL)
   
-  # Function for reaction to changing filters
+  # Reactive value to hold the current state
+  selected_state_p1 <- reactiveVal(NULL) # SHOULD PROB TAKE OUT LATER!!
   
+  # FUNCTION for reaction to changing filters
   update_districts <- function() {
     # Get a character vector of the underlying column names
     cols_to_check <- categories_counts %>% 
@@ -196,12 +199,16 @@ server <- function(input, output) {
       clearShapes()
     
     if(input$state_choice != "All"){
+      #selected_state_p1(input$state_choice)
       
       filtered_states_sf <- states_sf %>% 
         filter(NAME == input$state_choice)
       
       leafletProxy("map2") %>% 
         addPolylines(data = filtered_states_sf, color = "black", opacity = 1, weight = 2)
+      
+      plotlyProxy(categories_dist_p1) %>% 
+        
     }
     
     
@@ -248,11 +255,18 @@ server <- function(input, output) {
     
   })
   
+  set_hist_all <- function() {
+    
+  }
+  
   output$map2 <- renderLeaflet({
     leaflet() %>% 
       addProviderTiles("OpenStreetMap.HOT") %>% 
-      #setView(lng = -85, lat = 39.5, zoom = 4)  # set it to US to start
       setView(lng = -95.7129, lat = 37.0902, zoom = 4)
+    
+  })
+  
+  output$categories_dist_1 <- renderPlotly({
     
   })
   
@@ -260,7 +274,6 @@ server <- function(input, output) {
   observeEvent(input$state_choice, {
     if(input$state_choice == "All"){
       leafletProxy("map2") %>% 
-        #setView(lng = -85, lat = 39.5, zoom = 4)
         setView(lng = -95.7129, lat = 37.0902, zoom = 4)
     } else{
       selected_polygon <- states_sf %>% filter(NAME == input$state_choice)
@@ -279,6 +292,48 @@ server <- function(input, output) {
   observeEvent(input$categories_choice, {
     update_districts()
   })
+  
+  
+  
+  
+  
+  #-------------------------------------------------------------------------------------------------------------------------
+  
+  output$categories_dist_1 <- renderPlotly({
+    req(selected_state())     # Prevent error on startup when no state is clicked yet
+    
+    state_name <- selected_state()
+    
+    temp_df <- categories_counts %>% 
+      rename(counts = all_of(selected_state())) %>%  # Get just the column of the state that was clicked.
+      select(category, counts) %>% 
+      filter(counts >0)
+    
+    p <- temp_df %>% 
+      mutate(tooltip_text = paste(
+        paste0("Category: ", category),
+        paste0("Counts: ", counts),
+        sep = "\n"
+      )) %>% 
+      slice_max(order_by = counts, n = 5) %>% 
+      ggplot(aes(y = reorder(category, counts), x = counts, text = tooltip_text)) +
+      geom_col() +
+      scale_y_discrete(labels = scales::label_wrap(10)) +
+      theme_minimal() + #CBL -- 
+      theme(
+        axis.text = element_text(size = 8),
+        axis.title.y = element_text(margin = margin(r = 50))
+        #axis.text.x = element_text(angle = 30, hjust = 0.5, vjust = 0.5)
+      ) +
+      labs(
+        #title = paste0(selected_state(), " top 5 categories of historic districts"),
+        y = NULL,
+        x = "Count"
+      )
+    
+    ggplotly(p, tooltip = "text")
+  })
+    
 
   # ----- Page 2: Analysis ----- Page 2: Analysis ----- Page 2: Analysis ----- Page 2: Analysis ----- Page 2: Analysis -----
   
