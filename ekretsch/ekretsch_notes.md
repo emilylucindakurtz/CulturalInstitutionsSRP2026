@@ -3,8 +3,15 @@
 ## July 29
 
 
+does an area having a historic district benefit it? (--> pride)
+^ poverty rate
+^ crime rate
+^ housing prices
+^ schools (maybe wanting to have kids/stay there?)
+choropleth + graduated symbols
+^ businesses
 
-** notes **
+**notes**
 - Getting back into the swing of things
   - partly trying to figure out where I left off...
   - updating packages and rerunning things
@@ -38,7 +45,7 @@ Historic districts
 **- maybe add county lines.**
 - maybe offer it all on one page so that the user can select which layers to view
 - maybe add back the number of historic districts by state graph
-
+- [ ] FIX DESELECTING ISSUE on site!
 - [x] try to do some clustering (but did not like it) 
 
 Street art
