@@ -174,7 +174,7 @@ server <- function(input, output) {
   #bs_themer()
   thematic_shiny(font = "auto")
   
-  # ----- Page 2 -----
+  # ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 -----
   
   # Reactive value to hold the currently filtered dataset (shared by map and table)
   districts_filtered <- reactiveVal(NULL)
@@ -248,14 +248,17 @@ server <- function(input, output) {
   output$map2 <- renderLeaflet({
     leaflet() %>% 
       addProviderTiles("OpenStreetMap.HOT") %>% 
-      setView(lng = -85, lat = 39.5, zoom = 4)  # set it to US to start
+      #setView(lng = -85, lat = 39.5, zoom = 4)  # set it to US to start
+      setView(lng = -95.7129, lat = 37.0902, zoom = 4)
+    
   })
   
   # Trigger an event every time the user changes the dropdown selection
   observeEvent(input$state_choice, {
     if(input$state_choice == "All"){
       leafletProxy("map2") %>% 
-        setView(lng = -85, lat = 39.5, zoom = 4)
+        #setView(lng = -85, lat = 39.5, zoom = 4)
+        setView(lng = -95.7129, lat = 37.0902, zoom = 4)
     } else{
       selected_polygon <- states_sf %>% filter(NAME == input$state_choice)
       bbox <- st_bbox(selected_polygon)
@@ -274,13 +277,13 @@ server <- function(input, output) {
     update_districts()
   })
 
-  # ----- Page 1 -----
+  # ----- Page 2: Analysis ----- Page 2: Analysis ----- Page 2: Analysis ----- Page 2: Analysis ----- Page 2: Analysis -----
   
   output$map <- renderLeaflet({
     leaflet(choropleth_area_data) %>% 
       addProviderTiles("CartoDB.Positron") %>% 
       
-      setView(lng = -85, lat = 39.50, zoom = 4) %>% 
+      setView(lng = -95.7129, lat = 37.0902, zoom = 4)
       
       addPolygons(
         layerId = ~NAME, # so it takes the NAME column from choropleth_area_data
