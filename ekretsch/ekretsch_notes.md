@@ -2,7 +2,18 @@
 
 ## July 29
 
-Research
+
+
+** notes **
+- Getting back into the swing of things
+  - partly trying to figure out where I left off...
+  - updating packages and rerunning things
+ 
+  - almost all historic districts seem to be architecture
+  - on the about or main page of historic districts should prob explain what i'm actually meaning with historic districts
+  - code book?
+
+** research **
 - https://taxfoundation.org/data/all/state/2026-state-tax-data/
   - taxes per capita
   - maybe not the besstt way to measure it since income but
@@ -13,11 +24,6 @@ Research
       - could scrape this ~
       - <img width="352" height="81" alt="image" src="https://github.com/user-attachments/assets/71e06ec7-d0b9-4eaf-b301-e9aee9323b26" />
 
-
-** notes **
-- Getting back into the swing of things
-  - partly trying to figure out where I left off...
-  - updating packages and rerunning things
 
 ** things to do **
 
@@ -33,12 +39,18 @@ Historic districts
 - maybe offer it all on one page so that the user can select which layers to view
 - maybe add back the number of historic districts by state graph
 
+- [x] try to do some clustering (but did not like it) 
+
 Street art
 - Not sure...
 - I remember feeling like I had hit a roadblock with the text analysis
   - I'm not sure if I should try to keep going with it or just let it be and move on to trying something else (or just let street art be altogether)
   - I wish I knew how to do image analysis for the photos from the web
   - What about dates...
+ 
+Libraries
+- could be an indicator of xyz
+- looked at ian's exploration R file -- wowow very cool
 
 Other 
 Need to check in with her about the following ~
