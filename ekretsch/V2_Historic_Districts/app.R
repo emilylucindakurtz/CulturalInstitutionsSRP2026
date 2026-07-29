@@ -78,10 +78,12 @@ ui <- page_navbar(
   title = "Historic Districts",
   fillable = TRUE, # Acts as page_fillable() for all tabs
     
+  # Page 1 Layout
   nav_panel(
     title = "Finder",
       h2("Find historic districts"),
       p("Explanation of the page loading..."),
+    
     card(
       sidebarLayout(
         position = "left",
@@ -116,6 +118,7 @@ ui <- page_navbar(
     )
   ),
   
+  # Page 2 Layout
     nav_panel(
       title = "Analysis",
       
@@ -283,7 +286,7 @@ server <- function(input, output) {
     leaflet(choropleth_area_data) %>% 
       addProviderTiles("CartoDB.Positron") %>% 
       
-      setView(lng = -95.7129, lat = 37.0902, zoom = 4)
+      setView(lng = -95.7129, lat = 37.0902, zoom = 4) %>% 
       
       addPolygons(
         layerId = ~NAME, # so it takes the NAME column from choropleth_area_data
