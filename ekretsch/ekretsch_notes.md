@@ -31,7 +31,7 @@ Historic districts
 - maybe taxes by state
 **- maybe add county lines.**
 - maybe offer it all on one page so that the user can select which layers to view
-- 
+- maybe add back the number of historic districts by state graph
 
 Street art
 - Not sure...
