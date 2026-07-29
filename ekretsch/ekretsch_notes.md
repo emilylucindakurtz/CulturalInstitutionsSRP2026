@@ -46,7 +46,9 @@ Historic districts
 - maybe offer it all on one page so that the user can select which layers to view
 - maybe add back the number of historic districts by state graph
 - [ ] FIX DESELECTING ISSUE on site!
-- [x] try to do some clustering (but did not like it) 
+- [x] try to do some clustering (but did not like it)
+- [ ] saipe datasets from census with an api
+- [ ] probably should change all of the names of variables to be better (like map2... not great name especially since it's the first map lol)
 
 Street art
 - Not sure...
