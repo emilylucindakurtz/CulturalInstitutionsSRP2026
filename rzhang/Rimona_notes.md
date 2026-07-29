@@ -251,4 +251,122 @@ Realized that I downloaded 1-year data from 2024 that did not include informatio
 
 More data cleaning included:
 - remaking NRHP_LHAT joined dataset such that the NRHP no longer included operas and only locations with 'theat(er/re)' in the name.
+- [X] finished basic shiny app
 
+Updated tasks!
+- Revise/add more to Shiny app (features focused on usability, navigation, clarity) 
+- Construct EDA graphs that depict helpful summaries of each dataset, and in turn understanding for users  
+
+## 7/2
+Notes from team meeting:
+- keep accessibility in mind for graphs and app design, such as color palettes and descriptions
+ - change color palette for population 
+ - modify the scale so smaller populations are better distinguishable
+ - change color of location points ('red-green' color-blindness)
+- try to resolve problem with data being absent when switching between institutions
+
+## 7/5
+Revisions made:
+- data point color palette to Okabe_Ito (designed to distinguishable under color vision deficiencies)
+- scaled ranges to 7 bins for improved shading across counties
+ - added breaks to show value-ranges instead of percentiles; included a note for users
+- data would not initially load for maps of other institutions because Shiny suspends rendering for outputs of un-clicked tabs; resolved by adding outputOptions() and 'suspendWhenHidden = FALSE' to render all maps when the app is opened.
+ - however, does make loading the app slower
+ 
+## 7/6 
+- Added EDA boxplots by institution type
+ - shows the selected IPUMS variable's value (in the institution's county) split by institution type and colored to match the map's point colors
+ - required info on which county each institution point falls in; used st_join to convert points to county polygons
+  - Q: is there a way to load the graphs in a separate file and then load them in Shiny? would that be faster?
+ 
+ New tasks:
+ - Update Shiny app layout; explore graph placements and page designs
+ - Write blog post
+
+Considerations:
+- would a homepage be helpful?
+- should the blog post be included in the shiny app or as a .qmd file
+- what should be done for codebook?
+
+Blog post ideas:
+- HBCUs located in counties with higher percentages of Black populations compared to LACs, reflecting broader historical context
+- EV facilities located in counties with higher household-median-incomes than other automotive facilities; could reflect the growing industry and targeted customers 
+
+## 7/7
+Task list:
+ - Shiny app
+  - [X] test different colors/color palettes 
+  - [X] fix layout and labeling of graphs
+  - [ ] add homepage/more contextual info on data for users
+  - [ ] fix data point on in opera dataset
+  
+ - Blog post:
+  - [ ] add page on Shiny App
+  
+- Organize/clean files
+
+
+## 7/8
+Recurring issue with app... in the maps failing to load after continuous interaction with the app.
+ - data points load (as boxplots are not affected), so problem is most likely with the basemap tiles.
+ - switched polygon rendering from SVG to Canvas to reduce memory usage and faster rendering
+
+Continue with tasks:
+ - [ ] add homepage/more contextual info on data for users
+  - [ ] fix data point on in opera dataset
+  
+ - Blog post:
+  - [ ] add page on Shiny App
+
+Blog post ideas (cont.):
+- HBCUs located in counties with higher percentages of Black populations compared to LACs, reflecting broader historical context
+- EV facilities located in counties with higher household-median-incomes than other automotive facilities; could reflect the growing industry and targeted customers 
+ - however, not a large difference between averages
+- Operas located in counties with higher household-median-incomes in comparison to theaters; could be due to it offering a more curated/uncommon activity
+
+
+## 7/9
+ - [X] add homepage/more contextual info about the app (what it's about, how to use)
+  - used CSS and HTML to format the homepage; might add more later
+  - References:
+   - https://engineering-shiny.org/css.html
+   - https://shiny.posit.co/r/articles/build/css/
+   - https://shiny.posit.co/r/reference/shiny/1.8.0/icon.html
+   - many W3Schools tutorials - https://www.w3schools.com/howto/default.asp
+  - also used Claude to help debug
+
+Continued tasks:
+- [ ] fix data point on in opera dataset
+  
+ - Blog post:
+  - [ ] add page on Shiny App
+
+### Blog post notes/drafts:
+#### Majority of HBCUs are located in South, with few/none in certain regions (Northeast, Midwest).
+- Why are there few HBCUs located in the Northeast/Midwest regions of the US?
+
+- First HBCUs were founded in Pennsylvania (Cheyney University) and Ohio before the American Civil War  (1861–65)
+- After the end of the Civil War and the abolition of slavery, along with support from the Freedmen’s Bureau (federal org that operated during Reconstruction to help former slaves adjust to freedom), HBCUs were founded throughout the South.
+- In the South, where segregation and inequality was most prevalent towards Black people, HBCUs facilitated access to education. Many remain today as both vital institutions that provide higher education for Black students and carrying America's history.
+- Educational inequality is not only rooted in history, but still persists today.
+ - Other potential questions: Why is there a lack of LACs in the South?
+
+Sources:
+
+- https://www.britannica.com/topic/historically-black-colleges-and-universities
+- https://hbcufirst.com/resources/hbcu-history-timeline
+- https://journals.openedition.org/qds/4044
+
+
+## 7/10
+Tasks today:
+- Examine app for any remaining errors/issues
+
+## 7/13
+Last day!
+- [X] Finished cleaning opera dataset (manually inputting missing coordinates and removing NA locations)
+
+- [ ] Finish blog post and put into shiny app
+ - [ ] Also add an "About Data" page - include info about opera member-types, focus on LACs and HBCUs, and etc
+- [ ] Last checks and changes on data and app pages
+- [ ] Send about-me bio to Emily

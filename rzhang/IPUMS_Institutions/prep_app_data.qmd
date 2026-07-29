@@ -1,0 +1,144 @@
+---
+title: "prep_app_data"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(knitr)
+```
+
+# Colleges
+```{r}
+# clean lat/lon and `college_type` (LAC/HBCU).
+colleges <- read_csv("data/joined_colleges.csv") %>%
+  filter(!is.na(Latitude), !is.na(Longitude)) %>%
+  mutate(
+    name = College,
+    latitude = Latitude,
+    longitude = Longitude,
+    type = college_type,
+    popup = sprintf("<strong>%s</strong><br/>%s, %s<br/>Type: %s",
+                     College, City, State, college_type),
+    .keep = "none"
+  )
+
+colleges %>%
+  count(type)
+```
+
+# Auto/EV facilities
+```{r}
+auto_facilities <- read_csv("data/auto_ev_map.csv") %>%
+  filter(!is.na(latitude), !is.na(longitude)) %>%
+  mutate(
+    name = facility_name,
+    latitude, longitude,
+    type = ifelse(EV_facility, "EV Facility", "Traditional/Other Facility"),
+    popup = sprintf("<strong>%s</strong><br/>%s<br/>%s, %s<br/>%s",
+                     facility_name, company, city, state, products_or_focus),
+    .keep = "none"
+  )
+
+auto_facilities %>%
+  count(type)
+```
+
+# Theaters
+```{r}
+theaters <- read_csv("data/NRHP_LHAT_only_theaters.csv") %>%
+  filter(!is.na(latitude), !is.na(longitude)) %>%
+  mutate(
+    name = `Property Name`,
+    latitude, longitude,
+    type = ifelse(LHAT_member, "LHAT Member Theater", "NRHP-Listed Only"),
+    popup = sprintf("<strong>%s</strong><br/>%s, %s<br/>Listed: %s<br/>Type: %s",
+                     `Property Name`, City, state, `Listed Date`,
+                     ifelse(LHAT_member, "LHAT Member Theater", "NRHP-Listed Only")),
+    .keep = "none"
+  )
+
+theaters %>% 
+  count(type)
+```
+
+# Opera companies
+```{r}
+# Clean locations outside of the US and state names
+us_states <- c(state.abb, "DC")
+
+opera_raw <- read_csv("data/opera_america_members.csv")
+
+clean_state <- function(x) {
+  x <- str_trim(x)
+  x <- recode(x,
+    "California"  = "CA", "Massachusetts" = "MA", "New Jersey" = "NJ",
+    "New York"    = "NY", "Ohio" = "OH", "FLORIDA" = "FL",
+    "nj" = "NJ", "New york " = "NY", .default = x
+  )
+  x <- str_remove(x, "`")
+  x
+}
+```
+
+```{r}
+# Show what was modified by clean_state function
+opera_raw %>%
+  mutate(state_cleaned = clean_state(state)) %>%
+  filter(state != state_cleaned) %>%
+  count(state, state_cleaned, name = "n_rows") %>%
+  arrange(desc(n_rows))
+```
+
+```{r}
+# Checking rows that were dropped 
+opera_raw %>%
+  mutate(state_cleaned = clean_state(state)) %>%
+  transmute(
+    non_us_or_unmatched_state = !state_cleaned %in% us_states,
+    missing_coordinates = is.na(latitude) | is.na(longitude),
+    test_or_blank_type = type %in% c("", "TEST") | is.na(type)
+  ) %>%
+  summarise(across(everything(), sum, na.rm = TRUE)) %>%
+  pivot_longer(everything(), names_to = "drop_reason", values_to = "n_rows")
+```
+
+```{r}
+# Clean data
+opera <- opera_raw %>%
+  mutate(state = clean_state(state)) %>%
+  filter(
+    state %in% us_states,
+    !is.na(latitude), !is.na(longitude),
+    !type %in% c("", "TEST"),
+    !is.na(type)
+  ) %>%
+  mutate(
+    name = name,
+    latitude, longitude,
+    type = type,
+    popup = sprintf("<strong>%s</strong><br/>%s, %s<br/>Type: %s",
+                     name, city, state, type),
+    .keep = "none"
+  )
+```
+
+```{r}
+# Check opera counts
+tibble(
+  stage = c("Raw rows", "Rows kept after cleaning"),
+  n = c(nrow(opera_raw), nrow(opera))
+)
+
+opera %>% 
+  count(type) %>% 
+  arrange(desc(n))
+```
+
+```{r}
+# Write new, cleaned CSVs to be used in the app
+write_csv(colleges, "data/colleges_app_clean.csv")
+write_csv(auto_facilities, "data/auto_facilities_app_clean.csv")
+write_csv(theaters, "data/theaters_app_clean.csv")
+write_csv(opera, "data/opera_app_clean.csv")
+```

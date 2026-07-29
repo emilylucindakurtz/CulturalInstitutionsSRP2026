@@ -1,5 +1,69 @@
 # Emily Kretschmer's Notes
 
+## July 29
+
+
+does an area having a historic district benefit it? (--> pride)
+^ poverty rate
+^ crime rate
+^ housing prices
+^ schools (maybe wanting to have kids/stay there?)
+choropleth + graduated symbols
+^ businesses
+
+**notes**
+- Getting back into the swing of things
+  - partly trying to figure out where I left off...
+  - updating packages and rerunning things
+ 
+  - almost all historic districts seem to be architecture
+  - on the about or main page of historic districts should prob explain what i'm actually meaning with historic districts
+  - code book?
+
+** research **
+- https://taxfoundation.org/data/all/state/2026-state-tax-data/
+  - taxes per capita
+  - maybe not the besstt way to measure it since income but
+  - Continuing using this site has helped me find this:
+    - https://taxfoundation.org/data/all/state/2026-state-tax-data/, the pdf led me to another site to this:
+      - https://taxfoundation.org/data/all/state/tax-burden-by-state-2022/
+      - ^ the first table basically shows what percent of their income residents end up paying on taxes
+      - could scrape this ~
+      - <img width="352" height="81" alt="image" src="https://github.com/user-attachments/assets/71e06ec7-d0b9-4eaf-b301-e9aee9323b26" />
+
+
+** things to do **
+
+Historic districts 
+- Finder explanation of page
+- Fixing the issue where there are some dots in the wrong spots -- ex gainesville alabama is mapped to NC...
+  - maybe offer an option for submitting a "complaint"?
+  - maybe also should explain this issue in the finder explanation
+- Extend analysis paragraph
+- Maybe for analysis page -- offer an option for the user to see what the OG states were and/or what year each state was "established"
+- maybe taxes by state
+**- maybe add county lines.**
+- maybe offer it all on one page so that the user can select which layers to view
+- maybe add back the number of historic districts by state graph
+- [ ] FIX DESELECTING ISSUE on site!
+- [x] try to do some clustering (but did not like it) 
+
+Street art
+- Not sure...
+- I remember feeling like I had hit a roadblock with the text analysis
+  - I'm not sure if I should try to keep going with it or just let it be and move on to trying something else (or just let street art be altogether)
+  - I wish I knew how to do image analysis for the photos from the web
+  - What about dates...
+ 
+Libraries
+- could be an indicator of xyz
+- looked at ian's exploration R file -- wowow very cool
+
+Other 
+Need to check in with her about the following ~
+- Blog post
+- Personal bio
+
 ## July 02!
 Historic districts
 

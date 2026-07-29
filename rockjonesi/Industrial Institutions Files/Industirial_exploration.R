@@ -7,8 +7,11 @@ library(pdftools)
 library(tidytext)
 library(scales)
 library(tigris) 
+library(rvest)
 library(sf)
 library(readxl)
+library(geosphere)
+library(leaflet.extras)
 
 PowerPlants_Raw <- read.csv("data/Industrial Institutions/PowerPlants_Raw.csv")
 fortune500 <- read.csv("data/Industrial Institutions/Fortune500HQ_Raw.csv") 
@@ -165,7 +168,7 @@ unique_county_prices <- housing_map %>%
     .groups = "drop"
   )
 
-##join housing prices to county shapefile information
+##join housing prices to county shapefile info
 county_prices <- county_sf %>%
   full_join(unique_county_prices %>% select(County, State, Median.Home.Price), 
              by = c("State","County")) 
@@ -231,5 +234,150 @@ ggplot(PowerPlants_Clean, aes(x = State, fill = Primary.Energy.Source)) +
 
 #write.csv(Fortune500_Housing, "Fortune500HQ_Housing.csv", row.names = FALSE)
 #write.csv(county_HPI, "county_HPI.csv", row.names = FALSE)
-write.csv(Fortune500_All_Housing, "Fortune500_Housing_All_Counties.csv", row.names = FALSE)
+#write.csv(Fortune500_All_Housing, "Fortune500_Housing_All_Counties.csv", row.names = FALSE)
+
+
+
+
+data_centers <- data_centers %>% mutate(
+  mw_clean = parse_number(gsub("-.*", "", mw)), 
+  mw_clean = ifelse(is.na(mw_clean), 0, mw_clean)) %>% 
+  filter(!is.na(lat) & !is.na(long)) %>% 
+  st_as_sf(coords = c("long", "lat"), crs = 4326)
+
+
+
+powerplant_produc <- PowerPlants_Clean %>% rename(mw_capacity = Maximum.Summer.Capacity..Megawatts.) %>% 
+  mutate(mw_capacity = ifelse(is.na(mw_capacity), 0, mw_capacity)) %>% 
+  filter(!is.na(Latitude) & !is.na(Longitude))
+
+
+
+heatmap_colors <- c("blue", "cyan", "limegreen", "yellow", "red")
+
+leaflet(powerplant_produc) %>%
+  addProviderTiles(providers$CartoDB.Positron) %>% 
+  addCircleMarkers(
+    data = powerplant_produc,
+    lat = ~Latitude,
+    lng = ~Longitude,
+    label = ~paste0("mw capacity: ", mw_capacity),
+    radius = 3,
+    weight = .03,
+    fillOpacity = 0,
+    fillColor = "black"
+  ) %>% 
+  addHeatmap(
+    lng = ~Longitude, 
+    lat = ~Latitude, 
+    intensity = ~mw_capacity, # heating by the plant's mw capacity
+    blur = 10, 
+    radius = 13
+    ) %>% 
+  addCircleMarkers(
+    data = data_centers,
+    lat = ~lat,
+    lng = ~long,
+    label = ~paste0("mw consumption: ", ifelse(mw_clean == 0, "unknown", mw_clean)),
+    radius = ~rescale(mw_clean, c(3,8)),
+    weight = 0,
+    fillOpacity = 1,
+    fillColor = "black"
+  ) %>% 
+  addLegend(
+    position = "bottomright",
+    colors = rev(heatmap_colors), 
+    labels = rev(c("Low", "", "Medium", "", "High")),
+    title = "Production Capacity (MW)",
+    opacity = 0.7
+  )
+
+
+#pct_consumption claculations based on 50 mile radius
+local_range <- 50 * 1609.34
+
+
+data_centers <- data_centers %>%
+  mutate(
+    local_mw_capacity = map2_dbl(long, lat, function(dc_long, dc_lat) {
+      distances <- distGeo(c(dc_long, dc_lat), powerplant_produc[, c("Longitude", "Latitude")])
+      sum(powerplant_produc$mw_capacity[distances <= local_range], na.rm = TRUE)
+    }),
+    pct_consumed = ifelse(local_mw_capacity > 0, (mw_clean / local_mw_capacity) * 100, NA)
+  )
+
+#write.csv(data_centers, "data_centers.csv", row.names = FALSE)
+
+
+my_bins <- c(0, 10, 50, 100, 500, 10000) 
+
+
+pal <- colorBin(
+  palette = "YlOrRd",
+  domain = data_centers$pct_consumed,
+  bins = my_bins,
+  na.color = "gray"
+)
+
+# Build the map
+leaflet(data_centers) %>%
+  addProviderTiles(providers$CartoDB.DarkMatter) %>%
+  addCircles(
+    lng = ~long, 
+    lat = ~lat,
+    radius = local_range,
+    stroke = FALSE,    
+    fillOpacity = 0,   
+    highlightOptions = highlightOptions(
+      stroke = TRUE, 
+      color = "green", 
+      weight = 2,
+      fillOpacity = 0.1,
+      bringToFront = FALSE
+    )
+  ) %>%
+  addCircleMarkers(
+    data = powerplant_produc,
+    lat = ~Latitude,
+    lng = ~Longitude,
+    label = ~paste0("mw capacity: ", mw_capacity),
+    radius = 2.5,
+    weight = 1,
+    stroke = TRUE,
+    color = "white",
+    fillOpacity = .5,
+    fillColor = "blue"
+  ) %>% 
+  addCircleMarkers(
+    lng = ~long, 
+    lat = ~lat,
+    radius = 6,
+    weight = 1,
+    color = "#ffffff",
+    fillColor = ~pal(pct_consumed),
+    fillOpacity = 0.9,
+    label = ~paste0("Consumes ", ifelse(mw_clean == 0, "unknown", mw_clean), " mw. Which is ", ifelse(pct_consumed == 0, "unknown", round(pct_consumed, 1)), "% of local plant power")
+  ) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = pct_consumed,
+    title = "% of Local Power Consumed",
+    opacity = 1
+  ) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
