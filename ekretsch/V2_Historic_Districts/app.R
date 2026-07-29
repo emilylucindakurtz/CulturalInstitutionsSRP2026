@@ -1,3 +1,5 @@
+# V2 HISTORIC DISTRICTS SHINY APP
+
 # Packages
 library(shiny)
 library(bslib)
@@ -216,7 +218,10 @@ server <- function(input, output) {
       if (nrow(filtered_data) > 0) {
         leafletProxy("map2", data = filtered_data) %>% 
           addCircleMarkers(~longitude, ~latitude, popup = ~property_name, radius = 5, color = "black", fillOpacity = .5, weight = 1)
+          #addCircleMarkers(~longitude, ~latitude, popup = ~property_name, clusterOptions = markerClusterOptions(maxClusterRadius = 40))
+        
       }
+      
       
       districts_filtered(filtered_data)
       
