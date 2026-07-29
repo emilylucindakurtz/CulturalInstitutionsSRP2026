@@ -1,5 +1,21 @@
 # Emily Kretschmer's Notes
 
+## July 29
+- Getting back into the swing of things
+  - partly trying to figure out where I left off...
+
+Historic districts notes/things to do
+- Finder explanation of page
+- Fixing the issue where there are some dots in the wrong spots -- ex gainesville alabama is mapped to NC...
+  - maybe offer an option for submitting a "complaint"?
+  - maybe also should explain this issue in the finder explanation
+- Extend analysis paragraph
+- Maybe for analysis page -- offer an option for the user to see what the OG states were and/or what year each state was "established"
+- maybe taxes by state
+- maybe add county lines.
+
+- 
+
 ## July 02!
 Historic districts
 
