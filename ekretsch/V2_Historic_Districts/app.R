@@ -35,7 +35,7 @@ by_state <- historic_districts %>%
   group_by(state) %>% 
   summarise(total_acreage = sum(acreage_of_property, na.rm=TRUE),
             total_num_districts = n(),
-            across(25:last_col(), function(x) sum(x, na.rm = TRUE))) # NEED TO ADD THE COUNTS FOR EACH CATEGORY
+            across(25:last_col(), ~ sum(.x, na.rm = TRUE))) # NEED TO ADD THE COUNTS FOR EACH CATEGORY
 
 categories_counts <- by_state %>% 
   select(state, 4:ncol(by_state)) %>% 
@@ -154,8 +154,8 @@ ui <- page_navbar(
             h2("Standardized historic district acreage by state"),
             p("Percent of each state's land area that is filled by historic districts"),
             card(
-              leafletOutput("map"),
-            ),
+              leafletOutput("map")
+            )
           )
         )
       ),
@@ -207,7 +207,7 @@ server <- function(input, output) {
       leafletProxy("map2") %>% 
         addPolylines(data = filtered_states_sf, color = "black", opacity = 1, weight = 2)
       
-      plotlyProxy(categories_dist_p1) %>% 
+      #plotlyProxy(categories_dist_p1) %>% 
         
     }
     
