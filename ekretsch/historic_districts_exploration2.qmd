@@ -71,7 +71,8 @@ bls_data_3  <- bls_data_2 %>%
 
 ```{r}
 # Get counties shape files
-counties_sf <- tigris::counties(cb = TRUE)
+counties_sf <- tigris::counties(cb = TRUE) %>% 
+  st_transform(crs = 4326)
 ```
 ```{r}
 # join data to shapefile
@@ -83,9 +84,11 @@ mapping_data <- counties_sf %>%
 
 ```{r}
 pal <- colorNumeric(
-  palette = "YlOrRd",           # Yellow-Orange-Red color scheme
+  palette = "Spectral",           #also tried piyg and ylor and didn't love either
   domain = mapping_data$value
 )
+
+
 
 leaflet(mapping_data) %>% 
   addProviderTiles("CartoDB.Positron") %>% 
