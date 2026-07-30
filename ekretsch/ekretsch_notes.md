@@ -7,7 +7,7 @@
 - [x] maybe change from count to percent
 - [ ] maybe reactivity to selecting a row on the table or when hovering over a bar on the bar chart
 - [ ] maybe # of schools bt county -- and layer on top of number of hist dist
-- [ ] do BLS employment data
+- [x] do BLS employment data
   - [x] get a V2 api key
 - [ ] schooling data?
 
