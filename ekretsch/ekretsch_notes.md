@@ -1,5 +1,10 @@
 # Emily Kretschmer's Notes
 
+## July 30
+- [x] get the bar graph to show up on main page
+- [ ] get bar graph to change when JUST the state is changed (not categories etc)
+- [ ] also get bar graph to change to USA when all is selected!
+
 ## July 29
 
 
