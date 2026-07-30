@@ -11,17 +11,22 @@
   - [x] get a V2 api key
 - [ ] schooling data?
 
-- [ ] BLS data
+- [ ] BLS data/help
   - [ ] https://www.bls.gov/developers/termsOfService.htm
   - [ ] https://www.bls.gov/developers/
   - [ ] https://www.bls.gov/developers/api_r.htm
   - [ ] https://github.com/mikeasilva/blsAPI
+  - [ ] https://cran.rstudio.com/web/packages/BLSloadR/BLSloadR.pdf
      
 Sticking points:
 - blsapi vs blsloadr package...
 - blsapi
   - i just want the unemployment rate locally for one year... not really a time series
 - adjusted vs unadjusted unemployment rate -- _"The adjusted unemployment rate is a statistical calculation that removes predictable, calendar-driven shifts, while the unadjusted rate shows the raw, actual percentage of jobless people actively looking for work"_
+
+did some county unemployment rate stuff (still need to add key and labels etc) this is just prelim map
+<img width="1436" height="849" alt="image" src="https://github.com/user-attachments/assets/e9fecaa7-8de8-496c-9f40-671be3ea7404" />
+
 
 before...
 <img width="1436" height="849" alt="image" src="https://github.com/user-attachments/assets/0429db4e-1502-43be-85d6-7838ec2268b5" />
