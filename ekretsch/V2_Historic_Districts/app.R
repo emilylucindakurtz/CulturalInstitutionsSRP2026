@@ -43,7 +43,8 @@ categories_counts <- by_state %>%
   t() %>% # Transposes (rows become columns, columns become rows) (returns a matrix)
   as.data.frame() %>% 
   rownames_to_column(var = "category") %>% 
-  mutate(category_og = category, 
+  mutate(USA = rowSums(across(where(is.numeric)), na.rm = TRUE), # total across all US
+         category_og = category, 
          category = gsub("_", " ", str_remove(category, "aos_")),
          category_nice = str_to_title(category)) # for the user stuff so that we can get the OG
 
@@ -255,18 +256,47 @@ server <- function(input, output) {
     
   })
   
-  set_hist_all <- function() {
+  output$categories_dist_p1 <- renderPlotly({
+    if(is.null(selected_state_p1())){
+      selected_state_p1("USA")
+    } else{
+      #state <- selected_state_p1()
+    }
+    temp_df <- categories_counts %>% 
+      rename(counts = all_of(selected_state_p1())) %>%  # Get just the column of the state that was clicked.
+      select(category, counts) %>% 
+      filter(counts >0)
     
-  }
+    p <- temp_df %>% 
+      mutate(tooltip_text = paste(
+        paste0("Category: ", category),
+        paste0("Counts: ", counts),
+        sep = "\n"
+      )) %>% 
+      slice_max(order_by = counts, n = 5) %>% 
+      ggplot(aes(y = reorder(category, counts), x = counts, text = tooltip_text)) +
+      geom_col() +
+      scale_y_discrete(labels = scales::label_wrap(10)) +
+      theme_minimal() + #CBL -- 
+      theme(
+        axis.text = element_text(size = 8),
+        axis.title.y = element_text(margin = margin(r = 50))
+        #axis.text.x = element_text(angle = 30, hjust = 0.5, vjust = 0.5)
+      ) +
+      labs(
+        #title = paste0(selected_state(), " top 5 categories of historic districts"),
+        y = NULL,
+        x = "Count"
+      )
+    
+    ggplotly(p, tooltip = "text")
+  })
+  
   
   output$map2 <- renderLeaflet({
     leaflet() %>% 
       addProviderTiles("OpenStreetMap.HOT") %>% 
       setView(lng = -95.7129, lat = 37.0902, zoom = 4)
-    
-  })
-  
-  output$categories_dist_1 <- renderPlotly({
     
   })
   
