@@ -13,6 +13,7 @@ library(tidytext)
 library(leaflet)
 library(tigris)
 library(readr)
+library(sf)
 ```
 
 ```{r}
@@ -51,9 +52,42 @@ bls_data %>%
 
 ```{r}
 bls_data_2 <- bls_data %>% 
-  filter(year == 2025)
+  filter(year == 2025,
+         measure_text == "unemployment rate",
+         period == "M13") # just annual
 ```
 
+
+
+```{r}
+write_csv(bls_data_2, file = "bls_data.csv")
+```
+```{r}
+bls_data_3  <- bls_data_2 %>% 
+  mutate(NAMELSAD = str_remove(area_text, ",.*"), #before comma
+         STUSPS = str_trim(str_replace(area_text, "^.*,",""))) #after comma
+# using stringr to mutate to match shapefile for easier joining
+```
+
+```{r}
+# Get counties shape files
+counties_sf <- tigris::counties(cb = TRUE)
+```
+```{r}
+# join data to shapefile
+mapping_data <- counties_sf %>% 
+  left_join(bls_data_2, by = c("NAME" = ""))
+
+states_sf <- tigris::states(cb = TRUE, resolution = "20m") %>% 
+  st_transform(crs = 4326)
+
+# Join data to shapefile
+choropleth_area_data <- states_sf %>% 
+  left_join(by_state, by = c("NAME" = "state")) %>% 
+  left_join(areas, by = c("NAME" = "state_or_territory")) %>% 
+  mutate(total_acreage_hd = total_acreage) %>% 
+  select(-total_acreage)
+```
 
 
 
