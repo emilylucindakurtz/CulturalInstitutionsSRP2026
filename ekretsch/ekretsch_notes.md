@@ -11,6 +11,9 @@
 <img width="1436" height="849" alt="image" src="https://github.com/user-attachments/assets/ae4503db-8062-410a-8ec4-16945143ca1d" />
 <img width="1436" height="849" alt="image" src="https://github.com/user-attachments/assets/b3815ff4-c49d-447b-8c6a-4b267eb49349" />
 
+Research
+- https://www.bls.gov/charts/state-employment-and-unemployment/industry-employment-by-state.htm#
+
 
 ## July 29
 
