@@ -2,8 +2,15 @@
 
 ## July 30
 - [x] get the bar graph to show up on main page
-- [ ] get bar graph to change when JUST the state is changed (not categories etc)
-- [ ] also get bar graph to change to USA when all is selected!
+- [x] get bar graph to change when JUST the state is changed (not categories etc)
+- [x] also get bar graph to change to USA when all is selected!
+- [x] maybe change from count to percent
+- [ ] maybe reactivity to selecting a row on the table or when hovering over a bar on the bar chart
+
+<img width="1436" height="849" alt="image" src="https://github.com/user-attachments/assets/0429db4e-1502-43be-85d6-7838ec2268b5" />
+<img width="1436" height="849" alt="image" src="https://github.com/user-attachments/assets/ae4503db-8062-410a-8ec4-16945143ca1d" />
+<img width="1436" height="849" alt="image" src="https://github.com/user-attachments/assets/b3815ff4-c49d-447b-8c6a-4b267eb49349" />
+
 
 ## July 29
 
