@@ -23,7 +23,13 @@ Sticking points:
   - i just want the unemployment rate locally for one year... not really a time series
 - adjusted vs unadjusted unemployment rate -- _"The adjusted unemployment rate is a statistical calculation that removes predictable, calendar-driven shifts, while the unadjusted rate shows the raw, actual percentage of jobless people actively looking for work"_
 
+before...
 <img width="1436" height="849" alt="image" src="https://github.com/user-attachments/assets/0429db4e-1502-43be-85d6-7838ec2268b5" />
+
+after...
+<img width="1436" height="849" alt="image" src="https://github.com/user-attachments/assets/4c454d50-5776-4902-943a-63dc7626b3d0" />
+
+---
 <img width="1436" height="849" alt="image" src="https://github.com/user-attachments/assets/ae4503db-8062-410a-8ec4-16945143ca1d" />
 <img width="1436" height="849" alt="image" src="https://github.com/user-attachments/assets/b3815ff4-c49d-447b-8c6a-4b267eb49349" />
 
