@@ -36,33 +36,33 @@ by_state <- historic_districts %>%
   summarise(total_acreage = sum(acreage_of_property, na.rm=TRUE),
             total_num_districts = n(),
             across(25:last_col(), ~ sum(.x, na.rm = TRUE))) # NEED TO ADD THE COUNTS FOR EACH CATEGORY
-# 
+
+categories_counts <- by_state %>%
+  select(state, 4:ncol(by_state)) %>%
+  column_to_rownames(var = "state") %>%   # Promotes state from a regular column to R row name
+  t() %>% # Transposes (rows become columns, columns become rows) (returns a matrix)
+  as.data.frame() %>%
+  rownames_to_column(var = "category") %>%
+  mutate(USA = rowSums(across(where(is.numeric)), na.rm = TRUE), # total across all US
+         category_og = category,
+         category = gsub("_", " ", str_remove(category, "aos_")),
+         category_nice = str_to_title(category)) # for the user stuff so that we can get the OG
+
 # categories_counts <- by_state %>% 
 #   select(state, 4:ncol(by_state)) %>% 
 #   column_to_rownames(var = "state") %>%   # Promotes state from a regular column to R row name
 #   t() %>% # Transposes (rows become columns, columns become rows) (returns a matrix)
 #   as.data.frame() %>% 
 #   rownames_to_column(var = "category") %>% 
-#   mutate(USA = rowSums(across(where(is.numeric)), na.rm = TRUE), # total across all US
+#   mutate(USA = rowSums(across(where(is.numeric)), na.rm = TRUE),
 #          category_og = category, 
 #          category = gsub("_", " ", str_remove(category, "aos_")),
-#          category_nice = str_to_title(category)) # for the user stuff so that we can get the OG
-
-categories_counts <- by_state %>% 
-  select(state, 4:ncol(by_state)) %>% 
-  column_to_rownames(var = "state") %>%   # Promotes state from a regular column to R row name
-  t() %>% # Transposes (rows become columns, columns become rows) (returns a matrix)
-  as.data.frame() %>% 
-  rownames_to_column(var = "category") %>% 
-  mutate(USA = rowSums(across(where(is.numeric)), na.rm = TRUE),
-         category_og = category, 
-         category = gsub("_", " ", str_remove(category, "aos_")),
-         category_nice = str_to_title(category)) %>%
-  bind_rows( # so that we can calculate percentages in the future!!
-    summarise(.,
-              across(where(is.numeric), base::sum),
-              across(where(is.character), ~"Total"))
-  )
+#          category_nice = str_to_title(category)) %>%
+#   bind_rows( # so that we can calculate percentages in the future!!
+#     summarise(.,
+#               across(where(is.numeric), base::sum),
+#               across(where(is.character), ~"Total"))
+#   )
 
 # Get state geometries
 states_sf <- tigris::states(cb = TRUE, resolution = "20m") %>% 
@@ -289,7 +289,9 @@ server <- function(input, output) {
     temp_df <- categories_counts %>% 
       rename(counts = all_of(selected_state_p1())) %>%  # Get just the column of the state that was clicked.
       select(category, counts) %>% 
-      filter(counts >0)
+      filter(counts >0) %>% 
+      mutate(percent = counts/sum(counts),
+             percent_label = paste0(round(percent*100, digits = 0), "%")) # for label!!
     
     p <- temp_df %>% 
       mutate(tooltip_text = paste(
@@ -298,18 +300,26 @@ server <- function(input, output) {
         sep = "\n"
       )) %>% 
       slice_max(order_by = counts, n = 5) %>% 
+      
       ggplot(aes(y = reorder(category, counts), x = counts, text = tooltip_text)) +
-      geom_col() +
-      scale_y_discrete(labels = scales::label_wrap(10)) +
-      theme_minimal() + #CBL -- 
-      theme(
-        axis.text = element_text(size = 8),
-        axis.title.y = element_text(margin = margin(r = 50))
-      ) +
-      labs(
-        y = NULL,
-        x = "Count"
-      )
+        geom_col() +
+        scale_y_discrete(labels = scales::label_wrap(10)) +
+        theme_minimal() + #CBL -- 
+        theme(
+          axis.text = element_text(size = 8),
+          axis.title.y = element_text(margin = margin(r = 50))
+        ) +
+        labs(
+          y = NULL,
+          x = "Count"
+        ) +
+        geom_text(aes(label = percent_label),
+                  position = position_stack(vjust = 0.5), # centers it in the bar
+                  color = "white")
+      
+      
+      #geom_text(aes(label = value), vjust = -0.5) 
+    
     
     ggplotly(p, tooltip = "text")
   })
