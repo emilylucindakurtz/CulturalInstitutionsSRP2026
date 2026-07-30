@@ -6,6 +6,22 @@
 - [x] also get bar graph to change to USA when all is selected!
 - [x] maybe change from count to percent
 - [ ] maybe reactivity to selecting a row on the table or when hovering over a bar on the bar chart
+- [ ] maybe # of schools bt county -- and layer on top of number of hist dist
+- [ ] do BLS employment data
+  - [x] get a V2 api key
+- [ ] schooling data?
+
+- [ ] BLS data
+  - [ ] https://www.bls.gov/developers/termsOfService.htm
+  - [ ] https://www.bls.gov/developers/
+  - [ ] https://www.bls.gov/developers/api_r.htm
+  - [ ] https://github.com/mikeasilva/blsAPI
+     
+Sticking points:
+- blsapi vs blsloadr package...
+- blsapi
+  - i just want the unemployment rate locally for one year... not really a time series
+- adjusted vs unadjusted unemployment rate -- _"The adjusted unemployment rate is a statistical calculation that removes predictable, calendar-driven shifts, while the unadjusted rate shows the raw, actual percentage of jobless people actively looking for work"_
 
 <img width="1436" height="849" alt="image" src="https://github.com/user-attachments/assets/0429db4e-1502-43be-85d6-7838ec2268b5" />
 <img width="1436" height="849" alt="image" src="https://github.com/user-attachments/assets/ae4503db-8062-410a-8ec4-16945143ca1d" />
