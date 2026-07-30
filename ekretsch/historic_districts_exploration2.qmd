@@ -50,8 +50,18 @@ categories_counts <- by_state %>%
   mutate(usa_total = rowSums(across(where(is.numeric)), na.rm = TRUE),
          category_og = category, 
          category = gsub("_", " ", str_remove(category, "aos_")),
-         category_nice = str_to_title(category)) 
+         category_nice = str_to_title(category)) %>% 
+  bind_rows( # so that we can calculate percentages in the future!!
+    summarise(., 
+              across(where(is.numeric), base::sum), 
+              across(where(is.character), ~"Total"))
+  )
 ```
+
+```{r}
+#print(df_total)
+```
+
 
 ```{r}
 # Import (mostly) cleaned dataset
