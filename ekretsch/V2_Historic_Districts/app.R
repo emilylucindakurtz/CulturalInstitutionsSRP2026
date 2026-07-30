@@ -100,7 +100,7 @@ ui <- page_navbar(
             choices = sort(categories_counts$category_nice),
             multiple = TRUE,
             options = pickerOptions(
-              actionsBox = TRUE, # adds select all/deselct all buttns
+              actionsBox = TRUE, # adds select all/deselect all buttons
               liveSearch = TRUE, # allowing user to search
               size = 10 # max visible items before scrolling
             )
@@ -200,7 +200,7 @@ server <- function(input, output) {
       clearShapes()
     
     if(input$state_choice != "All"){
-      #selected_state_p1(input$state_choice)
+      selected_state_p1(input$state_choice)
       
       filtered_states_sf <- states_sf %>% 
         filter(NAME == input$state_choice)
@@ -208,8 +208,8 @@ server <- function(input, output) {
       leafletProxy("map2") %>% 
         addPolylines(data = filtered_states_sf, color = "black", opacity = 1, weight = 2)
       
-      #plotlyProxy(categories_dist_p1) %>% 
-        
+    } else{
+      selected_state_p1(NULL)
     }
     
     
@@ -256,12 +256,19 @@ server <- function(input, output) {
     
   })
   
+  output$categories_dist_label_p1 <- renderText({
+    if(is.null(selected_state_p1())){
+      "XX Change Click on a state to see its top 5 historic district categories"
+    } else{
+      paste0("Top 5 historic district categories in ", selected_state_p1())
+    }
+  })
+  
   output$categories_dist_p1 <- renderPlotly({
     if(is.null(selected_state_p1())){
       selected_state_p1("USA")
-    } else{
-      #state <- selected_state_p1()
     }
+    
     temp_df <- categories_counts %>% 
       rename(counts = all_of(selected_state_p1())) %>%  # Get just the column of the state that was clicked.
       select(category, counts) %>% 
@@ -281,10 +288,8 @@ server <- function(input, output) {
       theme(
         axis.text = element_text(size = 8),
         axis.title.y = element_text(margin = margin(r = 50))
-        #axis.text.x = element_text(angle = 30, hjust = 0.5, vjust = 0.5)
       ) +
       labs(
-        #title = paste0(selected_state(), " top 5 categories of historic districts"),
         y = NULL,
         x = "Count"
       )
