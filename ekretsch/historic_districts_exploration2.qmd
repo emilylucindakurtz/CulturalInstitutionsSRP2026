@@ -44,6 +44,16 @@ bls_data <- get_laus(
 ```{r}
 write_csv(bls_data, file = "raw_bls_data_1")
 ```
+```{r}
+bls_data %>% 
+  summarize(max_val = max(year))
+```
+
+```{r}
+bls_data_2 <- bls_data %>% 
+  filter(year == 2025)
+```
+
 
 
 
