@@ -13,6 +13,7 @@
 - [ ] add another graph for side-by-side with the choropleth of unemployment rates?
   - [ ] I was really inspired by this graphic: https://r-graph-gallery.com/web-map-choropleth-quantile.html but I don't think that this is really possible in leaflet. So maybe a side-by-side histogram or boxplot or something will have to suffice.
 - [ ] also somehow throw in the national average?
+- [ ] deal with connecticut... the map that I created from the BLS dataset works but the other one doesn't :(
 
 
 Notes/notices
