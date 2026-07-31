@@ -68,6 +68,12 @@ write_csv(bls_data_2, file = "bls_data.csv")
 # Get counties shape files
 counties_sf <- tigris::counties(cb = TRUE) %>% 
   st_transform(crs = 4326)
+
+# States shape files (for later)
+
+states_sf <- tigris::states(cb = TRUE, resolution = "20m") %>% 
+  st_transform(crs = 4326)
+
 ```
 
 UNEMPLOYMENT DATA FROM USDA
@@ -128,23 +134,40 @@ pal_usda <- colorQuantile(
   n=10
 )
 ```
+```{r}
+# Prepping for fixing the color palette (this and the labformat thing below were helped)
+pal_usda_breaks <- quantile(mapping_data_usda$unemployment_rate, probs = seq(0,1, length.out = 8), na.rm = TRUE)
+```
+
 
 ```{r}
 #acc mapping
-leaflet(mapping_data_usda) %>% 
+leaflet() %>% 
   addProviderTiles("CartoDB.Positron") %>% 
   addPolygons(
+    data = mapping_data_usda,
     fillColor = ~pal_usda(unemployment_rate),
     fillOpacity = 1,
     color = "white",
     weight = 1,
     smoothFactor = .5,
   ) %>% 
+  addPolygons(
+    data = states_sf,
+    fill = FALSE,
+    color = 'black',
+    weight = 1.5,
+    opacity = 1
+  ) %>% 
   addLegend(
     pal = pal_usda,
     value = mapping_data_usda$unemployment_rate,
     position = "bottomright",
-    title = "Legend"
+    title = "Unemployment rate (%)",
+    labFormat = function(type, cuts, p){
+      n <- length(pal_usda_breaks) - 1
+      paste0(round(pal_usda_breaks[1:n], 1), "% - ", round(pal_usda_breaks[2:(n+1)], 1), "%")
+    }
   )
 
 
@@ -190,10 +213,6 @@ leaflet(mapping_data_bls) %>%
 ```
 
 ```{r}
-
-states_sf <- tigris::states(cb = TRUE, resolution = "20m") %>% 
-  st_transform(crs = 4326)
-
 # Join data to shapefile
 choropleth_area_data <- states_sf %>% 
   left_join(by_state, by = c("NAME" = "state")) %>% 
