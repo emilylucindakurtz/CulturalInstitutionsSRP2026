@@ -18,6 +18,7 @@ Education/schools
 - https://nces.ed.gov/datalab/
 - https://nces.ed.gov/programs/edge/Geographic/SchoolLocations
 - https://catalog.data.gov/dataset/public-school-locations-2022-23
+- <mark>https://cran.rstudio.com/web/packages/BLSloadR/BLSloadR.pdf</mark>
 
 Dates of states
 - https://www.britannica.com/place/list-of-US-states-by-date-of-admission-to-the-Union-2130026
@@ -39,6 +40,7 @@ Page + layout/look
 - https://shiny.posit.co/py/api/core/ui.navbar_options.html
 - https://shiny.posit.co/r/layouts/panels-cards/
 - https://shiny.posit.co/r/layouts/
+- <mark>https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf</mark>
 
 ## July 30
 - [x] get the bar graph to show up on main page
