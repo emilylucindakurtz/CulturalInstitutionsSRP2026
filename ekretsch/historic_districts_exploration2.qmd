@@ -29,12 +29,11 @@ unemployment_data_usda <- read_csv("../data/EK_general/Unemployment2023.csv")
 unemployment_wider <- unemployment_data_usda %>% 
   clean_names() %>% 
   mutate(
-    year = str_sub(attribute, (str_length(attribute) - 3), str_length(attribute)),
-    attribute = str_sub(attribute, 1, (str_length(attribute) - 4)) %>% 
+    #separate("\d{4}")
+    year = str_sub(attribute, -4, str_length(attribute)),
+    attribute = str_sub(attribute, 1, -6) %>% 
       str_to_lower() %>% 
-      str_to_lower() %>% 
-      str_replace_all("_", " ") %>% 
-      str_trim()
+      str_replace_all("_", " ")
   )
 ```
 ```{r}
