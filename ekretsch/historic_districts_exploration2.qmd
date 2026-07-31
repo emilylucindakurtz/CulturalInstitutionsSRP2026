@@ -130,15 +130,16 @@ max_n <- brewer.pal.info["Spectral", "maxcolors"]
 
 #mapping! palletee
 pal_usda <- colorQuantile(
-  palette = rev(brewer.pal(10, "Spectral")),
+  palette = "YlOrRd",
   #palette = rev(brewer.pal(max_n, "Spectral")),
   domain = mapping_data_usda$unemployment_rate,
-  n=10
+  n=9,
+  na.color = "grey"
 )
 ```
 ```{r}
 # Prepping for fixing the color palette (this and the labformat thing below were helped)
-pal_usda_breaks <- quantile(mapping_data_usda$unemployment_rate, probs = seq(0, 1, length.out = 11), na.rm = TRUE)
+pal_usda_breaks <- quantile(mapping_data_usda$unemployment_rate, probs = seq(0, 1, length.out = 10), na.rm = TRUE)
 ```
 
 
