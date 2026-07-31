@@ -23,40 +23,15 @@ library(sf)
 --
 
 ```{r}
-unemployment_data_usda <- read_csv("../data/EK_general/Unemployment2023.csv")
-```
-```{r}
-unemployment_wider <- unemployment_data_usda %>% 
-  clean_names() %>% 
-  mutate(
-    #separate("\d{4}")
-    year = str_sub(attribute, -4, str_length(attribute)),
-    attribute = str_sub(attribute, 1, -6) %>% 
-      str_to_lower() %>% 
-      str_replace_all("_", " ")
-  )
-```
-```{r}
-# now actually pivoting wider
-unemployment_wider <- unemployment_wider %>% 
-  pivot_wider(
-    names_from = attribute,
-    values_from = value
-  )
-```
-
-
-
-
-
-```{r}
 library(devtools)
 install_github("mikeasilva/blsAPI")
 ```
+
 ```{r}
 library(blsAPI)
 
 ```
+
 ```{r}
 library(BLSloadR)
 bls_data <- get_laus(
@@ -68,9 +43,11 @@ bls_data <- get_laus(
   #cache = check_bls_cache_env()
 )
 ```
+
 ```{r}
 write_csv(bls_data, file = "raw_bls_data_1")
 ```
+
 ```{r}
 bls_data %>% 
   summarize(max_val = max(year))
@@ -83,11 +60,89 @@ bls_data_2 <- bls_data %>%
          period == "M13") # just annual
 ```
 
-
-
 ```{r}
 write_csv(bls_data_2, file = "bls_data.csv")
 ```
+
+```{r}
+# Get counties shape files
+counties_sf <- tigris::counties(cb = TRUE) %>% 
+  st_transform(crs = 4326)
+```
+
+UNEMPLOYMENT DATA FROM USDA
+
+```{r}
+unemployment_data_usda <- read_csv("../data/EK_general/Unemployment2023.csv")
+```
+
+```{r}
+unemployment_wider <- unemployment_data_usda %>% 
+  clean_names() %>% 
+  mutate(
+    #separate("\d{4}")
+    year = str_sub(attribute, -4, str_length(attribute)),
+    attribute = str_sub(attribute, 1, -6) %>% 
+      str_to_lower() #%>% 
+      #str_replace_all("_", " ")
+  )
+```
+
+```{r}
+# now actually pivoting wider
+unemployment_wider <- unemployment_wider %>% 
+  pivot_wider(
+    names_from = attribute,
+    values_from = value
+  )
+```
+
+```{r}
+# getting it in a way that we can join it to the shapefile easily
+unemployment_joinable <- unemployment_wider %>% 
+  mutate(NAMELSAD = str_remove(area_name, ",.*"), #before comma
+         STUSPS = str_trim(str_replace(area_name, "^.*,",""))) #after comma
+
+# could also potentially do this by dealling with the FIPS code but that would mean mutating the shapefile
+```
+
+```{r}
+# joining, wap woop
+mapping_data_usda <- counties_sf %>% 
+  left_join(unemployment_joinable,  by = c("NAMELSAD", "STUSPS"))
+```
+
+```{r}
+#mapping! palletee
+pal_usda <- colorQuantile(
+  palette = "Spectral",
+  domain = mapping_data_usda$unemployment_rate
+)
+```
+
+```{r}
+#acc mapping
+leaflet(mapping_data_usda) %>% 
+  addProviderTiles("CartoDB.Positron") %>% 
+  addPolygons(
+    fillColor = ~pal_usda(unemployment_rate),
+    fillOpacity = 1,
+    color = "white",
+    weight = 1,
+    smoothFactor = .5,
+  ) %>% 
+  addLegend(
+    pal = pal_usda,
+    value = mapping_data_usda$unemployment_rate,
+    position = "bottomright",
+    title = "Legend"
+  )
+
+
+```
+
+BLS DATA
+
 ```{r}
 bls_data_3  <- read_csv("../data/EK_general/bls_data.csv") %>% 
   mutate(NAMELSAD = str_remove(area_text, ",.*"), #before comma
@@ -96,31 +151,22 @@ bls_data_3  <- read_csv("../data/EK_general/bls_data.csv") %>%
 ```
 
 ```{r}
-# Get counties shape files
-counties_sf <- tigris::counties(cb = TRUE) %>% 
-  st_transform(crs = 4326)
-```
-```{r}
 # join data to shapefile
-mapping_data <- counties_sf %>% 
-  left_join(bls_data_3, by = c("NAMELSAD", "STUSPS"))
-
+mapping_data_bls <- counties_sf %>% 
+  left_join(bls_data_3, by = c("NAMELSAD", "STUSPS")) # ^ value is the unemployment
 ```
-^ value is the unemployment
 
 ```{r}
 pal <- colorNumeric(
   palette = "Spectral",           #also tried piyg and ylor and didn't love either
-  domain = mapping_data$value
+  domain = mapping_data_bls$value
 )
 
-
-
-leaflet(mapping_data) %>% 
+leaflet(mapping_data_bls) %>% 
   addProviderTiles("CartoDB.Positron") %>% 
   addPolygons(
     fillColor = ~pal(value),
-    fillOpacity = .75,
+    fillOpacity = 1,
     color = "white", # border color
     weight = 1,
     smoothFactor = 0.5, # slightly crisper borders -- default is 1 (higher values > more simplification > jaggier borders but shorter rendering)
@@ -128,12 +174,11 @@ leaflet(mapping_data) %>%
   ) %>% 
   addLegend(
     pal = pal,
-    value = mapping_data$value, # same as values   = ~total_num_districts
+    value = mapping_data_bls$value, # same as values  
     position = "bottomright",
     title = "Legend"
   )
 ```
-
 
 ```{r}
 
@@ -147,7 +192,6 @@ choropleth_area_data <- states_sf %>%
   mutate(total_acreage_hd = total_acreage) %>% 
   select(-total_acreage)
 ```
-
 
 ```{r}
 # Import cleaned (sort of) dataset
@@ -189,7 +233,6 @@ categories_counts <- by_state %>%
 ```{r}
 #print(df_total)
 ```
-
 
 ```{r}
 # Import (mostly) cleaned dataset
