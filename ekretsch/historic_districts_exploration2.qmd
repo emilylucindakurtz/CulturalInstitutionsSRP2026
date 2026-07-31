@@ -129,16 +129,16 @@ library(RColorBrewer)
 max_n <- brewer.pal.info["Spectral", "maxcolors"]
 
 #mapping! palletee
-pal_usda <- colorNumeric(
-  #palette = rev(brewer.pal(10, "Spectral")),
-  palette = rev(brewer.pal(max_n, "Spectral")),
+pal_usda <- colorQuantile(
+  palette = rev(brewer.pal(10, "Spectral")),
+  #palette = rev(brewer.pal(max_n, "Spectral")),
   domain = mapping_data_usda$unemployment_rate,
   n=10
 )
 ```
 ```{r}
 # Prepping for fixing the color palette (this and the labformat thing below were helped)
-pal_usda_breaks <- quantile(mapping_data_usda$unemployment_rate, probs = seq(0,1, length.out = 8), na.rm = TRUE)
+pal_usda_breaks <- quantile(mapping_data_usda$unemployment_rate, probs = seq(0, 1, length.out = 11), na.rm = TRUE)
 ```
 
 
@@ -166,11 +166,11 @@ leaflet() %>%
     pal = pal_usda,
     value = mapping_data_usda$unemployment_rate,
     position = "bottomright",
-    title = "Unemployment rate (%)"#,
-    #labFormat = function(type, cuts, p){
-    #  n <- length(pal_usda_breaks) - 1
-    #  paste0(round(pal_usda_breaks[1:n], 1), "% - ", round(pal_usda_breaks[2:(n+1)], 1), "%")
-    #}
+    title = "Unemployment rate (%)",
+    labFormat = function(type, cuts, p){
+      n <- length(pal_usda_breaks) - 1
+      paste0(round(pal_usda_breaks[1:n], 1), "% - ", round(pal_usda_breaks[2:(n+1)], 1), "%")
+    }
   )
 
 
