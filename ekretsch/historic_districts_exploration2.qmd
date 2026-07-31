@@ -121,7 +121,7 @@ mapping_data_usda <- counties_sf %>%
 ```{r}
 #mapping! palletee
 pal_usda <- colorQuantile(
-  palette = "Spectral",
+  palette = "YlGnBu",
   domain = mapping_data_usda$unemployment_rate,
   n=7
 )
@@ -165,7 +165,7 @@ mapping_data_bls <- counties_sf %>%
 
 ```{r}
 pal <- colorNumeric(
-  palette = "Spectral",           #also tried piyg and ylor and didn't love either
+  palette = "YlGnBu",           #also tried piyg and ylor and didn't love either # I LOVED spectral
   domain = mapping_data_bls$value
 )
 
