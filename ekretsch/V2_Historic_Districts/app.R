@@ -48,22 +48,6 @@ categories_counts <- by_state %>%
          category = gsub("_", " ", str_remove(category, "aos_")),
          category_nice = str_to_title(category)) # for the user stuff so that we can get the OG
 
-# categories_counts <- by_state %>% 
-#   select(state, 4:ncol(by_state)) %>% 
-#   column_to_rownames(var = "state") %>%   # Promotes state from a regular column to R row name
-#   t() %>% # Transposes (rows become columns, columns become rows) (returns a matrix)
-#   as.data.frame() %>% 
-#   rownames_to_column(var = "category") %>% 
-#   mutate(USA = rowSums(across(where(is.numeric)), na.rm = TRUE),
-#          category_og = category, 
-#          category = gsub("_", " ", str_remove(category, "aos_")),
-#          category_nice = str_to_title(category)) %>%
-#   bind_rows( # so that we can calculate percentages in the future!!
-#     summarise(.,
-#               across(where(is.numeric), base::sum),
-#               across(where(is.character), ~"Total"))
-#   )
-
 # Get state geometries
 states_sf <- tigris::states(cb = TRUE, resolution = "20m") %>% 
   st_transform(crs = 4326)
