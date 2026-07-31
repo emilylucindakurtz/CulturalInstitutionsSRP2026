@@ -7,17 +7,19 @@
 - [ ] wrangle education dataset
 - [ ] get libraries data into it as well
 - [x] add legend for the choropleth map
-- [ ] add choropleth map into shiny app somehow...
+- [x] add choropleth map into shiny app somehow...
 - [x] try out color quantile for choropleth map
 - [x] fix the quantile legend
 - [ ] add another graph for side-by-side with the choropleth of unemployment rates?
   - [ ] I was really inspired by this graphic: https://r-graph-gallery.com/web-map-choropleth-quantile.html but I don't think that this is really possible in leaflet. So maybe a side-by-side histogram or boxplot or something will have to suffice.
 - [ ] also somehow throw in the national average?
 - [ ] deal with connecticut... the map that I created from the BLS dataset works but the other one doesn't :(
+- [ ] maybe try doing unemployment by state?
 
 
 Notes/notices
-MD, VT, NH have very low comparative unemployment rates
+- In my write-up/blog post -- should prob mention the legend quantile situation
+- MD, VT, NH have very low comparative unemployment rates:
 <img width="838" height="528" alt="image" src="https://github.com/user-attachments/assets/2a6f3a80-3b5a-43ed-a799-71656c2859bd" />
 
 
