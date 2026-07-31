@@ -436,6 +436,7 @@ server <- function(input, output) {
       addCircleMarkers(
         data = st_centroid(choropleth_area_data),
         radius = choropleth_area_data$standardized_hd_acreage * 10,
+        # ^ before had sqrt() thing
         stroke = FALSE, # TRY TO FIX COLOR< THE zoom thing, and other stuff...
         fillOpacity = .7
       ) %>% 
