@@ -30,7 +30,19 @@ unemployment_wider <- unemployment_data_usda %>%
   clean_names() %>% 
   mutate(
     year = str_sub(attribute, (str_length(attribute) - 3), str_length(attribute)),
-    attribute = str_sub(attribute, 1, (str_length(attribute) - 4))
+    attribute = str_sub(attribute, 1, (str_length(attribute) - 4)) %>% 
+      str_to_lower() %>% 
+      str_to_lower() %>% 
+      str_replace_all("_", " ") %>% 
+      str_trim()
+  )
+```
+```{r}
+# now actually pivoting wider
+unemployment_wider <- unemployment_wider %>% 
+  pivot_wider(
+    names_from = attribute,
+    values_from = value
   )
 ```
 
