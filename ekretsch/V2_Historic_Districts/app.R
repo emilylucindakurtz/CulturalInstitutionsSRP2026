@@ -435,8 +435,9 @@ server <- function(input, output) {
       ) %>% 
       addCircleMarkers(
         data = st_centroid(choropleth_area_data),
-        radius = ~sqrt(standardized_hd_acreage)*5,
-        weight = .5 # TRY TO FIX COLOR< THE zoom thing, and other stuff...
+        radius = choropleth_area_data$standardized_hd_acreage * 10,
+        stroke = FALSE, # TRY TO FIX COLOR< THE zoom thing, and other stuff...
+        fillOpacity = .7
       ) %>% 
       addLegend(
         pal = pal_usda,
