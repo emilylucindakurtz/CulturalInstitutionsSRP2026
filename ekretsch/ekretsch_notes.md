@@ -6,6 +6,12 @@
 - [ ] Wrangle unemployment dataset (widen)
 - [ ] wrangle education dataset
 - [ ] get libraries data into it as well
+- [x] add legend for the choropleth map
+- [ ] add choropleth map into shiny app somehow...
+- [ ] 
+
+Regex
+- https://regex101.com/
 
 USDA Data
 - https://www.ers.usda.gov/data-products/county-level-data-sets/county-level-data-sets-download-data
@@ -41,6 +47,11 @@ Page + layout/look
 - https://shiny.posit.co/r/layouts/panels-cards/
 - https://shiny.posit.co/r/layouts/
 - <mark>https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf</mark>
+
+Walkability
+- https://americawalks.org/resources/walkable-land-use/
+- Inspo: https://www.ers.usda.gov/amber-waves/2025/august/us-obesity-rate-changes-differ-for-rural-and-urban-areas-as-well-as-across-regions
+- 
 
 ## July 30
 - [x] get the bar graph to show up on main page
