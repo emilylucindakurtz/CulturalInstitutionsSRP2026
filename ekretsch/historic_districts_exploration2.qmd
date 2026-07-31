@@ -98,8 +98,14 @@ unemployment_wider <- unemployment_wider %>%
 ```
 
 ```{r}
+unemployment_filtered <- unemployment_wider %>% 
+  filter(year == "2023")
+```
+
+
+```{r}
 # getting it in a way that we can join it to the shapefile easily
-unemployment_joinable <- unemployment_wider %>% 
+unemployment_joinable <- unemployment_filtered %>% 
   mutate(NAMELSAD = str_remove(area_name, ",.*"), #before comma
          STUSPS = str_trim(str_replace(area_name, "^.*,",""))) #after comma
 
