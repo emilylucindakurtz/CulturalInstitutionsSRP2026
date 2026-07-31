@@ -16,10 +16,18 @@ I am #confused
 Oh Ifigured it out
 <img width="838" height="528" alt="image" src="https://github.com/user-attachments/assets/365c21b9-4c8f-4b75-bec4-7c9ee6eb5595" />
 
+Color Bin with 10 (reversed color pallete):
+<img width="838" height="528" alt="image" src="https://github.com/user-attachments/assets/871d9b75-1385-498b-bb8b-ce13752ac2f9" />
+
+Vs Color Quantile with 10 (reversed color pallete):
+<img width="838" height="528" alt="image" src="https://github.com/user-attachments/assets/16ed7b66-e84f-4cf2-a0ed-ee1f35547800" />
+
 I like these color palette but I wish the order was flipped -->
 <img width="838" height="528" alt="image" src="https://github.com/user-attachments/assets/9a46eeaf-7580-4d2e-803f-8f32fd6fb995" />
 
 
+Mapps
+https://www.axismaps.com/guide
 
 Regex
 - https://regex101.com/
