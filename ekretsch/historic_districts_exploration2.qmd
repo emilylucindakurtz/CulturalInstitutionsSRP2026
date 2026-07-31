@@ -119,11 +119,13 @@ mapping_data_usda <- counties_sf %>%
 ```
 
 ```{r}
+library(RColorBrewer)
+
 #mapping! palletee
 pal_usda <- colorQuantile(
-  palette = "YlGnBu",
+  palette = rev(brewer.pal(10, "Spectral")),
   domain = mapping_data_usda$unemployment_rate,
-  n=7
+  n=10
 )
 ```
 
