@@ -55,7 +55,7 @@ counties_sf <- tigris::counties(cb = TRUE) %>%
 
 # Unemployment rates ---------
 # USDA
-unemployment_data_usda <- read_csv("../data/EK_general/Unemployment2023.csv")
+unemployment_data_usda <- read_csv("../../data/EK_general/Unemployment2023.csv")
 unemployment_wider <- unemployment_data_usda %>% 
   clean_names() %>% 
   mutate(
@@ -186,6 +186,25 @@ ui <- page_navbar(
         flex: none !important; /* Prevents flexbox from collapsing the body */
       }"))),
       
+      card(
+        card(
+            mainPanel(
+              h2("Title"),
+              p("Text"),
+              card(
+                leafletOutput("unemployment_map")
+              )
+            )
+          
+        ),
+        
+        card(
+          h4("Analysis: "),
+          p("This plot shows xyz")
+          )
+      ),
+      
+      # ---
       card(
         card(
         sidebarLayout(
@@ -392,6 +411,41 @@ server <- function(input, output) {
   
 
   # ----- Page 2: Analysis ----- Page 2: Analysis ----- Page 2: Analysis ----- Page 2: Analysis ----- Page 2: Analysis -----
+  
+  output$unemployment_map <- renderLeaflet({
+    leaflet() %>% 
+      addProviderTiles("CartoDB.Positron") %>% 
+      setView(lng = -95.7129, lat = 37.0902, zoom = 4) %>% 
+      
+      addPolygons(
+        data = mapping_data_usda,
+        fillColor = ~pal_usda(unemployment_rate),
+        fillOpacity = 1,
+        color = "white",
+        weight = 1,
+        smoothFactor = .5,
+      ) %>% 
+      addPolygons(
+        data = states_sf,
+        fill = FALSE,
+        color = 'black',
+        weight = 1.5,
+        opacity = 1,
+        smoothFactor = .5
+      ) %>% 
+      addLegend(
+        pal = pal_usda,
+        value = mapping_data_usda$unemployment_rate,
+        position = "bottomright",
+        title = "Unemployment rate (%)",
+        labFormat = function(type, cuts, p){
+          n <- length(pal_usda_breaks) - 1
+          paste0(round(pal_usda_breaks[1:n], 1), "% - ", round(pal_usda_breaks[2:(n+1)], 1), "%")
+        }
+      )
+  })
+  
+  #--- map2 standardizedhistoric district acreage by state
   
   output$map <- renderLeaflet({
     leaflet(choropleth_area_data) %>% 
