@@ -1,5 +1,45 @@
 # Emily Kretschmer's Notes
 
+## July 31
+
+- [x] download the USDA datasets that Emily sent me
+- [ ] Wrangle unemployment dataset (widen)
+- [ ] wrangle education dataset
+- [ ] get libraries data into it as well
+
+USDA Data
+- https://www.ers.usda.gov/data-products/county-level-data-sets/county-level-data-sets-download-data
+- PCTPOVALL_2023 = estimated percent of the total population in poverty for the year 2023
+
+Education/schools
+- https://nces.ed.gov/ccd/files.asp
+- https://educationdata.urban.org/data-explorer/explorer
+- https://educationdata.urban.org/documentation/schools.html
+- https://nces.ed.gov/datalab/
+- https://nces.ed.gov/programs/edge/Geographic/SchoolLocations
+- https://catalog.data.gov/dataset/public-school-locations-2022-23
+
+Dates of states
+- https://www.britannica.com/place/list-of-US-states-by-date-of-admission-to-the-Union-2130026
+- https://www.britannica.com/quiz/us-states-dates-of-admission-to-the-union-quiz
+
+Taxes by state
+- https://taxfoundation.org/datamaps/state-maps/
+- https://taxfoundation.org/data/all/state/2026-sales-tax-rates-midyear/
+- https://taxfoundation.org/blog/minnesota-wealth-tax/
+- https://taxfoundation.org/data/all/state/state-income-tax-rates-2026/
+- https://taxfoundation.org/data/all/state/tax-burden-by-state-2022/
+
+Page + layout/look
+- https://github.com/eparker12/nCoV_tracker/blob/master/app.R
+- https://shiny.posit.co/r/articles/
+- https://bootswatch.com/
+- https://bootswatch.com/lux/
+- https://bootswatch.com/help/
+- https://shiny.posit.co/py/api/core/ui.navbar_options.html
+- https://shiny.posit.co/r/layouts/panels-cards/
+- https://shiny.posit.co/r/layouts/
+
 ## July 30
 - [x] get the bar graph to show up on main page
 - [x] get bar graph to change when JUST the state is changed (not categories etc)
@@ -17,6 +57,8 @@
   - [ ] https://www.bls.gov/developers/api_r.htm
   - [ ] https://github.com/mikeasilva/blsAPI
   - [ ] https://cran.rstudio.com/web/packages/BLSloadR/BLSloadR.pdf
+  - [ ] https://www.bls.gov/charts/state-employment-and-unemployment/industry-employment-by-state.htm#
+  - [ ] ^ industry by state!!
      
 Sticking points:
 - blsapi vs blsloadr package...
