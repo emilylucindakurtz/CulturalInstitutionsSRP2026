@@ -8,7 +8,16 @@
 - [ ] get libraries data into it as well
 - [x] add legend for the choropleth map
 - [ ] add choropleth map into shiny app somehow...
-- [ ] try out color quantile for choropleth map
+- [x] try out color quantile for choropleth map
+- [ ] fix the quantile legend
+
+
+- [ ] 
+
+I think quantile is the best bet
+
+added some borders... not sure how i feel about it
+<img width="838" height="528" alt="image" src="https://github.com/user-attachments/assets/b39ce472-c926-4f52-9957-dee4d2ccec9e" />
 
 
 I tried out color quantile on the usda unemployment rate leaflet map...
