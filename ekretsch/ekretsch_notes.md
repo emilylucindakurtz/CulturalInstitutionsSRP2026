@@ -1,5 +1,9 @@
 # Emily Kretschmer's Notes
 
+## Next week
+- [ ] fix        `radius = choropleth_area_data$standardized_hd_acreage * 10`
+
+
 ## July 31
 
 - [x] download the USDA datasets that Emily sent me
@@ -15,6 +19,7 @@
 - [ ] also somehow throw in the national average?
 - [ ] deal with connecticut... the map that I created from the BLS dataset works but the other one doesn't :(
 - [ ] maybe try doing unemployment by state?
+- [x] add circles
 
 
 Notes/notices
@@ -22,6 +27,9 @@ Notes/notices
 - MD, VT, NH have very low comparative unemployment rates:
 <img width="838" height="528" alt="image" src="https://github.com/user-attachments/assets/2a6f3a80-3b5a-43ed-a799-71656c2859bd" />
 
+
+So far:
+<img width="989" height="570" alt="image" src="https://github.com/user-attachments/assets/1c7183c7-f0ee-4d41-a671-4d6da845cd13" />
 
 
 I think quantile is the best bet
