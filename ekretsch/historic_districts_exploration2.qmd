@@ -126,10 +126,12 @@ mapping_data_usda <- counties_sf %>%
 
 ```{r}
 library(RColorBrewer)
+max_n <- brewer.pal.info["Spectral", "maxcolors"]
 
 #mapping! palletee
-pal_usda <- colorQuantile(
-  palette = rev(brewer.pal(10, "Spectral")),
+pal_usda <- colorNumeric(
+  #palette = rev(brewer.pal(10, "Spectral")),
+  palette = rev(brewer.pal(max_n, "Spectral")),
   domain = mapping_data_usda$unemployment_rate,
   n=10
 )
@@ -157,17 +159,18 @@ leaflet() %>%
     fill = FALSE,
     color = 'black',
     weight = 1.5,
-    opacity = 1
+    opacity = 1,
+    smoothFactor = .5
   ) %>% 
   addLegend(
     pal = pal_usda,
     value = mapping_data_usda$unemployment_rate,
     position = "bottomright",
-    title = "Unemployment rate (%)",
-    labFormat = function(type, cuts, p){
-      n <- length(pal_usda_breaks) - 1
-      paste0(round(pal_usda_breaks[1:n], 1), "% - ", round(pal_usda_breaks[2:(n+1)], 1), "%")
-    }
+    title = "Unemployment rate (%)"#,
+    #labFormat = function(type, cuts, p){
+    #  n <- length(pal_usda_breaks) - 1
+    #  paste0(round(pal_usda_breaks[1:n], 1), "% - ", round(pal_usda_breaks[2:(n+1)], 1), "%")
+    #}
   )
 
 
