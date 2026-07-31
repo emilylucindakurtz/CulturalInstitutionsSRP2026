@@ -190,7 +190,7 @@ ui <- page_navbar(
         card(
             mainPanel(
               h2("Title"),
-              p("Text"),
+              p("*Note legend situation... [will add later]"),
               card(
                 leafletOutput("unemployment_map")
               )
@@ -433,6 +433,11 @@ server <- function(input, output) {
         opacity = 1,
         smoothFactor = .5
       ) %>% 
+      addCircleMarkers(
+        data = st_centroid(choropleth_area_data),
+        radius = ~sqrt(standardized_hd_acreage)*5,
+        weight = .5 # TRY TO FIX COLOR< THE zoom thing, and other stuff...
+      ) %>% 
       addLegend(
         pal = pal_usda,
         value = mapping_data_usda$unemployment_rate,
@@ -444,6 +449,40 @@ server <- function(input, output) {
         }
       )
   })
+  
+  
+  # output$unemployment_map <- renderLeaflet({
+  #   leaflet() %>% 
+  #     addProviderTiles("CartoDB.Positron") %>% 
+  #     setView(lng = -95.7129, lat = 37.0902, zoom = 4) %>% 
+  #     
+  #     addPolygons(
+  #       data = mapping_data_usda,
+  #       fillColor = ~pal_usda(unemployment_rate),
+  #       fillOpacity = 1,
+  #       color = "white",
+  #       weight = 1,
+  #       smoothFactor = .5,
+  #     ) %>% 
+  #     addPolygons(
+  #       data = states_sf,
+  #       fill = FALSE,
+  #       color = 'black',
+  #       weight = 1.5,
+  #       opacity = 1,
+  #       smoothFactor = .5
+  #     ) %>% 
+  #     addLegend(
+  #       pal = pal_usda,
+  #       value = mapping_data_usda$unemployment_rate,
+  #       position = "bottomright",
+  #       title = "Unemployment rate (%)",
+  #       labFormat = function(type, cuts, p){
+  #         n <- length(pal_usda_breaks) - 1
+  #         paste0(round(pal_usda_breaks[1:n], 1), "% - ", round(pal_usda_breaks[2:(n+1)], 1), "%")
+  #       }
+  #     )
+  # })
   
   #--- map2 standardizedhistoric district acreage by state
   

@@ -216,6 +216,7 @@ leaflet(mapping_data_bls) %>%
 ```
 
 ```{r}
+# run after running evth else?
 # Join data to shapefile
 choropleth_area_data <- states_sf %>% 
   left_join(by_state, by = c("NAME" = "state")) %>% 
@@ -237,6 +238,7 @@ prelim_map
 ```
 
 ```{r}
+# run after running evth else?
 
 by_state <- historic_districts %>% 
   group_by(state) %>% 
