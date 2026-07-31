@@ -7,7 +7,7 @@
 - [ ] wrangle education dataset
 - [ ] get libraries data into it as well
 - [x] add legend for the choropleth map
-- [ ] add choropleth map into shiny app somehow...
+- [x] add choropleth map into shiny app somehow...
 - [x] try out color quantile for choropleth map
 - [x] fix the quantile legend
 - [ ] add another graph for side-by-side with the choropleth of unemployment rates?
