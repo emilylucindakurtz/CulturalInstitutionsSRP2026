@@ -20,7 +20,7 @@
 - [ ] deal with connecticut... the map that I created from the BLS dataset works but the other one doesn't :(
 - [ ] maybe try doing unemployment by state?
 - [x] add circles
-
+https://r-graph-gallery.com/182-add-circles-rectangles-on-leaflet-map.html
 
 Notes/notices
 - In my write-up/blog post -- should prob mention the legend quantile situation
