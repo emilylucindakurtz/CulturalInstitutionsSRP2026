@@ -3,12 +3,18 @@
 ## July 31
 
 - [x] download the USDA datasets that Emily sent me
-- [ ] Wrangle unemployment dataset (widen)
+- [x] Wrangle unemployment dataset (widen)
 - [ ] wrangle education dataset
 - [ ] get libraries data into it as well
 - [x] add legend for the choropleth map
 - [ ] add choropleth map into shiny app somehow...
-- [ ] 
+- [ ] try out color quantile for choropleth map
+
+
+I tried out color quantile on the usda unemployment rate leaflet map...
+I am #confused
+<img width="838" height="528" alt="image" src="https://github.com/user-attachments/assets/365c21b9-4c8f-4b75-bec4-7c9ee6eb5595" />
+
 
 Regex
 - https://regex101.com/
