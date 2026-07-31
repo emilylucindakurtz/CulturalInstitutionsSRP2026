@@ -13,7 +13,12 @@
 
 I tried out color quantile on the usda unemployment rate leaflet map...
 I am #confused
+Oh Ifigured it out
 <img width="838" height="528" alt="image" src="https://github.com/user-attachments/assets/365c21b9-4c8f-4b75-bec4-7c9ee6eb5595" />
+
+I like these color palette but I wish the order was flipped -->
+<img width="838" height="528" alt="image" src="https://github.com/user-attachments/assets/9a46eeaf-7580-4d2e-803f-8f32fd6fb995" />
+
 
 
 Regex
