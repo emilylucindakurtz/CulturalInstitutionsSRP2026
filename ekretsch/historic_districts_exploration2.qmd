@@ -70,7 +70,6 @@ counties_sf <- tigris::counties(cb = TRUE) %>%
   st_transform(crs = 4326)
 
 # States shape files (for later)
-
 states_sf <- tigris::states(cb = TRUE, resolution = "20m") %>% 
   st_transform(crs = 4326)
 

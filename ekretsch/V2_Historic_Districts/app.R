@@ -6,28 +6,21 @@ library(bslib)
 library(thematic)
 library(shinythemes)
 library(shinyWidgets)
+library(plotly)
 
 library(leaflet)
 library(tigris)
 library(sf)
 
-library(plotly)
-
 library(tidyverse)
+library(tidytext)
 
 library(janitor)
+library(readr)
 
-# Enable automatic matching of plots to the application theme
-# Use font = "auto" to automatically carry over Google Fonts or custom CSS typography
-# 1. Set the underlying complete theme globally
-#ggplot2::theme_set(ggplot2::theme_minimal())
+# ----- Getting data n such ------
 
-# 2. Initialize thematic
-#thematic_shiny(font = "auto")
-# Set the default global theme to bw
-#theme_set(theme_bw())
-
-# ----- Getting data n such -----
+# Main historic district data!! --
 historic_districts <- read_csv("../../data/Historic Districts/historic_districts_clean4.csv")
 areas <- read_csv("../../data/Historic Districts/us_areas_cleaned.csv")
 
@@ -48,9 +41,60 @@ categories_counts <- by_state %>%
          category = gsub("_", " ", str_remove(category, "aos_")),
          category_nice = str_to_title(category)) # for the user stuff so that we can get the OG
 
+# ----------------------------
+
 # Get state geometries
 states_sf <- tigris::states(cb = TRUE, resolution = "20m") %>% 
   st_transform(crs = 4326)
+
+# Get counties shape files
+counties_sf <- tigris::counties(cb = TRUE) %>% 
+  st_transform(crs = 4326)
+
+# ----------------------------
+
+# Unemployment rates ---------
+# USDA
+unemployment_data_usda <- read_csv("../data/EK_general/Unemployment2023.csv")
+unemployment_wider <- unemployment_data_usda %>% 
+  clean_names() %>% 
+  mutate(
+    #separate("\d{4}")
+    year = str_sub(attribute, -4, str_length(attribute)),
+    attribute = str_sub(attribute, 1, -6) %>% 
+      str_to_lower() #%>% 
+    #str_replace_all("_", " ")
+  )
+# now actually pivoting wider
+unemployment_wider <- unemployment_wider %>% 
+  pivot_wider(
+    names_from = attribute,
+    values_from = value
+  )
+unemployment_filtered <- unemployment_wider %>% 
+  filter(year == "2023")
+
+# getting it in a way that we can join it to the shapefile easily
+unemployment_joinable <- unemployment_filtered %>% 
+  mutate(NAMELSAD = str_remove(area_name, ",.*"), #before comma
+         STUSPS = str_trim(str_replace(area_name, "^.*,",""))) #after comma
+# joining, wap woop
+mapping_data_usda <- counties_sf %>% 
+  left_join(unemployment_joinable,  by = c("NAMELSAD", "STUSPS"))
+
+# Color pallete
+pal_usda <- colorQuantile(
+  palette = "YlOrRd",
+  #palette = rev(brewer.pal(max_n, "Spectral")),
+  domain = mapping_data_usda$unemployment_rate,
+  n=9,
+  na.color = "grey"
+)
+
+# Prepping for fixing the legend (this and the labformat thing below were helped)
+pal_usda_breaks <- quantile(mapping_data_usda$unemployment_rate, probs = seq(0, 1, length.out = 10), na.rm = TRUE)
+
+# Standardized ---------------
 
 # Join data to shapefile
 choropleth_area_data <- states_sf %>% 
@@ -63,7 +107,7 @@ choropleth_area_data <- states_sf %>%
 choropleth_area_data <- choropleth_area_data %>% 
   mutate(standardized_hd_acreage = total_acreage_hd/land_area_acres*100) 
 
-# Color palette (UNSURE IF THIS SHOULD GO HERE OR LaTER)
+# Color palette (UNSURE IF THIS SHOULD GO HERE OR LaTER) --- def need to fix the name of this palette
 my_palette <- colorNumeric(
   palette = "viridis", 
   domain = choropleth_area_data$standardized_hd_acreage,
