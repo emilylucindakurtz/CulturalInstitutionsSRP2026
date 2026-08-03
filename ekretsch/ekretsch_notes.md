@@ -34,6 +34,10 @@ cali: <img width="947" height="652" alt="image" src="https://github.com/user-att
    <img width="947" height="652" alt="image" src="https://github.com/user-attachments/assets/f8e9da4d-9bbc-41b9-afe5-69c10e9419cd" />
 6) va
    <img width="947" height="652" alt="image" src="https://github.com/user-attachments/assets/fd767045-6c5f-4eaf-a317-c719bc2ccd6c" />
+7) alabama
+<img width="947" height="652" alt="image" src="https://github.com/user-attachments/assets/b214cabc-ee5e-41b1-afe7-192d5ce25eca" />
+
+9) 
 
 
 
