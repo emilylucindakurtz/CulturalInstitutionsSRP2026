@@ -5,6 +5,18 @@
 - [ ] try unemployment by state
 - [ ] do a map with unemployment by county and the actual locations overlayed
 - [ ] ask her about the colors?
+- [ ] maybe do histogram
+- [x] change height of map to 600 px
+- [ ] create an option to unview or view the unemployment rate
+- [ ] fix the crashing on selecting all issue
+- [ ] maybe add rural-urban thing.
+
+findings~ 
+1) historic districts seem to be clustered moreso in areas where counties have lower unemployment rates
+   ^ not sure if this could just be due to them being in cities (maybe find research about this -- not sure if it's true)
+alaska: <img width="1443" height="840" alt="image" src="https://github.com/user-attachments/assets/26021149-0559-4673-9ff1-3505d6f62ded" />
+cali: <img width="947" height="652" alt="image" src="https://github.com/user-attachments/assets/cfcdf6ad-045d-4af2-8cc4-3ae4e6df366c" />
+
 
 
 ## July 31
