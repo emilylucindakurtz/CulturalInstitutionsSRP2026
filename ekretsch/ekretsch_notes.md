@@ -14,6 +14,7 @@
 - [ ] <mark>Is it really true that there are more historic districts in the lower unemployment areas?</mark>
 - [ ] Maybe change "finder" to "explore" or something
 - [ ] hmm maybe investigate racial stuff
+- [ ] alsooo maybe median income
 
 findings~ 
 1) historic districts seem to be clustered moreso in areas where counties have lower unemployment rates
