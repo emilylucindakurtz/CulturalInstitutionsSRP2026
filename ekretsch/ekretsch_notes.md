@@ -8,14 +8,15 @@
 - [ ] maybe do histogram
 - [x] change height of map to 600 px
 - [ ] create an option to unview or view the unemployment rate
-- [ ] fix the crashing on selecting all issue
+- [x] fix the crashing on selecting all issue
+- [ ] make it so that you can see unemployment regardless of whether or not there are points
 - [ ] maybe add rural-urban thing.
 - [ ] add # of historic districts for explorer page
 - [ ] <mark>Is it really true that there are more historic districts in the lower unemployment areas?</mark>
 - [ ] Maybe change "finder" to "explore" or something
 - [ ] hmm maybe investigate racial stuff
 - [ ] alsooo maybe median income
-- [ ] fix the black line sit
+- [x] fix the black line sit
 - [ ] fix the dc, conn, etc prob
 - [ ] on the main page let the user do the different layers WITHOUT having to select types of historic districts
 
