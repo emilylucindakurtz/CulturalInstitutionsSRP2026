@@ -13,6 +13,7 @@
 - [ ] maybe add rural-urban thing.
 - [ ] add # of historic districts for explorer page
 - [ ] <mark>Is it really true that there are more historic districts in the lower unemployment areas?</mark>
+   - [ ] figure out  # of hist dists by unemployment rate bucket!
 - [ ] Maybe change "finder" to "explore" or something
 - [ ] hmm maybe investigate racial stuff
 - [ ] alsooo maybe median income
