@@ -11,7 +11,7 @@
 - [ ] fix the crashing on selecting all issue
 - [ ] maybe add rural-urban thing.
 - [ ] add # of historic districts for explorer page
-- [ ] ==Is it really true that there are more historic districts in the lower unemployment areas?==
+- [ ] <mark>Is it really true that there are more historic districts in the lower unemployment areas?</mark>
 - [ ] Maybe change "finder" to "explore" or something
 
 findings~ 
