@@ -263,6 +263,8 @@ server <- function(input, output) {
       clearMarkers() %>% 
       clearShapes()
     
+    # Make reactive val null if they select US instead of a specific state -- maybe change later
+    
     if(input$state_choice != "All"){
       selected_state_p1(input$state_choice)
       
@@ -276,8 +278,7 @@ server <- function(input, output) {
       selected_state_p1(NULL)
     }
     
-    
-    
+  
     # Filter historic districts for only those that fit the user's specifications
     if(length(cols_to_check) > 0) {
       
@@ -291,7 +292,8 @@ server <- function(input, output) {
           filter(STATE_NAME == input$state_choice) # maybe cbl and change to selected_state_p1()????
       }
       
-      # Add markers if there are datapoints to plot
+
+      # Adding the unemployment rate -- NEED TO ADD LEGEND + if else etc
       leafletProxy("map2") %>% 
         addPolygons(
           data = filtered_county_geoms,
@@ -301,7 +303,15 @@ server <- function(input, output) {
           weight = 1,
           smoothFactor = .5,
         )
-      if (nrow(filtered_data) > 0) {
+      
+      # Adding the full outline of the state on top (since it got covered by other things)
+      if(input$state_choice != "All"){
+        leafletProxy("map2") %>% 
+          addPolylines(data = filtered_states_sf, color = "black", opacity = 1, weight = 2)
+      }
+      
+      # Add markers if there are datapoints to plot
+      if (nrow(filtered_data) > 0) { 
         leafletProxy("map2", data = filtered_data) %>% 
           addCircleMarkers(
             ~longitude, 
@@ -313,11 +323,6 @@ server <- function(input, output) {
             weight = 1
             )
       }
-      
-      
-      # --- 
-      
-      
       
       districts_filtered(filtered_data)
       
