@@ -3,7 +3,7 @@
 ## Next week
 - [ ] fix        `radius = choropleth_area_data$standardized_hd_acreage * 10`
 - [ ] try unemployment by state
-- [ ] do a map with unemployment by county and the actual locations overlayed
+- [x] do a map with unemployment by county and the actual locations overlayed
 - [ ] ask her about the colors?
 - [ ] maybe do histogram
 - [x] change height of map to 600 px
@@ -18,7 +18,13 @@
 - [ ] alsooo maybe median income
 - [x] fix the black line sit
 - [ ] fix the dc, conn, etc prob
+   - [ ] DC issue
 - [ ] on the main page let the user do the different layers WITHOUT having to select types of historic districts
+- [ ] <mark> check US filter issue... not sure about if those filters are working on the US </mark>
+
+DC issue >>>
+<img width="1443" height="758" alt="image" src="https://github.com/user-attachments/assets/10426d62-43d5-49c9-a1c0-bd97537a6a39" />
+
 
 findings~ 
 1) historic districts seem to be clustered moreso in areas where counties have lower unemployment rates
