@@ -10,12 +10,19 @@
 - [ ] create an option to unview or view the unemployment rate
 - [ ] fix the crashing on selecting all issue
 - [ ] maybe add rural-urban thing.
+- [ ] add # of historic districts for explorer page
+- [ ] ==Is it really true that there are more historic districts in the lower unemployment areas?==
 
 findings~ 
 1) historic districts seem to be clustered moreso in areas where counties have lower unemployment rates
    ^ not sure if this could just be due to them being in cities (maybe find research about this -- not sure if it's true)
 alaska: <img width="1443" height="840" alt="image" src="https://github.com/user-attachments/assets/26021149-0559-4673-9ff1-3505d6f62ded" />
 cali: <img width="947" height="652" alt="image" src="https://github.com/user-attachments/assets/cfcdf6ad-045d-4af2-8cc4-3ae4e6df366c" />
+2) Georgia seems to have a lot??
+   <img width="947" height="652" alt="image" src="https://github.com/user-attachments/assets/bf420fab-4f16-4170-99b1-b585ef8ce4c2" />
+3) Fl coasts
+   <img width="947" height="652" alt="image" src="https://github.com/user-attachments/assets/4dff83a6-de47-404e-8443-5ad5199a7655" />
+
 
 
 
