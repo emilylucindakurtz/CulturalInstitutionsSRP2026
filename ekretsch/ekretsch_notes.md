@@ -15,6 +15,7 @@
 - [ ] Maybe change "finder" to "explore" or something
 - [ ] hmm maybe investigate racial stuff
 - [ ] alsooo maybe median income
+- [ ] on the main page let the user do the different layers WITHOUT having to select types of historic districts
 
 findings~ 
 1) historic districts seem to be clustered moreso in areas where counties have lower unemployment rates
