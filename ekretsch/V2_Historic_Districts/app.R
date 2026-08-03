@@ -154,7 +154,7 @@ ui <- page_navbar(
         ),
         mainPanel(
           card(
-            leafletOutput("map2")
+            leafletOutput("map2", height= 600)
           ),
           card(
             DT::DTOutput("table2")
@@ -287,15 +287,36 @@ server <- function(input, output) {
       if(input$state_choice != "All"){
         filtered_data <- filtered_data %>% 
           filter(state == input$state_choice)
+        filtered_county_geoms <- mapping_data_usda %>% 
+          filter(STATE_NAME == input$state_choice) # maybe cbl and change to selected_state_p1()????
       }
       
       # Add markers if there are datapoints to plot
+      leafletProxy("map2") %>% 
+        addPolygons(
+          data = filtered_county_geoms,
+          fillColor = ~pal_usda(unemployment_rate),
+          fillOpacity = 1,
+          color = "white",
+          weight = 1,
+          smoothFactor = .5,
+        )
       if (nrow(filtered_data) > 0) {
         leafletProxy("map2", data = filtered_data) %>% 
-          addCircleMarkers(~longitude, ~latitude, popup = ~property_name, radius = 5, color = "black", fillOpacity = .5, weight = 1)
-          #addCircleMarkers(~longitude, ~latitude, popup = ~property_name, clusterOptions = markerClusterOptions(maxClusterRadius = 40))
-        
+          addCircleMarkers(
+            ~longitude, 
+            ~latitude, 
+            popup = ~property_name, 
+            radius = 5, 
+            color = "black", 
+            fillOpacity = .5, 
+            weight = 1
+            )
       }
+      
+      
+      # --- 
+      
       
       
       districts_filtered(filtered_data)
