@@ -2,6 +2,8 @@
 
 ## Next week
 - [ ] fix        `radius = choropleth_area_data$standardized_hd_acreage * 10`
+- [ ] try unemployment by state
+- [ ] do a map with unemployment by county and the actual locations overlayed
 
 
 ## July 31
