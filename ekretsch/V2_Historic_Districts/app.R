@@ -150,11 +150,12 @@ ui <- page_navbar(
             )
           ),
           textOutput("categories_dist_label_p1"),
-          plotlyOutput("categories_dist_p1")
+          plotlyOutput("categories_dist_p1"),
+          plotlyOutput("extra_layer_dist") # RENAME!
         ),
         mainPanel(
           card(
-            leafletOutput("map2", height= 600)
+            leafletOutput("map2", height=600)
           ),
           card(
             DT::DTOutput("table2")
@@ -251,19 +252,22 @@ server <- function(input, output) {
   # Reactive value to hold the current state
   selected_state_p1 <- reactiveVal(NULL) # SHOULD PROB TAKE OUT LATER!!
   
-  # FUNCTION for reaction to changing filters
+  # FUNCTION for reaction to changing filters ---------------------------------------------------------------------------
+  
   update_districts <- function() {
     # Get a character vector of the underlying column names
     cols_to_check <- categories_counts %>% 
       filter(category_nice %in% input$categories_choice) %>% 
       pull(category_og)
     
-    # Clear previous markers and shapes to avoid duplicates
+    # Clear previous markers and shapes and legends to avoid duplicates
     leafletProxy("map2") %>% 
       clearMarkers() %>% 
-      clearShapes()
+      clearShapes() %>% 
+      clearControls() # for legend
     
     # Make reactive val null if they select US instead of a specific state -- maybe change later
+    # Also add shape for the state
     if(input$state_choice != "All"){
       selected_state_p1(input$state_choice)
       
@@ -292,7 +296,7 @@ server <- function(input, output) {
     }
     
     
-    # Adding the unemployment rate -- NEED TO ADD LEGEND + if else etc
+    # Adding the unemployment rate -- NEED TO if else etc
     leafletProxy("map2") %>% 
       addPolygons(
         data = filtered_county_geoms,
@@ -301,7 +305,18 @@ server <- function(input, output) {
         color = "white",
         weight = 1,
         smoothFactor = .5,
+      ) %>% 
+      addLegend(
+        pal = pal_usda,
+        value = mapping_data_usda$unemployment_rate,
+        position = "bottomright",
+        title = "Unemployment rate (%)",
+        labFormat = function(type, cuts, p){
+          n <- length(pal_usda_breaks) - 1
+          paste0(round(pal_usda_breaks[1:n], 1), "% - ", round(pal_usda_breaks[2:(n+1)], 1), "%")
+        }
       )
+      
     
     # Adding the full outline of the state on top (since it got covered by other things)
     if(input$state_choice != "All"){
@@ -309,11 +324,9 @@ server <- function(input, output) {
         addPolylines(data = filtered_states_sf, color = "black", opacity = 1, weight = 2)
     }
     
-    # ---- 
     # Updating the map and the table if there are historic districts to see based on filters!
-    
+    # (if/else for the table)
     if(length(cols_to_check) > 0) {
-      
       # Add markers if there are datapoints to plot
       if (nrow(filtered_data) > 0) { 
         leafletProxy("map2", data = filtered_data) %>% 
@@ -328,6 +341,7 @@ server <- function(input, output) {
             )
       }
       
+      #updating table
       districts_filtered(filtered_data)
       
     } else {
@@ -350,13 +364,24 @@ server <- function(input, output) {
     
   })
   
-  output$categories_dist_label_p1 <- renderText({
-    if(is.null(selected_state_p1())){
-      "XX Change Click on a state to see its top 5 historic district categories"
-    } else{
-      paste0("Top 5 historic district categories in ", selected_state_p1())
-    }
+#   ggplot(state_subset, aes(x = fct_infreq(str_to_title(Primary.Energy.Source)), fill = Primary.Energy.Source)) +
+#     geom_bar(color = "black") +
+#     scale_fill_manual(values = leaflet_colors) +
+#     theme(axis.text.x = element_text(angle = -90)) +
+#     labs(y = "Count",
+#          x = "Powerplant Primary Energy Source",
+#          title = title)
+#   
+# })
+
+  output$extra_layer_dist <- renderPlotly({
+    p <- filtered_county_geoms %>%  #NO it should be # of hist dists by unemployment rate bucket!! Need to figure this out :9
+      ggplot(aes(y = ))
+    
+    data = filtered_county_geoms,
+    fillColor = ~pal_usda(unemployment_rate)
   })
+
   
   output$categories_dist_p1 <- renderPlotly({
     if(is.null(selected_state_p1())){
@@ -376,6 +401,7 @@ server <- function(input, output) {
         paste0("Counts: ", counts),
         sep = "\n"
       )) %>% 
+      
       slice_max(order_by = counts, n = 5) %>% 
       
       ggplot(aes(y = reorder(category, counts), x = counts, text = tooltip_text)) +
