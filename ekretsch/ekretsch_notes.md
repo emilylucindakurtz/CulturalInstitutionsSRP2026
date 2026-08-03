@@ -22,6 +22,7 @@
 - [ ] on the main page let the user do the different layers WITHOUT having to select types of historic districts
 - [ ] <mark> check US filter issue... not sure about if those filters are working on the US </mark>
 - [ ] blinking of map?
+- [x] add legend
 
 DC issue >>>
 <img width="1443" height="758" alt="image" src="https://github.com/user-attachments/assets/10426d62-43d5-49c9-a1c0-bd97537a6a39" />
