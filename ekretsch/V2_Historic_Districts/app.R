@@ -264,7 +264,6 @@ server <- function(input, output) {
       clearShapes()
     
     # Make reactive val null if they select US instead of a specific state -- maybe change later
-    
     if(input$state_choice != "All"){
       selected_state_p1(input$state_choice)
       
@@ -278,37 +277,42 @@ server <- function(input, output) {
       selected_state_p1(NULL)
     }
     
-  
-    # Filter historic districts for only those that fit the user's specifications
-    if(length(cols_to_check) > 0) {
+    # Filtering data based on state and types of districts
+    filtered_data <- historic_districts %>%
+      filter(if_any(all_of(cols_to_check), ~ .x == 1)) # a district shows up if it matches any selected category
+    
+    if(input$state_choice != "All"){
+      filtered_data <- filtered_data %>% 
+        filter(state == input$state_choice)
       
-      filtered_data <- historic_districts %>%
-        filter(if_any(all_of(cols_to_check), ~ .x == 1)) # a district shows up if it matches any selected category
-      
-      if(input$state_choice != "All"){
-        filtered_data <- filtered_data %>% 
-          filter(state == input$state_choice)
-        filtered_county_geoms <- mapping_data_usda %>% 
-          filter(STATE_NAME == input$state_choice) # maybe cbl and change to selected_state_p1()????
-      }
-      
-
-      # Adding the unemployment rate -- NEED TO ADD LEGEND + if else etc
+      filtered_county_geoms <- mapping_data_usda %>% 
+        filter(STATE_NAME == input$state_choice) # maybe cbl and change to selected_state_p1()????
+    } else {
+      filtered_county_geoms <- mapping_data_usda #CBLLL
+    }
+    
+    
+    # Adding the unemployment rate -- NEED TO ADD LEGEND + if else etc
+    leafletProxy("map2") %>% 
+      addPolygons(
+        data = filtered_county_geoms,
+        fillColor = ~pal_usda(unemployment_rate),
+        fillOpacity = 1,
+        color = "white",
+        weight = 1,
+        smoothFactor = .5,
+      )
+    
+    # Adding the full outline of the state on top (since it got covered by other things)
+    if(input$state_choice != "All"){
       leafletProxy("map2") %>% 
-        addPolygons(
-          data = filtered_county_geoms,
-          fillColor = ~pal_usda(unemployment_rate),
-          fillOpacity = 1,
-          color = "white",
-          weight = 1,
-          smoothFactor = .5,
-        )
-      
-      # Adding the full outline of the state on top (since it got covered by other things)
-      if(input$state_choice != "All"){
-        leafletProxy("map2") %>% 
-          addPolylines(data = filtered_states_sf, color = "black", opacity = 1, weight = 2)
-      }
+        addPolylines(data = filtered_states_sf, color = "black", opacity = 1, weight = 2)
+    }
+    
+    # ---- 
+    # Updating the map and the table if there are historic districts to see based on filters!
+    
+    if(length(cols_to_check) > 0) {
       
       # Add markers if there are datapoints to plot
       if (nrow(filtered_data) > 0) { 
