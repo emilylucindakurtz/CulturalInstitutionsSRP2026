@@ -7,11 +7,28 @@
 ## August 4
 main goals:
 - [ ] get histogram for unemployment
+   - [x] get the tibble/df needed
+   - [x] make prelim (in exploration doc)
+   - [x] double check on why there are different # in diff buckets...
+   - [ ] join unemployment rate to historic districts df -- by county, and label that col county_unemployment_rate or smth
+   - [ ] then add that histogram in
+   - [ ] add reactivity to the histogram
+   - [ ] add a label to hist -- smth like 'Number of historic districts that fall in a county with an unemployment rate between xand y"
+   - [ ] add note about the upper bound not being included except for the last bucket
 - [ ] answer question referring to  about this ^
 - [ ] add option to switch to different layer overlay
 - [ ] add spot for description^
 
-- [ ] check on issue w/ quantile breaks??? ![Uploading image.png…]()
+- [x] check on issue w/ quantile breaks??? <img width="826" height="299" alt="image" src="https://github.com/user-attachments/assets/c92f0a06-9e29-440a-a10a-b40e7914c0aa" />
+   - Ok fixed (I think) <img width="934" height="636" alt="image" src="https://github.com/user-attachments/assets/44ec9624-25c0-4ae3-8d2d-bb4d9fa6da55" />
+
+this is what the map looks like right now:
+![Uploading image.png…]()
+
+I got worried that the answer to this is no: does quantile() and colorquantile() make the quantiles and their bounds in the same way (ex inclusivity and exclusivity)
+Ok I made sure that it did by doing `right = FALSE` for both -- this ensures that it is [x, y) for all. The variation in counts for each category is just because of the edges/dupes. (or should be at least)
+
+
 
 
 - [ ] refer/continue with the below >>>
