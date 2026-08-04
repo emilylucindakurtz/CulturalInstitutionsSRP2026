@@ -22,6 +22,10 @@ main goals:
             - [ ] fix LA parish
       - [x] fix DC issue
       - [ ] fix va beach city etc issue <img width="934" height="636" alt="image" src="https://github.com/user-attachments/assets/6c4c6b8b-a582-4702-bcf2-7d66e49ed0c1" />
+      CBL
+      Dupes issue...
+<img width="774" height="466" alt="image" src="https://github.com/user-attachments/assets/3ede9191-32b5-44db-b49f-bf5b97c224f5" />
+
 
    - [ ] then add that bar plot in
    - [ ] add reactivity to the bar plot
