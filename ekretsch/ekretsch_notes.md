@@ -25,6 +25,10 @@ main goals:
 this is what the map looks like right now:
 ![Uploading image.png…]()
 
+I got worried that the answer to this is no: does quantile() and colorquantile() make the quantiles and their bounds in the same way (ex inclusivity and exclusivity)
+Ok I made sure that it did by doing `right = FALSE` for both -- this ensures that it is [x, y) for all. The variation in counts for each category is just because of the edges/dupes. (or should be at least)
+
+
 
 
 - [ ] refer/continue with the below >>>
