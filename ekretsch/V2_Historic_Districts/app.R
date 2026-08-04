@@ -28,7 +28,7 @@ by_state <- historic_districts %>%
   group_by(state) %>% 
   summarise(total_acreage = sum(acreage_of_property, na.rm=TRUE),
             total_num_districts = n(),
-            across(25:last_col(), ~ sum(.x, na.rm = TRUE))) # NEED TO ADD THE COUNTS FOR EACH CATEGORY
+            across(25:last_col(), ~ sum(.x, na.rm = TRUE)))
 
 categories_counts <- by_state %>%
   select(state, 4:ncol(by_state)) %>%
@@ -82,17 +82,42 @@ unemployment_joinable <- unemployment_filtered %>%
 mapping_data_usda <- counties_sf %>% 
   left_join(unemployment_joinable,  by = c("NAMELSAD", "STUSPS"))
 
+# Color pallete stuff -------------------------------------------------------
+
 # Color pallete
 pal_usda <- colorQuantile(
   palette = "YlOrRd",
-  #palette = rev(brewer.pal(max_n, "Spectral")),
+  #palette = "Spectral",
   domain = mapping_data_usda$unemployment_rate,
   n=9,
   na.color = "grey"
+  #reverse = TRUE
 )
 
 # Prepping for fixing the legend (this and the labformat thing below were helped)
 pal_usda_breaks <- quantile(mapping_data_usda$unemployment_rate, probs = seq(0, 1, length.out = 10), na.rm = TRUE)
+
+# Making a tibble to refer to the quantiles
+pal_usda_quantiles <- tibble(
+  top_val = numeric(),
+  label = character(),
+  color = character()
+)
+
+for(i in 1:nrow(pal_usda_breaks)){
+  pal_usda_quantiles[i, "top_val"] = pal_usda_breaks[i, "x"]
+}
+
+quartile_encoder <- data.frame(quartile = character(5), ceiling = numeric(9), label = character(5), color = character(5))
+
+
+# Adding the color for the quantile to the
+
+
+
+# 2. Apply it to get a hex color per row — store it as a column
+data <- data %>%
+  mutate(fill_color = pal(unemployment_rate))
 
 # Standardized ---------------
 
@@ -373,14 +398,21 @@ server <- function(input, output) {
 #          title = title)
 #   
 # })
+  
+  #HERE
+  # all_sources <- sort(unique(Powerplants$Primary.Energy.Source))
+  # leaflet_colors <- setNames(energy_source_pal(all_sources), all_sources)
+  # 
+  # leaflet_colors <- setNames(pal_usda(unemployment_rate?))
 
-  output$extra_layer_dist <- renderPlotly({
-    p <- filtered_county_geoms %>%  #NO it should be # of hist dists by unemployment rate bucket!! Need to figure this out :9
-      ggplot(aes(y = ))
-    
-    data = filtered_county_geoms,
-    fillColor = ~pal_usda(unemployment_rate)
-  })
+  # output$extra_layer_dist <- renderPlotly({
+  #   p <- filtered_county_geoms %>%  #NO it should be # of hist dists by unemployment rate bucket!! Need to figure this out :9
+  #     ggplot(aes(y = ))
+  #   
+  #   data = filtered_county_geoms,
+  #   fillColor = ~pal_usda(unemployment_rate)
+  # })
+  
 
   
   output$categories_dist_p1 <- renderPlotly({

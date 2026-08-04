@@ -140,6 +140,25 @@ pal_usda <- colorQuantile(
 # Prepping for fixing the color palette (this and the labformat thing below were helped)
 pal_usda_breaks <- quantile(mapping_data_usda$unemployment_rate, probs = seq(0, 1, length.out = 10), na.rm = TRUE)
 ```
+```{r}
+n_quants <- length(pal_usda_breaks)
+
+# Making a tibble to refer to the quantiles
+pal_usda_quantiles <- tibble(
+  top_val = numeric(n_quants),
+  label = character(n_quants),
+  color = character(n_quants)
+)
+
+pal_usda_quantiles[n_quants, "label"] <= "NA"
+
+for(i in 1:(n_quants-1)){
+  
+  pal_usda_quantiles[i, "top_val"] <- pal_usda_breaks[i+1]
+  pal_usda_quantiles[i,"label"] <- paste0(pal_usda_breaks[i], "% - ", pal_usda_breaks[i+1], "%")
+}
+```
+
 
 
 ```{r}
