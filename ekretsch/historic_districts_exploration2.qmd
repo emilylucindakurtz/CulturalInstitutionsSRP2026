@@ -141,23 +141,45 @@ pal_usda <- colorQuantile(
 pal_usda_breaks <- quantile(mapping_data_usda$unemployment_rate, probs = seq(0, 1, length.out = 10), na.rm = TRUE)
 ```
 ```{r}
+# Sort of "manually" logging the color pallete and its values/labels so we can apply it to bar chart as well.
 n_quants <- length(pal_usda_breaks)
 
 # Making a tibble to refer to the quantiles
 pal_usda_quantiles <- tibble(
+  bottom_val = numeric(n_quants),
   top_val = numeric(n_quants),
   label = character(n_quants),
-  color = character(n_quants)
+  color = character(n_quants),
+  counts = numeric(n_quants)
 )
 
-pal_usda_quantiles[n_quants, "label"] <- NA
-pal_usda_quantiles[n_quants, "top_val"] <- NA
+pal_usda_quantiles[n_quants,] <- NA
+
 
 for(i in 1:(n_quants-1)){
+  pal_usda_quantiles[i, "bottom_val"] <- pal_usda_breaks[i]
   pal_usda_quantiles[i, "top_val"] <- pal_usda_breaks[i+1]
   pal_usda_quantiles[i,"label"] <- paste0(pal_usda_breaks[i], "% - ", pal_usda_breaks[i+1], "%")
 }
+
+pal_usda_quantiles <- pal_usda_quantiles %>%
+  mutate(color = pal_usda(bottom_val))
 ```
+
+```{r}
+pal_usda_quantiles <- pal_usda_quantiles %>% 
+  rowwise() %>%  # so that r evaluates one range at a time
+  mutate(
+    counts = sum(mapping_data_usda$unemployment_rate >= bottom_val & 
+                   mapping_data_usda$unemployment_rate < top_val,
+                 na.rm = TRUE)
+  ) %>% 
+  ungroup() # removing the rowwise grouping
+
+pal_usda_quantiles[n_quants, "counts"] <- sum(is.na(mapping_data_usda$unemployment_rate))
+
+```
+
 
 
 

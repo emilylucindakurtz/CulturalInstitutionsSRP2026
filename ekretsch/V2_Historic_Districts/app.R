@@ -86,38 +86,39 @@ mapping_data_usda <- counties_sf %>%
 
 # Color pallete
 pal_usda <- colorQuantile(
-  palette = "YlOrRd",
-  #palette = "Spectral",
+  #palette = "YlOrRd",
+  palette = "Spectral",
   domain = mapping_data_usda$unemployment_rate,
   n=9,
-  na.color = "grey"
-  #reverse = TRUE
+  na.color = "grey",
+  reverse = TRUE
 )
 
 # Prepping for fixing the legend (this and the labformat thing below were helped)
 pal_usda_breaks <- quantile(mapping_data_usda$unemployment_rate, probs = seq(0, 1, length.out = 10), na.rm = TRUE)
 
+# Sort of "manually" logging the color pallete and its values/labels so we can apply it to bar chart as well.
+n_quants <- length(pal_usda_breaks)
+
 # Making a tibble to refer to the quantiles
 pal_usda_quantiles <- tibble(
-  top_val = numeric(),
-  label = character(),
-  color = character()
+  bottom_val = numeric(n_quants),
+  label = character(n_quants),
+  color = character(n_quants)
 )
 
-for(i in 1:nrow(pal_usda_breaks)){
-  pal_usda_quantiles[i, "top_val"] = pal_usda_breaks[i, "x"]
+pal_usda_quantiles[n_quants, "label"] <- NA
+pal_usda_quantiles[n_quants, "bottom_val"] <- NA
+
+for(i in 1:(n_quants-1)){
+  pal_usda_quantiles[i, "bottom_val"] <- pal_usda_breaks[i]
+  pal_usda_quantiles[i,"label"] <- paste0(pal_usda_breaks[i], "% - ", pal_usda_breaks[i+1], "%")
 }
 
-quartile_encoder <- data.frame(quartile = character(5), ceiling = numeric(9), label = character(5), color = character(5))
+pal_usda_quantiles <- pal_usda_quantiles %>%
+  mutate(color = pal_usda(bottom_val))
 
 
-# Adding the color for the quantile to the
-
-
-
-# 2. Apply it to get a hex color per row — store it as a column
-data <- data %>%
-  mutate(fill_color = pal(unemployment_rate))
 
 # Standardized ---------------
 
