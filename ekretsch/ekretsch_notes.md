@@ -42,7 +42,9 @@ I got worried that the answer to this is no: does quantile() and colorquantile()
 Ok I made sure that it did by doing `right = FALSE` for both -- this ensures that it is [x, y) for all. The variation in counts for each category is just because of the edges/dupes. (or should be at least)
 
 
-idaho -- interesting![Uploading image.png…]()
+idaho -- interesting<img width="443" height="320" alt="image" src="https://github.com/user-attachments/assets/f643b1b8-1030-4dfb-b1f1-5d30256ebe4c" />
+south dakota to ![Uploading image.png…]()
+
 
 
 - [ ] refer/continue with the below >>>
