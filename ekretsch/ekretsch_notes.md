@@ -1,7 +1,23 @@
 # Emily Kretschmer's Notes
 
-## Next week
-- [ ] fix        `radius = choropleth_area_data$standardized_hd_acreage * 10`
+## This week
+- [ ] make blog posts
+- [ ] clean code
+
+## August 4
+main goals:
+- [ ] get histogram for unemployment
+- [ ] answer question referring to  about this ^
+- [ ] add option to switch to different layer overlay
+- [ ] add spot for description^
+
+- [ ] check on issue w/ quantile breaks??? ![Uploading image.png…]()
+
+
+- [ ] refer/continue with the below >>>
+
+## August 3
+- [ ] fix        `radius = choropleth_area_data$standardized_hd_acreage * 10` ?
 - [ ] try unemployment by state
 - [x] do a map with unemployment by county and the actual locations overlayed
 - [ ] ask her about the colors?
@@ -9,11 +25,17 @@
 - [x] change height of map to 600 px
 - [ ] create an option to unview or view the unemployment rate
 - [x] fix the crashing on selecting all issue
-- [ ] make it so that you can see unemployment regardless of whether or not there are points
+- [x] make it so that you can see unemployment regardless of whether or not there are points
 - [ ] maybe add rural-urban thing.
 - [ ] add # of historic districts for explorer page
+
 - [ ] <mark>Is it really true that there are more historic districts in the lower unemployment areas?</mark>
    - [ ] figure out  # of hist dists by unemployment rate bucket!
+   - [ ] I need to figure out how to calculate how many historic districts are in each county and then what bucket the county falls into
+   - [ ] Maybe start w
+quantile breaks:
+<img width="872" height="79" alt="image" src="https://github.com/user-attachments/assets/cce21e90-73a8-4556-a81b-e5657a4d7910" />
+
 - [ ] Maybe change "finder" to "explore" or something
 - [ ] hmm maybe investigate racial stuff
 - [ ] alsooo maybe median income
