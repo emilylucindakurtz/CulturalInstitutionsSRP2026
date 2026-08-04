@@ -20,7 +20,10 @@ main goals:
 - [ ] add spot for description^
 
 - [x] check on issue w/ quantile breaks??? <img width="826" height="299" alt="image" src="https://github.com/user-attachments/assets/c92f0a06-9e29-440a-a10a-b40e7914c0aa" />
-   - Ok fixed (I think) ![Uploading image.png…]()
+   - Ok fixed (I think) <img width="934" height="636" alt="image" src="https://github.com/user-attachments/assets/44ec9624-25c0-4ae3-8d2d-bb4d9fa6da55" />
+
+this is what the map looks like right now:
+![Uploading image.png…]()
 
 
 
