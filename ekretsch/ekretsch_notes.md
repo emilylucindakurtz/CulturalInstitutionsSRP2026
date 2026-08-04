@@ -7,11 +7,21 @@
 ## August 4
 main goals:
 - [ ] get histogram for unemployment
+   - [x] get the tibble/df needed
+   - [x] make prelim (in exploration doc)
+   - [ ] double check on why there are different # in diff buckets...
+   - [ ] join unemployment rate to historic districts df -- by county, and label that col county_unemployment_rate or smth
+   - [ ] then add that histogram in
+   - [ ] add reactivity to the histogram
+   - [ ] add a label to hist -- smth like 'Number of historic districts that fall in a county with an unemployment rate between xand y"
+   - [ ] add note about the upper bound not being included except for the last bucket
 - [ ] answer question referring to  about this ^
 - [ ] add option to switch to different layer overlay
 - [ ] add spot for description^
 
-- [ ] check on issue w/ quantile breaks??? ![Uploading image.png…]()
+- [x] check on issue w/ quantile breaks??? <img width="826" height="299" alt="image" src="https://github.com/user-attachments/assets/c92f0a06-9e29-440a-a10a-b40e7914c0aa" />
+   - Ok fixed (I think) ![Uploading image.png…]()
+
 
 
 - [ ] refer/continue with the below >>>
