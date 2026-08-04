@@ -165,6 +165,9 @@ for(i in 1:(n_quants-1)){
 
 pal_usda_quantiles <- pal_usda_quantiles %>%
   mutate(color = pal_usda(bottom_val))
+
+pal_usda_quantiles <- as.data.frame(pal_usda_quantiles)
+
 ```
 
 ```{r}
@@ -172,10 +175,15 @@ pal_usda_quantiles <- pal_usda_quantiles %>%
   rowwise() %>%  # so that r evaluates one range at a time
   mutate(
     counts = sum(mapping_data_usda$unemployment_rate >= bottom_val & 
-                   mapping_data_usda$unemployment_rate < top_val,
+                   mapping_data_usda$unemployment_rate < (top_val),
                  na.rm = TRUE)
   ) %>% 
   ungroup() # removing the rowwise grouping
+
+# Since the last quantile is inclusive of its max need to make slight adjustment
+pal_usda_quantiles[(n_quants-1), "counts"] <- sum(
+  mapping_data_usda$unemployment_rate >= pal_usda_quantiles$bottom_val[(n_quants-1)] &
+    mapping_data_usda$unemployment_rate <= pal_usda_quantiles$top_val[(n_quants-1)], na.rm = TRUE)
 
 pal_usda_quantiles[n_quants, "counts"] <- sum(is.na(mapping_data_usda$unemployment_rate))
 
@@ -185,8 +193,8 @@ pal_usda_quantiles[n_quants, "counts"] <- sum(is.na(mapping_data_usda$unemployme
 pal_usda_quantiles %>% 
   ggplot(aes(y = reorder(label, bottom_val), x = counts, fill = color)) +
   geom_col() +
-  scale_fill_identity() +
-    labs()
+  labs(y = "Unemployment rate") +
+  scale_fill_identity()
 ```
 
 
