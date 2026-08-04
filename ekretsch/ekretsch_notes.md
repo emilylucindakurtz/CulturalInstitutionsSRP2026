@@ -15,7 +15,8 @@ main goals:
             `str_trim(str_replace(area_name, "^.*,","")))`
             - [ ] fix LA parish
       - [x] fix DC issue
-      - [ ] 
+      - [ ] fix va beach city etc issue <img width="934" height="636" alt="image" src="https://github.com/user-attachments/assets/6c4c6b8b-a582-4702-bcf2-7d66e49ed0c1" />
+
    - [ ] then add that bar plot in
    - [ ] add reactivity to the bar plot
    - [ ] add a label to hist -- smth like 'Number of historic districts that fall in a county with an unemployment rate between xand y in 2023"
