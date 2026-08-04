@@ -2,6 +2,10 @@
 
 ## This week
 - [ ] make blog posts
+   Notes
+- unemployment rate just doesn't exist in this dataset for conn? doesn't have to do with the planning region/county issue
+  ^<img width="844" height="180" alt="image" src="https://github.com/user-attachments/assets/9ed2524b-27ad-4a32-ba3d-4429204eedab" />
+
 - [ ] clean code
 
 ## August 4
