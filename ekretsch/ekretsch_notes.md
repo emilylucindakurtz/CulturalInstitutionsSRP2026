@@ -11,6 +11,9 @@ main goals:
 - [ ] add option to switch to different layer overlay
 - [ ] add spot for description^
 
+- [ ] check on issue w/ quantile breaks??? ![Uploading image.png…]()
+
+
 - [ ] refer/continue with the below >>>
 
 ## August 3
