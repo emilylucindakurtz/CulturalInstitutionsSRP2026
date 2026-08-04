@@ -150,10 +150,10 @@ pal_usda_quantiles <- tibble(
   color = character(n_quants)
 )
 
-pal_usda_quantiles[n_quants, "label"] <= "NA"
+pal_usda_quantiles[n_quants, "label"] <- NA
+pal_usda_quantiles[n_quants, "top_val"] <- NA
 
 for(i in 1:(n_quants-1)){
-  
   pal_usda_quantiles[i, "top_val"] <- pal_usda_breaks[i+1]
   pal_usda_quantiles[i,"label"] <- paste0(pal_usda_breaks[i], "% - ", pal_usda_breaks[i+1], "%")
 }
