@@ -1,0 +1,16 @@
+---
+title: "Data"
+---
+
+All data used for demonstrations and write ups on this website can be downloaded here.
+
+museum_app_final.csv
+satellite_all_indicators.csv
+PowerPlants_Clean.csv
+Fortune500HQ_Housing.csv
+county_HPI.csv
+Fortune500_Housing_All_Counties.csv
+auto_facilities_app_clean.csv
+colleges_app_clean.csv
+opera_app_clean.csv
+theaters_app_clean.csv
