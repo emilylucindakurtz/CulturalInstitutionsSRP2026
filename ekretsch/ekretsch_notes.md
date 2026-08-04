@@ -11,10 +11,13 @@ main goals:
    - [x] make prelim (in exploration doc)
    - [x] double check on why there are different # in diff buckets...
    - [ ] join unemployment rate to historic districts df -- by county, and label that col county_unemployment_rate or smth
-   - [ ] then add that histogram in
-   - [ ] add reactivity to the histogram
-   - [ ] add a label to hist -- smth like 'Number of historic districts that fall in a county with an unemployment rate between xand y"
+      - [ ] replace "County" "Planning Region" "Borough" "Census Area" "Borough/municipality" "Borough/city" and ?? with ""
+            `str_trim(str_replace(area_name, "^.*,","")))`
+   - [ ] then add that bar plot in
+   - [ ] add reactivity to the bar plot
+   - [ ] add a label to hist -- smth like 'Number of historic districts that fall in a county with an unemployment rate between xand y in 2023"
    - [ ] add note about the upper bound not being included except for the last bucket
+   - [ ] 
 - [ ] answer question referring to  about this ^
 - [ ] add option to switch to different layer overlay
 - [ ] add spot for description^
