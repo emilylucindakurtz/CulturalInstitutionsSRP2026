@@ -111,11 +111,14 @@ unemployment_filtered <- unemployment_wider %>%
 
 ```{r}
 # getting it in a way that we can join it to the shapefile easily
+
+county_equivs <- paste("County", "Planning Region", "Borough", "Census Area", "/municipality", "Municipality", "/city", "Parish", sep = "|")
+
 unemployment_joinable <- unemployment_filtered %>% 
   mutate(NAMELSAD = str_remove(area_name, ",.*"), #before comma
-         STUSPS = str_trim(str_replace(area_name, "^.*,",""))) #after comma
-
-# could also potentially do this by dealling with the FIPS code but that would mean mutating the shapefile
+         STUSPS = str_trim(str_replace(area_name, "^.*,",""))) %>% #after comma
+  mutate(STUSPS = str_replace(STUSPS, "District of Columbia", "DC"), # fixing DC
+         NAME = str_squish(str_remove_all(NAMELSAD, county_equivs)))
 ```
 
 ```{r}
@@ -134,7 +137,8 @@ pal_usda <- colorQuantile(
   #palette = rev(brewer.pal(max_n, "Spectral")),
   domain = mapping_data_usda$unemployment_rate,
   n=9,
-  na.color = "grey"
+  na.color = "grey",
+  right = FALSE
 )
 ```
 ```{r}
@@ -170,6 +174,8 @@ pal_usda_quantiles <- as.data.frame(pal_usda_quantiles)
 
 ```
 
+Trying to figure out why the groups are uneven (# of observations in each quantile should be the saem!)
+
 ```{r}
 pal_usda_quantiles <- pal_usda_quantiles %>% 
   rowwise() %>%  # so that r evaluates one range at a time
@@ -188,6 +194,21 @@ pal_usda_quantiles[(n_quants-1), "counts"] <- sum(
 pal_usda_quantiles[n_quants, "counts"] <- sum(is.na(mapping_data_usda$unemployment_rate))
 
 ```
+```{r}
+ sum(mapping_data_usda$unemployment_rate >= .3 & 
+                   mapping_data_usda$unemployment_rate < 2.4,
+                 na.rm = TRUE)
+```
+```{r}
+sum(mapping_data_usda$unemployment_rate >= 2.4 & 
+                   mapping_data_usda$unemployment_rate < 2.7,
+                 na.rm = TRUE)
+```
+```{r}
+table(cut(mapping_data_usda$unemployment_rate, breaks = pal_usda_breaks, right = FALSE, include.lowest = TRUE))
+```
+
+
 
 ```{r}
 pal_usda_quantiles %>% 

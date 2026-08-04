@@ -74,13 +74,22 @@ unemployment_wider <- unemployment_wider %>%
 unemployment_filtered <- unemployment_wider %>% 
   filter(year == "2023")
 
+
 # getting it in a way that we can join it to the shapefile easily
+
+county_equivs <- paste("County", "Planning Region", "Borough", "Census Area", "/municipality", "Municipality", "/city", "Parish", sep = "|")
+
 unemployment_joinable <- unemployment_filtered %>% 
   mutate(NAMELSAD = str_remove(area_name, ",.*"), #before comma
-         STUSPS = str_trim(str_replace(area_name, "^.*,",""))) #after comma
+         STUSPS = str_trim(str_replace(area_name, "^.*,",""))) %>% #after comma
+  mutate(STUSPS = str_replace(STUSPS, "District of Columbia", "DC"), # fixing DC
+         NAME = str_squish(str_remove_all(NAMELSAD, county_equivs)))
+
+
+# could also potentially do this by dealling with the FIPS code but that would mean mutating the shapefile
 # joining, wap woop
 mapping_data_usda <- counties_sf %>% 
-  left_join(unemployment_joinable,  by = c("NAMELSAD", "STUSPS"))
+  left_join(unemployment_joinable,  by = c("NAME", "STUSPS"))
 
 # Color pallete stuff -------------------------------------------------------
 
@@ -96,27 +105,54 @@ pal_usda <- colorQuantile(
 
 # Prepping for fixing the legend (this and the labformat thing below were helped)
 pal_usda_breaks <- quantile(mapping_data_usda$unemployment_rate, probs = seq(0, 1, length.out = 10), na.rm = TRUE)
-
+ 
 # Sort of "manually" logging the color pallete and its values/labels so we can apply it to bar chart as well.
+
 n_quants <- length(pal_usda_breaks)
 
 # Making a tibble to refer to the quantiles
 pal_usda_quantiles <- tibble(
   bottom_val = numeric(n_quants),
+  top_val = numeric(n_quants),
   label = character(n_quants),
-  color = character(n_quants)
+  color = character(n_quants),
+  counts = numeric(n_quants)
 )
 
-pal_usda_quantiles[n_quants, "label"] <- NA
-pal_usda_quantiles[n_quants, "bottom_val"] <- NA
+pal_usda_quantiles[n_quants,] <- NA
+
 
 for(i in 1:(n_quants-1)){
   pal_usda_quantiles[i, "bottom_val"] <- pal_usda_breaks[i]
+  pal_usda_quantiles[i, "top_val"] <- pal_usda_breaks[i+1]
   pal_usda_quantiles[i,"label"] <- paste0(pal_usda_breaks[i], "% - ", pal_usda_breaks[i+1], "%")
 }
 
 pal_usda_quantiles <- pal_usda_quantiles %>%
   mutate(color = pal_usda(bottom_val))
+
+pal_usda_quantiles <- as.data.frame(pal_usda_quantiles)
+
+
+# joinnnnnn
+
+
+# adding the counts -- THIS NEEDS TO BE MOVED!!
+pal_usda_quantiles <- pal_usda_quantiles %>% 
+  rowwise() %>%  # so that r evaluates one range at a time
+  mutate(
+    counts = sum(mapping_data_usda$unemployment_rate >= bottom_val & 
+                   mapping_data_usda$unemployment_rate < (top_val),
+                 na.rm = TRUE)
+  ) %>% 
+  ungroup() # removing the rowwise grouping
+
+# Since the last quantile is inclusive of its max need to make slight adjustment
+pal_usda_quantiles[(n_quants-1), "counts"] <- sum(
+  mapping_data_usda$unemployment_rate >= pal_usda_quantiles$bottom_val[(n_quants-1)] &
+    mapping_data_usda$unemployment_rate <= pal_usda_quantiles$top_val[(n_quants-1)], na.rm = TRUE)
+
+pal_usda_quantiles[n_quants, "counts"] <- sum(is.na(mapping_data_usda$unemployment_rate))
 
 
 
