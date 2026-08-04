@@ -9,7 +9,7 @@ main goals:
 - [ ] get histogram for unemployment
    - [x] get the tibble/df needed
    - [x] make prelim (in exploration doc)
-   - [ ] double check on why there are different # in diff buckets...
+   - [x] double check on why there are different # in diff buckets...
    - [ ] join unemployment rate to historic districts df -- by county, and label that col county_unemployment_rate or smth
    - [ ] then add that histogram in
    - [ ] add reactivity to the histogram
