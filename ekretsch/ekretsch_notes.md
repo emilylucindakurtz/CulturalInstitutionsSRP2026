@@ -13,7 +13,9 @@ main goals:
    - [ ] join unemployment rate to historic districts df -- by county, and label that col county_unemployment_rate or smth
       - [x] replace "County" "Planning Region" "Borough" "Census Area" "Borough/municipality" "Borough/city" and ?? with ""
             `str_trim(str_replace(area_name, "^.*,","")))`
+            - [ ] fix LA parish
       - [x] fix DC issue
+      - [ ] 
    - [ ] then add that bar plot in
    - [ ] add reactivity to the bar plot
    - [ ] add a label to hist -- smth like 'Number of historic districts that fall in a county with an unemployment rate between xand y in 2023"
