@@ -10,6 +10,7 @@
 - (find where i put the rest of similar notes for blog post/explanation section...)
 - - [ ] write explanation for bar chart
 - [ ] clean code
+- [ ] ooh maybe multi-select states???
 
 ## August 5
 - [ ] get bar plot for unemployment
