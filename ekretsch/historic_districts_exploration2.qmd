@@ -121,6 +121,9 @@ unemployment_joinable <- unemployment_filtered %>%
          NAME = str_squish(str_remove_all(NAMELSAD, county_equivs)))
 ```
 
+
+
+
 ```{r}
 # joining, wap woop
 mapping_data_usda <- counties_sf %>% 
@@ -308,7 +311,57 @@ choropleth_area_data <- states_sf %>%
 ```{r}
 # Import cleaned (sort of) dataset
 historic_districts <- read_csv("../data/Historic Districts/historic_districts_clean3_specific_addresses.csv")
+```
+```{r}
 
+
+hist_dists_2 <- historic_districts  %>% 
+  mutate(abbreviation = state.abb[match(state, state.name)])
+```
+
+```{r}
+# joining the unemployment rate to historic districts via the county
+hist_dists_ur <- hist_dists_2 %>% 
+  left_join(unemployment_joinable %>% 
+              filter(fips_code %% 1000 != 0) %>% 
+              select("NAME", "state", "unemployment_rate", "fips_code"),  
+            by = c("county" = "NAME", 
+                   "abbreviation" = "state"))
+```
+
+Dealing with the joining issue (solved by the %% 1000 thing)
+```{r}
+# Check left dataframe
+hist_dists_2 %>%
+  count(county, abbreviation) %>%
+  filter(n > 1)
+
+# Check right dataframe
+unemployment_joinable %>%
+  count(NAME, state) %>%
+  filter(n > 1)
+```
+```{r}
+unemployment_joinable %>% 
+  filter(NAME == "Arkansas" & state == "AR")
+```
+```{r}
+unemployment_joinable %>% 
+  filter(NAME == "District of Columbia" & state == "DC")
+```
+
+```{r}
+unemployment_joinable %>% 
+  filter(NAME == "Idaho" & state == "ID")
+```
+```{r}
+unemployment_joinable %>% 
+  filter(NAME == "Iowa" & state == "IA")
+```
+
+
+
+```{r}
 # Mapping w/ leaflet!
 prelim_map <- leaflet(data = historic_districts) %>%
    addTiles() %>%
