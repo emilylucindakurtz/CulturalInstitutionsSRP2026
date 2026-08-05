@@ -233,7 +233,7 @@ pal_usda_quantiles %>%
 
 
 ```{r}
-#| eval: false
+##| eval: false
 #acc mapping
 leaflet() %>% 
   addProviderTiles("CartoDB.Positron") %>% 
@@ -244,6 +244,13 @@ leaflet() %>%
     color = "white",
     weight = 1,
     smoothFactor = .5,
+    label = paste0(mapping_data_usda$NAMELSAD, ": ", mapping_data_usda$unemployment_rate, "%")
+      
+  #     paste(sep = "<br/>",
+  # "<b><a href='https://www.samurainoodle.com/'>Samurai Noodle</a></b>",
+  # "606 5th Ave. S",
+  # "Seattle, WA 98138"
+  
   ) %>% 
   addPolygons(
     data = states_sf,

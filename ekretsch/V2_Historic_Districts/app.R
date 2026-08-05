@@ -372,6 +372,8 @@ server <- function(input, output) {
         color = "white",
         weight = 1,
         smoothFactor = .5,
+        #label = ~area_name
+        label = paste0(filtered_county_geoms$area_name, ": ", filtered_county_geoms$unemployment_rate, "%") #hovering
       ) %>% 
       addLegend(
         pal = pal_usda,
@@ -430,16 +432,16 @@ server <- function(input, output) {
     
   })
   
+  #CHANGE
   output$categories_dist_label_p1 <- renderText({
     if(is.null(selected_state_p1())){
       selected_state_p1("USA")
     }
     
-    
     if(selected_state_p1() == "USA"){
-      "XYZ"
+      "Top 5 historic district categories in the USA"
     } else{
-      paste0("Distribution of XYz", selected_state())
+      paste0("Top 5 historic district categories in ", selected_state())
     }
   })
   
@@ -479,15 +481,15 @@ server <- function(input, output) {
       
       #geom_text(aes(label = value), vjust = -0.5) 
     
-    
     ggplotly(p, tooltip = "text")
   })
   
+  # MAYBE CHANGE LABEL???
   output$extra_layer_label_p1 <- renderText({
     if(selected_state_p1() == "USA"){
-      "XYZ"
+      "Distribution of historic district counts by their coresponding county's unemployment rate in the USA"
     } else{
-      paste0("Distribution of XYz", selected_state())
+      paste0("Distribution of historic district counts by their corresponding county's unemployment rate in ", selected_state_p1())
     }
   })
   
@@ -507,9 +509,9 @@ server <- function(input, output) {
       ggplot(aes(x = unemployment_rate, fill = unemployment_color)) +
       geom_histogram(binwidth = .3) +
       #xlim(0, 18) +
-      scale_fill_identity()
-      
-      #labs(y = "Unemployment rate") +
+      scale_fill_identity() +
+      labs(x = "County unemployment rate",
+           y = "Number of historic districts")
       #scale_fill_identity()
     
     ggplotly(p)
