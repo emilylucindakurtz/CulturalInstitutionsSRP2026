@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Mapping Cultural Institutions in the United States",
     "section": "",
-    "text": "https://datasciencepublicpolicy.org/projects/\nThis is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "We define a cultural institution as any lasting legacy, still present in a community, of that community’s character or identity. Cultural institutions can come in many forms and can commemorate many different features of a community’s identity. Museums, monuments, statues, and theaters are more obvious institutions that memorialize groups, events, industries, or individuals that played a crucial role in the community’s history and identity, but institutions are not limited to just these forms. Industrial headquarters (or ruins), street art, and even power plants can play a role in how a community sees itself. All of these institutions can directly and indirectly influence how its residents think about things like politics, policy, and economics."
   },
   {
     "objectID": "about.html",
@@ -17,8 +17,8 @@
     "objectID": "index.html#what-are-cultural-institutions-and-why-are-they-important",
     "href": "index.html#what-are-cultural-institutions-and-why-are-they-important",
     "title": "Mapping Cultural Institutions in the United States",
-    "section": "What are cultural institutions, and why are they important?",
-    "text": "What are cultural institutions, and why are they important?\nWe define a cultural institution as any lasting legacy, still present in a community, of that community’s character or identity. Cultural institutions can come in many forms and can commemorate many different features of a community’s identity. Museums, monuments, statues, and theaters are more obvious institutions that memorialize groups, events, industries, or individuals that played a crucial role in the community’s history and identity, but institutions are not limited to just these forms. Industrial headquarters (or ruins), street art, and even power plants can play a role in how a community sees itself. All of these institutions can directly and indirectly influence how its residents think about things like politics, policy, and economics."
+    "section": "",
+    "text": "We define a cultural institution as any lasting legacy, still present in a community, of that community’s character or identity. Cultural institutions can come in many forms and can commemorate many different features of a community’s identity. Museums, monuments, statues, and theaters are more obvious institutions that memorialize groups, events, industries, or individuals that played a crucial role in the community’s history and identity, but institutions are not limited to just these forms. Industrial headquarters (or ruins), street art, and even power plants can play a role in how a community sees itself. All of these institutions can directly and indirectly influence how its residents think about things like politics, policy, and economics."
   },
   {
     "objectID": "index.html#our-work",
@@ -46,6 +46,48 @@
     "href": "index.html#projects",
     "title": "Mapping Cultural Institutions in the United States",
     "section": "Projects",
-    "text": "Projects\n\n\n\n\n\n\nEMBED STUFF - GET QS HELP\n\njust notes to self below\nthings that will appear on the website:\nintro to project - that will be on this site itself (index.qmd)\nTOP NAVBAR: APPS BLOG POSTS DATA PROJECT MEMBERS\nSIDE BAR: only appear for apps and blog posts to give people all options have blog posts refer to apps"
+    "text": "Projects\n\n\n\n\n\n\n\njust notes to self below\nneed to put in root folder to deploy\nthings that will appear on the website:\nTOP NAVBAR: APPS BLOG POSTS DATA PROJECT MEMBERS\nSIDE BAR: only appear for apps and blog posts to give people all options have blog posts refer to apps"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "zoe docs: museum_shiny.R, satellite_shiny.R, museum_writeup.rmd, satellite_writeup.rmd\nian docs: industrial institutions files within rockjonesi, shiny app, Blog.md if dont want write up in shiny app\nrimona docs: shiny app is in CulturalInstitutionsSRP2026/rzhang/IPUMS_Institutions/ as app.R, and my blog_post.md file is also in the same IPUMS_Institutions folder - other docs in other folders in case needed\nemily docs: idk yet"
+  },
+  {
+    "objectID": "shinytest.html",
+    "href": "shinytest.html",
+    "title": "shinytest",
+    "section": "",
+    "text": "#\n\n\nokay so, how to make a shiny app live"
+  },
+  {
+    "objectID": "theaters_etc.html",
+    "href": "theaters_etc.html",
+    "title": "Theaters. Colleges, Etc.",
+    "section": "",
+    "text": "#"
+  },
+  {
+    "objectID": "industrial_institutions.html",
+    "href": "industrial_institutions.html",
+    "title": "Industrial Institutions",
+    "section": "",
+    "text": "#"
+  },
+  {
+    "objectID": "museums.html",
+    "href": "museums.html",
+    "title": "Museums",
+    "section": "",
+    "text": "#"
+  },
+  {
+    "objectID": "satellite.html",
+    "href": "satellite.html",
+    "title": "Satellie Indicators",
+    "section": "",
+    "text": "#"
   }
 ]

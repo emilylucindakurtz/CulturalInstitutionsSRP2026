@@ -1,0 +1,12 @@
+---
+title: "Theaters. Colleges, Etc."
+format:
+  html:
+    page-layout: full
+---
+
+#<iframe height="400" width="200%" src="https://marekjozsef.shinyapps.io/theaters_colleges_etc/"></iframe>
+
+<iframe src="https://marekjozsef.shinyapps.io/theaters_colleges_etc/"></iframe>
+
+

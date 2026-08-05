@@ -1,0 +1,12 @@
+---
+title: "Museums"
+format:
+  html:
+    page-layout: full
+---
+
+#<iframe height="400" width="200%" src="https://marekjozsef.shinyapps.io/SRP2026-industrial/"></iframe>
+
+<iframe src="https://marekjozsef.shinyapps.io/SRP2026_museum/"></iframe>
+
+
