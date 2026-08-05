@@ -209,6 +209,18 @@ ui <- page_navbar(
               size = 10 # max visible items before scrolling
             )
           ),
+          
+          radioButtons(
+            inputId = "layer2_options",
+            label = "Choose a layer for further analysis:",
+            choices = list(
+              "None" = NA,
+              "Unemployment" = "unemployment",
+              "Area (TBD -- CBL)" = "area"
+            )
+          ),
+          tags$hr(style = "border-top: 1px solid black;"), #adds a line separator thing
+          
           textOutput("categories_dist_label_p1"), #rename
           plotlyOutput("categories_dist_p1") #rename
           #plotlyOutput("extra_layer_dist") # RENAME!
@@ -319,7 +331,7 @@ server <- function(input, output) {
   # Reactive value to hold the current state
   selected_state_p1 <- reactiveVal(NULL) # SHOULD PROB TAKE OUT LATER!!
   
-  # FUNCTION for reaction to changing filters ---------------------------------------------------------------------------
+  
   
   update_districts <- function() {
     # Get a character vector of the underlying column names
@@ -361,30 +373,6 @@ server <- function(input, output) {
     } else {
       filtered_county_geoms <- mapping_data_usda #CBLLL
     }
-    
-    
-    # Adding the unemployment rate -- NEED TO if else etc
-    leafletProxy("map2") %>% 
-      addPolygons(
-        data = filtered_county_geoms,
-        fillColor = ~pal_usda(unemployment_rate),
-        fillOpacity = 1,
-        color = "white",
-        weight = 1,
-        smoothFactor = .5,
-        #label = ~area_name
-        label = paste0(filtered_county_geoms$area_name, ": ", filtered_county_geoms$unemployment_rate, "%") #hovering
-      ) %>% 
-      addLegend(
-        pal = pal_usda,
-        value = mapping_data_usda$unemployment_rate,
-        position = "bottomright",
-        title = "Unemployment rate (%)",
-        labFormat = function(type, cuts, p){
-          n <- length(pal_usda_breaks) - 1
-          paste0(round(pal_usda_breaks[1:n], 1), "% - ", round(pal_usda_breaks[2:(n+1)], 1), "%")
-        }
-      )
       
     # Adding the full outline of the state on top (since it got covered by other things)
     if(input$state_choice != "All"){
@@ -414,6 +402,34 @@ server <- function(input, output) {
       
     } else {
       districts_filtered(NULL) # if nothing is selected then clear the table
+    }
+  }
+  
+  # FUNCTION for reaction to changing filters ---------------------------------------------------------------------------
+  update_layer2 <- function(){
+    # Adding the unemployment rate -- NEED TO if else etc
+    if(input$layer2_options == "unemployment"){
+      leafletProxy("map2") %>% 
+        addPolygons(
+          data = filtered_county_geoms,
+          fillColor = ~pal_usda(unemployment_rate),
+          fillOpacity = 1,
+          color = "white",
+          weight = 1,
+          smoothFactor = .5,
+          #label = ~area_name
+          label = paste0(filtered_county_geoms$area_name, ": ", filtered_county_geoms$unemployment_rate, "%") #hovering
+        ) %>% 
+        addLegend(
+          pal = pal_usda,
+          value = mapping_data_usda$unemployment_rate,
+          position = "bottomright",
+          title = "Unemployment rate (%)",
+          labFormat = function(type, cuts, p){
+            n <- length(pal_usda_breaks) - 1
+            paste0(round(pal_usda_breaks[1:n], 1), "% - ", round(pal_usda_breaks[2:(n+1)], 1), "%")
+          }
+        )
     }
   }
   
@@ -559,6 +575,12 @@ server <- function(input, output) {
       setView(lng = -95.7129, lat = 37.0902, zoom = 4)
     
   })
+  
+  # Trigger an event every time the user changes the radio button selection
+  # NEWW - CBL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  observeEvent(input$layer2_option){
+    update_layer2()
+  }
   
   # Trigger an event every time the user changes the dropdown selection
   observeEvent(input$state_choice, {
