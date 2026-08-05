@@ -8,11 +8,28 @@
   ^<img width="844" height="180" alt="image" src="https://github.com/user-attachments/assets/9ed2524b-27ad-4a32-ba3d-4429204eedab" />
 - there are some points historic districts that are not mapped to the correct long/lat unfortunately (geocoding issue)
 - (find where i put the rest of similar notes for blog post/explanation section...)
+- - [ ] write explanation for bar chart
 - [ ] clean code
+
+## August 5
+- [ ] get bar plot for unemployment
+   - [x] figure out dupes issue
+   - [ ] double check on this ^
+   - solution: I am going to use the modulo operator (%% 1000) on the FIPS code
+   - ^ if it is != 0, then it is a county
+   - FIPS codes have the first 2 digits being for the state, and the last 3 being for the county
+   - [ ] reverse the order because it's confusing...
+   - [ ] check on this issue: <img width="820" height="149" alt="image" src="https://github.com/user-attachments/assets/9bb6e51c-ee2d-4056-b04c-f8fe93bf88d2" />
+
+     
+
+Got a bar chart!!! <img width="1404" height="885" alt="image" src="https://github.com/user-attachments/assets/85734a70-7b90-4c79-bed5-17c4e4592840" />
+
+
 
 ## August 4
 main goals:
-- [ ] get histogram for unemployment
+- [ ] get bar plot for unemployment via quantiles
    - [x] get the tibble/df needed
    - [x] make prelim (in exploration doc)
    - [x] double check on why there are different # in diff buckets...
