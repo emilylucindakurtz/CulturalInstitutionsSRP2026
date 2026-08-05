@@ -2,19 +2,59 @@
 
 ## This week
 - [ ] make blog posts
+   
+   Notes
+- unemployment rate just doesn't exist in this dataset for conn? doesn't have to do with the planning region/county issue
+  ^<img width="844" height="180" alt="image" src="https://github.com/user-attachments/assets/9ed2524b-27ad-4a32-ba3d-4429204eedab" />
+- there are some points historic districts that are not mapped to the correct long/lat unfortunately (geocoding issue)
+- (find where i put the rest of similar notes for blog post/explanation section...)
+- - [ ] write explanation for bar chart
 - [ ] clean code
+
+## August 5
+- [ ] get bar plot for unemployment
+   - [x] figure out dupes issue
+   - [ ] double check on this ^
+   - solution: I am going to use the modulo operator (%% 1000) on the FIPS code
+   - ^ if it is != 0, then it is a county
+   - FIPS codes have the first 2 digits being for the state, and the last 3 being for the county
+   - [ ] reverse the order because it's confusing...
+   - [ ] check on this issue: <img width="820" height="149" alt="image" src="https://github.com/user-attachments/assets/9bb6e51c-ee2d-4056-b04c-f8fe93bf88d2" />
+- [ ] fix this issue <img width="1036" height="762" alt="image" src="https://github.com/user-attachments/assets/eeaf96f4-2c36-4b41-8751-81fa52ee7732" />
+- [ ] make bar chart nicer
+   - [ ] fix the lack of a label for "NA"
+   - [ ] make the text/orientation look nicer
+   - [ ] uh what is up with VA?
+
+
+     
+
+Got a bar chart!!! <img width="1404" height="885" alt="image" src="https://github.com/user-attachments/assets/85734a70-7b90-4c79-bed5-17c4e4592840" />
+
+
 
 ## August 4
 main goals:
-- [ ] get histogram for unemployment
+- [ ] get bar plot for unemployment via quantiles
    - [x] get the tibble/df needed
    - [x] make prelim (in exploration doc)
    - [x] double check on why there are different # in diff buckets...
    - [ ] join unemployment rate to historic districts df -- by county, and label that col county_unemployment_rate or smth
-   - [ ] then add that histogram in
-   - [ ] add reactivity to the histogram
-   - [ ] add a label to hist -- smth like 'Number of historic districts that fall in a county with an unemployment rate between xand y"
+      - [x] replace "County" "Planning Region" "Borough" "Census Area" "Borough/municipality" "Borough/city" and ?? with ""
+            `str_trim(str_replace(area_name, "^.*,","")))`
+            - [ ] fix LA parish
+      - [x] fix DC issue
+      - [ ] fix va beach city etc issue <img width="934" height="636" alt="image" src="https://github.com/user-attachments/assets/6c4c6b8b-a582-4702-bcf2-7d66e49ed0c1" />
+      CBL
+      Dupes issue...
+<img width="774" height="466" alt="image" src="https://github.com/user-attachments/assets/3ede9191-32b5-44db-b49f-bf5b97c224f5" />
+
+
+   - [ ] then add that bar plot in
+   - [ ] add reactivity to the bar plot
+   - [ ] add a label to hist -- smth like 'Number of historic districts that fall in a county with an unemployment rate between xand y in 2023"
    - [ ] add note about the upper bound not being included except for the last bucket
+   - [ ] 
 - [ ] answer question referring to  about this ^
 - [ ] add option to switch to different layer overlay
 - [ ] add spot for description^
@@ -23,10 +63,17 @@ main goals:
    - Ok fixed (I think) <img width="934" height="636" alt="image" src="https://github.com/user-attachments/assets/44ec9624-25c0-4ae3-8d2d-bb4d9fa6da55" />
 
 this is what the map looks like right now:
-![Uploading image.png…]()
+<img width="1431" height="713" alt="image" src="https://github.com/user-attachments/assets/dcbce202-9c54-40ae-858e-e9ead8fb3ee9" />
 
 I got worried that the answer to this is no: does quantile() and colorquantile() make the quantiles and their bounds in the same way (ex inclusivity and exclusivity)
 Ok I made sure that it did by doing `right = FALSE` for both -- this ensures that it is [x, y) for all. The variation in counts for each category is just because of the edges/dupes. (or should be at least)
+
+
+idaho -- interesting<img width="443" height="320" alt="image" src="https://github.com/user-attachments/assets/f643b1b8-1030-4dfb-b1f1-5d30256ebe4c" />
+south dakota to <img width="949" height="666" alt="image" src="https://github.com/user-attachments/assets/ff494ad0-03b0-4469-a0fc-878f555dcafd" />
+wisconsin <img width="949" height="666" alt="image" src="https://github.com/user-attachments/assets/bac5db6c-2b17-4719-9834-9c3511235ff1" />
+illinois COAST! ![Uploading image.png…]()
+
 
 
 

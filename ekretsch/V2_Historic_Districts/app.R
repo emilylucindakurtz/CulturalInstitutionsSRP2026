@@ -74,13 +74,44 @@ unemployment_wider <- unemployment_wider %>%
 unemployment_filtered <- unemployment_wider %>% 
   filter(year == "2023")
 
-# getting it in a way that we can join it to the shapefile easily
+
+# Getting it in a way that we can join it to the shapefile easily
+
+county_equivs <- paste("County", 
+                       "Planning Region", 
+                       "Borough", 
+                       "Census Area", 
+                       "/municipality", 
+                       "Municipality", 
+                       "/city", 
+                       "Parish", 
+                       sep = "|")
+
 unemployment_joinable <- unemployment_filtered %>% 
   mutate(NAMELSAD = str_remove(area_name, ",.*"), #before comma
-         STUSPS = str_trim(str_replace(area_name, "^.*,",""))) #after comma
-# joining, wap woop
+         STUSPS = str_trim(str_replace(area_name, "^.*,",""))) %>% #after comma
+  mutate(STUSPS = str_replace(STUSPS, "District of Columbia", "DC"), # fixing DC
+         NAME = str_squish(str_remove_all(NAMELSAD, county_equivs)))
+
+
+# could also potentially do this by dealling with the FIPS code but that would mean mutating the shapefile
+
+# Joining USDA unemployment data to the counties data! (would do the same her prob if adding other data)
 mapping_data_usda <- counties_sf %>% 
-  left_join(unemployment_joinable,  by = c("NAMELSAD", "STUSPS"))
+  left_join(unemployment_joinable,  by = c("NAME", "STUSPS"))
+
+# Joining historic districts and the unemployment rate for graphing later -------------------------------------
+historic_districts <- historic_districts  %>% 
+  mutate(state_abbreviation = state.abb[match(state, state.name)])
+
+# joining the unemployment rate to historic districts via the county
+historic_districts <- historic_districts %>% 
+  left_join(unemployment_joinable %>% 
+              filter(fips_code %% 1000 != 0) %>% 
+              select("NAME", "state", "unemployment_rate", "fips_code"),  
+            by = c("county" = "NAME", 
+                   "state_abbreviation" = "state"))
+
 
 # Color pallete stuff -------------------------------------------------------
 
@@ -96,31 +127,35 @@ pal_usda <- colorQuantile(
 
 # Prepping for fixing the legend (this and the labformat thing below were helped)
 pal_usda_breaks <- quantile(mapping_data_usda$unemployment_rate, probs = seq(0, 1, length.out = 10), na.rm = TRUE)
-
+ 
 # Sort of "manually" logging the color pallete and its values/labels so we can apply it to bar chart as well.
 n_quants <- length(pal_usda_breaks)
 
-# Making a tibble to refer to the quantiles
+# Making a tibble to refer to the quantiles -----------------------------------
+# This is where I will later track the counts for each category
 pal_usda_quantiles <- tibble(
   bottom_val = numeric(n_quants),
+  top_val = numeric(n_quants),
   label = character(n_quants),
-  color = character(n_quants)
+  color = character(n_quants),
+  counts = numeric(n_quants)
 )
 
-pal_usda_quantiles[n_quants, "label"] <- NA
-pal_usda_quantiles[n_quants, "bottom_val"] <- NA
+pal_usda_quantiles[n_quants,] <- NA
+
 
 for(i in 1:(n_quants-1)){
   pal_usda_quantiles[i, "bottom_val"] <- pal_usda_breaks[i]
+  pal_usda_quantiles[i, "top_val"] <- pal_usda_breaks[i+1]
   pal_usda_quantiles[i,"label"] <- paste0(pal_usda_breaks[i], "% - ", pal_usda_breaks[i+1], "%")
 }
 
 pal_usda_quantiles <- pal_usda_quantiles %>%
   mutate(color = pal_usda(bottom_val))
 
+pal_usda_quantiles <- as.data.frame(pal_usda_quantiles)
 
-
-# Standardized ---------------
+# Standardized data ---------------
 
 # Join data to shapefile
 choropleth_area_data <- states_sf %>% 
@@ -416,6 +451,7 @@ server <- function(input, output) {
   
 
   
+  
   output$categories_dist_p1 <- renderPlotly({
     if(is.null(selected_state_p1())){
       selected_state_p1("USA")
@@ -460,6 +496,46 @@ server <- function(input, output) {
     ggplotly(p, tooltip = "text")
   })
   
+  
+  
+  output$extra_layer_dist <- renderPlotly({
+    # need to figure out the checking etc
+    
+    
+    if(selected_state_p1() == "USA"){
+      temp_df <- historic_districts
+    } else {
+      temp_df <- historic_districts %>% 
+        filter(state == selected_state_p1())
+    }
+    
+    # adding the counts
+    pal_usda_quantiles <- pal_usda_quantiles %>% 
+      rowwise() %>%  # so that r evaluates one range at a time
+      mutate(
+        counts = sum(temp_df$unemployment_rate >= bottom_val & 
+                       temp_df$unemployment_rate < (top_val),
+                     na.rm = TRUE)
+      ) %>% 
+      ungroup() # removing the rowwise grouping
+    
+    # Since the last quantile is inclusive of its max need to make slight adjustment
+    pal_usda_quantiles[(n_quants-1), "counts"] <- sum(
+      temp_df$unemployment_rate >= pal_usda_quantiles$bottom_val[(n_quants-1)] &
+        temp_df$unemployment_rate <= pal_usda_quantiles$top_val[(n_quants-1)], na.rm = TRUE)
+    
+    pal_usda_quantiles[n_quants, "counts"] <- sum(is.na(temp_df$unemployment_rate))
+    
+    p <- pal_usda_quantiles %>% 
+      ggplot(aes(y = reorder(label, bottom_val), x = counts, fill = color)) +
+      geom_col() +
+      labs(y = "Unemployment rate") +
+      scale_fill_identity()
+    
+    ggplotly(p)
+    
+    
+  })
   
   output$map2 <- renderLeaflet({
     leaflet() %>% 
