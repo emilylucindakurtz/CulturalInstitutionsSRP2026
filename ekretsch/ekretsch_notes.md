@@ -8,6 +8,7 @@
   ^<img width="844" height="180" alt="image" src="https://github.com/user-attachments/assets/9ed2524b-27ad-4a32-ba3d-4429204eedab" />
 - there are some points historic districts that are not mapped to the correct long/lat unfortunately (geocoding issue)
 - WV dist interesting
+- minn vs mich
 - (find where i put the rest of similar notes for blog post/explanation section...)
 - - [ ] write explanation for bar chart
 - [ ] clean code
