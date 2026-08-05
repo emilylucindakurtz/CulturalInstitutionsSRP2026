@@ -24,16 +24,19 @@ library(ggplot2)
 --
 
 ```{r}
+#| eval: false
 library(devtools)
 install_github("mikeasilva/blsAPI")
 ```
 
 ```{r}
+#| eval: false
 library(blsAPI)
 
 ```
 
 ```{r}
+#| eval: false
 library(BLSloadR)
 bls_data <- get_laus(
   geography = "county",
@@ -46,15 +49,18 @@ bls_data <- get_laus(
 ```
 
 ```{r}
+#| eval: false
 write_csv(bls_data, file = "raw_bls_data_1")
 ```
 
 ```{r}
+#| eval: false
 bls_data %>% 
   summarize(max_val = max(year))
 ```
 
 ```{r}
+#| eval: false
 bls_data_2 <- bls_data %>% 
   filter(year == 2025,
          measure_text == "unemployment rate",
@@ -62,6 +68,7 @@ bls_data_2 <- bls_data %>%
 ```
 
 ```{r}
+#| eval: false
 write_csv(bls_data_2, file = "bls_data.csv")
 ```
 
@@ -226,6 +233,7 @@ pal_usda_quantiles %>%
 
 
 ```{r}
+#| eval: false
 #acc mapping
 leaflet() %>% 
   addProviderTiles("CartoDB.Positron") %>% 
@@ -262,6 +270,7 @@ leaflet() %>%
 BLS DATA
 
 ```{r}
+#| eval: false
 bls_data_3  <- read_csv("../data/EK_general/bls_data.csv") %>% 
   mutate(NAMELSAD = str_remove(area_text, ",.*"), #before comma
          STUSPS = str_trim(str_replace(area_text, "^.*,",""))) #after comma
@@ -269,12 +278,14 @@ bls_data_3  <- read_csv("../data/EK_general/bls_data.csv") %>%
 ```
 
 ```{r}
+#| eval: false
 # join data to shapefile
 mapping_data_bls <- counties_sf %>% 
   left_join(bls_data_3, by = c("NAMELSAD", "STUSPS")) # ^ value is the unemployment
 ```
 
 ```{r}
+#| eval: false
 pal <- colorNumeric(
   palette = "YlGnBu",           #also tried piyg and ylor and didn't love either # I LOVED spectral
   domain = mapping_data_bls$value
@@ -299,6 +310,8 @@ leaflet(mapping_data_bls) %>%
 ```
 
 ```{r}
+# There is this same chunk later on...
+#| eval: false
 # run after running evth else?
 # Join data to shapefile
 choropleth_area_data <- states_sf %>% 
@@ -329,7 +342,7 @@ hist_dists_ur <- hist_dists_2 %>%
 
 
 
-Dealing with the joining issue (solved by the %% 1000 thing)
+Looking into dealing with the joining issue (solved by the %% 1000 thing)
 ```{r}
 # Check left dataframe
 hist_dists_2 %>%
@@ -435,11 +448,14 @@ by_state <- historic_districts %>%
 ```
 
 ```{r}
+# This is the newer version ->
 by_state <- historic_districts %>% 
   group_by(state) %>% 
   summarise(total_acreage = sum(acreage_of_property, na.rm=TRUE),
             total_num_districts = n(),
             across(25:last_col(), \(x) sum(x, na.rm = TRUE)))
+
+# The older version uses the tilde-dot
 ```
 
 ```         
@@ -472,6 +488,7 @@ cb = TRUE simplfies the file, resolution = 20m is the lowest, this gives 2024 da
 states_sf <- tigris::states(cb = TRUE, resolution = "20m")
 ```
 
+THIS IS THE JOINING ISSUE HERE!! (or not????)
 ```{r}
 # Join data to shapefile
 map_data <- states_sf %>% 
@@ -480,6 +497,23 @@ map_data <- states_sf %>%
   mutate(total_acreage_hd = total_acreage) %>% 
   select(-total_acreage)
 ```
+
+
+
+Looking into dealing with the joining issue (solved by the %% 1000 thing)
+```{r}
+# Check left dataframe
+hist_dists_2 %>%
+  count(county, abbreviation) %>%
+  filter(n > 1)
+
+# Check right dataframe
+unemployment_joinable %>%
+  count(NAME, state) %>%
+  filter(n > 1)
+```
+
+
 
 ```{r}
 # Standardizing

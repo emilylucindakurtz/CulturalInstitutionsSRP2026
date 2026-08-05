@@ -28,7 +28,7 @@ by_state <- historic_districts %>%
   group_by(state) %>% 
   summarise(total_acreage = sum(acreage_of_property, na.rm=TRUE),
             total_num_districts = n(),
-            across(25:last_col(), ~ sum(.x, na.rm = TRUE)))
+            across(25:last_col(), \(x) sum(x, na.rm = TRUE)))
 
 categories_counts <- by_state %>%
   select(state, 4:ncol(by_state)) %>%
@@ -143,7 +143,6 @@ pal_usda_quantiles <- tibble(
 
 pal_usda_quantiles[n_quants,] <- NA
 
-
 for(i in 1:(n_quants-1)){
   pal_usda_quantiles[i, "bottom_val"] <- pal_usda_breaks[i]
   pal_usda_quantiles[i, "top_val"] <- pal_usda_breaks[i+1]
@@ -157,7 +156,7 @@ pal_usda_quantiles <- as.data.frame(pal_usda_quantiles)
 
 # Standardized data ---------------
 
-# Join data to shapefile
+# Join data to shapefile #I THINK THIS IS THE ISSUE! JOINING many to many
 choropleth_area_data <- states_sf %>% 
   left_join(by_state, by = c("NAME" = "state")) %>% 
   left_join(areas, by = c("NAME" = "state_or_territory")) %>% 
@@ -378,7 +377,6 @@ server <- function(input, output) {
         }
       )
       
-    
     # Adding the full outline of the state on top (since it got covered by other things)
     if(input$state_choice != "All"){
       leafletProxy("map2") %>% 
@@ -424,33 +422,6 @@ server <- function(input, output) {
     )
     
   })
-  
-#   ggplot(state_subset, aes(x = fct_infreq(str_to_title(Primary.Energy.Source)), fill = Primary.Energy.Source)) +
-#     geom_bar(color = "black") +
-#     scale_fill_manual(values = leaflet_colors) +
-#     theme(axis.text.x = element_text(angle = -90)) +
-#     labs(y = "Count",
-#          x = "Powerplant Primary Energy Source",
-#          title = title)
-#   
-# })
-  
-  #HERE
-  # all_sources <- sort(unique(Powerplants$Primary.Energy.Source))
-  # leaflet_colors <- setNames(energy_source_pal(all_sources), all_sources)
-  # 
-  # leaflet_colors <- setNames(pal_usda(unemployment_rate?))
-
-  # output$extra_layer_dist <- renderPlotly({
-  #   p <- filtered_county_geoms %>%  #NO it should be # of hist dists by unemployment rate bucket!! Need to figure this out :9
-  #     ggplot(aes(y = ))
-  #   
-  #   data = filtered_county_geoms,
-  #   fillColor = ~pal_usda(unemployment_rate)
-  # })
-  
-
-  
   
   output$categories_dist_p1 <- renderPlotly({
     if(is.null(selected_state_p1())){
