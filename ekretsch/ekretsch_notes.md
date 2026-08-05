@@ -21,6 +21,7 @@
 - [ ] also maybe adjust the hist dists unemployment bar plot based on the hist dists filter as well
 - [ ] maybe allow hovering over counties to see what the unemployment rate and # of districts is
 - [ ] add titles for bar plots
+- [ ] <mark> maybe add histogram rather than bar plot by quantile for the # hist dists by unemployment and can still color it by quantile!! </mark>
 
 ## August 5
 - [ ] get bar plot for unemployment
