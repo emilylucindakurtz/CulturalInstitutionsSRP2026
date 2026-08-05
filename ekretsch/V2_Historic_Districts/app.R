@@ -468,6 +468,12 @@ server <- function(input, output) {
   })
   
   
+  # xxx
+  pal_usda_quantiles <- pal_usda_quantiles %>%
+    mutate(color = pal_usda(bottom_val))
+  # maybe check on the identiyt thing
+  
+  
   # New TEST
   output$extra_layer_dist <- renderPlotly({
     if(selected_state_p1() == "USA"){
@@ -479,7 +485,9 @@ server <- function(input, output) {
     
     p <- temp_df %>% 
       ggplot(aes(x = unemployment_rate)) +
-      geom_histogram(binwidth = .2)# +
+      geom_histogram(binwidth = .2,
+                     fill = pal_usda(temp_df$unemployment_rate)) +
+      xlim(0, 18)
       #labs(y = "Unemployment rate") +
       #scale_fill_identity()
     
