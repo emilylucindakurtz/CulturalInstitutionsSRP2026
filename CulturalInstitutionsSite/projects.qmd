@@ -1,3 +1,12 @@
 ---
 title: "Projects"
 ---
+
+
+zoe docs: museum_shiny.R, satellite_shiny.R, museum_writeup.rmd, satellite_writeup.rmd
+
+ian docs: industrial institutions files within rockjonesi, shiny app, Blog.md if dont want write up in shiny app
+
+rimona docs: shiny app is in CulturalInstitutionsSRP2026/rzhang/IPUMS_Institutions/ as app.R, and my blog_post.md file is also in the same IPUMS_Institutions folder - other docs in other folders in case needed
+
+emily docs: idk yet

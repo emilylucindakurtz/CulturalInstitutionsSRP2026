@@ -2,14 +2,6 @@
 title: "Mapping Cultural Institutions in the United States"
 ---
 
-
-https://datasciencepublicpolicy.org/projects/
-
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-
 ## What are cultural institutions, and why are they important?
 
 We define a cultural institution as any lasting legacy, still present in a community, of that community’s character or identity. Cultural institutions can come in many forms and can commemorate many different features of a community's identity. Museums, monuments, statues, and theaters are more obvious institutions that memorialize groups, events, industries, or individuals that played a crucial role in the community's history and identity, but institutions are not limited to just these forms. Industrial headquarters (or ruins), street art, and even power plants can play a role in how a community sees itself. All of these institutions can directly and indirectly influence how its residents think about things like politics, policy, and economics.
@@ -28,15 +20,16 @@ Our general goal over the course of this project was to collect data on a wide v
 
 library(DT)
 
-# Create example dataframe
+# create dataframe
+# i want to make everything in here sans description a link to other parts of the site
 fruit_data <- data.frame(
-  Project = c("Apple", "Pear", "Orange", "Banana"),
-  Description = c("d1 fdjsi", "hi", "bue", "yes"),
-  Author = c("Ian", "Rimona", "Zoe", "Emily"),
+  Project = c("Industrial Institutions", "Theaters, Colleges, Etc.", "Museums", "Satellite Indicators", "Emily"),
+  Description = c("Spatially explores American power plants, data centers, and corporate headquarters", "Explores various cultural institutions and connections to community demographics", "Maps American museums and provides information on them", "Satellite", "Emily"),
+  Author = c("Ian Rock-Jones", "Rimona Zhang", "Zoe Zhang", "Zoe Zhang", "Emily Kretschmer"),
   Data = c("click", "data", "yes", "hi")
 )
 
-# Render interactive HTML table
+# interactive table
 datatable(
   fruit_data,
   colnames = c("Project", "Description", "Author", "Data"),
@@ -54,9 +47,9 @@ datatable(
 
 ##### just notes to self below
 
-things that will appear on the website:
+need to put in root folder to deploy
 
-intro to project - that will be on this site itself (index.qmd)
+things that will appear on the website:
 
 TOP NAVBAR:
 APPS

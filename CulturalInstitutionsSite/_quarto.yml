@@ -1,23 +1,24 @@
 project:
   type: website
-
+  
 website:
   title: "Cultural Institutions"
   navbar:
     left:
       - text: "Home"
         file: index.qmd
-#      - text: "Projects"
-#        menu:
-#          - text: "Data Centers, Fortune 500s, and Power Plants"
-#            href: analysis.qmd
-#          - text: "Theaters, Operas, Colleges, and Auto Factories"
-#            href: ml_models.qmd
+      - text: "Projects"
+        menu:
+          - text: "Data Centers, Fortune 500s, and Power Plants"
+            #href: industrial_institutions.qmd
+            href: https://marekjozsef.shinyapps.io/SRP2026-industrial/
+          - text: "Theaters, Operas, Colleges, and Auto Factories"
+            href: theaters_etc.qmd
 #          - text: "---" # Adds a visual divider line
-#          - text: "Museums"
-#            href: https://example.com
-#          - text: "Satellite Indicators"
-#            href: https://example.com
+          - text: "Museums"
+            href: https://marekjozsef.shinyapps.io/SRP2026_museum/
+          - text: "Satellite Indicators"
+            href: https://marekjozsef.shinyapps.io/SRP2026_satellite/
 #          - text: "Emily App(s)"
 #            href: https://example.com
       - text: "Data"
