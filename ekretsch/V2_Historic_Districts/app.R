@@ -468,11 +468,8 @@ server <- function(input, output) {
   })
   
   
-  
+  # New TEST
   output$extra_layer_dist <- renderPlotly({
-    # need to figure out the checking etc
-    
-    
     if(selected_state_p1() == "USA"){
       temp_df <- historic_districts
     } else {
@@ -480,33 +477,50 @@ server <- function(input, output) {
         filter(state == selected_state_p1())
     }
     
-    # adding the counts
-    pal_usda_quantiles <- pal_usda_quantiles %>% 
-      rowwise() %>%  # so that r evaluates one range at a time
-      mutate(
-        counts = sum(temp_df$unemployment_rate >= bottom_val & 
-                       temp_df$unemployment_rate < (top_val),
-                     na.rm = TRUE)
-      ) %>% 
-      ungroup() # removing the rowwise grouping
-    
-    # Since the last quantile is inclusive of its max need to make slight adjustment
-    pal_usda_quantiles[(n_quants-1), "counts"] <- sum(
-      temp_df$unemployment_rate >= pal_usda_quantiles$bottom_val[(n_quants-1)] &
-        temp_df$unemployment_rate <= pal_usda_quantiles$top_val[(n_quants-1)], na.rm = TRUE)
-    
-    pal_usda_quantiles[n_quants, "counts"] <- sum(is.na(temp_df$unemployment_rate))
-    
-    p <- pal_usda_quantiles %>% 
-      ggplot(aes(y = reorder(label, bottom_val), x = counts, fill = color)) +
-      geom_col() +
-      labs(y = "Unemployment rate") +
-      scale_fill_identity()
+    p <- temp_df %>% 
+      ggplot(aes(x = unemployment_rate)) +
+      geom_histogram(binwidth = .2)# +
+      #labs(y = "Unemployment rate") +
+      #scale_fill_identity()
     
     ggplotly(p)
-    
-    
   })
+  
+  # OLD VERSION 
+  # output$extra_layer_dist <- renderPlotly({
+  #   # need to figure out the checking etc
+  #   if(selected_state_p1() == "USA"){
+  #     temp_df <- historic_districts
+  #   } else {
+  #     temp_df <- historic_districts %>% 
+  #       filter(state == selected_state_p1())
+  #   }
+  #   
+  #   # adding the counts
+  #   pal_usda_quantiles <- pal_usda_quantiles %>% 
+  #     rowwise() %>%  # so that r evaluates one range at a time
+  #     mutate(
+  #       counts = sum(temp_df$unemployment_rate >= bottom_val & 
+  #                      temp_df$unemployment_rate < (top_val),
+  #                    na.rm = TRUE)
+  #     ) %>% 
+  #     ungroup() # removing the rowwise grouping
+  #   
+  #   # Since the last quantile is inclusive of its max need to make slight adjustment
+  #   pal_usda_quantiles[(n_quants-1), "counts"] <- sum(
+  #     temp_df$unemployment_rate >= pal_usda_quantiles$bottom_val[(n_quants-1)] &
+  #       temp_df$unemployment_rate <= pal_usda_quantiles$top_val[(n_quants-1)], na.rm = TRUE)
+  #   
+  #   pal_usda_quantiles[n_quants, "counts"] <- sum(is.na(temp_df$unemployment_rate))
+  #   
+  #   p <- pal_usda_quantiles %>% 
+  #     ggplot(aes(y = reorder(label, bottom_val), x = counts, fill = color)) +
+  #     geom_col() +
+  #     labs(y = "Unemployment rate") +
+  #     scale_fill_identity()
+  #   
+  #   ggplotly(p)
+  # })
   
   output$map2 <- renderLeaflet({
     leaflet() %>% 
