@@ -17,6 +17,7 @@
    - solution: I am going to use the modulo operator (%% 1000) on the FIPS code
    - ^ if it is != 0, then it is a county
    - FIPS codes have the first 2 digits being for the state, and the last 3 being for the county
+   - [ ] reverse the order because it's confusing...
      
 
 Got a bar chart!!! <img width="1404" height="885" alt="image" src="https://github.com/user-attachments/assets/85734a70-7b90-4c79-bed5-17c4e4592840" />
