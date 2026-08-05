@@ -5,7 +5,8 @@ library(DT)
 library(geosphere)
 library(jsonlite)
 
-museum_data <- read_csv("../data/Museum/museum_app_final.csv") %>%
+#museum_data <- read_csv("../data/Museum/museum_app_final.csv") %>%
+museum_data <- read_csv("museum_app_final.csv") %>% # move to a data subfolder inside shiny app directory
   filter(!is.na(latitude), !is.na(longitude)) %>%
   mutate(
     website_link = if_else(is.na(website_link), "", website_link),

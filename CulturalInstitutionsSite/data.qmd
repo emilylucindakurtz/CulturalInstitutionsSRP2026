@@ -4,13 +4,30 @@ title: "Data"
 
 All data used for demonstrations and write ups on this website can be downloaded here.
 
-museum_app_final.csv
-satellite_all_indicators.csv
-PowerPlants_Clean.csv
-Fortune500HQ_Housing.csv
-county_HPI.csv
-Fortune500_Housing_All_Counties.csv
-auto_facilities_app_clean.csv
-colleges_app_clean.csv
-opera_app_clean.csv
-theaters_app_clean.csv
+### Museums
+
+[museum_app_final.csv](data/museum_app_final.csv)
+
+### Satellite
+
+[satellite_all_indicators.csv](data/satellite_all_indicators.csv)
+
+### Industrial Institutions
+
+[PowerPlants_Clean.csv](data/PowerPlants_Clean.csv)
+
+[Fortune500HQ_Housing.csv](data/Fortune500HQ_Housing.csv)
+
+[county_HPI.csv](data/county_HPI.csv)
+
+[Fortune500_Housing_All_Counties.csv](data/Fortune500_Housing_All_Counties.csv)
+
+### Cultural Institutions
+
+[auto_facilities_app_clean.csv](data/auto_facilities_app_clean.csv)
+
+[colleges_app_clean.csv](data/colleges_app_clean.csv)
+
+[opera_app_clean.csv](data/opera_app_clean.csv)
+
+[theaters_app_clean.csv](data/theaters_app_clean.csv)

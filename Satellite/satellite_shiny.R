@@ -4,7 +4,8 @@ library(DT)
 library(bslib)
 
 satellite_data <- read_csv(
-  "./outputs/Satellite/satellite_all_indicators.csv",
+  #"./outputs/Satellite/satellite_all_indicators.csv",
+  "satellite_all_indicators.csv",
   show_col_types = FALSE
 ) %>%
   mutate(

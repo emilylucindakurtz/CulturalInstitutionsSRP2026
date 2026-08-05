@@ -25,6 +25,10 @@ website:
         file: data.qmd
       - text: "Project Members"
         file: aboutus.qmd
-        
+
+format:
+  html:
+    grid:
+      sidebar-width: 10px
       
         

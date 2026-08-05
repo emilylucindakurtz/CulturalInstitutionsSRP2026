@@ -19,19 +19,32 @@ Our general goal over the course of this project was to collect data on a wide v
 #| warning: false
 
 library(DT)
+library(dplyr)
 
 # create dataframe
-# i want to make everything in here sans description a link to other parts of the site
-fruit_data <- data.frame(
-  Project = c("Industrial Institutions", "Theaters, Colleges, Etc.", "Museums", "Satellite Indicators", "Emily"),
+data <- data.frame(
+  Project = c(
+    '<a href="industrial_institutions.html">Industrial Institutions</a>',
+    '<a href="theaters_etc.html">Theaters, Colleges, Etc.</a>',
+    '<a href="museums.html">Museums</a>',
+    '<a href="satellite.html">Satellite Indicators</a>',
+    '<a href="aboutus.html">Emily Kretschmer</a>'),
+    #"Industrial Institutions", "Theaters, Colleges, Etc.", "Museums", "Satellite Indicators", "Emily"),
   Description = c("Spatially explores American power plants, data centers, and corporate headquarters", "Explores various cultural institutions and connections to community demographics", "Maps American museums and provides information on them", "Satellite", "Emily"),
-  Author = c("Ian Rock-Jones", "Rimona Zhang", "Zoe Zhang", "Zoe Zhang", "Emily Kretschmer"),
-  Data = c("click", "data", "yes", "hi")
+  Author = c(
+    '<a href="aboutus.html">Ian Rock-Jones</a>',
+    '<a href="aboutus.html">Rimona Zhang</a>',
+    '<a href="aboutus.html">Zoe Zhang</a>',
+    '<a href="aboutus.html">Zoe Zhang</a>',
+    '<a href="aboutus.html">Emily Kretschmer</a>'),
+    # "Ian Rock-Jones", "Rimona Zhang", "Zoe Zhang", "Zoe Zhang", "Emily Kretschmer"),
+  Data = c("click", "data", "yes", "hi", "hi")
 )
 
 # interactive table
 datatable(
-  fruit_data,
+  data,
+  escape = FALSE,
   colnames = c("Project", "Description", "Author", "Data"),
   options = list(pageLength = 5, dom = 'ftip'),
   rownames = FALSE
@@ -41,22 +54,3 @@ datatable(
 #datatable(data.frame(Website = '<a href="https://r-project.org">Link</a>'), escape = FALSE)
 
 ```
-
-
-
-
-##### just notes to self below
-
-need to put in root folder to deploy
-
-things that will appear on the website:
-
-TOP NAVBAR:
-APPS
-BLOG POSTS
-DATA
-PROJECT MEMBERS
-
-SIDE BAR:
-only appear for apps and blog posts to give people all options
-have blog posts refer to apps
