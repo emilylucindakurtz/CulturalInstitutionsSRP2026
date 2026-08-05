@@ -18,6 +18,7 @@
 
 - [ ] ooh maybe multi-select states???
 - [ ] also maybe adjust the hist dists unemployment bar plot based on the hist dists filter as well
+- [ ] maybe allow hovering over counties to see what the unemployment rate and # of districts is
 
 ## August 5
 - [ ] get bar plot for unemployment
