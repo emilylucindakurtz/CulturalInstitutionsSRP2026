@@ -10,7 +10,12 @@
 - (find where i put the rest of similar notes for blog post/explanation section...)
 - - [ ] write explanation for bar chart
 - [ ] clean code
+
+
+
+
 - [ ] ooh maybe multi-select states???
+- [ ] also maybe adjust the hist dists unemployment bar plot based on the hist dists filter as well
 
 ## August 5
 - [ ] get bar plot for unemployment
