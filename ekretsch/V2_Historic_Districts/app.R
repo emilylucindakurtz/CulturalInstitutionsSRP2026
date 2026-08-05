@@ -209,22 +209,26 @@ ui <- page_navbar(
               size = 10 # max visible items before scrolling
             )
           ),
-          textOutput("categories_dist_label_p1"),
-          plotlyOutput("categories_dist_p1"),
-          
+          textOutput("categories_dist_label_p1"), #rename
+          plotlyOutput("categories_dist_p1") #rename
+          #plotlyOutput("extra_layer_dist") # RENAME!
         ),
         mainPanel(
           card(
             leafletOutput("map2", height=600)
           ),
           card(
+            textOutput("extra_layer_label_p1"), #rename
             plotlyOutput("extra_layer_dist") # RENAME!
-          ),
-          card(
-            DT::DTOutput("table2")
           )
+          #card(
+          #  DT::DTOutput("table2")
+          #)
           
         )
+      ),
+      card(
+        DT::DTOutput("table2")
       )
     )
   ),
@@ -426,11 +430,20 @@ server <- function(input, output) {
     
   })
   
-  output$categories_dist_p1 <- renderPlotly({
+  output$categories_dist_label_p1 <- renderText({
     if(is.null(selected_state_p1())){
       selected_state_p1("USA")
     }
     
+    
+    if(selected_state_p1() == "USA"){
+      "XYZ"
+    } else{
+      paste0("Distribution of XYz", selected_state())
+    }
+  })
+  
+  output$categories_dist_p1 <- renderPlotly({
     temp_df <- categories_counts %>% 
       rename(counts = all_of(selected_state_p1())) %>%  # Get just the column of the state that was clicked.
       select(category, counts) %>% 
@@ -470,6 +483,13 @@ server <- function(input, output) {
     ggplotly(p, tooltip = "text")
   })
   
+  output$extra_layer_label_p1 <- renderText({
+    if(selected_state_p1() == "USA"){
+      "XYZ"
+    } else{
+      paste0("Distribution of XYz", selected_state())
+    }
+  })
   
   # New TEST
   output$extra_layer_dist <- renderPlotly({
