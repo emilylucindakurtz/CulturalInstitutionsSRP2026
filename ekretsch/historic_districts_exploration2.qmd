@@ -313,8 +313,6 @@ choropleth_area_data <- states_sf %>%
 historic_districts <- read_csv("../data/Historic Districts/historic_districts_clean3_specific_addresses.csv")
 ```
 ```{r}
-
-
 hist_dists_2 <- historic_districts  %>% 
   mutate(abbreviation = state.abb[match(state, state.name)])
 ```
@@ -328,6 +326,8 @@ hist_dists_ur <- hist_dists_2 %>%
             by = c("county" = "NAME", 
                    "abbreviation" = "state"))
 ```
+
+
 
 Dealing with the joining issue (solved by the %% 1000 thing)
 ```{r}
