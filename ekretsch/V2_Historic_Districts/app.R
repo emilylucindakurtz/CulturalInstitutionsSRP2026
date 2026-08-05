@@ -211,11 +211,14 @@ ui <- page_navbar(
           ),
           textOutput("categories_dist_label_p1"),
           plotlyOutput("categories_dist_p1"),
-          plotlyOutput("extra_layer_dist") # RENAME!
+          
         ),
         mainPanel(
           card(
             leafletOutput("map2", height=600)
+          ),
+          card(
+            plotlyOutput("extra_layer_dist") # RENAME!
           ),
           card(
             DT::DTOutput("table2")
@@ -468,12 +471,6 @@ server <- function(input, output) {
   })
   
   
-  # xxx
-  pal_usda_quantiles <- pal_usda_quantiles %>%
-    mutate(color = pal_usda(bottom_val))
-  # maybe check on the identiyt thing
-  
-  
   # New TEST
   output$extra_layer_dist <- renderPlotly({
     if(selected_state_p1() == "USA"){
@@ -483,11 +480,15 @@ server <- function(input, output) {
         filter(state == selected_state_p1())
     }
     
+    temp_df <- temp_df %>% 
+      mutate(unemployment_color = pal_usda(unemployment_rate))
+    
     p <- temp_df %>% 
-      ggplot(aes(x = unemployment_rate)) +
-      geom_histogram(binwidth = .2,
-                     fill = pal_usda(temp_df$unemployment_rate)) +
-      xlim(0, 18)
+      ggplot(aes(x = unemployment_rate, fill = unemployment_color)) +
+      geom_histogram(binwidth = .3) +
+      #xlim(0, 18) +
+      scale_fill_identity()
+      
       #labs(y = "Unemployment rate") +
       #scale_fill_identity()
     
