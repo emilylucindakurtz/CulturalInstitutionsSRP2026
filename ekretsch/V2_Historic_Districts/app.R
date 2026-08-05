@@ -209,19 +209,26 @@ ui <- page_navbar(
               size = 10 # max visible items before scrolling
             )
           ),
-          textOutput("categories_dist_label_p1"),
-          plotlyOutput("categories_dist_p1"),
-          plotlyOutput("extra_layer_dist") # RENAME!
+          textOutput("categories_dist_label_p1"), #rename
+          plotlyOutput("categories_dist_p1") #rename
+          #plotlyOutput("extra_layer_dist") # RENAME!
         ),
         mainPanel(
           card(
             leafletOutput("map2", height=600)
           ),
           card(
-            DT::DTOutput("table2")
+            textOutput("extra_layer_label_p1"), #rename
+            plotlyOutput("extra_layer_dist") # RENAME!
           )
+          #card(
+          #  DT::DTOutput("table2")
+          #)
           
         )
+      ),
+      card(
+        DT::DTOutput("table2")
       )
     )
   ),
@@ -423,11 +430,20 @@ server <- function(input, output) {
     
   })
   
-  output$categories_dist_p1 <- renderPlotly({
+  output$categories_dist_label_p1 <- renderText({
     if(is.null(selected_state_p1())){
       selected_state_p1("USA")
     }
     
+    
+    if(selected_state_p1() == "USA"){
+      "XYZ"
+    } else{
+      paste0("Distribution of XYz", selected_state())
+    }
+  })
+  
+  output$categories_dist_p1 <- renderPlotly({
     temp_df <- categories_counts %>% 
       rename(counts = all_of(selected_state_p1())) %>%  # Get just the column of the state that was clicked.
       select(category, counts) %>% 
@@ -467,12 +483,16 @@ server <- function(input, output) {
     ggplotly(p, tooltip = "text")
   })
   
+  output$extra_layer_label_p1 <- renderText({
+    if(selected_state_p1() == "USA"){
+      "XYZ"
+    } else{
+      paste0("Distribution of XYz", selected_state())
+    }
+  })
   
-  
+  # New TEST
   output$extra_layer_dist <- renderPlotly({
-    # need to figure out the checking etc
-    
-    
     if(selected_state_p1() == "USA"){
       temp_df <- historic_districts
     } else {
@@ -480,33 +500,56 @@ server <- function(input, output) {
         filter(state == selected_state_p1())
     }
     
-    # adding the counts
-    pal_usda_quantiles <- pal_usda_quantiles %>% 
-      rowwise() %>%  # so that r evaluates one range at a time
-      mutate(
-        counts = sum(temp_df$unemployment_rate >= bottom_val & 
-                       temp_df$unemployment_rate < (top_val),
-                     na.rm = TRUE)
-      ) %>% 
-      ungroup() # removing the rowwise grouping
+    temp_df <- temp_df %>% 
+      mutate(unemployment_color = pal_usda(unemployment_rate))
     
-    # Since the last quantile is inclusive of its max need to make slight adjustment
-    pal_usda_quantiles[(n_quants-1), "counts"] <- sum(
-      temp_df$unemployment_rate >= pal_usda_quantiles$bottom_val[(n_quants-1)] &
-        temp_df$unemployment_rate <= pal_usda_quantiles$top_val[(n_quants-1)], na.rm = TRUE)
-    
-    pal_usda_quantiles[n_quants, "counts"] <- sum(is.na(temp_df$unemployment_rate))
-    
-    p <- pal_usda_quantiles %>% 
-      ggplot(aes(y = reorder(label, bottom_val), x = counts, fill = color)) +
-      geom_col() +
-      labs(y = "Unemployment rate") +
+    p <- temp_df %>% 
+      ggplot(aes(x = unemployment_rate, fill = unemployment_color)) +
+      geom_histogram(binwidth = .3) +
+      #xlim(0, 18) +
       scale_fill_identity()
+      
+      #labs(y = "Unemployment rate") +
+      #scale_fill_identity()
     
     ggplotly(p)
-    
-    
   })
+  
+  # OLD VERSION 
+  # output$extra_layer_dist <- renderPlotly({
+  #   # need to figure out the checking etc
+  #   if(selected_state_p1() == "USA"){
+  #     temp_df <- historic_districts
+  #   } else {
+  #     temp_df <- historic_districts %>% 
+  #       filter(state == selected_state_p1())
+  #   }
+  #   
+  #   # adding the counts
+  #   pal_usda_quantiles <- pal_usda_quantiles %>% 
+  #     rowwise() %>%  # so that r evaluates one range at a time
+  #     mutate(
+  #       counts = sum(temp_df$unemployment_rate >= bottom_val & 
+  #                      temp_df$unemployment_rate < (top_val),
+  #                    na.rm = TRUE)
+  #     ) %>% 
+  #     ungroup() # removing the rowwise grouping
+  #   
+  #   # Since the last quantile is inclusive of its max need to make slight adjustment
+  #   pal_usda_quantiles[(n_quants-1), "counts"] <- sum(
+  #     temp_df$unemployment_rate >= pal_usda_quantiles$bottom_val[(n_quants-1)] &
+  #       temp_df$unemployment_rate <= pal_usda_quantiles$top_val[(n_quants-1)], na.rm = TRUE)
+  #   
+  #   pal_usda_quantiles[n_quants, "counts"] <- sum(is.na(temp_df$unemployment_rate))
+  #   
+  #   p <- pal_usda_quantiles %>% 
+  #     ggplot(aes(y = reorder(label, bottom_val), x = counts, fill = color)) +
+  #     geom_col() +
+  #     labs(y = "Unemployment rate") +
+  #     scale_fill_identity()
+  #   
+  #   ggplotly(p)
+  # })
   
   output$map2 <- renderLeaflet({
     leaflet() %>% 
