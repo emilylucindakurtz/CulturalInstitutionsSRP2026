@@ -21,7 +21,10 @@
    - [ ] reverse the order because it's confusing...
    - [ ] check on this issue: <img width="820" height="149" alt="image" src="https://github.com/user-attachments/assets/9bb6e51c-ee2d-4056-b04c-f8fe93bf88d2" />
 - [ ] fix this issue <img width="1036" height="762" alt="image" src="https://github.com/user-attachments/assets/eeaf96f4-2c36-4b41-8751-81fa52ee7732" />
-- [ ] fix the lack of a label for "NA"
+- [ ] make bar chart nicer
+   - [ ] fix the lack of a label for "NA"
+   - [ ] make the text/orientation look nicer
+   - [ ] uh what is up with VA?
 
 
      
