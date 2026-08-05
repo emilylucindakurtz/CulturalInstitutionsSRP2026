@@ -20,6 +20,8 @@
    - FIPS codes have the first 2 digits being for the state, and the last 3 being for the county
    - [ ] reverse the order because it's confusing...
    - [ ] check on this issue: <img width="820" height="149" alt="image" src="https://github.com/user-attachments/assets/9bb6e51c-ee2d-4056-b04c-f8fe93bf88d2" />
+- [ ] fix this issue <img width="1036" height="762" alt="image" src="https://github.com/user-attachments/assets/eeaf96f4-2c36-4b41-8751-81fa52ee7732" />
+
 
      
 
