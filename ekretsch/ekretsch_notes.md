@@ -9,6 +9,7 @@
 - there are some points historic districts that are not mapped to the correct long/lat unfortunately (geocoding issue)
 - WV dist interesting
 - minn vs mich
+- NY
 - (find where i put the rest of similar notes for blog post/explanation section...)
 - - [ ] write explanation for bar chart
 - [ ] clean code
@@ -19,6 +20,7 @@
 - [ ] ooh maybe multi-select states???
 - [ ] also maybe adjust the hist dists unemployment bar plot based on the hist dists filter as well
 - [ ] maybe allow hovering over counties to see what the unemployment rate and # of districts is
+- [ ] add titles for bar plots
 
 ## August 5
 - [ ] get bar plot for unemployment
