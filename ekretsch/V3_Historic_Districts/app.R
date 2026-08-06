@@ -24,15 +24,15 @@ library(readr)
 historic_districts <- read_csv("../../data/Historic Districts/historic_districts_clean4.csv")
 areas <- read_csv("../../data/Historic Districts/us_areas_cleaned.csv")
 
-by_state <- historic_districts %>% 
+hd_by_state <- historic_districts %>% 
   group_by(state) %>% 
   summarise(total_acreage = sum(acreage_of_property, na.rm=TRUE),
             total_num_districts = n(),
             across(25:last_col(), ~ sum(.x, na.rm = TRUE)))
 # changed this ^
 
-categories_counts <- by_state %>%
-  select(state, 4:ncol(by_state)) %>%
+hd_categories_counts_by_state <- hd_by_state %>%
+  select(state, 4:ncol(hd_by_state)) %>%
   column_to_rownames(var = "state") %>%   # Promotes state from a regular column to R row name
   t() %>% # Transposes (rows become columns, columns become rows) (returns a matrix)
   as.data.frame() %>%
@@ -107,7 +107,7 @@ historic_districts <- historic_districts  %>%
 
 # joining the unemployment rate to historic districts via the county
 historic_districts <- historic_districts %>% 
-  left_join(unemployment_joinable %>% 
+  left_join(unemployment_usda_2023_joinable %>% 
               filter(fips_code %% 1000 != 0) %>% 
               select("NAME", "state", "unemployment_rate", "fips_code"),  
             by = c("county" = "NAME", 
@@ -117,7 +117,7 @@ historic_districts <- historic_districts %>%
 # Color palette stuff -------------------------------------------------------
 
 # Color palette
-pal_usda <- colorQuantile(
+pal_unemployment_usda_23 <- colorQuantile(
   #palette = "YlOrRd",
   palette = "Spectral",
   domain = unemployment_usda_23_mapping$unemployment_rate,
@@ -127,14 +127,14 @@ pal_usda <- colorQuantile(
 )
 
 # Prepping for fixing the legend (this and the labformat thing below were helped)
-pal_usda_breaks <- quantile(unemployment_usda_23_mapping$unemployment_rate, probs = seq(0, 1, length.out = 10), na.rm = TRUE)
+pal_breaks_unemployment_usda_23 <- quantile(unemployment_usda_23_mapping$unemployment_rate, probs = seq(0, 1, length.out = 10), na.rm = TRUE)
  
 # Sort of "manually" logging the color palette and its values/labels so we can apply it to bar chart as well.
-n_quants <- length(pal_usda_breaks)
+n_quants <- length(pal_breaks_unemployment_usda_23)
 
 # Making a tibble to refer to the quantiles -----------------------------------
 # This is where I will later track the counts for each category
-pal_usda_quantiles <- tibble(
+pal_quantiles_unemployment_usda_23 <- tibble(
   bottom_val = numeric(n_quants),
   top_val = numeric(n_quants),
   label = character(n_quants),
@@ -142,36 +142,36 @@ pal_usda_quantiles <- tibble(
   counts = numeric(n_quants)
 )
 
-pal_usda_quantiles[n_quants,] <- NA
+pal_quantiles_unemployment_usda_23[n_quants,] <- NA
 
 for(i in 1:(n_quants-1)){
-  pal_usda_quantiles[i, "bottom_val"] <- pal_usda_breaks[i]
-  pal_usda_quantiles[i, "top_val"] <- pal_usda_breaks[i+1]
-  pal_usda_quantiles[i,"label"] <- paste0(pal_usda_breaks[i], "% - ", pal_usda_breaks[i+1], "%")
+  pal_quantiles_unemployment_usda_23[i, "bottom_val"] <- pal_breaks_unemployment_usda_23[i]
+  pal_quantiles_unemployment_usda_23[i, "top_val"] <- pal_breaks_unemployment_usda_23[i+1]
+  pal_quantiles_unemployment_usda_23[i,"label"] <- paste0(pal_breaks_unemployment_usda_23[i], "% - ", pal_breaks_unemployment_usda_23[i+1], "%")
 }
 
-pal_usda_quantiles <- pal_usda_quantiles %>%
-  mutate(color = pal_usda(bottom_val))
+pal_quantiles_unemployment_usda_23 <- pal_quantiles_unemployment_usda_23 %>%
+  mutate(color = pal_unemployment_usda_23(bottom_val))
 
-pal_usda_quantiles <- as.data.frame(pal_usda_quantiles)
+pal_quantiles_unemployment_usda_23 <- as.data.frame(pal_quantiles_unemployment_usda_23)
 
 # Standardized data ---------------
 
 # Join data to shapefile #I THINK THIS IS THE ISSUE! JOINING many to many CBLLLLLLLLLLLLLLLLLL ------------------------
-choropleth_area_data <- states_sf %>% 
-  left_join(by_state, by = c("NAME" = "state")) %>% 
+hd_state_areas <- states_sf %>% 
+  left_join(hd_by_state, by = c("NAME" = "state")) %>% 
   left_join(areas, by = c("NAME" = "state_or_territory")) %>% 
   mutate(total_acreage_hd = total_acreage) %>% 
   select(-total_acreage)
 
 # Standardizing (historic district acreage by total state land acreage)
-choropleth_area_data <- choropleth_area_data %>% 
+hd_state_areas <- hd_state_areas %>% 
   mutate(standardized_hd_acreage = total_acreage_hd/land_area_acres*100) 
 
 # Color palette (UNSURE IF THIS SHOULD GO HERE OR LaTER) --- def need to fix the name of this palette
-my_palette <- colorNumeric(
+pal_hd_state_areas <- colorNumeric(
   palette = "viridis", 
-  domain = choropleth_area_data$standardized_hd_acreage,
+  domain = hd_state_areas$standardized_hd_acreage,
   na.color = "transparent"
 )
 
@@ -197,12 +197,12 @@ ui <- page_navbar(
           selectInput(
             inputId = "state_choice",
             label = "Choose state:",
-            choices = c("All", sort(unique(choropleth_area_data$NAME)))
+            choices = c("All", sort(unique(hd_state_areas$NAME)))
           ),
           pickerInput(
             inputId = "categories_choice",
             label = "Choose categories:",
-            choices = sort(categories_counts$category_nice),
+            choices = sort(hd_categories_counts_by_state$category_nice),
             multiple = TRUE,
             options = pickerOptions(
               actionsBox = TRUE, # adds select all/deselect all buttons
@@ -224,29 +224,29 @@ ui <- page_navbar(
           
           textOutput("categories_dist_label_p1"), #rename
           plotlyOutput("categories_dist_p1") #rename
-          #plotlyOutput("extra_layer_dist") # RENAME!
+          #plotlyOutput("layer2_dist_p1") # RENAME!
         ),
         mainPanel(
           card(
             leafletOutput("map2", height=600)
           ),
           card(
-            textOutput("extra_layer_label_p1"), #rename
-            plotlyOutput("extra_layer_dist") # RENAME!
+            textOutput("layer2_dist_label_p1"), #rename
+            plotlyOutput("layer2_dist_p1") # RENAME!
           )
           #card(
-          #  DT::DTOutput("table2")
+          #  DT::DTOutput("hd_table_p1")
           #)
           
         )
       ),
       card(
-        DT::DTOutput("table2")
+        DT::DTOutput("hd_table_p1")
       )
     )
   ),
   
-  # Page 2 Layout
+  # Page 2 Layout (COMING BACK TO THIS LATER!)
     nav_panel(
       title = "Analysis",
       
@@ -336,7 +336,7 @@ server <- function(input, output) {
   
   update_districts <- function() {
     # Get a character vector of the underlying column names
-    cols_to_check <- categories_counts %>% 
+    cols_to_check <- hd_categories_counts_by_state %>% 
       filter(category_nice %in% input$categories_choice) %>% 
       pull(category_og)
     
@@ -413,7 +413,7 @@ server <- function(input, output) {
       leafletProxy("map2") %>% 
         addPolygons(
           data = filtered_county_geoms,
-          fillColor = ~pal_usda(unemployment_rate),
+          fillColor = ~pal_unemployment_usda_23(unemployment_rate),
           fillOpacity = 1,
           color = "white",
           weight = 1,
@@ -422,19 +422,19 @@ server <- function(input, output) {
           label = paste0(filtered_county_geoms$area_name, ": ", filtered_county_geoms$unemployment_rate, "%") #hovering
         ) %>% 
         addLegend(
-          pal = pal_usda,
+          pal = pal_unemployment_usda_23,
           value = unemployment_usda_23_mapping$unemployment_rate,
           position = "bottomright",
           title = "Unemployment rate (%)",
           labFormat = function(type, cuts, p){
-            n <- length(pal_usda_breaks) - 1
-            paste0(round(pal_usda_breaks[1:n], 1), "% - ", round(pal_usda_breaks[2:(n+1)], 1), "%")
+            n <- length(pal_breaks_unemployment_usda_23) - 1
+            paste0(round(pal_breaks_unemployment_usda_23[1:n], 1), "% - ", round(pal_breaks_unemployment_usda_23[2:(n+1)], 1), "%")
           }
         )
     }
   }
   
-  output$table2 <- DT::renderDT({
+  output$hd_table_p1 <- DT::renderDT({
     req(districts_filtered()) # Make sure that there is actually something to put
     data_to_show <- districts_filtered() %>% 
       select(ref_number,	property_name,	state,	county,	city,	street_number,	area_of_significance)
@@ -463,7 +463,7 @@ server <- function(input, output) {
   })
   
   output$categories_dist_p1 <- renderPlotly({
-    temp_df <- categories_counts %>% 
+    temp_df <- hd_categories_counts_by_state %>% 
       rename(counts = all_of(selected_state_p1())) %>%  # Get just the column of the state that was clicked.
       select(category, counts) %>% 
       filter(counts >0) %>% 
@@ -502,7 +502,7 @@ server <- function(input, output) {
   })
   
   # MAYBE CHANGE LABEL???
-  output$extra_layer_label_p1 <- renderText({
+  output$layer2_dist_label_p1 <- renderText({
     if(selected_state_p1() == "USA"){
       "Distribution of historic district counts by their coresponding county's unemployment rate in the USA"
     } else{
@@ -511,7 +511,7 @@ server <- function(input, output) {
   })
   
   # New TEST
-  output$extra_layer_dist <- renderPlotly({
+  output$layer2_dist_p1 <- renderPlotly({
     if(selected_state_p1() == "USA"){
       temp_df <- historic_districts
     } else {
@@ -520,7 +520,7 @@ server <- function(input, output) {
     }
     
     temp_df <- temp_df %>% 
-      mutate(unemployment_color = pal_usda(unemployment_rate))
+      mutate(unemployment_color = pal_unemployment_usda_23(unemployment_rate))
     
     p <- temp_df %>% 
       ggplot(aes(x = unemployment_rate, fill = unemployment_color)) +
@@ -535,7 +535,7 @@ server <- function(input, output) {
   })
   
   # OLD VERSION 
-  # output$extra_layer_dist <- renderPlotly({
+  # output$layer2_dist_p1 <- renderPlotly({
   #   # need to figure out the checking etc
   #   if(selected_state_p1() == "USA"){
   #     temp_df <- historic_districts
@@ -545,7 +545,7 @@ server <- function(input, output) {
   #   }
   #   
   #   # adding the counts
-  #   pal_usda_quantiles <- pal_usda_quantiles %>% 
+  #   pal_quantiles_unemployment_usda_23 <- pal_quantiles_unemployment_usda_23 %>% 
   #     rowwise() %>%  # so that r evaluates one range at a time
   #     mutate(
   #       counts = sum(temp_df$unemployment_rate >= bottom_val & 
@@ -555,13 +555,13 @@ server <- function(input, output) {
   #     ungroup() # removing the rowwise grouping
   #   
   #   # Since the last quantile is inclusive of its max need to make slight adjustment
-  #   pal_usda_quantiles[(n_quants-1), "counts"] <- sum(
-  #     temp_df$unemployment_rate >= pal_usda_quantiles$bottom_val[(n_quants-1)] &
-  #       temp_df$unemployment_rate <= pal_usda_quantiles$top_val[(n_quants-1)], na.rm = TRUE)
+  #   pal_quantiles_unemployment_usda_23[(n_quants-1), "counts"] <- sum(
+  #     temp_df$unemployment_rate >= pal_quantiles_unemployment_usda_23$bottom_val[(n_quants-1)] &
+  #       temp_df$unemployment_rate <= pal_quantiles_unemployment_usda_23$top_val[(n_quants-1)], na.rm = TRUE)
   #   
-  #   pal_usda_quantiles[n_quants, "counts"] <- sum(is.na(temp_df$unemployment_rate))
+  #   pal_quantiles_unemployment_usda_23[n_quants, "counts"] <- sum(is.na(temp_df$unemployment_rate))
   #   
-  #   p <- pal_usda_quantiles %>% 
+  #   p <- pal_quantiles_unemployment_usda_23 %>% 
   #     ggplot(aes(y = reorder(label, bottom_val), x = counts, fill = color)) +
   #     geom_col() +
   #     labs(y = "Unemployment rate") +
@@ -623,7 +623,7 @@ server <- function(input, output) {
       
       addPolygons(
         data = unemployment_usda_23_mapping,
-        fillColor = ~pal_usda(unemployment_rate),
+        fillColor = ~pal_unemployment_usda_23(unemployment_rate),
         fillOpacity = 1,
         color = "white",
         weight = 1,
@@ -638,20 +638,20 @@ server <- function(input, output) {
         smoothFactor = .5
       ) %>% 
       addCircleMarkers(
-        data = st_centroid(choropleth_area_data),
-        radius = choropleth_area_data$standardized_hd_acreage * 10,
+        data = st_centroid(hd_state_areas),
+        radius = hd_state_areas$standardized_hd_acreage * 10,
         # ^ before had sqrt() thing
         stroke = FALSE, # TRY TO FIX COLOR< THE zoom thing, and other stuff...
         fillOpacity = .7
       ) %>% 
       addLegend(
-        pal = pal_usda,
+        pal = pal_unemployment_usda_23,
         value = unemployment_usda_23_mapping$unemployment_rate,
         position = "bottomright",
         title = "Unemployment rate (%)",
         labFormat = function(type, cuts, p){
-          n <- length(pal_usda_breaks) - 1
-          paste0(round(pal_usda_breaks[1:n], 1), "% - ", round(pal_usda_breaks[2:(n+1)], 1), "%")
+          n <- length(pal_breaks_unemployment_usda_23) - 1
+          paste0(round(pal_breaks_unemployment_usda_23[1:n], 1), "% - ", round(pal_breaks_unemployment_usda_23[2:(n+1)], 1), "%")
         }
       )
   })
@@ -664,7 +664,7 @@ server <- function(input, output) {
   #     
   #     addPolygons(
   #       data = unemployment_usda_23_mapping,
-  #       fillColor = ~pal_usda(unemployment_rate),
+  #       fillColor = ~pal_unemployment_usda_23(unemployment_rate),
   #       fillOpacity = 1,
   #       color = "white",
   #       weight = 1,
@@ -679,13 +679,13 @@ server <- function(input, output) {
   #       smoothFactor = .5
   #     ) %>% 
   #     addLegend(
-  #       pal = pal_usda,
+  #       pal = pal_unemployment_usda_23,
   #       value = unemployment_usda_23_mapping$unemployment_rate,
   #       position = "bottomright",
   #       title = "Unemployment rate (%)",
   #       labFormat = function(type, cuts, p){
-  #         n <- length(pal_usda_breaks) - 1
-  #         paste0(round(pal_usda_breaks[1:n], 1), "% - ", round(pal_usda_breaks[2:(n+1)], 1), "%")
+  #         n <- length(pal_breaks_unemployment_usda_23) - 1
+  #         paste0(round(pal_breaks_unemployment_usda_23[1:n], 1), "% - ", round(pal_breaks_unemployment_usda_23[2:(n+1)], 1), "%")
   #       }
   #     )
   # })
@@ -693,14 +693,14 @@ server <- function(input, output) {
   #--- map2 standardizedhistoric district acreage by state
   
   output$map <- renderLeaflet({
-    leaflet(choropleth_area_data) %>% 
+    leaflet(hd_state_areas) %>% 
       addProviderTiles("CartoDB.Positron") %>% 
       
       setView(lng = -95.7129, lat = 37.0902, zoom = 4) %>% 
       
       addPolygons(
-        layerId = ~NAME, # so it takes the NAME column from choropleth_area_data
-        fillColor = ~my_palette(standardized_hd_acreage),
+        layerId = ~NAME, # so it takes the NAME column from hd_state_areas
+        fillColor = ~pal_hd_state_areas(standardized_hd_acreage),
         fillOpacity = .75,
         color = "white", # border color
         weight = 1,
@@ -709,8 +709,8 @@ server <- function(input, output) {
       ) %>% 
       
       addLegend(
-        pal = my_palette,
-        value = choropleth_area_data$standardized_hd_acreage, # same as values   = ~total_num_districts
+        pal = pal_hd_state_areas,
+        value = hd_state_areas$standardized_hd_acreage, # same as values   = ~total_num_districts
         position = "bottomright",
         title = paste("Key (%)")
       )
@@ -728,7 +728,7 @@ server <- function(input, output) {
     selected_state(input$map_shape_click$id) # value of NAME for clicked state
     
     # Get the bounding box for that state so we can zoom
-    bbox_data <- choropleth_area_data[choropleth_area_data$NAME == selected_state(), "geometry"]
+    bbox_data <- hd_state_areas[hd_state_areas$NAME == selected_state(), "geometry"]
     bbox <- st_bbox(bbox_data)
     # ^ st_bbox() is a function in the R sf (Simple Features) package used to calculate or return the bounding box of a spatial object. It returns a named numeric vector containing the minimum and maximum coordinates (\(xmin, ymin, xmax, ymax\)) that define the rectangular extent of a spatial dataset
     
@@ -754,7 +754,7 @@ server <- function(input, output) {
     
     state_name <- selected_state()
     
-    temp_df <- categories_counts %>% 
+    temp_df <- hd_categories_counts_by_state %>% 
       rename(counts = all_of(selected_state())) %>%  # Get just the column of the state that was clicked.
       select(category, counts) %>% 
       filter(counts >0)
