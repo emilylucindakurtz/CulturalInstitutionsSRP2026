@@ -30,7 +30,7 @@ data <- data.frame(
     '<a href="satellite.html">Satellite Indicators</a>',
     '<a href="aboutus.html">Emily Kretschmer</a>'),
     #"Industrial Institutions", "Theaters, Colleges, Etc.", "Museums", "Satellite Indicators", "Emily"),
-  Description = c("Spatially explores American power plants, data centers, and corporate headquarters", "Explores various cultural institutions and connections to community demographics", "Maps American museums and provides information on them", "Satellite", "Emily"),
+  Description = c("Spatially explores American power plants, data centers, and corporate headquarters", "Explores various cultural institutions and connections to community demographics", "Maps American museums and provides information on them", "Satellite data providing insight on development and environmental conditions around major industrial areas", "Emily"),
   Author = c(
     '<a href="aboutus.html">Ian Rock-Jones</a>',
     '<a href="aboutus.html">Rimona Zhang</a>',
