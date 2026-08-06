@@ -36,16 +36,17 @@ data <- data.frame(
     '<a href="aboutus.html">Rimona Zhang</a>',
     '<a href="aboutus.html">Zoe Zhang</a>',
     '<a href="aboutus.html">Zoe Zhang</a>',
-    '<a href="aboutus.html">Emily Kretschmer</a>'),
+    '<a href="aboutus.html">Emily Kretschmer</a>')
     # "Ian Rock-Jones", "Rimona Zhang", "Zoe Zhang", "Zoe Zhang", "Emily Kretschmer"),
-  Data = c("click", "data", "yes", "hi", "hi")
+  #Data = c("click", "data", "yes", "hi", "hi")
 )
 
 # interactive table
 datatable(
   data,
   escape = FALSE,
-  colnames = c("Project", "Description", "Author", "Data"),
+  #colnames = c("Project", "Description", "Author", "Data"),
+  colnames = c("Project", "Description", "Author"),
   options = list(pageLength = 5, dom = 'ftip'),
   rownames = FALSE
 )
