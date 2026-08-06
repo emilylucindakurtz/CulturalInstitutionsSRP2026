@@ -1,0 +1,57 @@
+---
+title: "Mapping Cultural Institutions in the United States"
+---
+
+## What are cultural institutions, and why are they important?
+
+We define a cultural institution as any lasting legacy, still present in a community, of that community’s character or identity. Cultural institutions can come in many forms and can commemorate many different features of a community's identity. Museums, monuments, statues, and theaters are more obvious institutions that memorialize groups, events, industries, or individuals that played a crucial role in the community's history and identity, but institutions are not limited to just these forms. Industrial headquarters (or ruins), street art, and even power plants can play a role in how a community sees itself. All of these institutions can directly and indirectly influence how its residents think about things like politics, policy, and economics.
+
+## Our Work
+
+Our general goal over the course of this project was to collect data on a wide variety of cultural institutions for other researchers to use. Since these institutions are so important to community identity, we further sought geographic information for each institution. This website contains usable and clean datasets on institutions ranging from museums and colleges to power plants and Fortune 500 company headquarters. To demonstrate the use of these data, each dataset is accompanied by an interactive app and brief write up. Please feel free to explore the data and work contained here!
+
+## Projects
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(DT)
+library(dplyr)
+
+# create dataframe
+data <- data.frame(
+  Project = c(
+    '<a href="industrial_institutions.html">Industrial Institutions</a>',
+    '<a href="theaters_etc.html">Theaters, Colleges, Etc.</a>',
+    '<a href="museums.html">Museums</a>',
+    '<a href="satellite.html">Satellite Indicators</a>',
+    '<a href="aboutus.html">Emily Kretschmer</a>'),
+    #"Industrial Institutions", "Theaters, Colleges, Etc.", "Museums", "Satellite Indicators", "Emily"),
+  Description = c("Spatially explores American power plants, data centers, and corporate headquarters", "Explores various cultural institutions and connections to community demographics", "Maps American museums and provides information on them", "Satellite", "Emily"),
+  Author = c(
+    '<a href="aboutus.html">Ian Rock-Jones</a>',
+    '<a href="aboutus.html">Rimona Zhang</a>',
+    '<a href="aboutus.html">Zoe Zhang</a>',
+    '<a href="aboutus.html">Zoe Zhang</a>',
+    '<a href="aboutus.html">Emily Kretschmer</a>')
+    # "Ian Rock-Jones", "Rimona Zhang", "Zoe Zhang", "Zoe Zhang", "Emily Kretschmer"),
+  #Data = c("click", "data", "yes", "hi", "hi")
+)
+
+# interactive table
+datatable(
+  data,
+  escape = FALSE,
+  #colnames = c("Project", "Description", "Author", "Data"),
+  colnames = c("Project", "Description", "Author"),
+  options = list(pageLength = 5, dom = 'ftip'),
+  rownames = FALSE
+)
+
+
+#datatable(data.frame(Website = '<a href="https://r-project.org">Link</a>'), escape = FALSE)
+
+```

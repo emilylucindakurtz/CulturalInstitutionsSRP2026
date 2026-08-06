@@ -51,6 +51,3 @@ rsconnect/
 data/Museum/museum_app_data_enriched.csv
 data/Museum/museum_app_data_enriched.csv
 data/Museum/museum_app_data_enriched.csv
-
-/.quarto/
-**/*.quarto_ipynb
