@@ -186,8 +186,8 @@ ui <- page_navbar(
     
   # Page 1 Layout
   nav_panel(
-    title = "Finder",
-      h2("Find historic districts"),
+    title = "Explorer",
+      h2("Find and explore historic districts"),
       p("Explanation of the page loading..."),
     
     card(
@@ -212,7 +212,7 @@ ui <- page_navbar(
           ),
           
           radioButtons(
-            inputId = "layer2_options",
+            inputId = "layer2_choice",
             label = "Choose a layer for further analysis:",
             choices = list(
               "None" = NA,
@@ -222,17 +222,17 @@ ui <- page_navbar(
           ),
           tags$hr(style = "border-top: 1px solid black;"), #adds a line separator thing
           
-          textOutput("categories_dist_label_p1"), #rename
-          plotlyOutput("categories_dist_p1") #rename
-          #plotlyOutput("layer2_dist_p1") # RENAME!
+          textOutput("categories_dist_label_p1"), 
+          plotlyOutput("categories_dist_p1") 
+          #plotlyOutput("layer2_dist_p1") 
         ),
         mainPanel(
           card(
             leafletOutput("map2", height=600)
           ),
           card(
-            textOutput("layer2_dist_label_p1"), #rename
-            plotlyOutput("layer2_dist_p1") # RENAME!
+            textOutput("layer2_dist_label_p1"),
+            plotlyOutput("layer2_dist_p1") 
           )
           #card(
           #  DT::DTOutput("hd_table_p1")
@@ -246,7 +246,7 @@ ui <- page_navbar(
     )
   ),
   
-  # Page 2 Layout (COMING BACK TO THIS LATER!)
+  # Page 2 Layout (COMING BACK TO THIS LATER!) -------------------------------------------------------
     nav_panel(
       title = "Analysis",
       
@@ -409,7 +409,7 @@ server <- function(input, output) {
   # FUNCTION for reaction to changing filters ---------------------------------------------------------------------------
   update_layer2 <- function(){
     # Adding the unemployment rate -- NEED TO if else etc
-    if(input$layer2_options == "unemployment"){
+    if(input$layer2_choice == "unemployment"){
       leafletProxy("map2") %>% 
         addPolygons(
           data = filtered_county_geoms,
@@ -579,7 +579,7 @@ server <- function(input, output) {
   
   # Trigger an event every time the user changes the radio button selection
   # NEWW - CBL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  observeEvent(input$layer2_options, {
+  observeEvent(input$layer2_choice, {
     update_layer2()
   })
   
