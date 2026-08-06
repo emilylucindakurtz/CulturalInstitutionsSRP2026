@@ -324,6 +324,58 @@ server <- function(input, output) {
   #bs_themer()
   thematic_shiny(font = "auto")
   
+  # ----- Page 1 NEW ---------------------------------------------------------------------------------------------------------
+  
+  # Change hd and dist when the drop down for state changes
+  
+  # Change hd when the drop down for categorie(s) changes
+  
+  # Change layer 2 and layer 2 dist when the radio button input changes
+  
+  # Reactive blocks ---------------------------------------------------
+  
+  selected_state_p1 <- reactiveVal(
+    if(input$state_choice != "All"){
+      input$state_choice
+    } else {
+      "the USA"
+    }
+  ) 
+  
+  # Historic districts
+  # Recomputes automatically whenever categories_choice or state_choice changes!
+  filtered_hd <- reactive({
+    # Get a character vector of the underlying column names of categories
+    cols_to_check <- hd_categories_counts_by_state %>% 
+      filter(category_nice %in% input$categories_choice) %>% 
+      pull(category_og)
+    
+    # Filtering data based on CATEGORIES
+    temp_df <- historic_districts %>%
+      filter(if_any(all_of(cols_to_check), ~ .x == 1)) # a district shows up if it matches any selected category
+    
+    # FIltering data based on STATE
+    if(input$state_choice != "All"){
+      temp_df <- temp_df %>% 
+        filter(state == input$state_choice)
+    }
+    
+    temp_df
+  })
+  
+  # Figure out if this needs to be changed if dif layer2!!
+  
+  # County geometries
+  # Recomputes whenever state_choice changes
+  filtered_county_geoms <- reactive({
+    filtered_county_geoms <- unemployment_usda_23_mapping
+    
+    if(input$state_choice != "All"){ 
+      filtered_county_geoms <- filtered_county_geoms %>% 
+        filter(STATE_NAME == input$state_choice)
+    }
+  })
+  
   # ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 -----
   
   # Reactive value to hold the currently filtered dataset (shared by map and table)
@@ -336,9 +388,9 @@ server <- function(input, output) {
   
   update_districts <- function() {
     # Get a character vector of the underlying column names
-    cols_to_check <- hd_categories_counts_by_state %>% 
-      filter(category_nice %in% input$categories_choice) %>% 
-      pull(category_og)
+    # cols_to_check <- hd_categories_counts_by_state %>% 
+    #   filter(category_nice %in% input$categories_choice) %>% 
+    #   pull(category_og)
     
     # Clear previous markers and shapes and legends to avoid duplicates
     leafletProxy("map2") %>% 
@@ -346,9 +398,8 @@ server <- function(input, output) {
       clearShapes() %>% 
       clearControls() # for legend
     
-    # Make reactive val null if they select US instead of a specific state -- maybe change later
     # Also add shape for the state
-    if(input$state_choice != "All"){
+    if(input$state_choice != "All"){ # FIX THIS!!!!!!!!!! FIX FIX FIX
       selected_state_p1(input$state_choice)
       
       filtered_states_sf <- states_sf %>% 
@@ -361,19 +412,19 @@ server <- function(input, output) {
       selected_state_p1(NULL)
     }
     
-    # Filtering data based on state and types of districts
-    filtered_data <- historic_districts %>%
-      filter(if_any(all_of(cols_to_check), ~ .x == 1)) # a district shows up if it matches any selected category
+    # # Filtering data based on state and types of districts
+    # filtered_data <- historic_districts %>%
+    #   filter(if_any(all_of(cols_to_check), ~ .x == 1)) # a district shows up if it matches any selected category
     
-    if(input$state_choice != "All"){
-      filtered_data <- filtered_data %>% 
-        filter(state == input$state_choice)
+    # if(input$state_choice != "All"){ #FIX
+      # filtered_data <- filtered_data %>% 
+      #   filter(state == input$state_choice)
       
-      filtered_county_geoms <- unemployment_usda_23_mapping %>% 
-        filter(STATE_NAME == input$state_choice) # maybe cbl and change to selected_state_p1()????
-    } else {
-      filtered_county_geoms <- unemployment_usda_23_mapping #CBLLL
-    }
+      # filtered_county_geoms <- unemployment_usda_23_mapping %>% 
+      #   filter(STATE_NAME == input$state_choice) # maybe cbl and change to selected_state_p1()????
+    # } else {
+    #   filtered_county_geoms <- unemployment_usda_23_mapping #CBLLL
+    # }
       
     # Adding the full outline of the state on top (since it got covered by other things)
     if(input$state_choice != "All"){
@@ -449,17 +500,9 @@ server <- function(input, output) {
     
   })
   
-  #CHANGE
-  output$categories_dist_label_p1 <- renderText({
-    if(is.null(selected_state_p1())){
-      selected_state_p1("USA")
-    }
-    
-    if(selected_state_p1() == "USA"){
-      "Top 5 historic district categories in the USA"
-    } else{
-      paste0("Top 5 historic district categories in ", selected_state())
-    }
+
+  output$categories_dist_label_p1 <- renderText({ # FIXED
+   paste0("Top 5 historic district categories in ", selected_state())
   })
   
   output$categories_dist_p1 <- renderPlotly({
@@ -501,18 +544,13 @@ server <- function(input, output) {
     ggplotly(p, tooltip = "text")
   })
   
-  # MAYBE CHANGE LABEL???
-  output$layer2_dist_label_p1 <- renderText({
-    if(selected_state_p1() == "USA"){
-      "Distribution of historic district counts by their coresponding county's unemployment rate in the USA"
-    } else{
-      paste0("Distribution of historic district counts by their corresponding county's unemployment rate in ", selected_state_p1())
-    }
+  output$layer2_dist_label_p1 <- renderText({ # FIXED - But MAYBE CHANGE LABEL???
+    paste0("Distribution of historic district counts by their corresponding county's unemployment rate in ", selected_state_p1())
   })
   
   # New TEST
   output$layer2_dist_p1 <- renderPlotly({
-    if(selected_state_p1() == "USA"){
+    if(selected_state_p1() == "the USA"){
       temp_df <- historic_districts
     } else {
       temp_df <- historic_districts %>% 
@@ -606,6 +644,23 @@ server <- function(input, output) {
     update_districts()
     
   }, ignoreNULL = FALSE) # this ensures that if there is nothing selected it still runs the function YAY!
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
