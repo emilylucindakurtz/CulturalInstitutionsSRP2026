@@ -1,4 +1,4 @@
-# V2 HISTORIC DISTRICTS SHINY APP
+# V3 HISTORIC DISTRICTS SHINY APP
 
 # Packages
 library(shiny)
@@ -77,7 +77,6 @@ unemployment_filtered <- unemployment_wider %>%
 
 
 # Getting it in a way that we can join it to the shapefile easily
-
 county_equivs <- paste("County", 
                        "Planning Region", 
                        "Borough", 
@@ -114,9 +113,9 @@ historic_districts <- historic_districts %>%
                    "state_abbreviation" = "state"))
 
 
-# Color pallete stuff -------------------------------------------------------
+# Color palette stuff -------------------------------------------------------
 
-# Color pallete
+# Color palette
 pal_usda <- colorQuantile(
   #palette = "YlOrRd",
   palette = "Spectral",
@@ -129,7 +128,7 @@ pal_usda <- colorQuantile(
 # Prepping for fixing the legend (this and the labformat thing below were helped)
 pal_usda_breaks <- quantile(mapping_data_usda$unemployment_rate, probs = seq(0, 1, length.out = 10), na.rm = TRUE)
  
-# Sort of "manually" logging the color pallete and its values/labels so we can apply it to bar chart as well.
+# Sort of "manually" logging the color palette and its values/labels so we can apply it to bar chart as well.
 n_quants <- length(pal_usda_breaks)
 
 # Making a tibble to refer to the quantiles -----------------------------------
@@ -157,7 +156,7 @@ pal_usda_quantiles <- as.data.frame(pal_usda_quantiles)
 
 # Standardized data ---------------
 
-# Join data to shapefile #I THINK THIS IS THE ISSUE! JOINING many to many
+# Join data to shapefile #I THINK THIS IS THE ISSUE! JOINING many to many CBLLLLLLLLLLLLLLLLLL ------------------------
 choropleth_area_data <- states_sf %>% 
   left_join(by_state, by = c("NAME" = "state")) %>% 
   left_join(areas, by = c("NAME" = "state_or_territory")) %>% 
