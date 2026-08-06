@@ -16,7 +16,8 @@ website:
             #href: industrial_institutions.qmd
             href: https://marekjozsef.shinyapps.io/SRP2026-industrial/
           - text: "Theaters, Operas, Colleges, and Auto Factories"
-            href: theaters_etc.qmd
+            href: CulturalInstitutionsSite/theaters_etc.qmd
+          - CulturalInstitutionsSite/theaters_etc.qmd
 #          - text: "---" # Adds a visual divider line
           - text: "Museums"
             href: https://marekjozsef.shinyapps.io/SRP2026_museum/
