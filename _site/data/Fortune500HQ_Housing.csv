@@ -1,0 +1,500 @@
+"Company","City","State","County","Latitude","Longitude","Median.Home.Price"
+"Voya ","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Adobe","San Jose","California","Santa Clara",37.3382082,-121.8863286,1558540
+"Walt Disney","Burbank","California","Los Angeles",34.1808392,-118.3089661,883230
+"Glenworth Financial","Richmond","Virginia",NA,37.5407246,-77.4360481,NA
+"Expeditors","Seattle","Washington","King",47.605838,-122.334683,903970
+"Dana Incorporated",NA,"Ohio","Lucas",41.574963,-83.6842561,182700
+"Jefferies Financial Group","New York","New York","New York",40.760264,-73.9745164,1172110
+"Wesco International Inc","Pittsburgh","Pennsylvania","Allegheny",40.4337234,-80.0057853,254090
+"Huntington Ingalls Industries","Newport News","Virginia",NA,36.9882362,-76.4371783,NA
+"Amphenol",NA,"Connecticut","South Central Connecticut Planning Region",41.4570108,-72.8230736,NA
+"United Rentals","Stamford","Connecticut","Western Connecticut Planning Region",41.0406771,-73.5572187,NA
+"Assurant","New York","New York","New York",40.7077916,-74.0089405,1172110
+"Alaska Air Group","Seattle","Washington","King",47.6062095,-122.3320708,903970
+"SpartanNash Company","Byron Township","Michigan","Kent",42.825551,-85.684614,343290
+"Darden Restaurants",NA,"Florida","Orange",28.4180207,-81.4248443,431320
+"THOR INDUSTRIES","Elkhart","Indiana","Elkhart",41.6819935,-85.9766671,251910
+"EMCOR Norwalk","Norwalk","Connecticut","Western Connecticut Planning Region",41.1493739,-73.4269254,NA
+"Masco Corp",NA,"Michigan","Wayne",42.36837,-83.3527097,206910
+"Caesars Entertainment","Las Vegas","Nevada","Clark",36.1165658,-115.1752403,457490
+"JetBlue Airways Corporation","New York","New York","Queens",40.7509337,-73.9385978,763630
+"WEC Energy Group","Milwaukee","Wisconsin","Milwaukee",43.0370226,-87.9138533,270080
+"W. R. Berkley Corporation",NA,"Connecticut","Western Connecticut Planning Region",41.018681,-73.6223224,NA
+"EnLink Midstream","Dallas","Texas","Dallas",32.7920752,-96.7951114,329370
+"Anixter Glenview",NA,"Illinois","Cook",42.0974698,-87.8239375,357630
+"Osh Kosh","Oshkosh","Wisconsin","Winnebago",44.0247062,-88.5426136,268680
+"Builders FirstSource","Dallas","Texas","Dallas",32.78536,-96.796337,329370
+"Ryder System","Miami","Florida","Miami-Dade",25.7616798,-80.1917902,555610
+"Dean Foods Company","Dallas","Texas","Dallas",32.8055096,-96.7923794,329370
+"PPL","Allentown","Pennsylvania","Lehigh",40.6081366,-75.5704494,354850
+"Yum China Holdings","Plano","Texas","Collin",33.0198431,-96.6988856,541940
+"Hershey","Derry Township","Pennsylvania","Dauphin",40.2859239,-76.6502468,275820
+"Alliance Data Systems","Plano","Texas","Collin",33.0198431,-96.6988856,541940
+"Berry Global","Evansville","Indiana","Vanderburgh",37.9789909,-87.5726435,218440
+"Fidelity National Information Services","Jacksonville","Florida","Duval",30.3321838,-81.655651,339790
+"Tractor Supply Company  Brentwood",NA,"Tennessee","Williamson",36.0322969,-86.8128372,888220
+"Zimmer Biomet Warsaw",NA,"Indiana","Kosciusko",41.2405012,-85.8838898,269650
+"Conagra Brands","Chicago","Illinois","Cook",41.8781136,-87.6297982,357630
+"Foot Locker","New York","New York","New York",40.7551834,-73.9863177,1172110
+"Dick’s Sporting Goods",NA,"Pennsylvania","Allegheny",40.5184013,-80.1667247,254090
+"Fifth Third Bank","Cincinnati","Ohio","Hamilton",39.1669811,-84.4114303,283180
+"Eversource",NA,"Massachusetts","Norfolk",42.2029952,-71.1596834,754290
+"Cheniere Energy Inc","Houston","Texas","Harris",29.7601536,-95.3653756,306470
+"National Oilwell Varco",NA,"Texas","Williamson",30.4899915,-97.8276561,466650
+"Auto-Owners Insurance","Lansing","Michigan","Eaton",42.7218607,-84.6384575,251950
+"Erie Insurance Arena","Erie","Pennsylvania","Erie",42.1280011,-80.0808889,218730
+"Jones Financial (Edward Jones)",NA,"Missouri","St. Louis",38.6008862,-90.4328968,312860
+"Liberty Media Corporation",NA,"Colorado","Douglas",39.553121,-104.846177,748570
+"Frontier Communications","Norwalk","Connecticut","Western Connecticut Planning Region",41.117744,-73.4081575,NA
+"Levi's Store","San Francisco","California",NA,37.7852456,-122.4061345,NA
+"J.B. Hunt Transport Services",NA,"Arkansas","Benton",36.2447313,-94.1494438,403390
+"Peabody Energy","Saint Louis","Missouri",NA,38.626689,-90.1925651,NA
+"Western Union","Denver","Colorado",NA,39.7402176,-104.9759495,NA
+"UNIVAR",NA,"Illinois","DuPage",41.8089191,-88.0111746,435690
+"WESTLAKE CHEMICAL","Houston","Texas","Harris",29.7604267,-95.3698028,306470
+"Thrivent Financial for Lutherans","Minneapolis","Minnesota","Hennepin",44.977753,-93.2650108,407520
+"Rockwell Collins","West Palm Beach","Florida","Palm Beach",26.7153424,-80.0533746,521590
+"Campbell Soup Company","Camden","New Jersey","Camden",39.9390315,-75.1080212,352080
+"WILLIAMS","Tulsa","Oklahoma","Tulsa",36.1539816,-95.992775,268610
+"Veritiv Corporation",NA,"Georgia","Gwinnett",33.929775,-84.2512483,433860
+"GameStop",NA,"Texas","Tarrant",32.9342919,-97.0780654,350700
+"Navient","Wilmington","Delaware","New Castle",39.7382681,-75.559152,391290
+"Simon Property Group","Indianapolis","Indiana","Marion",39.7669989,-86.1621681,250140
+"Williams-Sonoma","San Francisco","California",NA,37.7886383,-122.4074984,NA
+"Yum Brands","Louisville","Kentucky","Jefferson",38.2526647,-85.7584557,266760
+"Windstream Holdings Little Rock","Little Rock","Arkansas","Pulaski",34.7464809,-92.2895948,243290
+"Hilton Worldwide Holdings",NA,"Virginia","Fairfax",38.9338676,-77.1772604,782680
+"Harley-Davidson Museum","Milwaukee","Wisconsin","Milwaukee",43.0316706,-87.9165244,270080
+"First American Financial","Santa Ana","California","Orange",33.702007,-117.860141,1057230
+"Air Products & Chemicals","Allentown","Pennsylvania","Lehigh",40.6022939,-75.4714098,354850
+"TreeHouse Foods",NA,"Illinois","DuPage",41.8494532,-87.9473067,435690
+"Fiserv",NA,"Wisconsin","Waukesha",43.0338095,-88.1409438,461590
+"Zoetis Inc.",NA,"New Jersey","Morris",40.8470715,-74.4447772,677650
+"Brighthouse Financial","Charlotte","North Carolina","Mecklenburg",35.2270869,-80.8431267,471910
+"Ingredion",NA,"Illinois","Cook",41.8453955,-87.9052856,357630
+"ON Semiconductor","Phoenix","Arizona","Maricopa",33.4636186,-111.9701255,488740
+"","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Tapestry","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Peter Kiewit Sons’","Omaha","Nebraska","Douglas",41.2565369,-95.9345034,300310
+"NetApp","Sunnyvale","California","Santa Clara",37.4149198,-122.0095976,1558540
+"Intuit","Mountain View","California","Santa Clara",37.4283625,-122.097623,1558540
+"Old Republic International Corporation","Chicago","Illinois","Cook",41.887068,-87.6241579,357630
+"Graphic Packaging International","Augusta","Georgia","Richmond",33.327532,-81.954097,213950
+"AVIS",NA,"New Jersey","Morris",40.867239,-74.4229417,677650
+"Vistra/TXU Energy Corporate Office","Irving","Texas","Dallas",32.898375,-96.9642376,329370
+"Hd Supply Holdings Inc","Atlanta","Georgia","Cobb",33.8772177,-84.4728859,464530
+"Realogy Holdings Corp.",NA,"New Jersey","Morris",40.7716197,-74.4231855,677650
+"Clorox Co","Oakland","California","Alameda",37.8035821,-122.2721165,1108180
+"Polaris Industries Inc",NA,"Minnesota","Hennepin",45.057507,-93.5765367,407520
+"Booz Allen Hamilton Inc",NA,"Virginia","Fairfax",38.9218202,-77.2319233,782680
+"L3Harris Technologies: Communication Systems-West","Salt Lake City","Utah","Salt Lake",40.7835097,-111.9527848,599530
+"Ralph Lauren New York","New York","New York","New York",40.7715155,-73.9653656,1172110
+"Analog Devices",NA,"Massachusetts","Norfolk",42.2104866,-71.1806236,754290
+"Post Holdings Inc",NA,"Missouri","St. Louis",38.6165266,-90.334968,312860
+"S and P Global","New York","New York","New York",40.7499719,-73.9921676,1172110
+"Intercontinental Exchange","Atlanta","Georgia","Fulton",33.9088822,-84.4307488,514220
+"Ameren Corporation","Saint Louis","Missouri",NA,38.6224443,-90.2095588,NA
+"Franklin Templeton Investments","San Mateo","California","San Mateo",37.5437749,-122.2942274,1601600
+"iHeartMedia San Antonio","San Antonio","Texas","Bexar",29.6476256,-98.4542381,289900
+"NCR Global","Atlanta","Georgia","Fulton",33.7791502,-84.3896015,514220
+"Beacon Roofing Supply Inc",NA,"Virginia","Fairfax",38.9634821,-77.3815185,782680
+"ABM Industries","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Mutual of Omaha® Insurance Co.","Omaha","Nebraska","Douglas",41.2585024,-95.962269,300310
+"M&T Bank Buffalo","Buffalo","New York","Erie",43.0270869,-78.8004483,277470
+"HESS New York","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Advanced Micro Devices","Santa Clara","California","Santa Clara",37.3829254,-121.9703842,1558540
+"AGCO",NA,"Georgia","Gwinnett",34.0028786,-84.1446376,433860
+"Cintas Center","Cincinnati","Ohio","Hamilton",39.1503616,-84.4718415,283180
+"Dillard's","Little Rock","Arkansas","Pulaski",34.7534674,-92.3418963,243290
+"COTY","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Ascena Retail Group Inc (ASNA)",NA,"New Jersey","Bergen",41.0738813,-74.171283,694830
+"Pioneer Natural Resources Company","Irving","Texas","Dallas",32.8712639,-96.9388561,329370
+"Marathon Oil","Houston","Texas","Harris",29.7493564,-95.4715705,306470
+"First Data","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Seaboard Corporation Shawnee Mission",NA,"Kansas","Johnson",39.0081599,-94.690957,452240
+"Hertz Global Holdings",NA,"Florida","Lee",26.438136,-81.8067523,377990
+"Chemours","Wilmington","Delaware","New Castle",39.744655,-75.5483909,391290
+"Northern Trust","Chicago","Illinois","Cook",41.8815778,-87.6325811,357630
+"Calpine","Houston","Texas","Harris",29.7604267,-95.3698028,306470
+"Rockwell Automation","Milwaukee","Wisconsin","Milwaukee",43.0185625,-87.9133706,270080
+"O'Reilly Auto Parts Distribution Center",NA,"Minnesota","Hennepin",45.0748278,-93.3737396,407520
+"Burlington Stores",NA,"New Jersey","Burlington",40.071222,-74.8648873,403170
+"Hormel Foods",NA,"Minnesota","Mower",43.6666296,-92.9746367,194110
+"Altice USA",NA,"New York","Suffolk",40.789142,-73.134961,663980
+"Regeneron Pharmaceuticals",NA,"New York","Westchester",41.0767773,-73.8263889,732670
+"Ulta Beauty",NA,"Illinois","Will",41.6986416,-88.0683955,362310
+"Advance Auto Parts","Raleigh","North Carolina","Wake",35.7795897,-78.6381787,527840
+"Wynn Resorts","Las Vegas","Nevada","Clark",36.1265953,-115.1653652,457490
+"Regions Financial","Birmingham","Alabama","Jefferson",33.5185892,-86.8103567,270680
+"Mosaic",NA,"Minnesota","Hennepin",45.0105194,-93.4555093,407520
+"Wayfair","Boston","Massachusetts","Suffolk",42.347118,-71.078357,739680
+"RR Donnelley and Sons","Chicago","Illinois","Cook",41.8781136,-87.6297982,357630
+"PVH","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Hanesbrands","Winston-Salem","North Carolina","Forsyth",36.0911416,-80.2851295,302120
+"Public Service Enterprise Group","Newark","New Jersey","Essex",40.7370367,-74.1680642,612980
+"AK Steel Holding",NA,"Ohio","Tuscarawas",40.2339147,-81.3445012,217140
+"Interpublic Group of Companies","New York","New York","New York",40.7583114,-73.9679267,1172110
+"","New York","New York","New York",40.7581073,-73.9726262,1172110
+"Markel Corporation",NA,"Virginia","Henrico",37.661594,-77.576847,400330
+"Autoliv Americas",NA,"Michigan","Oakland",42.6944224,-83.274261,388210
+"CMS Energy","Jackson","Michigan","Jackson",42.2466617,-84.4022463,222630
+"Asbury Automotive Group",NA,"Georgia","Gwinnett",34.0051075,-84.0933453,433860
+"DCP Midstream Partners LP","Denver","Colorado",NA,39.743468,-104.9885753,NA
+"Owens-Illinois",NA,"Ohio","Wood",41.5285372,-83.6479919,254870
+"Alleghany Corporation","New York","New York","New York",40.7542881,-73.9876105,1172110
+"Boston Scientific Corporation","Marlborough","Massachusetts","Middlesex",42.3611457,-71.5615488,793120
+"MasTec Network Solutions",NA,"Florida","Miami-Dade",25.7632876,-80.2567796,555610
+"Xerox","Norwalk","Connecticut","Western Connecticut Planning Region",41.117744,-73.4081575,NA
+"Arthur Gallagher Rolling Meadows",NA,"Illinois","Cook",42.0535852,-88.0168425,357630
+"Olin Corporation",NA,"Missouri","St. Louis",38.6482951,-90.333205,312860
+"Owens & Minor",NA,"Virginia","Hanover",37.6087561,-77.3733139,442590
+"Travelcenters of America",NA,"Ohio","Cuyahoga",41.4553232,-81.9179173,225250
+"Sonic Automotive","Charlotte","North Carolina","Mecklenburg",35.1767046,-80.7969848,471910
+"Packaging Corp of America",NA,"Illinois","Lake",42.2586342,-87.840625,392350
+"Mohawk Industries",NA,"Georgia","Gordon",34.502587,-84.9510542,231830
+"Owens Corning","Toledo","Ohio","Lucas",41.6461679,-83.5342454,182700
+"Republic Services","Phoenix","Arizona","Maricopa",33.4483771,-112.0740373,488740
+"Insight Enterprises","Tempe","Arizona","Maricopa",33.3422522,-111.9527302,488740
+"Sanmina Corporation","San Jose","California","Santa Clara",37.390754,-121.930046,1558540
+"Toll Brothers","Horsham Township","Pennsylvania","Montgomery",40.1784422,-75.1285061,485590
+"Eastman Chemical","Kingsport","Tennessee","Sullivan",36.548434,-82.5618186,269950
+"American Financial Group","Cincinnati","Ohio","Hamilton",39.1031182,-84.5120196,283180
+"PulteGroup","Atlanta","Georgia","Fulton",33.7489954,-84.3879824,514220
+"Celanese Corporation","Irving","Texas","Dallas",32.871208,-96.943557,329370
+"Avery Dennison","Glendale","California","Los Angeles",34.1425078,-118.255075,883230
+"Leidos Holdings","Richmond","Virginia",NA,37.5407246,-77.4360481,NA
+"NVR Inc","Reston","Virginia","Fairfax",38.9519446,-77.3502091,782680
+"Graybar Electric Supply",NA,"Missouri","St. Louis",38.7082563,-90.3327602,312860
+"Everett","Everett","Washington","Snohomish",47.9789848,-122.2020795,751400
+"Western & Southern Financial Group Findlay","Findlay","Ohio","Hancock",41.0427625,-83.6288263,247240
+"Spirit Aerosystems Holdings","Wichita","Kansas","Sedgwick",37.6871761,-97.330053,230800
+"Newmont Goldcorp",NA,"Colorado","Arapahoe",39.6172101,-104.9508141,593960
+"American Axle and Manufacturing","Detroit","Michigan","Wayne",42.331427,-83.0457538,206910
+"Magellan Health","Scottsdale","Arizona","Maricopa",33.5084918,-111.9271907,488740
+"Motorola Solutions Inc","Chicago","Illinois","Cook",41.8809559,-87.6406245,357630
+"Citizens Financial Group","Providence","Rhode Island","Providence",41.827414,-71.410773,444090
+"J M Smucker Co Store & Cafe",NA,"Ohio","Wayne",40.8027783,-81.7630265,266630
+"Keycorp",NA,"Ohio","Cuyahoga",41.3853982,-81.441808,225250
+"Dover Corporation",NA,"Illinois","DuPage",41.8332067,-88.0075585,435690
+"Apache Corp","Houston","Texas","Harris",29.744689,-95.4616265,306470
+"American Tower Corporation","Boston","Massachusetts","Suffolk",42.346449,-71.079981,739680
+"Keurig Dr Pepper",NA,"Massachusetts","Middlesex",42.4817587,-71.2211466,793120
+"Casey's General Stores Inc","Ankeny","Iowa","Polk",41.693711,-93.57317,288360
+"Raymond James Financial","Saint Petersburg","Florida","Pinellas",27.8887405,-82.6669628,400470
+"Weyerhaeuser Company Seattle","Seattle","Washington","King",47.6004408,-122.332628,903970
+"Activision Blizzard","Santa Monica","California","Los Angeles",34.0198026,-118.4524457,883230
+"Quest Diagnostics Corporate",NA,"New Jersey","Hudson",40.7878337,-74.0449297,610440
+"Constellation Brands Inc",NA,"New York","Ontario",43.0284222,-77.4348227,273020
+"Fidelity National Financial","Jacksonville","Florida","Duval",30.3181782,-81.6764314,339790
+"A-Mark Previous Metals El Segundo",NA,"California","Los Angeles",33.9191799,-118.4164652,883230
+"UGI Corporation","Upper Merion Township","Pennsylvania","Montgomery",40.0885417,-75.4070304,485590
+"United Natural Foods","Providence","Rhode Island","Providence",41.8239891,-71.4128343,444090
+"Chesapeake Energy","Oklahoma City","Oklahoma","Oklahoma",35.4675602,-97.5164276,250080
+"Navistar International",NA,"Illinois","DuPage",41.801141,-88.0747875,435690
+"Delek US Holdings",NA,"Tennessee","Williamson",36.0331164,-86.7827772,888220
+"American Family Insurance Group","Madison","Wisconsin","Dane",43.0730517,-89.4012302,458010
+"IQVIA Holdings","Durham","North Carolina","Durham",35.9940329,-78.898619,445390
+"SunTrust Banks","Atlanta","Georgia","Fulton",33.7489954,-84.3879824,514220
+"Ally Financial","Detroit","Michigan","Wayne",42.331427,-83.0457538,206910
+"Targa Resources","Houston","Texas","Harris",29.7604267,-95.3698028,306470
+"BorgWarner Propulsion Technical Center",NA,"Michigan","Oakland",42.6970837,-83.2535823,388210
+"Silver Spring","Silver Spring","Maryland","Montgomery",38.9906657,-77.026088,680160
+"CenterPoint Energy Plaza","Houston","Texas","Harris",29.7571169,-95.3679888,306470
+"Pacific Life Insurance Co",NA,"California","Orange",33.6194334,-117.877543,1057230
+"DEVON ENERGY","Oklahoma City","Oklahoma","Oklahoma",35.4675602,-97.5164276,250080
+"AES","Arlington","Virginia","Arlington",38.8799697,-77.1067698,973410
+"EBAY","San Jose","California","Santa Clara",37.3382082,-121.8863286,1558540
+"Molson Coors Brewing","Denver","Colorado",NA,39.7392358,-104.990251,NA
+"Universal Health Services","Upper Merion Township","Pennsylvania","Montgomery",40.1012856,-75.3835525,485590
+"Live Nation Entertainment",NA,"California","Los Angeles",34.0736204,-118.4003563,883230
+"NRG Energy","Princeton","New Jersey","Mercer",40.3572976,-74.6672226,461940
+"L3 Technologies","New York","New York","New York",40.7492599,-73.975865,1172110
+"Charles Schwab","San Francisco","California",NA,37.7906917,-122.3928271,NA
+"Entergy","New Orleans","Louisiana","Orleans Parish",29.9510658,-90.0715323,NA
+"Lam Research","Fremont","California","Alameda",37.5485396,-121.988583,1108180
+"Baxter International",NA,"Illinois","Lake",42.1711365,-87.8445119,392350
+"Office Depot","Boca Raton","Florida","Palm Beach",26.3683064,-80.1289321,521590
+"Crown Holdings",NA,"Pennsylvania","Bucks",40.245664,-74.8459972,491060
+"Quanta Service","Houston","Texas","Harris",29.7604267,-95.3698028,306470
+"W.W. Grainger",NA,"Illinois","Lake",42.2586342,-87.840625,392350
+"AutoZone","Memphis","Tennessee","Shelby",35.1495343,-90.0489801,292520
+"Expedia Group","Bellevue","Washington","King",47.6101497,-122.2015159,903970
+"Corning",NA,"New York","Steuben",42.1428521,-77.0546903,146260
+"Laboratory Corp. of America","Burlington","North Carolina","Alamance",36.0956918,-79.4377991,295500
+"Norfolk Southern","Norfolk","Virginia",NA,36.8507689,-76.2858726,NA
+"Huntsman LLC","The Woodlands","Texas","Montgomery",30.1596297,-95.4564633,368940
+"Reliance Steel & Aluminum Co","Los Angeles","California","Los Angeles",34.051473,-118.2514575,883230
+"Xcel Energy","Minneapolis","Minnesota","Hennepin",44.9795754,-93.2705091,407520
+"Unum Group","Chattanooga","Tennessee","Hamilton",35.0456297,-85.3096801,372350
+"Group 1 Automotive","Houston","Texas","Harris",29.7777447,-95.5438873,306470
+"BALL","Broomfield","Colorado",NA,39.9205411,-105.0866504,NA
+"Farmers Insurance Exchange",NA,"California","Yolo",38.6785157,-121.7732971,633030
+"Sempra Energy","San Diego","California","San Diego",32.715738,-117.1610838,928550
+"Nvidia","Santa Clara","California","Santa Clara",37.3541079,-121.9552356,1558540
+"Tenneco",NA,"Illinois","Lake",42.2586342,-87.840625,392350
+"MGM Resorts International Career Center",NA,"Nevada","Clark",36.0712215,-115.1451887,457490
+"Lithia Motors","Medford","Oregon","Jackson",42.3265152,-122.8755949,462170
+"Steel Dynamics","Fort Wayne","Indiana","Allen",41.079273,-85.1393513,260380
+"FirstEnergy Corp.","Akron","Ohio","Summit",41.083384,-81.5183258,241300
+"LKQ ","Chicago","Illinois","Cook",41.8781136,-87.6297982,357630
+"J.C. Penney","Plano","Texas","Collin",33.0198431,-96.6988856,541940
+"CSX Corporation","Jacksonville","Florida","Duval",30.3245211,-81.6640579,339790
+"Consolidated Edison Inc","New York","New York","New York",40.7277719,-73.9728317,1172110
+"Bed Bath & Beyond","New York","New York","New York",40.7726316,-73.9818792,1172110
+"Murphy USA","El Dorado","Arkansas","Union",33.20763,-92.6662674,124330
+"ONEOK Field","Tulsa","Oklahoma","Tulsa",36.1604414,-95.9890152,268610
+"Edison International",NA,"California","Los Angeles",34.0540475,-118.0806461,883230
+"Global Partners LP","Waltham","Massachusetts","Middlesex",42.3547248,-71.2624797,793120
+"Discover Financial Services",NA,"Illinois","Lake",42.1567624,-87.8901097,392350
+"VF","Greensboro","North Carolina","Guilford",36.0726354,-79.7919754,316460
+"Reinsurance Group of America Inc.",NA,"Missouri","St. Louis",38.661306,-90.56653,312860
+"Core-Mark Holding","South San Francisco","California","San Mateo",37.654656,-122.4077498,1601600
+"Ameriprise Financial -  Minneapolis","Minneapolis","Minnesota","Hennepin",44.975179,-93.2691191,407520
+"Viacom","New York","New York","New York",40.7579353,-73.9861885,1172110
+"State Street Corporation","Boston","Massachusetts","Suffolk",42.3527258,-71.0584443,739680
+"BB and T Corp Winston-Salem","Winston-Salem","North Carolina","Forsyth",36.0998596,-80.244216,302120
+"BJ's Wholesale Club",NA,"Massachusetts","Worcester",42.2695216,-71.6161294,484170
+"Guardian Life Ins. Co. of America","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Newell Brands Hoboken",NA,"New Jersey","Hudson",40.7386606,-74.0277171,610440
+"Henry Schein Inc",NA,"New York","Suffolk",40.7677654,-73.4175771,663980
+"L Brands OH",NA,"Ohio","Franklin",39.9789437,-82.779035,327270
+"Salesforce.com San Francisco","San Francisco","California",NA,37.7894338,-122.3964928,NA
+"ADP Roseland",NA,"New Jersey","Essex",40.8155809,-74.31007,612980
+"Dominion Energy Richmond","Richmond","Virginia",NA,37.541585,-77.437031,NA
+"Anadarko","The Woodlands","Texas","Montgomery",30.1658207,-95.4612625,368940
+"Alcoa Corporation","Pittsburgh","Pennsylvania","Allegheny",40.4477654,-80.0011301,254090
+"Biogen","Cambridge","Massachusetts","Middlesex",42.3662897,-71.0857637,793120
+"Kellogg","Battle Creek","Michigan","Calhoun",42.3523378,-85.2396898,183040
+"Stryker","Kalamazoo","Michigan","Kalamazoo",42.2428207,-85.5553397,274280
+"Dish Network Englewood","Englewood","Colorado","Douglas",39.54598,-104.856233,748570
+"Estee Lauder New York","New York","New York","New York",40.7623565,-73.9693612,1172110
+"Las Vegas Sands Corp Las Vegas","Las Vegas","Nevada","Clark",36.0894731,-115.1674317,457490
+"Textron","Providence","Rhode Island","Providence",41.8249766,-71.4089253,444090
+"Stanley black & decker","New Britain","Connecticut","Capitol Planning Region",41.677591,-72.7691948,NA
+"Arconic New York","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Loews Regency New York","New York","New York","New York",40.7645507,-73.969144,1172110
+"Qurate Retail Englewood","Englewood","Colorado","Arapahoe",39.6477653,-104.9877597,593960
+"Kinder Morgan","Houston","Texas","Harris",29.7580033,-95.3676218,306470
+"Community Health Systems Franklin","Franklin","Tennessee","Williamson",35.9250637,-86.8688899,888220
+"United States Steel Pittsburgh","Pittsburgh","Pennsylvania","Allegheny",40.4406248,-79.9958864,254090
+"BlackRock New York","New York","New York","New York",40.7590777,-73.9736148,1172110
+"DTE Energy",NA,"Michigan","Washtenaw",42.374059,-84.078522,407140
+"Principal Financial Group","Des Moines","Iowa","Polk",41.5886935,-93.6275465,288360
+"Parker Hannifin Corp",NA,"Ohio","Cuyahoga",41.5065902,-81.4611707,225250
+"CBS Corporation","New York","New York","New York",40.7611804,-73.9788194,1172110
+"Booking Holdings Norwalk","Norwalk","Connecticut","Western Connecticut Planning Region",41.117744,-73.4081575,NA
+"Ecolab","Saint Paul","Minnesota","Ramsey",44.9463336,-93.0973332,343940
+"ITW  Glenview",NA,"Illinois","Cook",42.0579748,-87.8041219,357630
+"Waste Management - Houston Houston","Houston","Texas","Harris",29.7561602,-95.3648818,306470
+"Land O Lakes",NA,"Minnesota","Ramsey",45.062663,-93.150847,343940
+"Mastercard",NA,"New York","Westchester",41.0234636,-73.7142761,732670
+"Marsh Mclennan: Geiger Richard","New York","New York","New York",40.7568777,-73.9820345,1172110
+"Ross Dress for Less",NA,"California","Alameda",37.7020159,-121.9314005,1108180
+"Jacobs Engineering Group Dallas","Dallas","Texas","Dallas",32.7766642,-96.7969879,329370
+"Celgene Corporation",NA,"New Jersey","Union",40.7090186,-74.3452692,647330
+"Omnicom Group Inc","New York","New York","New York",40.7573566,-73.9753734,1172110
+"PPG Industries Inc","Pittsburgh","Pennsylvania","Allegheny",40.4398325,-80.0034907,254090
+"PayPal","San Jose","California","Santa Clara",37.3763719,-121.9226185,1558540
+"Goodyear Auto Service",NA,"Ohio","Summit",40.9774039,-81.4927201,241300
+"Colgate-Palmolive Company","New York","New York","New York",40.7570209,-73.9746695,1172110
+"Supervalu  Eden Prairie",NA,"Minnesota","Hennepin",44.8562646,-93.4634171,407520
+"General Mills  Minneapolis",NA,"Minnesota","Hennepin",44.9947801,-93.3931409,407520
+"Texas Instruments","Dallas","Texas","Dallas",32.7766642,-96.7969879,329370
+"Aramark HQ","Philadelphia","Pennsylvania","Philadelphia",39.953533,-75.1793605,266610
+"Netflix Los Gatos",NA,"California","Santa Clara",37.2571032,-121.9641779,1558540
+"Nordstrom Downtown Seattle","Seattle","Washington","King",47.6123411,-122.336287,903970
+"Becton Dickinson  Franklin Lakes",NA,"New Jersey","Bergen",41.0169734,-74.2107153,694830
+"Rockingham Estates by D.R. Horton America's Builder","Arlington","Texas","Tarrant",32.6176787,-97.0883611,350700
+"Cognizant",NA,"New Jersey","Bergen",40.8729475,-74.0069886,694830
+"American Electric Power Co","Columbus","Ohio","Franklin",39.9651773,-83.0060034,327270
+"CDW",NA,"Illinois","Lake",42.1973796,-87.8886482,392350
+"WestRock  Atlanta","Atlanta","Georgia","Fulton",33.9343834,-84.3544514,514220
+"Jones Lang La Salle","Chicago","Illinois","Cook",41.880557,-87.6298254,357630
+"Davita","Denver","Colorado",NA,39.7521886,-105.0034965,NA
+"Lincoln Financial Group","Radnor Township","Pennsylvania","Delaware",40.043008,-75.3656481,385930
+"Gap San Francisco","San Francisco","California",NA,37.7848185,-122.4074974,NA
+"C.H. Robinson",NA,"Minnesota","Hennepin",44.820863,-93.460822,407520
+"NextEra Energy Resources",NA,"Florida","Palm Beach",26.8591495,-80.0583923,521590
+"PG&E San Francisco","San Francisco","California",NA,37.7915801,-122.3958235,NA
+"Applied Materials Inc","Santa Clara","California","Santa Clara",37.3776247,-121.9787818,1558540
+"EOG Resources Inc","Houston","Texas","Harris",29.7587886,-95.3708019,306470
+"XPO Logistics","Bridgeport","Connecticut","Greater Bridgeport Planning Region",41.179974,-73.1706748,NA
+"NGL Energy Partners LP","Tulsa","Oklahoma","Tulsa",36.0742323,-95.9250989,268610
+"Emerson Electric Co.",NA,"Missouri","St. Louis",38.7315866,-90.2790342,312860
+"Sherwin-Williams - Corporate Office","Cleveland","Ohio","Cuyahoga",41.4973117,-81.6924784,225250
+"Performans Food Group Richmond","Richmond","Virginia",NA,37.5407246,-77.4360481,NA
+"HollyFrontier Corporation","Dallas","Texas","Dallas",32.794481,-96.8081869,329370
+"CarMax","Charlottesville","Virginia","Albemarle",38.0324236,-78.4460289,568920
+"Synchrony Financial","Stamford","Connecticut","Western Connecticut Planning Region",41.097221,-73.561771,NA
+"Tenet Healthcare Corporation","Dallas","Texas","Dallas",32.7847875,-96.8026417,329370
+"Kimberly-Clark Corporation","Irving","Texas","Dallas",32.8700521,-96.9505585,329370
+"Freeport-McMoRan Inc.","Phoenix","Arizona","Maricopa",33.4516712,-112.073049,488740
+"Genuine Parts","Atlanta","Georgia","Fulton",33.7489954,-84.3879824,514220
+"Molina Healthcare","Long Beach","California","Los Angeles",33.7700504,-118.1937395,883230
+"Occidental Petroleum","Houston","Texas","Harris",29.7604267,-95.3698028,306470
+"Icahn Enterprises","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Avnet","Phoenix","Arizona","Maricopa",33.4274453,-111.9799387,488740
+"Fluor","Irving","Texas","Dallas",32.8140177,-96.9488945,329370
+"Bank of New York Mellon","New York","New York","New York",40.714291,-74.0117809,1172110
+"Altria Group Inc.",NA,"Virginia","Henrico",37.6024176,-77.5178714,400330
+"Hartford Financial Services: Delacruz Cedric","Hartford","Connecticut","Hartford",41.769703,-72.6869808,NA
+"Danaher Corporation","Washington","District of Columbia",NA,38.901756,-77.0493404,NA
+"PNC Financial Services","Pittsburgh","Pennsylvania","Allegheny",40.4406248,-79.9958864,254090
+"SYNNEX","Fremont","California","Alameda",37.5485396,-121.988583,1108180
+"AECOM","Los Angeles","California","Los Angeles",34.0522342,-118.2436849,883230
+"Kohl’s",NA,"Wisconsin","Waukesha",43.1788967,-88.1173132,461590
+"WellCare Health Plans","Tampa","Florida","Hillsborough",27.950575,-82.4571776,422180
+"Lennar","Miami","Florida","Miami-Dade",25.7616798,-80.1917902,555610
+"VISA","San Francisco","California",NA,37.7749295,-122.4194155,NA
+"Western Digital","San Jose","California","Santa Clara",37.3382082,-121.8863286,1558540
+"Marriott International","Bethesda","Maryland","Montgomery",38.984652,-77.0947092,680160
+"Broadcom","San Jose","California","Santa Clara",37.3382082,-121.8863286,1558540
+"McDonald’s","Chicago","Illinois","Cook",41.8781136,-87.6297982,357630
+"Whirlpool","Benton Harbor","Michigan","Berrien",42.1167065,-86.4541894,255630
+"LEAR",NA,"Michigan","Oakland",42.4733688,-83.2218731,388210
+"CBRE Global Headquarters","Los Angeles","California","Los Angeles",34.0516422,-118.2535883,883230
+"AutoNation","Fort Lauderdale","Florida","Broward",26.1224386,-80.1373174,479150
+"Tesla HQ","Palo Alto","California","Santa Clara",37.3947057,-122.1503251,1558540
+"AFLAC","Columbus","Georgia","Muscogee",32.4609764,-84.9877094,227150
+"Southwest Airlines","Dallas","Texas","Dallas",32.7766642,-96.7969879,329370
+"ManpowerGroup","Milwaukee","Wisconsin","Milwaukee",43.0389025,-87.9064736,270080
+"JABIL","Saint Petersburg","Florida","Pinellas",27.7676008,-82.6402915,400470
+"Gilead Sciences",NA,"California","San Mateo",37.5669611,-122.2816328,1601600
+"Bristol-Myers Squibb","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Qualcomm","San Jose","California","Santa Clara",37.3654663,-121.9151577,1558540
+"Penske Automotive Group",NA,"Michigan","Oakland",42.6026454,-83.2879437,388210
+"DOLLAR TREE","Chesapeake","Virginia",NA,36.7682088,-76.2874927,NA
+"UNION PACIFIC","Omaha","Nebraska","Douglas",41.2565369,-95.9345034,300310
+"International Paper","Memphis","Tennessee","Shelby",35.1006964,-89.8497443,292520
+"CENTURYLINK","Monroe","Louisiana","Ouachita Parish",32.5093109,-92.1193012,NA
+"SOUTHERN","Atlanta","Georgia","Fulton",33.7489954,-84.3879824,514220
+"PACCAR ","Bellevue","Washington","King",47.6170064,-122.1997509,903970
+"AMGEN","Thousand Oaks","California","Ventura",34.1705609,-118.8375937,890010
+"Cummins","Indianapolis","Indiana","Marion",39.7681486,-86.1518866,250140
+"Halliburton","Houston","Texas","Harris",29.9377567,-95.3404419,306470
+"Duke Energy","Charlotte","North Carolina","Mecklenburg",35.223998,-80.848639,471910
+"US Foods Holdings",NA,"Illinois","Cook",41.9867507,-87.8721602,357630
+"Thermo Fisher Scientific","Waltham","Massachusetts","Middlesex",42.3929224,-71.2615943,793120
+"Eli Lilly and Company Corporate Center","Indianapolis","Indiana","Marion",39.7559112,-86.1530808,250140
+"DXC Technology",NA,"Virginia","Fairfax",38.9233855,-77.2214581,782680
+"Starbucks","Seattle","Washington","King",47.610021,-122.342583,903970
+"NUCOR","Charlotte","North Carolina","Mecklenburg",35.2270869,-80.8431267,471910
+"Dollar General Corporate Headquarters",NA,"Tennessee","Davidson",36.3090261,-86.699065,452700
+"MACY'S","Cincinnati","Ohio","Hamilton",39.1031182,-84.5120196,283180
+"U.S. BANCORP","Minneapolis","Minnesota","Hennepin",44.977753,-93.2650108,407520
+"Mondelez International",NA,"Illinois","Lake",42.1711365,-87.8445119,392350
+"Kraft Heinz Innovation Center",NA,"Pennsylvania","Allegheny",40.6592545,-80.100283,254090
+"Raytheon Company",NA,"Massachusetts","Middlesex",42.6378861,-71.2451602,793120
+"PBF Energy",NA,"New Jersey","Morris",40.8474943,-74.4546895,677650
+"INTL FCStone","New York","New York","New York",40.7552112,-73.9801333,1172110
+"Northwestern Mutual","Milwaukee","Wisconsin","Milwaukee",43.040905,-87.901114,270080
+"Philip Morris International Inc","New York","New York","New York",40.7518892,-73.9782981,1172110
+"Arrow Electronics","Centennial","Colorado","Arapahoe",39.5814958,-104.8822406,593960
+"Northrop Grumman","Falls Church","Virginia","Fairfax",38.8671114,-77.2148893,782680
+"Rite Aid",NA,"Pennsylvania",NA,40.2401756,-76.9353966,NA
+"TRAVELERS  New York",NA,"New York","Suffolk",40.7736489,-73.4157247,663980
+"Micron Technology","Boise","Idaho","Ada",43.6150186,-116.2023137,556040
+"Twenty-First Century Fox","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Abbott Laboratories",NA,"Illinois","Lake",42.3008372,-87.8944668,392350
+"Hewlett Packard Enterprise","Palo Alto","California","Santa Clara",37.4418834,-122.1430195,1558540
+"USAA","San Antonio","Texas","Bexar",29.4241219,-98.4936282,289900
+"Coca-Cola","Atlanta","Georgia","Fulton",33.7489954,-84.3879824,514220
+"Progressive",NA,"Ohio","Cuyahoga",41.5519952,-81.4392828,225250
+"Capital One Financial",NA,"Virginia","Fairfax",38.9338676,-77.1772604,782680
+"CHS",NA,"Minnesota","Dakota",44.8480218,-93.0427153,400830
+"ABBVIE",NA,"Illinois","Lake",42.325578,-87.8411818,392350
+"3M","Saint Paul","Minnesota","Ramsey",44.9537029,-93.0899578,343940
+"Plains GP holdings","Houston","Texas","Harris",29.7604267,-95.3698028,306470
+"Exelon","Chicago","Illinois","Cook",41.8781136,-87.6297982,357630
+"General Dynamics","Falls Church","Virginia",NA,38.882334,-77.1710914,NA
+"Publix Super Markets","Lakeland","Florida","Polk",28.0394654,-81.9498042,302500
+"NIKE","Beaverton","Oregon","Washington",45.4888761,-122.8013771,621730
+"Enterprise Products Partners","Houston","Texas","Harris",29.7604267,-95.3698028,306470
+"Tech Data","Clearwater","Florida","Pinellas",27.9658533,-82.8001026,400470
+"DEERE","Moline","Illinois","Rock Island",41.5067003,-90.5151342,161500
+"ConocoPhillips","Houston","Texas","Harris",29.7604267,-95.3698028,306470
+"TJX","Framingham","Massachusetts","Middlesex",42.279286,-71.4161565,793120
+"Massachusetts Mutual Life Insurance","Springfield","Massachusetts","Hampden",42.1014831,-72.589811,344760
+"World Fuel Services","Miami","Florida","Miami-Dade",25.7616798,-80.1917902,555610
+"ALLSTATE",NA,"Illinois","Cook",42.1275267,-87.8289548,357630
+"Oracle ","Redwood City","California","San Mateo",37.4852152,-122.2363548,1601600
+"Tyson Foods","Springdale","Arkansas","Washington",36.1867442,-94.1288141,363520
+"TIAA","New York","New York","New York",40.7127753,-74.0059728,1172110
+"United Continental Holdings","Chicago","Illinois","Cook",41.8781136,-87.6297982,357630
+"Honeywell International",NA,"New Jersey","Morris",40.8395922,-74.4818698,677650
+"Merck Kenilworth",NA,"New Jersey","Union",40.6764911,-74.2907032,647330
+"Liberty Mutual Insurance Group","Boston","Massachusetts","Suffolk",42.3600825,-71.0588801,739680
+"Best Buy",NA,"Minnesota","Hennepin",44.8832982,-93.2830021,407520
+"Nationwide","Columbus","Ohio","Franklin",39.9611755,-82.9987942,327270
+"American Express","New York","New York","New York",40.7127753,-74.0059728,1172110
+"New York Life Insurance","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Charter Communications","Stamford","Connecticut","Western Connecticut Planning Region",41.0534302,-73.5387341,NA
+"Delta Air Lines","Atlanta","Georgia","Fulton",33.7489954,-84.3879824,514220
+"American Airlines Group","Fort Worth","Texas","Tarrant",32.7554883,-97.3307658,350700
+"HCA Healthcare","Nashville","Tennessee","Davidson",36.1626638,-86.7816016,452700
+"AIG","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Cigna",NA,"Connecticut","Capitol Planning Region",41.826488,-72.7300945,NA
+"CISCO Systems","San Jose","California","Santa Clara",37.3382082,-121.8863286,1558540
+"Morgan Stanley ","New York","New York","New York",40.7599978,-73.9854317,1172110
+"Goldman Sachs Group","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Pfizer","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Lockheed Martin","Bethesda","Maryland","Montgomery",38.984652,-77.0947092,680160
+"Energy Transfer","Dallas","Texas","Dallas",32.7766642,-96.7969879,329370
+"Caterpillar",NA,"Illinois","Lake",42.1711365,-87.8445119,392350
+"Facebook",NA,"California","San Mateo",37.4529598,-122.1817252,1601600
+"Humana","Louisville","Kentucky","Jefferson",38.2526647,-85.7584557,266760
+"HP","Palo Alto","California","Santa Clara",37.4418834,-122.1430195,1558540
+"SYSCO","Houston","Texas","Harris",29.7604267,-95.3698028,306470
+"Albertsons","Boise","Idaho","Ada",43.6150186,-116.2023137,556040
+"Centene","Saint Louis","Missouri",NA,38.6270025,-90.1994042,NA
+"Prudential Financial","Newark","New Jersey","Essex",40.7335424,-74.1710255,612980
+"Archer Daniels Midland","Chicago","Illinois","Cook",41.8781136,-87.6297982,357630
+"Pepsico","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Fedex","Memphis","Tennessee","Shelby",35.1495343,-90.0489801,292520
+"United Technologies",NA,"Connecticut","Capitol Planning Region",41.7360305,-72.795027,NA
+"Procter and Gamble","Cincinnati","Ohio","Hamilton",39.1031182,-84.5120196,283180
+"MetLife","New York","New York","New York",40.7127753,-74.0059728,1172110
+"INTEL","Santa Clara","California","Santa Clara",37.3541079,-121.9552356,1558540
+"Lowes",NA,"North Carolina","Iredell",35.5859146,-80.8081413,376430
+"United Parcel Service","Atlanta","Georgia","Fulton",33.7489954,-84.3879824,514220
+"Freddie Mac",NA,"Virginia","Fairfax",38.9338676,-77.1772604,782680
+"Target","Minneapolis","Minnesota","Hennepin",44.9748915,-93.2743017,407520
+"IBM",NA,"New York","Westchester",41.1135751,-73.7160522,732670
+"Johnson And Johnson","New Brunswick","New Jersey","Middlesex",40.4993693,-74.4419126,549800
+"State Farm Insurance","Bloomington","Illinois","McLean",40.4771561,-88.9548523,239350
+"DuPont De Nemours  ",NA,"Delaware","New Castle",39.7828904,-75.5671468,391290
+"Dell Technologies ","Round Rock","Texas","Williamson",30.4883856,-97.6704209,466650
+"Anthem","Indianapolis","Indiana","Marion",39.76462,-86.15301,250140
+"Comcast","Philadelphia","Pennsylvania","Philadelphia",39.9549688,-75.168451,266610
+"Marathon Petrolium","Findlay","Ohio","Hancock",41.04422,-83.6499321,247240
+"Citigroup","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Wells Fargo","San Francisco","California",NA,37.7749295,-122.4194155,NA
+"Boeing","Chicago","Illinois","Cook",41.8781136,-87.6297982,357630
+"Home Depot","Atlanta","Georgia","Fulton",33.7489954,-84.3879824,514220
+"Microsoft",NA,"Washington","King",47.6739881,-122.121512,903970
+"Bank of America","Charlotte","North Carolina","Mecklenburg",35.2270869,-80.8431267,471910
+"Valero Technology","San Antonio","Texas","Bexar",29.4241219,-98.4936282,289900
+"Phillips","Houston","Texas","Harris",29.7604267,-95.3698028,306470
+"Fannie Mae","Washington","District of Columbia",NA,38.9071923,-77.0368707,NA
+"General Electric","Boston","Massachusetts","Suffolk",42.3600825,-71.0588801,739680
+"Kroger","Cincinnati","Ohio","Hamilton",39.1031182,-84.5120196,283180
+"Verizon Communication","New York","New York","New York",40.7127753,-74.0059728,1172110
+"JP Morgan","New York","New York","New York",40.7127753,-74.0059728,1172110
+"Walgreens Boots Alliance",NA,"Illinois","Lake",42.1711365,-87.8445119,392350
+"Cardinal Health","Dublin","Ohio","Franklin",40.0992294,-83.1140771,327270
+"Alphabet","Mountain View","California","Santa Clara",37.3860517,-122.0838511,1558540
+"Costco Wholesale",NA,"Washington","King",47.5301011,-122.0326191,903970
+"General Motors","Detroit","Michigan","Wayne",42.331427,-83.0457538,206910
+"Exxon Mobil","Irving","Texas","Dallas",32.8140177,-96.9488945,329370
+"McKesson","Irving","Texas","Dallas",32.8140177,-96.9488945,329370
+"Ford Motor",NA,"Michigan","Wayne",42.3222599,-83.1763145,206910
+"Chevron",NA,"California","Contra Costa",37.7799273,-121.9780153,887170
+"Amerisource Bergen Drug Corporation Chesterbrook","Tredyffrin Township","Pennsylvania","Chester",40.0686079,-75.4683046,566540
+"AT&T  ","Dallas","Texas","Dallas",32.8687682,-96.7692323,329370
+"CVS Health ","Woonsocket","Rhode Island","Providence",41.9914346,-71.4889544,444090
+"UnitedHealth Group",NA,"Minnesota","Hennepin",44.9211836,-93.4687489,407520
+"Amazon","Seattle","Washington","King",47.6062095,-122.3320708,903970
+"Berkshire Hathaway INC.","Omaha","Nebraska","Douglas",41.2565369,-95.9345034,300310
+"Apple","Cupertino","California","Santa Clara",37.3229978,-122.0321823,1558540
+"Walmart","Bentonville","Arkansas","Benton",36.3728538,-94.2088172,403390
