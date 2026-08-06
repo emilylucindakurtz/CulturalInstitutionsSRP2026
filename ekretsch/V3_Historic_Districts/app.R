@@ -29,7 +29,7 @@ by_state <- historic_districts %>%
   summarise(total_acreage = sum(acreage_of_property, na.rm=TRUE),
             total_num_districts = n(),
             across(25:last_col(), ~ sum(.x, na.rm = TRUE)))
-# changed this
+# changed this ^
 
 categories_counts <- by_state %>%
   select(state, 4:ncol(by_state)) %>%
@@ -56,8 +56,8 @@ counties_sf <- tigris::counties(cb = TRUE) %>%
 
 # Unemployment rates ---------
 # USDA
-unemployment_data_usda <- read_csv("../../data/EK_general/Unemployment2023.csv")
-unemployment_wider <- unemployment_data_usda %>% 
+unemployment_usda <- read_csv("../../data/EK_general/Unemployment2023.csv")
+unemployment_usda_wider <- unemployment_usda %>% 
   clean_names() %>% 
   mutate(
     #separate("\d{4}")
@@ -67,12 +67,13 @@ unemployment_wider <- unemployment_data_usda %>%
     #str_replace_all("_", " ")
   )
 # now actually pivoting wider
-unemployment_wider <- unemployment_wider %>% 
+unemployment_usda_wider <- unemployment_usda_wider %>% 
   pivot_wider(
     names_from = attribute,
     values_from = value
   )
-unemployment_filtered <- unemployment_wider %>% 
+
+unemployment_usda_2023 <- unemployment_usda_wider %>% 
   filter(year == "2023")
 
 
@@ -87,7 +88,7 @@ county_equivs <- paste("County",
                        "Parish", 
                        sep = "|")
 
-unemployment_joinable <- unemployment_filtered %>% 
+unemployment_usda_2023_joinable <- unemployment_usda_2023 %>% 
   mutate(NAMELSAD = str_remove(area_name, ",.*"), #before comma
          STUSPS = str_trim(str_replace(area_name, "^.*,",""))) %>% #after comma
   mutate(STUSPS = str_replace(STUSPS, "District of Columbia", "DC"), # fixing DC
@@ -97,8 +98,8 @@ unemployment_joinable <- unemployment_filtered %>%
 # could also potentially do this by dealling with the FIPS code but that would mean mutating the shapefile
 
 # Joining USDA unemployment data to the counties data! (would do the same her prob if adding other data)
-mapping_data_usda <- counties_sf %>% 
-  left_join(unemployment_joinable,  by = c("NAME", "STUSPS"))
+unemployment_usda_23_mapping <- counties_sf %>% 
+  left_join(unemployment_usda_2023_joinable,  by = c("NAME", "STUSPS"))
 
 # Joining historic districts and the unemployment rate for graphing later -------------------------------------
 historic_districts <- historic_districts  %>% 
@@ -119,14 +120,14 @@ historic_districts <- historic_districts %>%
 pal_usda <- colorQuantile(
   #palette = "YlOrRd",
   palette = "Spectral",
-  domain = mapping_data_usda$unemployment_rate,
+  domain = unemployment_usda_23_mapping$unemployment_rate,
   n=9,
   na.color = "grey",
   reverse = TRUE
 )
 
 # Prepping for fixing the legend (this and the labformat thing below were helped)
-pal_usda_breaks <- quantile(mapping_data_usda$unemployment_rate, probs = seq(0, 1, length.out = 10), na.rm = TRUE)
+pal_usda_breaks <- quantile(unemployment_usda_23_mapping$unemployment_rate, probs = seq(0, 1, length.out = 10), na.rm = TRUE)
  
 # Sort of "manually" logging the color palette and its values/labels so we can apply it to bar chart as well.
 n_quants <- length(pal_usda_breaks)
@@ -178,7 +179,7 @@ my_palette <- colorNumeric(
 
 ui <- page_navbar(
 #    theme = shinytheme("flatly"),
-  theme = bs_theme(bootswatch = "lux"), # morph also goo
+  theme = bs_theme(bootswatch = "lux"), # morph also good
   #data-bs-theme="dark",
   title = "Historic Districts",
   fillable = TRUE, # Acts as page_fillable() for all tabs
@@ -368,10 +369,10 @@ server <- function(input, output) {
       filtered_data <- filtered_data %>% 
         filter(state == input$state_choice)
       
-      filtered_county_geoms <- mapping_data_usda %>% 
+      filtered_county_geoms <- unemployment_usda_23_mapping %>% 
         filter(STATE_NAME == input$state_choice) # maybe cbl and change to selected_state_p1()????
     } else {
-      filtered_county_geoms <- mapping_data_usda #CBLLL
+      filtered_county_geoms <- unemployment_usda_23_mapping #CBLLL
     }
       
     # Adding the full outline of the state on top (since it got covered by other things)
@@ -422,7 +423,7 @@ server <- function(input, output) {
         ) %>% 
         addLegend(
           pal = pal_usda,
-          value = mapping_data_usda$unemployment_rate,
+          value = unemployment_usda_23_mapping$unemployment_rate,
           position = "bottomright",
           title = "Unemployment rate (%)",
           labFormat = function(type, cuts, p){
@@ -621,7 +622,7 @@ server <- function(input, output) {
       setView(lng = -95.7129, lat = 37.0902, zoom = 4) %>% 
       
       addPolygons(
-        data = mapping_data_usda,
+        data = unemployment_usda_23_mapping,
         fillColor = ~pal_usda(unemployment_rate),
         fillOpacity = 1,
         color = "white",
@@ -645,7 +646,7 @@ server <- function(input, output) {
       ) %>% 
       addLegend(
         pal = pal_usda,
-        value = mapping_data_usda$unemployment_rate,
+        value = unemployment_usda_23_mapping$unemployment_rate,
         position = "bottomright",
         title = "Unemployment rate (%)",
         labFormat = function(type, cuts, p){
@@ -662,7 +663,7 @@ server <- function(input, output) {
   #     setView(lng = -95.7129, lat = 37.0902, zoom = 4) %>% 
   #     
   #     addPolygons(
-  #       data = mapping_data_usda,
+  #       data = unemployment_usda_23_mapping,
   #       fillColor = ~pal_usda(unemployment_rate),
   #       fillOpacity = 1,
   #       color = "white",
@@ -679,7 +680,7 @@ server <- function(input, output) {
   #     ) %>% 
   #     addLegend(
   #       pal = pal_usda,
-  #       value = mapping_data_usda$unemployment_rate,
+  #       value = unemployment_usda_23_mapping$unemployment_rate,
   #       position = "bottomright",
   #       title = "Unemployment rate (%)",
   #       labFormat = function(type, cuts, p){
