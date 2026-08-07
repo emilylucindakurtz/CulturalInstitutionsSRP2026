@@ -643,8 +643,14 @@ server <- function(input, output) {
   # })
   
   output$categories_dist_p1 <- renderPlotly({
+    if(selected_state_p1() == "the USA"){
+      temp_state <- "USA"
+    } else {
+      temp_state <- selected_state_p1()
+    }
+    
     temp_df <- hd_categories_counts_by_state %>% 
-      rename(counts = all_of(input$state_choice)) %>%  # Get just the column of the state that was clicked.
+      rename(counts = all_of(temp_state)) %>%  # Get just the column of the state that was clicked.
       select(category, counts) %>% 
       filter(counts >0) %>% 
       mutate(percent = counts/sum(counts),
