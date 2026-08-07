@@ -427,18 +427,18 @@ server <- function(input, output) {
   
   # Reactive blocks ---------------------------------------------------
   
-  selected_state_p1 <- reactiveVal(
+  selected_state_p1 <- reactive ({
     if(input$state_choice != "All"){
       input$state_choice
     } else {
       "the USA"
     }
     # NOT SURE IF THIS ISACCTUALLY NEEDED.... Maybe?
-  ) 
+  }) 
   
   # Historic districts
   # Recomputes automatically whenever categories_choice or state_choice changes!
-  filtered_hd <- reactive({
+  filtered_hd <- reactive ({
     # Get a character vector of the underlying column names of categories
     cols_to_check <- hd_categories_counts_by_state %>% 
       filter(category_nice %in% input$categories_choice) %>% 
@@ -510,10 +510,10 @@ server <- function(input, output) {
   # ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 -----
   
   # Reactive value to hold the currently filtered dataset (shared by map and table)
-  districts_filtered <- reactiveVal(NULL)
+  #districts_filtered <- reactiveVal(NULL)
   
   # Reactive value to hold the current state
-  selected_state_p1 <- reactiveVal(NULL) # SHOULD PROB TAKE OUT LATER!!
+  #selected_state_p1 <- reactiveVal(NULL) # SHOULD PROB TAKE OUT LATER!!
   
   
   
@@ -644,7 +644,7 @@ server <- function(input, output) {
   
   output$categories_dist_p1 <- renderPlotly({
     temp_df <- hd_categories_counts_by_state %>% 
-      rename(counts = all_of(selected_state_p1())) %>%  # Get just the column of the state that was clicked.
+      rename(counts = all_of(input$state_choice)) %>%  # Get just the column of the state that was clicked.
       select(category, counts) %>% 
       filter(counts >0) %>% 
       mutate(percent = counts/sum(counts),
