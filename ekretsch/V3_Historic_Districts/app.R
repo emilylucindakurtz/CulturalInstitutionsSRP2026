@@ -326,11 +326,10 @@ server <- function(input, output) {
   
   # ----- Page 1 NEW ---------------------------------------------------------------------------------------------------------
   
-  # Change hd and dist when the drop down for state changes
-  
-  # Trigger the zoom any time the user changes the STATE dropdown selection
+  # Trigger the zoom, state outline, and dist plot change any time the user changes the STATE dropdown selection
   observeEvent(input$state_choice, {
     
+    # 1) Change zoom
     if(input$state_choice == "All"){
       leafletProxy("explorer_map") %>% 
         setView(lng = -95.7129, lat = 37.0902, zoom = 4)
@@ -342,25 +341,88 @@ server <- function(input, output) {
         fitBounds(lng1 = bbox[["xmin"]], lat1 = bbox[["ymin"]], 
                   lng2 = bbox[["xmax"]], lat2 = bbox[["ymax"]])
     } # add another thing for alaska potentially -- or just note it due to aleutian
+    
+    # 2) Change state outline
+    leafletProxy("explorer_map") %>% 
+      clearGroup("state_outline_group")
+    
+    if(input$state_choice != "All"){ 
+      filtered_states_sf <- states_sf %>% 
+        filter(NAME == input$state_choice) # FIX THIS!!!!!!!!!! FIX FIX FIX
+      
+      # ^ NEED TO DEAL WITH THIS
+      leafletProxy("explorer_map") %>% 
+        addPolylines(data = filtered_states_sf, 
+                     group = "state_outline_group",
+                     options = pathOptions(pane = "state_outline_pane"),
+                     color = "black", 
+                     opacity = 1, 
+                     weight = 2)
+    }
+    
+    # 3) Change the categories dist plot (text has already been done)
+    # ADD
+    
   })
   
-  # Trigger the function for hd mapping + dist any time the user changes the STATE or CATEGORY(s) dropdown selection
+  # Trigger the function for hd mapping any time the user changes the STATE or CATEGORY(s) dropdown selection
   observeEvent(list(input$state_choice, input$categories_choice), {
+    if(nrow(filtered_hd()) > 0){
+      leafletProxy("explorer_map") %>% 
+        addCircleMarkers(
+          data = filtered_hd(),
+          group = "hd_group",
+          options = pathOptions(pane = "hd_pane")
+          ~longitude, 
+          ~latitude, 
+          popup = ~property_name, 
+          radius = 5, 
+          color = "black", 
+          fillOpacity = .5, 
+          weight = 1
+        )
+    }
+  })
+  
+  # Change layer 2 and layer 2 dist when the RADIO BUTTON input changes OR if STATE changes!
+  observeEvent(list(input$layer2_choice, input$state_choice) { 
     
+    # 1) Changing layer 2 mapping
+    # 1a) Cleaning up
+    leafletProxy("explorer_map") %>% 
+      clearGroup("layer2_group") %>% 
+      clearControls() # for legend
     
-  }, ignoreNULL = FALSE) # this ensures that if there is nothing selected it still runs the function YAY!
-  
-  
-  
-  
-  
-  #.              any time the user changes the checkbox selection
-  
-  # Change layer 2 and layer 2 dist when the radio button input changes
-  observeEvent(input$layer2_choice, {
+    # 1b) Re-mapping
+    if(input$layer2_choice == "unemployment"){
+      leafletProxy("explorer_map") %>% 
+        addPolygons(
+          data = ffiltered_county_geoms(),
+          group = "layer2_group",
+          options = pathOptions(pane = "layer2_pane"),
+          fillColor = ~pal_unemployment_usda_23(unemployment_rate),
+          fillOpacity = 1,
+          color = "white",
+          weight = 1,
+          smoothFactor = .5,
+          #label = ~area_name
+          label = paste0(filtered_county_geoms()$area_name, ": ", filtered_county_geoms()$unemployment_rate, "%") #hovering
+        ) %>% 
+        addLegend(
+          pal = pal_unemployment_usda_23,
+          value = unemployment_usda_23_mapping$unemployment_rate,
+          position = "bottomright",
+          title = "Unemployment rate (%)",
+          labFormat = function(type, cuts, p){
+            n <- length(pal_breaks_unemployment_usda_23) - 1
+            paste0(round(pal_breaks_unemployment_usda_23[1:n], 1), "% - ", round(pal_breaks_unemployment_usda_23[2:(n+1)], 1), "%")
+          }
+        )
+    }
     
-    filtered_county_geoms()
-    # figure out the leaflet pane and grouping situation
+    # 2) Changing layer 2 distribution
+    
+    # ADD!
   })
   
   # cl
@@ -371,9 +433,13 @@ server <- function(input, output) {
   #     addLegend(...)
   # })
   
+  ### ---- copied
+  update_layer2 <- function(){
+    # Adding the unemployment rate -- NEED TO if else etc
+    
+  }
   
-  
-  
+  ### ---- copied end
   
   # Reactive blocks ---------------------------------------------------
   
@@ -419,15 +485,14 @@ server <- function(input, output) {
     }
   })
   
-  # Outputs
-  
+  # Outputs ---------------------
   output$explorer_map <- renderLeaflet({
     leaflet() %>% 
       addProviderTiles("OpenStreetMap.HOT") %>% 
       setView(lng = -95.7129, lat = 37.0902, zoom = 4) %>% 
       addMapPane("layer2_pane", zIndex = 410) %>% 
       addMapPane("hd_pane", zIndex = 420) %>% 
-      addMapPane("staet_outline_pane", zIndex = 430)
+      addMapPane("state_outline_pane", zIndex = 430)
     
   })
   
@@ -454,12 +519,9 @@ server <- function(input, output) {
   })
   
   
-  
-  
-  
-  
   #Deal with this later:
   # output$categories_dist_p1, output$layer2_dist_p1
+  
   #also this:
     # Trigger an event every time the user changes the radio button selection
     # NEWW - CBL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -478,7 +540,7 @@ server <- function(input, output) {
   
   
   
-  update_districts <- function() {
+  # update_districts <- function() {
     # Get a character vector of the underlying column names
     # cols_to_check <- hd_categories_counts_by_state %>% 
     #   filter(category_nice %in% input$categories_choice) %>% 
@@ -491,18 +553,18 @@ server <- function(input, output) {
       clearControls() # for legend
     
     # Also add shape for the state
-    if(input$state_choice != "All"){ # FIX THIS!!!!!!!!!! FIX FIX FIX
-      selected_state_p1(input$state_choice)
-      
-      filtered_states_sf <- states_sf %>% 
-        filter(NAME == input$state_choice)
-      
-      leafletProxy("explorer_map") %>% 
-        addPolylines(data = filtered_states_sf, color = "black", opacity = 1, weight = 2)
-      
-    } else{
-      selected_state_p1(NULL)
-    }
+    # if(input$state_choice != "All"){ # FIX THIS!!!!!!!!!! FIX FIX FIX
+    #   selected_state_p1(input$state_choice)
+    #   
+    #   filtered_states_sf <- states_sf %>% 
+    #     filter(NAME == input$state_choice)
+    #   
+    #   leafletProxy("explorer_map") %>% 
+    #     addPolylines(data = filtered_states_sf, color = "black", opacity = 1, weight = 2)
+    #   
+    # } else{
+    #   selected_state_p1(NULL)
+    # }
     
     # # Filtering data based on state and types of districts
     # filtered_data <- historic_districts %>%
@@ -519,69 +581,69 @@ server <- function(input, output) {
     # }
       
     # Adding the full outline of the state on top (since it got covered by other things)
-    if(input$state_choice != "All"){
-      leafletProxy("explorer_map") %>% 
-        addPolylines(data = filtered_states_sf, color = "black", opacity = 1, weight = 2)
-    }
+    # if(input$state_choice != "All"){
+    #   leafletProxy("explorer_map") %>% 
+    #     addPolylines(data = filtered_states_sf, color = "black", opacity = 1, weight = 2)
+    # }
     
-    # Updating the map and the table if there are historic districts to see based on filters!
-    # (if/else for the table)
-    if(length(cols_to_check) > 0) {
-      # Add markers if there are datapoints to plot
-      if (nrow(filtered_data) > 0) { 
-        leafletProxy("explorer_map", data = filtered_data) %>% 
-          addCircleMarkers(
-            ~longitude, 
-            ~latitude, 
-            popup = ~property_name, 
-            radius = 5, 
-            color = "black", 
-            fillOpacity = .5, 
-            weight = 1
-            )
-      }
-      
-      #updating table
-      districts_filtered(filtered_data)
-      
-    } else {
-      districts_filtered(NULL) # if nothing is selected then clear the table
-    }
-  }
+  #   # Updating the map and the table if there are historic districts to see based on filters!
+  #   # (if/else for the table)
+  #   if(length(cols_to_check) > 0) {
+  #     # Add markers if there are datapoints to plot
+  #     if (nrow(filtered_data) > 0) { 
+  #       leafletProxy("explorer_map", data = filtered_data) %>% 
+  #         addCircleMarkers(
+  #           ~longitude, 
+  #           ~latitude, 
+  #           popup = ~property_name, 
+  #           radius = 5, 
+  #           color = "black", 
+  #           fillOpacity = .5, 
+  #           weight = 1
+  #           )
+  #     }
+  #     
+  #     #updating table
+  #     districts_filtered(filtered_data)
+  #     
+  #   } else {
+  #     districts_filtered(NULL) # if nothing is selected then clear the table
+  #   }
+  # }
   
-  # FUNCTION for reaction to changing filters ---------------------------------------------------------------------------
-  update_layer2 <- function(){
-    # Adding the unemployment rate -- NEED TO if else etc
-    if(input$layer2_choice == "unemployment"){
-      leafletProxy("explorer_map") %>% 
-        addPolygons(
-          data = filtered_county_geoms,
-          fillColor = ~pal_unemployment_usda_23(unemployment_rate),
-          fillOpacity = 1,
-          color = "white",
-          weight = 1,
-          smoothFactor = .5,
-          #label = ~area_name
-          label = paste0(filtered_county_geoms$area_name, ": ", filtered_county_geoms$unemployment_rate, "%") #hovering
-        ) %>% 
-        addLegend(
-          pal = pal_unemployment_usda_23,
-          value = unemployment_usda_23_mapping$unemployment_rate,
-          position = "bottomright",
-          title = "Unemployment rate (%)",
-          labFormat = function(type, cuts, p){
-            n <- length(pal_breaks_unemployment_usda_23) - 1
-            paste0(round(pal_breaks_unemployment_usda_23[1:n], 1), "% - ", round(pal_breaks_unemployment_usda_23[2:(n+1)], 1), "%")
-          }
-        )
-    }
-  }
+  # FUNCTION for reaction to changing selection for layer 2 ---------------------------------------------------------------------------
+  # update_layer2 <- function(){
+  #   # Adding the unemployment rate -- NEED TO if else etc
+  #   if(input$layer2_choice == "unemployment"){
+  #     leafletProxy("explorer_map") %>% 
+  #       addPolygons(
+  #         data = filtered_county_geoms,
+  #         fillColor = ~pal_unemployment_usda_23(unemployment_rate),
+  #         fillOpacity = 1,
+  #         color = "white",
+  #         weight = 1,
+  #         smoothFactor = .5,
+  #         #label = ~area_name
+  #         label = paste0(filtered_county_geoms$area_name, ": ", filtered_county_geoms$unemployment_rate, "%") #hovering
+  #       ) %>% 
+  #       addLegend(
+  #         pal = pal_unemployment_usda_23,
+  #         value = unemployment_usda_23_mapping$unemployment_rate,
+  #         position = "bottomright",
+  #         title = "Unemployment rate (%)",
+  #         labFormat = function(type, cuts, p){
+  #           n <- length(pal_breaks_unemployment_usda_23) - 1
+  #           paste0(round(pal_breaks_unemployment_usda_23[1:n], 1), "% - ", round(pal_breaks_unemployment_usda_23[2:(n+1)], 1), "%")
+  #         }
+  #       )
+  #   }
+  # }
   
   
   # Copied these
   
   
-  #----- outputs (copy and pasted)
+  #----- outputs (copy and pasted up)
   
   # output$hd_table_p1 <- DT::renderDT({
   #   req(filtered_hd()) # Make sure that there is actually something to put
