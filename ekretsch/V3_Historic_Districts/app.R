@@ -228,7 +228,7 @@ ui <- page_navbar(
         ),
         mainPanel(
           card(
-            leafletOutput("map2", height=600)
+            leafletOutput("explorer_map", height=600)
           ),
           card(
             textOutput("layer2_dist_label_p1"),
@@ -328,9 +328,52 @@ server <- function(input, output) {
   
   # Change hd and dist when the drop down for state changes
   
-  # Change hd when the drop down for categorie(s) changes
+  # Trigger the zoom any time the user changes the STATE dropdown selection
+  observeEvent(input$state_choice, {
+    
+    if(input$state_choice == "All"){
+      leafletProxy("explorer_map") %>% 
+        setView(lng = -95.7129, lat = 37.0902, zoom = 4)
+    } else{
+      selected_polygon <- states_sf %>% filter(NAME == input$state_choice)
+      bbox <- st_bbox(selected_polygon)
+      
+      leafletProxy("explorer_map") %>%
+        fitBounds(lng1 = bbox[["xmin"]], lat1 = bbox[["ymin"]], 
+                  lng2 = bbox[["xmax"]], lat2 = bbox[["ymax"]])
+    } # add another thing for alaska potentially -- or just note it due to aleutian
+  })
+  
+  # Trigger the function for hd mapping + dist any time the user changes the STATE or CATEGORY(s) dropdown selection
+  observeEvent(list(input$state_choice, input$categories_choice), {
+    
+    
+  }, ignoreNULL = FALSE) # this ensures that if there is nothing selected it still runs the function YAY!
+  
+  
+  
+  
+  
+  #.              any time the user changes the checkbox selection
   
   # Change layer 2 and layer 2 dist when the radio button input changes
+  observeEvent(input$layer2_choice, {
+    
+    filtered_county_geoms()
+    # figure out the leaflet pane and grouping situation
+  })
+  
+  # cl
+  # observeEvent(input$layer2_options, {
+  #   req(input$layer2_options == "unemployment")
+  #   leafletProxy("explorer_map") %>%
+  #     addPolygons(data = filtered_county_geoms(), ...) %>%
+  #     addLegend(...)
+  # })
+  
+  
+  
+  
   
   # Reactive blocks ---------------------------------------------------
   
@@ -340,6 +383,7 @@ server <- function(input, output) {
     } else {
       "the USA"
     }
+    # NOT SURE IF THIS ISACCTUALLY NEEDED.... Maybe?
   ) 
   
   # Historic districts
@@ -363,8 +407,7 @@ server <- function(input, output) {
     temp_df
   })
   
-  # Figure out if this needs to be changed if dif layer2!!
-  
+                                      # Figure out if this needs to be changed if dif layer2!!
   # County geometries
   # Recomputes whenever state_choice changes
   filtered_county_geoms <- reactive({
@@ -375,6 +418,55 @@ server <- function(input, output) {
         filter(STATE_NAME == input$state_choice)
     }
   })
+  
+  # Outputs
+  
+  output$explorer_map <- renderLeaflet({
+    leaflet() %>% 
+      addProviderTiles("OpenStreetMap.HOT") %>% 
+      setView(lng = -95.7129, lat = 37.0902, zoom = 4) %>% 
+      addMapPane("layer2_pane", zIndex = 410) %>% 
+      addMapPane("hd_pane", zIndex = 420) %>% 
+      addMapPane("staet_outline_pane", zIndex = 430)
+    
+  })
+  
+  output$hd_table_p1 <- DT::renderDT({
+    req(filtered_hd()) # Make sure that there is actually something to put
+    data_to_show <- filtered_hd() %>% 
+      select(ref_number,	property_name,	state,	county,	city,	street_number,	area_of_significance)
+    
+    DT::datatable(
+      data_to_show,
+      options = list(
+        scrollX = TRUE,   # Enforces a horizontal scrollbar instead of stretching the page
+        autoWidth = FALSE # Lets the browser scale column widths dynamically
+      )
+    )
+    
+  })
+  
+  output$categories_dist_label_p1 <- renderText({ # FIXED
+    paste0("Top 5 historic district categories in ", selected_state())
+  })
+  output$layer2_dist_label_p1 <- renderText({ # FIXED - But MAYBE CHANGE LABEL???
+    paste0("Distribution of historic district counts by their corresponding county's unemployment rate in ", selected_state_p1())
+  })
+  
+  
+  
+  
+  
+  
+  #Deal with this later:
+  # output$categories_dist_p1, output$layer2_dist_p1
+  #also this:
+    # Trigger an event every time the user changes the radio button selection
+    # NEWW - CBL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    observeEvent(input$layer2_choice, {
+      update_layer2()
+    })
+  
   
   # ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 -----
   
@@ -393,7 +485,7 @@ server <- function(input, output) {
     #   pull(category_og)
     
     # Clear previous markers and shapes and legends to avoid duplicates
-    leafletProxy("map2") %>% 
+    leafletProxy("explorer_map") %>% 
       clearMarkers() %>% 
       clearShapes() %>% 
       clearControls() # for legend
@@ -405,7 +497,7 @@ server <- function(input, output) {
       filtered_states_sf <- states_sf %>% 
         filter(NAME == input$state_choice)
       
-      leafletProxy("map2") %>% 
+      leafletProxy("explorer_map") %>% 
         addPolylines(data = filtered_states_sf, color = "black", opacity = 1, weight = 2)
       
     } else{
@@ -428,7 +520,7 @@ server <- function(input, output) {
       
     # Adding the full outline of the state on top (since it got covered by other things)
     if(input$state_choice != "All"){
-      leafletProxy("map2") %>% 
+      leafletProxy("explorer_map") %>% 
         addPolylines(data = filtered_states_sf, color = "black", opacity = 1, weight = 2)
     }
     
@@ -437,7 +529,7 @@ server <- function(input, output) {
     if(length(cols_to_check) > 0) {
       # Add markers if there are datapoints to plot
       if (nrow(filtered_data) > 0) { 
-        leafletProxy("map2", data = filtered_data) %>% 
+        leafletProxy("explorer_map", data = filtered_data) %>% 
           addCircleMarkers(
             ~longitude, 
             ~latitude, 
@@ -461,7 +553,7 @@ server <- function(input, output) {
   update_layer2 <- function(){
     # Adding the unemployment rate -- NEED TO if else etc
     if(input$layer2_choice == "unemployment"){
-      leafletProxy("map2") %>% 
+      leafletProxy("explorer_map") %>% 
         addPolygons(
           data = filtered_county_geoms,
           fillColor = ~pal_unemployment_usda_23(unemployment_rate),
@@ -485,25 +577,31 @@ server <- function(input, output) {
     }
   }
   
-  output$hd_table_p1 <- DT::renderDT({
-    req(districts_filtered()) # Make sure that there is actually something to put
-    data_to_show <- districts_filtered() %>% 
-      select(ref_number,	property_name,	state,	county,	city,	street_number,	area_of_significance)
-    
-    DT::datatable(
-      data_to_show,
-      options = list(
-        scrollX = TRUE,   # Enforces a horizontal scrollbar instead of stretching the page
-        autoWidth = FALSE # Lets the browser scale column widths dynamically
-      )
-    )
-    
-  })
   
-
-  output$categories_dist_label_p1 <- renderText({ # FIXED
-   paste0("Top 5 historic district categories in ", selected_state())
-  })
+  # Copied these
+  
+  
+  #----- outputs (copy and pasted)
+  
+  # output$hd_table_p1 <- DT::renderDT({
+  #   req(filtered_hd()) # Make sure that there is actually something to put
+  #   data_to_show <- filtered_hd() %>% 
+  #     select(ref_number,	property_name,	state,	county,	city,	street_number,	area_of_significance)
+  #   
+  #   DT::datatable(
+  #     data_to_show,
+  #     options = list(
+  #       scrollX = TRUE,   # Enforces a horizontal scrollbar instead of stretching the page
+  #       autoWidth = FALSE # Lets the browser scale column widths dynamically
+  #     )
+  #   )
+  #   
+  # })
+  
+  
+  # output$categories_dist_label_p1 <- renderText({ # FIXED
+  #   paste0("Top 5 historic district categories in ", selected_state())
+  # })
   
   output$categories_dist_p1 <- renderPlotly({
     temp_df <- hd_categories_counts_by_state %>% 
@@ -523,32 +621,32 @@ server <- function(input, output) {
       slice_max(order_by = counts, n = 5) %>% 
       
       ggplot(aes(y = reorder(category, counts), x = counts, text = tooltip_text)) +
-        geom_col() +
-        scale_y_discrete(labels = scales::label_wrap(10)) +
-        theme_minimal() + #CBL -- 
-        theme(
-          axis.text = element_text(size = 8),
-          axis.title.y = element_text(margin = margin(r = 50))
-        ) +
-        labs(
-          y = NULL,
-          x = "Count"
-        ) +
-        geom_text(aes(label = percent_label),
-                  position = position_stack(vjust = 0.5), # centers it in the bar
-                  color = "white")
-      
-      
-      #geom_text(aes(label = value), vjust = -0.5) 
+      geom_col() +
+      scale_y_discrete(labels = scales::label_wrap(10)) +
+      theme_minimal() + #CBL -- 
+      theme(
+        axis.text = element_text(size = 8),
+        axis.title.y = element_text(margin = margin(r = 50))
+      ) +
+      labs(
+        y = NULL,
+        x = "Count"
+      ) +
+      geom_text(aes(label = percent_label),
+                position = position_stack(vjust = 0.5), # centers it in the bar
+                color = "white")
+    
+    
+    #geom_text(aes(label = value), vjust = -0.5) 
     
     ggplotly(p, tooltip = "text")
   })
   
-  output$layer2_dist_label_p1 <- renderText({ # FIXED - But MAYBE CHANGE LABEL???
-    paste0("Distribution of historic district counts by their corresponding county's unemployment rate in ", selected_state_p1())
-  })
+  # output$layer2_dist_label_p1 <- renderText({ # FIXED - But MAYBE CHANGE LABEL???
+  #   paste0("Distribution of historic district counts by their corresponding county's unemployment rate in ", selected_state_p1())
+  # })
   
-  # New TEST
+  # New TEST 
   output$layer2_dist_p1 <- renderPlotly({
     if(selected_state_p1() == "the USA"){
       temp_df <- historic_districts
@@ -567,53 +665,19 @@ server <- function(input, output) {
       scale_fill_identity() +
       labs(x = "County unemployment rate",
            y = "Number of historic districts")
-      #scale_fill_identity()
+    #scale_fill_identity()
     
     ggplotly(p)
   })
   
-  # OLD VERSION 
-  # output$layer2_dist_p1 <- renderPlotly({
-  #   # need to figure out the checking etc
-  #   if(selected_state_p1() == "USA"){
-  #     temp_df <- historic_districts
-  #   } else {
-  #     temp_df <- historic_districts %>% 
-  #       filter(state == selected_state_p1())
-  #   }
+  # output$explorer_map <- renderLeaflet({
+  #   leaflet() %>% 
+  #     addProviderTiles("OpenStreetMap.HOT") %>% 
+  #     setView(lng = -95.7129, lat = 37.0902, zoom = 4)
   #   
-  #   # adding the counts
-  #   pal_quantiles_unemployment_usda_23 <- pal_quantiles_unemployment_usda_23 %>% 
-  #     rowwise() %>%  # so that r evaluates one range at a time
-  #     mutate(
-  #       counts = sum(temp_df$unemployment_rate >= bottom_val & 
-  #                      temp_df$unemployment_rate < (top_val),
-  #                    na.rm = TRUE)
-  #     ) %>% 
-  #     ungroup() # removing the rowwise grouping
-  #   
-  #   # Since the last quantile is inclusive of its max need to make slight adjustment
-  #   pal_quantiles_unemployment_usda_23[(n_quants-1), "counts"] <- sum(
-  #     temp_df$unemployment_rate >= pal_quantiles_unemployment_usda_23$bottom_val[(n_quants-1)] &
-  #       temp_df$unemployment_rate <= pal_quantiles_unemployment_usda_23$top_val[(n_quants-1)], na.rm = TRUE)
-  #   
-  #   pal_quantiles_unemployment_usda_23[n_quants, "counts"] <- sum(is.na(temp_df$unemployment_rate))
-  #   
-  #   p <- pal_quantiles_unemployment_usda_23 %>% 
-  #     ggplot(aes(y = reorder(label, bottom_val), x = counts, fill = color)) +
-  #     geom_col() +
-  #     labs(y = "Unemployment rate") +
-  #     scale_fill_identity()
-  #   
-  #   ggplotly(p)
   # })
   
-  output$map2 <- renderLeaflet({
-    leaflet() %>% 
-      addProviderTiles("OpenStreetMap.HOT") %>% 
-      setView(lng = -95.7129, lat = 37.0902, zoom = 4)
-    
-  })
+  
   
   # Trigger an event every time the user changes the radio button selection
   # NEWW - CBL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -621,29 +685,29 @@ server <- function(input, output) {
     update_layer2()
   })
   
-  # Trigger an event every time the user changes the dropdown selection
-  observeEvent(input$state_choice, {
-    if(input$state_choice == "All"){
-      leafletProxy("map2") %>% 
-        setView(lng = -95.7129, lat = 37.0902, zoom = 4)
-    } else{
-      selected_polygon <- states_sf %>% filter(NAME == input$state_choice)
-      bbox <- st_bbox(selected_polygon)
-      
-      leafletProxy("map2") %>%
-        fitBounds(lng1 = bbox[["xmin"]], lat1 = bbox[["ymin"]], 
-                  lng2 = bbox[["xmax"]], lat2 = bbox[["ymax"]])
-    } #add another thing for alaska... not sure what's going on there
-    
-    update_districts()
-    
-  })
-  
-  # Trigger an event every time the user changes the checkbox selection
-  observeEvent(input$categories_choice, {
-    update_districts()
-    
-  }, ignoreNULL = FALSE) # this ensures that if there is nothing selected it still runs the function YAY!
+  # # Trigger an event every time the user changes the dropdown selection
+  # observeEvent(input$state_choice, {
+  #   if(input$state_choice == "All"){
+  #     leafletProxy("explorer_map") %>% 
+  #       setView(lng = -95.7129, lat = 37.0902, zoom = 4)
+  #   } else{
+  #     selected_polygon <- states_sf %>% filter(NAME == input$state_choice)
+  #     bbox <- st_bbox(selected_polygon)
+  #     
+  #     leafletProxy("explorer_map") %>%
+  #       fitBounds(lng1 = bbox[["xmin"]], lat1 = bbox[["ymin"]], 
+  #                 lng2 = bbox[["xmax"]], lat2 = bbox[["ymax"]])
+  #   } #add another thing for alaska... not sure what's going on there
+  #   
+  #   update_districts()
+  #   
+  # })
+  # 
+  # # Trigger an event every time the user changes the checkbox selection
+  # observeEvent(input$categories_choice, {
+  #   update_districts()
+  #   
+  # }, ignoreNULL = FALSE) # this ensures that if there is nothing selected it still runs the function YAY!
   
   
   
@@ -745,7 +809,7 @@ server <- function(input, output) {
   #     )
   # })
   
-  #--- map2 standardizedhistoric district acreage by state
+  #--- explorer_map standardizedhistoric district acreage by state
   
   output$map <- renderLeaflet({
     leaflet(hd_state_areas) %>% 
