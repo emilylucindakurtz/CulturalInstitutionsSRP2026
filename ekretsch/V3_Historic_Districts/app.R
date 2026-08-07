@@ -385,7 +385,7 @@ server <- function(input, output) {
   })
   
   # Change layer 2 and layer 2 dist when the RADIO BUTTON input changes OR if STATE changes!
-  observeEvent(list(input$layer2_choice, input$state_choice) { 
+  observeEvent(list(input$layer2_choice, input$state_choice), { 
     
     # 1) Changing layer 2 mapping
     # 1a) Cleaning up
@@ -765,7 +765,7 @@ server <- function(input, output) {
         fillOpacity = 1,
         color = "white",
         weight = 1,
-        smoothFactor = .5,
+        smoothFactor = .5
       ) %>% 
       addPolygons(
         data = states_sf,
