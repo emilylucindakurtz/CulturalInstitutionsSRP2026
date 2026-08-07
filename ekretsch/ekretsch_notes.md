@@ -29,6 +29,8 @@
 - [ ] make it responsive to radio buttons
 - [ ] check up on code re radio buttons lol
 
+- [ ] read about reactivity https://mastering-shiny.org/reactivity-objects.html
+
 ## August 5
 - [ ] get bar plot for unemployment
    - [x] figure out dupes issue
