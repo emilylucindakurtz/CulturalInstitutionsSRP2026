@@ -217,7 +217,7 @@ ui <- page_navbar(
             choices = list(
               "None" = NA,
               "Unemployment" = "unemployment",
-              "Area (TBD -- CBL)" = "area"
+              "Standardized historic district areas" = "standardized_hd_area"
             )
           ),
           tags$hr(style = "border-top: 1px solid black;"), #adds a line separator thing
@@ -423,9 +423,30 @@ server <- function(input, output) {
             paste0(round(pal_breaks_unemployment_usda_23[1:n], 1), "% - ", round(pal_breaks_unemployment_usda_23[2:(n+1)], 1), "%")
           }
         )
+    } else if(input$layer2_choice == "standardized_hd_area"){
+      leafletProxy("explorer_map") %>% 
+        addPolygons(
+          data = hd_state_areas,
+          group = "layer2_group",
+          options = pathOptions(pane = "layer2_pane"),
+          layerId = ~NAME, # so it takes the NAME column from hd_state_areas -- this is for the clicking thing that was og on page 2. potentially remove later.
+          fillColor = ~pal_hd_state_areas(standardized_hd_acreage),
+          fillOpacity = .75,
+          color = "white", # border color
+          weight = 1,
+          smoothFactor = 0.5 # slightly crisper borders -- default is 1 (higher values > more simplification > jaggier borders but shorter rendering)
+          # add the highlight/hover and tooltip things
+        ) %>% 
+        addLegend(
+          pal = pal_hd_state_areas,
+          value = hd_state_areas$standardized_hd_acreage, # same as values   = ~total_num_districts
+          position = "bottomright",
+          title = paste("Key (%)")
+        )
+      
     }
     
-    # 2) Changing layer 2 distribution
+    # 2) Changing layer 2 distribution -- already below tho... figure out
     
     # ADD!
   })
@@ -514,7 +535,7 @@ server <- function(input, output) {
   })
   
   
-  # COME BACK TO DISTS! CBL especially unemployment one... 
+  # COME BACK TO DISTS! CBL especially unemployment one... CBLLLLLLLŁLŁ
   output$categories_dist_p1 <- renderPlotly({
     if(selected_state_p1() == "the USA"){
       temp_state <- "USA"
@@ -553,18 +574,11 @@ server <- function(input, output) {
       geom_text(aes(label = percent_label),
                 position = position_stack(vjust = 0.5), # centers it in the bar
                 color = "white")
-    
-    
     #geom_text(aes(label = value), vjust = -0.5) 
     
     ggplotly(p, tooltip = "text")
   })
-  
-  # output$layer2_dist_label_p1 <- renderText({ # FIXED - But MAYBE CHANGE LABEL???
-  #   paste0("Distribution of historic district counts by their corresponding county's unemployment rate in ", selected_state_p1())
-  # })
-  
-  # New TEST 
+
   output$layer2_dist_p1 <- renderPlotly({
     if(selected_state_p1() == "the USA"){
       temp_df <- historic_districts
