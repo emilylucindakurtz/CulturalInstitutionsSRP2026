@@ -490,15 +490,18 @@ server <- function(input, output) {
   
   output$hd_table_p1 <- DT::renderDT({
     req(filtered_hd()) # Make sure that there is actually something to put
-    data_to_show <- filtered_hd() %>% 
-      select(ref_number,	property_name,	state,	county,	city,	street_number,	area_of_significance)
-    DT::datatable(
-      data_to_show,
-      options = list(
-        scrollX = TRUE,   # Enforces a horizontal scrollbar instead of stretching the page
-        autoWidth = FALSE # Lets the browser scale column widths dynamically
+    if(nrow(filtered_hd()) > 0){  # This makes sure that if there are no rows then the table doesn;t show up -- CHECK BACK LATER CBL ! maybe ask her?
+      data_to_show <- filtered_hd() %>% 
+        select(ref_number,	property_name,	state,	county,	city,	street_number,	area_of_significance)
+      DT::datatable(
+        data_to_show,
+        options = list(
+          scrollX = TRUE,   # Enforces a horizontal scrollbar instead of stretching the page
+          autoWidth = FALSE # Lets the browser scale column widths dynamically
+        )
       )
-    )
+    }
+    
   })
   
   output$categories_dist_label_p1 <- renderText({ # FIXED
@@ -510,25 +513,8 @@ server <- function(input, output) {
     paste0("Distribution of historic district counts by their corresponding county's unemployment rate in ", selected_state_p1())
   })
   
-  # Copied these
-
-  # output$hd_table_p1 <- DT::renderDT({
-  #   req(filtered_hd()) # Make sure that there is actually something to put
-  #   data_to_show <- filtered_hd() %>% 
-  #     select(ref_number,	property_name,	state,	county,	city,	street_number,	area_of_significance)
-  #   
-  #   DT::datatable(
-  #     data_to_show,
-  #     options = list(
-  #       scrollX = TRUE,   # Enforces a horizontal scrollbar instead of stretching the page
-  #       autoWidth = FALSE # Lets the browser scale column widths dynamically
-  #     )
-  #   )
-  #   
-  # })
   
-  
-  
+  # COME BACK TO DISTS! CBL especially unemployment one... 
   output$categories_dist_p1 <- renderPlotly({
     if(selected_state_p1() == "the USA"){
       temp_state <- "USA"
