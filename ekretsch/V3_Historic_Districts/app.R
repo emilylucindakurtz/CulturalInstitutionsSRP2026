@@ -425,22 +425,6 @@ server <- function(input, output) {
     # ADD!
   })
   
-  # cl
-  # observeEvent(input$layer2_options, {
-  #   req(input$layer2_options == "unemployment")
-  #   leafletProxy("explorer_map") %>%
-  #     addPolygons(data = filtered_county_geoms(), ...) %>%
-  #     addLegend(...)
-  # })
-  
-  ### ---- copied
-  update_layer2 <- function(){
-    # Adding the unemployment rate -- NEED TO if else etc
-    
-  }
-  
-  ### ---- copied end
-  
   # Reactive blocks ---------------------------------------------------
   
   selected_state_p1 <- reactiveVal(
@@ -487,6 +471,7 @@ server <- function(input, output) {
   
   # Outputs ---------------------
   output$explorer_map <- renderLeaflet({
+    # Just initializing the map
     leaflet() %>% 
       addProviderTiles("OpenStreetMap.HOT") %>% 
       setView(lng = -95.7129, lat = 37.0902, zoom = 4) %>% 
@@ -500,7 +485,6 @@ server <- function(input, output) {
     req(filtered_hd()) # Make sure that there is actually something to put
     data_to_show <- filtered_hd() %>% 
       select(ref_number,	property_name,	state,	county,	city,	street_number,	area_of_significance)
-    
     DT::datatable(
       data_to_show,
       options = list(
@@ -508,27 +492,20 @@ server <- function(input, output) {
         autoWidth = FALSE # Lets the browser scale column widths dynamically
       )
     )
-    
   })
   
   output$categories_dist_label_p1 <- renderText({ # FIXED
-    paste0("Top 5 historic district categories in ", selected_state())
+    paste0("Top 5 historic district categories in ", selected_state_p1())
   })
+  
   output$layer2_dist_label_p1 <- renderText({ # FIXED - But MAYBE CHANGE LABEL???
+    # ADD IF 
     paste0("Distribution of historic district counts by their corresponding county's unemployment rate in ", selected_state_p1())
   })
   
   
   #Deal with this later:
   # output$categories_dist_p1, output$layer2_dist_p1
-  
-  #also this:
-    # Trigger an event every time the user changes the radio button selection
-    # NEWW - CBL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    observeEvent(input$layer2_choice, {
-      update_layer2()
-    })
-  
   
   # ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 ----- Page 1 -----
   
@@ -547,10 +524,10 @@ server <- function(input, output) {
     #   pull(category_og)
     
     # Clear previous markers and shapes and legends to avoid duplicates
-    leafletProxy("explorer_map") %>% 
-      clearMarkers() %>% 
-      clearShapes() %>% 
-      clearControls() # for legend
+    # leafletProxy("explorer_map") %>% 
+    #   clearMarkers() %>% 
+    #   clearShapes() %>% 
+    #   clearControls() # for legend
     
     # Also add shape for the state
     # if(input$state_choice != "All"){ # FIX THIS!!!!!!!!!! FIX FIX FIX
@@ -743,9 +720,9 @@ server <- function(input, output) {
   
   # Trigger an event every time the user changes the radio button selection
   # NEWW - CBL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  observeEvent(input$layer2_choice, {
-    update_layer2()
-  })
+  # observeEvent(input$layer2_choice, {
+  #   update_layer2()
+  # })
   
   # # Trigger an event every time the user changes the dropdown selection
   # observeEvent(input$state_choice, {
@@ -770,26 +747,6 @@ server <- function(input, output) {
   #   update_districts()
   #   
   # }, ignoreNULL = FALSE) # this ensures that if there is nothing selected it still runs the function YAY!
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   #-------------------------------------------------------------------------------------------------------------------------
