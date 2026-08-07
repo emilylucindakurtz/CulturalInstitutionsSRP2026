@@ -55,6 +55,9 @@ counties_sf <- tigris::counties(cb = TRUE) %>%
 # ----------------------------
 
 # Unemployment rates ---------
+# BLS LAUS
+unemployment_bls <- read_csv("../../data/EK_general/annual_bls_laus_1990_2025.csv")
+
 # USDA
 unemployment_usda <- read_csv("../../data/EK_general/Unemployment2023.csv")
 unemployment_usda_wider <- unemployment_usda %>% 

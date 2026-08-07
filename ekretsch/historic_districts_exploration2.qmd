@@ -54,14 +54,20 @@ bls_data_M13 <- bls_data %>%
 ```
 
 ```{r}
+write_csv(bls_data_M13, file = "annual_bls_laus_1990_2025.csv")
+```
+
+
+```{r}
 #| eval: false
 write_csv(bls_data, file = "raw_bls_data_1")
 ```
 
 ```{r}
-#| eval: false
-bls_data %>% 
-  summarize(max_val = max(year))
+##| eval: false
+bls_data_M13 %>% 
+  summarize(max_year = max(year),
+            min_year = min(year))
 ```
 
 ```{r}
@@ -299,9 +305,12 @@ mapping_data_bls <- counties_sf %>%
 ```{r}
 ##| eval: false
 pal <- colorQuantile(
-  palette = "YlGnBu",           #also tried piyg and ylor and didn't love either # I LOVED spectral
+  #palette = "YlGnBu",           #also tried piyg and ylor and didn't love either # I LOVED spectral
+  palette = "Spectral",
   domain = mapping_data_bls$value,
-  n = 7
+  n = 9,
+  na.color = "grey",
+  reverse = TRUE
 )
 
 leaflet(mapping_data_bls) %>% 
