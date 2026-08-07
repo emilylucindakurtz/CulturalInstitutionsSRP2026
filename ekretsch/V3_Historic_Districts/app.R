@@ -367,12 +367,17 @@ server <- function(input, output) {
   
   # Trigger the function for hd mapping any time the user changes the STATE or CATEGORY(s) dropdown selection
   observeEvent(list(input$state_choice, input$categories_choice), {
+    # 1) First clear the old ones
+    leafletProxy("explorer_map") %>% 
+      clearGroup("hd_group")
+    
+    # 2) Mark up the new ones
     if(nrow(filtered_hd()) > 0){
       leafletProxy("explorer_map") %>% 
         addCircleMarkers(
           data = filtered_hd(),
           group = "hd_group",
-          options = pathOptions(pane = "hd_pane")
+          options = pathOptions(pane = "hd_pane"),
           ~longitude, 
           ~latitude, 
           popup = ~property_name, 
@@ -397,7 +402,7 @@ server <- function(input, output) {
     if(input$layer2_choice == "unemployment"){
       leafletProxy("explorer_map") %>% 
         addPolygons(
-          data = ffiltered_county_geoms(),
+          data = filtered_county_geoms(),
           group = "layer2_group",
           options = pathOptions(pane = "layer2_pane"),
           fillColor = ~pal_unemployment_usda_23(unemployment_rate),
@@ -467,6 +472,8 @@ server <- function(input, output) {
       filtered_county_geoms <- filtered_county_geoms %>% 
         filter(STATE_NAME == input$state_choice)
     }
+    
+    filtered_county_geoms
   })
   
   # Outputs ---------------------
