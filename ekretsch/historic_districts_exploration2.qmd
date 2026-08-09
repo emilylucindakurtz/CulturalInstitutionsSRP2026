@@ -36,7 +36,7 @@ library(blsAPI)
 ```
 
 ```{r}
-#| eval: false
+##| eval: false
 library(BLSloadR)
 bls_data <- get_laus(
   geography = "county",
@@ -45,8 +45,18 @@ bls_data <- get_laus(
   suppress_warnings = TRUE,
   return_diagnostics = FALSE,
   #cache = check_bls_cache_env()
-)
+) 
 ```
+
+```{r}
+bls_data_M13 <- bls_data %>% 
+  filter(period == "M13")
+```
+
+```{r}
+write_csv(bls_data_M13, file = "annual_bls_laus_1990_2025.csv")
+```
+
 
 ```{r}
 #| eval: false
@@ -54,13 +64,14 @@ write_csv(bls_data, file = "raw_bls_data_1")
 ```
 
 ```{r}
-#| eval: false
-bls_data %>% 
-  summarize(max_val = max(year))
+##| eval: false
+bls_data_M13 %>% 
+  summarize(max_year = max(year),
+            min_year = min(year))
 ```
 
 ```{r}
-#| eval: false
+##| eval: false
 bls_data_2 <- bls_data %>% 
   filter(year == 2025,
          measure_text == "unemployment rate",
@@ -277,7 +288,7 @@ leaflet() %>%
 BLS DATA
 
 ```{r}
-#| eval: false
+##| eval: false
 bls_data_3  <- read_csv("../data/EK_general/bls_data.csv") %>% 
   mutate(NAMELSAD = str_remove(area_text, ",.*"), #before comma
          STUSPS = str_trim(str_replace(area_text, "^.*,",""))) #after comma
@@ -285,17 +296,21 @@ bls_data_3  <- read_csv("../data/EK_general/bls_data.csv") %>%
 ```
 
 ```{r}
-#| eval: false
+##| eval: false
 # join data to shapefile
 mapping_data_bls <- counties_sf %>% 
   left_join(bls_data_3, by = c("NAMELSAD", "STUSPS")) # ^ value is the unemployment
 ```
 
 ```{r}
-#| eval: false
-pal <- colorNumeric(
-  palette = "YlGnBu",           #also tried piyg and ylor and didn't love either # I LOVED spectral
-  domain = mapping_data_bls$value
+##| eval: false
+pal <- colorQuantile(
+  #palette = "YlGnBu",           #also tried piyg and ylor and didn't love either # I LOVED spectral
+  palette = "Spectral",
+  domain = mapping_data_bls$value,
+  n = 9,
+  na.color = "grey",
+  reverse = TRUE
 )
 
 leaflet(mapping_data_bls) %>% 

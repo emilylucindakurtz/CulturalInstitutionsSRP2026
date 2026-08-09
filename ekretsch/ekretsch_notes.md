@@ -23,11 +23,19 @@
 - [ ] add titles for bar plots
 - [ ] <mark> maybe add histogram rather than bar plot by quantile for the # hist dists by unemployment and can still color it by quantile!! </mark>
 
+## Fri, aug 7
+- [ ] create mini codebook
+- [ ] check her list of things
+- [ ] panes+ group
+   - [ ] can delete the double-polygon drawing
+
 ## August 6
 - [x] make it load
 - [ ] make it not crash when the radio button is changed
 - [ ] make it responsive to radio buttons
 - [ ] check up on code re radio buttons lol
+
+- [ ] read about reactivity https://mastering-shiny.org/reactivity-objects.html
 
 ## August 5
 - [ ] get bar plot for unemployment

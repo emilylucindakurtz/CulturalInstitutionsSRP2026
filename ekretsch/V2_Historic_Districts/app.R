@@ -28,7 +28,8 @@ by_state <- historic_districts %>%
   group_by(state) %>% 
   summarise(total_acreage = sum(acreage_of_property, na.rm=TRUE),
             total_num_districts = n(),
-            across(25:last_col(), \(x) sum(x, na.rm = TRUE)))
+            across(25:last_col(), ~ sum(.x, na.rm = TRUE)))
+# changed this
 
 categories_counts <- by_state %>%
   select(state, 4:ncol(by_state)) %>%
@@ -578,9 +579,9 @@ server <- function(input, output) {
   
   # Trigger an event every time the user changes the radio button selection
   # NEWW - CBL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  observeEvent(input$layer2_option){
+  observeEvent(input$layer2_options, {
     update_layer2()
-  }
+  })
   
   # Trigger an event every time the user changes the dropdown selection
   observeEvent(input$state_choice, {
