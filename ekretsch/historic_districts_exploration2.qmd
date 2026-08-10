@@ -15,6 +15,7 @@ library(tigris)
 library(readr)
 library(sf)
 library(ggplot2)
+library(RColorBrewer)
 ```
 
 ```{r}
@@ -28,18 +29,12 @@ states_sf <- tigris::states(cb = TRUE, resolution = "20m") %>%
 
 ```
 
---
-
 ```{r}
 #| eval: false
 library(devtools)
 install_github("mikeasilva/blsAPI")
-```
 
-```{r}
-#| eval: false
 library(blsAPI)
-
 ```
 
 ```{r}
@@ -61,42 +56,46 @@ bls_data_M13 <- bls_data %>%
          measure_text == "unemployment rate")
   
 ```
-
-```{r}
-# Fixing the issues with Alaska areas: Yakutat, Anchorage, Sitka, Wrangell, Juneau
-bls_data_M13 <- bls_data_M13 %>% 
-```
-
-
-```{r}
-# Update the "Status" column to "Active" where ID is 105
-df <- df %>% 
-  mutate(Status = ifelse(ID == 105, "Active", Status))
-```
-
-
 ```{r}
 bls_data_M13  <- bls_data_M13 %>% 
   mutate(NAMELSAD = str_remove(area_text, ",.*"), #before comma
          STUSPS = str_trim(str_replace(area_text, "^.*,",""))) #after comma
 ```
+FIXING ALASKA PROBS
+2 options...
+1) df <- df %>% 
+  mutate(column_name = if_else(column_name == "old_value", "new_value", column_name))
+  
+  library(dplyr)
 
+2) # Update multiple specific statuses at once
+df <- df %>% 
+  mutate(status = case_when(
+    status == "Pending"  ~ "Processing",
+    status == "Rejected" ~ "Declined",
+    status == "Hold"     ~ "Paused",
+    TRUE                 ~ status  # Keeps everything else exactly the same
+  ))
 
+```{r}
+# Fixing the issues with Alaska areas: Yakutat, Anchorage, Sitka, Wrangell, Juneau
 
-
-
+#Could def do this quicker w loop but already wrote this so
+bls_data_M13 <- bls_data_M13 %>% 
+  mutate(NAMELSAD = case_when(
+    NAMELSAD == "Anchorage Borough/municipality"~ "Anchorage Municipality",
+    NAMELSAD == "Juneau Borough/city" ~ "Juneau City and Borough",
+    NAMELSAD == "Sitka Borough/city" ~ "Sitka City and Borough",
+    NAMELSAD == "Wrangell Borough/city" ~ "Wrangell City and Borough",
+    NAMELSAD == "Yakutat Borough/city" ~ "Yakutat City and Borough",
+    TRUE ~ NAMELSAD # Keeps everything else exactly the same
+  ))
+```
 ```{r}
 bls_data_M13 <- bls_data_M13 %>% 
   mutate(unemployment_percent = round(value*100, 3)) %>% 
   select(-value)
 ```
-
-# 
-```{r}
-
-```
-
-
 ```{r}
 write_csv(bls_data_M13, file = "annual_bls_LAUS_1990_2025.csv")
 ```
@@ -106,6 +105,46 @@ write_csv(bls_data_M13, file = "annual_bls_LAUS_1990_2025.csv")
 mapping_data_bls <- counties_sf %>% 
   left_join(bls_data_M13, by = c("NAMELSAD", "STUSPS")) # ^ value is the unemployment
 ```
+MAPPING TEST HERE BLS M13 UPDATE
+
+
+```{r}
+##| eval: false
+pal <- colorQuantile(
+  #palette = "YlGnBu",           #also tried piyg and ylor and didn't love either # I LOVED spectral
+  palette = "Spectral",
+  domain = mapping_data_bls$unemployment_percent,
+  n = 9,
+  na.color = "grey",
+  reverse = TRUE
+)
+```
+```{r}
+# Choosing the year to map
+to_map <- mapping_data_bls %>% 
+  filter(year == 2025)
+```
+
+```{r}
+leaflet(to_map) %>% 
+  addProviderTiles("CartoDB.Positron") %>% 
+  addPolygons(
+    fillColor = ~pal(unemployment_percent),
+    fillOpacity = 1,
+    color = "white", # border color
+    weight = 1,
+    smoothFactor = 0.5, # slightly crisper borders -- default is 1 (higher values > more simplification > jaggier borders but shorter rendering)
+    # add the highlight/hover and tooltip things
+  ) %>% 
+  addLegend(
+    pal = pal,
+    value = mapping_data_bls$unemployment_percent, # same as values  
+    position = "bottomright",
+    title = "Legend"
+  )
+```
+
+
 
 ```{r}
 #| eval: false
@@ -119,7 +158,6 @@ bls_data_M13  <- bls_data_M13 %>%
 
 # using stringr to mutate to match shapefile for easier joining
 ```
-
 
 ```{r}
 ##| eval: false
@@ -198,7 +236,6 @@ mapping_data_usda <- counties_sf %>%
 ```
 
 ```{r}
-library(RColorBrewer)
 max_n <- brewer.pal.info["Spectral", "maxcolors"]
 
 #mapping! palletee
@@ -354,7 +391,7 @@ mapping_data_bls <- counties_sf %>%
 ```
 
 ```{r}
-##| eval: false
+#| eval: false
 pal <- colorQuantile(
   #palette = "YlGnBu",           #also tried piyg and ylor and didn't love either # I LOVED spectral
   palette = "Spectral",
