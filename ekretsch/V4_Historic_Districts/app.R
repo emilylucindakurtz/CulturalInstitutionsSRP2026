@@ -55,10 +55,14 @@ counties_sf <- tigris::counties(cb = TRUE) %>%
 # ----------------------------
 
 # Unemployment rates ---------
-# BLS LAUS
+# BLS LAUS -----
 unemployment_bls <- read_csv("../../data/EK_general/annual_bls_laus_1990_2025.csv")
 
-# USDA
+unemployment_bls_2025 <- counties_sf %>% 
+  left_join(unemployment_bls, by = c("NAMELSAD", "STUSPS")) %>% 
+  filter(year == 2025)
+
+# USDA -----
 unemployment_usda <- read_csv("../../data/EK_general/Unemployment2023.csv")
 unemployment_usda_wider <- unemployment_usda %>% 
   clean_names() %>% 
@@ -100,7 +104,7 @@ unemployment_usda_2023_joinable <- unemployment_usda_2023 %>%
 
 # could also potentially do this by dealling with the FIPS code but that would mean mutating the shapefile
 
-# Joining USDA unemployment data to the counties data! (would do the same her prob if adding other data)
+# Joining USDA unemployment data to the counties data! (would do the same here prob if adding other data)
 unemployment_usda_23_mapping <- counties_sf %>% 
   left_join(unemployment_usda_2023_joinable,  by = c("NAME", "STUSPS"))
 
@@ -119,7 +123,49 @@ historic_districts <- historic_districts %>%
 
 # Color palette stuff -------------------------------------------------------
 
-# Color palette
+# Color palette BLS
+pal_unemployment_bls_25 <- colorQuantile(
+  #palette = "YlGnBu",           #also tried piyg and ylor and didn't love either #  spectral good
+  palette = "Spectral",
+  domain = unemployment_bls_2025$unemployment_percent,
+  n = 10,
+  na.color = "grey",
+  reverse = TRUE
+) 
+  
+# Fixing BLS palette legend
+pal_breaks_unemployment_bls <- quantile(unemployment_bls_2025$unemployment_percent, probs = seq(0, 1, length.out = 11), na.rm = TRUE)
+
+# Sort of "manually" logging the color pallete and its values/labels so we can apply it to bar chart as well.
+n_quants <- length(pal_bls_breaks)
+
+# Making a tibble to refer to the quantiles
+pal_bls_quantiles <- tibble(
+  bottom_val = numeric(n_quants),
+  top_val = numeric(n_quants),
+  label = character(n_quants),
+  color = character(n_quants),
+  counts = numeric(n_quants)
+)
+
+pal_bls_quantiles[n_quants,] <- NA
+
+
+for(i in 1:(n_quants-1)){
+  pal_bls_quantiles[i, "bottom_val"] <- pal_bls_breaks[i]
+  pal_bls_quantiles[i, "top_val"] <- pal_bls_breaks[i+1]
+  pal_bls_quantiles[i,"label"] <- paste0(pal_bls_breaks[i], "% - ", pal_bls_breaks[i+1], "%")
+}
+
+pal_bls_quantiles <- pal_bls_quantiles %>%
+  mutate(color = pal_unemployment_bls_25(bottom_val))
+
+pal_bls_quantiles <- as.data.frame(pal_bls_quantiles)
+
+
+#-----------------------
+
+# Color palette USDA
 pal_unemployment_usda_23 <- colorQuantile(
   #palette = "YlOrRd",
   palette = "Spectral",
@@ -408,7 +454,7 @@ server <- function(input, output) {
           data = filtered_county_geoms(),
           group = "layer2_group",
           options = pathOptions(pane = "layer2_pane"),
-          fillColor = ~pal_unemployment_usda_23(unemployment_rate),
+          fillColor = ~pal_unemployment_bls_25(unemployment_percent),
           fillOpacity = 1,
           color = "white",
           weight = 1,
@@ -417,13 +463,13 @@ server <- function(input, output) {
           label = paste0(filtered_county_geoms()$area_name, ": ", filtered_county_geoms()$unemployment_rate, "%") #hovering
         ) %>% 
         addLegend(
-          pal = pal_unemployment_usda_23,
-          value = unemployment_usda_23_mapping$unemployment_rate,
+          pal = pal_unemployment_bls_25,
+          value = unemployment_bls_2025$unemployment_percent,
           position = "bottomright",
           title = "Unemployment rate (%)",
           labFormat = function(type, cuts, p){
-            n <- length(pal_breaks_unemployment_usda_23) - 1
-            paste0(round(pal_breaks_unemployment_usda_23[1:n], 1), "% - ", round(pal_breaks_unemployment_usda_23[2:(n+1)], 1), "%")
+            n <- length(pal_breaks_unemployment_bls) - 1
+            paste0(round(pal_breaks_unemployment_bls[1:n], 1), "% - ", round(pal_breaks_unemployment_bls[2:(n+1)], 1), "%")
           }
         )
     } else if(input$layer2_choice == "standardized_hd_area"){
@@ -490,7 +536,7 @@ server <- function(input, output) {
   # County geometries
   # Recomputes whenever state_choice changes
   filtered_county_geoms <- reactive({
-    filtered_county_geoms <- unemployment_usda_23_mapping
+    filtered_county_geoms <- unemployment_bls_2025
     
     if(input$state_choice != "All"){ 
       filtered_county_geoms <- filtered_county_geoms %>% 
@@ -591,10 +637,10 @@ server <- function(input, output) {
     }
     
     temp_df <- temp_df %>% 
-      mutate(unemployment_color = pal_unemployment_usda_23(unemployment_rate))
+      mutate(unemployment_color = pal_unemployment_bls_25(unemployment_percent))
     
     p <- temp_df %>% 
-      ggplot(aes(x = unemployment_rate, fill = unemployment_color)) +
+      ggplot(aes(x = unemployment_percent, fill = unemployment_color)) +
       geom_histogram(binwidth = .3) +
       #xlim(0, 18) +
       scale_fill_identity() +
