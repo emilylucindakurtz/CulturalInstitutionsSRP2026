@@ -220,7 +220,7 @@ ui <- page_navbar(
             choices = list(
               "None" = NA,
               "Unemployment" = "unemployment",
-              "Standardized historic district areas" = "standardized_hd_area"
+              "Standardized historic district areas by state" = "standardized_hd_area"
             )
           ),
           tags$hr(style = "border-top: 1px solid black;"), #adds a line separator thing

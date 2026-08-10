@@ -18,7 +18,14 @@ library(ggplot2)
 ```
 
 ```{r}
-# Cleaning the historic_districts dataset so only the columns we want are present (add later)
+# Get counties shape files
+counties_sf <- tigris::counties(cb = TRUE) %>% 
+  st_transform(crs = 4326)
+
+# States shape files (for later)
+states_sf <- tigris::states(cb = TRUE, resolution = "20m") %>% 
+  st_transform(crs = 4326)
+
 ```
 
 --
@@ -50,18 +57,69 @@ bls_data <- get_laus(
 
 ```{r}
 bls_data_M13 <- bls_data %>% 
-  filter(period == "M13")
+  filter(period == "M13", # Just annual
+         measure_text == "unemployment rate")
+  
 ```
 
 ```{r}
-write_csv(bls_data_M13, file = "annual_bls_laus_1990_2025.csv")
+# Fixing the issues with Alaska areas: Yakutat, Anchorage, Sitka, Wrangell, Juneau
+bls_data_M13 <- bls_data_M13 %>% 
 ```
 
+
+```{r}
+# Update the "Status" column to "Active" where ID is 105
+df <- df %>% 
+  mutate(Status = ifelse(ID == 105, "Active", Status))
+```
+
+
+```{r}
+bls_data_M13  <- bls_data_M13 %>% 
+  mutate(NAMELSAD = str_remove(area_text, ",.*"), #before comma
+         STUSPS = str_trim(str_replace(area_text, "^.*,",""))) #after comma
+```
+
+
+
+
+
+```{r}
+bls_data_M13 <- bls_data_M13 %>% 
+  mutate(unemployment_percent = round(value*100, 3)) %>% 
+  select(-value)
+```
+
+# 
+```{r}
+
+```
+
+
+```{r}
+write_csv(bls_data_M13, file = "annual_bls_LAUS_1990_2025.csv")
+```
+
+```{r}
+#Joining to shapefile
+mapping_data_bls <- counties_sf %>% 
+  left_join(bls_data_M13, by = c("NAMELSAD", "STUSPS")) # ^ value is the unemployment
+```
 
 ```{r}
 #| eval: false
-write_csv(bls_data, file = "raw_bls_data_1")
+# Prepping to join data to shapefile
+county_equivs <- paste("County", "Planning Region", "Borough", "Census Area", "/municipality", "Municipality", "/city", "Parish", sep = "|")
+
+bls_data_M13  <- bls_data_M13 %>% 
+  mutate(NAMELSAD = str_remove(area_text, ",.*"), #before comma
+         STUSPS = str_trim(str_replace(area_text, "^.*,","")), #after comma
+         NAME = str_squish(str_remove_all(NAMELSAD, county_equivs))) #Fixing the issues with Alaska areas:Yakutat, Anchorage, Sitka, Wrangell, Juneau
+
+# using stringr to mutate to match shapefile for easier joining
 ```
+
 
 ```{r}
 ##| eval: false
@@ -83,16 +141,7 @@ bls_data_2 <- bls_data %>%
 write_csv(bls_data_2, file = "bls_data.csv")
 ```
 
-```{r}
-# Get counties shape files
-counties_sf <- tigris::counties(cb = TRUE) %>% 
-  st_transform(crs = 4326)
 
-# States shape files (for later)
-states_sf <- tigris::states(cb = TRUE, resolution = "20m") %>% 
-  st_transform(crs = 4326)
-
-```
 
 UNEMPLOYMENT DATA FROM USDA
 
@@ -285,7 +334,9 @@ leaflet() %>%
 
 ```
 
-BLS DATA
+BLS DATA cont'd
+
+
 
 ```{r}
 ##| eval: false
