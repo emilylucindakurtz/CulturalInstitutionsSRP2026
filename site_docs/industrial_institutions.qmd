@@ -1,0 +1,15 @@
+---
+title: "Industrial Institutions"
+sidebar: false
+format:
+  html:
+    grid:
+      sidebar-width: 10px
+      body-width: 2000px
+      margin-width: 10px
+    #page-layout: full
+---
+
+<iframe height="800px" width="100%" src="https://marekjozsef.shinyapps.io/SRP2026-industrial/">
+
+</iframe>

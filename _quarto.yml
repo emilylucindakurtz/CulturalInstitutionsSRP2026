@@ -1,0 +1,38 @@
+project:
+  type: website
+  output-dir: docs
+  resources: 
+  #- "data/"
+  - "CISite"
+  
+website:
+  title: "Cultural Institutions"
+  navbar:
+    left:
+      - text: "Home"
+        file: index.qmd
+      - text: "Projects"
+        menu:
+          - text: "Data Centers, Fortune 500s, and Power Plants"
+            href: CISite/industrial_institutions.qmd
+            #href: https://marekjozsef.shinyapps.io/SRP2026-industrial/
+          - text: "Theaters, Operas, Colleges, and Auto Factories"
+            href: CISite/theaters_etc.qmd
+#          - text: "---" # Adds a visual divider line
+          - text: "Museums"
+            href: CISite/museums.qmd
+          - text: "Satellite Indicators"
+            href: CISite/satellite.qmd
+#          - text: "Emily App(s)"
+#            href: https://example.com
+      - text: "Data"
+        file: CISite/data.qmd
+      - text: "Project Members"
+        file: CISite/aboutus.qmd
+
+format:
+  html:
+    grid:
+      sidebar-width: 10px
+      
+        

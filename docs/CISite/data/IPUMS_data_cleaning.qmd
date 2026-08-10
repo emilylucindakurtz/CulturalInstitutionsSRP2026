@@ -1,0 +1,397 @@
+---
+title: "IPUMS_data_cleaning"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(rvest)
+library(dplyr)
+library(readr)
+library(stringr)
+library(janitor)
+library(tigris)
+library(scales)
+
+options(tigris_use_cache = TRUE)
+```
+
+```{r}
+lines <- read_lines("nhgis0002_ds272_20245_county_codebook.txt")
+IPUMS_data <- read_csv("nhgis0002_ds272_20245_county.csv")
+NRHP_LHAT_theaters <- read_csv("../data/Theaters/NRHP_LHAT_joined.csv")
+operas <- read_csv("../data/Theaters/opera_america_members.csv")
+colleges <- read_csv("../data/Colleges/joined_colleges.csv")
+auto_ev_facilities <- read_csv("../data/Industrial Institutions/auto_ev_map.csv")
+```
+
+```{r}
+# function to rename NHGIS codes to corresponding labels
+rename_nhgis_codes <- function(data) {
+  data %>%
+    rename(
+      total_population = AUO6E001,
+      race_total = AUO7E001,
+      white = AUO7E002,
+      black = AUO7E003,
+      american_indian_alaska_native = AUO7E004,
+      asian = AUO7E005,
+      native_hawaiian_pacific_islander = AUO7E006,
+      other_race = AUO7E007,
+      two_or_more_races = AUO7E008,
+      education_total_25plus = AUQ8E001,
+      bachelors_degree = AUQ8E022,
+      masters_degree = AUQ8E023,
+      professional_degree = AUQ8E024,
+      doctorate_degree = AUQ8E025,
+      median_household_income = AURUE001
+    )
+}
+```
+
+```{r}
+IPUMS_data <- IPUMS_data %>%
+  mutate(
+    GEOID = str_pad(as.character(TL_GEO_ID), width = 5, pad = "0")
+  )
+
+IPUMS_data <- rename_nhgis_codes(IPUMS_data)
+```
+
+```{r}
+IPUMS_data <- IPUMS_data %>%
+  mutate(GEOID = as.character(TL_GEO_ID)) %>%
+  mutate(GEOID = str_pad(GEOID, 5, pad = "0"))
+
+counties_sf <- counties(cb = TRUE, resolution = "20m", year = 2024)
+```
+
+
+```{r}
+# join population data to spatial boundaries
+counties_map <- counties_sf %>%
+  left_join(IPUMS_data, by = "GEOID") %>%
+  filter(!is.na(total_population)) %>%       # drop territories/areas with no match
+  st_transform(crs = 4326)  
+
+# population color palette
+population_pal <- colorNumeric(
+  palette = "YlOrRd",
+  domain = counties_map$total_population
+)
+
+# adding popup labels
+labels <- sprintf(
+  "<strong>%s</strong><br/>Population: %s<br/>Median HH Income: $%s",
+  counties_map$NAME_E,
+  format(counties_map$total_population, big.mark = ","),
+  format(counties_map$median_household_income, big.mark = ",")
+) %>% lapply(htmltools::HTML)
+```
+
+```{r}
+colleges %>% 
+  select(College, State, Latitude, Longitude, City, college_type) %>% 
+  filter(!is.na(Latitude), !is.na(Longitude))
+
+college_pal <- colorFactor(
+  palette = c("LAC" = "#2166ac", "HBCU" = "#b2182b"),
+  domain = colleges$college_type
+)
+
+college_labels <- sprintf(
+  "<strong>%s</strong><br/>%s<br/>Type: %s",
+  colleges$College,
+  colleges$City,
+  colleges$college_type
+) %>% lapply(htmltools::HTML)
+```
+
+```{r}
+leaflet() %>%
+  addProviderTiles(providers$CartoDB.Positron) %>%
+  setView(lng = -98.5, lat = 39.8, zoom = 4) %>%
+
+  # county choropleth layer
+  addPolygons(
+    data = counties_map,
+    fillColor = ~population_pal(total_population),
+    weight = 0.5,
+    opacity = 1,
+    color = "white",
+    fillOpacity = 0.7,
+    label = labels,
+    labelOptions = labelOptions(
+      style = list("font-weight" = "normal", padding = "3px 8px"),
+      textsize = "13px"
+    ),
+    highlightOptions = highlightOptions(
+      weight = 2, color = "#666", fillOpacity = 0.9, bringToFront = TRUE
+    ),
+    group = "Counties"
+  ) %>%
+  addLegend(
+    pal = population_pal,
+    values = counties_map$total_population,
+    opacity = 0.7,
+    title = "Total Population",
+    position = "bottomright"
+  ) %>%
+
+  # college point layer
+  addCircleMarkers(
+    data = colleges,
+    lng = ~Longitude,
+    lat = ~Latitude,
+    radius = 5,
+    color = ~college_pal(college_type),
+    stroke = TRUE,
+    weight = 1,
+    fillOpacity = 0.9,
+    label = college_labels,
+    labelOptions = labelOptions(
+      style = list("font-weight" = "normal", padding = "3px 8px"),
+      textsize = "12px"
+    ),
+    group = "Colleges"
+  ) %>%
+  addLegend(
+    pal = college_pal,
+    values = colleges$college_type,
+    title = "College Type",
+    position = "bottomright"
+  ) %>%
+
+  # toggle layers on/off
+  addLayersControl(
+    overlayGroups = c("Counties", "Colleges"),
+    options = layersControlOptions(collapsed = FALSE)
+  )
+```
+
+
+
+```{r}
+# writing function to join IPUMS variables with institution datasets
+
+join_ipums <- function(data, lon, lat, counties, ipums) {
+
+  # convert to sf object
+  data_sf <- data %>%
+    filter(
+      !is.na(.data[[lon]]),
+      !is.na(.data[[lat]])
+    ) %>%
+    st_as_sf(
+      coords = c(lon, lat),
+      crs = 4326,
+      remove = FALSE
+    )
+
+  # match CRS
+  data_sf <- st_transform(data_sf, st_crs(counties))
+
+  # spatial join to counties
+  data_county <- st_join(
+    data_sf,
+    counties,
+    join = st_within
+  )
+
+  # join NHGIS/IPUMS demographics
+  data_ipums <- data_county %>%
+    left_join(ipums, by = "GEOID")
+
+  return(data_ipums)
+}
+```
+
+```{r}
+# applying function to each institution dataset
+
+theaters_IPUMS <- join_ipums(
+  NRHP_LHAT,
+  lon = "longitude",
+  lat = "latitude",
+  counties = counties,
+  ipums = IPUMS_data
+)
+
+operas_IPUMS <- join_ipums(
+  operas,
+  lon = "longitude",
+  lat = "latitude",
+  counties = counties,
+  ipums = IPUMS_data
+)
+
+colleges_IPUMS <- join_ipums(
+  colleges,
+  lon = "Longitude",
+  lat = "Latitude",
+  counties = counties,
+  ipums = IPUMS_data
+)
+
+auto_ev_IPUMS <- join_ipums(
+  auto_ev_facilities,
+  lon = "longitude",
+  lat = "latitude",
+  counties = counties,
+  ipums = IPUMS_data
+)
+```
+
+```{r}
+# applying function to all datasets
+IPUMS_data <- rename_nhgis_codes(IPUMS_data)
+
+theaters_IPUMS <- rename_nhgis_codes(theaters_IPUMS)
+
+operas_IPUMS <- rename_nhgis_codes(operas_IPUMS)
+
+colleges_IPUMS <- rename_nhgis_codes(colleges_IPUMS)
+
+auto_ev_IPUMS <- rename_nhgis_codes(auto_ev_IPUMS)
+```
+
+```{r}
+# load county shapefile
+counties <- counties(cb = TRUE, year = 2024, class = "sf") %>%
+  st_transform(4326)
+
+# join income data to counties
+counties_income <- counties %>%
+  left_join(
+    IPUMS_data %>% select(GEOID, median_household_income),
+    by = "GEOID"
+  )
+
+counties_income_no_na <- counties_income %>%
+  filter(!is.na(median_household_income))
+
+# check missing values
+sum(is.na(counties_income$median_household_income))
+```
+
+
+```{r}
+# comparing distributions of median household income by county
+
+income_compare <- bind_rows(
+  theaters_IPUMS %>%
+    st_drop_geometry() %>%
+    mutate(type = "Historic Theater") %>%
+    select(type, median_household_income),
+
+  colleges_IPUMS %>%
+    st_drop_geometry() %>%
+    mutate(type = "College") %>%
+    select(type, median_household_income),
+
+  auto_ev_IPUMS %>%
+    st_drop_geometry() %>%
+    mutate(type = "Auto/EV") %>%
+    select(type, median_household_income)
+)
+
+ggplot(income_compare, aes(type, median_household_income, fill = type)) +
+  geom_boxplot() +
+  theme_minimal()
+```
+
+```{r}
+# make sure GEOID is character in both datasets
+counties <- counties %>%
+  mutate(GEOID = as.character(GEOID))
+
+IPUMS_data <- IPUMS_data %>%
+  mutate(GEOID = as.character(GEOID))
+
+# join IPUMS variables to all county polygons
+counties_IPUMS <- counties %>%
+  left_join(IPUMS_data, by = "GEOID") %>%
+  rename_ipums()
+
+# apply function to new counties dataset
+counties_IPUMS <- rename_ipums(counties_IPUMS)
+
+income_pal <- colorNumeric(
+  palette = "viridis",
+  domain = counties_IPUMS$median_household_income,
+  na.color = "transparent"
+)
+
+counties_IPUMS %>%
+  summarise(
+    total_counties = n(),
+    missing_income = sum(is.na(median_household_income))
+  )
+```
+
+```{r}
+# mapping median household income & colleges
+leaflet(counties_IPUMS) %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  
+  addPolygons(
+    fillColor = ~income_pal(median_household_income),
+    fillOpacity = 0.7,
+    weight = 0.4,
+    color = "white",
+    popup = ~paste0(
+      "Median household income: $",
+      comma(median_household_income)
+    ),
+    group = "County Median Income"
+  ) %>%
+  
+  addCircleMarkers(
+    data = colleges_IPUMS %>% filter(college_type	 == "LAC"),
+    lng = ~Longitude,
+    lat = ~Latitude,
+    radius = 4,
+    color = "black",
+    weight = 1,
+    fillColor = "blue",
+    fillOpacity = 0.9,
+    popup = ~paste0(
+      "<b>", College, "</b><br>",
+      "Type: LAC<br>",
+      "Median household income: $",
+      comma(median_household_income)
+    ),
+    group = "LACs"
+  ) %>%
+  
+  addCircleMarkers(
+    data = colleges_IPUMS %>% filter(college_type	 == "HBCU"),
+    lng = ~Longitude,
+    lat = ~Latitude,
+    radius = 4,
+    color = "black",
+    weight = 1,
+    fillColor = "red",
+    fillOpacity = 0.9,
+    popup = ~paste0(
+      "<b>", College, "</b><br>",
+      "Type: HBCU<br>",
+      "Median household income: $",
+      comma(median_household_income)
+    ),
+    group = "HBCUs"
+  ) %>%
+  
+  addLegend(
+    position = "bottomright",
+    pal = income_pal,
+    values = ~median_household_income,
+    title = "Median Household Income"
+  ) %>%
+  
+  addLayersControl(
+    overlayGroups = c("County Median Income", "LACs", "HBCUs"),
+    options = layersControlOptions(collapsed = FALSE)
+  )
+```
+
