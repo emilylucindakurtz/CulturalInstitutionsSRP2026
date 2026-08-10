@@ -54,59 +54,28 @@ counties_sf <- tigris::counties(cb = TRUE) %>%
 
 # ----------------------------
 
+county_equivs <- paste("County", 
+                       "Planning Region",
+                       "Borough",
+                       "Census Area",
+                       "/municipality",
+                       "Municipality",
+                       "/city",
+                       "Parish",
+                       sep = "|")
+
+
 # Unemployment rates ---------
 # BLS LAUS -----
 unemployment_bls <- read_csv("../../data/EK_general/annual_bls_laus_1990_2025.csv")
 
-unemployment_bls_2025 <- counties_sf %>% 
-  left_join(unemployment_bls, by = c("NAMELSAD", "STUSPS")) %>% 
+unemployment_bls_2025_joinable <- unemployment_bls %>% 
+  mutate(STUSPS = str_replace(STUSPS, "District of Columbia", "DC"), # fixing DC
+         NAME = str_squish(str_remove_all(NAMELSAD, county_equivs))) %>%  
   filter(year == 2025)
 
-# USDA -----
-unemployment_usda <- read_csv("../../data/EK_general/Unemployment2023.csv")
-unemployment_usda_wider <- unemployment_usda %>% 
-  clean_names() %>% 
-  mutate(
-    #separate("\d{4}")
-    year = str_sub(attribute, -4, str_length(attribute)),
-    attribute = str_sub(attribute, 1, -6) %>% 
-      str_to_lower() #%>% 
-    #str_replace_all("_", " ")
-  )
-# now actually pivoting wider
-unemployment_usda_wider <- unemployment_usda_wider %>% 
-  pivot_wider(
-    names_from = attribute,
-    values_from = value
-  )
-
-unemployment_usda_2023 <- unemployment_usda_wider %>% 
-  filter(year == "2023")
-
-
-# Getting it in a way that we can join it to the shapefile easily
-county_equivs <- paste("County", 
-                       "Planning Region", 
-                       "Borough", 
-                       "Census Area", 
-                       "/municipality", 
-                       "Municipality", 
-                       "/city", 
-                       "Parish", 
-                       sep = "|")
-
-unemployment_usda_2023_joinable <- unemployment_usda_2023 %>% 
-  mutate(NAMELSAD = str_remove(area_name, ",.*"), #before comma
-         STUSPS = str_trim(str_replace(area_name, "^.*,",""))) %>% #after comma
-  mutate(STUSPS = str_replace(STUSPS, "District of Columbia", "DC"), # fixing DC
-         NAME = str_squish(str_remove_all(NAMELSAD, county_equivs)))
-
-
-# could also potentially do this by dealling with the FIPS code but that would mean mutating the shapefile
-
-# Joining USDA unemployment data to the counties data! (would do the same here prob if adding other data)
-unemployment_usda_23_mapping <- counties_sf %>% 
-  left_join(unemployment_usda_2023_joinable,  by = c("NAME", "STUSPS"))
+unemployment_bls_2025 <-counties_sf %>% 
+  left_join(unemployment_bls_2025_joinable, by = c("NAMELSAD", "STUSPS"))
 
 # Joining historic districts and the unemployment rate for graphing later -------------------------------------
 historic_districts <- historic_districts  %>% 
@@ -114,12 +83,70 @@ historic_districts <- historic_districts  %>%
 
 # joining the unemployment rate to historic districts via the county
 historic_districts <- historic_districts %>% 
-  left_join(unemployment_usda_2023_joinable %>% 
-              filter(fips_code %% 1000 != 0) %>% 
-              select("NAME", "state", "unemployment_rate", "fips_code"),  
+  left_join(unemployment_bls_2025_joinable %>% 
+              filter(area_type_code == "F") %>% 
+              select("NAME", "STUSPS", "unemployment_percent", "area_type_code", "year"),  
             by = c("county" = "NAME", 
-                   "state_abbreviation" = "state"))
+                   "state_abbreviation" = "STUSPS"))
 
+# USDA -----
+# unemployment_usda <- read_csv("../../data/EK_general/Unemployment2023.csv")
+# unemployment_usda_wider <- unemployment_usda %>% 
+#   clean_names() %>% 
+#   mutate(
+#     #separate("\d{4}")
+#     year = str_sub(attribute, -4, str_length(attribute)),
+#     attribute = str_sub(attribute, 1, -6) %>% 
+#       str_to_lower() #%>% 
+#     #str_replace_all("_", " ")
+#   )
+# # now actually pivoting wider
+# unemployment_usda_wider <- unemployment_usda_wider %>% 
+#   pivot_wider(
+#     names_from = attribute,
+#     values_from = value
+#   )
+# 
+# unemployment_usda_2023 <- unemployment_usda_wider %>% 
+#   filter(year == "2023")
+# 
+# 
+# # Getting it in a way that we can join it to the shapefile easily
+# county_equivs <- paste("County", 
+#                        "Planning Region", 
+#                        "Borough", 
+#                        "Census Area", 
+#                        "/municipality", 
+#                        "Municipality", 
+#                        "/city", 
+#                        "Parish", 
+#                        sep = "|")
+# 
+# unemployment_usda_2023_joinable <- unemployment_usda_2023 %>% 
+#   mutate(NAMELSAD = str_remove(area_name, ",.*"), #before comma
+#          STUSPS = str_trim(str_replace(area_name, "^.*,",""))) %>% #after comma
+#   mutate(STUSPS = str_replace(STUSPS, "District of Columbia", "DC"), # fixing DC
+#          NAME = str_squish(str_remove_all(NAMELSAD, county_equivs)))
+# 
+# 
+# # could also potentially do this by dealling with the FIPS code but that would mean mutating the shapefile
+# 
+# # Joining USDA unemployment data to the counties data! (would do the same here prob if adding other data)
+# unemployment_usda_23_mapping <- counties_sf %>% 
+#   left_join(unemployment_usda_2023_joinable,  by = c("NAME", "STUSPS"))
+# 
+# # Joining historic districts and the unemployment rate for graphing later -------------------------------------
+# historic_districts <- historic_districts  %>% 
+#   mutate(state_abbreviation = state.abb[match(state, state.name)])
+# 
+# # joining the unemployment rate to historic districts via the county
+# historic_districts <- historic_districts %>% 
+#   left_join(unemployment_usda_2023_joinable %>% 
+#               filter(fips_code %% 1000 != 0) %>% 
+#               select("NAME", "state", "unemployment_rate", "fips_code"),  
+#             by = c("county" = "NAME", 
+#                    "state_abbreviation" = "state"))
+# 
 
 # Color palette stuff -------------------------------------------------------
 
@@ -166,43 +193,43 @@ pal_bls_quantiles <- as.data.frame(pal_bls_quantiles)
 #-----------------------
 
 # Color palette USDA
-pal_unemployment_usda_23 <- colorQuantile(
-  #palette = "YlOrRd",
-  palette = "Spectral",
-  domain = unemployment_usda_23_mapping$unemployment_rate,
-  n=9,
-  na.color = "grey",
-  reverse = TRUE
-)
-
-# Prepping for fixing the legend (this and the labformat thing below were helped)
-pal_breaks_unemployment_usda_23 <- quantile(unemployment_usda_23_mapping$unemployment_rate, probs = seq(0, 1, length.out = 10), na.rm = TRUE)
- 
-# Sort of "manually" logging the color palette and its values/labels so we can apply it to bar chart as well.
-n_quants <- length(pal_breaks_unemployment_usda_23)
-
-# Making a tibble to refer to the quantiles -----------------------------------
-# This is where I will later track the counts for each category
-pal_quantiles_unemployment_usda_23 <- tibble(
-  bottom_val = numeric(n_quants),
-  top_val = numeric(n_quants),
-  label = character(n_quants),
-  color = character(n_quants),
-  counts = numeric(n_quants)
-)
-
-pal_quantiles_unemployment_usda_23[n_quants,] <- NA
-
-for(i in 1:(n_quants-1)){
-  pal_quantiles_unemployment_usda_23[i, "bottom_val"] <- pal_breaks_unemployment_usda_23[i]
-  pal_quantiles_unemployment_usda_23[i, "top_val"] <- pal_breaks_unemployment_usda_23[i+1]
-  pal_quantiles_unemployment_usda_23[i,"label"] <- paste0(pal_breaks_unemployment_usda_23[i], "% - ", pal_breaks_unemployment_usda_23[i+1], "%")
-}
-
-pal_quantiles_unemployment_usda_23 <- pal_quantiles_unemployment_usda_23 %>%
-  mutate(color = pal_unemployment_usda_23(bottom_val))
-
-pal_quantiles_unemployment_usda_23 <- as.data.frame(pal_quantiles_unemployment_usda_23)
+# pal_unemployment_usda_23 <- colorQuantile(
+#   #palette = "YlOrRd",
+#   palette = "Spectral",
+#   domain = unemployment_usda_23_mapping$unemployment_rate,
+#   n=9,
+#   na.color = "grey",
+#   reverse = TRUE
+# )
+# 
+# # Prepping for fixing the legend (this and the labformat thing below were helped)
+# pal_breaks_unemployment_usda_23 <- quantile(unemployment_usda_23_mapping$unemployment_rate, probs = seq(0, 1, length.out = 10), na.rm = TRUE)
+#  
+# # Sort of "manually" logging the color palette and its values/labels so we can apply it to bar chart as well.
+# n_quants <- length(pal_breaks_unemployment_usda_23)
+# 
+# # Making a tibble to refer to the quantiles -----------------------------------
+# # This is where I will later track the counts for each category
+# pal_quantiles_unemployment_usda_23 <- tibble(
+#   bottom_val = numeric(n_quants),
+#   top_val = numeric(n_quants),
+#   label = character(n_quants),
+#   color = character(n_quants),
+#   counts = numeric(n_quants)
+# )
+# 
+# pal_quantiles_unemployment_usda_23[n_quants,] <- NA
+# 
+# for(i in 1:(n_quants-1)){
+#   pal_quantiles_unemployment_usda_23[i, "bottom_val"] <- pal_breaks_unemployment_usda_23[i]
+#   pal_quantiles_unemployment_usda_23[i, "top_val"] <- pal_breaks_unemployment_usda_23[i+1]
+#   pal_quantiles_unemployment_usda_23[i,"label"] <- paste0(pal_breaks_unemployment_usda_23[i], "% - ", pal_breaks_unemployment_usda_23[i+1], "%")
+# }
+# 
+# pal_quantiles_unemployment_usda_23 <- pal_quantiles_unemployment_usda_23 %>%
+#   mutate(color = pal_unemployment_usda_23(bottom_val))
+# 
+# pal_quantiles_unemployment_usda_23 <- as.data.frame(pal_quantiles_unemployment_usda_23)
 
 # Standardized data ---------------
 
@@ -460,7 +487,7 @@ server <- function(input, output) {
           weight = 1,
           smoothFactor = .5,
           #label = ~area_name
-          label = paste0(filtered_county_geoms()$area_name, ": ", filtered_county_geoms()$unemployment_rate, "%") #hovering
+          label = paste0(filtered_county_geoms()$NAMELSAD, ": ", filtered_county_geoms()$unemployment_percent, "%") #hovering
         ) %>% 
         addLegend(
           pal = pal_unemployment_bls_25,
