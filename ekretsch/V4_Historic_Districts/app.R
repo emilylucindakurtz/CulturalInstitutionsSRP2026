@@ -75,7 +75,7 @@ unemployment_bls_2025_joinable <- unemployment_bls %>%
   filter(year == 2025)
 
 unemployment_bls_2025 <- counties_sf %>% 
-  left_join(unemployment_bls_2025_joinable, by = c("NAMELSAD", "STUSPS"))
+  left_join(unemployment_bls_2025_joinable, by = c("NAMELSAD", "STUSPS", "NAME"))
 
 # Joining historic districts and the unemployment rate for graphing later -------------------------------------
 historic_districts <- historic_districts  %>% 
