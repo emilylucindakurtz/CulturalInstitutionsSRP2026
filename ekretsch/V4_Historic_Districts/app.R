@@ -74,8 +74,8 @@ unemployment_bls_2025_joinable <- unemployment_bls %>%
          NAME = str_squish(str_remove_all(NAMELSAD, county_equivs))) %>%  
   filter(year == 2025)
 
-unemployment_bls_2025 <-counties_sf %>% 
-  left_join(unemployment_bls_2025_joinable, by = c("NAMELSAD", "STUSPS"))
+unemployment_bls_2025 <- counties_sf %>% 
+  left_join(unemployment_bls_2025_joinable, by = c("NAMELSAD", "STUSPS", "NAME"))
 
 # Joining historic districts and the unemployment rate for graphing later -------------------------------------
 historic_districts <- historic_districts  %>% 
@@ -84,8 +84,8 @@ historic_districts <- historic_districts  %>%
 # joining the unemployment rate to historic districts via the county
 historic_districts <- historic_districts %>% 
   left_join(unemployment_bls_2025_joinable %>% 
-              filter(area_type_code == "F") %>% 
-              select("NAME", "STUSPS", "unemployment_percent", "area_type_code", "year"),  
+              #filter(area_type_code == "F") %>% 
+              select("NAME", "STUSPS", "unemployment_percent", "year"),  
             by = c("county" = "NAME", 
                    "state_abbreviation" = "STUSPS"))
 
@@ -292,7 +292,7 @@ ui <- page_navbar(
             label = "Choose a layer for further analysis:",
             choices = list(
               "None" = NA,
-              "Unemployment" = "unemployment",
+              "Unemployment rate (2025)" = "unemployment",
               "Standardized historic district areas by state" = "standardized_hd_area"
             )
           ),
