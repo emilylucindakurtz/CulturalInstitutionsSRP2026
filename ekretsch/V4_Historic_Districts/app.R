@@ -211,8 +211,7 @@ ui <- page_navbar(
   nav_panel(
     title = "Explorer",
       h2("Find and explore historic districts"),
-      p("Explanation of the page loading..."),
-    
+
     card(
       sidebarLayout(
         position = "left",
@@ -304,7 +303,7 @@ ui <- page_navbar(
           ),
           mainPanel(
             width = 10,
-            h2("Introduction"),
+            h2("Introduction", style = "background-color: #cee8ed"),
             br(),
             br(),
             p("When I began looking into cultural institutions to investigate for this project, I stumbled upon the ",
@@ -412,28 +411,6 @@ ui <- page_navbar(
           
         )
       ),
-      # card(
-      #   h2("Categories", style = "background-color: #cee8ed"),
-      #   sidebarLayout(
-      #     position = "left",
-      #     sidebarPanel(
-      #       width = 3,
-      #       tags$figure(
-      #         tags$img(src = "us_categories.png", style = "width: 100%; height: auto; display: block;"),
-      #         tags$figcaption("Most common categories in the US.")
-      #       )
-      #     ),
-      #     mainPanel(
-      #       width = 9,
-      #       p("As briefly mentioned in the section above, I also chose to investigate the breakdown of the most common categories of historic districts. 
-      #       For clarification, the NRHP offers a variable detailing all of the categories that each historic district falls into, such as 
-      #       Archaeology, Art, Commerce, Economics, etc. This was a slight area of frustration for me because I couldn't easily map each historic district 
-      #       to one singular category (as most historic districts fall into many categories). 
-      #       However, I made a reactive bar plot showing the top 5 most common categories in the state selected (or US, if the US is selected).
-      #       This helped me notice that architecture is the most common category across the US, which makes sense – houses, buildings, schools…")
-      #     )
-      #   )
-      # ),
       
       card(
         h2("Unemployment", style = "background-color: #cee8ed"),
@@ -476,13 +453,48 @@ ui <- page_navbar(
           tags$li("Going back to my original search that led me to the NRHP – I’m still interested in ethnic enclaves, and their mapping across the US. How do they change when there are demographic and economic changes in areas?"),
           tags$li("One of my many struggles while doing this project was false geocoding of the historic district locations. There are simply too many for me to check manually, so is there a way for me to either fix the geocoding (such as a better package), and/or a way for the user to contribute feedback to correct issues with the page?"),
         )
-        ),
-      card(
-        h2("Sources -- not sure", style = "background-color: #cee8ed"),
+        )
+    )
+  ),
+  nav_panel(
+    title = "Data",
+    h2("Data"),
+    card(
+      h3("Historic Districts",  style = "background-color: #cee8ed"),
+      tags$ul(
+        tags$li("File name: historic_districts_clean4.csv"),
+        tags$li("The original source was the National Register of Historic Places (NRHP) Historic Landmarks, from the National Park Service."),
+        tags$li("The link to the data that I downloaded can be found here: https://www.nps.gov/subjects/nationalregister/data-downloads.htm "),
+        tags$li("To download, scroll down to Spreadsheet of NRHP Listed properties (listings up to 5/22/2026) and download the .xlsx file. I then converted that to a csv and performed my cleaning and wrangling."),
+        tags$li("Since the original dataset did not include the longitude and latitude of the historic districts, I had to geocoded the addresses."),
+        tags$li("I used the ‘arcgis’ method from the ‘arcgisgeocode’ package as the method for the ‘geocode()’ function from ‘tidygeocoder’ package."),
+        tags$li("I used this method rather than other ones such as ‘census’ or ‘osm’ because the addresses were messy/incomplete and ‘arcgis’ was the only method (that I had access) that could deal with these addresses.")
       )
+    ),
+    card(
+      h3("State Areas",  style = "background-color: #cee8ed"),
+      tags$ul(
+      tags$li("File name: us_areas_cleaned.csv"),
+      tags$li("To standardize the historic district areas by state, I had to first get the areas of each of the US states."),
+      tags$li("I used the Census State Geographies via https://www.census.gov/geographies/reference-files/2010/geo/state-area.html"),
+      tags$li("Although this data is from 2010, I decided it was the most complete and reliable as it is from the Census and includes the 5 US territories (which I wanted to include in my map)."),
+      tags$li("I scraped this census page. I first checked that this was allowed by running 'paths_allowed()' on the census link, which came back ‘True’."),
+      tags$li("The code used to scrape and clean is in historic_districts_exploration_1.1.qmd")
+      )
+    ),
+    card(
+      
+      h3("Unemployment Rate", style = "background-color: #cee8ed"),
+      tags$ul(
+      tags$li("File name: annual_bls_laus_1990_2025.csv"),
+      tags$li("I utilized the local-area unemployment statistics (LAUS) from the Bureau of Labor Statistics via the package ‘BLSloadR’."),
+      tags$li("I filtered for only annual data (M13) and unemployment rate, and included all years from 1990-2025, though I only ended up using the 2025 data.")
+    )
     )
   )
 )
+
+
 
 # ------------------------------------------------------------------------------
 
