@@ -366,7 +366,7 @@ ui <- page_navbar(
           column(width = 5,
                  p("I was also intrigued by the fact that Colorado has a relatively high area density of historic districts compared to the rest of the mountain west and midwest US. 
               I am unsure of why this may be, but three of the top 5 historic district categories in Colorado – commerce, exploration settlement, and industry, in conjunction 
-              with some brief Colorado history (Pike’s Peak Gold Rush) lead me to believe that the state’s natural resources and westward expansion may play a role. 
+              with some brief Colorado history (Pike’s Peak Gold Rush) led me to believe that the state’s natural resources and westward expansion may play a role. 
               Further investigation needed here as well!") #add link/highlight here!!
                  ),
           column(width = 4,
@@ -403,7 +403,7 @@ ui <- page_navbar(
                  p("But one state in particular caught my eye: Alaska. 
               In Alaska, architecture is second to industry, exploration settlement, and commerce, which are tied for first. 
               This leads me to believe that Alaska is not only geographically disconnected from the rest of the US, 
-              but also could have historic disconnections. This is another area for further analysis.")),
+              but also could have historic disconnections. This is another area for further analysis.")), # FURTHER analysis
           column(width = 3,
                  tags$figure(
                    tags$img(src = "alaska_categories.png", style = "width: 100%; height: auto; display: block;"),
@@ -412,54 +412,71 @@ ui <- page_navbar(
           
         )
       ),
+      # card(
+      #   h2("Categories", style = "background-color: #cee8ed"),
+      #   sidebarLayout(
+      #     position = "left",
+      #     sidebarPanel(
+      #       width = 3,
+      #       tags$figure(
+      #         tags$img(src = "us_categories.png", style = "width: 100%; height: auto; display: block;"),
+      #         tags$figcaption("Most common categories in the US.")
+      #       )
+      #     ),
+      #     mainPanel(
+      #       width = 9,
+      #       p("As briefly mentioned in the section above, I also chose to investigate the breakdown of the most common categories of historic districts. 
+      #       For clarification, the NRHP offers a variable detailing all of the categories that each historic district falls into, such as 
+      #       Archaeology, Art, Commerce, Economics, etc. This was a slight area of frustration for me because I couldn't easily map each historic district 
+      #       to one singular category (as most historic districts fall into many categories). 
+      #       However, I made a reactive bar plot showing the top 5 most common categories in the state selected (or US, if the US is selected).
+      #       This helped me notice that architecture is the most common category across the US, which makes sense – houses, buildings, schools…")
+      #     )
+      #   )
+      # ),
+      
       card(
-        h2("Categories", style = "background-color: #cee8ed"),
+        h2("Unemployment", style = "background-color: #cee8ed"),
         sidebarLayout(
           position = "left",
           sidebarPanel(
-            width = 3,
+            width = 5,
             tags$figure(
-              tags$img(src = "us_categories.png", style = "width: 100%; height: auto; display: block;"),
-              tags$figcaption("Most common categories in the US.")
+              tags$img(src = "us_vs_hd.png", style = "width: 100%; height: auto; display: block;"),
+              tags$figcaption("US county mean unemployment rate (black) versus US historic district mean unemployment rate (red)")
             )
           ),
           mainPanel(
-            width = 9,
-            p("As briefly mentioned in the section above, I also chose to investigate the breakdown of the most common categories of historic districts. 
-            For clarification, the NRHP offers a variable detailing all of the categories that each historic district falls into, such as 
-            Archaeology, Art, Commerce, Economics, etc. This was a slight area of frustration for me because I couldn't easily map each historic district 
-            to one singular category (as most historic districts fall into many categories). 
-            However, I made a reactive bar plot showing the top 5 most common categories in the state selected (or US, if the US is selected).
-            This helped me notice that architecture is the most common category across the US, which makes sense – houses, buildings, schools…")
-          )
-        )
-      ),
-      card(
-        h2("Categories", style = "background-color: #cee8ed"),
-        sidebarLayout(
-          position = "right",
-          sidebarPanel(
-            width = 3,
-            tags$figure(
-              tags$img(src = "alaska_categories.png", style = "width: 100%; height: auto; display: block;"),
-              tags$figcaption("Most common categories in AK -- architecture is NOT #1.")
+            width = 7,
+            p("Lastly, I chose to investigate unemployment through the lens of historic districts. 
+          I noticed that many of the historic districts seemed to be tightly clustered around cities/more urban areas. 
+          I was curious if there were any economic patterns to the locations of historic districts (could they be associated with better economic outcomes?),
+          so I decided to add a layer for unemployment by county."),
+            p(
+              "With the map overlayed with unemployment by county, I saw that the clustered historic districts appeared to be in the counties with lower unemployment rates.
+              Thus, I thought it would be interesting to create a histogram showing the distribution of the unemployment rates by county weighted by the number of historic districts that are in each county. 
+              This is simply the mean of the following: each county's unemployment rate multiplied by how many historic districts are located in that county.
+              The image on the left shows the weighted county mean as the red line, ~4.094%, and the unweighted county mean as the black line, ~4.233%.
+              Due to time constraints I was unable to perform a proper hypothesis test for difference of means, but the slight difference indicates that this could be an interesting area for further research."
             )
-          ),
-          mainPanel(
-            width = 9,
-            p("But one state in particular caught my eye: Alaska. 
-              In Alaska, architecture is second to industry, exploration settlement, and commerce, which are tied for first. 
-              This leads me to believe that Alaska is not only geographically disconnected from the rest of the US, 
-              but also could have historic disconnections. This is another area for further analysis.")
           )
         )
-      ),
-      card(
-        h2("Unemployment", style = "background-color: #cee8ed"),
+        
       ),
       card(
         h2("Next steps", style = "background-color: #cee8ed"),
-      ),
+        p("As referenced in my brief analyses above, there are many unanswered questions, as well as new questions, that this project as led me to. 
+          A few areas that I propose for further research include the following:"),
+        tags$ul(
+          tags$li("Why does Colorado have such a high historic district density compared to the rest of the surrounding states?"),
+          tags$li("Why, exactly, is Alaska’s historic district category distribution so different from the rest of the US? Are there other states that are outliers? Are there better ways to categorize the historic districts in order to help with analysis/mapping?"),
+          tags$li("Is the mean of historic-district-weighted county unemployment rates truly different from that of the unweighted county unemployment rates? Is this consistent across years?"),
+          tags$li("Referencing the question above, is there a way to map the addition/removal of historic districts and whether there are associating patterns in unemployment rate changes?"),
+          tags$li("Some of my research on this project included investigating library data. How does the distribution of libraries across the US compare to that of historic districts? Are there connections between the two?"),
+          tags$li("Going back to my original search that led me to the NRHP – I’m still interested in ethnic enclaves, and their mapping across the US. How do they change when there are demographic and economic changes in areas?"),
+          tags$li("One of my many struggles while doing this project was false geocoding of the historic district locations. There are simply too many for me to check manually, so is there a way for me to either fix the geocoding (such as a better package), and/or a way for the user to contribute feedback to correct issues with the page?"),
+        )
+        ),
       card(
         h2("Sources -- not sure", style = "background-color: #cee8ed"),
       )
@@ -743,7 +760,7 @@ server <- function(input, output) {
     p <- temp_df %>% 
       ggplot(aes(x = unemployment_percent, fill = unemployment_color)) +
       geom_histogram(binwidth = .3) +
-      #geom_vline(xintercept = mean(historic_districts$unemployment_percent, na.rm = TRUE), color = "black", linetype = "dashed", linewidth = .3) +
+      #geom_vline(xintercept = mean(historic_districts$unemployment_percent, na.rm = TRUE), color = "red", linetype = "dashed", linewidth = .3) +
       #geom_vline(xintercept = mean(unemployment_bls_2025$unemployment_percent, na.rm = TRUE), color = "black", linetype = "dashed", linewidth = .3) +
       
       #xlim(0, 18) +
