@@ -75,7 +75,7 @@ unemployment_bls_2025_joinable <- unemployment_bls %>%
   filter(year == 2025)
 
 unemployment_bls_2025 <- counties_sf %>% 
-  left_join(unemployment_bls_2025_joinable, by = c("NAMELSAD", "STUSPS", "NAME"))
+  left_join(unemployment_bls_2025_joinable, by = c("NAMELSAD", "STUSPS")) # removed , "NAME"
 
 # Joining historic districts and the unemployment rate for graphing later -------------------------------------
 historic_districts <- historic_districts  %>% 
@@ -88,65 +88,6 @@ historic_districts <- historic_districts %>%
               select("NAME", "STUSPS", "unemployment_percent", "year"),  
             by = c("county" = "NAME", 
                    "state_abbreviation" = "STUSPS"))
-
-# USDA -----
-# unemployment_usda <- read_csv("../../data/EK_general/Unemployment2023.csv")
-# unemployment_usda_wider <- unemployment_usda %>% 
-#   clean_names() %>% 
-#   mutate(
-#     #separate("\d{4}")
-#     year = str_sub(attribute, -4, str_length(attribute)),
-#     attribute = str_sub(attribute, 1, -6) %>% 
-#       str_to_lower() #%>% 
-#     #str_replace_all("_", " ")
-#   )
-# # now actually pivoting wider
-# unemployment_usda_wider <- unemployment_usda_wider %>% 
-#   pivot_wider(
-#     names_from = attribute,
-#     values_from = value
-#   )
-# 
-# unemployment_usda_2023 <- unemployment_usda_wider %>% 
-#   filter(year == "2023")
-# 
-# 
-# # Getting it in a way that we can join it to the shapefile easily
-# county_equivs <- paste("County", 
-#                        "Planning Region", 
-#                        "Borough", 
-#                        "Census Area", 
-#                        "/municipality", 
-#                        "Municipality", 
-#                        "/city", 
-#                        "Parish", 
-#                        sep = "|")
-# 
-# unemployment_usda_2023_joinable <- unemployment_usda_2023 %>% 
-#   mutate(NAMELSAD = str_remove(area_name, ",.*"), #before comma
-#          STUSPS = str_trim(str_replace(area_name, "^.*,",""))) %>% #after comma
-#   mutate(STUSPS = str_replace(STUSPS, "District of Columbia", "DC"), # fixing DC
-#          NAME = str_squish(str_remove_all(NAMELSAD, county_equivs)))
-# 
-# 
-# # could also potentially do this by dealling with the FIPS code but that would mean mutating the shapefile
-# 
-# # Joining USDA unemployment data to the counties data! (would do the same here prob if adding other data)
-# unemployment_usda_23_mapping <- counties_sf %>% 
-#   left_join(unemployment_usda_2023_joinable,  by = c("NAME", "STUSPS"))
-# 
-# # Joining historic districts and the unemployment rate for graphing later -------------------------------------
-# historic_districts <- historic_districts  %>% 
-#   mutate(state_abbreviation = state.abb[match(state, state.name)])
-# 
-# # joining the unemployment rate to historic districts via the county
-# historic_districts <- historic_districts %>% 
-#   left_join(unemployment_usda_2023_joinable %>% 
-#               filter(fips_code %% 1000 != 0) %>% 
-#               select("NAME", "state", "unemployment_rate", "fips_code"),  
-#             by = c("county" = "NAME", 
-#                    "state_abbreviation" = "state"))
-# 
 
 # Color palette stuff -------------------------------------------------------
 
@@ -164,7 +105,7 @@ pal_unemployment_bls_25 <- colorQuantile(
 pal_breaks_unemployment_bls <- quantile(unemployment_bls_2025$unemployment_percent, probs = seq(0, 1, length.out = 11), na.rm = TRUE)
 
 # Sort of "manually" logging the color pallete and its values/labels so we can apply it to bar chart as well.
-n_quants <- length(pal_bls_breaks)
+n_quants <- length(pal_breaks_unemployment_bls)
 
 # Making a tibble to refer to the quantiles
 pal_bls_quantiles <- tibble(
@@ -179,9 +120,9 @@ pal_bls_quantiles[n_quants,] <- NA
 
 
 for(i in 1:(n_quants-1)){
-  pal_bls_quantiles[i, "bottom_val"] <- pal_bls_breaks[i]
-  pal_bls_quantiles[i, "top_val"] <- pal_bls_breaks[i+1]
-  pal_bls_quantiles[i,"label"] <- paste0(pal_bls_breaks[i], "% - ", pal_bls_breaks[i+1], "%")
+  pal_bls_quantiles[i, "bottom_val"] <- pal_breaks_unemployment_bls[i]
+  pal_bls_quantiles[i, "top_val"] <- pal_breaks_unemployment_bls[i+1]
+  pal_bls_quantiles[i,"label"] <- paste0(pal_breaks_unemployment_bls[i], "% - ", pal_breaks_unemployment_bls[i+1], "%")
 }
 
 pal_bls_quantiles <- pal_bls_quantiles %>%
@@ -190,46 +131,6 @@ pal_bls_quantiles <- pal_bls_quantiles %>%
 pal_bls_quantiles <- as.data.frame(pal_bls_quantiles)
 
 
-#-----------------------
-
-# Color palette USDA
-# pal_unemployment_usda_23 <- colorQuantile(
-#   #palette = "YlOrRd",
-#   palette = "Spectral",
-#   domain = unemployment_usda_23_mapping$unemployment_rate,
-#   n=9,
-#   na.color = "grey",
-#   reverse = TRUE
-# )
-# 
-# # Prepping for fixing the legend (this and the labformat thing below were helped)
-# pal_breaks_unemployment_usda_23 <- quantile(unemployment_usda_23_mapping$unemployment_rate, probs = seq(0, 1, length.out = 10), na.rm = TRUE)
-#  
-# # Sort of "manually" logging the color palette and its values/labels so we can apply it to bar chart as well.
-# n_quants <- length(pal_breaks_unemployment_usda_23)
-# 
-# # Making a tibble to refer to the quantiles -----------------------------------
-# # This is where I will later track the counts for each category
-# pal_quantiles_unemployment_usda_23 <- tibble(
-#   bottom_val = numeric(n_quants),
-#   top_val = numeric(n_quants),
-#   label = character(n_quants),
-#   color = character(n_quants),
-#   counts = numeric(n_quants)
-# )
-# 
-# pal_quantiles_unemployment_usda_23[n_quants,] <- NA
-# 
-# for(i in 1:(n_quants-1)){
-#   pal_quantiles_unemployment_usda_23[i, "bottom_val"] <- pal_breaks_unemployment_usda_23[i]
-#   pal_quantiles_unemployment_usda_23[i, "top_val"] <- pal_breaks_unemployment_usda_23[i+1]
-#   pal_quantiles_unemployment_usda_23[i,"label"] <- paste0(pal_breaks_unemployment_usda_23[i], "% - ", pal_breaks_unemployment_usda_23[i+1], "%")
-# }
-# 
-# pal_quantiles_unemployment_usda_23 <- pal_quantiles_unemployment_usda_23 %>%
-#   mutate(color = pal_unemployment_usda_23(bottom_val))
-# 
-# pal_quantiles_unemployment_usda_23 <- as.data.frame(pal_quantiles_unemployment_usda_23)
 
 # Standardized data ---------------
 
@@ -257,9 +158,55 @@ ui <- page_navbar(
 #    theme = shinytheme("flatly"),
   theme = bs_theme(bootswatch = "lux"), # morph also good
   #data-bs-theme="dark",
-  title = "Historic Districts",
+  title = "Historic Districts Across the US",
+  fluid = TRUE,
   fillable = TRUE, # Acts as page_fillable() for all tabs
-    
+  
+  # Home Page
+  nav_panel(
+    title = "Home",
+    h2("📍 Welcome to", em("Historic Districts Across the US")),
+
+    p("This is part of Emily Kurtz’s 2026 Summer Project,", 
+      strong("Mapping Cultural Institutions in the United States."),
+      br(),
+      br(),
+      em("Historic Districts Across the US "),
+      "offers an interactive map and analysis of the historic districts listed on the National Park Service’s ", 
+      a("National Register of Historic Places.", href = "https://www.nps.gov/subjects/nationalregister/index.htm"),
+      br(),
+      br(),
+      "The two ",
+      span("main goals of this project", style = "background-color: #cee8ed;"),
+      " were to",
+      br(),
+      "1) strengthen my skills in data collection, cleaning, analysis, and visualization with R, and",
+      br(),
+      "2) investigate geographic, economic, and/or demographic patterns of historic districts.",
+      br(),
+      br(),
+      span("I ultimately focused on", style = "background-color: #cee8ed;"),
+      br(),
+      "a) overall geographic distribution of historic districts across the US,",
+      br(),
+      "b) the categories (types) of historic districts, and",
+      br(),
+      "c) unemployment rate data.",
+      br()
+    ),
+    tags$hr(style = "border-top: 1px solid black;"),
+    p(
+      "🔎 To find and explore historic districts and data visualizations, navigate to the “Explore” tab.",
+      br(),
+      "💡 To read my analysis of these patterns and distributions, click on the “Analysis” tab.",
+      br(),
+      "📋 To access the data used on this (sub) project, check out the “Data” tab.",
+      br(),
+      br(),
+      br(),
+      em(strong("Thank you for visiting, and happy exploring! ﹏𓊝﹏"))
+    )
+  ),  
   # Page 1 Layout
   nav_panel(
     title = "Explorer",
@@ -293,7 +240,7 @@ ui <- page_navbar(
             choices = list(
               "None" = NA,
               "Unemployment rate (2025)" = "unemployment",
-              "Standardized historic district areas by state" = "standardized_hd_area"
+              "Percent of state area filled by historic districts" = "standardized_hd_area"
             )
           ),
           tags$hr(style = "border-top: 1px solid black;"), #adds a line separator thing
@@ -325,8 +272,9 @@ ui <- page_navbar(
   # Page 2 Layout (COMING BACK TO THIS LATER!) -------------------------------------------------------
     nav_panel(
       title = "Analysis",
+      h2("Analysis"),
       
-      # CSS for scrolling below is from gemini... 
+      #CSS for scrolling below is from gemini...
       tags$head(
         tags$style(HTML("
       /* Force the bslib card grid/container to allow natural height */
@@ -345,53 +293,179 @@ ui <- page_navbar(
       
       card(
         card(
-            mainPanel(
-              h2("Title"),
-              p("*Note legend situation... [will add later]"),
-              card(
-                leafletOutput("unemployment_map")
-              )
-            )
-          
-        ),
-        
-        card(
-          h4("Analysis: "),
-          p("This plot shows xyz")
-          )
-      ),
-      
-      # ---
-      card(
-        card(
         sidebarLayout(
           position = "right",
           sidebarPanel(
-            card(
-              textOutput("dist_state"),
-              plotlyOutput("categories_dist")
+            width = 2,
+            tags$figure(
+            tags$img(src = "nps.png", style = "width: 100%; height: auto; display: block;"),
+            tags$figcaption("The National Park Service provides the NRHP.")
             )
           ),
           mainPanel(
-            h2("Standardized historic district acreage by state"),
-            p("Percent of each state's land area that is filled by historic districts"),
-            card(
-              leafletOutput("map")
+            width = 10,
+            h2("Introduction"),
+            br(),
+            br(),
+            p("When I began looking into cultural institutions to investigate for this project, I stumbled upon the ",
+              a("National Register of Historic Places (NRHP)", href = "https://www.nps.gov/subjects/nationalregister/index.htm"),
+              "while hoping to find a list of ethnic enclaves (such as Chinatown or Little Ethiopia).
+            Although the NRHP is not a list of ethnic enclaves, I was astonished and intrigued by the extensive list of historic districts that I found.
+              I had no idea just how much history is embedded in everyday places that I frequent, as well as the rest of the US. 
+              Thus, I decided to continue down the path of historic districts.")
+          ))),
+        card(
+          h2("Areas", style = "background-color: #cee8ed"),
+          sidebarLayout(
+            position = "left",
+            sidebarPanel(
+             #width = 2,
+              tags$figure(
+              tags$img(src = "overwhelming_districts.png", style = "width: 100%; height: auto; display: block;"),
+              tags$figcaption("Overwhelming historic districts map.")
+              )
+            ),
+            mainPanel(
+              #width = 10,
+              #h2("Areas"),
+              p("Once I had completed the time-consuming task of geocoding all of the locations of the historic districts in the US, I decided to start 
+                my investigation with what seemed like the most sensible use of my newly found longitude and latitude data – a geographic analysis. 
+                However, the many points on my Leaflet map were far too overwhelming to make use of at face value. 
+                I wanted to see what states had more historical significance via historic districts. 
+                I tried out different variations on choropleth maps (one showed the number of historic districts by state, 
+                another showed the area of historic districts by state…)."),
+                #br(),
+                p("I ended up noticing that the vast difference in ",
+              a("state areas", href="https://www.census.gov/geographies/reference-files/2010/geo/state-area.html"),
+              " (California = 163,695 sq mi, Massachusetts = 10,554 sq mi) resulted in misleading choropleth state maps, 
+              so I decided to standardize the areas. I took the aggregated area of historic districts in each state and divided that 
+              by the state’s total area, giving me the “Percent of state area filled by historic districts” layer. "
             )
           )
         )
       ),
-      
       card(
-        h4("Analysis: "),
-        p("This plot shows the percent of each state's area that is taken up by historic districts (historic district acreage of each state divided by that state's total area)."),
-        p("The choropleth map reveals there is an overwhelming concentration of historic districts on the East Coast, in particular Virginia."),
-        p("Further, it is interesting to compare the distributions of most popular categories for historic districts between states. [add alaska thing]")
-      )
+        fluidRow(
+          # Column 1: Takes up 4 out of 12 slots (1/3 of the page)
+          column(width = 5, p("Misleading map -- number of historic districts by state."), img(src = "num_hd.png", style = "width: 100%; height: auto; display: block;")),
+          column(width = 2, class = "text-center", p(strong("versus"))),
+          column(width = 5, p("Standardized map -- percent of state consumed by historic districts."), img(src = "areas.png", style = "width: 100%; height: auto; display: block;"))
+        )
+      ),
+      card(
+        p("The standardized map emphasizes the high concentration of historic districts in Virginia. 
+          Connecticut, Massachusetts, Rhode Island, Maryland, New Jersey, and Delaware also have a high percentage of their area filled by historic districts. 
+          This makes sense as they were all part of the first 13 colonies, and thus have had more time to create US history. "),
+
+        p("It is interesting to me that Georgia, South Carolina, North Carolina, Pennsylvania, and New York have far less of their land filled by historic districts. 
+        Although I did not have time to do so, I would be interested in a deeper analysis of the battlefields and/or locations of battles across the US 
+        to see if there is a pattern between that data and the historic district data.") # add link/highlight here!!
+      ),
+      card(
+        fluidRow(
+          column(width = 5,
+                 p("I was also intrigued by the fact that Colorado has a relatively high area density of historic districts compared to the rest of the mountain west and midwest US. 
+              I am unsure of why this may be, but three of the top 5 historic district categories in Colorado – commerce, exploration settlement, and industry, in conjunction 
+              with some brief Colorado history (Pike’s Peak Gold Rush) lead me to believe that the state’s natural resources and westward expansion may play a role. 
+              Further investigation needed here as well!") #add link/highlight here!!
+                 ),
+          column(width = 4,
+                 tags$figure(
+                   tags$img(src = "colorado.png",  style = "width: 100%; height: auto; display: block;"),
+                   tags$caption("CO has a relatively high percentage of its area filled by historic districts.")
+                 )),
+          column(width = 3,
+                 tags$figure(
+                   tags$img(src = "colorado_categories.png",  style = "width: 100%; height: auto; display: block;")#,
+                   #tags$caption("CO's top 5 historic district categories.")
+                 ))
+        )
+      ),
+      
+      # --------------------------
+      card(
+        h2("Categories", style = "background-color: #cee8ed"),
+  
+        fluidRow(
+          column(width = 3,
+                 tags$figure(
+                   tags$img(src = "us_categories.png", style = "width: 100%; height: auto; display: block;"),
+                   tags$figcaption("Most common categories in the US.")
+                 )),
+          column(width = 4,
+                 p("As briefly mentioned in the section above, I also chose to investigate the breakdown of the most common categories of historic districts. 
+            For clarification, the NRHP offers a variable detailing all of the categories that each historic district falls into, such as 
+            Archaeology, Art, Commerce, Economics, etc. This was a slight area of frustration for me because I couldn't easily map each historic district 
+            to one singular category (as most historic districts fall into many categories). 
+            However, I made a reactive bar plot showing the top 5 most common categories in the state selected (or US, if the US is selected).
+            This helped me notice that architecture is the most common category across the US, which makes sense – houses, buildings, schools…")),
+          column(width = 2,
+                 p("But one state in particular caught my eye: Alaska. 
+              In Alaska, architecture is second to industry, exploration settlement, and commerce, which are tied for first. 
+              This leads me to believe that Alaska is not only geographically disconnected from the rest of the US, 
+              but also could have historic disconnections. This is another area for further analysis.")),
+          column(width = 3,
+                 tags$figure(
+                   tags$img(src = "alaska_categories.png", style = "width: 100%; height: auto; display: block;"),
+                   tags$figcaption("Most common categories in AK -- architecture is NOT #1.")
+                 ))
+          
+        )
+      ),
+      card(
+        h2("Categories", style = "background-color: #cee8ed"),
+        sidebarLayout(
+          position = "left",
+          sidebarPanel(
+            width = 3,
+            tags$figure(
+              tags$img(src = "us_categories.png", style = "width: 100%; height: auto; display: block;"),
+              tags$figcaption("Most common categories in the US.")
+            )
+          ),
+          mainPanel(
+            width = 9,
+            p("As briefly mentioned in the section above, I also chose to investigate the breakdown of the most common categories of historic districts. 
+            For clarification, the NRHP offers a variable detailing all of the categories that each historic district falls into, such as 
+            Archaeology, Art, Commerce, Economics, etc. This was a slight area of frustration for me because I couldn't easily map each historic district 
+            to one singular category (as most historic districts fall into many categories). 
+            However, I made a reactive bar plot showing the top 5 most common categories in the state selected (or US, if the US is selected).
+            This helped me notice that architecture is the most common category across the US, which makes sense – houses, buildings, schools…")
+          )
+        )
+      ),
+      card(
+        h2("Categories", style = "background-color: #cee8ed"),
+        sidebarLayout(
+          position = "right",
+          sidebarPanel(
+            width = 3,
+            tags$figure(
+              tags$img(src = "alaska_categories.png", style = "width: 100%; height: auto; display: block;"),
+              tags$figcaption("Most common categories in AK -- architecture is NOT #1.")
+            )
+          ),
+          mainPanel(
+            width = 9,
+            p("But one state in particular caught my eye: Alaska. 
+              In Alaska, architecture is second to industry, exploration settlement, and commerce, which are tied for first. 
+              This leads me to believe that Alaska is not only geographically disconnected from the rest of the US, 
+              but also could have historic disconnections. This is another area for further analysis.")
+          )
+        )
+      ),
+      card(
+        h2("Unemployment", style = "background-color: #cee8ed"),
+      ),
+      card(
+        h2("Next steps", style = "background-color: #cee8ed"),
+      ),
+      card(
+        h2("Sources -- not sure", style = "background-color: #cee8ed"),
       )
     )
-    
   )
+)
 
 # ------------------------------------------------------------------------------
 
@@ -533,7 +607,7 @@ server <- function(input, output) {
     if(input$state_choice != "All"){
       input$state_choice
     } else {
-      "the USA"
+      "the US"
     }
     # NOT SURE IF THIS ISACCTUALLY NEEDED.... Maybe?
   }) 
@@ -613,7 +687,7 @@ server <- function(input, output) {
   
   # COME BACK TO DISTS! CBL especially unemployment one... CBLLLLLLLŁLŁ
   output$categories_dist_p1 <- renderPlotly({
-    if(selected_state_p1() == "the USA"){
+    if(selected_state_p1() == "the US"){
       temp_state <- "USA"
     } else {
       temp_state <- selected_state_p1()
@@ -656,7 +730,7 @@ server <- function(input, output) {
   })
 
   output$layer2_dist_p1 <- renderPlotly({
-    if(selected_state_p1() == "the USA"){
+    if(selected_state_p1() == "the US"){
       temp_df <- historic_districts
     } else {
       temp_df <- historic_districts %>% 
@@ -669,6 +743,9 @@ server <- function(input, output) {
     p <- temp_df %>% 
       ggplot(aes(x = unemployment_percent, fill = unemployment_color)) +
       geom_histogram(binwidth = .3) +
+      #geom_vline(xintercept = mean(historic_districts$unemployment_percent, na.rm = TRUE), color = "black", linetype = "dashed", linewidth = .3) +
+      #geom_vline(xintercept = mean(unemployment_bls_2025$unemployment_percent, na.rm = TRUE), color = "black", linetype = "dashed", linewidth = .3) +
+      
       #xlim(0, 18) +
       scale_fill_identity() +
       labs(x = "County unemployment rate",
@@ -683,141 +760,6 @@ server <- function(input, output) {
 
   # ----- Page 2: Analysis ----- Page 2: Analysis ----- Page 2: Analysis ----- Page 2: Analysis ----- Page 2: Analysis -----
   
-  output$unemployment_map <- renderLeaflet({
-    leaflet() %>% 
-      addProviderTiles("CartoDB.Positron") %>% 
-      setView(lng = -95.7129, lat = 37.0902, zoom = 4) %>% 
-      
-      addPolygons(
-        data = unemployment_usda_23_mapping,
-        fillColor = ~pal_unemployment_usda_23(unemployment_rate),
-        fillOpacity = 1,
-        color = "white",
-        weight = 1,
-        smoothFactor = .5
-      ) %>% 
-      addPolygons(
-        data = states_sf,
-        fill = FALSE,
-        color = 'black',
-        weight = 1.5,
-        opacity = 1,
-        smoothFactor = .5
-      ) %>% 
-      addCircleMarkers(
-        data = st_centroid(hd_state_areas),
-        radius = hd_state_areas$standardized_hd_acreage * 10,
-        # ^ before had sqrt() thing
-        stroke = FALSE, # TRY TO FIX COLOR< THE zoom thing, and other stuff...
-        fillOpacity = .7
-      ) %>% 
-      addLegend(
-        pal = pal_unemployment_usda_23,
-        value = unemployment_usda_23_mapping$unemployment_rate,
-        position = "bottomright",
-        title = "Unemployment rate (%)",
-        labFormat = function(type, cuts, p){
-          n <- length(pal_breaks_unemployment_usda_23) - 1
-          paste0(round(pal_breaks_unemployment_usda_23[1:n], 1), "% - ", round(pal_breaks_unemployment_usda_23[2:(n+1)], 1), "%")
-        }
-      )
-  })
-  
-  
-  
-  #--- explorer_map standardizedhistoric district acreage by state
-  
-  output$map <- renderLeaflet({
-    leaflet(hd_state_areas) %>% 
-      addProviderTiles("CartoDB.Positron") %>% 
-      
-      setView(lng = -95.7129, lat = 37.0902, zoom = 4) %>% 
-      
-      addPolygons(
-        layerId = ~NAME, # so it takes the NAME column from hd_state_areas
-        fillColor = ~pal_hd_state_areas(standardized_hd_acreage),
-        fillOpacity = .75,
-        color = "white", # border color
-        weight = 1,
-        smoothFactor = 0.5 # slightly crisper borders -- default is 1 (higher values > more simplification > jaggier borders but shorter rendering)
-        # add the highlight/hover and tooltip things
-      ) %>% 
-      
-      addLegend(
-        pal = pal_hd_state_areas,
-        value = hd_state_areas$standardized_hd_acreage, # same as values   = ~total_num_districts
-        position = "bottomright",
-        title = paste("Key (%)")
-      )
-  })
-  
-  
-  # ----- MAP CLICKING STUFF -----
-  
-  # Getting the user input from clicking
-  selected_state <- reactiveVal(NULL) # Reactive function!!!
-  
-  # Get the state clicked
-  observeEvent(input$map_shape_click, {
-    
-    selected_state(input$map_shape_click$id) # value of NAME for clicked state
-    
-    # Get the bounding box for that state so we can zoom
-    bbox_data <- hd_state_areas[hd_state_areas$NAME == selected_state(), "geometry"]
-    bbox <- st_bbox(bbox_data)
-    # ^ st_bbox() is a function in the R sf (Simple Features) package used to calculate or return the bounding box of a spatial object. It returns a named numeric vector containing the minimum and maximum coordinates (\(xmin, ymin, xmax, ymax\)) that define the rectangular extent of a spatial dataset
-    
-    leafletProxy("map") %>% 
-      fitBounds(
-        lng1 = bbox[["xmin"]], lat1 = bbox[["ymin"]],
-        lng2 = bbox[["xmax"]], lat2 = bbox[["ymax"]]
-      )
-  })
-  
-  # ----- Output histogram -----
-  
-  output$dist_state <- renderText({
-    if(is.null(selected_state())){
-      "Click on a state to see its top 5 historic district categories"
-    } else{
-      paste0("Top 5 historic district categories in ", selected_state())
-    }
-  })
-  
-  output$categories_dist <- renderPlotly({
-    req(selected_state())     # Prevent error on startup when no state is clicked yet
-    
-    state_name <- selected_state()
-    
-    temp_df <- hd_categories_counts_by_state %>% 
-      rename(counts = all_of(selected_state())) %>%  # Get just the column of the state that was clicked.
-      select(category, counts) %>% 
-      filter(counts >0)
-    
-    p <- temp_df %>% 
-      mutate(tooltip_text = paste(
-        paste0("Category: ", category),
-        paste0("Counts: ", counts),
-        sep = "\n"
-      )) %>% 
-      slice_max(order_by = counts, n = 5) %>% 
-      ggplot(aes(y = reorder(category, counts), x = counts, text = tooltip_text)) +
-      geom_col() +
-      scale_y_discrete(labels = scales::label_wrap(10)) +
-      theme_minimal() + #CBL -- 
-      theme(
-        axis.text = element_text(size = 8),
-        axis.title.y = element_text(margin = margin(r = 50))
-        #axis.text.x = element_text(angle = 30, hjust = 0.5, vjust = 0.5)
-      ) +
-      labs(
-        #title = paste0(selected_state(), " top 5 categories of historic districts"),
-        y = NULL,
-        x = "Count"
-      )
-    
-    ggplotly(p, tooltip = "text")
-  })
   
   
 }
