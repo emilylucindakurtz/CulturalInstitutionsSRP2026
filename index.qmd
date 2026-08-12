@@ -27,7 +27,7 @@ data <- data.frame(
     '<a href="theaters_etc.html">Theaters, Colleges, Etc.</a>',
     '<a href="museums.html">Museums</a>',
     '<a href="satellite.html">Satellite Indicators</a>',
-    '<a href="aboutus.html">Emily Kretschmer</a>'),
+    '<a href="aboutus.html">Historic Districts</a>'),
     #"Industrial Institutions", "Theaters, Colleges, Etc.", "Museums", "Satellite Indicators", "Emily"),
   Description = c("Spatially explores American power plants, data centers, and corporate headquarters", "Explores various cultural institutions and connections to community demographics", "Maps American museums and provides information on them", "Satellite data providing insight on development and environmental conditions around major industrial areas", "Maps American historic districts and explores their type/nature and relationship to employment"),
   Author = c(

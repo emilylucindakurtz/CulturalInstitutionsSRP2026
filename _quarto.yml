@@ -15,7 +15,6 @@ website:
         menu:
           - text: "Data Centers, Fortune 500s, and Power Plants"
             href: CISite/industrial_institutions.qmd
-            #href: https://marekjozsef.shinyapps.io/SRP2026-industrial/
           - text: "Theaters, Operas, Colleges, and Auto Factories"
             href: CISite/theaters_etc.qmd
 #          - text: "---" # Adds a visual divider line 
