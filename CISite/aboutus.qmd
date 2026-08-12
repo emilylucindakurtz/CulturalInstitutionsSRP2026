@@ -15,7 +15,9 @@ My name is Ian Rock-Jones, I am from Burlington, VT and am a statistics major wi
 
 Hello! My name is Rimona Zhang, I’m from New Jersey, and I am an undergraduate double majoring in Cognitive Science and Statistics at Carleton College. On campus I work as a peer leader for TRIO/Student Support Service and a tutor at the Quantitative Resource Center. I’m also involved in student groups like Lovelace and GeMMS. My interests are in data science and analysis—and prospectively in ML—since the process of cleaning data, uncovering patterns between variables, and using data to make predictions is both rewarding and valuable to me. The qualitative side of understanding contexts through numbers is another aspect I find interesting. Helping others make sense of ambiguous problems is what draws me to the intersectionality of quantitative and qualitative analysis—using both to convey clear, meaningful insights. In my spare time, some hobbies I enjoy include exploring new music genres (always open to recs!), cooking, junk journaling, and long walks.
 
+![Emily Kretschmer](ekretsch.png)
 
+Emily Kretschmer is second-year student at Carleton College originally from Silver Spring, Maryland. She enjoys working with data and finding patterns. Outside of school, she loves playing Ticket to Ride, making (and drinking) coffee, listening to podcasts, playing ultimate frisbee, and spending time with her parents and two younger siblings
 
 ![[Zoe Zhang](https://zhangz3-svg.github.io/personal_website-/) <br> Sophomore](zoe.jpg)
 
