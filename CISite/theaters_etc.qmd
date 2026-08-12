@@ -1,5 +1,5 @@
 ---
-title: "Theaters. Colleges, Etc. "
+title: "Theaters, Operas, Colleges, and Auto Factories"
 sidebar: false
 format:
   html:
