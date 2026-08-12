@@ -21,8 +21,11 @@ library(readr)
 # ----- Getting data n such ------
 
 # Main historic district data!! --
-historic_districts <- read_csv("../../data/Historic Districts/historic_districts_clean4.csv")
-areas <- read_csv("../../data/Historic Districts/us_areas_cleaned.csv")
+#historic_districts <- read_csv("../../data/Historic Districts/historic_districts_clean4.csv")
+#areas <- read_csv("../../data/Historic Districts/us_areas_cleaned.csv")
+historic_districts <- read_csv("historic_districts_clean4.csv")
+areas <- read_csv("us_areas_cleaned.csv")
+
 
 hd_by_state <- historic_districts %>% 
   group_by(state) %>% 
@@ -67,7 +70,8 @@ county_equivs <- paste("County",
 
 # Unemployment rates ---------
 # BLS LAUS -----
-unemployment_bls <- read_csv("../../data/EK_general/annual_bls_laus_1990_2025.csv")
+#unemployment_bls <- read_csv("../../data/EK_general/annual_bls_laus_1990_2025.csv")
+unemployment_bls <- read_csv("annual_bls_laus_1990_2025.csv")
 
 unemployment_bls_2025_joinable <- unemployment_bls %>% 
   mutate(STUSPS = str_replace(STUSPS, "District of Columbia", "DC"), # fixing DC

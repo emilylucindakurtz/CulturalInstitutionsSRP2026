@@ -23,8 +23,8 @@ website:
             href: CISite/museums.qmd
           - text: "Satellite Indicators"
             href: CISite/satellite.qmd
-#          - text: "Emily App(s)"
-#            href: https://example.com
+          - text: "Historic Districts"
+            href: CISite/historic_districts.qmd
       - text: "Data"
         file: CISite/data.qmd
       - text: "Project Members"
