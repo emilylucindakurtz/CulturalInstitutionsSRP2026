@@ -17,7 +17,7 @@ website:
             href: CISite/industrial_institutions.qmd
           - text: "Theaters, Operas, Colleges, and Auto Factories"
             href: CISite/theaters_etc.qmd
-#          - text: "---" # Adds a visual divider line 
+#          - text: "---" # Adds a visual divider line  
           - text: "Museums"
             href: CISite/museums.qmd
           - text: "Satellite Indicators"
