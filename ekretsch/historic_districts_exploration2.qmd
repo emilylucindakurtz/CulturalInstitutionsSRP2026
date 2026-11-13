@@ -13,24 +13,576 @@ library(tidytext)
 library(leaflet)
 library(tigris)
 library(readr)
+library(sf)
+library(ggplot2)
+library(RColorBrewer)
 ```
 
 ```{r}
-# Cleaning the historic_districts dataset so only the columns we want are present (add later)
+# Get counties shape files
+counties_sf <- tigris::counties(cb = TRUE) %>% 
+  st_transform(crs = 4326)
+
+# States shape files (for later)
+states_sf <- tigris::states(cb = TRUE, resolution = "20m") %>% 
+  st_transform(crs = 4326)
+
 ```
 
---
+```{r}
+#| eval: false
+library(devtools)
+install_github("mikeasilva/blsAPI")
+
+library(blsAPI)
+```
+
+```{r}
+##| eval: false
+library(BLSloadR)
+bls_data <- get_laus(
+  geography = "county",
+  monthly_only = FALSE,
+  transform = TRUE,
+  suppress_warnings = TRUE,
+  return_diagnostics = FALSE,
+  #cache = check_bls_cache_env()
+) 
+```
+
+```{r}
+bls_data_M13 <- bls_data %>% 
+  filter(period == "M13", # Just annual
+         measure_text == "unemployment rate")
+  
+```
+```{r}
+bls_data_M13  <- bls_data_M13 %>% 
+  mutate(NAMELSAD = str_remove(area_text, ",.*"), #before comma
+         STUSPS = str_trim(str_replace(area_text, "^.*,",""))) #after comma
+```
+FIXING ALASKA PROBS
+2 options...
+1) df <- df %>% 
+  mutate(column_name = if_else(column_name == "old_value", "new_value", column_name))
+  
+  library(dplyr)
+
+2) # Update multiple specific statuses at once
+df <- df %>% 
+  mutate(status = case_when(
+    status == "Pending"  ~ "Processing",
+    status == "Rejected" ~ "Declined",
+    status == "Hold"     ~ "Paused",
+    TRUE                 ~ status  # Keeps everything else exactly the same
+  ))
+
+```{r}
+# Fixing the issues with Alaska areas: Yakutat, Anchorage, Sitka, Wrangell, Juneau
+
+#Could def do this quicker w loop but already wrote this so
+bls_data_M13 <- bls_data_M13 %>% 
+  mutate(NAMELSAD = case_when(
+    NAMELSAD == "Anchorage Borough/municipality"~ "Anchorage Municipality",
+    NAMELSAD == "Juneau Borough/city" ~ "Juneau City and Borough",
+    NAMELSAD == "Sitka Borough/city" ~ "Sitka City and Borough",
+    NAMELSAD == "Wrangell Borough/city" ~ "Wrangell City and Borough",
+    NAMELSAD == "Yakutat Borough/city" ~ "Yakutat City and Borough",
+    TRUE ~ NAMELSAD # Keeps everything else exactly the same
+  ))
+```
+```{r}
+bls_data_M13 <- bls_data_M13 %>% 
+  mutate(unemployment_percent = value*100) %>%  # ^ value is the unemployment
+  select(-value)
+```
+```{r}
+write_csv(bls_data_M13, file = "annual_bls_LAUS_1990_2025.csv")
+```
+
+```{r}
+#Joining to shapefile
+mapping_data_bls <- counties_sf %>% 
+  left_join(bls_data_M13, by = c("NAMELSAD", "STUSPS")) 
+```
+MAPPING TEST HERE BLS M13 UPDATE
+
+
+```{r}
+##| eval: false
+pal <- colorQuantile(
+  #palette = "YlGnBu",           #also tried piyg and ylor and didn't love either # I LOVED spectral
+  palette = "Spectral",
+  domain = mapping_data_bls$unemployment_percent,
+  n = 10,
+  na.color = "grey",
+  reverse = TRUE
+)
+```
+2025
+```{r}
+# Choosing the year to map
+to_map <- mapping_data_bls %>% 
+  filter(year == 2025)
+```
+
+```{r}
+leaflet(to_map) %>% 
+  addProviderTiles("CartoDB.Positron") %>% 
+  addPolygons(
+    fillColor = ~pal(unemployment_percent),
+    fillOpacity = 1,
+    color = "white", # border color
+    weight = 1,
+    smoothFactor = 0.5, # slightly crisper borders -- default is 1 (higher values > more simplification > jaggier borders but shorter rendering)
+    # add the highlight/hover and tooltip things
+  ) %>% 
+  addLegend(
+    pal = pal,
+    value = mapping_data_bls$unemployment_percent, # same as values  
+    position = "bottomright",
+    title = "Legend"
+  )
+```
+
+2023
+```{r}
+# Choosing the year to map
+to_map <- mapping_data_bls %>% 
+  filter(year == 2023)
+```
+
+```{r}
+leaflet(to_map) %>% 
+  addProviderTiles("CartoDB.Positron") %>% 
+  addPolygons(
+    fillColor = ~pal(unemployment_percent),
+    fillOpacity = 1,
+    color = "white", # border color
+    weight = 1,
+    smoothFactor = 0.5, # slightly crisper borders -- default is 1 (higher values > more simplification > jaggier borders but shorter rendering)
+    # add the highlight/hover and tooltip things
+  ) %>% 
+  addLegend(
+    pal = pal,
+    value = mapping_data_bls$unemployment_percent, # same as values  
+    position = "bottomright",
+    title = "Legend"
+  )
+```
+
+
+
+Quantiles/breaks
+
+```{r}
+# Prepping for fixing the color palette (this and the labformat thing below were helped)
+pal_bls_breaks <- quantile(mapping_data_bls$unemployment_percent, probs = seq(0, 1, length.out = 11), na.rm = TRUE)
+```
+```{r}
+# Sort of "manually" logging the color pallete and its values/labels so we can apply it to bar chart as well.
+n_quants <- length(pal_bls_breaks)
+
+# Making a tibble to refer to the quantiles
+pal_bls_quantiles <- tibble(
+  bottom_val = numeric(n_quants),
+  top_val = numeric(n_quants),
+  label = character(n_quants),
+  color = character(n_quants),
+  counts = numeric(n_quants)
+)
+
+pal_bls_quantiles[n_quants,] <- NA
+
+
+for(i in 1:(n_quants-1)){
+  pal_bls_quantiles[i, "bottom_val"] <- pal_bls_breaks[i]
+  pal_bls_quantiles[i, "top_val"] <- pal_bls_breaks[i+1]
+  pal_bls_quantiles[i,"label"] <- paste0(pal_bls_breaks[i], "% - ", pal_bls_breaks[i+1], "%")
+}
+
+pal_bls_quantiles <- pal_bls_quantiles %>%
+  mutate(color = pal(bottom_val))
+
+pal_bls_quantiles <- as.data.frame(pal_bls_quantiles)
+
+```
+
+```{r}
+#| eval: false
+# Prepping to join data to shapefile
+county_equivs <- paste("County", "Planning Region", "Borough", "Census Area", "/municipality", "Municipality", "/city", "Parish", sep = "|")
+
+bls_data_M13  <- bls_data_M13 %>% 
+  mutate(NAMELSAD = str_remove(area_text, ",.*"), #before comma
+         STUSPS = str_trim(str_replace(area_text, "^.*,","")), #after comma
+         NAME = str_squish(str_remove_all(NAMELSAD, county_equivs))) #Fixing the issues with Alaska areas:Yakutat, Anchorage, Sitka, Wrangell, Juneau
+
+# using stringr to mutate to match shapefile for easier joining
+```
+
+```{r}
+##| eval: false
+bls_data_M13 %>% 
+  summarize(max_year = max(year),
+            min_year = min(year))
+```
+
+```{r}
+##| eval: false
+bls_data_2 <- bls_data %>% 
+  filter(year == 2025,
+         measure_text == "unemployment rate",
+         period == "M13") # just annual
+```
+
+```{r}
+#| eval: false
+write_csv(bls_data_2, file = "bls_data.csv")
+```
+
+
+
+UNEMPLOYMENT DATA FROM USDA
+
+```{r}
+unemployment_data_usda <- read_csv("../data/EK_general/Unemployment2023.csv")
+```
+
+```{r}
+unemployment_wider <- unemployment_data_usda %>% 
+  clean_names() %>% 
+  mutate(
+    #separate("\d{4}")
+    year = str_sub(attribute, -4, str_length(attribute)),
+    attribute = str_sub(attribute, 1, -6) %>% 
+      str_to_lower() #%>% 
+      #str_replace_all("_", " ")
+  )
+```
+
+```{r}
+# now actually pivoting wider
+unemployment_wider <- unemployment_wider %>% 
+  pivot_wider(
+    names_from = attribute,
+    values_from = value
+  )
+```
+
+```{r}
+unemployment_filtered <- unemployment_wider %>% 
+  filter(year == "2023")
+```
+
+
+```{r}
+# getting it in a way that we can join it to the shapefile easily
+
+county_equivs <- paste("County", "Planning Region", "Borough", "Census Area", "/municipality", "Municipality", "/city", "Parish", sep = "|")
+
+unemployment_joinable <- unemployment_filtered %>% 
+  mutate(NAMELSAD = str_remove(area_name, ",.*"), #before comma
+         STUSPS = str_trim(str_replace(area_name, "^.*,",""))) %>% #after comma
+  mutate(STUSPS = str_replace(STUSPS, "District of Columbia", "DC"), # fixing DC
+         NAME = str_squish(str_remove_all(NAMELSAD, county_equivs)))
+```
+
+
+
+
+```{r}
+# joining, wap woop
+mapping_data_usda <- counties_sf %>% 
+  left_join(unemployment_joinable,  by = c("NAMELSAD", "STUSPS"))
+```
+
+```{r}
+max_n <- brewer.pal.info["Spectral", "maxcolors"]
+
+#mapping! palletee
+pal_usda <- colorQuantile(
+  palette = "YlOrRd",
+  #palette = rev(brewer.pal(max_n, "Spectral")),
+  domain = mapping_data_usda$unemployment_rate,
+  n=9,
+  na.color = "grey",
+  right = FALSE
+)
+```
+```{r}
+# Prepping for fixing the color palette (this and the labformat thing below were helped)
+pal_usda_breaks <- quantile(mapping_data_usda$unemployment_rate, probs = seq(0, 1, length.out = 10), na.rm = TRUE)
+```
+```{r}
+# Sort of "manually" logging the color pallete and its values/labels so we can apply it to bar chart as well.
+n_quants <- length(pal_usda_breaks)
+
+# Making a tibble to refer to the quantiles
+pal_usda_quantiles <- tibble(
+  bottom_val = numeric(n_quants),
+  top_val = numeric(n_quants),
+  label = character(n_quants),
+  color = character(n_quants),
+  counts = numeric(n_quants)
+)
+
+pal_usda_quantiles[n_quants,] <- NA
+
+
+for(i in 1:(n_quants-1)){
+  pal_usda_quantiles[i, "bottom_val"] <- pal_usda_breaks[i]
+  pal_usda_quantiles[i, "top_val"] <- pal_usda_breaks[i+1]
+  pal_usda_quantiles[i,"label"] <- paste0(pal_usda_breaks[i], "% - ", pal_usda_breaks[i+1], "%")
+}
+
+pal_usda_quantiles <- pal_usda_quantiles %>%
+  mutate(color = pal_usda(bottom_val))
+
+pal_usda_quantiles <- as.data.frame(pal_usda_quantiles)
+
+```
+
+Trying to figure out why the groups are uneven (# of observations in each quantile should be the saem!)
+
+```{r}
+pal_usda_quantiles <- pal_usda_quantiles %>% 
+  rowwise() %>%  # so that r evaluates one range at a time
+  mutate(
+    counts = sum(mapping_data_usda$unemployment_rate >= bottom_val & 
+                   mapping_data_usda$unemployment_rate < (top_val),
+                 na.rm = TRUE)
+  ) %>% 
+  ungroup() # removing the rowwise grouping
+
+# Since the last quantile is inclusive of its max need to make slight adjustment
+pal_usda_quantiles[(n_quants-1), "counts"] <- sum(
+  mapping_data_usda$unemployment_rate >= pal_usda_quantiles$bottom_val[(n_quants-1)] &
+    mapping_data_usda$unemployment_rate <= pal_usda_quantiles$top_val[(n_quants-1)], na.rm = TRUE)
+
+pal_usda_quantiles[n_quants, "counts"] <- sum(is.na(mapping_data_usda$unemployment_rate))
+
+```
+```{r}
+ sum(mapping_data_usda$unemployment_rate >= .3 & 
+                   mapping_data_usda$unemployment_rate < 2.4,
+                 na.rm = TRUE)
+```
+```{r}
+sum(mapping_data_usda$unemployment_rate >= 2.4 & 
+                   mapping_data_usda$unemployment_rate < 2.7,
+                 na.rm = TRUE)
+```
+```{r}
+table(cut(mapping_data_usda$unemployment_rate, breaks = pal_usda_breaks, right = FALSE, include.lowest = TRUE))
+```
+
+
+
+```{r}
+pal_usda_quantiles %>% 
+  ggplot(aes(y = reorder(label, bottom_val), x = counts, fill = color)) +
+  geom_col() +
+  labs(y = "Unemployment rate") +
+  scale_fill_identity()
+```
+
+
+
+
+
+```{r}
+##| eval: false
+#acc mapping
+leaflet() %>% 
+  addProviderTiles("CartoDB.Positron") %>% 
+  addPolygons(
+    data = mapping_data_usda,
+    fillColor = ~pal_usda(unemployment_rate),
+    fillOpacity = 1,
+    color = "white",
+    weight = 1,
+    smoothFactor = .5,
+    label = paste0(mapping_data_usda$NAMELSAD, ": ", mapping_data_usda$unemployment_rate, "%")
+      
+  #     paste(sep = "<br/>",
+  # "<b><a href='https://www.samurainoodle.com/'>Samurai Noodle</a></b>",
+  # "606 5th Ave. S",
+  # "Seattle, WA 98138"
+  
+  ) %>% 
+  addPolygons(
+    data = states_sf,
+    fill = FALSE,
+    color = 'black',
+    weight = 1.5,
+    opacity = 1,
+    smoothFactor = .5
+  ) %>% 
+  addLegend(
+    pal = pal_usda,
+    value = mapping_data_usda$unemployment_rate,
+    position = "bottomright",
+    title = "Unemployment rate (%)",
+    labFormat = function(type, cuts, p){
+      n <- length(pal_usda_breaks) - 1
+      paste0(round(pal_usda_breaks[1:n], 1), "% - ", round(pal_usda_breaks[2:(n+1)], 1), "%")
+    }
+  )
+
+
+```
+
+BLS DATA cont'd
+
+
+
+```{r}
+##| eval: false
+bls_data_3  <- read_csv("../data/EK_general/bls_data.csv") %>% 
+  mutate(NAMELSAD = str_remove(area_text, ",.*"), #before comma
+         STUSPS = str_trim(str_replace(area_text, "^.*,",""))) #after comma
+# using stringr to mutate to match shapefile for easier joining
+```
+
+```{r}
+##| eval: false
+# join data to shapefile
+mapping_data_bls <- counties_sf %>% 
+  left_join(bls_data_3, by = c("NAMELSAD", "STUSPS")) # ^ value is the unemployment
+```
+
+```{r}
+#| eval: false
+pal <- colorQuantile(
+  #palette = "YlGnBu",           #also tried piyg and ylor and didn't love either # I LOVED spectral
+  palette = "Spectral",
+  domain = mapping_data_bls$value,
+  n = 9,
+  na.color = "grey",
+  reverse = TRUE
+)
+
+leaflet(mapping_data_bls) %>% 
+  addProviderTiles("CartoDB.Positron") %>% 
+  addPolygons(
+    fillColor = ~pal(value),
+    fillOpacity = 1,
+    color = "white", # border color
+    weight = 1,
+    smoothFactor = 0.5, # slightly crisper borders -- default is 1 (higher values > more simplification > jaggier borders but shorter rendering)
+    # add the highlight/hover and tooltip things
+  ) %>% 
+  addLegend(
+    pal = pal,
+    value = mapping_data_bls$value, # same as values  
+    position = "bottomright",
+    title = "Legend"
+  )
+```
+
+```{r}
+# There is this same chunk later on...
+#| eval: false
+# run after running evth else?
+# Join data to shapefile
+choropleth_area_data <- states_sf %>% 
+  left_join(by_state, by = c("NAME" = "state")) %>% 
+  left_join(areas, by = c("NAME" = "state_or_territory")) %>% 
+  mutate(total_acreage_hd = total_acreage) %>% 
+  select(-total_acreage)
+```
 
 ```{r}
 # Import cleaned (sort of) dataset
 historic_districts <- read_csv("../data/Historic Districts/historic_districts_clean3_specific_addresses.csv")
+```
+```{r}
+hist_dists_2 <- historic_districts  %>% 
+  mutate(abbreviation = state.abb[match(state, state.name)])
+```
 
+```{r}
+# joining the unemployment rate to historic districts via the county
+hist_dists_ur <- hist_dists_2 %>% 
+  left_join(unemployment_joinable %>% 
+              filter(fips_code %% 1000 != 0) %>% 
+              select("NAME", "state", "unemployment_rate", "fips_code"),  
+            by = c("county" = "NAME", 
+                   "abbreviation" = "state"))
+```
+
+
+
+Looking into dealing with the joining issue (solved by the %% 1000 thing)
+```{r}
+# Check left dataframe
+hist_dists_2 %>%
+  count(county, abbreviation) %>%
+  filter(n > 1)
+
+# Check right dataframe
+unemployment_joinable %>%
+  count(NAME, state) %>%
+  filter(n > 1)
+```
+```{r}
+unemployment_joinable %>% 
+  filter(NAME == "Arkansas" & state == "AR")
+```
+```{r}
+unemployment_joinable %>% 
+  filter(NAME == "District of Columbia" & state == "DC")
+```
+
+```{r}
+unemployment_joinable %>% 
+  filter(NAME == "Idaho" & state == "ID")
+```
+```{r}
+unemployment_joinable %>% 
+  filter(NAME == "Iowa" & state == "IA")
+```
+
+
+
+```{r}
 # Mapping w/ leaflet!
 prelim_map <- leaflet(data = historic_districts) %>%
    addTiles() %>%
    #addProviderTiles("Stadia.StamenWatercolor") %>% 
    addCircleMarkers(~longitude, ~latitude, popup = ~property_name, radius = 3)
 prelim_map
+```
+
+```{r}
+# run after running evth else?
+
+by_state <- historic_districts %>% 
+  group_by(state) %>% 
+  summarise(total_acreage = sum(acreage_of_property, na.rm=TRUE),
+            total_num_districts = n(),
+            across(25:last_col(), ~ sum(.x, na.rm = TRUE))) # NEED TO ADD THE COUNTS FOR EACH CATEGORY
+
+categories_counts <- by_state %>% 
+  select(state, 4:ncol(by_state)) %>% 
+  column_to_rownames(var = "state") %>%   # Promotes state from a regular column to R row name
+  t() %>% # Transposes (rows become columns, columns become rows) (returns a matrix)
+  as.data.frame() %>% 
+  rownames_to_column(var = "category") %>% 
+  mutate(usa_total = rowSums(across(where(is.numeric)), na.rm = TRUE),
+         category_og = category, 
+         category = gsub("_", " ", str_remove(category, "aos_")),
+         category_nice = str_to_title(category)) %>% 
+  bind_rows( # so that we can calculate percentages in the future!!
+    summarise(., 
+              across(where(is.numeric), base::sum), 
+              across(where(is.character), ~"Total"))
+  )
+```
+
+```{r}
+#print(df_total)
 ```
 
 ```{r}
@@ -68,11 +620,14 @@ by_state <- historic_districts %>%
 ```
 
 ```{r}
+# This is the newer version ->
 by_state <- historic_districts %>% 
   group_by(state) %>% 
   summarise(total_acreage = sum(acreage_of_property, na.rm=TRUE),
             total_num_districts = n(),
             across(25:last_col(), \(x) sum(x, na.rm = TRUE)))
+
+# The older version uses the tilde-dot
 ```
 
 ```         
@@ -105,6 +660,7 @@ cb = TRUE simplfies the file, resolution = 20m is the lowest, this gives 2024 da
 states_sf <- tigris::states(cb = TRUE, resolution = "20m")
 ```
 
+THIS IS THE JOINING ISSUE HERE!! (or not????)
 ```{r}
 # Join data to shapefile
 map_data <- states_sf %>% 
@@ -113,6 +669,23 @@ map_data <- states_sf %>%
   mutate(total_acreage_hd = total_acreage) %>% 
   select(-total_acreage)
 ```
+
+
+
+Looking into dealing with the joining issue (solved by the %% 1000 thing)
+```{r}
+# Check left dataframe
+hist_dists_2 %>%
+  count(county, abbreviation) %>%
+  filter(n > 1)
+
+# Check right dataframe
+unemployment_joinable %>%
+  count(NAME, state) %>%
+  filter(n > 1)
+```
+
+
 
 ```{r}
 # Standardizing

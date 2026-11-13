@@ -1,5 +1,377 @@
 # Emily Kretschmer's Notes
 
+## This week
+- [ ] make blog posts
+   
+   Notes
+- unemployment rate just doesn't exist in this dataset for conn? doesn't have to do with the planning region/county issue
+  ^<img width="844" height="180" alt="image" src="https://github.com/user-attachments/assets/9ed2524b-27ad-4a32-ba3d-4429204eedab" />
+- there are some points historic districts that are not mapped to the correct long/lat unfortunately (geocoding issue)
+- WV dist interesting
+- minn vs mich
+- NY
+- (find where i put the rest of similar notes for blog post/explanation section...)
+- - [ ] write explanation for bar chart
+- [ ] clean code
+
+
+
+
+- [ ] ooh maybe multi-select states???
+- [ ] also maybe adjust the hist dists unemployment bar plot based on the hist dists filter as well
+- [ ] maybe allow hovering over counties to see what the unemployment rate and # of districts is
+- [ ] add titles for bar plots
+- [ ] <mark> maybe add histogram rather than bar plot by quantile for the # hist dists by unemployment and can still color it by quantile!! </mark>
+
+## Fri, aug 7
+- [ ] create mini codebook
+- [ ] check her list of things
+- [ ] panes+ group
+   - [ ] can delete the double-polygon drawing
+
+## August 6
+- [x] make it load
+- [ ] make it not crash when the radio button is changed
+- [ ] make it responsive to radio buttons
+- [ ] check up on code re radio buttons lol
+
+- [ ] read about reactivity https://mastering-shiny.org/reactivity-objects.html
+
+## August 5
+- [ ] get bar plot for unemployment
+   - [x] figure out dupes issue
+   - [ ] double check on this ^
+   - solution: I am going to use the modulo operator (%% 1000) on the FIPS code
+   - ^ if it is != 0, then it is a county
+   - FIPS codes have the first 2 digits being for the state, and the last 3 being for the county
+   - [ ] reverse the order because it's confusing...
+   - [x] check on the issue with joining for the unemployment bar plot
+- [ ] fix this issue <img width="1036" height="762" alt="image" src="https://github.com/user-attachments/assets/eeaf96f4-2c36-4b41-8751-81fa52ee7732" />
+- [ ] make bar chart nicer
+   - [ ] fix the lack of a label for "NA"
+   - [ ] make the text/orientation look nicer
+   - [ ] uh what is up with VA?
+
+
+     
+
+Got a bar chart!!! <img width="1404" height="885" alt="image" src="https://github.com/user-attachments/assets/85734a70-7b90-4c79-bed5-17c4e4592840" />
+
+
+
+## August 4
+main goals:
+- [ ] get bar plot for unemployment via quantiles
+   - [x] get the tibble/df needed
+   - [x] make prelim (in exploration doc)
+   - [x] double check on why there are different # in diff buckets...
+   - [ ] join unemployment rate to historic districts df -- by county, and label that col county_unemployment_rate or smth
+      - [x] replace "County" "Planning Region" "Borough" "Census Area" "Borough/municipality" "Borough/city" and ?? with ""
+            `str_trim(str_replace(area_name, "^.*,","")))`
+            - [ ] fix LA parish
+      - [x] fix DC issue
+      - [ ] fix va beach city etc issue <img width="934" height="636" alt="image" src="https://github.com/user-attachments/assets/6c4c6b8b-a582-4702-bcf2-7d66e49ed0c1" />
+      CBL
+      Dupes issue...
+<img width="774" height="466" alt="image" src="https://github.com/user-attachments/assets/3ede9191-32b5-44db-b49f-bf5b97c224f5" />
+
+
+   - [ ] then add that bar plot in
+   - [ ] add reactivity to the bar plot
+   - [ ] add a label to hist -- smth like 'Number of historic districts that fall in a county with an unemployment rate between xand y in 2023"
+   - [ ] add note about the upper bound not being included except for the last bucket
+   - [ ] 
+- [ ] answer question referring to  about this ^
+- [ ] add option to switch to different layer overlay
+- [ ] add spot for description^
+
+- [x] check on issue w/ quantile breaks??? <img width="826" height="299" alt="image" src="https://github.com/user-attachments/assets/c92f0a06-9e29-440a-a10a-b40e7914c0aa" />
+   - Ok fixed (I think) <img width="934" height="636" alt="image" src="https://github.com/user-attachments/assets/44ec9624-25c0-4ae3-8d2d-bb4d9fa6da55" />
+
+this is what the map looks like right now:
+<img width="1431" height="713" alt="image" src="https://github.com/user-attachments/assets/dcbce202-9c54-40ae-858e-e9ead8fb3ee9" />
+
+I got worried that the answer to this is no: does quantile() and colorquantile() make the quantiles and their bounds in the same way (ex inclusivity and exclusivity)
+Ok I made sure that it did by doing `right = FALSE` for both -- this ensures that it is [x, y) for all. The variation in counts for each category is just because of the edges/dupes. (or should be at least)
+
+
+idaho -- interesting<img width="443" height="320" alt="image" src="https://github.com/user-attachments/assets/f643b1b8-1030-4dfb-b1f1-5d30256ebe4c" />
+south dakota to <img width="949" height="666" alt="image" src="https://github.com/user-attachments/assets/ff494ad0-03b0-4469-a0fc-878f555dcafd" />
+wisconsin <img width="949" height="666" alt="image" src="https://github.com/user-attachments/assets/bac5db6c-2b17-4719-9834-9c3511235ff1" />
+illinois COAST! ![Uploading image.png…]()
+
+
+
+
+
+- [ ] refer/continue with the below >>>
+
+## August 3
+- [ ] fix        `radius = choropleth_area_data$standardized_hd_acreage * 10` ?
+- [ ] try unemployment by state
+- [x] do a map with unemployment by county and the actual locations overlayed
+- [ ] ask her about the colors?
+- [ ] maybe do histogram
+- [x] change height of map to 600 px
+- [ ] create an option to unview or view the unemployment rate
+- [x] fix the crashing on selecting all issue
+- [x] make it so that you can see unemployment regardless of whether or not there are points
+- [ ] maybe add rural-urban thing.
+- [ ] add # of historic districts for explorer page
+
+- [ ] <mark>Is it really true that there are more historic districts in the lower unemployment areas?</mark>
+   - [ ] figure out  # of hist dists by unemployment rate bucket!
+   - [ ] I need to figure out how to calculate how many historic districts are in each county and then what bucket the county falls into
+   - [ ] Maybe start w
+quantile breaks:
+<img width="872" height="79" alt="image" src="https://github.com/user-attachments/assets/cce21e90-73a8-4556-a81b-e5657a4d7910" />
+
+- [ ] Maybe change "finder" to "explore" or something
+- [ ] hmm maybe investigate racial stuff
+- [ ] alsooo maybe median income
+- [x] fix the black line sit
+- [ ] fix the dc, conn, etc prob
+   - [ ] DC issue
+- [ ] on the main page let the user do the different layers WITHOUT having to select types of historic districts
+- [ ] <mark> check US filter issue... not sure about if those filters are working on the US </mark>
+- [ ] blinking of map?
+- [x] add legend
+
+DC issue >>>
+<img width="1443" height="758" alt="image" src="https://github.com/user-attachments/assets/10426d62-43d5-49c9-a1c0-bd97537a6a39" />
+
+
+findings~ 
+1) historic districts seem to be clustered moreso in areas where counties have lower unemployment rates
+   ^ not sure if this could just be due to them being in cities (maybe find research about this -- not sure if it's true)
+alaska: <img width="1443" height="840" alt="image" src="https://github.com/user-attachments/assets/26021149-0559-4673-9ff1-3505d6f62ded" />
+cali: <img width="947" height="652" alt="image" src="https://github.com/user-attachments/assets/cfcdf6ad-045d-4af2-8cc4-3ae4e6df366c" />
+2) Georgia seems to have a lot??
+   <img width="947" height="652" alt="image" src="https://github.com/user-attachments/assets/bf420fab-4f16-4170-99b1-b585ef8ce4c2" />
+3) Fl coasts
+   <img width="947" height="652" alt="image" src="https://github.com/user-attachments/assets/4dff83a6-de47-404e-8443-5ad5199a7655" />
+4) Illinois woah -- chicago
+   <img width="947" height="652" alt="image" src="https://github.com/user-attachments/assets/86cedda1-8e3f-4440-861e-be2c2802511e" />
+5) md --spec balt
+   <img width="947" height="652" alt="image" src="https://github.com/user-attachments/assets/f8e9da4d-9bbc-41b9-afe5-69c10e9419cd" />
+6) va
+   <img width="947" height="652" alt="image" src="https://github.com/user-attachments/assets/fd767045-6c5f-4eaf-a317-c719bc2ccd6c" />
+7) alabama
+<img width="947" height="652" alt="image" src="https://github.com/user-attachments/assets/b214cabc-ee5e-41b1-afe7-192d5ce25eca" />
+
+9) 
+
+
+
+
+
+
+
+## July 31
+
+- [x] download the USDA datasets that Emily sent me
+- [x] Wrangle unemployment dataset (widen)
+- [ ] wrangle education dataset
+- [ ] get libraries data into it as well
+- [x] add legend for the choropleth map
+- [x] add choropleth map into shiny app somehow...
+- [x] try out color quantile for choropleth map
+- [x] fix the quantile legend
+- [ ] add another graph for side-by-side with the choropleth of unemployment rates?
+  - [ ] I was really inspired by this graphic: https://r-graph-gallery.com/web-map-choropleth-quantile.html but I don't think that this is really possible in leaflet. So maybe a side-by-side histogram or boxplot or something will have to suffice.
+- [ ] also somehow throw in the national average?
+- [ ] deal with connecticut... the map that I created from the BLS dataset works but the other one doesn't :(
+- [ ] maybe try doing unemployment by state?
+- [x] add circles
+https://r-graph-gallery.com/182-add-circles-rectangles-on-leaflet-map.html
+
+Notes/notices
+- In my write-up/blog post -- should prob mention the legend quantile situation
+- MD, VT, NH have very low comparative unemployment rates:
+<img width="838" height="528" alt="image" src="https://github.com/user-attachments/assets/2a6f3a80-3b5a-43ed-a799-71656c2859bd" />
+
+
+So far:
+<img width="989" height="570" alt="image" src="https://github.com/user-attachments/assets/1c7183c7-f0ee-4d41-a671-4d6da845cd13" />
+
+
+I think quantile is the best bet
+
+added some borders... not sure how i feel about it
+<img width="838" height="528" alt="image" src="https://github.com/user-attachments/assets/b39ce472-c926-4f52-9957-dee4d2ccec9e" />
+
+
+I tried out color quantile on the usda unemployment rate leaflet map...
+I am #confused
+Oh Ifigured it out
+<img width="838" height="528" alt="image" src="https://github.com/user-attachments/assets/365c21b9-4c8f-4b75-bec4-7c9ee6eb5595" />
+
+Color Bin with 10 (reversed color pallete):
+<img width="838" height="528" alt="image" src="https://github.com/user-attachments/assets/871d9b75-1385-498b-bb8b-ce13752ac2f9" />
+
+Vs Color Quantile with 10 (reversed color pallete):
+<img width="838" height="528" alt="image" src="https://github.com/user-attachments/assets/16ed7b66-e84f-4cf2-a0ed-ee1f35547800" />
+
+I like these color palette but I wish the order was flipped -->
+<img width="838" height="528" alt="image" src="https://github.com/user-attachments/assets/9a46eeaf-7580-4d2e-803f-8f32fd6fb995" />
+
+
+Mapps
+https://www.axismaps.com/guide
+
+Regex
+- https://regex101.com/
+
+USDA Data
+- https://www.ers.usda.gov/data-products/county-level-data-sets/county-level-data-sets-download-data
+- PCTPOVALL_2023 = estimated percent of the total population in poverty for the year 2023
+
+Education/schools
+- https://nces.ed.gov/ccd/files.asp
+- https://educationdata.urban.org/data-explorer/explorer
+- https://educationdata.urban.org/documentation/schools.html
+- https://nces.ed.gov/datalab/
+- https://nces.ed.gov/programs/edge/Geographic/SchoolLocations
+- https://catalog.data.gov/dataset/public-school-locations-2022-23
+- <mark>https://cran.rstudio.com/web/packages/BLSloadR/BLSloadR.pdf</mark>
+
+Dates of states
+- https://www.britannica.com/place/list-of-US-states-by-date-of-admission-to-the-Union-2130026
+- https://www.britannica.com/quiz/us-states-dates-of-admission-to-the-union-quiz
+
+Taxes by state
+- https://taxfoundation.org/datamaps/state-maps/
+- https://taxfoundation.org/data/all/state/2026-sales-tax-rates-midyear/
+- https://taxfoundation.org/blog/minnesota-wealth-tax/
+- https://taxfoundation.org/data/all/state/state-income-tax-rates-2026/
+- https://taxfoundation.org/data/all/state/tax-burden-by-state-2022/
+
+Page + layout/look
+- https://github.com/eparker12/nCoV_tracker/blob/master/app.R
+- https://shiny.posit.co/r/articles/
+- https://bootswatch.com/
+- https://bootswatch.com/lux/
+- https://bootswatch.com/help/
+- https://shiny.posit.co/py/api/core/ui.navbar_options.html
+- https://shiny.posit.co/r/layouts/panels-cards/
+- https://shiny.posit.co/r/layouts/
+- <mark>https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf</mark>
+
+Walkability
+- https://americawalks.org/resources/walkable-land-use/
+- Inspo: https://www.ers.usda.gov/amber-waves/2025/august/us-obesity-rate-changes-differ-for-rural-and-urban-areas-as-well-as-across-regions
+- 
+
+## July 30
+- [x] get the bar graph to show up on main page
+- [x] get bar graph to change when JUST the state is changed (not categories etc)
+- [x] also get bar graph to change to USA when all is selected!
+- [x] maybe change from count to percent
+- [ ] maybe reactivity to selecting a row on the table or when hovering over a bar on the bar chart
+- [ ] maybe # of schools bt county -- and layer on top of number of hist dist
+- [x] do BLS employment data
+  - [x] get a V2 api key
+- [ ] schooling data?
+
+- [ ] BLS data/help
+  - [ ] https://www.bls.gov/developers/termsOfService.htm
+  - [ ] https://www.bls.gov/developers/
+  - [ ] https://www.bls.gov/developers/api_r.htm
+  - [ ] https://github.com/mikeasilva/blsAPI
+  - [ ] https://cran.rstudio.com/web/packages/BLSloadR/BLSloadR.pdf
+  - [ ] https://www.bls.gov/charts/state-employment-and-unemployment/industry-employment-by-state.htm#
+  - [ ] ^ industry by state!!
+     
+Sticking points:
+- blsapi vs blsloadr package...
+- blsapi
+  - i just want the unemployment rate locally for one year... not really a time series
+- adjusted vs unadjusted unemployment rate -- _"The adjusted unemployment rate is a statistical calculation that removes predictable, calendar-driven shifts, while the unadjusted rate shows the raw, actual percentage of jobless people actively looking for work"_
+
+did some county unemployment rate stuff (still need to add key and labels etc) this is just prelim map
+<img width="1436" height="849" alt="image" src="https://github.com/user-attachments/assets/e9fecaa7-8de8-496c-9f40-671be3ea7404" />
+
+
+before...
+<img width="1436" height="849" alt="image" src="https://github.com/user-attachments/assets/0429db4e-1502-43be-85d6-7838ec2268b5" />
+
+after...
+<img width="1436" height="849" alt="image" src="https://github.com/user-attachments/assets/4c454d50-5776-4902-943a-63dc7626b3d0" />
+
+---
+<img width="1436" height="849" alt="image" src="https://github.com/user-attachments/assets/ae4503db-8062-410a-8ec4-16945143ca1d" />
+<img width="1436" height="849" alt="image" src="https://github.com/user-attachments/assets/b3815ff4-c49d-447b-8c6a-4b267eb49349" />
+
+Research
+- https://www.bls.gov/charts/state-employment-and-unemployment/industry-employment-by-state.htm#
+
+
+## July 29
+
+
+does an area having a historic district benefit it? (--> pride)
+^ poverty rate
+^ crime rate
+^ housing prices
+^ schools (maybe wanting to have kids/stay there?)
+choropleth + graduated symbols
+^ businesses
+
+**notes**
+- Getting back into the swing of things
+  - partly trying to figure out where I left off...
+  - updating packages and rerunning things
+ 
+  - almost all historic districts seem to be architecture
+  - on the about or main page of historic districts should prob explain what i'm actually meaning with historic districts
+  - code book?
+
+** research **
+- https://taxfoundation.org/data/all/state/2026-state-tax-data/
+  - taxes per capita
+  - maybe not the besstt way to measure it since income but
+  - Continuing using this site has helped me find this:
+    - https://taxfoundation.org/data/all/state/2026-state-tax-data/, the pdf led me to another site to this:
+      - https://taxfoundation.org/data/all/state/tax-burden-by-state-2022/
+      - ^ the first table basically shows what percent of their income residents end up paying on taxes
+      - could scrape this ~
+      - <img width="352" height="81" alt="image" src="https://github.com/user-attachments/assets/71e06ec7-d0b9-4eaf-b301-e9aee9323b26" />
+
+
+** things to do **
+
+Historic districts 
+- Finder explanation of page
+- Fixing the issue where there are some dots in the wrong spots -- ex gainesville alabama is mapped to NC...
+  - maybe offer an option for submitting a "complaint"?
+  - maybe also should explain this issue in the finder explanation
+- Extend analysis paragraph
+- Maybe for analysis page -- offer an option for the user to see what the OG states were and/or what year each state was "established"
+- maybe taxes by state
+**- maybe add county lines.**
+- maybe offer it all on one page so that the user can select which layers to view
+- maybe add back the number of historic districts by state graph
+- [ ] FIX DESELECTING ISSUE on site!
+- [x] try to do some clustering (but did not like it)
+- [ ] saipe datasets from census with an api
+- [ ] probably should change all of the names of variables to be better (like map2... not great name especially since it's the first map lol)
+
+Street art
+- Not sure...
+- I remember feeling like I had hit a roadblock with the text analysis
+  - I'm not sure if I should try to keep going with it or just let it be and move on to trying something else (or just let street art be altogether)
+  - I wish I knew how to do image analysis for the photos from the web
+  - What about dates...
+ 
+Libraries
+- could be an indicator of xyz
+- looked at ian's exploration R file -- wowow very cool
+
+Other 
+Need to check in with her about the following ~
+- Blog post
+- Personal bio
+
 ## July 02!
 Historic districts
 

@@ -1,0 +1,107 @@
+---
+title: "temp"
+format: html
+editor: visual
+---
+
+```{r}
+# V4 HISTORIC DISTRICTS SHINY APP
+
+# Packages
+library(shiny)
+library(bslib)
+library(thematic)
+library(shinythemes)
+library(shinyWidgets)
+library(plotly)
+
+library(leaflet)
+library(tigris)
+library(sf)
+
+library(tidyverse)
+library(tidytext)
+
+library(janitor)
+library(readr)
+
+# ----- Getting data n such ------
+
+# Main historic district data!! --
+historic_districts <- read_csv("../../data/Historic Districts/historic_districts_clean4.csv")
+areas <- read_csv("../../data/Historic Districts/us_areas_cleaned.csv")
+
+hd_by_state <- historic_districts %>% 
+  group_by(state) %>% 
+  summarise(total_acreage = sum(acreage_of_property, na.rm=TRUE),
+            total_num_districts = n(),
+            across(25:last_col(), ~ sum(.x, na.rm = TRUE)))
+# changed this ^
+
+hd_categories_counts_by_state <- hd_by_state %>%
+  select(state, 4:ncol(hd_by_state)) %>%
+  column_to_rownames(var = "state") %>%   # Promotes state from a regular column to R row name
+  t() %>% # Transposes (rows become columns, columns become rows) (returns a matrix)
+  as.data.frame() %>%
+  rownames_to_column(var = "category") %>%
+  mutate(USA = rowSums(across(where(is.numeric)), na.rm = TRUE), # total across all US
+         category_og = category,
+         category = gsub("_", " ", str_remove(category, "aos_")),
+         category_nice = str_to_title(category)) # for the user stuff so that we can get the OG
+
+# ----------------------------
+
+# Get state geometries
+states_sf <- tigris::states(cb = TRUE, resolution = "20m") %>% 
+  st_transform(crs = 4326)
+
+# Get counties shape files
+counties_sf <- tigris::counties(cb = TRUE) %>% 
+  st_transform(crs = 4326)
+
+# ----------------------------
+
+county_equivs <- paste("County", 
+                       "Planning Region",
+                       "Borough",
+                       "Census Area",
+                       "/municipality",
+                       "Municipality",
+                       "/city",
+                       "Parish",
+                       sep = "|")
+
+
+# Unemployment rates ---------
+# BLS LAUS -----
+unemployment_bls <- read_csv("../../data/EK_general/annual_bls_laus_1990_2025.csv")
+
+unemployment_bls_2025_joinable <- unemployment_bls %>% 
+  mutate(STUSPS = str_replace(STUSPS, "District of Columbia", "DC"), # fixing DC
+         NAME = str_squish(str_remove_all(NAMELSAD, county_equivs))) %>%  
+  filter(year == 2025)
+
+unemployment_bls_2025 <- counties_sf %>% 
+  left_join(unemployment_bls_2025_joinable, by = c("NAMELSAD", "STUSPS", "NAME"))
+
+# Joining historic districts and the unemployment rate for graphing later -------------------------------------
+historic_districts <- historic_districts  %>% 
+  mutate(state_abbreviation = state.abb[match(state, state.name)])
+
+# joining the unemployment rate to historic districts via the county
+historic_districts <- historic_districts %>% 
+  left_join(unemployment_bls_2025_joinable %>% 
+              #filter(area_type_code == "F") %>% 
+              select("NAME", "STUSPS", "unemployment_percent", "area_type_code", "year"),  
+            by = c("county" = "NAME", 
+                   "state_abbreviation" = "STUSPS"))
+```
+```{r}
+mean(unemployment_bls_2025$unemployment_percent, na.rm = TRUE)
+```
+```{r}
+mean(historic_districts$unemployment_percent, na.rm = TRUE)
+```
+
+
+

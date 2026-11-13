@@ -39,9 +39,11 @@ region_polygons <- regions() %>%
 ```
 
 ```{r}
+# THIS IS THROWING AN ERROR NOW 07/29 so i commented it out since it's not crucial atm
+
 # Lil chart of regions
-ggplot() +
-  geom_sf(data = region_polygons, aes(fill = NAME), color = "white")
+#ggplot() +
+#  geom_sf(data = region_polygons, aes(fill = NAME), color = "white")
 ```
 
 ## Text analysis

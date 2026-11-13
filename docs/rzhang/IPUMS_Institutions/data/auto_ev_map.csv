@@ -1,0 +1,267 @@
+latitude,longitude,company,facility_name,city,state,address,products_or_focus,source_dataset,EV_facility
+33.656194,-83.718567,Rivian,Georgia Manufacturing Plant,Social Circle,GA,"Georgia Manufacturing Plant, Social Circle, GA",Light-Duty (Class 1-2),EV manufacturing,TRUE
+41.235151,-85.856639,Slate Auto,Truck Manufacturing Facility,Warsaw,IN,"Truck Manufacturing Facility, Warsaw, IN",Light-Duty (Class 1-2),EV manufacturing,TRUE
+30.264979,-97.746598,Tesla,Gigafactory 5,Austin,TX,"Gigafactory 5, Austin, TX",Multiple Classes,EV manufacturing,TRUE
+38.25752,-84.547617,Toyota,Toyota Motor Manufacturing Kentucky,Georgetown,KY,"Toyota Motor Manufacturing Kentucky, Georgetown, KY",Light-Duty (Class 1-2),EV manufacturing,TRUE
+35.622969,-79.076953,VinFast,Chatham County Facility,Moncure,NC,"Chatham County Facility, Moncure, NC",Multiple Classes,EV manufacturing,TRUE
+40.326752,-82.817043,Honda,East Liberty Auto Plant,East Liberty,OH,"East Liberty Auto Plant, East Liberty, OH",Light-Duty (Class 1-2),EV manufacturing,TRUE
+40.2767,-83.507149,Honda,Marysville Auto Plant,Marysville,OH,"Marysville Auto Plant, Marysville, OH",Light-Duty (Class 1-2),EV manufacturing,TRUE
+34.215166,-80.973608,Scout Motors,Blythewood Facility,Columbia,SC,"Blythewood Facility, Columbia, SC",Light-Duty (Class 1-2),EV manufacturing,TRUE
+34.215166,-80.973608,Scout Motors,Blythewood Facility,Columbia,SC,"Blythewood Facility, Columbia, SC",Light-Duty (Class 1-2),EV manufacturing,TRUE
+31.851066,-106.63205,GreenPower Motors,Santa Teresa Facility,Santa Teresa,NM,"Santa Teresa Facility, Santa Teresa, NM",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+35.464095,-89.402431000000007,Ford,BlueOval Tennessee Truck Plant,Stanton,TN,"BlueOval Tennessee Truck Plant, Stanton, TN",Light-Duty (Class 1-2),EV manufacturing,TRUE
+41.487954,-82.075419,Ford,Ford Ohio Assembly Plant,Sheffield,OH,"Ford Ohio Assembly Plant, Sheffield, OH",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+36.327726,-119.645914,Faraday Future,FF ieFactory California,Hanford,CA,"FF ieFactory California, Hanford, CA",Light-Duty (Class 1-2),EV manufacturing,TRUE
+42.459791,-83.18197,Bollinger Motors,Oak Park Factory,Oak Park,MI,"Oak Park Factory, Oak Park, MI",Multiple Classes,EV manufacturing,TRUE
+33.1660368,-117.3379272,Aptera,Aptera San Diego Manufacturing Facility,Carlsbad,CA,"Aptera San Diego Manufacturing Facility, Carlsbad, CA",Light-Duty (Class 1-2),EV manufacturing,TRUE
+42.378363,-83.04687,General Motors,Factory ZERO Detroit-Hamtramck Assembly Center,Detroit,MI,"Factory ZERO Detroit-Hamtramck Assembly Center, Detroit, MI",Light-Duty (Class 1-2),EV manufacturing,TRUE
+39.540664,-119.439341,Tesla,Gigafactory Nevada,Sparks,NV,"Gigafactory Nevada, Sparks, NV",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+42.455747,-83.041027,Stellantis,Warren Truck Assembly Plant,Warren,MI,"Warren Truck Assembly Plant, Warren, MI",Light-Duty (Class 1-2),EV manufacturing,TRUE
+32.6138758,-90.0349356,Nissan,Canton Factory,Canton,MS,"Canton Factory, Canton, MS",Light-Duty (Class 1-2),EV manufacturing,TRUE
+32.0806102,-81.0900966,Hyundai,Metaplant Manufacturing Joint Venture (JV),Savannah,GA,"Metaplant Manufacturing Joint Venture (JV), Savannah, GA",Multiple Classes,EV manufacturing,TRUE
+34.215166,-80.973608,Scout Motors,Blythewood Facility,Columbia,SC,"Blythewood Facility, Columbia, SC",Light-Duty (Class 1-2),EV manufacturing,TRUE
+38.154537,-85.728374,Ford,Louisville Assembly Plant,Louisville,KY,"Louisville Assembly Plant, Louisville, KY",Light-Duty (Class 1-2),EV manufacturing,TRUE
+40.518091,-88.995074,Rivian,Normal Factory,Normal,IL,"Normal Factory, Normal, IL",Multiple Classes,EV manufacturing,TRUE
+38.300335,-87.553379,Toyota,Toyota Motor Manufacturing Indiana,Princeton,IN,"Toyota Motor Manufacturing Indiana, Princeton, IN",Light-Duty (Class 1-2),EV manufacturing,TRUE
+38.361263,-81.695596,GreenPower Motors,West Virginia Facility,South Charleston,WV,"West Virginia Facility, South Charleston, WV",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+41.235151,-85.856639,Slate Auto,Truck Manufacturing Facility,Warsaw,IN,"Truck Manufacturing Facility, Warsaw, IN",Light-Duty (Class 1-2),EV manufacturing,TRUE
+34.920567,-81.996745,Volvo Cars,South Carolina Car Factory,Ridgeville,SC,"South Carolina Car Factory, Ridgeville, SC",Light-Duty (Class 1-2),EV manufacturing,TRUE
+33.4151797,-111.8315,Magna International,Waymo Driver Integration Plant,Mesa,AZ,"Waymo Driver Integration Plant, Mesa, AZ",Light-Duty (Class 1-2),EV manufacturing,TRUE
+41.459836,-88.172067,Lion Electric,Joliet Facility,Channahon,IL,"Joliet Facility, Channahon, IL",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+42.24113,-88.87316,Stellantis,Belvidere Assembly Plant,Belvidere,IL,"Belvidere Assembly Plant, Belvidere, IL",Light-Duty (Class 1-2),EV manufacturing,TRUE
+32.977625,-111.521841,Nikola Motors,Coolidge Multi-Product Factory 4.0,Coolidge,AZ,"Coolidge Multi-Product Factory 4.0, Coolidge, AZ",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+40.326752,-82.817043,Honda,East Liberty Auto Plant,East Liberty,OH,"East Liberty Auto Plant, East Liberty, OH",Light-Duty (Class 1-2),EV manufacturing,TRUE
+40.2767,-83.507149,Honda,Marysville Auto Plant,Marysville,OH,"Marysville Auto Plant, Marysville, OH",Light-Duty (Class 1-2),EV manufacturing,TRUE
+34.1028926,-117.435765,ZM Trucks,ZM North America Manufacturing Plant,Fontana,CA,"ZM North America Manufacturing Plant, Fontana, CA",Multiple Classes,EV manufacturing,TRUE
+36.357403,-94.199063,Canoo,Canoo R and D Center,Bentonville,AR,"Canoo R and D Center, Bentonville, AR",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+36.3071316,-95.314464,Canoo,MegaMicro Factory,Pryor,OK,"MegaMicro Factory, Pryor, OK",Multiple Classes,EV manufacturing,TRUE
+35.468494,-97.521264,Canoo,Oklahoma City Assembly Facility,Oklahoma City,OK,"Oklahoma City Assembly Facility, Oklahoma City, OK",Light-Duty (Class 1-2),EV manufacturing,TRUE
+32.6138758,-90.0349356,Nissan,Canton Factory,Canton,MS,"Canton Factory, Canton, MS",Light-Duty (Class 1-2),EV manufacturing,TRUE
+42.378363,-83.04687,General Motors,Factory ZERO Detroit-Hamtramck Assembly Center,Detroit,MI,"Factory ZERO Detroit-Hamtramck Assembly Center, Detroit, MI",Light-Duty (Class 1-2),EV manufacturing,TRUE
+30.264979,-97.746598,Tesla,Gigafactory 5,Austin,TX,"Gigafactory 5, Austin, TX",Multiple Classes,EV manufacturing,TRUE
+35.464095,-89.402431000000007,Ford,BlueOval Tennessee Truck Plant,Stanton,TN,"BlueOval Tennessee Truck Plant, Stanton, TN",Light-Duty (Class 1-2),EV manufacturing,TRUE
+44.657422212335,-73.4411543112,Micro Bird,Micro Bird Plattsburgh Plant,Plattsburgh,NY,"Micro Bird Plattsburgh Plant, Plattsburgh, NY",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+33.656194,-83.718567,Rivian,Georgia Manufacturing Plant,Social Circle,GA,"Georgia Manufacturing Plant, Social Circle, GA",Light-Duty (Class 1-2),EV manufacturing,TRUE
+48.9736433,-97.246785,Motor Coach Industries,MCI Pembina,Pembina,ND,"MCI Pembina, Pembina, ND",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+38.25752,-84.547617,Toyota,Toyota Motor Manufacturing Kentucky,Georgetown,KY,"Toyota Motor Manufacturing Kentucky, Georgetown, KY",Light-Duty (Class 1-2),EV manufacturing,TRUE
+42.3950635,-83.3694956,Roush Industries,Roush Livonia Manufacturing Facility,Livonia,MI,"Roush Livonia Manufacturing Facility, Livonia, MI",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+42.570913,-83.034747,Stellantis,Sterling Heights Assembly Plant,Sterling Heights,MI,"Sterling Heights Assembly Plant, Sterling Heights, MI",Light-Duty (Class 1-2),EV manufacturing,TRUE
+42.455747,-83.041027,Stellantis,Warren Truck Assembly Plant,Warren,MI,"Warren Truck Assembly Plant, Warren, MI",Light-Duty (Class 1-2),EV manufacturing,TRUE
+36.586168,-79.3952367,RBW Sports & Classics,RBW Vehicle Assembly Plant,Danville,VA,"RBW Vehicle Assembly Plant, Danville, VA",Light-Duty (Class 1-2),EV manufacturing,TRUE
+33.4151797,-111.8315,Magna International,Waymo Driver Integration Plant,Mesa,AZ,"Waymo Driver Integration Plant, Mesa, AZ",Light-Duty (Class 1-2),EV manufacturing,TRUE
+35.622969,-79.076953,VinFast,Chatham County Facility,Moncure,NC,"Chatham County Facility, Moncure, NC",Multiple Classes,EV manufacturing,TRUE
+42.722703,-84.561582,General Motors,Lansing Grand River,Lansing,MI,"Lansing Grand River, Lansing, MI",Light-Duty (Class 1-2),EV manufacturing,TRUE
+41.698618,-83.521458,Hyundai Mobis,Mobis Toledo Assembly Plant,Toledo,OH,"Mobis Toledo Assembly Plant, Toledo, OH",Light-Duty (Class 1-2),EV manufacturing,TRUE
+42.24113,-88.87316,Stellantis,Belvidere Assembly Plant,Belvidere,IL,"Belvidere Assembly Plant, Belvidere, IL",Light-Duty (Class 1-2),EV manufacturing,TRUE
+39.14167,-94.61273,General Motors,GM Fairfax Assembly Plant,Kansas City,KS,"GM Fairfax Assembly Plant, Kansas City, KS",Light-Duty (Class 1-2),EV manufacturing,TRUE
+40.518091,-88.995074,Rivian,Normal Factory,Normal,IL,"Normal Factory, Normal, IL",Multiple Classes,EV manufacturing,TRUE
+38.300335,-87.553379,Toyota,Toyota Motor Manufacturing Indiana,Princeton,IN,"Toyota Motor Manufacturing Indiana, Princeton, IN",Light-Duty (Class 1-2),EV manufacturing,TRUE
+30.264979,-97.746598,Tesla,Gigafactory 5,Austin,TX,"Gigafactory 5, Austin, TX",Multiple Classes,EV manufacturing,TRUE
+37.545665,-121.985069,Tesla,Tesla Fremont Factory,Fremont,CA,"Tesla Fremont Factory, Fremont, CA",Light-Duty (Class 1-2),EV manufacturing,TRUE
+35.464095,-89.402431000000007,Ford,BlueOval Tennessee Truck Plant,Stanton,TN,"BlueOval Tennessee Truck Plant, Stanton, TN",Light-Duty (Class 1-2),EV manufacturing,TRUE
+30.264979,-97.746598,Tesla,Gigafactory 5,Austin,TX,"Gigafactory 5, Austin, TX",Multiple Classes,EV manufacturing,TRUE
+35.226761,-80.845876,Arrival,Charlotte Microfactory,Charlotte,NC,"Charlotte Microfactory, Charlotte, NC",Multiple Classes,EV manufacturing,TRUE
+34.941355,-81.0300374,Arrival,Rock Hill Microfactory,Rock Hill,SC,"Rock Hill Microfactory, Rock Hill, SC",Multiple Classes,EV manufacturing,TRUE
+42.307175,-83.161995,Ford,Rouge Electric Vehicle Center,Dearborn,MI,"Rouge Electric Vehicle Center, Dearborn, MI",Light-Duty (Class 1-2),EV manufacturing,TRUE
+33.656194,-83.718567,Rivian,Georgia Manufacturing Plant,Social Circle,GA,"Georgia Manufacturing Plant, Social Circle, GA",Light-Duty (Class 1-2),EV manufacturing,TRUE
+37.261928,-80.145252,Mack Trucks,Roanoke Valley Operations,Salem,VA,"Roanoke Valley Operations, Salem, VA",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+38.25752,-84.547617,Toyota,Toyota Motor Manufacturing Kentucky,Georgetown,KY,"Toyota Motor Manufacturing Kentucky, Georgetown, KY",Light-Duty (Class 1-2),EV manufacturing,TRUE
+40.394386,-105.070584,Lightning eMotors,HQ and Manufacturing Facility,Loveland,CO,"HQ and Manufacturing Facility, Loveland, CO",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+42.307175,-83.161995,Ford,Rouge Electric Vehicle Center,Dearborn,MI,"Rouge Electric Vehicle Center, Dearborn, MI",Light-Duty (Class 1-2),EV manufacturing,TRUE
+37.545665,-121.985069,Tesla,Tesla Fremont Factory,Fremont,CA,"Tesla Fremont Factory, Fremont, CA",Light-Duty (Class 1-2),EV manufacturing,TRUE
+41.459836,-88.172067,Lion Electric,Joliet Facility,Channahon,IL,"Joliet Facility, Channahon, IL",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+38.154537,-85.728374,Ford,Louisville Assembly Plant,Louisville,KY,"Louisville Assembly Plant, Louisville, KY",Light-Duty (Class 1-2),EV manufacturing,TRUE
+42.722703,-84.561582,General Motors,Lansing Grand River,Lansing,MI,"Lansing Grand River, Lansing, MI",Light-Duty (Class 1-2),EV manufacturing,TRUE
+35.226761,-80.845876,Arrival,Charlotte Microfactory,Charlotte,NC,"Charlotte Microfactory, Charlotte, NC",Multiple Classes,EV manufacturing,TRUE
+34.941355,-81.0300374,Arrival,Rock Hill Microfactory,Rock Hill,SC,"Rock Hill Microfactory, Rock Hill, SC",Multiple Classes,EV manufacturing,TRUE
+37.672111,-122.083963,Zoox,Zoox Hayward Factory,Hayward,CA,"Zoox Hayward Factory, Hayward, CA",Light-Duty (Class 1-2),EV manufacturing,TRUE
+32.774237,-96.609069,Hexagon Purus,Mesquite Electric Truck Integration Facility,Mesquite,TX,"Mesquite Electric Truck Integration Facility, Mesquite, TX",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+36.1690921,-115.1405767,Big Rig Manufacturing,Alexander Dennis Manufacturing,Las Vegas,NV,"Alexander Dennis Manufacturing, Las Vegas, NV",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+32.0806102,-81.0900966,Hyundai,Metaplant Manufacturing Joint Venture (JV),Savannah,GA,"Metaplant Manufacturing Joint Venture (JV), Savannah, GA",Multiple Classes,EV manufacturing,TRUE
+30.264979,-97.746598,Tesla,Gigafactory 5,Austin,TX,"Gigafactory 5, Austin, TX",Multiple Classes,EV manufacturing,TRUE
+48.846667,-122.591196,Vicinity,Whatcom County Assembly Facility,Ferndale,WA,"Whatcom County Assembly Facility, Ferndale, WA",Multiple Classes,EV manufacturing,TRUE
+33.776069,-117.937878,Harbinger Motors,Orange County,Garden Grove,CA,"Orange County, Garden Grove, CA",Multiple Classes,EV manufacturing,TRUE
+33.4151797,-111.8315,Tevva,ElectraMeccanica Mesa Manufacturing Plant,Mesa,AZ,"ElectraMeccanica Mesa Manufacturing Plant, Mesa, AZ",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+35.468494,-97.521264,Canoo,Oklahoma City Assembly Facility,Oklahoma City,OK,"Oklahoma City Assembly Facility, Oklahoma City, OK",Light-Duty (Class 1-2),EV manufacturing,TRUE
+42.459791,-83.18197,Bollinger Motors,Oak Park Factory,Oak Park,MI,"Oak Park Factory, Oak Park, MI",Multiple Classes,EV manufacturing,TRUE
+34.920567,-81.996745,Volvo Cars,South Carolina Car Factory,Ridgeville,SC,"South Carolina Car Factory, Ridgeville, SC",Light-Duty (Class 1-2),EV manufacturing,TRUE
+32.901709842557,-85.129328071908,Kia,Kia Georgia,West Point,GA,"Kia Georgia, West Point, GA",Light-Duty (Class 1-2),EV manufacturing,TRUE
+34.0633,-117.6509,Cenntro Automotive,Ontario Facility,Ontario,CA,"Ontario Facility, Ontario, CA",Multiple Classes,EV manufacturing,TRUE
+32.6138758,-90.0349356,Nissan,Canton Factory,Canton,MS,"Canton Factory, Canton, MS",Light-Duty (Class 1-2),EV manufacturing,TRUE
+44.69833,-73.44806,Nova Bus,Nova Bus Plattsburgh Plant,Plattsburgh,NY,"Nova Bus Plattsburgh Plant, Plattsburgh, NY",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+40.394386,-105.070584,Lightning eMotors,HQ and Manufacturing Facility,Loveland,CO,"HQ and Manufacturing Facility, Loveland, CO",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+38.25752,-84.547617,Toyota,Toyota Motor Manufacturing Kentucky,Georgetown,KY,"Toyota Motor Manufacturing Kentucky, Georgetown, KY",Light-Duty (Class 1-2),EV manufacturing,TRUE
+37.9884331,-85.7164778,Rivian,Shepherdsville Remanufacturing Facility,Shepherdsville,KY,"Shepherdsville Remanufacturing Facility, Shepherdsville, KY",Light-Duty (Class 1-2),EV manufacturing,TRUE
+39.612033282733,-84.975574960031,Workhorse,Workhorse Ranch,Union City,IN,"Workhorse Ranch, Union City, IN",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+34.215166,-80.973608,Scout Motors,Blythewood Facility,Columbia,SC,"Blythewood Facility, Columbia, SC",Light-Duty (Class 1-2),EV manufacturing,TRUE
+34.920567,-81.996745,Volvo Cars,South Carolina Car Factory,Ridgeville,SC,"South Carolina Car Factory, Ridgeville, SC",Light-Duty (Class 1-2),EV manufacturing,TRUE
+42.549289,-84.826136,Blue Arc EV Solutions,Charlotte Facility,Charlotte,MI,"Charlotte Facility, Charlotte, MI",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+39.540664,-119.439341,Tesla,Gigafactory Nevada,Sparks,NV,"Gigafactory Nevada, Sparks, NV",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+34.039138,-118.002779,Proterra Powered,LA Factory,City of Industry,CA,"LA Factory, City of Industry, CA",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+36.897501,-86.447403,General Motors,Bowling Green Assembly,Bowling Green,KY,"Bowling Green Assembly, Bowling Green, KY",Light-Duty (Class 1-2),EV manufacturing,TRUE
+33.1660368,-117.3379272,Aptera,Aptera San Diego Manufacturing Facility,Carlsbad,CA,"Aptera San Diego Manufacturing Facility, Carlsbad, CA",Light-Duty (Class 1-2),EV manufacturing,TRUE
+39.057593,-94.635027,Orange EV,Kansas City Production Facility & HQ,Kansas City,KS,"Kansas City Production Facility & HQ, Kansas City, KS",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+42.2398061,-83.6145427,EAVX,JB Poindexter & Co,Ypsilanti,MI,"JB Poindexter & Co, Ypsilanti, MI",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+35.468494,-97.521264,Canoo,Oklahoma City Assembly Facility,Oklahoma City,OK,"Oklahoma City Assembly Facility, Oklahoma City, OK",Light-Duty (Class 1-2),EV manufacturing,TRUE
+41.661126,-86.1793,GEM Yield,ELMS Mishawaka Plant,Mishawaka,IN,"ELMS Mishawaka Plant, Mishawaka, IN",Light-Duty (Class 1-2),EV manufacturing,TRUE
+34.898896,-82.174691,BMW,Plant Spartanburg,Greer,SC,"Plant Spartanburg, Greer, SC",Light-Duty (Class 1-2),EV manufacturing,TRUE
+40.326752,-82.817043,Honda,East Liberty Auto Plant,East Liberty,OH,"East Liberty Auto Plant, East Liberty, OH",Light-Duty (Class 1-2),EV manufacturing,TRUE
+40.2767,-83.507149,Honda,Marysville Auto Plant,Marysville,OH,"Marysville Auto Plant, Marysville, OH",Light-Duty (Class 1-2),EV manufacturing,TRUE
+40.046394,-76.296547,BYD,Lancaster Factory,Lancaster,CA,"Lancaster Factory, Lancaster, CA",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+40.489626,-81.445585,Battle Motors,New Philadelphia Assembly Facility,New Philadelphia,OH,"New Philadelphia Assembly Facility, New Philadelphia, OH",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+33.980534,-117.377025,ELDorado National,Riverside Manufacturing Facility,Riverside,CA,"Riverside Manufacturing Facility, Riverside, CA",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+42.51998629704,-83.041772457296,General Motors,Global Technical Center,Warren,MI,"Global Technical Center, Warren, MI",Light-Duty (Class 1-2),EV manufacturing,TRUE
+41.661126,-86.1793,Electric Last Mile Solutions,Electric Last Mile Solutions Mishawaka EV Plant,Mishawaka,IN,"Electric Last Mile Solutions Mishawaka EV Plant, Mishawaka, IN",Light-Duty (Class 1-2),EV manufacturing,TRUE
+47.4746582,-122.2067903,Kenworth,Renton Assembly Plant,Renton,WA,"Renton Assembly Plant, Renton, WA",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+41.487954,-82.075419,Ford,Ford Ohio Assembly Plant,Sheffield,OH,"Ford Ohio Assembly Plant, Sheffield, OH",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+39.104383,-94.505504,Ford,Kansas City Assembly Plant,Kansas City,MO,"Kansas City Assembly Plant, Kansas City, MO",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+42.307175,-83.161995,Ford,Rouge Electric Vehicle Center,Dearborn,MI,"Rouge Electric Vehicle Center, Dearborn, MI",Light-Duty (Class 1-2),EV manufacturing,TRUE
+45.571981,-88.903414,Hometown Trolley,HQ and Manufacturing Facility,Crandon,WI,"HQ and Manufacturing Facility, Crandon, WI",Multiple Classes,EV manufacturing,TRUE
+32.0806102,-81.0900966,Hyundai,Metaplant Manufacturing Joint Venture (JV),Savannah,GA,"Metaplant Manufacturing Joint Venture (JV), Savannah, GA",Multiple Classes,EV manufacturing,TRUE
+35.953972,-80.003935,Thomas Built Buses,High Point,High Point,NC,"High Point, High Point, NC",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+42.3950635,-83.3694956,Roush Industries,Roush Livonia Manufacturing Facility,Livonia,MI,"Roush Livonia Manufacturing Facility, Livonia, MI",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+32.279662,-86.330304,Hyundai,Hyundai Motor Manufacturing Alabama,Montgomery,AL,"Hyundai Motor Manufacturing Alabama, Montgomery, AL",Light-Duty (Class 1-2),EV manufacturing,TRUE
+35.622969,-79.076953,VinFast,Chatham County Facility,Moncure,NC,"Chatham County Facility, Moncure, NC",Multiple Classes,EV manufacturing,TRUE
+40.394386,-105.070584,Lightning eMotors,HQ and Manufacturing Facility,Loveland,CO,"HQ and Manufacturing Facility, Loveland, CO",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+35.7049312,-89.970063,Envirotech Vehicles,Osceola Manufacturing Facility,Osceola,AR,"Osceola Manufacturing Facility, Osceola, AR",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+44.052153,-123.091195,Arcimoto,RAMP Facility,Eugene,OR,"RAMP Facility, Eugene, OR",Light-Duty (Class 1-2),EV manufacturing,TRUE
+32.6138758,-90.0349356,Nissan,Canton Factory,Canton,MS,"Canton Factory, Canton, MS",Light-Duty (Class 1-2),EV manufacturing,TRUE
+33.834492,-117.915638,GEM,Anaheim Manufacturing Facility,Anaheim,CA,"Anaheim Manufacturing Facility, Anaheim, CA",Light-Duty (Class 1-2),EV manufacturing,TRUE
+38.361263,-81.695596,GreenPower Motors,West Virginia Facility,South Charleston,WV,"West Virginia Facility, South Charleston, WV",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+39.067067,-84.090871,Pegasus Specialty Vehicles,Ohio Remanufacturing Facility,Dunkirk,OH,"Ohio Remanufacturing Facility, Dunkirk, OH",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+40.512715,-75.549535,Mack Trucks,Macungie Assembly Plant,Macungie,PA,"Macungie Assembly Plant, Macungie, PA",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+36.3071316,-95.314464,Canoo,MegaMicro Factory,Pryor,OK,"MegaMicro Factory, Pryor, OK",Multiple Classes,EV manufacturing,TRUE
+33.656194,-83.718567,Rivian,Georgia Manufacturing Plant,Social Circle,GA,"Georgia Manufacturing Plant, Social Circle, GA",Light-Duty (Class 1-2),EV manufacturing,TRUE
+34.0633,-117.6509,Cenntro Automotive,Jacksonville Factory,Jacksonville,FL,"Jacksonville Factory, Jacksonville, FL",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+40.796402,-73.068675,Unique Electric Solutions,Holbrook Repowering Manufacturing Facility,Holbrook,NY,"Holbrook Repowering Manufacturing Facility, Holbrook, NY",Multiple Classes,EV manufacturing,TRUE
+34.846247,-90.294518,Mullen Automotive,Advanced Manufacturing and Engineering Center,Tunica Resorts,MS,"Advanced Manufacturing and Engineering Center, Tunica Resorts, MS",Multiple Classes,EV manufacturing,TRUE
+36.357403,-94.199063,Canoo,Canoo R and D Center,Bentonville,AR,"Canoo R and D Center, Bentonville, AR",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+38.25752,-84.547617,Toyota,Toyota Motor Manufacturing Kentucky,Georgetown,KY,"Toyota Motor Manufacturing Kentucky, Georgetown, KY",Light-Duty (Class 1-2),EV manufacturing,TRUE
+41.019149,-84.05024,Endera,Metro Titan Bus Factory,Ottawa,OH,"Metro Titan Bus Factory, Ottawa, OH",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+32.879546,-111.74758,Lucid Motors,AMP-1,Casa Grande,AZ,"AMP-1, Casa Grande, AZ",Light-Duty (Class 1-2),EV manufacturing,TRUE
+35.464095,-89.402431000000007,Ford,BlueOval Tennessee Truck Plant,Stanton,TN,"BlueOval Tennessee Truck Plant, Stanton, TN",Light-Duty (Class 1-2),EV manufacturing,TRUE
+42.307175,-83.161995,Ford,Rouge Electric Vehicle Center,Dearborn,MI,"Rouge Electric Vehicle Center, Dearborn, MI",Light-Duty (Class 1-2),EV manufacturing,TRUE
+36.3071316,-95.314464,Canoo,MegaMicro Factory,Pryor,OK,"MegaMicro Factory, Pryor, OK",Multiple Classes,EV manufacturing,TRUE
+34.920567,-81.996745,Volvo Cars,South Carolina Car Factory,Ridgeville,SC,"South Carolina Car Factory, Ridgeville, SC",Light-Duty (Class 1-2),EV manufacturing,TRUE
+38.615845,-122.871942,Cable Car Classics,HQ and Manufacturing Facility,Healdsburg,CA,"HQ and Manufacturing Facility, Healdsburg, CA",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+48.846667,-122.591196,Vicinity,Whatcom County Assembly Facility,Ferndale,WA,"Whatcom County Assembly Facility, Ferndale, WA",Multiple Classes,EV manufacturing,TRUE
+33.865885,-117.817891,Phoenix Motorcars,Phoenix Motorcars,Ontario,CA,"Phoenix Motorcars, Ontario, CA",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+41.690307,-93.791062,SEA Electric,SEA Electric Engineering Center,Grimes,IA,"SEA Electric Engineering Center, Grimes, IA",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+41.459836,-88.172067,Lion Electric,Joliet Facility,Channahon,IL,"Joliet Facility, Channahon, IL",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+38.300335,-87.553379,Toyota,Toyota Motor Manufacturing Indiana,Princeton,IN,"Toyota Motor Manufacturing Indiana, Princeton, IN",Light-Duty (Class 1-2),EV manufacturing,TRUE
+41.661126,-86.1793,Electric Last Mile Solutions,Electric Last Mile Solutions Mishawaka EV Plant,Mishawaka,IN,"Electric Last Mile Solutions Mishawaka EV Plant, Mishawaka, IN",Light-Duty (Class 1-2),EV manufacturing,TRUE
+32.989394,-80.085703,Mercedes-Benz,North Charleston,Ladson,SC,"North Charleston, Ladson, SC",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+35.226761,-80.845876,Arrival,Charlotte Microfactory,Charlotte,NC,"Charlotte Microfactory, Charlotte, NC",Multiple Classes,EV manufacturing,TRUE
+32.553575,-83.886613,Blue Bird,Electric Vehicle Build-up Center,Fort Valley,GA,"Electric Vehicle Build-up Center, Fort Valley, GA",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+36.155327,-95.992083,Navistar,Tulsa Bus Plant,Tulsa,OK,"Tulsa Bus Plant, Tulsa, OK",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+34.039138,-118.002779,Proterra Powered,LA Factory,City of Industry,CA,"LA Factory, City of Industry, CA",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+32.879546,-111.74758,Lucid Motors,AMP-1,Casa Grande,AZ,"AMP-1, Casa Grande, AZ",Light-Duty (Class 1-2),EV manufacturing,TRUE
+39.104383,-94.505504,Ford,Kansas City Assembly Plant,Kansas City,MO,"Kansas City Assembly Plant, Kansas City, MO",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+42.307175,-83.161995,Ford,Rouge Electric Vehicle Center,Dearborn,MI,"Rouge Electric Vehicle Center, Dearborn, MI",Light-Duty (Class 1-2),EV manufacturing,TRUE
+33.58762,-93.64851,General Motors,Spring Hill Manufacturing,Spring Hill,TN,"Spring Hill Manufacturing, Spring Hill, TN",Light-Duty (Class 1-2),EV manufacturing,TRUE
+34.941355,-81.0300374,Arrival,Rock Hill Microfactory,Rock Hill,SC,"Rock Hill Microfactory, Rock Hill, SC",Multiple Classes,EV manufacturing,TRUE
+38.154537,-85.728374,Ford,Louisville Assembly Plant,Louisville,KY,"Louisville Assembly Plant, Louisville, KY",Light-Duty (Class 1-2),EV manufacturing,TRUE
+42.6523975,-83.1325609,IC Bus,NEXT eMobility,Rochester Hills,MI,"NEXT eMobility, Rochester Hills, MI",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+32.977625,-111.521841,Nikola Motors,Coolidge Multi-Product Factory 4.0,Coolidge,AZ,"Coolidge Multi-Product Factory 4.0, Coolidge, AZ",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+32.977625,-111.521841,Nikola Motors,Coolidge Multi-Product Factory 4.0,Coolidge,AZ,"Coolidge Multi-Product Factory 4.0, Coolidge, AZ",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+30.264979,-97.746598,Tesla,Gigafactory 5,Austin,TX,"Gigafactory 5, Austin, TX",Multiple Classes,EV manufacturing,TRUE
+40.518091,-88.995074,Rivian,Normal Factory,Normal,IL,"Normal Factory, Normal, IL",Multiple Classes,EV manufacturing,TRUE
+37.957541,-121.292451,Workhorse,Motiv Stockton Plant,Stockton,CA,"Motiv Stockton Plant, Stockton, CA",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+42.378363,-83.04687,General Motors,Factory ZERO Detroit-Hamtramck Assembly Center,Detroit,MI,"Factory ZERO Detroit-Hamtramck Assembly Center, Detroit, MI",Light-Duty (Class 1-2),EV manufacturing,TRUE
+36.578648,-85.136557,Xos Trucks,Fitzgerald Tennessee Manufacturing Facility,Byrdstown,TN,"Fitzgerald Tennessee Manufacturing Facility, Byrdstown, TN",Multiple Classes,EV manufacturing,TRUE
+34.920567,-81.996745,Volvo Cars,South Carolina Car Factory,Ridgeville,SC,"South Carolina Car Factory, Ridgeville, SC",Light-Duty (Class 1-2),EV manufacturing,TRUE
+41.698618,-83.521458,Stellantis,Toledo Assembly North Complex,Toledo,OH,"Toledo Assembly North Complex, Toledo, OH",Light-Duty (Class 1-2),EV manufacturing,TRUE
+41.1659182,-80.857251,Lordstown Motors,Lordstown Assembly,Lordstown,OH,"Lordstown Assembly, Lordstown, OH",Light-Duty (Class 1-2),EV manufacturing,TRUE
+41.1659182,-80.857251,Lordstown Motors,Lordstown Assembly,Lordstown,OH,"Lordstown Assembly, Lordstown, OH",Light-Duty (Class 1-2),EV manufacturing,TRUE
+35.0766371,-85.1288686,Volkswagen,Chattanooga Plant,Chattanooga,TN,"Chattanooga Plant, Chattanooga, TN",Light-Duty (Class 1-2),EV manufacturing,TRUE
+42.466585,-83.474698,Workhorse,Motiv Detroit Manufacturing Plant,Novi,MI,"Motiv Detroit Manufacturing Plant, Novi, MI",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+44.69833,-73.44806,Nova Bus,Nova Bus Plattsburgh Plant,Plattsburgh,NY,"Nova Bus Plattsburgh Plant, Plattsburgh, NY",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+29.356265,-98.527503,Navistar,San Antonio Manufacturing Plant,San Antonio,TX,"San Antonio Manufacturing Plant, San Antonio, TX",Multiple Classes,EV manufacturing,TRUE
+34.898896,-82.174691,BMW,Plant Spartanburg,Greer,SC,"Plant Spartanburg, Greer, SC",Light-Duty (Class 1-2),EV manufacturing,TRUE
+37.102998,-80.687331,Volvo Trucks,New River Valley Manufacturing Plant,Dublin,VA,"New River Valley Manufacturing Plant, Dublin, VA",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+41.666502,-87.559637,Ford,Chicago Assembly Plant,Chicago,IL,"Chicago Assembly Plant, Chicago, IL",Light-Duty (Class 1-2),EV manufacturing,TRUE
+45.568754,-122.607882,Western Star,Portland Truck Manufacturing Plant,Portland,OR,"Portland Truck Manufacturing Plant, Portland, OR",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+42.103211,-83.247573,Ford,Flat Rock Assembly Plant,Flat Rock,MI,"Flat Rock Assembly Plant, Flat Rock, MI",Light-Duty (Class 1-2),EV manufacturing,TRUE
+42.386243,-82.980977,Stellantis,Detroit Assembly Complex - Mack Plant,Detroit,MI,"Detroit Assembly Complex - Mack Plant, Detroit, MI",Light-Duty (Class 1-2),EV manufacturing,TRUE
+36.073039,-119.016146,GreenPower Motors,California Facility,Porterville,CA,"California Facility, Porterville, CA",Multiple Classes,EV manufacturing,TRUE
+33.663713,-85.829793,New Flyer,Anniston Facility,Anniston,AL,"Anniston Facility, Anniston, AL",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+32.977625,-111.521841,Nikola Motors,Coolidge Multi-Product Factory 4.0,Coolidge,AZ,"Coolidge Multi-Product Factory 4.0, Coolidge, AZ",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+47.773789,-96.606834,New Flyer,Crookston Facility,Crookston,MN,"Crookston Facility, Crookston, MN",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+45.570428,-94.165898,New Flyer,St. Cloud Facility,St Cloud,MN,"St. Cloud Facility, St Cloud, MN",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+40.046394,-76.296547,BYD,Lancaster Factory,Lancaster,CA,"Lancaster Factory, Lancaster, CA",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+33.173089,-87.237022,Mercedes-Benz,Tuscaloosa County Plant,Vance,AL,"Tuscaloosa County Plant, Vance, AL",Light-Duty (Class 1-2),EV manufacturing,TRUE
+36.327726,-119.645914,Faraday Future,FF ieFactory California,Hanford,CA,"FF ieFactory California, Hanford, CA",Light-Duty (Class 1-2),EV manufacturing,TRUE
+41.50047,-85.83058,Turtle Top,HQ and Manufacturing Facility,New Paris,IN,"HQ and Manufacturing Facility, New Paris, IN",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+44.07451,-71.3773,Gillig,Livermore Production Plant and HQ,Livermore,CA,"Livermore Production Plant and HQ, Livermore, CA",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+32.879546,-111.74758,Lucid Motors,AMP-1,Casa Grande,AZ,"AMP-1, Casa Grande, AZ",Light-Duty (Class 1-2),EV manufacturing,TRUE
+37.545665,-121.985069,Tesla,Tesla Fremont Factory,Fremont,CA,"Tesla Fremont Factory, Fremont, CA",Light-Duty (Class 1-2),EV manufacturing,TRUE
+37.545665,-121.985069,Tesla,Tesla Fremont Factory,Fremont,CA,"Tesla Fremont Factory, Fremont, CA",Light-Duty (Class 1-2),EV manufacturing,TRUE
+41.581218,-85.834392,Starcraft Bus,Goshen Bus Manufacturing Facility,Goshen,IN,"Goshen Bus Manufacturing Facility, Goshen, IN",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+33.91752,-117.15781,Karma Automotive,Moreno Valley Manufacturing Plant,Moreno Valley,CA,"Moreno Valley Manufacturing Plant, Moreno Valley, CA",Light-Duty (Class 1-2),EV manufacturing,TRUE
+37.672111,-122.083963,Workhorse,Motiv Hayward Plant,Hayward,CA,"Motiv Hayward Plant, Hayward, CA",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+40.046394,-76.296547,BYD,Lancaster Factory,Lancaster,CA,"Lancaster Factory, Lancaster, CA",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+38.053926,-122.155566,Coda,Coda Benica Plant,Benicia,CA,"Coda Benica Plant, Benicia, CA",Light-Duty (Class 1-2),EV manufacturing,TRUE
+41.260504,-74.357139,Trans Tech,Warwick Manufacturing Facility,Warwick,NY,"Warwick Manufacturing Facility, Warwick, NY",Medium-Duty (Class 3-6),EV manufacturing,TRUE
+39.746266,-75.550586,Fisker,Delaware Factory,Wilmington,DE,"Delaware Factory, Wilmington, DE",Light-Duty (Class 1-2),EV manufacturing,TRUE
+38.053926,-122.155566,Coda,Coda Benica Plant,Benicia,CA,"Coda Benica Plant, Benicia, CA",Light-Duty (Class 1-2),EV manufacturing,TRUE
+35.981948,-86.518531,Nissan,Smyrna Vehicle Assembly Plant,Smyrna,TN,"Smyrna Vehicle Assembly Plant, Smyrna, TN",Light-Duty (Class 1-2),EV manufacturing,TRUE
+34.850746,-82.398964,Phoenix Motorcars,Greenville Assembly Facility,Greenville,SC,"Greenville Assembly Facility, Greenville, SC",Heavy-Duty (Class 7-8),EV manufacturing,TRUE
+39.746266,-75.550586,Fisker,Delaware Factory,Wilmington,DE,"Delaware Factory, Wilmington, DE",Light-Duty (Class 1-2),EV manufacturing,TRUE
+33.875665,-117.568843,Vantage Vehicle,Corona Manufacturing Facility and HQ,Corona,CA,"Corona Manufacturing Facility and HQ, Corona, CA",Light-Duty (Class 1-2),EV manufacturing,TRUE
+41.104812,-81.435713,Myers EV,HQ and Manufacturing Facility,Tallmadge,OH,"HQ and Manufacturing Facility, Tallmadge, OH",Light-Duty (Class 1-2),EV manufacturing,TRUE
+38.027907,-97.939472,Collins Bus Corporation,HQ and Manufacturing Facility,South Hutchinson,KS,"HQ and Manufacturing Facility, South Hutchinson, KS",Multiple Classes,EV manufacturing,TRUE
+32.73802732245,-97.067737475535,General Motors,Arlington Assembly,NA,NA,"2525 E Abram St. Arlington, Texas 76010","Cadillac Escalade, Cadillac Escalade ESV, Chevrolet Tahoe, Chevrolet Suburban, GMC Yukon, GMC Yukon XL",Auto assembly,FALSE
+37.009905472868,-86.365758621304,General Motors,Bowling Green Assembly,NA,NA,"600 Corvette Drive Bowling Green, Kentucky 42101",Chevrolet Corvette,Auto assembly,FALSE
+42.380815624437,-83.046410215575,General Motors,Detroit/Hamtramck Assembly,NA,NA,"2500 East Grand Blvd. Detroit, Michigan 48211","Chevrolet Silverado EV, GMC Sierra EV, Cadillac Escalade IQ, GMC Hummer EV",Auto assembly,FALSE
+39.14716492833,-94.606086422971,General Motors,Fairfax Assembly,NA,NA,"3201 Fairfax Trafficway, Kansas City, Kansas 66115","Chevrolet Bolt EV, Chevrolet Equinox, Chevrolet Equinox EV, Buick Envision (2028)",Auto assembly,FALSE
+42.987599993584,-83.714031988622,General Motors,Flint Truck Assembly,NA,NA,"3100 Vanslyke Rd. Flint, Michigan 48551","Chevrolet Silverado, GMC Sierra",Auto assembly,FALSE
+40.962849986256,-85.303179978069,General Motors,Fort Wayne Assembly,NA,NA,"12200 Lafayette Center Rd. Roanoke, Indiana 46783","Chevrolet Silverado, GMC Sierra",Auto assembly,FALSE
+42.69708964168,-84.67594229834,General Motors,Lansing Delta Township Assembly,NA,NA,"8175 Millett Hwy. Lansing, Michigan 48921","Buick Enclave, Chevrolet Traverse, GMC Acadia",Auto assembly,FALSE
+42.724079998547,-84.555979997179,General Motors,Lansing Grand River Assembly,NA,NA,"920 Townsend St. Lansing, Michigan 48921","Cadillac CT4, Cadillac CT5",Auto assembly,FALSE
+42.716009692622,-83.26089657995,General Motors,Orion Assembly,NA,NA,"4555 Giddings Rd. Lake Orion, Michigan 48359","Chevrolet Silverado, GMC Sierra, Cadillac Escalade",Auto assembly,FALSE
+35.739817771008,-86.961560895183,General Motors,Spring Hill Manufacturing,NA,NA,"100 Saturn Prky. Spring Hill, Tennessee 37174","Cadillac Lyriq, Cadillac Vistiq, Chevrolet Blazer (crossover)",Auto assembly,FALSE
+38.823065715324,-90.820821007163,General Motors,Wentzville Assembly,NA,NA,"1500 East Route A. Wentzville, Missouri 63385","Chevrolet Express, GMC Savana, Chevrolet Colorado, GMC Canyon",Auto assembly,FALSE
+42.098485842393,-83.246995864085,Ford Motor Company,Flat Rock Assembly Plant,NA,NA,"1 International Dr. Flat Rock, Michigan 48134",Ford Mustang,Auto assembly,FALSE
+41.663752944052,-87.5614389533,Ford Motor Company,Chicago Assembly,NA,NA,"12600 S Torrance Ave. Chicago, Illinois 60633","Ford Explorer, Lincoln Aviator",Auto assembly,FALSE
+42.296054299127,-83.162100093049,Ford Motor Company,Dearborn Truck,NA,NA,"3001 Miller Rd. Dearborn, Michigan 48120",Ford F-150,Auto assembly,FALSE
+39.200396299921,-94.482215472722,Ford Motor Company,Kansas City Assembly,NA,NA,"8121 NE 69th Hwy. Claycomo, Missouri 64068","Ford F-150, Ford Transit",Auto assembly,FALSE
+38.293511927265,-85.532210537015,Ford Motor Company,Kentucky Truck Plant,NA,NA,"3001 Chamberlain Ln. Louisville, Kentucky 40241","Ford Super Duty, Ford Expedition & Expedition Max, Lincoln Navigator & Navigator L",Auto assembly,FALSE
+38.154998295081,-85.727161870211,Ford Motor Company,Louisville Assembly Plant,NA,NA,"2000 Fern Valley Rd. Louisville, Kentucky 40213",NA,Auto assembly,FALSE
+42.275289349386,-83.407125921644,Ford Motor Company,Michigan Assembly Plant,NA,NA,"37625 Michigan Ave. Wayne, Michigan 48184","Ford Ranger, Ford Bronco",Auto assembly,FALSE
+41.483425601145,-82.063684203692,Ford Motor Company,Ohio Assembly,NA,NA,"650 Miller Rd. Avon Lake, Ohio 44012","Ford F-650, Ford Super Duty (Chassis Cab), Ford E-Series (Econoline) Cutaway/Strip Chassis",Auto assembly,FALSE
+42.375350158266,-82.962477006686,Stellantis,Jefferson North Assembly,NA,NA,"2101 Conner Avenue. Detroit, Michigan 48215","Jeep Grand Cherokee, Dodge Durango",Auto assembly,FALSE
+42.569292230797,-83.033765779358,Stellantis,Sterling Heights Assembly,NA,NA,"38111 Van Dyke. Sterling Heights, Michigan 48312",Ram 1500,Auto assembly,FALSE
+41.69777001799,-83.521330022962,Stellantis,Toledo Complex,NA,NA,"4400 Chrysler Dr. Toledo, Ohio 43608","Jeep Wrangler, Jeep Gladiator",Auto assembly,FALSE
+42.454549382652,-83.041085695401,Stellantis,Warren Truck Assembly,NA,NA,"21500 Mound Rd. Warren, Michigan 48091",Jeep Grand Wagoneer,Auto assembly,FALSE
+42.379784439219,-82.978864116294,Stellantis,Detroit Assembly Complex – Mack,NA,NA,"4000 St. Jean Avenue, Detroit, Michigan 48214",Jeep Grand Cherokee,Auto assembly,FALSE
+42.236150010599,-88.870210018414,Stellantis,Belvidere Assembly Plant,NA,NA,"3000 West Chrysler Drive, Belvidere, Illinois 61008","Jeep Cherokee (KM), Jeep Compass",Auto assembly,FALSE
+37.49368683784,-121.94173805506,Tesla,Tesla Factory,NA,NA,"45500 Fremont Blvd. Fremont, California 94538","Tesla Model S, Tesla Model 3, Tesla Model X, Tesla Model Y",Auto assembly,FALSE
+30.224351305619,-97.618557260194,Tesla,Gigafactory Texas,NA,NA,"13101 Tesla Road, Austin, Texas 78725","Tesla Cybertruck, Tesla Model Y",Auto assembly,FALSE
+39.538260004268,-119.439447009675,Tesla,Gigafactory Nevada,NA,NA,"1 Electric Ave, Sparks, Nevada 89437",Tesla Semi,Auto assembly,FALSE
+40.509286388061,-89.05449445781,Rivian,Rivian Normal Illinois Factory,NA,NA,"100 Rivian Motorway, Normal, Illinois 61761","Rivian R1T, Rivian R1S, Rivian R2, Rivian EDV",Auto assembly,FALSE
+32.852946525837,-111.77610477981,Lucid Motors,Lucid AMP-1,NA,NA,"317 S Thornton Rd, Casa Grande, Arizona 85193","Lucid Air, Lucid Gravity",Auto assembly,FALSE
+41.235151,-85.856639,Slate Auto,TBA,NA,NA,"Warsaw, Indiana",Slate Truck (Q42026),Auto assembly,FALSE
+38.261220477643,-84.53096605117,Toyota,Toyota Motor Manufacturing Kentucky,NA,NA,"1001 Cherry Blossom Way Georgetown, Kentucky 40324",Toyota Camry,Auto assembly,FALSE
+38.29262583437,-87.564121413773,Toyota,Toyota Motor Manufacturing Indiana,NA,NA,"4000 Tulip Tree Drive, P.O. Box 4000 Princeton, Indiana 47670","Toyota Sienna, Toyota Highlander, Toyota Grand Highlander, Lexus TX",Auto assembly,FALSE
+29.262866922311,-98.541406811467,Toyota,Toyota Motor Manufacturing Texas,NA,NA,"One Lone Star Pass San Antonio, Texas 78264","Toyota Tundra, Toyota Sequoia",Auto assembly,FALSE
+34.383602409802,-88.891671965314,Toyota,Toyota Motor Manufacturing Mississippi,NA,NA,"1200 Magnolia Dr. Blue Springs, Mississippi 38828",Toyota Corolla,Auto assembly,FALSE
+34.681007002797,-86.84942796214,Toyota,Mazda Toyota Manufacturing USA,NA,NA,"9000 Greenbrier Pkwy. Madison, Alabama 35756","Toyota Corolla Cross, Mazda CX-50",Auto assembly,FALSE
+40.276959980967,-83.506109995537,Honda,"Honda of America Manufacturing, Inc. Marysville Auto Plant",NA,NA,"24000 Honda Pkwy. Marysville, Ohio 43040","Honda Accord, Acura Integra",Auto assembly,FALSE
+40.331819285793,-83.559116983581,Honda,"Honda of America Manufacturing, Inc. East Liberty Auto Plant",NA,NA,"11000 Ohio 347, East Liberty, Ohio 43319","Honda CR-V, Acura RDX, Acura MDX",Auto assembly,FALSE
+33.616073589593,-86.145538113148,Honda,"Honda Manufacturing of Alabama, LLC",NA,NA,"1800 Honda Dr. Lincoln, Alabama 35096","Honda Odyssey, Honda Passport, Honda Pilot, Honda Ridgeline",Auto assembly,FALSE
+39.37698372145,-85.543086643118,Honda,"Honda Manufacturing of Indiana, LLC",NA,NA,"2755 N. Michigan Ave, Greensburg, Indiana 47240","Honda Civic, Honda CR-V",Auto assembly,FALSE
+35.963948688453,-86.491973235501,Nissan,"Nissan North America, Inc. Smyrna",NA,NA,"983 Nissan Dr. Smyrna, Tennessee 37167","Nissan Rogue, Nissan Pathfinder, Nissan Murano, Infiniti QX60",Auto assembly,FALSE
+32.571834089501,-90.066795512134,Nissan,"Nissan North America, Inc. Canton",NA,NA,"300 Nissan Dr. Canton, Mississippi 39046","Nissan Altima, Nissan Frontier",Auto assembly,FALSE
+34.681007002797,-86.84942796214,Mazda,Mazda Toyota Manufacturing USA,NA,NA,"9000 Greenbrier Pkwy. Madison, Alabama 35756","Mazda CX-50, Toyota Corolla Cross",Auto assembly,FALSE
+40.37451646808,-86.798991448413,Subaru,"Subaru of Indiana Automotive, Inc.",NA,NA,"5500 Indiana 38 Lafayette, Indiana 47905","Subaru Outback, Subaru Forester, Subaru Crosstrek, Subaru Ascent",Auto assembly,FALSE
+32.27985254595,-86.330186746237,Hyundai Motor Company,Hyundai Motor Manufacturing Alabama,NA,NA,"700 Hyundai Blvd. Montgomery, Alabama 36105","Hyundai Tucson, Hyundai Santa Fe, Hyundai Santa Cruz, Genesis GV70 (ICE & EV)",Auto assembly,FALSE
+32.168546188244,-81.44693095583,Hyundai Motor Company,Hyundai Motor Group Metaplant America,NA,NA,"71500 Genesis Dr. Ellabell, Georgia 31308","Hyundai Ioniq 5, Hyundai Ioniq 9",Auto assembly,FALSE
+32.917519785891,-85.12011720106,Kia,Kia Motors Manufacturing Georgia,NA,NA,"7777 Kia Pkwy, West Point, Georgia 31833","Kia EV6, Kia Sportage, Kia Sorento, Kia Telluride, Kia EV9",Auto assembly,FALSE
+35.080045063552,-85.132663820465993,Volkswagen Group,Volkswagen Chattanooga Assembly Plant,NA,NA,"8001 Volkswagen Dr. Chattanooga, Tennessee 37416","Volkswagen Atlas, Volkswagen Atlas Cross Sport, Volkswagen ID.4",Auto assembly,FALSE
+34.215166,-80.973608,Volkswagen Group,Scout Production Center (2026),NA,NA,"Blythewood, South Carolina","Scout Traveler, Scout Terra",Auto assembly,FALSE
+33.154184715378,-80.244413402171,Volvo Cars,Volvo Cars USA LLC,NA,NA,"3290 Volvo Car Dr. Ridgeville, South Carolina 29472","Volvo EX90, Polestar 3",Auto assembly,FALSE
+35.702701353432,-79.255390400413,VinFast,VinFast USA,NA,NA,"Chatham County, North Carolina (2028)",TBA,Auto assembly,FALSE
+34.899420917453,-82.17187353511,BMW,"BMW US Manufacturing Company, LLC",NA,NA,"1400 Hwy 101 S. Greer, South Carolina 29651","BMW X3, BMW X4, BMW X5, BMW X6, BMW X7",Auto assembly,FALSE
+33.185059993148,-87.260800035326,Mercedes-Benz Group,"Mercedes-Benz U.S. International, Inc.",NA,NA,"1 Mercedes Dr. Vance, Alabama 35490","Mercedes-Benz GLE-Class, Mercedes-Benz GLS-Class, Mercedes-Benz EQS SUV",Auto assembly,FALSE
+32.964729011508,-80.10700199758,Mercedes-Benz Group,"Mercedes-Benz Vans, LLC.",NA,NA,"8501 Palmetto Commerce Pkwy, Ladson, South Carolina 29456",Mercedes-Benz Sprinter,Auto assembly,FALSE
+39.393261000231,-81.46934172207,Hino Motors,"Hino Motors Manufacturing U.S.A., Inc.",NA,NA,"1 Hino Way Williamstown, West Virginia 26187","Class 6 & 7 Medium Duty Trucks (GVWR: 16,001 - 33,000 lbs.), Specialized Trucks",Auto assembly,FALSE

@@ -12,7 +12,7 @@ library(tidygeocoder)
 ```
 
 ```{r}
-EV_manufacturing_plants <- read_csv("../data/Industrial Institutions/EV_ManufacturingFacilities _Investments.csv")
+EV_manufacturing_plants <- read_csv("EV_ManufacturingFacilities _Investments.csv")
 ```
 
 ```{r}
