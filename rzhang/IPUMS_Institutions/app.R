@@ -14,6 +14,8 @@ library(markdown)
 
 options(tigris_use_cache = TRUE)
 
+carto_key <- "cb1_584c_1_cd3937d4cc8a96123c80eff3"
+
 # Load and clean IPUMS data
 IPUMS_data <- read_csv("data/nhgis0002_ds272_20245_county.csv")
 
@@ -208,7 +210,15 @@ mapPageServer <- function(id, points_data) {
     
     output$map <- renderLeaflet({
       leaflet(options = leafletOptions(preferCanvas = TRUE)) %>%
-        addProviderTiles(providers$CartoDB.Positron) %>%
+        addTiles(
+          urlTemplate = paste0(
+            "https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key=", carto_key),
+          attribution = paste0(
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ',
+            '&copy; <a href="https://carto.com/attribution/">CARTO</a>'
+          ),
+          options = tileOptions(maxNativeZoom = 18, maxZoom = 20)
+        ) %>%
         setView(lng = -98.5, lat = 39.8, zoom = 4) %>%
         # Dedicated pane for institution points
         addMapPane("pointsPane", zIndex = 450) %>%
@@ -377,7 +387,10 @@ ui <- navbarPage(
            "different groups are mapped across counties.",
            "Choose from specialized colleges, automotive/EV ", 
            "manufacturing facilities, historic theaters, and opera companies.",
-           style = "font-size: 1.25em; color: #555;")
+           style = "font-size: 1.25em"),
+        p(
+           "(Apologies for any delay, the site may take a few seconds to load!)",
+           style = "font-size: 1.0em; color: #555;"),
         ),
     hr(),
     h3("Institutions", style = "text-align: center; margin-top: 30px; margin-bottom: 20px;"),
