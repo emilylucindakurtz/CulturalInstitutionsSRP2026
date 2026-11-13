@@ -87,7 +87,7 @@ counties_sf <- counties_sf_raw %>%
   st_transform(crs = 4326)
 
 
-# Clean Institution Data
+# Clean institution data
 colleges <- read_csv("data/colleges_app_clean.csv")
 auto_facilities <- read_csv("data/auto_facilities_app_clean.csv")
 theaters <- read_csv("data/theaters_app_clean.csv")
@@ -122,8 +122,7 @@ opera <- attach_county_data(opera)
 
 # Use Okabe-Ito colorblind-safe palette for consistency across levels
 
-type_color_ramp <- c("#D41159", "#FFD67A", "#F16EB7", "#FFB3F4", "#F57714",
-                     "#730E9E", "#999999")
+type_color_ramp <- c("#D41159", "#FFD67A", "#F16EB7", "#FFB3F4", "#F57714", "#730E9E", "#999999")
 
 get_type_pal <- function(type_values) {
   lev <- sort(unique(type_values))
@@ -171,11 +170,11 @@ mapPageUI <- function(id, type_choices, institution_label, institution_choices) 
         selected = type_choices
       ),
       hr(),
-      helpText("County shading = 2020-2024 ACS 5-year estimates (IPUMS NHGIS).",
-               "Points = institution locations."),
+      helpText("County shading displays 2020-2024 ACS 5-year estimates (IPUMS NHGIS).",
+               "Points represent institution locations."),
       if (institution_label == "opera company") {
         helpText(em("Non-US Opera America members (Canada, other countries) ",
-                    "are excluded since they can't be matched to a US county. "))
+                    "are excluded since they can not be matched to a US county. "))
       }
     ),
     mainPanel(
@@ -311,7 +310,7 @@ mapPageServer <- function(id, points_data) {
       var_label <- names(ipums_var_choices)[ipums_var_choices == var]
       tagList(
         tags$h4(paste(var_label, "by Institution Type"), style = "margin-bottom: 2px;"),
-        tags$p("Value = the county each institution is located in", style = "color: #666; font-size: 0.9em; margin-top: 0;")
+        tags$p("Points depict counties each institution is located in", style = "color: #666; font-size: 0.9em; margin-top: 0;")
       )
     })
     
@@ -347,8 +346,7 @@ mapPageServer <- function(id, points_data) {
       
       if (var %in% log_scale_vars) {
         p <- p +
-          scale_y_log10(labels = scales::comma) +
-          labs(y = paste0(var_label, " (log scale)"))
+          scale_y_log10(labels = scales::comma)
       } else {
         p <- p + scale_y_continuous(labels = scales::comma)
       }
@@ -370,34 +368,34 @@ ui <- navbarPage(
   tabPanel("Home", fluidPage(
     div(style = "text-align: center; padding: 40px 20px 10px; max-width: 750px; margin: 0 auto;",
         h1("Institution Location Explorer"),
-        p( "Explore institutions in the United States of America and how ",
-           "each maps onto demographic and economic landscapes across ",
-           "counties. Choose from specialized colleges, automotive & EV ", 
+        p( "Explore institutions in the U.S. and how",
+           "different groups are mapped across counties.",
+           "Choose from specialized colleges, automotive/EV ", 
            "manufacturing facilities, historic theaters, and opera companies.",
-           style = "font-size: 1.15em; color: #555;")
+           style = "font-size: 1.25em; color: #555;")
         ),
     hr(),
     h3("Institutions", style = "text-align: center; margin-top: 30px; margin-bottom: 20px;"),
     layout_columns(
       col_widths = c(3, 3, 3, 3),
       card(
-        card_header(icon("graduation-cap"), " Colleges"),
-        p("Liberal Arts Colleges and HBCUs across the U.S."),
-        actionButton("nav_colleges", "Explore", class = "btn-outline-primary btn-sm")
+        card_header("Colleges"),
+        p("Liberal Arts Colleges and HBCUs"),
+        actionButton("nav_colleges", "Explore")
       ),
       card(
-        card_header(icon("car"), " Automotive & EV"),
-        p("Vehicle assembly and EV manufacturing facilities."),
-        actionButton("nav_auto", "Explore", class = "btn-outline-primary btn-sm")
+        card_header("Automotive & EV"),
+        p("Vehicle and EV manufacturing facilities"),
+        actionButton("nav_auto", "Explore")
       ),
       card(
-        card_header(icon("landmark"), " Historic Theaters"),
-        p("NRHP-listed and League of Historic American Theatres members."),
-        actionButton("nav_theaters", "Explore", class = "btn-outline-primary btn-sm")
+        card_header("Historic Theaters"),
+        p("NRHP and LHAT Theatres"),
+        actionButton("nav_theaters", "Explore")
       ),
       card(
-        card_header(icon("music"), " Opera Companies"),
-        p("Opera America member companies nationwide."),
+        card_header("Opera Companies"),
+        p("Opera America member companies"),
         actionButton("nav_opera", "Explore", class = "btn-outline-primary btn-sm")
       )
     ),
@@ -409,15 +407,15 @@ ui <- navbarPage(
   hr(),
   div(
     style = "max-width: 1100px; margin: 20px auto;",
-    h3("Ways to navigate the app"),
+    h3("Ways to navigate:"),
     tags$ol(
       style = "font-size: 1.05em; line-height: 1.9;",
-      tags$li("Select a tab above for institution type."),
-      tags$li("Shade the map by any Census variable using the dropdown on the left (pick between population, income, race, or education)."),
-      tags$li("Filter by type with the checkboxes (e.g. LAC vs. HBCU, EV vs. traditional auto facility)."),
-      tags$li("Search for a specific institution by name to find it on the map."),
-      tags$li("Compare distributions in the boxplot next to the map"),
-      tags$li("Read the analysis on the Blog Post tab for a deeper look at one pattern found in the data.")
+      tags$li("Select a tab above for institution type"),
+      tags$li("Shade the map using the dropdown of Census variables (population, income, race, education)"),
+      tags$li("Filter by type through checkboxes (e.g., LAC vs. HBCU)"),
+      tags$li("Search for a specific institution by name to find it on the map"),
+      tags$li("Compare distributions in the boxplot"),
+      tags$li("Read the analysis on the Blog Post tab!")
     ))
   ),
   tabPanel("Colleges", mapPageUI("colleges", college_type_choices, "college",
