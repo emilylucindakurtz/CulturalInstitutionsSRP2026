@@ -77,6 +77,11 @@ ipums_var_choices_ui <- list(
   "Education (25+)" = c("Bachelor's Degree or Higher" = "pct_bachelors_plus")
 )
 
+# Add state boundaries
+states_sf <- states(cb = TRUE, resolution = "20m", year = 2024) %>%
+  filter(!STATEFP %in% c("60", "66", "69", "72", "78")) %>%
+  st_transform(crs = 4326)
+
 # Add county boundaries and joining data
 counties_sf_raw <- counties(cb = TRUE, resolution = "20m", year = 2024)
 
